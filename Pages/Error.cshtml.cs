@@ -5,27 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
-namespace Angular9Core3.Pages
-{
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public class ErrorModel : PageModel
-    {
-        private readonly ILogger<ErrorModel> _logger;
+namespace transfersPages {
+	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+	public class ErrorModel : PageModel {
+		public string RequestId { get; set; }
 
-        public ErrorModel(ILogger<ErrorModel> logger)
-        {
-            _logger = logger;
-        }
+		public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-        public string RequestId { get; set; }
-
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-
-        public void OnGet()
-        {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-        }
-    }
+		public void OnGet() {
+			RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+		}
+	}
 }

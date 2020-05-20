@@ -1,51 +1,50 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Angular9Core3 {
+namespace Transfers {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            Extensions.AddIdentity(services);
+            Extensions.AddAuthentication(Configuration, services);
+            Extensions.AddAuthorization(services);
+            Extensions.AddCors(services);
+            Extensions.AddInterfaces(services);
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration => {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            services.AddEmailSenders();
+            services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
+            services.AddAutoMapper();
+            services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:MySqlServerConnection"]));
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment()) {
-                app.UseDeveloperExceptionPage();
-            } else {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
+            if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } else { app.UseExceptionHandler("/Error"); app.UseHsts(); }
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseHttpsRedirection();
+            app.UseSpaStaticFiles();
+            app.UseStaticFiles();
+            app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            if (!env.IsDevelopment()) {
-                app.UseSpaStaticFiles();
-            }
-
-            app.UseRouting();
-
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";
                 if (env.IsDevelopment()) {
