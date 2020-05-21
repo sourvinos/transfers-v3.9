@@ -1,0 +1,63 @@
+:host {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    grid-template-rows: max-content auto max-content;
+    height: 100vh;
+}
+
+#header {
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+        "title searchbox";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 66px;
+    margin: 2rem;
+}
+
+#header #title {
+    align-items: baseline;
+    display: flex;
+    grid-area: title;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+#header #search-box {
+    align-items: center;
+    display: flex;
+    grid-area: searchbox;
+    margin: 0 1rem 0 0;
+    width: 20rem;
+}
+
+#content {
+    grid-area: content;
+    grid-auto-rows: 100%;
+    margin: 0 1.8rem 0 2rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: auto;
+}
+
+#footer {
+    grid-area: footer;
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+#footer #buttons {
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+/* ! Narrow screen */
+@media only screen and (max-width: 1366px) {
+    h1 {
+        margin-left: 0 !important;
+    }
+}

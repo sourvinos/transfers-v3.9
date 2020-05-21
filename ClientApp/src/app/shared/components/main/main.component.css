@@ -1,0 +1,47 @@
+:host {
+    display: grid;
+}
+
+#main {
+    background-color: var(--color-background);
+    border-radius: 0px;
+}
+
+#hamburger {
+    display: none;
+    position: absolute;
+    margin-left: 2.6875rem;
+}
+
+#hamburger span {
+    margin: 5px;
+    width: 30px;
+    height: 5px;
+    background-color: var(--color-hamburger);
+    display: block;
+    transition: transform 1000ms;
+    cursor: pointer;
+}
+
+#hamburger.open span:first-child {
+    transform: translateY(10px) rotate(45deg);
+}
+
+#hamburger.open span:nth-child(2) {
+    visibility: hidden;
+}
+
+#hamburger.open span:last-child {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Narrow screen */
+@media only screen and (max-width: 1366px) {
+    #hamburger {
+        display: block;
+    }
+
+    #main {
+        border-radius: 0;
+    }
+}

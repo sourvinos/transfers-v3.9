@@ -1,0 +1,29 @@
+section {
+    background-color: var(--color-sidebar-background);
+    display: grid;
+    grid-template-areas: "sidebar""main";
+    grid-template-columns: auto 1fr;
+    height: 100vh;
+    overflow: hidden;
+    transition: margin-left 0.7s;
+}
+
+#spinner {
+    border: 3px solid var(--color-spinner-background);
+    border-top: 3px solid var(--color-spinner);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    animation: spin 1700ms linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

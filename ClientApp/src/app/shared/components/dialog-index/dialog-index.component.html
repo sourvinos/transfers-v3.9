@@ -1,0 +1,15 @@
+<div id="dialog">
+
+    <div id="dialog-header">
+        <h1 mat-dialog-title>{{ title }}</h1>
+    </div>
+
+    <div id="dialog-content" class="scrollable">
+        <custom-table [records]="data.records" [headers]="data.headers" [widths]="data.widths" [visibility]="data.visibility" [justify]="data.justify" [fields]="data.fields"></custom-table>
+    </div>
+
+    <div id="dialog-footer">
+        <button id="close" mat-flat-button class="primary" [mat-dialog-close]="selectedRecord">Select</button>
+    </div>
+
+</div>

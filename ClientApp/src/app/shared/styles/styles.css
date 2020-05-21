@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import "buttons.css";
+@import "checkbox.css";
+@import "dialogs.css";
+@import "dividers.css";
+@import "expansion-panel.css";
+@import "headers.css";
+@import "inputs.css";
+@import "labels.css";
+@import "scrollable.css";
+@import "select.css";
+@import "snackbar.css";
+@import "loader.css";
+@import "variables.css";
+@import "colors-dark.css";
+
+* {
+    box-sizing: border-box !important;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body, h1, h2, h3, p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#section-one {
+    display: flex;
+    flex-direction: column;
+    grid-area: "section-one";
+}
+
+#section-two {
+    display: flex;
+    flex-direction: column;
+    grid-area: "section-two";
+}
+
+.hidden {
+    display: none !important;
+}
+
+p.instructions {
+    color: var(--color-paragraphs);
+    font-family: var(--font-family-paragraphs);
+    font-size: var(--font-size-paragraphs);
+    overflow: hidden;
+    width: 800px;
+}
+
+.navigation-icon {
+    cursor: pointer;
+    font-size: 2.3rem;
+    margin-left: -2px !important;
+    margin-top: -2px !important;
+}
+
+.error {
+    background-color: var(--color-snackbar-background-danger) !important;
+}
+
+.info {
+    background-color: var(--color-snackbar-background-info) !important;
+}
+
+/* Wide screen */
+@media only screen and (min-width: 1367px) {
+    .icon {
+        margin-left: 0 !important;
+    }
+}
+
+/* Narrow screen */
+@media only screen and (max-width: 1366px) {
+    .icon {
+        margin-left: 2rem !important;
+    }
+
+    h1 {
+        margin-left: 1rem !important;
+    }
+}

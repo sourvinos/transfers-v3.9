@@ -1,0 +1,44 @@
+:host {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main";
+    grid-template-rows: max-content auto;
+    height: 100vh;
+}
+
+#header {
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+        "navigation title searchbox";
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 66px;
+    height: 4.1rem;
+    margin: 2rem;
+}
+
+#header #title {
+    align-items: center;
+    display: flex;
+    grid-area: title;
+    justify-content: flex-start;
+    margin-left: 1rem;
+    height: -webkit-fill-available;
+}
+
+#header #navigation {
+    align-items: center;
+    display: flex;
+    grid-area: "navigation";
+    justify-content: flex-start;
+    margin: 0 0 0 1rem;
+}
+
+#header #search-box {
+    align-items: center;
+    display: flex;
+    grid-area: searchbox;
+    margin-right: 1rem;
+    width: 20rem;
+}

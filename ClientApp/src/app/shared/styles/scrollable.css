@@ -1,0 +1,24 @@
+.scrollable {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--color-scrollbar) var(--color-scrollbar-background);
+    scrollbar-width: thin;
+    width: 100%;
+}
+
+.scrollable::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background-color: var(--color-scrollbar-background);
+    margin-top: 42px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    min-height: 6.25rem;
+    border-radius: 1rem;
+}

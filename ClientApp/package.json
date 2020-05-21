@@ -1,5 +1,5 @@
 {
-    "name": "client-app",
+    "name": "transfers",
     "version": "1.0.0",
     "scripts": {
         "ng": "ng",

@@ -1,0 +1,94 @@
+:host {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    grid-template-rows: max-content auto max-content;
+    height: 100vh;
+}
+
+#header {
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+        "navigation title";
+    grid-template-columns: fit-content(0%) auto;
+    grid-template-rows: 66px;
+    margin: 2rem;
+}
+
+#header #title {
+    align-items: center;
+    display: flex;
+    grid-area: title;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+#header #navigation {
+    align-items: center;
+    display: flex;
+    grid-area: "navigation";
+    justify-content: flex-start;
+    margin: 0 0 0 1rem;
+}
+
+#content {
+    align-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+#content form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#content #instructions {
+    margin-top: auto;
+}
+
+#footer {
+    grid-area: footer;
+    margin: 2rem;
+}
+
+#footer #buttons {
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+#section-one, #section-two {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ! Narrow screen */
+@media only screen and (max-width: 1366px) {
+    h1 {
+        margin-left: 0 !important;
+    }
+
+    .navigation-icon {
+        margin-left: 2rem !important;
+    }
+}
+
+/* Small heights */
+@media only screen and (max-height: 767px) {
+    form {
+        flex-direction: row !important;
+    }
+
+    #section-one {
+        margin-right: 1rem;
+    }
+}

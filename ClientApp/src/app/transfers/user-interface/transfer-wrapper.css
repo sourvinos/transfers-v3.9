@@ -1,0 +1,49 @@
+:host {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main";
+    grid-template-rows: max-content auto;
+    height: 100vh;
+}
+
+#header {
+    display: grid;
+    grid-area: header;
+    grid-template-areas:
+        "title searchbox"
+        "divider divider";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    margin: 2rem;
+}
+
+#header #title {
+    align-items: center;
+    display: flex;
+    grid-area: title;
+    justify-content: flex-start;
+    margin-left: 1rem;
+}
+
+#header #search-box {
+    align-items: center;
+    display: flex;
+    flex: auto;
+    grid-area: searchbox;
+    margin: 0 1rem 0 0;
+    width: 20rem;
+}
+
+#main {
+    grid-area: main;
+    grid-auto-rows: 100%;
+    margin: 0 2rem 2rem 2rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: auto;
+}
+
+#footer {
+    grid-area: footer;
+}

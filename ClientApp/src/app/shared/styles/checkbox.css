@@ -1,0 +1,57 @@
+.mat-content {
+    align-items: center;
+    flex: 0 0 auto !important;
+}
+
+.mat-checkbox-inner-container-no-side-margin {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.mat-checkbox {
+    padding: 1rem;
+    margin-top: -1px;
+}
+
+.mat-panel-title {
+    margin-top: 3px;
+}
+
+.mat-expansion-panel-header-title {
+    margin-top: 2px !important;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: var(--color-checkbox-checked) !important;
+}
+
+.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: var(--color-checkbox-checked) !important;
+}
+
+.mat-checkbox-frame {
+    border-color: var(--color-checkbox-checked) !important;
+}
+
+.mat-checkbox-checked .mat-checkbox-checkmark {
+    background-color: var(--color-checkbox-checked);
+}
+
+.mat-slide-toggle {
+    margin: 1rem 0 1.5rem 0 !important;
+}
+
+.mat-slide-toggle-content {
+    color: var(--color-input-not-focus);
+    font-family: var(--font-family-checkbox) !important;
+    font-size: var(--font-size-checkbox) !important;
+    font-weight: bold;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: var(--color-bar-checked) !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: var(--color-thumb-checked) !important;
+}
