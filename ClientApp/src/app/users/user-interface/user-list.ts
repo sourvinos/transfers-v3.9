@@ -89,7 +89,6 @@ export class UserListComponent implements OnInit, OnDestroy {
     private loadRecords() {
         this.records = this.activatedRoute.snapshot.data[this.resolver]
         this.filteredRecords = this.records.sort((a, b) => (a.userName > b.userName) ? 1 : -1)
-        console.log(this.filteredRecords)
     }
 
     private subscribeToInteractionService() {
