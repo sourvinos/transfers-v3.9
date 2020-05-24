@@ -200,7 +200,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             exactPoint: c,
             time: d
         } of this.pickupPoints) {
-            this.pickupPointsFlat.push({ id: a, description: b, exactPoint: c, time: d })
+            this.pickupPointsFlat.push({ pickupPointId: a, pickupPointDescription: b, exactPoint: c, time: d })
         }
         return this.pickupPointsFlat
     }

@@ -1,6 +1,6 @@
 export class PickupPointFlat {
-    id: number
-    description: string
+    pickupPointId: number
+    pickupPointDescription: string
     exactPoint: string
     time: string
 }

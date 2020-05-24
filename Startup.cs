@@ -24,7 +24,7 @@ namespace Transfers {
             services.AddEmailSenders();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper();
-            services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:MySqlServerConnection"]));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
@@ -45,6 +45,8 @@ namespace Transfers {
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+            // var dataText = System.IO.File.ReadAllText(@"Transfers.json");
+            // Extensions.Seedit(dataText, app.ApplicationServices);
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";
                 if (env.IsDevelopment()) {
