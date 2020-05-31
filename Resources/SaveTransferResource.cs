@@ -1,7 +1,9 @@
 using System;
 
 namespace Transfers {
+
     public class SaveTransferResource {
+
         public int Id { get; set; }
         public DateTime dateIn { get; set; }
         public int Adults { get; set; }
@@ -13,5 +15,7 @@ namespace Transfers {
         public int PickupPointId { get; set; }
         public int DestinationId { get; set; }
         public int DriverId { get; set; }
+
     }
+
 }

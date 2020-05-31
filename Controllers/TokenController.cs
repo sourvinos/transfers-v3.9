@@ -1,13 +1,13 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Transfers {
 
@@ -15,13 +15,11 @@ namespace Transfers {
     public class TokenController : ControllerBase {
 
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly AppSettings appSettings;
-        private readonly Token token;
+        private readonly TokenSettings settings;
         private readonly AppDbContext db;
 
-        public TokenController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<AppSettings> appSettings, Token token, AppDbContext db) =>
-            (this.userManager, this.signInManager, this.appSettings, this.token, this.db) = (userManager, signInManager, appSettings.Value, token, db);
+        public TokenController(UserManager<ApplicationUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) =>
+            (this.userManager, this.settings, this.db) = (userManager, settings.Value, db);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Auth([FromBody] TokenRequest model) {
@@ -41,7 +39,7 @@ namespace Transfers {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
                     return BadRequest(new { response = ApiMessages.AccountNotConfirmed() });
                 }
-                var newRefreshToken = CreateRefreshToken(appSettings.ClientId, user.Id);
+                var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
                 if (oldRefreshTokens != null) {
                     foreach (var token in oldRefreshTokens) {
@@ -59,16 +57,16 @@ namespace Transfers {
         private Token CreateRefreshToken(string clientId, string userId) {
             return new Token() {
                 ClientId = clientId,
-                    UserId = userId,
-                    Value = Guid.NewGuid().ToString("N"),
-                    CreatedDate = DateTime.UtcNow,
-                    ExpiryTime = DateTime.UtcNow.AddMinutes(90)
+                UserId = userId,
+                Value = Guid.NewGuid().ToString("N"),
+                CreatedDate = DateTime.UtcNow,
+                ExpiryTime = DateTime.UtcNow.AddMinutes(90)
             };
         }
 
         private async Task<TokenResponse> CreateAccessToken(ApplicationUser user, string refreshToken) {
-            double tokenExpiryTime = Convert.ToDouble(appSettings.ExpireTime);
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(appSettings.Secret));
+            double tokenExpiryTime = Convert.ToDouble(settings.ExpireTime);
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(settings.Secret));
             var roles = await userManager.GetRolesAsync(user);
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor {
@@ -80,25 +78,25 @@ namespace Transfers {
                 new Claim("LoggedOn", DateTime.Now.ToString()),
                 }),
                 SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature),
-                Issuer = appSettings.Site,
-                Audience = appSettings.Audience,
+                Issuer = settings.Site,
+                Audience = settings.Audience,
                 Expires = DateTime.UtcNow.AddMinutes(tokenExpiryTime)
             };
             var newtoken = tokenHandler.CreateToken(tokenDescriptor);
             var encodedToken = tokenHandler.WriteToken(newtoken);
             return new TokenResponse() {
                 token = encodedToken,
-                    expiration = newtoken.ValidTo,
-                    refresh_token = refreshToken,
-                    roles = roles.FirstOrDefault(),
-                    userId = user.Id,
-                    displayName = user.DisplayName
+                expiration = newtoken.ValidTo,
+                refresh_token = refreshToken,
+                roles = roles.FirstOrDefault(),
+                userId = user.Id,
+                displayName = user.DisplayName
             };
         }
 
         private async Task<IActionResult> RefreshToken(TokenRequest model) {
             try {
-                var rt = db.Tokens.FirstOrDefault(t => t.ClientId == appSettings.ClientId && t.Value == model.RefreshToken.ToString());
+                var rt = db.Tokens.FirstOrDefault(t => t.ClientId == settings.ClientId && t.Value == model.RefreshToken.ToString());
                 if (rt == null) return new UnauthorizedResult();
                 if (rt.ExpiryTime < DateTime.UtcNow) return Unauthorized(new { response = ApiMessages.AuthenticationFailed() });
                 var user = await userManager.FindByIdAsync(rt.UserId);
@@ -109,7 +107,8 @@ namespace Transfers {
                 db.SaveChanges();
                 var token = await CreateAccessToken(user, rtNew.Value);
                 return Ok(new { response = token });
-            } catch {
+            }
+            catch {
                 return Unauthorized(new { response = ApiMessages.AuthenticationFailed() });
             }
         }

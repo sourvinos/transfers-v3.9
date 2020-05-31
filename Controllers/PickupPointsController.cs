@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Transfers {
 
@@ -51,7 +51,8 @@ namespace Transfers {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(pickupPoint);
-            } catch (System.Exception) {
+            }
+            catch (System.Exception) {
                 return NotFound(new { response = ApiMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
@@ -64,7 +65,8 @@ namespace Transfers {
             try {
                 repo.Delete(pickupPoint);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
+            }
+            catch (DbUpdateException) {
                 return BadRequest(new { response = ApiMessages.RecordInUse() });
             }
         }

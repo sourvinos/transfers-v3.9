@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 namespace Transfers {
+
     public class Program {
+
         public static void Main(string[] args) {
             CreateHostBuilder(args).Build().Run();
         }
@@ -12,5 +14,7 @@ namespace Transfers {
             .ConfigureWebHostDefaults(webBuilder => {
                 webBuilder.UseStartup<Startup>();
             });
+
     }
+
 }

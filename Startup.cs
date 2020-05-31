@@ -7,13 +7,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Transfers {
+
     public class Startup {
-        public Startup(IConfiguration configuration) {
+
+        public Startup(IConfiguration configuration) =>
             Configuration = configuration;
-        }
+
         public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services) {
             Extensions.AddIdentity(services);
             Extensions.AddAuthentication(Configuration, services);
@@ -27,10 +31,18 @@ namespace Transfers {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.Configure<SendGridSettings>(options => Configuration.GetSection("SendGridSettings").Bind(options));
+            services.Configure<OutlookSettings>(options => Configuration.GetSection("OutlookSettings").Bind(options));
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); } else { app.UseExceptionHandler("/Error"); app.UseHsts(); }
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+            }
+            else {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -45,14 +57,15 @@ namespace Transfers {
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-            // var dataText = System.IO.File.ReadAllText(@"Transfers.json");
-            // Extensions.Seedit(dataText, app.ApplicationServices);
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";
+                spa.Options.StartupTimeout = new TimeSpan(0, 5, 0);
                 if (env.IsDevelopment()) {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
+
     }
+
 }

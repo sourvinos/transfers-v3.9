@@ -17,20 +17,24 @@ import { Customer } from '../classes/customer';
 export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#region Private
+
     url = '/customers'
     records: Customer[] = []
     filteredRecords: Customer[] = []
     resolver = 'customerList'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+
     //#endregion
 
     //#region Form
+
     headers = ['S', 'Id', 'Description', 'Phones', 'Email']
     widths = ['40px', '0px', '50%', '25%', '']
     visibility = ['none', 'none', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left']
     fields = ['', 'id', 'description', 'phones', 'email']
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router) {

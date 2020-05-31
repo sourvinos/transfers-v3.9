@@ -1,25 +1,24 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Options;
-using transfersViewModels;
 
 namespace Transfers {
 
     [Route("api/[controller]")]
+    [Authorize(Policy = "RequireLoggedIn")]
     public class AccountController : Controller {
 
-        private readonly AppSettings appSettings;
         private readonly IEmailSender emailSender;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender, IOptions<AppSettings> appSettings) =>
-            (this.userManager, this.signInManager, this.appSettings, this.emailSender) = (userManager, signInManager, appSettings.Value, emailSender);
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender) =>
+            (this.userManager, this.signInManager, this.emailSender) = (userManager, signInManager, emailSender);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel formData) {
@@ -44,6 +43,7 @@ namespace Transfers {
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]")]
         public async Task<IActionResult> ConfirmEmail(string userId, string token) {
             var user = await userManager.FindByIdAsync(userId);
@@ -56,6 +56,7 @@ namespace Transfers {
             return BadRequest(new { response = result.Errors.Select(x => x.Description) });
         }
 
+        [AllowAnonymous]
         [HttpPost("[action]")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordViewModel model) {
             if (ModelState.IsValid) {
@@ -63,7 +64,7 @@ namespace Transfers {
                 if (user != null && await userManager.IsEmailConfirmedAsync(user)) {
                     string token = await userManager.GeneratePasswordResetTokenAsync(user);
                     string tokenEncoded = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-                    string baseUrl = $"{this.Request.Scheme}://{this.Request.Host.Value.ToString()}{this.Request.PathBase.Value.ToString()}";
+                    string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
                     string passwordResetLink = Url.Content($"{baseUrl}/resetPassword/{model.Email}/{tokenEncoded}");
                     emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
                 }
@@ -72,6 +73,7 @@ namespace Transfers {
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]")]
         public IActionResult ResetPassword([FromQuery] string email, [FromQuery] string tokenEncoded) {
             var model = new ResetPasswordViewModel {
@@ -81,6 +83,7 @@ namespace Transfers {
             return Ok(new { response = model });
         }
 
+        [AllowAnonymous]
         [HttpPost("[action]")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model) {
             if (ModelState.IsValid) {
@@ -89,7 +92,7 @@ namespace Transfers {
                 var tokenDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token));
                 var result = await userManager.ResetPasswordAsync(user, tokenDecoded, model.Password);
                 if (result.Succeeded) {
-                    return Ok(new { response = ApiMessages.EmailReset() });
+                    return Ok(new { response = ApiMessages.PasswordReset() });
                 }
                 return BadRequest(new { response = result.Errors.Select(x => x.Description) });
             }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,16 +8,15 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
     public class UsersController : ControllerBase {
 
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signManager;
 
-        public UsersController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) =>
-            (this.userManager, this.signManager) = (userManager, signInManager);
+        public UsersController(UserManager<ApplicationUser> userManager) =>
+            (this.userManager) = (userManager);
 
         [HttpGet]
+
         public async Task<IEnumerable<UserListViewModel>> Get() =>
             await userManager.Users.Select(u => new UserListViewModel {
                 Id = u.Id,

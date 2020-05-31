@@ -11,7 +11,7 @@ namespace Transfers {
         public static string EmailInstructions(string email) { return $"An email was sent to { email } with instructions."; }
         public static string AccountNotConfirmed() { return "This account is pending email confirmation."; }
         public static string EmailNotFound(string email) { return $"Email { email } does not exist."; }
-        public static string EmailReset() { return "Password was reset successfully."; }
+        public static string PasswordReset() { return "Password was reset successfully."; }
         public static string PasswordChanged() { return "Password was changed successfully."; }
         public static string AuthenticationFailed() { return "Authentication failed."; }
         public static string UserNotFound() { return "User not found."; }

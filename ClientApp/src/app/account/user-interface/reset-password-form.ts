@@ -18,22 +18,28 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 
 export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    // #region Private generic
+
     url = '/'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>();
-    //#endregion
 
-    //#region Private particular
+    // #endregion
+
+    // #region Private particular
+
     email: string
     token: string
-    //#endregion
+
+    // #endregion
 
     //#region Form
+
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     hidePassword = true
     input: InputTabStopDirective
+
     //#endregion
 
     constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService) {

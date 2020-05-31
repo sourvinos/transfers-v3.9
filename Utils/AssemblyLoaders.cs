@@ -3,7 +3,9 @@ using System.Reflection;
 using System.Runtime.Loader;
 
 namespace Transfers {
+
     internal class CustomAssemblyLoadContext : AssemblyLoadContext {
+
         public IntPtr LoadUnmanagedLibrary(string absolutePath) =>
             LoadUnmanagedDll(absolutePath);
 
@@ -13,4 +15,5 @@ namespace Transfers {
         protected override Assembly Load(AssemblyName assemblyName) =>
             throw new NotImplementedException();
     }
+
 }

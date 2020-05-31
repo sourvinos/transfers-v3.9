@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using JsonNet.PrivateSettersContractResolvers;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -9,13 +7,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace Transfers {
+
     public static class Extensions {
 
         public static void AddCors(IServiceCollection services) =>
@@ -41,9 +40,9 @@ namespace Transfers {
             .AddDefaultTokenProviders();
 
         public static void AddAuthentication(IConfiguration configuration, IServiceCollection services) {
-            var appSettingsSection = configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-            var appSettings = appSettingsSection.Get<AppSettings>();
+            var appSettingsSection = configuration.GetSection("TokenSettings");
+            services.Configure<TokenSettings>(appSettingsSection);
+            var appSettings = appSettingsSection.Get<TokenSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             services
                 .AddAuthentication(options => {
@@ -72,11 +71,11 @@ namespace Transfers {
             });
 
         public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
-            // if (!env.IsDevelopment()) {
-            //     app.UseDeveloperExceptionPage();
-            // } else {
-            //     app.UseExceptionHandler("/Error");
-            // }
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+            } else {
+                app.UseExceptionHandler("/Error");
+            }
         }
 
         public static void AddInterfaces(IServiceCollection services) {
@@ -95,11 +94,10 @@ namespace Transfers {
                 ContractResolver = new PrivateSetterContractResolver()
             };
             List<Transfer> events = JsonConvert.DeserializeObject<List<Transfer>>(jsonData, settings);
-            using(var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope()) {
-                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-                context.AddRange(events);
-                context.SaveChanges();
-            }
+            using IServiceScope serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+            context.AddRange(events);
+            context.SaveChanges();
         }
 
     }

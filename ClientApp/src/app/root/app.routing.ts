@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+
 // Components
 import { CustomerListComponent } from '../customers/user-interface/customer-list'; import { CustomerFormComponent } from '../customers/user-interface/customer-form'
 import { DestinationListComponent } from '../destinations/user-interface/destination-list'; import { DestinationFormComponent } from '../destinations/user-interface/destination-form'
@@ -13,6 +14,7 @@ import { PortListComponent } from '../ports/user-interface/port-list'; import { 
 import { RouteListComponent } from '../routes/user-interface/route-list'; import { RouteFormComponent } from '../routes/user-interface/route-form'
 import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper'; import { TransferListComponent } from '../transfers/user-interface/transfer-list'; import { TransferFormComponent } from '../transfers/user-interface/transfer-form'
 import { UserListComponent } from '../users/user-interface/user-list'; import { RegisterUserFormComponent } from '../users/user-interface/register-user-form'; import { EditUserFormComponent } from '../users/user-interface/edit-user-form'; import { ChangePasswordFormComponent } from '../users/user-interface/change-password-form'
+
 // Resolvers
 import { CustomerListResolver } from './../customers/classes/customer-list.resolver';
 import { DestinationListResolver } from '../destinations/classes/destination-list.resolver'
@@ -23,6 +25,7 @@ import { RouteListResolver } from '../routes/classes/route-list.resolver'
 import { TransferListResolver } from '../transfers/classes/transfer-list.resolver'; import { TransferFormResolver } from '../transfers/classes/transfer-form.resolver';
 import { UserListResolver } from '../users/classes/user-list.resolver';
 import { ResetPasswordFormComponent } from '../account/user-interface/reset-password-form';
+
 // Guards
 import { AuthGuardService } from '../shared/services/auth-guard.service'
 import { CanDeactivateGuard } from '../shared/services/can-deactivate-guard.service'
