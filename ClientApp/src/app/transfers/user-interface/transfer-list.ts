@@ -5,6 +5,7 @@ import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { DriverService } from 'src/app/drivers/classes/driver.service'
+import { ListResolved } from 'src/app/shared/classes/list-resolved'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
@@ -277,7 +278,12 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     private loadRecords() {
-        this.queryResult = this.activatedRoute.snapshot.data[this.resolver]
+        const transferListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (transferListResolved.error === null) {
+            this.queryResult = this.activatedRoute.snapshot.data[this.resolver]
+        } else {
+            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+        }
     }
 
     private navigateToList() {

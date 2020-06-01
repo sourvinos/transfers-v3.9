@@ -1,6 +1,16 @@
 {
-    "version": "0.2.0",
+    "version": "0.0.0",
     "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Front-End",
+            "url": "https://localhost:5001",
+            "webRoot": "${workspaceFolder}/ClientApp",
+            "skipFiles": [
+                "node_modules/**/*.js"
+            ]
+        },
         {
             "name": "Back-End",
             "type": "coreclr",

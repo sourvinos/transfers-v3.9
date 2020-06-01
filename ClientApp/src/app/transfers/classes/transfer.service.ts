@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { DataService } from 'src/app/shared/services/data.service'
 import { Observable } from 'rxjs'
+import { DataService } from 'src/app/shared/services/data.service'
 import { TransferViewModel } from './transferViewModel'
 
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,7 @@ export class TransferService extends DataService {
     }
 
     getTransfers(date: string): Observable<TransferViewModel> {
-        return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
+        return this.http.get<TransferViewModel>('/api/transferss/date/' + date)
     }
 
     assignDriver(driverId: string, ids: string[]) {

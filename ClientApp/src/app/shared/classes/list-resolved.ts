@@ -1,5 +1,5 @@
 export class ListResolved {
 
-    constructor(public list: any[], public error: any = null) { }
+    constructor(public list: any | any[], public error: any = null) { }
 
 }
