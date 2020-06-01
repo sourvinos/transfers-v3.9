@@ -69,7 +69,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onNew() {
-        this.router.navigate([this.location.path() + '/pickupPoint/new']) // OK
+        this.router.navigate([this.location.path() + '/pickupPoint/new'])
     }
 
     private addShortcuts() {

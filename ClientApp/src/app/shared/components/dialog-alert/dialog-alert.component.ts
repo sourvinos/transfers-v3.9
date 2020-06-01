@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 @Component({
     selector: 'dialog-alert',
@@ -14,10 +14,13 @@ export class DialogAlertComponent {
     constructor(private dialogRef: MatDialogRef<DialogAlertComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
         switch (data.titleColor) {
             case 'warningColor':
-                this.titleColor = '#FE9F36'
-                break;
+                this.titleColor = '#fe9f36'
+                break
+            case 'importantColor':
+                this.titleColor = '#0c5e71'
+                break
             default:
-                break;
+                break
         }
     }
 
