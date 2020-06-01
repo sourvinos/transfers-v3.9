@@ -2,10 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ListResolved } from 'src/app/shared/classes/list-resolved';
 import { ButtonClickService } from 'src/app/shared/services/button-click.service';
 import { HelperService } from 'src/app/shared/services/helper.service';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
+import { MessageService } from 'src/app/shared/services/message.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { Destination } from '../classes/destination';
 
 @Component({
@@ -33,7 +36,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     fields = ['', 'id', 'abbreviation', 'description']
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
         this.loadRecords()
     }
 
@@ -87,8 +90,17 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     }
 
     private loadRecords() {
-        this.records = this.activatedRoute.snapshot.data[this.resolver]
-        this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
+        const destinationListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (destinationListResolved.error === null) {
+            this.records = destinationListResolved.list
+            this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
+        } else {
+            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+        }
+    }
+
+    private showSnackbar(message: string, type: string) {
+        this.snackbarService.open(message, type)
     }
 
     private subscribeToInteractionService() {

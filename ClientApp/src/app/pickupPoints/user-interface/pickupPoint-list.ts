@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { RouteService } from 'src/app/routes/classes/route.service';
+import { ListResolved } from 'src/app/shared/classes/list-resolved';
 import { ButtonClickService } from 'src/app/shared/services/button-click.service';
 import { HelperService } from 'src/app/shared/services/helper.service';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
+import { MessageService } from 'src/app/shared/services/message.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { PickupPoint } from '../classes/pickupPoint';
 
 @Component({
@@ -38,7 +41,8 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     fields = ['', 'id', 'description', 'exactPoint', 'time']
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private routeService: RouteService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private location: Location, private helperService: HelperService) {
+    constructor(
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
@@ -101,8 +105,17 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private loadRecords() {
-        this.records = this.activatedRoute.snapshot.data[this.resolver]
-        this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
+        const pickupPointListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (pickupPointListResolved.error === null) {
+            this.records = pickupPointListResolved.list
+            this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
+        } else {
+            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+        }
+    }
+
+    private showSnackbar(message: string, type: string) {
+        this.snackbarService.open(message, type)
     }
 
     private subscribeToInteractionService() {

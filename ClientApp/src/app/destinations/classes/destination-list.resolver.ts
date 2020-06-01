@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Destination } from './destination';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { ListResolved } from 'src/app/shared/classes/list-resolved';
 import { DestinationService } from './destination.service';
 
 @Injectable({ providedIn: 'root' })
 
-export class DestinationListResolver implements Resolve<Destination[]> {
+export class DestinationListResolver implements Resolve<ListResolved> {
 
     constructor(private destinationService: DestinationService) { }
 
-    resolve(): Observable<Destination[]> {
+    resolve(): Observable<ListResolved> {
         return this.destinationService.getAll()
+            .pipe(
+                map((customerList) => new ListResolved(customerList)),
+                catchError((err: any) => of(new ListResolved(null, err)))
+            )
     }
 
 }

@@ -3,9 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { User } from 'src/app/account/classes/user'
+import { ListResolved } from 'src/app/shared/classes/list-resolved'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 
 @Component({
@@ -33,7 +36,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     fields = ['', 'id', 'displayname', 'username', 'email']
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
         this.loadRecords()
     }
 
@@ -87,8 +90,17 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     private loadRecords() {
-        this.records = this.activatedRoute.snapshot.data[this.resolver]
-        this.filteredRecords = this.records.sort((a, b) => (a.userName > b.userName) ? 1 : -1)
+        const userListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (userListResolved.error === null) {
+            this.records = userListResolved.list
+            this.filteredRecords = this.records.sort((a, b) => (a.userName > b.userName) ? 1 : -1)
+        } else {
+            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+        }
+    }
+
+    private showSnackbar(message: string, type: string) {
+        this.snackbarService.open(message, type)
     }
 
     private subscribeToInteractionService() {

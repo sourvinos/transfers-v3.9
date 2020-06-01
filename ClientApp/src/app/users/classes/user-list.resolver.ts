@@ -1,17 +1,22 @@
-import { Injectable } from '@angular/core'
-import { Resolve } from '@angular/router'
-import { Observable } from 'rxjs'
-import { User } from '../../account/classes/user'
-import { UserService } from './user.service'
+import { Injectable } from '@angular/core';
+import { Resolve } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { ListResolved } from 'src/app/shared/classes/list-resolved';
+import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 
-export class UserListResolver implements Resolve<User[]> {
+export class UserListResolver implements Resolve<ListResolved> {
 
     constructor(private userService: UserService) { }
 
-    resolve(): Observable<User[]> {
+    resolve(): Observable<ListResolved> {
         return this.userService.getAll()
+            .pipe(
+                map((userList) => new ListResolved(userList)),
+                catchError((err: any) => of(new ListResolved(null, err)))
+            )
     }
 
 }

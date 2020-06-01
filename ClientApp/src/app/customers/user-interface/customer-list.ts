@@ -1,4 +1,3 @@
-import { SnackbarService } from './../../shared/services/snackbar.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -7,9 +6,10 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { Customer } from '../classes/customer';
-import { ResolvedCustomerList } from '../classes/resolved-customer-list';
 import { MessageService } from 'src/app/shared/services/message.service';
+import { ListResolved } from '../../shared/classes/list-resolved';
+import { Customer } from '../classes/customer';
+import { SnackbarService } from './../../shared/services/snackbar.service';
 
 @Component({
     selector: 'customer-list',
@@ -40,8 +40,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
         this.loadRecords()
     }
 
@@ -95,9 +94,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     private loadRecords() {
-        const resolvedCustomerList: ResolvedCustomerList = this.activatedRoute.snapshot.data[this.resolver]
-        if (resolvedCustomerList.error === null) {
-            this.records = resolvedCustomerList.customerList
+        const customerListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (customerListResolved.error === null) {
+            this.records = customerListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
@@ -107,7 +106,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
-
 
     private subscribeToInteractionService() {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
