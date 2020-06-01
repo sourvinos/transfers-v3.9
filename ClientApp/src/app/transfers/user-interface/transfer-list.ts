@@ -77,17 +77,19 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     ngAfterViewInit() {
-        if (this.isDataInLocalStorage()) {
-            this.updateSelectedArraysFromLocalStorage()
-        } else {
-            this.updateSelectedArraysFromInitialResults()
-            this.saveArraysToLocalStorage()
+        if (this.records.length !== 0) {
+            if (this.isDataInLocalStorage()) {
+                this.updateSelectedArraysFromLocalStorage()
+            } else {
+                this.updateSelectedArraysFromInitialResults()
+                this.saveArraysToLocalStorage()
+            }
+            this.addActiveClassToSelectedArrays()
+            this.filterByCriteria()
+            this.initCheckedPersons()
+            this.updateTotals()
+            this.flattenResults()
         }
-        this.addActiveClassToSelectedArrays()
-        this.filterByCriteria()
-        this.initCheckedPersons()
-        this.updateTotals()
-        this.flattenResults()
     }
 
     ngAfterViewChecked() {
@@ -280,7 +282,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     private loadRecords() {
         const transferListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (transferListResolved.error === null) {
-            this.queryResult = this.activatedRoute.snapshot.data[this.resolver]
+            this.queryResult = transferListResolved.list
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }

@@ -13,7 +13,7 @@ export class TransferService extends DataService {
     }
 
     getTransfers(date: string): Observable<TransferViewModel> {
-        return this.http.get<TransferViewModel>('/api/transferss/date/' + date)
+        return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
     }
 
     assignDriver(driverId: string, ids: string[]) {
