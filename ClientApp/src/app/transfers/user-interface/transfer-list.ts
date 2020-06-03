@@ -77,6 +77,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     ngAfterViewInit() {
+        console.log(this.records.length)
         if (this.records.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -230,6 +231,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     private flattenResults() {
+        console.log('Flattening')
         this.transfersFlat.splice(0)
         for (const {
             id: a,
@@ -247,6 +249,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         } of this.queryResultClone.transfers) {
             this.transfersFlat.push({ id: a, destination: b, customer: c, adults: d, kids: e, free: f, totalPersons: g, pickupPoint: h, time: i, route: j, port: k, driver: l, userId: m, dateIn: n, remarks: o })
         }
+        console.log(this.transfersFlat)
     }
 
     private getDriversFromLocalStorage() {
@@ -282,7 +285,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     private loadRecords() {
         const transferListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (transferListResolved.error === null) {
-            this.queryResult = transferListResolved.list
+            console.log(transferListResolved.list)
+            this.queryResult = this.queryResultClone = transferListResolved.list
+            console.log(this.queryResult)
+            console.log(this.queryResultClone)
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }

@@ -84,7 +84,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
             this.resetForm()
             this.onGoBack()
         }, error => {
-            this.showSnackbar(error.error.response, 'error')
+            this.showSnackbar(error, 'error')
         })
     }
 

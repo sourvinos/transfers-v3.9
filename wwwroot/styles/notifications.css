@@ -35,17 +35,17 @@ body, h1, h2, h3, p {
     margin: -1rem 0 0 0 !important;
 }
 
-#message {
+.message {
     color: #ffc788;
-    font-family: "Anton";
-    font-size: 1.6rem;
+    font-family: "Noto Sans";
+    font-size: 1.5rem;
 }
 
 .error {
     color: #EF1717 !important;
 }
 
-input[type=submit] {
+input[type=submit], a {
     background-color: #57617B !important;
     border-radius: 5px;
     border: none;
@@ -58,4 +58,5 @@ input[type=submit] {
     min-width: 0 !important;
     outline: 0 !important;
     padding: 1rem 2rem 1rem 2rem !important;
+    text-decoration: none;
 }

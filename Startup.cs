@@ -1,13 +1,14 @@
+using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace Transfers {
 
@@ -24,6 +25,7 @@ namespace Transfers {
             Extensions.AddAuthorization(services);
             Extensions.AddCors(services);
             Extensions.AddInterfaces(services);
+            services.Configure<RazorViewEngineOptions>(option => option.ViewLocationExpanders.Add(new FeatureViewLocationExpander()));
             services.AddControllersWithViews();
             services.AddEmailSenders();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
@@ -31,6 +33,8 @@ namespace Transfers {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
+
+            services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));
             services.Configure<SendGridSettings>(options => Configuration.GetSection("SendGridSettings").Bind(options));
             services.Configure<OutlookSettings>(options => Configuration.GetSection("OutlookSettings").Bind(options));
         }
@@ -38,8 +42,7 @@ namespace Transfers {
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }
-            else {
+            } else {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
