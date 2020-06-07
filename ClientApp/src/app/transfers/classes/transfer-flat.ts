@@ -1,6 +1,7 @@
 export class TransferFlat {
     id: number
     destination: string
+    destinationAbbreviation: string
     customer: string
     route: string
     pickupPoint: string

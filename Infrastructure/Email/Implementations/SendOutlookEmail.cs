@@ -1,8 +1,8 @@
-using Microsoft.Extensions.Options;
 using System;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace Transfers {
 
@@ -43,7 +43,7 @@ namespace Transfers {
 
         public SendEmailResponse SendResetPasswordEmail(string displayName, string userEmail, string callbackUrl) {
 
-            using (MailMessage mail = new MailMessage()) {
+            using(MailMessage mail = new MailMessage()) {
                 mail.From = new MailAddress(settings.From);
                 mail.To.Add(userEmail);
                 mail.Subject = "Password reset";

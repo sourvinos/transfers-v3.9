@@ -19,7 +19,7 @@ export class TransferPdfService {
                 defaultStyle: { fontSize: 8 },
                 header: this.createPageHeader(driver, date),
                 footer: this.createPageFooter(),
-                content: this.table(filteredArray, ['time', 'pickupPoint', 'adults', 'kids', 'free', 'totalPersons', 'customer', 'remarks', 'destination'], ['center', 'left', 'right', 'right', 'right', 'right', 'left', 'left', 'center'], driver)
+                content: this.table(filteredArray, ['time', 'pickupPoint', 'adults', 'kids', 'free', 'totalPersons', 'customer', 'remarks', 'destinationAbbreviation'], ['center', 'left', 'right', 'right', 'right', 'right', 'left', 'left', 'center'], driver)
             }
             this.createPdf(dd, driver)
         })

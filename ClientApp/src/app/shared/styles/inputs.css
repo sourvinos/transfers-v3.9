@@ -14,7 +14,7 @@ input[type=text], input[type=email] {
     caret-color: var(--color-input-text-caret);
     color: var(--color-input-not-focus);
     cursor: text !important;
-    font-size: var(--font-size-input);
+    font-size: var(--font-size-input) !important;
 }
 
 input[type=text]:disabled {
@@ -51,13 +51,15 @@ input[type=number] {
     margin: 0 !important;
 }
 
-/* Not focused - Not error*/
+/* Not focused - Not error */
 .mat-form-field .mat-form-field-label {
     color: var(--color-input-not-focus) !important;
 }
 
 .mat-form-field .mat-input-element {
-    color: var(--color-input-not-focus) !important;
+    font-size: var(--font-size-input) !important;
+    transition: background-color 5000s;
+    -webkit-text-fill-color: var(--color-input-not-focus) !important;
 }
 
 .mat-form-field-underline {
@@ -74,7 +76,9 @@ input[type=number] {
 }
 
 .mat-form-field.mat-focused .mat-input-element {
-    color: var(--color-input-focus) !important;
+    font-size: var(--font-size-input) !important;
+    transition: background-color 5000s;
+    -webkit-text-fill-color: var(--color-input-focus) !important;
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
@@ -93,8 +97,14 @@ input[type=number] {
 
 .mat-form-field.mat-form-field-invalid .mat-input-element {
     color: var(--color-input-text-error) !important;
+    transition: background-color 5000s;
+    -webkit-text-fill-color: var(--color-input-text-error) !important;
 }
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
     background-color: var(--color-input-text-error) !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+    font-size: var(--font-size-input) !important;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 import { Observable } from 'rxjs'
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
-import { MatDialog } from '@angular/material/dialog'
 
 @Injectable({ providedIn: 'root' })
 

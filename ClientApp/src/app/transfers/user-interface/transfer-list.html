@@ -1,79 +1,79 @@
 <div id="results">
     <div class="scrollable" id="summaries">
-        <mat-accordion multi="true">
-            <mat-expansion-panel class="summaryBlock" expanded=true>
-                <mat-expansion-panel-header class="summaryHeader">
-                    <mat-checkbox class="checkbox destination" [(ngModel)]="checkedDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
-                    <header>Destinations</header>
-                </mat-expansion-panel-header>
-                <div *ngFor="let item of queryResult.personsPerDestination" (click)="onToggleItem(item, this.selectedDestinations, 'checkedDestinations', 'destination')" class="item destination" [class.active]="item.isSelected" [id]="item.description">
-                    <div class="description"> {{ item.description }} </div>
-                    <div class="total"> {{ item.persons }} </div>
-                </div>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="summaryBlock">
-                <mat-expansion-panel-header class="summaryHeader">
-                    <mat-checkbox class="checkbox customer" [(ngModel)]="checkedCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
-                    <header>Customers</header>
-                </mat-expansion-panel-header>
-                <div *ngFor="let item of queryResult.personsPerCustomer" (click)="onToggleItem(item, this.selectedCustomers, 'checkedCustomers', 'customer')" class="item customer" [class.active]="item.isSelected" [id]="item.description">
-                    <div class="description"> {{ item.description }} </div>
-                    <div class="total"> {{ item.persons }} </div>
-                </div>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="summaryBlock">
-                <mat-expansion-panel-header class="summaryHeader">
-                    <mat-checkbox class="checkbox route" [(ngModel)]="checkedRoutes" (click)="onToggleItems('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
-                    <header>Routes</header>
-                </mat-expansion-panel-header>
-                <div *ngFor="let item of queryResult.personsPerRoute" (click)="onToggleItem(item, this.selectedRoutes, 'checkedRoutes', 'route')" class="item route" [class.activeItem]="item.isSelected" [id]="item.description">
-                    <div class="description"> {{ item.description }} </div>
-                    <div class="total"> {{ item.persons }} </div>
-                </div>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="summaryBlock">
-                <mat-expansion-panel-header class="summaryHeader">
-                    <mat-checkbox class="checkbox driver" [(ngModel)]="checkedDrivers" (click)="onToggleItems('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
-                    <header>Drivers</header>
-                </mat-expansion-panel-header>
-                <div *ngFor="let item of queryResult.personsPerDriver" (click)="onToggleItem(item, this.selectedDrivers, 'checkedDrivers', 'driver')" class="item driver" [class.active]="item.isSelected" [id]="item.description">
-                    <div class="description"> {{ item.description }} </div>
-                    <div class="total"> {{ item.persons }} </div>
-                </div>
-            </mat-expansion-panel>
-            <mat-expansion-panel class="summaryBlock">
-                <mat-expansion-panel-header class="summaryHeader">
-                    <mat-checkbox class="checkbox port" [(ngModel)]="checkedPorts" (click)="onToggleItems('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
-                    <header>Ports</header>
-                </mat-expansion-panel-header>
-                <div *ngFor="let item of queryResult.personsPerPort" (click)="onToggleItem(item, this.selectedPorts, 'checkedPorts', 'port')" class="item port" [class.active]="item.isSelected" [id]="item.description">
-                    <div class="description"> {{ item.description }} </div>
-                    <div class="total"> {{ item.persons }} </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
+      <mat-accordion multi="true">
+        <mat-expansion-panel class="summaryBlock" expanded=true>
+            <mat-expansion-panel-header class="summaryHeader">
+              <mat-checkbox class="checkbox destination" [(ngModel)]="checkedDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
+              <header>Destinations</header>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of queryResult.personsPerDestination" (click)="onToggleItem(item, this.selectedDestinations, 'checkedDestinations', 'destination')" class="item destination" [class.active]="item.isSelected" [id]="item.description">
+              <div class="description"> {{ item.description }} </div>
+              <div class="total"> {{ item.persons }} </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="summaryBlock">
+            <mat-expansion-panel-header class="summaryHeader">
+              <mat-checkbox class="checkbox customer" [(ngModel)]="checkedCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
+              <header>Customers</header>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of queryResult.personsPerCustomer" (click)="onToggleItem(item, this.selectedCustomers, 'checkedCustomers', 'customer')" class="item customer" [class.active]="item.isSelected" [id]="item.description">
+              <div class="description"> {{ item.description }} </div>
+              <div class="total"> {{ item.persons }} </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="summaryBlock">
+            <mat-expansion-panel-header class="summaryHeader">
+              <mat-checkbox class="checkbox route" [(ngModel)]="checkedRoutes" (click)="onToggleItems('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
+              <header>Routes</header>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of queryResult.personsPerRoute" (click)="onToggleItem(item, this.selectedRoutes, 'checkedRoutes', 'route')" class="item route" [class.activeItem]="item.isSelected" [id]="item.description">
+              <div class="description"> {{ item.description }} </div>
+              <div class="total"> {{ item.persons }} </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="summaryBlock">
+            <mat-expansion-panel-header class="summaryHeader">
+              <mat-checkbox class="checkbox driver" [(ngModel)]="checkedDrivers" (click)="onToggleItems('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
+              <header>Drivers</header>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of queryResult.personsPerDriver" (click)="onToggleItem(item, this.selectedDrivers, 'checkedDrivers', 'driver')" class="item driver" [class.active]="item.isSelected" [id]="item.description">
+              <div class="description"> {{ item.description }} </div>
+              <div class="total"> {{ item.persons }} </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="summaryBlock">
+            <mat-expansion-panel-header class="summaryHeader">
+              <mat-checkbox class="checkbox port" [(ngModel)]="checkedPorts" (click)="onToggleItems('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
+              <header>Ports</header>
+            </mat-expansion-panel-header>
+            <div *ngFor="let item of queryResult.personsPerPort" (click)="onToggleItem(item, this.selectedPorts, 'checkedPorts', 'port')" class="item port" [class.active]="item.isSelected" [id]="item.description">
+              <div class="description"> {{ item.description }} </div>
+              <div class="total"> {{ item.persons }} </div>
+            </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
     <div id="listFormCombo">
-        <div id="transferList">
-            <div class="scrollable">
-                <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
-            </div>
-            <div id="totals">
-                <div *ngFor="let item of totals">
-                    <div class="selection">
-                        <div class="label"> {{ item.description }} </div>
-                        <div class="sum">{{ item.sum }}</div>
-                    </div>
-                </div>
-            </div>
-            <div id="footer">
-                <div id="buttons">
-                    <button mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0" (click)="onAssignDriver()">Assign driver</button>
-                    <button mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0" (click)="onCreatePdf()">Create PDFs</button>
-                    <button mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
-                </div>
+      <div id="transferList">
+        <div class="scrollable">
+            <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+        </div>
+        <div id="totals">
+            <div *ngFor="let item of totals">
+              <div class="selection">
+                <div class="label"> {{ item.description }} </div>
+                <div class="sum">{{ item.sum }}</div>
+              </div>
             </div>
         </div>
-        <router-outlet></router-outlet>
+        <div id="footer">
+            <div id="buttons">
+              <button mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0" (click)="onAssignDriver()">Assign driver</button>
+              <button mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0" (click)="onCreatePdf()">Create PDFs</button>
+              <button mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
+            </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
     </div>
 </div>

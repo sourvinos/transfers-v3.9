@@ -1,5 +1,5 @@
+import { Directive, ElementRef, HostListener, Input } from '@angular/core'
 import * as moment from 'moment'
-import { Directive, HostListener, ElementRef, Input } from '@angular/core'
 
 @Directive({ selector: '[inputFormat]' })
 

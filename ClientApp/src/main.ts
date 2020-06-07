@@ -4,8 +4,8 @@ import { AppModule } from '../src/app/root/app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err))
+    .catch(err => console.error(err))

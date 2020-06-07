@@ -30,7 +30,7 @@ namespace Transfers {
             services.AddEmailSenders();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper();
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerSmarterASP"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
 
@@ -54,7 +54,6 @@ namespace Transfers {
             app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(
                     name: "default",

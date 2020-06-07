@@ -1,18 +1,18 @@
 <table id="custom-table-{{ randomTableId }}" (domChange)="onDomChange($event)">
     <thead>
-        <tr>
-            <th *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>
-        </tr>
+      <tr>
+        <th *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let record of records, index as index" (click)="onGotoRow(index+1)" (dblclick)="sendRowToService()" id="{{ randomTableId }}-{{ index + 1 }}">
-            <td *ngFor="let field of fields, index as i" [style.text-align]="justify[i]" [style.display]="visibility[i]">
-                <div *ngIf="i == 0; else elseBlock">
-                    <mat-checkbox (click)="onToggleCheckBox(index+1)" [checked]="checked"></mat-checkbox>
-                </div>
-                <ng-template #elseBlock>{{ record[field] }}</ng-template>
-            </td>
-        </tr>
+      <tr *ngFor="let record of records, index as index" (click)="onGotoRow(index+1)" (dblclick)="sendRowToService()" id="{{ randomTableId }}-{{ index + 1 }}">
+        <td *ngFor="let field of fields, index as i" [style.text-align]="justify[i]" [style.display]="visibility[i]">
+            <div *ngIf="i == 0; else elseBlock">
+              <mat-checkbox (click)="onToggleCheckBox(index+1)" [checked]="checked"></mat-checkbox>
+            </div>
+            <ng-template #elseBlock>{{ record[field] }}</ng-template>
+        </td>
+      </tr>
     </tbody>
 </table>
 

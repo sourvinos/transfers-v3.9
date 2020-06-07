@@ -1,26 +1,26 @@
 <div id="dialog">
 
     <div id="dialog-header">
-        <h1 mat-dialog-title>{{ data.title }}</h1>
+      <h1 mat-dialog-title>{{ data.title }}</h1>
     </div>
 
     <div id="dialog-content">
-        <mat-form-field>
-            <mat-label>Driver</mat-label>
-            <mat-select [(value)]="id">
-                <mat-option *ngFor="let driver of drivers" [value]="driver.id">
-                    {{ driver.description }}
-                </mat-option>
-            </mat-select>
-            <mat-hint>Select from the list</mat-hint>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Driver</mat-label>
+        <mat-select [(value)]="id">
+            <mat-option *ngFor="let driver of drivers" [value]="driver.id">
+              {{ driver.description }}
+            </mat-option>
+        </mat-select>
+        <mat-hint>Select from the list</mat-hint>
+      </mat-form-field>
     </div>
 
     <div id="dialog-footer">
-        <mat-dialog-actions>
-            <button mat-flat-button class="secondary" id="cancel" tabindex="-1" (click)="onClose()">Cancel</button>
-            <button mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">OK</button>
-        </mat-dialog-actions>
+      <mat-dialog-actions>
+        <button mat-flat-button class="secondary" id="cancel" tabindex="-1" (click)="onClose()">Cancel</button>
+        <button mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">OK</button>
+      </mat-dialog-actions>
     </div>
 
 </div>

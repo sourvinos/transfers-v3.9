@@ -1,4 +1,4 @@
-import { Component, HostListener, AfterViewInit } from '@angular/core'
+import { AfterViewInit, Component, HostListener } from '@angular/core'
 
 @Component({
     selector: 'app-main',

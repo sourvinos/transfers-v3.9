@@ -20,7 +20,7 @@ export class Transfer {
     }
     destination: {
         id: number
-        shortDescription: string
+        abbreviation: string
         description: string
     }
     driver: {

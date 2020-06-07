@@ -10,12 +10,11 @@ import { Driver } from 'src/app/drivers/classes/driver';
 
 export class TransferAssignDriverComponent implements OnInit {
 
-    //#region Private
-    drivers: Driver[] = []
-    //#endregion
+    //#region Private particular
 
-    //#region Form
+    drivers: Driver[] = []
     id = ''
+
     //#endregion
 
     constructor(private dialogRef: MatDialogRef<TransferAssignDriverComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }

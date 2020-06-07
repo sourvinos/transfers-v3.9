@@ -67,7 +67,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
             this.table.querySelectorAll('tbody tr').forEach((element: { classList: { add: (arg0: string) => void; remove: (arg0: string) => void }; childNodes: { innerText: string }[] }) => {
                 if (this.checked) {
                     element.classList.add('checked')
-                    this.checkedIds.push(element.childNodes[2].innerText)
+                    this.checkedIds.push(element.childNodes[1].innerText)
                     this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
                 } else {
                     element.classList.remove('checked')
@@ -116,7 +116,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         this.totalPersons = 0
         this.table.rows[row].classList.toggle('checked')
         this.table.querySelectorAll('tr.checked').forEach((element: { childNodes: { innerText: string }[] }) => {
-            this.checkedIds.push(element.childNodes[2].innerText)
+            this.checkedIds.push(element.childNodes[1].innerText)
             this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
         })
         localStorage.setItem('selectedIds', JSON.stringify(this.checkedIds))

@@ -87,7 +87,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     private initForm() {
         this.form = this.formBuilder.group({
-            email: ['johnsourvinos@hotmail.com', [Validators.required, Validators.email]]
+            email: ['', [Validators.required, Validators.email]]
         })
     }
 

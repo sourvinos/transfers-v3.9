@@ -5,7 +5,6 @@ import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { DriverService } from 'src/app/drivers/classes/driver.service'
-import { ListResolved } from 'src/app/shared/classes/list-resolved'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
@@ -27,13 +26,16 @@ import { TransferAssignDriverComponent } from './transfer-assign-driver'
 export class TransferListComponent implements OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
 
     //#region Private
+
     records: string[] = []
     resolver = 'transferList'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+
     //#endregion
 
     //#region Private particular
+
     dateIn: string
     queryResult = new TransferViewModel()
     queryResultClone = new TransferViewModel()
@@ -44,20 +46,23 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     selectedDrivers: string[] = []
     selectedPorts: string[] = []
     transfersFlat: TransferFlat[] = []
-    mustRefresh = true
-    //#endregion
-
-    //#region Form
-    headers = ['S', 'Id', 'Dest', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port']
-    widths = ['40px', '100px', '200px', '100px', '200px', '200px', '60px', '40px', '40px', '40px', '40px', '100px', '100px']
-    visibility = ['', 'none', '', '', '', '', '', '', '', '', '', '', '']
-    justify = ['center', 'center', 'left', 'center', 'left', 'left', 'center', 'right', 'right', 'right', 'right', 'left', 'left']
-    fields = ['', 'id', 'destination', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port']
     checkedDestinations = true
     checkedCustomers = true
     checkedRoutes = true
     checkedDrivers = true
     checkedPorts = true
+    mustRefresh = true
+
+    //#endregion
+
+    //#region List
+
+    headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port']
+    widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px']
+    visibility = ['', 'none', '', 'none', '', '', '', '', '', '', '', '', '', '']
+    justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left']
+    fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port']
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService) {
@@ -77,8 +82,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     ngAfterViewInit() {
-        console.log(this.records.length)
-        if (this.records.length !== 0) {
+        if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
             } else {
@@ -146,7 +150,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         })
     }
 
-    public onToggleItem(item: any, lookupArray: string[], checkedVariable, className: string) {
+    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string) {
         this.toggleActiveItem(item, lookupArray)
         this.initCheckedPersons()
         this.filterByCriteria()
@@ -162,6 +166,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.selectItems(className, lookupArray, !checkedArray)
         this.filterByCriteria()
         this.initCheckedPersons()
+        this.saveArraysToLocalStorage()
         this.updateTotals()
         this.flattenResults()
     }
@@ -231,25 +236,23 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     private flattenResults() {
-        console.log('Flattening')
         this.transfersFlat.splice(0)
         for (const {
             id: a,
-            destination: { description: b },
-            customer: { description: c },
-            adults: d,
-            kids: e,
-            free: f,
-            totalPersons: g,
-            pickupPoint: { description: h, time: i, route: { description: j, port: { description: k } } },
-            driver: { description: l },
-            userId: m,
-            dateIn: n,
-            remarks: o
+            destination: { description: b, abbreviation: c },
+            customer: { description: d },
+            adults: e,
+            kids: f,
+            free: g,
+            totalPersons: h,
+            pickupPoint: { description: i, time: j, route: { description: k, port: { description: l } } },
+            driver: { description: m },
+            userId: n,
+            dateIn: o,
+            remarks: p
         } of this.queryResultClone.transfers) {
-            this.transfersFlat.push({ id: a, destination: b, customer: c, adults: d, kids: e, free: f, totalPersons: g, pickupPoint: h, time: i, route: j, port: k, driver: l, userId: m, dateIn: n, remarks: o })
+            this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m, userId: n, dateIn: o, remarks: p })
         }
-        console.log(this.transfersFlat)
     }
 
     private getDriversFromLocalStorage() {
@@ -283,12 +286,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     private loadRecords() {
-        const transferListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        const transferListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (transferListResolved.error === null) {
-            console.log(transferListResolved.list)
-            this.queryResult = this.queryResultClone = transferListResolved.list
-            console.log(this.queryResult)
-            console.log(this.queryResultClone)
+            this.queryResult = transferListResolved.result
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }

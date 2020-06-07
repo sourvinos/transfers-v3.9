@@ -1,34 +1,47 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-
-// Components
-import { CustomerListComponent } from '../customers/user-interface/customer-list'; import { CustomerFormComponent } from '../customers/user-interface/customer-form'
-import { DestinationListComponent } from '../destinations/user-interface/destination-list'; import { DestinationFormComponent } from '../destinations/user-interface/destination-form'
-import { DriverListComponent } from '../drivers/user-interface/driver-list'; import { DriverFormComponent } from '../drivers/user-interface/driver-form'
-import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordFormComponent } from '../account/user-interface/forgot-password-form';
-import { HomeComponent } from '../home/home.component'
-import { LoginFormComponent } from '../login/user-interface/login-form'
-import { PickupPointWrapperComponent } from '../pickupPoints/user-interface/pickupPoint-wrapper'; import { PickupPointListComponent } from '../pickupPoints/user-interface/pickupPoint-list'; import { PickupPointFormComponent } from '../pickupPoints/user-interface/pickupPoint-form';
-import { PortListComponent } from '../ports/user-interface/port-list'; import { PortFormComponent } from '../ports/user-interface/port-form'
-import { RouteListComponent } from '../routes/user-interface/route-list'; import { RouteFormComponent } from '../routes/user-interface/route-form'
-import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper'; import { TransferListComponent } from '../transfers/user-interface/transfer-list'; import { TransferFormComponent } from '../transfers/user-interface/transfer-form'
-import { UserListComponent } from '../users/user-interface/user-list'; import { RegisterUserFormComponent } from '../users/user-interface/register-user-form'; import { EditUserFormComponent } from '../users/user-interface/edit-user-form'; import { ChangePasswordFormComponent } from '../users/user-interface/change-password-form'
-
+import { ResetPasswordFormComponent } from '../account/user-interface/reset-password-form';
+import { CustomerFormComponent } from '../customers/user-interface/customer-form';
+// Components
+import { CustomerListComponent } from '../customers/user-interface/customer-list';
+import { DestinationListResolver } from '../destinations/classes/destination-list.resolver';
+import { DestinationFormComponent } from '../destinations/user-interface/destination-form';
+import { DestinationListComponent } from '../destinations/user-interface/destination-list';
+import { DriverListResolver } from '../drivers/classes/driver-list.resolver';
+import { DriverFormComponent } from '../drivers/user-interface/driver-form';
+import { DriverListComponent } from '../drivers/user-interface/driver-list';
+import { HomeComponent } from '../home/home.component';
+import { LoginFormComponent } from '../login/user-interface/login-form';
+import { PickupPointListResolver } from '../pickupPoints/classes/pickupPoint-list.resolver';
+import { PickupPointFormComponent } from '../pickupPoints/user-interface/pickupPoint-form';
+import { PickupPointListComponent } from '../pickupPoints/user-interface/pickupPoint-list';
+import { PickupPointWrapperComponent } from '../pickupPoints/user-interface/pickupPoint-wrapper';
+import { PortListResolver } from '../ports/classes/port-list.resolver';
+import { PortFormComponent } from '../ports/user-interface/port-form';
+import { PortListComponent } from '../ports/user-interface/port-list';
+import { RouteListResolver } from '../routes/classes/route-list.resolver';
+import { RouteFormComponent } from '../routes/user-interface/route-form';
+import { RouteListComponent } from '../routes/user-interface/route-list';
+import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component';
+// Guards
+import { AuthGuardService } from '../shared/services/auth-guard.service';
+import { CanDeactivateGuard } from '../shared/services/can-deactivate-guard.service';
+import { TransferFormResolver } from '../transfers/classes/transfer-form.resolver';
+import { TransferListResolver } from '../transfers/classes/transfer-list.resolver';
+import { TransferFormComponent } from '../transfers/user-interface/transfer-form';
+import { TransferListComponent } from '../transfers/user-interface/transfer-list';
+import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper';
+import { UserListResolver } from '../users/classes/user-list.resolver';
+import { ChangePasswordFormComponent } from '../users/user-interface/change-password-form';
+import { EditUserFormComponent } from '../users/user-interface/edit-user-form';
+import { RegisterUserFormComponent } from '../users/user-interface/register-user-form';
+import { UserListComponent } from '../users/user-interface/user-list';
 // Resolvers
 import { CustomerListResolver } from './../customers/classes/customer-list.resolver';
-import { DestinationListResolver } from '../destinations/classes/destination-list.resolver'
-import { DriverListResolver } from '../drivers/classes/driver-list.resolver'
-import { PickupPointListResolver } from '../pickupPoints/classes/pickupPoint-list.resolver'
-import { PortListResolver } from '../ports/classes/port-list.resolver'
-import { RouteListResolver } from '../routes/classes/route-list.resolver'
-import { TransferListResolver } from '../transfers/classes/transfer-list.resolver'; import { TransferFormResolver } from '../transfers/classes/transfer-form.resolver';
-import { UserListResolver } from '../users/classes/user-list.resolver';
-import { ResetPasswordFormComponent } from '../account/user-interface/reset-password-form';
 
-// Guards
-import { AuthGuardService } from '../shared/services/auth-guard.service'
-import { CanDeactivateGuard } from '../shared/services/can-deactivate-guard.service'
+
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuardService], pathMatch: 'full' },

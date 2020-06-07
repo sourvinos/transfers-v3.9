@@ -15,10 +15,10 @@ export class TransferListResolver implements Resolve<TransferListResolved> {
 
     // resolve(route: ActivatedRouteSnapshot): any {
     //     return this.transferService.getTransfers(route.params.dateIn)
-    //         .pipe(
-    //             map((transferList) => new ListResolved(transferList)),
-    //             catchError((err: any) => of(new ListResolved(null, err)))
-    //         )
+    //       .pipe(
+    //         map((transferList) => new ListResolved(transferList)),
+    //         catchError((err: any) => of(new ListResolved(null, err)))
+    //       )
     // }
 
     resolve(route: ActivatedRouteSnapshot): Observable<TransferListResolved> {
