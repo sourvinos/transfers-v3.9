@@ -1,4 +1,3 @@
-using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +32,6 @@ namespace Transfers {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerSmarterASP"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
-
             services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));
             services.Configure<SendGridSettings>(options => Configuration.GetSection("SendGridSettings").Bind(options));
             services.Configure<OutlookSettings>(options => Configuration.GetSection("OutlookSettings").Bind(options));
@@ -46,12 +44,14 @@ namespace Transfers {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+            app.UseStaticFiles();
+            if (!env.IsDevelopment()) {
+                app.UseSpaStaticFiles();
+            }
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseHttpsRedirection();
-            app.UseSpaStaticFiles();
-            app.UseStaticFiles();
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseEndpoints(endpoints => {
@@ -61,7 +61,6 @@ namespace Transfers {
             });
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";
-                spa.Options.StartupTimeout = new TimeSpan(0, 5, 0);
                 if (env.IsDevelopment()) {
                     spa.UseAngularCliServer(npmScript: "start");
                 }

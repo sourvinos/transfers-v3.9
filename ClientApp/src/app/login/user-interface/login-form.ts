@@ -18,15 +18,19 @@ import { SnackbarService } from './../../shared/services/snackbar.service';
 export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Forms Common
+
     url = '/'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
     input: InputTabStopDirective
+
     //#endregion
 
     //#region Form Specific
+
     hidePassword = true
+
     //#endregion
 
     constructor(private accountService: AccountService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService) { }
@@ -52,6 +56,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public onLogin() {
         const form = this.form.value
+        console.log(form)
         this.accountService.login(form.userName, form.password).subscribe(() => {
             this.goHome()
             this.startTimer()
@@ -83,7 +88,8 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private initForm() {
         this.form = this.formBuilder.group({
             userName: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            isHuman: ['', Validators.requiredTrue],
         })
     }
 

@@ -15,6 +15,6 @@ export class MessageService {
     public recordsHaveBeenProcessed() { return 'All records have been processed.' }
     public noDefaultDriverFound() { return 'No default driver found.' }
     public noContactWithApi() { return 'Unable to get any records from the server.' }
-    public resetPassword() { return 'You will be redirected to the password reset page.' }
+    public resetPassword() { return 'If your email exists in our database, you will be redirected to the password reset page.' }
 
 }
