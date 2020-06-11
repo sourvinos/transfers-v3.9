@@ -22,14 +22,14 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#region 
 
+    filteredRecords: Destination[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: Destination[] = []
+    resolver = 'destinationList'
+    searchTerm: string;
+    unlisten: Unlisten
     url = '/destinations'
     windowTitle = 'Destinations'
-    records: Destination[] = []
-    filteredRecords: Destination[] = []
-    resolver = 'destinationList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string;
 
     //#endregion
 

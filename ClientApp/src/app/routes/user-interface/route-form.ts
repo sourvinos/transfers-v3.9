@@ -26,12 +26,12 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/routes'
     windowTitle = 'Port'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 

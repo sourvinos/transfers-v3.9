@@ -18,9 +18,9 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    windowTitle = 'Transfers'
-    unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
+    windowTitle = 'Transfers'
 
     //#endregion
 

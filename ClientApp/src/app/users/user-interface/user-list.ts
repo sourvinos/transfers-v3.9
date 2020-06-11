@@ -20,16 +20,16 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 
 export class UserListComponent implements OnInit, OnDestroy {
 
-    //#region 
+    //#region   
 
+    filteredRecords: User[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: User[] = []
+    resolver = 'userList'
+    searchTerm: string
+    unlisten: Unlisten
     url = '/users'
     windowTitle = 'Users'
-    records: User[] = []
-    filteredRecords: User[] = []
-    resolver = 'userList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string
 
     //#endregion
 

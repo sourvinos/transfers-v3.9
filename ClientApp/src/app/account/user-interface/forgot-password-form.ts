@@ -23,12 +23,12 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/login'
     windowTitle = 'Forgot password'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 

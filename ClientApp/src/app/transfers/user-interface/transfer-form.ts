@@ -33,11 +33,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region 
 
-    windowTitle = 'Transfer'
     form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
     input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
+    windowTitle = 'Transfer'
 
     //#endregion
 

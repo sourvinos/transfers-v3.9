@@ -26,11 +26,11 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region 
 
-    windowTitle = 'Pickup point'
     form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
     input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
+    windowTitle = 'Pickup point'
 
     //#endregion
 

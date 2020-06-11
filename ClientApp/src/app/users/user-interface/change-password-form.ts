@@ -24,24 +24,20 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/users'
     windowTitle = 'Change password'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 
-    //#region 
-
-    flatForm: ChangePassword
-
-    //#endregion
 
     //#region Form
 
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    flatForm: ChangePassword
     hidePassword = true
 
     //#endregion

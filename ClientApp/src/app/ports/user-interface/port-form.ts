@@ -22,12 +22,12 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>();
+    unlisten: Unlisten
     url = '/ports'
     windowTitle = 'Port'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>();
-    input: InputTabStopDirective
 
     //#endregion
 

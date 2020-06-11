@@ -23,12 +23,12 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region 
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/drivers'
     windowTitle = 'Driver'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 

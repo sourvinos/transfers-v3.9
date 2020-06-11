@@ -18,16 +18,15 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    windowTitle = 'Pickup points'
-    unlisten: Unlisten
     ngUnsubscribe = new Subject<void>();
+    unlisten: Unlisten
+    windowTitle = 'Pickup points'
 
     //#endregion
 
     //#region
 
     id = ''
-    activeRoute: string
     routes: Route[] = []
 
     //#endregion

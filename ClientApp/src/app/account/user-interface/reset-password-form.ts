@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
@@ -20,11 +21,12 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#region
 
-    url = '/'
     form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>();
     input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>();
+    unlisten: Unlisten
+    url = '/'
+    windowTitle = 'Reset password'
 
     //#endregion
 
@@ -32,17 +34,12 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     email: string
     token: string
-
-    //#endregion
-
-    //#region 
-
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     hidePassword = true
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.queryParams.subscribe((p: any) => {
             this.email = p['email']
             this.token = p['token']
@@ -100,6 +97,10 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
                 confirmPassword: ['', [Validators.required]]
             }, { validator: ValidationService.childrenEqual })
         })
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string): void {

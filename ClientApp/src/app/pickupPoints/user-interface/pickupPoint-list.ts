@@ -24,13 +24,13 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    windowTitle = 'Pickup points'
-    records: PickupPoint[] = []
     filteredRecords: PickupPoint[] = []
-    resolver = 'pickupPointList'
-    unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    records: PickupPoint[] = []
+    resolver = 'pickupPointList'
     searchTerm: string;
+    unlisten: Unlisten
+    windowTitle = 'Pickup points'
 
     //#endregion
 
@@ -50,8 +50,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })

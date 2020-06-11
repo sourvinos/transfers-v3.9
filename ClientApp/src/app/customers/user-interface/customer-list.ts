@@ -22,14 +22,14 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#region
 
+    filteredRecords: Customer[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: Customer[] = []
+    resolver = 'customerList'
+    searchTerm: string;
+    unlisten: Unlisten
     url = '/customers'
     windowTitle = 'Customers'
-    records: Customer[] = []
-    filteredRecords: Customer[] = []
-    resolver = 'customerList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string;
 
     //#endregion
 

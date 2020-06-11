@@ -22,14 +22,14 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     //#region 
 
+    filteredRecords: Route[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: Route[] = []
+    resolver = 'routeList'
+    searchTerm: string
+    unlisten: Unlisten
     url = '/routes'
     windowTitle = 'Routes'
-    records: Route[] = []
-    filteredRecords: Route[] = []
-    resolver = 'routeList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string
 
     //#endregion
 

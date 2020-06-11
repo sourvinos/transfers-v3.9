@@ -21,12 +21,12 @@ import { UserService } from '../classes/user.service'
 export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/users'
     windowTitle = 'User'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 

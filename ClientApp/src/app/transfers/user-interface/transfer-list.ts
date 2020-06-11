@@ -28,11 +28,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     //#region 
 
-    windowTitle = 'Transfers'
+    ngUnsubscribe = new Subject<void>()
     records: string[] = []
     resolver = 'transferList'
     unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
+    windowTitle = 'Transfers'
 
     //#endregion
 

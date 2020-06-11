@@ -24,23 +24,18 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#region
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/users'
     windowTitle = 'User'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 
     //#region
 
     flatForm: RegisterUser
-
-    //#endregion
-
-    //#region
-
     hidePassword = true
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
 

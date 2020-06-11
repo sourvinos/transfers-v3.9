@@ -23,12 +23,12 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region 
 
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
     url = '/destinations'
     windowTitle = 'Destination'
-    form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    input: InputTabStopDirective
 
     //#endregion
 

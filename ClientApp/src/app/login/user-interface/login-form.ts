@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UserIdleService } from 'angular-user-idle';
 import { Subject } from 'rxjs';
@@ -19,11 +20,12 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region 
 
-    url = '/'
     form: FormGroup
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
     input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
+    url = '/'
+    windowTitle = 'Login'
 
     //#endregion
 
@@ -33,9 +35,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService) { }
+    constructor(private accountService: AccountService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -90,6 +93,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
             password: ['', Validators.required],
             isHuman: ['', Validators.requiredTrue],
         })
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string | string[], type: string): void {

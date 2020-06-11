@@ -22,14 +22,14 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     //#region 
 
+    filteredRecords: Driver[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: Driver[] = []
+    resolver = 'driverList'
+    searchTerm: string;
+    unlisten: Unlisten
     url = '/drivers'
     windowTitle = 'Drivers'
-    records: Driver[] = []
-    filteredRecords: Driver[] = []
-    resolver = 'driverList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string;
 
     //#endregion
 

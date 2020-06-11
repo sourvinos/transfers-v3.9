@@ -22,14 +22,14 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     //#region 
 
+    filteredRecords: Port[] = []
+    ngUnsubscribe = new Subject<void>()
+    records: Port[] = []
+    resolver = 'portList'
+    searchTerm: string;
+    unlisten: Unlisten
     url = '/ports'
     windowTitle = 'Ports'
-    records: Port[] = []
-    filteredRecords: Port[] = []
-    resolver = 'portList'
-    unlisten: Unlisten
-    ngUnsubscribe = new Subject<void>()
-    searchTerm: string;
 
     //#endregion
 
