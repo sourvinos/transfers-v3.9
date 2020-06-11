@@ -42,7 +42,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.searchTerm = localStorage.getItem('searchTerm')
+        this.readFromLocalStorage();
         this.loadRecords()
     }
 
@@ -64,7 +64,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTerm')
+        localStorage.removeItem('searchTermCustomer');
         this.router.navigate(['/'])
     }
 
@@ -90,7 +90,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
+        localStorage.setItem('searchTermCustomer', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate([this.url, id])
     }
 
@@ -119,4 +119,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         })
     }
 
+    private readFromLocalStorage() {
+        this.searchTerm = localStorage.getItem('searchTermCustomer');
+    }
+
+
 }
+

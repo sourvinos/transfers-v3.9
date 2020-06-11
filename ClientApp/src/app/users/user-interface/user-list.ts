@@ -42,7 +42,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.searchTerm = localStorage.getItem('searchTerm')
+        this.searchTerm = localStorage.getItem('searchTermUser')
         this.loadRecords()
     }
 
@@ -63,7 +63,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTerm')
+        localStorage.removeItem('searchTermUser')
         this.router.navigate(['/'])
     }
 
@@ -89,7 +89,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
+        localStorage.setItem('searchTermUser', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate([this.url, id])
     }
 

@@ -53,7 +53,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
-        this.searchTerm = localStorage.getItem('searchTerm')
+        this.searchTerm = localStorage.getItem('searchTermPickupPoint')
         this.loadRecords()
     }
 
@@ -75,7 +75,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTerm')
+        localStorage.removeItem('searchTermPickupPoint')
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -101,7 +101,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
+        localStorage.setItem('searchTermPickupPoint', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate(['pickupPoint/', id], { relativeTo: this.activatedRoute })
     }
 

@@ -42,7 +42,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.searchTerm = localStorage.getItem('searchTerm')
+        this.searchTerm = localStorage.getItem('searchTermDriver')
         this.loadRecords()
     }
 
@@ -64,7 +64,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTerm')
+        localStorage.removeItem('searchTermDriver')
         this.router.navigate(['/'])
     }
 
@@ -90,7 +90,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
+        localStorage.setItem('searchTermDriver', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate([this.url, id])
     }
 
