@@ -18,7 +18,7 @@
                 </button>
                 <mat-error *ngIf="Password?.hasError('required')">This is a required field!</mat-error>
             </mat-form-field>
-            <mat-slide-toggle formControlName="isHuman">I'm human</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isHuman">I'm not a robot</mat-slide-toggle>
             <div id="forgotPassword">
                 <button type="button" class="transparent" mat-button (click)="onForgotPassword()">Forgot password?</button>
             </div>

@@ -57,7 +57,7 @@ import { RootComponent } from './root.component';
         RouteModule,
         TransferModule,
         UserModule,
-        UserIdleModule.forRoot({ idle: 60, timeout: 60, ping: 60 })
+        UserIdleModule.forRoot({ idle: 3600, timeout: 60, ping: 60 })
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -19,30 +19,37 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 
 export class UserListComponent implements OnInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     url = '/users'
     records: User[] = []
     filteredRecords: User[] = []
     resolver = 'userList'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    searchTerm: string
+
     //#endregion
 
-    //#region Form
+    //#region 
+
     headers = ['S', 'Id', 'Display name', 'User name', 'Email']
     widths = ['40px', '', '30%', '30%', '']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'left', 'left', 'left', 'left']
     fields = ['', 'id', 'displayname', 'username', 'email']
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+        this.searchTerm = localStorage.getItem('searchTerm')
         this.loadRecords()
     }
 
     ngOnInit() {
         this.addShortcuts()
         this.subscribeToInteractionService()
+        this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy() {
@@ -52,10 +59,11 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     public onFilter(query: string) {
-        this.filteredRecords = query ? this.records.filter(p => p.userName.toLowerCase().includes(query.toLowerCase())) : this.records
+        this.filteredRecords = query ? this.records.filter(p => p.username.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGoBack() {
+        localStorage.removeItem('searchTerm')
         this.router.navigate(['/'])
     }
 
@@ -69,7 +77,7 @@ export class UserListComponent implements OnInit, OnDestroy {
                 this.onGoBack()
             },
             'Alt.F': (event: KeyboardEvent): void => {
-                this.focus(event, 'searchField')
+                this.focus(event, 'searchTerm')
             },
             'Alt.N': (event: KeyboardEvent): void => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -81,6 +89,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
+        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate([this.url, id])
     }
 
@@ -93,7 +102,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         const userListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (userListResolved.error === null) {
             this.records = userListResolved.list
-            this.filteredRecords = this.records.sort((a, b) => (a.userName > b.userName) ? 1 : -1)
+            this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }

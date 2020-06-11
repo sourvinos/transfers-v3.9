@@ -27,7 +27,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    //#region Form Specific
+    //#region Form specific
 
     hidePassword = true
 
@@ -56,7 +56,6 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public onLogin() {
         const form = this.form.value
-        console.log(form)
         this.accountService.login(form.userName, form.password).subscribe(() => {
             this.goHome()
             this.startTimer()
@@ -101,7 +100,8 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userIdleService.startWatching();
         this.userIdleService.onTimerStart().subscribe();
         this.userIdleService.onTimeout().subscribe(() => {
-            this.accountService.logout();
+            this.userIdleService.resetTimer()
+            this.accountService.logout()
             this.userIdleService.stopWatching()
         })
     }

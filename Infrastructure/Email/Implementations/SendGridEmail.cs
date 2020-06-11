@@ -58,9 +58,6 @@ namespace Transfers {
 
             var response = client.SendEmailAsync(msg);
 
-            Console.WriteLine($"Response: {response.Status}");
-            Console.WriteLine(response.Result);
-
             return new SendEmailResponse();
 
         }

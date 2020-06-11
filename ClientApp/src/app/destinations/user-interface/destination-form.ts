@@ -20,15 +20,14 @@ import { Destination } from './../classes/destination';
 
 export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     url = '/destinations'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
@@ -102,7 +101,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }

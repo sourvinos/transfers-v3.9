@@ -25,13 +25,7 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
     routes: Route[] = []
     //#endregion
 
-    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private routeService: RouteService, private interactionService: InteractionService) {
-        if (this.router.url.split('/').length === 2) {
-            this.interactionService.wrapperHeader.subscribe((response) => {
-                this.activeRoute = response
-            })
-        }
-    }
+    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private routeService: RouteService, private interactionService: InteractionService) { }
 
     ngOnInit() {
         this.addShortcuts()

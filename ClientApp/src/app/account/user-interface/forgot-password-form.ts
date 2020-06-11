@@ -54,12 +54,14 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     public onSave() {
         const form = this.form.value
-        this.accountService.forgotPassword(form.email).subscribe((url) => {
-            this.dialogService.open('Important', 'warningColor', this.messageService.resetPassword(), ['cancel', 'ok']).subscribe(response => {
-                if (response) {
-                    this.router.navigate([url.response])
-                }
-            })
+        this.accountService.forgotPassword(form.email).subscribe(response => {
+            this.showSnackbar(response.response, 'info')
+            this.onGoBack()
+            // this.dialogService.open('Important', 'warningColor', this.messageService.resetPassword(), ['cancel', 'ok']).subscribe(response => {
+            //     if (response) {
+            //         this.router.navigate([url.response])
+            //     }
+            // })
         })
     }
 

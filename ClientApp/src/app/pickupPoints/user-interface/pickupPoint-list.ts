@@ -21,24 +21,31 @@ import { PickupPoint } from '../classes/pickupPoint';
 
 export class PickupPointListComponent implements OnInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     records: PickupPoint[] = []
     filteredRecords: PickupPoint[] = []
     resolver = 'pickupPointList'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    searchTerm: string;
+
     //#endregion
 
-    //#region Private particular
+    //#region 
+
     routeDescription: string
+
     //#endregion
 
-    //#region Form
+    //#region 
+
     headers = ['S', 'Id', 'Description', 'Exact point', 'Time']
     widths = ['40px', '0', '45%', '', '100px']
     visibility = ['none', 'none', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'center']
     fields = ['', 'id', 'description', 'exactPoint', 'time']
+
     //#endregion
 
     constructor(
@@ -46,12 +53,14 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
+        this.searchTerm = localStorage.getItem('searchTerm')
         this.loadRecords()
     }
 
     ngOnInit() {
         this.addShortcuts()
         this.subscribeToInteractionService()
+        this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy() {
@@ -61,10 +70,12 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onFilter(query: string) {
+        this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGoBack() {
+        localStorage.removeItem('searchTerm')
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -78,7 +89,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
                 this.buttonClickService.clickOnButton(event, 'goBack')
             },
             'Alt.F': (event: KeyboardEvent) => {
-                this.focus(event, 'searchField')
+                this.focus(event, 'searchTerm')
             },
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -90,6 +101,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
+        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate(['pickupPoint/', id], { relativeTo: this.activatedRoute })
     }
 

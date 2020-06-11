@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
+import { UserIdleService } from 'angular-user-idle'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -18,7 +19,7 @@ export class AccountService {
     private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
 
-    constructor(private httpClient: HttpClient, private router: Router) { }
+    constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
 
     changePassword(currentPassword: string, password: string, confirmPassword: string) {
         return this.httpClient.post<any>(this.urlChangePassword, { currentPassword, password, confirmPassword })
@@ -40,6 +41,7 @@ export class AccountService {
     logout() {
         this.setLoginStatus(false)
         this.clearLocalStorage()
+        this.resetTimer()
         this.navigateToLogin()
     }
 
@@ -89,6 +91,11 @@ export class AccountService {
 
     private navigateToLogin() {
         this.router.navigate(['/login'])
+    }
+
+    private resetTimer() {
+        this.userIdleService.stopWatching()
+        this.userIdleService.resetTimer()
     }
 
     private setLoginStatus(status: boolean) {

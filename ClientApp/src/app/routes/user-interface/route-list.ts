@@ -19,30 +19,36 @@ import { Route } from '../classes/route';
 
 export class RouteListComponent implements OnInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     url = '/routes'
     records: Route[] = []
     filteredRecords: Route[] = []
     resolver = 'routeList'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    searchTerm: string
+
     //#endregion
 
-    //#region Form
+    //#region 
     headers = ['S', 'Id', 'Description', 'Full description']
     widths = ['40px', '0px', '150px', '']
     visibility = ['none', 'none', '', '']
     justify = ['center', 'center', 'center', 'left']
     fields = ['', 'id', 'description', 'fullDescription']
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+        this.searchTerm = localStorage.getItem('searchTerm')
         this.loadRecords()
     }
 
     ngOnInit() {
         this.addShortcuts()
         this.subscribeToInteractionService()
+        this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy() {
@@ -52,10 +58,12 @@ export class RouteListComponent implements OnInit, OnDestroy {
     }
 
     public onFilter(query: string) {
-        this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
+        this.searchTerm = query
+        this.filteredRecords = query ? this.records.filter(p => p.fullDescription.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGoBack() {
+        localStorage.removeItem('searchTerm')
         this.router.navigate(['/'])
     }
 
@@ -69,7 +77,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
                 this.onGoBack()
             },
             'Alt.F': (event: KeyboardEvent): void => {
-                this.focus(event, 'searchField')
+                this.focus(event, 'searchTerm')
             },
             'Alt.N': (event: KeyboardEvent): void => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -81,6 +89,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
+        localStorage.setItem('searchTerm', this.searchTerm !== null ? this.searchTerm : '')
         this.router.navigate([this.url, id])
     }
 

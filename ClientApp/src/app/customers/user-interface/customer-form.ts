@@ -20,15 +20,14 @@ import { Customer } from '../classes/customer';
 
 export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     url = '/customers'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
