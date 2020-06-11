@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { FormGroup } from '@angular/forms'
 
 @Injectable({ providedIn: 'root' })
 
@@ -24,19 +23,16 @@ export class HelperService {
         }, 200)
     }
 
-    resetForm(formGroup: FormGroup) {
-        formGroup.reset()
-        Object.keys(formGroup.controls).forEach(
-            field => { formGroup.get(field).setErrors(null); }
-        );
-    }
-
     getUserIdFromLocalStorage() {
         return localStorage.getItem('userId')
     }
 
     getDateFromLocalStorage() {
         return localStorage.getItem('date')
+    }
+
+    getApplicationTitle() {
+        return 'People movers'
     }
 
 }

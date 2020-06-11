@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +23,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
     //#region 
 
     url = '/routes'
+    windowTitle = 'Routes'
     records: Route[] = []
     filteredRecords: Route[] = []
     resolver = 'routeList'
@@ -32,6 +34,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
     //#endregion
 
     //#region 
+
     headers = ['S', 'Id', 'Description', 'Full description']
     widths = ['40px', '0px', '150px', '']
     visibility = ['none', 'none', '', '']
@@ -40,12 +43,12 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.searchTerm = localStorage.getItem('searchTermRoute')
-        this.loadRecords()
-    }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
+        this.getFilterFromLocalStorage();
+        this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
@@ -98,6 +101,10 @@ export class RouteListComponent implements OnInit, OnDestroy {
         this.helperService.setFocus(element)
     }
 
+    private getFilterFromLocalStorage() {
+        this.searchTerm = localStorage.getItem('searchTermRoute')
+    }
+
     private loadRecords() {
         const routeListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (routeListResolved.error === null) {
@@ -106,6 +113,10 @@ export class RouteListComponent implements OnInit, OnDestroy {
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string) {

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subject } from 'rxjs';
 import { CustomerService } from 'src/app/customers/classes/customer.service';
@@ -30,13 +31,18 @@ import { PickupPointFlat } from './../../pickupPoints/classes/pickupPoint-flat';
 
 export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
+    windowTitle = 'Transfer'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    input: InputTabStopDirective
+
     //#endregion
 
-    //#region Private particular
+    //#region
+
     defaultDriver: any
     customers: any
     destinations: any
@@ -44,13 +50,10 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     pickupPoints: any
     pickupPointsFlat: PickupPointFlat[]
     ports: any
+
     //#endregion
 
-    //#region Form
-    input: InputTabStopDirective
-    //#endregion
-
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private messageService: MessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private messageService: MessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)
@@ -66,6 +69,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.scrollToForm()
         this.addShortcuts()
@@ -348,7 +352,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private resetForm() {
-        this.helperService.resetForm(this.form)
+        this.form.reset()
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private scrollToForm() {
@@ -385,7 +393,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get destinationId() {
         return this.form.get('destinationId')
@@ -447,6 +455,6 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.form.get('remarks')
     }
 
-    // #endregion Getters
+    //#endregion Getters
 
 }

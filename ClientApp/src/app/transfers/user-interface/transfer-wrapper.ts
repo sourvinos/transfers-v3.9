@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
@@ -15,21 +16,27 @@ import { TransferFlat } from 'src/app/transfers/classes/transfer-flat';
 
 export class TransferWrapperComponent implements OnInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
+    windowTitle = 'Transfers'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+
     //#endregion
 
-    //#region Private particular
+    //#region 
+
     dateIn = '20/04/2020'
     dateInISO = ''
     records: string[] = []
     transfersFlat: TransferFlat[] = []
+
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.addShortcuts()
         this.focus('dateIn')
     }
@@ -95,6 +102,10 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     private removeSelectedIdsFromLocalStorage() {
         localStorage.removeItem('selectedIds')
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private updateLocalStorageWithDate() {

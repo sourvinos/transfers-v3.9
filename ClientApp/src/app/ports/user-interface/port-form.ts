@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
@@ -19,24 +20,25 @@ import { PortService } from '../classes/port.service';
 
 export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region
+
     url = '/ports'
+    windowTitle = 'Port'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>();
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private portService: PortService, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -162,19 +164,23 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private resetForm() {
-        this.helperService.resetForm(this.form)
+        this.form.reset()
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get description() {
         return this.form.get('description')
     }
 
-    // #endregion
+    //#endregion
 
 }

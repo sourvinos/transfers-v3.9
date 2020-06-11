@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +23,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     //#region 
 
     url = '/destinations'
+    windowTitle = 'Destinations'
     records: Destination[] = []
     filteredRecords: Destination[] = []
     resolver = 'destinationList'
@@ -41,12 +43,12 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.searchTerm = localStorage.getItem('searchTermDestination')
-        this.loadRecords()
-    }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
+        this.getFilterFromLocalStorage();
+        this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
@@ -99,6 +101,10 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         this.helperService.setFocus(element)
     }
 
+    private getFilterFromLocalStorage() {
+        this.searchTerm = localStorage.getItem('searchTermDestination')
+    }
+
     private loadRecords() {
         const destinationListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (destinationListResolved.error === null) {
@@ -107,6 +113,10 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string) {

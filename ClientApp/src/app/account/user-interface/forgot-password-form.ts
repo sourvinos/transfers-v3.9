@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
@@ -20,20 +21,21 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 
 export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region
+
     url = '/login'
+    windowTitle = 'Forgot password'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -93,16 +95,20 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    }
+
     private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get email() {
         return this.form.get('email')
     }
 
-    // #endregion
+    //#endregion
 
 }

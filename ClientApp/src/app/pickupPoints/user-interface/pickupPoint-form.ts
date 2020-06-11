@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subject } from 'rxjs';
 import { RouteService } from 'src/app/routes/classes/route.service';
@@ -23,22 +24,23 @@ import { PickupPointService } from '../classes/pickupPoint.service';
 
 export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
+    windowTitle = 'Pickup point'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    input: InputTabStopDirective
+
     //#endregion
 
-    //#region Private particular
+    //#region 
     routeId: number
     routes: any
+
     //#endregion
 
-    //#region Form
-    input: InputTabStopDirective
-    //#endregion
-
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
@@ -50,6 +52,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
@@ -252,7 +255,11 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     private resetForm() {
-        this.helperService.resetForm(this.form)
+        this.form.reset()
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {
@@ -277,7 +284,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get routeDescription() {
         return this.form.get('routeDescription')
@@ -295,6 +302,6 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         return this.form.get('time')
     }
 
-    // #endregion
+    //#endregion
 
 }

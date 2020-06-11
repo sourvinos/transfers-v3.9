@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Route } from 'src/app/routes/classes/route';
 import { RouteService } from 'src/app/routes/classes/route.service';
+import { HelperService } from 'src/app/shared/services/helper.service';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
 
@@ -14,20 +16,26 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 
 export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
+    windowTitle = 'Pickup points'
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>();
+
     //#endregion
 
-    //#region Private particular
+    //#region
+
     id = ''
     activeRoute: string
     routes: Route[] = []
+
     //#endregion
 
-    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private routeService: RouteService, private interactionService: InteractionService) { }
+    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private helperService: HelperService, private routeService: RouteService, private interactionService: InteractionService, private titleService: Title) { }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.addShortcuts()
         this.populateDropDowns()
     }
@@ -67,6 +75,10 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
         this.routeService.getAllActive().subscribe((result: any) => {
             this.routes = result.sort((a: { description: number; }, b: { description: number; }) => (a.description > b.description) ? 1 : -1)
         })
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
 }

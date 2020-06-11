@@ -1,6 +1,7 @@
 import { Location } from '@angular/common'
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
+import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
@@ -25,8 +26,9 @@ import { TransferAssignDriverComponent } from './transfer-assign-driver'
 
 export class TransferListComponent implements OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
 
-    //#region Private
+    //#region 
 
+    windowTitle = 'Transfers'
     records: string[] = []
     resolver = 'transferList'
     unlisten: Unlisten
@@ -34,7 +36,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     //#endregion
 
-    //#region Private particular
+    //#region 
 
     dateIn: string
     queryResult = new TransferViewModel()
@@ -55,7 +57,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     //#endregion
 
-    //#region List
+    //#region
 
     headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port']
     widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px']
@@ -65,7 +67,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private titleService: Title) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation: any) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
@@ -82,6 +84,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     ngAfterViewInit() {
+        this.setWindowTitle()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -329,6 +332,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
                 element.classList.remove('activeItem')
             }
         }
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string) {

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
@@ -21,30 +22,38 @@ import { ChangePassword } from './../classes/change-password';
 
 export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region
+
     url = '/users'
+    windowTitle = 'Change password'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
+    input: InputTabStopDirective
+
     //#endregion
 
-    //#region Private particular
+    //#region 
+
     flatForm: ChangePassword
+
     //#endregion
 
     //#region Form
+
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     hidePassword = true
-    input: InputTabStopDirective
+
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         });
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -157,11 +166,15 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.form.reset()
     }
 
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    }
+
     private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get CurrentPassword() {
         return this.form.get('currentPassword')
@@ -183,6 +196,6 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 
-    // #endregion
+    //#endregion
 
 }

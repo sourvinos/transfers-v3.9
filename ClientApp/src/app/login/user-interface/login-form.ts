@@ -17,7 +17,7 @@ import { SnackbarService } from './../../shared/services/snackbar.service';
 
 export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Forms Common
+    //#region 
 
     url = '/'
     form: FormGroup
@@ -27,7 +27,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    //#region Form specific
+    //#region 
 
     hidePassword = true
 
@@ -106,7 +106,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    // #region Getters
+    //#region Getters
 
     get Username() {
         return this.form.get('userName')
@@ -116,6 +116,6 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.form.get('password')
     }
 
-    // #endregion
+    //#endregion
 
 }

@@ -10,7 +10,7 @@ import { Driver } from 'src/app/drivers/classes/driver';
 
 export class TransferAssignDriverComponent implements OnInit {
 
-    //#region Private particular
+    //#region
 
     drivers: Driver[] = []
     id = ''

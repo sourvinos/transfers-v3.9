@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
@@ -20,24 +21,25 @@ import { DriverService } from '../classes/driver.service';
 
 export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region 
+
     url = '/drivers'
+    windowTitle = 'Driver'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -182,11 +184,15 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.form.reset()
     }
 
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    }
+
     private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get description() {
         return this.form.get('description')
@@ -200,6 +206,6 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.form.get('isActive')
     }
 
-    // #endregion
+    //#endregion
 
 }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { DestinationService } from 'src/app/destinations/classes/destination.service';
@@ -23,6 +24,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     //#region 
 
     url = '/destinations'
+    windowTitle = 'Destination'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
@@ -30,13 +32,14 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -164,14 +167,18 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     private resetForm() {
-        this.helperService.resetForm(this.form)
+        this.form.reset()
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get abbreviation() {
         return this.form.get('abbreviation')
@@ -181,6 +188,6 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
         return this.form.get('description')
     }
 
-    // #endregion
+    //#endregion
 
 }

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin, Subject } from 'rxjs';
 import { PortService } from 'src/app/ports/classes/port.service';
@@ -23,28 +24,31 @@ import { RouteService } from '../classes/route.service';
 
 export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region Private
+    //#region
+
     url = '/routes'
+    windowTitle = 'Port'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>()
-    //#endregion
-
-    //#region Private particular
-    ports: any
-    //#endregion
-
-    //#region Form
     input: InputTabStopDirective
+
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog) {
+    //#region 
+
+    ports: any
+
+    //#endregion
+
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
@@ -235,7 +239,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private resetForm() {
-        this.helperService.resetForm(this.form)
+        this.form.reset()
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {
@@ -260,7 +268,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get description() {
         return this.form.get('description')
@@ -277,6 +285,6 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.form.get('portDescription')
     }
 
-    // #endregion
+    //#endregion
 
 }

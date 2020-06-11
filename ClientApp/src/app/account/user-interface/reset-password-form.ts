@@ -18,33 +18,32 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 
 export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    // #region Private generic
+    //#region
 
     url = '/'
     form: FormGroup
     unlisten: Unlisten
     ngUnsubscribe = new Subject<void>();
+    input: InputTabStopDirective
 
-    // #endregion
+    //#endregion
 
-    // #region Private particular
+    //#region
 
     email: string
     token: string
 
-    // #endregion
+    //#endregion
 
-    //#region Form
+    //#region 
 
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     hidePassword = true
-    input: InputTabStopDirective
 
     //#endregion
 
     constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.queryParams.subscribe((p: any) => {
-            // console.log(p)
             this.email = p['email']
             this.token = p['token']
         })
@@ -107,7 +106,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         this.snackbarService.open(message, type)
     }
 
-    // #region Getters
+    //#region Getters
 
     get Passwords() {
         return this.form.get('passwords')
@@ -125,6 +124,6 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 
-    // #endregion
+    //#endregion
 
 }

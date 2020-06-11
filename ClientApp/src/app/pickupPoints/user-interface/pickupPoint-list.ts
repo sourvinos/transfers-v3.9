@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,6 +24,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region 
 
+    windowTitle = 'Pickup points'
     records: PickupPoint[] = []
     filteredRecords: PickupPoint[] = []
     resolver = 'pickupPointList'
@@ -49,15 +51,16 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
-        this.searchTerm = localStorage.getItem('searchTermPickupPoint')
-        this.loadRecords()
     }
 
     ngOnInit() {
+        this.setWindowTitle()
+        this.getFilterFromLocalStorage();
+        this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
@@ -110,6 +113,10 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.helperService.setFocus(element)
     }
 
+    private getFilterFromLocalStorage() {
+        this.searchTerm = localStorage.getItem('searchTermPickupPoint');
+    }
+
     private getRouteDescription(routeId: number) {
         this.routeService.getSingle(routeId).subscribe(result => {
             this.routeDescription = result.description
@@ -124,6 +131,10 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }
+    }
+
+    private setWindowTitle() {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string) {
