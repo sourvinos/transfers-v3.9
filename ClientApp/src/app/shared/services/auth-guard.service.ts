@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router'
+import { CanActivate, Router } from '@angular/router'
 import { Observable } from 'rxjs'
 import { map, take } from 'rxjs/operators'
 import { AccountService } from './account.service'
 
-export interface CanComponentDeactivate {
-    confirm(): boolean
-}
-
 @Injectable({ providedIn: 'root' })
 
 export class AuthGuardService implements CanActivate {
-
-    component: any
-    route: ActivatedRouteSnapshot
 
     constructor(private accountService: AccountService, private router: Router) { }
 

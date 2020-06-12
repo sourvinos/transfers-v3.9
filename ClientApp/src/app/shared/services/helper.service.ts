@@ -4,18 +4,6 @@ import { Injectable } from '@angular/core'
 
 export class HelperService {
 
-    disableFields(fields: string[]): void {
-        fields.forEach((element: string) => {
-            document.getElementById(element).setAttribute('disabled', 'true')
-        })
-    }
-
-    enableFields(fields: string[]): void {
-        fields.forEach((element: string) => {
-            document.getElementById(element).removeAttribute('disabled')
-        })
-    }
-
     setFocus(element: string): void {
         setTimeout(() => {
             document.getElementById(element).focus()

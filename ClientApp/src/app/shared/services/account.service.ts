@@ -21,10 +21,6 @@ export class AccountService {
 
     constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
 
-    changePassword(currentPassword: string, password: string, confirmPassword: string) {
-        return this.httpClient.post<any>(this.urlChangePassword, { currentPassword, password, confirmPassword })
-    }
-
     forgotPassword(email: string) {
         return this.httpClient.post<any>(this.urlForgotPassword, { email })
     }

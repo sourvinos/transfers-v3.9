@@ -1,8 +1,6 @@
 import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core'
 
-@Directive({
-    selector: '[domChange]'
-})
+@Directive({ selector: '[domChange]' })
 
 export class DomChangeDirective implements OnDestroy {
 
