@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiffer, IterableDiffers, OnInit } from '@angular/core';
-import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service';
-import { InteractionService } from 'src/app/shared/services/interaction.service';
+import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiffer, IterableDiffers, OnInit } from '@angular/core'
+import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
 
 @Component({
     selector: 'custom-table',
@@ -30,36 +30,36 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     constructor(private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
 
-    ngOnInit() {
-        this.differences = this.iterableDiffers.find(this.records).create();
+    ngOnInit(): void {
+        this.differences = this.iterableDiffers.find(this.records).create()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.initVariables()
         this.onGotoRow(1)
     }
 
-    ngDoCheck() {
-        const changes: IterableChanges<any> = this.differences.diff(this.records);
+    ngDoCheck(): void {
+        const changes: IterableChanges<any> = this.differences.diff(this.records)
         if (changes) {
             this.checked = false
         }
     }
 
-    onCheckKeyboard(event: any) {
+    onCheckKeyboard(event: any): void {
         switch (event.keyCode) {
-            case 38: this.onGotoRow('Up'); break;
-            case 40: this.onGotoRow('Down'); break;
-            case 13: this.sendRowToService(); break;
-            default: break;
+            case 38: this.onGotoRow('Up'); break
+            case 40: this.onGotoRow('Down'); break
+            case 13: this.sendRowToService(); break
+            default: break
         }
     }
 
-    onDomChange($event: Event) {
+    onDomChange(): void {
         this.onGotoRow(1)
     }
 
-    onHeaderClick(columnName: string, sortOrder: string, column: any) {
+    onHeaderClick(columnName: string, sortOrder: string, column: any): void {
         if (column.toElement.cellIndex === 0) {
             this.checked = !this.checked
             this.checkedIds = []
@@ -81,12 +81,12 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onSortMe(columnName: string, sortOrder: string) {
+    onSortMe(columnName: string, sortOrder: string): void {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
 
-    public onGotoRow(key: any) {
+    public onGotoRow(key: any): void {
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
                 this.selectRow(this.table, key)
@@ -111,7 +111,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onToggleCheckBox(row: number) {
+    onToggleCheckBox(row: number): void {
         this.checkedIds = []
         this.totalPersons = 0
         this.table.rows[row].classList.toggle('checked')
@@ -125,7 +125,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     private compareValues(key: string, order = 'asc') {
         return function innerSort(a: { [x: string]: any; hasOwnProperty: (arg0: string) => any }, b: { [x: string]: any; hasOwnProperty: (arg0: string) => any }) {
-            if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) { return 0 }
+            if (!Object.prototype.hasOwnProperty.call(a, key) || !Object.prototype.hasOwnProperty.call(b, key)) { return 0 }
             let comparison = 0
             const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key]
             const varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key]

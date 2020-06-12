@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn } from '@angular/forms'
+import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms'
 import { ErrorStateMatcher } from '@angular/material/core'
 
 export class ValidationService {
@@ -9,9 +9,9 @@ export class ValidationService {
         return isValid ? null : { childrenNotEqual: true }
     }
 
-    static containsSpace(control: AbstractControl) {
+    static containsSpace(control: AbstractControl): boolean | null {
         if (control.value && (control.value as string).indexOf(' ') !== -1) {
-            return { containsSpace: true }
+            return true
         }
         return null
     }
@@ -20,7 +20,7 @@ export class ValidationService {
 
 export class ConfirmValidParentMatcher implements ErrorStateMatcher {
 
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    isErrorState(control: FormControl | null): boolean {
         return control.parent.invalid && control.touched
     }
 

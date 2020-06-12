@@ -12,7 +12,7 @@ export interface CanComponentDeactivate {
 
 export class AuthGuardService implements CanActivate {
 
-    component: Object
+    component: any
     route: ActivatedRouteSnapshot
 
     constructor(private accountService: AccountService, private router: Router) { }

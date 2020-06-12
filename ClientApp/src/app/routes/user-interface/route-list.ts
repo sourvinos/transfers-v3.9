@@ -1,16 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ListResolved } from 'src/app/shared/classes/list-resolved';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { InteractionService } from 'src/app/shared/services/interaction.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { Route } from '../classes/route';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+import { ListResolved } from 'src/app/shared/classes/list-resolved'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { Route } from '../classes/route'
 
 @Component({
     selector: 'route-list',
@@ -45,38 +45,38 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
-        this.getFilterFromLocalStorage();
+        this.getFilterFromLocalStorage()
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onFilter(query: string) {
+    public onFilter(query: string): void {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.fullDescription.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         localStorage.removeItem('searchTermRoute')
         this.router.navigate(['/'])
     }
 
-    public onNew() {
+    public onNew(): void {
         this.router.navigate([this.url + '/new'])
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (): void => {
                 this.onGoBack()
             },
             'Alt.F': (event: KeyboardEvent): void => {

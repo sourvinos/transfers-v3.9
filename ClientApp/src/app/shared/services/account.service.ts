@@ -113,17 +113,17 @@ export class AccountService {
     }
 
     private setUserData() {
-        this.displayName.next(localStorage.getItem('displayName'));
-        this.userRole.next(localStorage.getItem('userRole'));
+        this.displayName.next(localStorage.getItem('displayName'))
+        this.userRole.next(localStorage.getItem('userRole'))
     }
 
     //#region Getters
 
-    get currentDisplayName() {
+    get currentDisplayName(): Observable<string> {
         return this.displayName.asObservable()
     }
 
-    get isLoggedIn() {
+    get isLoggedIn(): Observable<boolean> {
         return this.loginStatus.asObservable()
     }
 

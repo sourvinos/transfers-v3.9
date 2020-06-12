@@ -1,15 +1,15 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { AccountService } from 'src/app/shared/services/account.service';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service';
-import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { AccountService } from 'src/app/shared/services/account.service'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
+import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
 
 @Component({
     selector: 'reset-password-form',
@@ -23,7 +23,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     form: FormGroup
     input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>();
+    ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Reset password'
@@ -34,35 +34,35 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     email: string
     token: string
-    confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    confirmValidParentMatcher = new ConfirmValidParentMatcher()
     hidePassword = true
 
     //#endregion
 
     constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
-        this.activatedRoute.queryParams.subscribe((p: any) => {
+        this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('password')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onSave() {
-        const form = this.form.value;
+    public onSave(): void {
+        const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
             this.router.navigate([this.url])
@@ -109,19 +109,19 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#region Getters
 
-    get Passwords() {
+    get Passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get Password() {
+    get Password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword() {
+    get ConfirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords() {
+    get MatchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

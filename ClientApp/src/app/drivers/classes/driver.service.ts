@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { DataService } from 'src/app/shared/services/data.service';
-import { Driver } from './driver';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
+import { DataService } from 'src/app/shared/services/data.service'
+import { Driver } from './driver'
 
 @Injectable({ providedIn: 'root' })
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -36,23 +36,23 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('userName')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -66,7 +66,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onChangePassword() {
+    public onChangePassword(): void {
         if (this.form.dirty) {
             this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.router.navigate(['/users/changePassword/' + this.form.value.id])
@@ -79,7 +79,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(answer => {
             if (answer) {
                 this.userService.delete(this.form.value.id).subscribe((response) => {
@@ -93,11 +93,11 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         this.userService.update(this.form.value.id, this.form.value).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
             this.resetForm()
@@ -159,7 +159,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private populateFields(result: any) {
+    private populateFields(result: { id: number; username: string; displayname: string; email: string }) {
         this.form.setValue({
             id: result.id,
             userName: result.username,
@@ -181,15 +181,15 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     //#region Getters
-    get Username() {
+    get Username(): AbstractControl {
         return this.form.get('userName')
     }
 
-    get Displayname() {
+    get Displayname(): AbstractControl {
         return this.form.get('displayName')
     }
 
-    get Email() {
+    get Email(): AbstractControl {
         return this.form.get('email')
     }
 

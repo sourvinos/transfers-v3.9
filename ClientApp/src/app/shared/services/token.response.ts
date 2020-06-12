@@ -1,4 +1,4 @@
-interface TokenResponse {
+interface TokenResponses {
     token: string,
     expiration: number
 }

@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { AccountService } from 'src/app/shared/services/account.service';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { RegisterUser } from '../../account/classes/register-user';
-import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service';
-import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { AccountService } from 'src/app/shared/services/account.service'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { RegisterUser } from '../../account/classes/register-user'
+import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
+import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
 
 @Component({
     selector: 'register-user-form',
@@ -43,23 +43,23 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('userName')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -73,12 +73,12 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         }
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
-        this.flattenFormFields();
+    public onSave(): void {
+        this.flattenFormFields()
         this.accountService.register(this.flatForm).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
             this.resetForm()
@@ -156,31 +156,31 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#region Getters
 
-    get Email() {
+    get Email(): AbstractControl {
         return this.form.get('email')
     }
 
-    get DisplayName() {
+    get DisplayName(): AbstractControl {
         return this.form.get('displayName')
     }
 
-    get UserName() {
+    get UserName(): AbstractControl {
         return this.form.get('userName')
     }
 
-    get Passwords() {
+    get Passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get Password() {
+    get Password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword() {
+    get ConfirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords() {
+    get MatchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
     constructor(private helperService: HelperService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
     }
 

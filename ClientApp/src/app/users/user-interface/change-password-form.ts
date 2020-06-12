@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/services/validation.service';
-import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service';
-import { UserService } from '../classes/user.service';
-import { ChangePassword } from './../classes/change-password';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/services/validation.service'
+import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
+import { UserService } from '../classes/user.service'
+import { ChangePassword } from './../classes/change-password'
 
 @Component({
     selector: 'change-password-form',
@@ -45,26 +45,26 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
-        });
+        })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('currentPassword')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -78,12 +78,12 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
-        this.flattenFormFields();
+    public onSave(): void {
+        this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
             this.resetForm()
@@ -152,7 +152,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     }
 
-    private populateFields(result: any) {
+    private populateFields(result) {
         this.form.patchValue({
             userId: result.id
         })
@@ -172,23 +172,23 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region Getters
 
-    get CurrentPassword() {
+    get CurrentPassword(): AbstractControl {
         return this.form.get('currentPassword')
     }
 
-    get Passwords() {
+    get Passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get Password() {
+    get Password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword() {
+    get ConfirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords() {
+    get MatchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

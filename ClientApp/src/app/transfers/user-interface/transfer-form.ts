@@ -1,27 +1,27 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, Subject } from 'rxjs';
-import { CustomerService } from 'src/app/customers/classes/customer.service';
-import { DestinationService } from 'src/app/destinations/classes/destination.service';
-import { Driver } from 'src/app/drivers/classes/driver';
-import { DriverService } from 'src/app/drivers/classes/driver.service';
-import { PickupPointService } from 'src/app/pickupPoints/classes/pickupPoint.service';
-import { PortService } from 'src/app/ports/classes/port.service';
-import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { InteractionService } from 'src/app/shared/services/interaction.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { Transfer } from '../classes/transfer';
-import { TransferService } from '../classes/transfer.service';
-import { PickupPointFlat } from './../../pickupPoints/classes/pickupPoint-flat';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { forkJoin, Subject } from 'rxjs'
+import { CustomerService } from 'src/app/customers/classes/customer.service'
+import { DestinationService } from 'src/app/destinations/classes/destination.service'
+import { Driver } from 'src/app/drivers/classes/driver'
+import { DriverService } from 'src/app/drivers/classes/driver.service'
+import { PickupPointService } from 'src/app/pickupPoints/classes/pickupPoint.service'
+import { PortService } from 'src/app/ports/classes/port.service'
+import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { Transfer } from '../classes/transfer'
+import { TransferService } from '../classes/transfer.service'
+import { PickupPointFlat } from './../../pickupPoints/classes/pickupPoint-flat'
 
 @Component({
     selector: 'transfer-form',
@@ -68,7 +68,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.scrollToForm()
@@ -76,17 +76,17 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.populateDropDowns()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('destinationDescription')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -102,12 +102,12 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onCalculateTotalPersons() {
+    public onCalculateTotalPersons(): void {
         const totalPersons = parseInt(this.form.value.adults, 10) + parseInt(this.form.value.kids, 10) + parseInt(this.form.value.free, 10)
-        this.form.patchValue({ totalPersons: !!Number(totalPersons) ? totalPersons : 0 })
+        this.form.patchValue({ totalPersons: Number(totalPersons) ? totalPersons : 0 })
     }
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
@@ -118,11 +118,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -139,7 +139,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.showAddedRecord(), 'info')
@@ -317,7 +317,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.interactionService.mustRefreshList()
     }
 
-    private renameKey(obj: Object, oldKey: string, newKey: string) {
+    private renameKey(obj: any, oldKey: string, newKey: string) {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
@@ -395,63 +395,63 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get destinationId() {
+    get destinationId(): AbstractControl {
         return this.form.get('destinationId')
     }
 
-    get destinationDescription() {
+    get destinationDescription(): AbstractControl {
         return this.form.get('destinationDescription')
     }
 
-    get customerId() {
+    get customerId(): AbstractControl {
         return this.form.get('customerId')
     }
 
-    get customerDescription() {
+    get customerDescription(): AbstractControl {
         return this.form.get('customerDescription')
     }
 
-    get pickupPointId() {
+    get pickupPointId(): AbstractControl {
         return this.form.get('pickupPointId')
     }
 
-    get pickupPointDescription() {
+    get pickupPointDescription(): AbstractControl {
         return this.form.get('pickupPointDescription')
     }
 
-    get adults() {
+    get adults(): AbstractControl {
         return this.form.get('adults')
     }
 
-    get kids() {
+    get kids(): AbstractControl {
         return this.form.get('kids')
     }
 
-    get free() {
+    get free(): AbstractControl {
         return this.form.get('free')
     }
 
-    get totalPersons() {
+    get totalPersons(): AbstractControl {
         return this.form.get('totalPersons')
     }
 
-    get driverId() {
+    get driverId(): AbstractControl {
         return this.form.get('driverId')
     }
 
-    get driverDescription() {
+    get driverDescription(): AbstractControl {
         return this.form.get('driverDescription')
     }
 
-    get portId() {
+    get portId(): AbstractControl {
         return this.form.get('portId')
     }
 
-    get portDescription() {
+    get portDescription(): AbstractControl {
         return this.form.get('portDescription')
     }
 
-    get remarks() {
+    get remarks(): AbstractControl {
         return this.form.get('remarks')
     }
 

@@ -24,6 +24,7 @@ import { TransferAssignDriverComponent } from './transfer-assign-driver'
     styleUrls: ['./transfer-list.css']
 })
 
+
 export class TransferListComponent implements OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
 
     //#region 
@@ -69,7 +70,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private titleService: Title) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
-        this.router.events.subscribe((navigation: any) => {
+        this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
                 this.mustRefresh = true
                 this.loadRecords()
@@ -77,13 +78,13 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.addShortcuts()
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.setWindowTitle()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
@@ -100,24 +101,24 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         }
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         document.getElementById('summaries').style.height = document.getElementById('listFormCombo').offsetHeight - 125 + 'px'
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.mustRefresh) {
             this.mustRefresh = false
             this.ngAfterViewInit()
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onAssignDriver() {
+    public onAssignDriver(): void {
         if (this.isRecordSelected()) {
             const dialogRef = this.dialog.open(TransferAssignDriverComponent, {
                 height: '350px',
@@ -141,19 +142,19 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         }
     }
 
-    public onCreatePdf() {
+    public onCreatePdf(): void {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
     }
 
-    public onNew() {
-        this.driverService.getDefaultDriver().subscribe(response => {
+    public onNew(): void {
+        this.driverService.getDefaultDriver().subscribe(() => {
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
             this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
         })
     }
 
-    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string) {
+    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string): void {
         this.toggleActiveItem(item, lookupArray)
         this.initCheckedPersons()
         this.filterByCriteria()
@@ -163,7 +164,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, className)
     }
 
-    public onToggleItems(className: string, lookupArray: { splice: (arg0: number) => void }, checkedArray: any) {
+    public onToggleItems(className: string, lookupArray: any[], checkedArray: any) {
         event.stopPropagation()
         lookupArray.splice(0)
         this.selectItems(className, lookupArray, !checkedArray)
@@ -301,7 +302,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.router.navigate(['transfers/dateIn/', this.helperService.getDateFromLocalStorage()])
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['/'])
     }
 
@@ -321,7 +322,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         localStorage.removeItem('selectedIds')
     }
 
-    private selectItems(className: string, lookupArray: any, checked: boolean) {
+    private selectItems(className: string, lookupArray: string[], checked: boolean) {
         const elements = document.getElementsByClassName('item ' + className)
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index]
@@ -390,7 +391,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     private updateTotals() {
         this.totals[0].sum = this.queryResult.persons
-        this.totals[1].sum = this.queryResultClone.transfers.reduce((sum: any, array: { totalPersons: any }) => sum + array.totalPersons, 0)
+        this.totals[1].sum = this.queryResultClone.transfers.reduce((sum: number, array: { totalPersons: number }) => sum + array.totalPersons, 0)
         this.interactionService.checked.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
             this.totals[2].sum = result
         })

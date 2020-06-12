@@ -1,17 +1,17 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { CustomerService } from 'src/app/customers/classes/customer.service';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { Customer } from '../classes/customer';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { CustomerService } from 'src/app/customers/classes/customer.service'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { Customer } from '../classes/customer'
 
 @Component({
     selector: 'customer-form',
@@ -21,7 +21,7 @@ import { Customer } from '../classes/customer';
 
 export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region 
+    //#region
 
     form: FormGroup
     input: InputTabStopDirective
@@ -38,23 +38,23 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -68,7 +68,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.customerService.delete(this.form.value.id).subscribe(() => {
@@ -82,11 +82,11 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.showAddedRecord(), 'info')
@@ -188,27 +188,27 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get profession() {
+    get profession(): AbstractControl {
         return this.form.get('profession')
     }
 
-    get address() {
+    get address(): AbstractControl {
         return this.form.get('address')
     }
 
-    get phones() {
+    get phones(): AbstractControl {
         return this.form.get('phones')
     }
 
-    get personInCharge() {
+    get personInCharge(): AbstractControl {
         return this.form.get('personInCharge')
     }
 
-    get email() {
+    get email(): AbstractControl {
         return this.form.get('email')
     }
 

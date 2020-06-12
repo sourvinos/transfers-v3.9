@@ -1,20 +1,20 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, Subject } from 'rxjs';
-import { RouteService } from 'src/app/routes/classes/route.service';
-import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { DialogService } from '../../shared/services/dialog.service';
-import { PickupPoint } from '../classes/pickupPoint';
-import { PickupPointService } from '../classes/pickupPoint.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { forkJoin, Subject } from 'rxjs'
+import { RouteService } from 'src/app/routes/classes/route.service'
+import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { DialogService } from '../../shared/services/dialog.service'
+import { PickupPoint } from '../classes/pickupPoint'
+import { PickupPointService } from '../classes/pickupPoint.service'
 
 @Component({
     selector: 'pickuppoint-form',
@@ -51,18 +51,18 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('routeDescription')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -95,7 +95,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -116,7 +116,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.showAddedRecord(), 'info')
@@ -238,7 +238,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private renameKey(obj: Object, oldKey: string, newKey: string) {
+    private renameKey(obj: unknown, oldKey: string, newKey: string) {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
@@ -246,7 +246,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     private renameObjects() {
-        this.routes.forEach(obj => {
+        this.routes.forEach((obj: any) => {
             this.renameKey(obj, 'id', 'routeId')
             this.renameKey(obj, 'description', 'routeDescription')
             this.renameKey(obj, 'isActive', 'routeIsActive')

@@ -1,16 +1,16 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { PortService } from '../classes/port.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { PortService } from '../classes/port.service'
 
 @Component({
     selector: 'port-form',
@@ -37,17 +37,17 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -81,11 +81,11 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.portService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.showAddedRecord(), 'info')

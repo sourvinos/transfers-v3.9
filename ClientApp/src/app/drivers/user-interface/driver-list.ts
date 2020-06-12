@@ -45,16 +45,16 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
-        this.getFilterFromLocalStorage();
+        this.getFilterFromLocalStorage()
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -65,7 +65,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         localStorage.removeItem('searchTermDriver')
         this.router.navigate(['/'])
     }
@@ -76,7 +76,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (): void => {
                 this.onGoBack()
             },
             'Alt.F': (event: KeyboardEvent): void => {
@@ -102,7 +102,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
     }
 
     private getFilterFromLocalStorage() {
-        this.searchTerm = localStorage.getItem('searchTermDriver');
+        this.searchTerm = localStorage.getItem('searchTermDriver')
     }
 
     private loadRecords() {

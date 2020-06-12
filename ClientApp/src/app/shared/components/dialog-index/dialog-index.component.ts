@@ -1,8 +1,8 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { IndexInteractionService } from '../../services/index-interaction.service';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+import { IndexInteractionService } from '../../services/index-interaction.service'
 
 @Component({
     selector: 'dialog-index',
@@ -33,13 +33,13 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
         this.records = data.records
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.subscribeToIndexinteractionService()
     }
 
-    ngOnDestroy() {
-        this.ngUnsubscribe.next();
-        this.ngUnsubscribe.unsubscribe();
+    ngOnDestroy(): void {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     private subscribeToIndexinteractionService() {
@@ -47,7 +47,7 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
             this.selectedRecord = response
             this.indexInteractionService.dialogMustClose.subscribe(x => {
                 if (x) {
-                    this.dialogRef.close(this.selectedRecord);
+                    this.dialogRef.close(this.selectedRecord)
                 }
             })
         })

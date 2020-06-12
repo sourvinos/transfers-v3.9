@@ -45,37 +45,37 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
-        this.getFilterFromLocalStorage();
+        this.getFilterFromLocalStorage()
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onFilter(query: string) {
+    public onFilter(query: string): void {
         this.filteredRecords = query ? this.records.filter(p => p.username.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         localStorage.removeItem('searchTermUser')
         this.router.navigate(['/'])
     }
 
-    public onNew() {
+    public onNew(): void {
         this.router.navigate([this.url + '/new'])
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (): void => {
                 this.onGoBack()
             },
             'Alt.F': (event: KeyboardEvent): void => {

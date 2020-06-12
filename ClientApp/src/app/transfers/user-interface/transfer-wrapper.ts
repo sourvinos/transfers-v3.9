@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
-import { Subject } from 'rxjs';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { TransferFlat } from 'src/app/transfers/classes/transfer-flat';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import * as moment from 'moment'
+import { Subject } from 'rxjs'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -35,24 +35,24 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.addShortcuts()
         this.focus('dateIn')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
         this.removeSelectedIdsFromLocalStorage()
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['/'])
     }
 
-    public onLoadTransfers() {
+    public onLoadTransfers(): void {
         this.clearSelectedArraysFromLocalStorage()
         if (this.onCheckValidDate()) {
             this.updateLocalStorageWithDate()
@@ -60,7 +60,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         }
     }
 
-    public onCheckValidDate() {
+    public onCheckValidDate(): boolean {
         const date = (<HTMLInputElement>document.getElementById('dateIn')).value
         if (date.length === 10) {
             this.dateInISO = moment(date, 'DD/MM/YYYY').toISOString(true)

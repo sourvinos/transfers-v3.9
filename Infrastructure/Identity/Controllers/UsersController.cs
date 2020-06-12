@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
+    [Authorize(Policy = "RequireLoggedIn")]
     public class UsersController : ControllerBase {
 
         private readonly UserManager<AppUser> userManager;

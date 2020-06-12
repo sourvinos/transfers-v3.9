@@ -17,7 +17,7 @@ export class JwtInterceptor implements HttpInterceptor {
         if (this.isUserLoggedIn()) {
             return next.handle(this.attachTokenToRequest(request)).pipe(
                 tap((event: HttpEvent<any>) => {
-                    if (event instanceof HttpResponse) { }
+                    if (event instanceof HttpResponse) { return }
                 }), catchError((err): Observable<any> => {
                     if (this.isUserLoggedIn()) {
                         if (err instanceof HttpErrorResponse) {
@@ -76,7 +76,7 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     private attachTokenToRequest(request: HttpRequest<any>) {
-        const token = localStorage.getItem('jwt');
+        const token = localStorage.getItem('jwt')
         return request.clone({
             setHeaders: {
                 Authorization: `Bearer ${token}`

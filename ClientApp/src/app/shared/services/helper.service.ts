@@ -4,34 +4,34 @@ import { Injectable } from '@angular/core'
 
 export class HelperService {
 
-    disableFields(fields: string[]) {
+    disableFields(fields: string[]): void {
         fields.forEach((element: string) => {
             document.getElementById(element).setAttribute('disabled', 'true')
         })
     }
 
-    enableFields(fields: string[]) {
+    enableFields(fields: string[]): void {
         fields.forEach((element: string) => {
             document.getElementById(element).removeAttribute('disabled')
         })
     }
 
-    setFocus(element: string) {
+    setFocus(element: string): void {
         setTimeout(() => {
             document.getElementById(element).focus()
             document.execCommand('selectAll')
         }, 200)
     }
 
-    getUserIdFromLocalStorage() {
+    getUserIdFromLocalStorage(): string {
         return localStorage.getItem('userId')
     }
 
-    getDateFromLocalStorage() {
+    getDateFromLocalStorage(): string {
         return localStorage.getItem('date')
     }
 
-    getApplicationTitle() {
+    getApplicationTitle(): string {
         return 'People movers'
     }
 

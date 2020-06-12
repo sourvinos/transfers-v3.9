@@ -1,17 +1,17 @@
-import { Location } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { AccountService } from 'src/app/shared/services/account.service';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service';
+import { Location } from '@angular/common'
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Title } from '@angular/platform-browser'
+import { Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { AccountService } from 'src/app/shared/services/account.service'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 
 @Component({
     selector: 'forgot-password-form',
@@ -34,27 +34,27 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('email')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         const form = this.form.value
         this.accountService.forgotPassword(form.email).subscribe(response => {
             this.showSnackbar(response.response, 'info')
@@ -105,7 +105,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region Getters
 
-    get email() {
+    get email(): AbstractControl {
         return this.form.get('email')
     }
 

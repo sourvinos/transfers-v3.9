@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Driver } from 'src/app/drivers/classes/driver';
+import { Component, Inject, OnInit } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Driver } from 'src/app/drivers/classes/driver'
 
 @Component({
     selector: 'transfer-assign-driver',
@@ -17,13 +17,13 @@ export class TransferAssignDriverComponent implements OnInit {
 
     //#endregion
 
-    constructor(private dialogRef: MatDialogRef<TransferAssignDriverComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+    constructor(private dialogRef: MatDialogRef<TransferAssignDriverComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.populateDropDowns()
     }
 
-    public onClose() {
+    public onClose(): void {
         this.dialogRef.close()
     }
 

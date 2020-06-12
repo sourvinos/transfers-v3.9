@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 
 export class IndexInteractionService {
 
-    private _data = new Subject<object>()
+    private _data = new Subject<unknown>()
     private _dialogMustClose = new Subject<boolean>()
 
     data = this._data.asObservable()

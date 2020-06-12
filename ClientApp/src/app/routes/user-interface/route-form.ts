@@ -1,20 +1,20 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, Subject } from 'rxjs';
-import { PortService } from 'src/app/ports/classes/port.service';
-import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component';
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive';
-import { ButtonClickService } from 'src/app/shared/services/button-click.service';
-import { DialogService } from 'src/app/shared/services/dialog.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { Route } from '../classes/route';
-import { RouteService } from '../classes/route.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { forkJoin, Subject } from 'rxjs'
+import { PortService } from 'src/app/ports/classes/port.service'
+import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { DialogService } from 'src/app/shared/services/dialog.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { MessageService } from 'src/app/shared/services/message.service'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { Route } from '../classes/route'
+import { RouteService } from '../classes/route.service'
 
 @Component({
     selector: 'route-form',
@@ -47,24 +47,24 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
@@ -78,7 +78,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.routeService.delete(this.form.value.id).subscribe(() => {
@@ -91,11 +91,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -112,7 +112,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.showAddedRecord(), 'info')
@@ -222,7 +222,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private renameKey(obj: Object, oldKey: string, newKey: string) {
+    private renameKey(obj: any, oldKey: string, newKey: string) {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
@@ -230,7 +230,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private renameObjects() {
-        this.ports.forEach(obj => {
+        this.ports.forEach((obj: any) => {
             this.renameKey(obj, 'id', 'portId')
             this.renameKey(obj, 'description', 'portDescription')
             this.renameKey(obj, 'isActive', 'portIsActive')
@@ -270,18 +270,18 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get fullDescription() {
+    get fullDescription(): AbstractControl {
         return this.form.get('fullDescription')
     }
-    get portId() {
+    get portId(): AbstractControl {
         return this.form.get('portId')
     }
 
-    get portDescription() {
+    get portDescription(): AbstractControl {
         return this.form.get('portDescription')
     }
 

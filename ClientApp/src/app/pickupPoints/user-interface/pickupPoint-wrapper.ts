@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { Route } from 'src/app/routes/classes/route';
-import { RouteService } from 'src/app/routes/classes/route.service';
-import { HelperService } from 'src/app/shared/services/helper.service';
-import { InteractionService } from 'src/app/shared/services/interaction.service';
-import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Subject } from 'rxjs'
+import { Route } from 'src/app/routes/classes/route'
+import { RouteService } from 'src/app/routes/classes/route.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 
 @Component({
     selector: 'pickuppoint-wrapper',
@@ -33,19 +33,19 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private helperService: HelperService, private routeService: RouteService, private interactionService: InteractionService, private titleService: Title) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngOnDestroy() {
-        this.ngUnsubscribe.next();
-        this.ngUnsubscribe.unsubscribe();
+    ngOnDestroy(): void {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['/'])
     }
 

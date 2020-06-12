@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { AccountService } from '../shared/services/account.service';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core'
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
+import { AccountService } from '../shared/services/account.service'
 
 @Component({
     selector: 'app-root',
@@ -23,19 +23,19 @@ export class RootComponent implements OnInit, AfterViewInit {
         })
     }
 
-    @HostListener('window:resize', ['$event']) onResize(event: { target: { innerWidth: void; }; }) {
+    @HostListener('window:resize', ['$event']) onResize(): void {
         this.positionLoader()
     }
 
-    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander() {
+    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander(): void {
         this.accountService.logout()
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         console.clear()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.positionLoader()
     }
 

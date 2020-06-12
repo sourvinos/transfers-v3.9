@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 
@@ -44,7 +44,7 @@ export class InteractionService {
      *  The caller(s) sends the selected item and the subscribers call the edit method
      *
     */
-    sendObject(record: any) {
+    sendObject(record: any): void {
         this._record.next(record)
     }
 

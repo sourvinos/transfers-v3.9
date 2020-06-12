@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core'
 
 @Directive({ selector: '[inputTabStop]' })
 
@@ -14,7 +14,7 @@ export class InputTabStopDirective {
 
     @HostListener('keyup', ['$event']) onkeyup(event: { preventDefault: () => void; key: string; target: { getAttribute: (arg0: string) => any; }; }) {
 
-        const elements = Array.prototype.slice.apply(document.querySelectorAll('input[data-tabindex]'));
+        const elements = Array.prototype.slice.apply(document.querySelectorAll('input[data-tabindex]'))
 
         if (event.key === 'Enter' || event.key === 'ArrowDown') {
             let nextTab = +(event.target.getAttribute('data-tabindex')) + 1

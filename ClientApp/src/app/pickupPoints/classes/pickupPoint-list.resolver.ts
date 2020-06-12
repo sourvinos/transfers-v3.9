@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { ListResolved } from './../../shared/classes/list-resolved';
-import { PickupPointService } from './pickupPoint.service';
+import { Injectable } from '@angular/core'
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { Observable, of } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
+import { ListResolved } from './../../shared/classes/list-resolved'
+import { PickupPointService } from './pickupPoint.service'
 
 @Injectable({ providedIn: 'root' })
 
