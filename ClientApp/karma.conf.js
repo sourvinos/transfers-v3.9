@@ -12,7 +12,7 @@ module.exports = function (config) {
         client: {
             clearContext: false,
             jasmine: {
-                random: false,
+                random: false
             }
         },
         coverageIstanbulReporter: {

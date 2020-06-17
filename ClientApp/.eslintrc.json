@@ -25,6 +25,8 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+		"no-undef": "error",
+		"no-var-requires": "error",
     }
 }
