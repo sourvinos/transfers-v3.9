@@ -8,8 +8,8 @@ import { TransferViewModel } from './transferViewModel'
 
 export class TransferService extends DataService {
 
-    constructor(http: HttpClient) {
-        super(http, '/api/transfers')
+    constructor(httpClient: HttpClient) {
+        super(httpClient, '/api/transfers')
     }
 
     getTransfers(date: string): Observable<TransferViewModel> {

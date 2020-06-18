@@ -12,8 +12,8 @@ export class UserService extends DataService {
         super(httpClient, '/api/users')
     }
 
-    updatePassword(formData: ChangePassword): Observable<any> {
-        return this.http.post<any>('/api/account/changePassword/', formData)
+    updatePassword(formData: ChangePassword): Observable<ChangePassword> {
+        return this.http.post<ChangePassword>('/api/account/changePassword/', formData)
     }
 
 }

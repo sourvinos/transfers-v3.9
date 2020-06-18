@@ -8,8 +8,8 @@ import { PickupPoint } from './pickupPoint'
 
 export class PickupPointService extends DataService {
 
-    constructor(http: HttpClient) {
-        super(http, '/api/pickupPoints')
+    constructor(httpClient: HttpClient) {
+        super(httpClient, '/api/pickupPoints')
     }
 
     getAllForRoute(routeId: string): Observable<PickupPoint[]> {

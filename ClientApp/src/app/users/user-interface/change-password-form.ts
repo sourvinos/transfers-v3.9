@@ -33,8 +33,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-
-    //#region Form
+    //#region
 
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     flatForm: ChangePassword

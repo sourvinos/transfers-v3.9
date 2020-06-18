@@ -19,13 +19,11 @@ import { MaterialModule } from './material.module'
                 DialogIndexComponent,
                 InputFormatDirective,
                 InputTabStopDirective,
-                SafeStylePipe
-        ],
+                SafeStylePipe],
         imports: [
                 CommonModule,
                 FormsModule,
-                MaterialModule
-        ],
+                MaterialModule],
         exports: [
                 CommonModule,
                 FormsModule,

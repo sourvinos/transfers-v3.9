@@ -164,7 +164,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, className)
     }
 
-    public onToggleItems(className: string, lookupArray: any[], checkedArray: any) {
+    public onToggleItems(className: string, lookupArray: any[], checkedArray: any): void {
         event.stopPropagation()
         lookupArray.splice(0)
         this.selectItems(className, lookupArray, !checkedArray)

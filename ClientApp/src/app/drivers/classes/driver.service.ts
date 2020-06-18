@@ -8,8 +8,8 @@ import { Driver } from './driver'
 
 export class DriverService extends DataService {
 
-    constructor(http: HttpClient) {
-        super(http, '/api/drivers')
+    constructor(httpClient: HttpClient) {
+        super(httpClient, '/api/drivers')
     }
 
     getDefaultDriver() {

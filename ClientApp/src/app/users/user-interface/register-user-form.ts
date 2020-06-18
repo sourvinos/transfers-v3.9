@@ -17,12 +17,12 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 @Component({
     selector: 'register-user-form',
     templateUrl: './register-user-form.html',
-    styleUrls: ['../../shared/styles/forms.css', './register-user-form.css']
+    styleUrls: ['../../shared/styles/forms.css', './register-user-form.css'],
 })
 
 export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region
+    // #region
 
     form: FormGroup
     input: InputTabStopDirective
@@ -31,15 +31,15 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
     url = '/users'
     windowTitle = 'User'
 
-    //#endregion
+    // #endregion
 
-    //#region
+    // #region
 
     flatForm: RegisterUser
     hidePassword = true
-    confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    confirmValidParentMatcher = new ConfirmValidParentMatcher()
 
-    //#endregion
+    // #endregion
 
     constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
@@ -61,7 +61,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe((response) => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -83,14 +83,14 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             this.showSnackbar(response.response, 'info')
             this.resetForm()
             this.onGoBack()
-        }, error => {
+        }, (error) => {
             this.showSnackbar(error.error.response, 'error')
         })
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            Escape: (event: KeyboardEvent): void => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -109,10 +109,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
                     this.buttonClickService.clickOnButton(event, 'ok')
                 }
-            }
+            },
         }, {
             priority: 1,
-            inputs: true
+            inputs: true,
         })
     }
 
@@ -122,7 +122,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             displayName: this.form.value.displayName,
             userName: this.form.value.userName,
             password: this.form.value.passwords.password,
-            confirmPassword: this.form.value.passwords.confirmPassword
+            confirmPassword: this.form.value.passwords.confirmPassword,
         }
     }
 
@@ -137,8 +137,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             userName: ['', [Validators.required, Validators.maxLength(32)]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
-                confirmPassword: ['', [Validators.required]]
-            }, { validator: ValidationService.childrenEqual })
+                confirmPassword: ['', [Validators.required]],
+            }, { validator: ValidationService.childrenEqual }),
         })
     }
 
@@ -147,14 +147,14 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
     }
 
     private setWindowTitle() {
-        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+        this.titleService.setTitle(`${this.helperService.getApplicationTitle()} :: ${this.windowTitle}`)
     }
 
     private showSnackbar(message: string | string[], type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
+    // #region Getters
 
     get Email(): AbstractControl {
         return this.form.get('email')
@@ -184,6 +184,5 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 
-    //#endregion
-
+    // #endregion
 }

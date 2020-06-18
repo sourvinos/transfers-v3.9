@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 import { Injectable, NgZone } from '@angular/core'
 
 type Terminal = boolean | 'match'
@@ -161,8 +162,7 @@ export class KeyboardShortcuts {
                 case 'SELECT':
                 case 'TEXTAREA':
                     return (true)
-                default:
-                    return (false)
+                default: return (false)
             }
         }
         return (false)
