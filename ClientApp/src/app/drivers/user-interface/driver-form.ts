@@ -80,11 +80,10 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.driverService.delete(this.form.value.id).subscribe(() => {
-                    this.showSnackbar(this.messageService.showDeletedRecord(), 'info')
-                    this.resetForm()
+                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, () => {
-                    this.showSnackbar(this.messageService.recordIsInUse(), 'error')
+                }, error => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })
@@ -97,19 +96,19 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.driverService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showAddedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('description')
                 this.resetForm()
             }, error => {
-                this.showSnackbar(error, 'error')
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {
             this.driverService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showUpdatedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
             }, error => {
-                this.showSnackbar(error, 'error')
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         }
     }
@@ -152,8 +151,8 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string | number) {
         this.driverService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, () => {
-            this.showSnackbar(this.messageService.showNotFoundRecord(), 'error')
+        }, error => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
     }

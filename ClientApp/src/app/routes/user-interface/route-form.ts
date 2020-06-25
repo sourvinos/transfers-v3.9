@@ -82,10 +82,10 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.routeService.delete(this.form.value.id).subscribe(() => {
-                    this.showSnackbar(this.messageService.showDeletedRecord(), 'info')
+                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, () => {
-                    this.showSnackbar(this.messageService.recordIsInUse(), 'error')
+                }, error => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })
@@ -115,15 +115,19 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showAddedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('description')
                 this.resetForm()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {
             this.routeService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showUpdatedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         }
     }
@@ -171,8 +175,8 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string | number) {
         this.routeService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, () => {
-            this.showSnackbar(this.messageService.showNotFoundRecord(), 'error')
+        }, error => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
     }

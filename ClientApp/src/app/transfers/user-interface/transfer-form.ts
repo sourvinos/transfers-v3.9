@@ -111,8 +111,10 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
-                    this.showSnackbar(this.messageService.showDeletedRecord(), 'info')
+                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
+                }, error => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })
@@ -130,29 +132,36 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 filteredArray.push(x)
             }
         })
-        if (filteredArray.length > 0) {
-            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify)
-        }
         if (filteredArray.length === 0) {
             this.clearFields(null, formFields[0], formFields[1])
-            this.focus(formFields[1])
+        }
+        if (filteredArray.length === 1) {
+            const [...elements] = filteredArray
+            this.patchFields(elements[0], fields)
+        }
+        if (filteredArray.length > 1) {
+            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify)
         }
     }
 
     public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showAddedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('destinationDescription')
                 this.resetForm()
                 this.populateFormWithDefaultValues(this.defaultDriver)
                 this.refreshSummaries()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {
             this.transferService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showUpdatedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         }
     }
@@ -221,8 +230,8 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: number) {
         this.transferService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, () => {
-            this.showSnackbar(this.messageService.showNotFoundRecord(), 'error')
+        }, error => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
     }

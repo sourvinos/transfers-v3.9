@@ -80,14 +80,14 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onDelete(): void {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(answer => {
-            if (answer) {
+        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(response => {
+            if (response) {
                 this.userService.delete(this.form.value.id).subscribe((response) => {
                     this.showSnackbar(response.response, 'info')
                     this.resetForm()
                     this.onGoBack()
                 }, error => {
-                    this.showSnackbar(error.error.response, 'error')
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })

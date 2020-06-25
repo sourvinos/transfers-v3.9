@@ -86,10 +86,10 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.pickupPointService.delete(this.form.value.id).subscribe(() => {
-                    this.showSnackbar(this.messageService.showDeletedRecord(), 'info')
+                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, () => {
-                    this.showSnackbar(this.messageService.recordIsInUse(), 'error')
+                }, error => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })
@@ -119,15 +119,19 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showAddedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('routeDescription')
                 this.resetForm()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {
             this.pickupPointService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.showUpdatedRecord(), 'info')
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
+            }, error => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         }
     }
@@ -175,8 +179,8 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     private getRecord(id: number) {
         this.pickupPointService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, () => {
-            this.showSnackbar(this.messageService.showNotFoundRecord(), 'error')
+        }, error => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
     }

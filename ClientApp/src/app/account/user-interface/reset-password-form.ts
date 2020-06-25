@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -39,7 +38,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
@@ -97,10 +96,6 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
                 confirmPassword: ['', [Validators.required]]
             }, { validator: ValidationService.childrenEqual })
         })
-    }
-
-    private setWindowTitle() {
-        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string): void {
