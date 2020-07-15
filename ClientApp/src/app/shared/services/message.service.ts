@@ -7,6 +7,7 @@ export class MessageService {
     public httpMessages = [
         { id: 400, description: 'This record is in use and can not be deleted.' },
         { id: 404, description: 'This record does not exist.' },
+        { id: 409, description: 'There is already a default driver.' },
     ]
 
     public recordCreated(): string { return 'This record has been created.' }

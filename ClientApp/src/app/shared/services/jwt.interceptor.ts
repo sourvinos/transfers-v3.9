@@ -24,11 +24,13 @@ export class JwtInterceptor implements HttpInterceptor {
                             switch ((<HttpErrorResponse>err).status) {
                                 case 400:
                                     return throwError('400')
-                                case 404:
-                                    return throwError('404')
                                 case 401:
                                     console.log('Token expired, attempting refresh')
                                     return this.handleHttpErrorResponse(request, next)
+                                case 404:
+                                    return throwError('404')
+                                case 409:
+                                    return throwError('409')
                             }
                         } else {
                             return throwError(this.handleError)

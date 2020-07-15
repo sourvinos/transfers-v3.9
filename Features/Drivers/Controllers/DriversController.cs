@@ -50,8 +50,8 @@ namespace Transfers {
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDriver([FromRoute] int id, [FromBody] Driver Driver) {
             if (id != Driver.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
-            var defaultDriver = await repo.CheckDefaultDriverExists(null, Driver);
-            if (defaultDriver != null) { return BadRequest(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
+            var defaultDriver = await repo.CheckDefaultDriverExists(id, Driver);
+            if (defaultDriver != null) { return Conflict(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(Driver);
