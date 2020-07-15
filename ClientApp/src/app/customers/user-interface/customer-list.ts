@@ -48,10 +48,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
-        this.loadRecords()
-        this.addShortcuts()
-        this.subscribeToInteractionService()
-        this.onFilter(this.searchTerm)
+        // this.loadRecords()
+        // this.addShortcuts()
+        // this.subscribeToInteractionService()
+        // this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy(): void {
@@ -106,7 +106,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.helperService.setFocus(element)
     }
 
-    private getFilterFromLocalStorage() {
+    getFilterFromLocalStorage() {
         this.searchTerm = localStorage.getItem('searchTermCustomer')
     }
 
@@ -120,7 +120,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setWindowTitle() {
+    setWindowTitle() {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
