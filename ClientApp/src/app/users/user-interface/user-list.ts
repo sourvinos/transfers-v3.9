@@ -55,6 +55,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -88,6 +89,10 @@ export class UserListComponent implements OnInit, OnDestroy {
             priority: 0,
             inputs: true
         })
+    }
+
+    private clearLocalStorageFilter() {
+        localStorage.removeItem('searchTermUser')
     }
 
     private editRecord(id: number) {

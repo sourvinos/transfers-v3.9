@@ -33,7 +33,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region 
+    //#region   
 
     headers = ['S', 'Id', 'Name', 'Phones']
     widths = ['40px', '0px', '50%', '']
@@ -55,6 +55,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -89,6 +90,10 @@ export class DriverListComponent implements OnInit, OnDestroy {
             priority: 0,
             inputs: true
         })
+    }
+
+    private clearLocalStorageFilter() {
+        localStorage.removeItem('searchTermDriver')
     }
 
     private editRecord(id: number) {

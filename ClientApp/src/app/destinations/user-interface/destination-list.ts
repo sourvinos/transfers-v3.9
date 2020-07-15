@@ -55,6 +55,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -89,6 +90,10 @@ export class DestinationListComponent implements OnInit, OnDestroy {
             priority: 0,
             inputs: true
         })
+    }
+
+    private clearLocalStorageFilter() {
+        localStorage.removeItem('searchTermDestination')
     }
 
     private editRecord(id: number) {
