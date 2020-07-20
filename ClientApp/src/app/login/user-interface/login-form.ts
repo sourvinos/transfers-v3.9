@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnDestroy, OnInit, isDevMode } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -89,8 +89,8 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private initForm() {
         this.form = this.formBuilder.group({
-            userName: ['', Validators.required],
-            password: ['', Validators.required],
+            userName: [isDevMode ? 'sourvinos' : '', Validators.required],
+            password: [isDevMode ? '1234567890' : '', Validators.required],
             isHuman: ['', Validators.requiredTrue],
         })
     }
