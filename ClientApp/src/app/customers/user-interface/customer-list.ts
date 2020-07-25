@@ -48,11 +48,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit(): void {
-        // this.setWindowTitle()
-        // this.getFilterFromLocalStorage()
+        this.setWindowTitle()
+        this.getFilterFromLocalStorage()
         // this.loadRecords()
-        this.subscribeToInteractionService()
-        // this.onFilter(this.searchTerm)
+        // this.subscribeToInteractionService()
+        this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy(): void {
@@ -121,7 +121,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     subscribeToInteractionService() {
-        return this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
+        this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             // this.updateLocalStorageWithFilter()
             // this.editRecord(response['id'])
             console.log(response)

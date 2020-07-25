@@ -1,9 +1,6 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "types": [
-            "jest"
-        ],
         "baseUrl": "./",
         "declaration": false,
         "downlevelIteration": true,
