@@ -16,6 +16,9 @@
         "outDir": "./dist/out-tsc",
         "sourceMap": true,
         "target": "es2015",
+        "types": [
+            "cypress"
+        ],
         "typeRoots": [
             "node_modules/@types"
         ],
