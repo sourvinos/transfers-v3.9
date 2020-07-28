@@ -1,8 +1,11 @@
 button {
+    align-items: center;
     color: var(--color-button-text-all) !important;
     cursor: default !important;
+    display: flex;
     font-family: var(--font-family-buttons) !important;
     font-weight: var(--font-weight-buttons) !important;
+    justify-content: center;
     margin: 0 0 0 0.5rem !important;
     min-width: 0 !important;
     outline: 0 !important;
@@ -29,6 +32,7 @@ button.navigation {
 }
 
 button.transparent {
+    background-color: var(--color-button-background-transparent) !important;
     color: var(--color-button-text-transparent) !important;
 }
 

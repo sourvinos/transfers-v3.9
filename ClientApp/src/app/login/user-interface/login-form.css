@@ -2,7 +2,11 @@
     margin: auto;
 }
 
-#forgotPassword {
+#secondary-fields {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
     text-align: end;
     width: 100%;
 }

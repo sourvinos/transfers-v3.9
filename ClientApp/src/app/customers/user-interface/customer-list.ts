@@ -50,8 +50,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
-        // this.loadRecords()
-        // this.subscribeToInteractionService()
+        this.loadRecords()
+        this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
     }
 
@@ -122,8 +122,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     subscribeToInteractionService() {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
-            // this.updateLocalStorageWithFilter()
-            // this.editRecord(response['id'])
+            this.updateLocalStorageWithFilter()
+            this.editRecord(response['id'])
             console.log(response)
         })
     }
