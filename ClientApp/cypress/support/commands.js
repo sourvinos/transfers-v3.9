@@ -1,22 +1,8 @@
-let LOCAL_STORAGE_MEMORY = {}
+import "cypress-localstorage-commands"
 
-Cypress.Commands.add("saveLocalStorageCache", () => {
-    Object.keys(localStorage).forEach(key => {
-        LOCAL_STORAGE_MEMORY[key] = localStorage[key]
-    })
-})
-
-Cypress.Commands.add("restoreLocalStorageCache", () => {
-    Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
-        localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key])
-    })
-})
-
-Cypress.Commands.add("clearLocalStorageCache", () => {
-    localStorage.clear()
-    LOCAL_STORAGE_MEMORY = {}
-})
-
-Cypress.Commands.add('sayHello', () => {
-    console.log('Hello')
+Cypress.Commands.add("login", () => {
+    cy.visit('/login')
+    cy.get('#userName').clear().type('sourvinos')
+    cy.get('#password').clear().type('1234567890')
+    cy.get('#login').click()
 })

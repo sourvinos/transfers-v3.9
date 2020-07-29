@@ -19,7 +19,6 @@
                 <mat-error *ngIf="Password?.hasError('required')">This is a required field!</mat-error>
             </mat-form-field>
             <div id="secondary-fields">
-                <mat-slide-toggle formControlName="isHuman" id="notRobot">I'm not a robot</mat-slide-toggle>
                 <button mat-flat-button class="transparent" id="forgotPassword" (click)="onForgotPassword()">Forgot password?</button>
             </div>
         </div>

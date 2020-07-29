@@ -90,8 +90,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private initForm() {
         this.form = this.formBuilder.group({
             userName: [isDevMode ? 'sourvinos' : '', Validators.required],
-            password: [isDevMode ? '1234567890' : '', Validators.required],
-            isHuman: ['', Validators.requiredTrue],
+            password: [isDevMode ? '1234567890' : '', Validators.required]
         })
     }
 

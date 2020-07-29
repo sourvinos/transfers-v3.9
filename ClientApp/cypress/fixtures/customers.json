@@ -10,11 +10,5 @@
         "description": "Alexander Eberhardt",
         "phones": "+49 02691 27 94 33",
         "email": "AlexanderEberhardt@teleworm.us"
-    },
-    {
-        "id": 3,
-        "description": "Frank Müller",
-        "phones": "+49 02691 27 94 33",
-        "email": "FrankMuller@armyspy.com"
     }
 ]
