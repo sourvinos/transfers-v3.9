@@ -28,9 +28,10 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     records: PickupPoint[] = []
     resolver = 'pickupPointList'
-    searchTerm: string;
+    searchTerm = ''
     unlisten: Unlisten
     windowTitle = 'Pickup points'
+    localStorageSearchTerm = 'searchTermPickupPoint'
 
     //#endregion
 
@@ -77,7 +78,6 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTermPickupPoint')
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -102,8 +102,12 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         })
     }
 
+    private clearLocalStorageFilter() {
+        localStorage.removeItem(this.localStorageSearchTerm)
+    }
+
     private editRecord(id: number) {
-        localStorage.setItem('searchTermPickupPoint', this.searchTerm !== null ? this.searchTerm : '')
+        this.updateLocalStorageWithFilter()
         this.router.navigate(['pickupPoint/', id], { relativeTo: this.activatedRoute })
     }
 
@@ -113,7 +117,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private getFilterFromLocalStorage() {
-        this.searchTerm = localStorage.getItem('searchTermPickupPoint')
+        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm)
     }
 
     private getRouteDescription(routeId: number) {
@@ -142,8 +146,13 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     private subscribeToInteractionService() {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
+            this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
         })
+    }
+
+    private updateLocalStorageWithFilter() {
+        localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
 
 }

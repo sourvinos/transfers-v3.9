@@ -26,10 +26,11 @@ export class PortListComponent implements OnInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     records: Port[] = []
     resolver = 'portList'
-    searchTerm: string;
+    searchTerm = ''
     unlisten: Unlisten
     url = '/ports'
     windowTitle = 'Ports'
+    localStorageSearchTerm = 'searchTermPort'
 
     //#endregion
 
@@ -54,7 +55,6 @@ export class PortListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -66,10 +66,8 @@ export class PortListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTermPort')
         this.router.navigate(['/'])
     }
-
     public onNew() {
         this.router.navigate([this.url + '/new'])
     }
@@ -92,11 +90,11 @@ export class PortListComponent implements OnInit, OnDestroy {
     }
 
     private clearLocalStorageFilter() {
-        localStorage.removeItem('searchTermPort')
+        localStorage.removeItem(this.localStorageSearchTerm)
     }
 
     private editRecord(id: number) {
-        localStorage.setItem('searchTermPort', this.searchTerm !== null ? this.searchTerm : '')
+        this.updateLocalStorageWithFilter()
         this.router.navigate([this.url, id])
     }
 
@@ -106,7 +104,7 @@ export class PortListComponent implements OnInit, OnDestroy {
     }
 
     private getFilterFromLocalStorage() {
-        this.searchTerm = localStorage.getItem('searchTermPort')
+        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm)
     }
 
     private loadRecords() {
@@ -129,8 +127,13 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     private subscribeToInteractionService() {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
+            this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
         })
+    }
+
+    private updateLocalStorageWithFilter() {
+        localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
 
 }

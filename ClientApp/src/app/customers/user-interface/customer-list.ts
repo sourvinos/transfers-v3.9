@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -10,6 +10,7 @@ import { ListResolved } from '../../shared/classes/list-resolved'
 import { Customer } from '../classes/customer'
 import { SnackbarService } from './../../shared/services/snackbar.service'
 import { takeUntil } from 'rxjs/operators'
+import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 
 @Component({
     selector: 'customer-list',
@@ -25,9 +26,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     records: Customer[] = []
     resolver = 'customerList'
-    searchTerm = '';
+    searchTerm = ''
+    unlisten: Unlisten
     url = '/customers'
     windowTitle = 'Customers'
+    localStorageSearchTerm = 'searchTermCustomer'
 
     //#endregion
 
@@ -41,38 +44,50 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    @HostListener('keyup', ['$event']) onkeyup(event: KeyboardEvent) {
-        this.handleKeyboardEvents(event)
-    }
-
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
+        this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
     }
 
     ngOnDestroy() {
-        this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
+        this.unlisten()
     }
 
     public onFilter(query: string) {
         this.searchTerm = query
-        this.filteredRecords = query ? this.filterArray(this.records, this.searchTerm) : this.records
+        this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGoBack() {
-        localStorage.removeItem('searchTermCustomer')
         this.router.navigate(['/'])
     }
-
     public onNew() {
         this.router.navigate([this.url + '/new'])
+    }
+
+    private addShortcuts() {
+        this.unlisten = this.keyboardShortcutsService.listen({
+            'Escape': () => {
+                this.onGoBack()
+            },
+            'Alt.F': (event: KeyboardEvent) => {
+                this.focus(event, 'searchTerm')
+            },
+            'Alt.N': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'new')
+            }
+        }, {
+            priority: 0,
+            inputs: true
+        })
     }
 
     private clearLocalStorageFilter() {
@@ -83,10 +98,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.router.navigate([this.url, id])
     }
 
-    private filterArray(records: any[], query: string) {
-        return records.filter(p => p.description.toLowerCase().includes(query.toLowerCase()))
-    }
-
     private focus(event: KeyboardEvent, element: string) {
         event.preventDefault()
         this.helperService.setFocus(element)
@@ -94,12 +105,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     private getFilterFromLocalStorage() {
         this.searchTerm = localStorage.getItem('searchTermCustomer')
-    }
-
-    private handleKeyboardEvents(event: KeyboardEvent) {
-        if (event.code === 'Escape') { this.onGoBack() }
-        if (event.altKey && event.code === 'KeyF') { this.focus(event, 'searchTerm') }
-        if (event.altKey && event.code === 'KeyN') { this.buttonClickService.clickOnButton(event, 'new') }
     }
 
     private loadRecords() {
@@ -120,7 +125,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.snackbarService.open(message, type)
     }
 
-    subscribeToInteractionService() {
+    private subscribeToInteractionService() {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
