@@ -68,12 +68,16 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
+            'Alt.F': (event: KeyboardEvent) => {
+                event.preventDefault()
+                document.getElementById('forgotPassword').click()
+            },
             'Alt.L': (event: KeyboardEvent) => {
                 event.preventDefault()
                 document.getElementById('login').click()
             }
         }, {
-            priority: 2,
+            priority: 1,
             inputs: true
         })
     }

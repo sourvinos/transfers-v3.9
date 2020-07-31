@@ -18,10 +18,7 @@
                 </button>
                 <mat-error *ngIf="Password?.hasError('required')">This is a required field!</mat-error>
             </mat-form-field>
-            <div id="secondary-fields">
-                <mat-slide-toggle formControlName="isHuman">I'm not a robot</mat-slide-toggle>
-                <button mat-flat-button class="transparent" id="forgotPassword" (click)="onForgotPassword()">Forgot password?</button>
-            </div>
+            <mat-slide-toggle formControlName="isHuman">I'm not a robot</mat-slide-toggle>
         </div>
     </form>
     <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
@@ -29,6 +26,7 @@
 
 <div id="footer">
     <div id="buttons">
+        <button mat-flat-button class="secondary" id="forgotPassword" (click)="onForgotPassword()">Forgot password?</button>
         <button mat-flat-button class="primary" id="login" [disabled]="!form.valid" (click)="onLogin()">Login</button>
     </div>
 </div>

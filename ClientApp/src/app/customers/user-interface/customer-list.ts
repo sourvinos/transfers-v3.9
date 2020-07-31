@@ -124,7 +124,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
-            console.log(response)
         })
     }
 
