@@ -28,7 +28,7 @@ input[type=number] {
 }
 
 .mat-form-field-wrapper {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.7rem !important;
 }
 
 .mat-form-field-label-wrapper {
@@ -103,6 +103,10 @@ input[type=number] {
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
     background-color: var(--color-input-text-error) !important;
+}
+
+.mat-form-field-infix {
+    padding-top: 0 !important;
 }
 
 input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {

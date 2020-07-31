@@ -15,7 +15,7 @@
         "navigation title";
     grid-template-columns: fit-content(0%) auto;
     grid-template-rows: 66px;
-    margin: 2rem;
+    margin: 1rem 2rem;
 }
 
 #header #title {
@@ -55,7 +55,7 @@
 
 #footer {
     grid-area: footer;
-    margin: 2rem;
+    margin: 1rem 2rem 2rem 2rem;
 }
 
 #footer #buttons {
@@ -85,7 +85,7 @@
 /* Small heights */
 @media only screen and (max-height: 767px) {
     form {
-        flex-direction: row !important;
+        flex-direction: column !important;
     }
 
     #section-one {

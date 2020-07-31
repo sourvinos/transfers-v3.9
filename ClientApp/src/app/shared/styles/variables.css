@@ -11,6 +11,7 @@
     --font-size-headers: 2rem;
     /* input boxes */
     --font-size-input: 1rem;
+    --font-size-labels: 1.2rem;
     /* Checkboxes */
     --font-size-checkbox: 0.9rem;
     /* Dialogs */
@@ -34,7 +35,6 @@
     /* Instructions */
     --font-size-paragraphs: 0.8rem;
     /* Transfers totals */
-    --font-size-label: 0.7rem;
     --font-size-sum: 1rem;
 }
 
