@@ -88,8 +88,8 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
             this.showSnackbar(response.response, 'info')
             this.resetForm()
             this.onGoBack()
-        }, error => {
-            this.showSnackbar(error, 'error')
+        }, () => {
+            this.showSnackbar(this.messageService.wrongCurrentPassword(), 'error')
         })
     }
 
@@ -152,7 +152,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     }
 
-    private populateFields(result) {
+    private populateFields(result: { id: any }) {
         this.form.patchValue({
             userId: result.id
         })

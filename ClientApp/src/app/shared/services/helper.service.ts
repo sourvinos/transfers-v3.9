@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core'
 export class HelperService {
 
     setFocus(element: string) {
-        const input = <HTMLInputElement>document.getElementById(element)
-        input.focus()
-        input.select()
+        setTimeout(() => {
+            const input = <HTMLInputElement>document.getElementById(element)
+            input.focus()
+            input.select()
+        }, 200)
     }
 
     getUserIdFromLocalStorage() {

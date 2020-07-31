@@ -7,7 +7,7 @@ export class MessageService {
     public httpMessages = [
         { id: 400, description: 'This record is in use and can not be deleted.' },
         { id: 404, description: 'This record does not exist.' },
-        { id: 409, description: 'There is already a default driver.' },
+        { id: 409, description: 'There is already a default driver.' }
     ]
 
     public recordCreated(): string { return 'This record has been created.' }
@@ -20,6 +20,7 @@ export class MessageService {
     public noDefaultDriverFound(): string { return 'A default driver has not been found.' }
     public noContactWithApi(): string { return 'Unable to get any records from the server.' }
     public resetPassword(): string { return 'If your email exists in our database, you will be redirected to the password reset page.' }
+    public wrongCurrentPassword(): string { return 'The current password is wrong.' }
 
     public getHttpErrorMessage(id: number) {
         const message = this.httpMessages.filter(x => x.id == id)
