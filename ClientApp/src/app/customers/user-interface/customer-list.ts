@@ -47,7 +47,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -55,23 +55,23 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
 
-    public onFilter(query: string): void {
+    public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.filterArray(this.records, this.searchTerm) : this.records
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         localStorage.removeItem('searchTermCustomer')
         this.router.navigate(['/'])
     }
 
-    public onNew(): void {
+    public onNew() {
         this.router.navigate([this.url + '/new'])
     }
 

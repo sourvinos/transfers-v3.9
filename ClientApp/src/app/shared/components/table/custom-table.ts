@@ -30,23 +30,23 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     constructor(private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.differences = this.iterableDiffers.find(this.records).create()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.initVariables()
         this.onGotoRow(1)
     }
 
-    ngDoCheck(): void {
+    ngDoCheck() {
         const changes: IterableChanges<any> = this.differences.diff(this.records)
         if (changes) {
             this.checked = false
         }
     }
 
-    onCheckKeyboard(event: any): void {
+    onCheckKeyboard(event: any) {
         switch (event.keyCode) {
             case 38: this.onGotoRow('Up'); break
             case 40: this.onGotoRow('Down'); break
@@ -55,11 +55,11 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onDomChange(): void {
+    onDomChange() {
         this.onGotoRow(1)
     }
 
-    onHeaderClick(columnName: string, sortOrder: string, column: any): void {
+    onHeaderClick(columnName: string, sortOrder: string, column: any) {
         if (column.toElement.cellIndex === 0) {
             this.checked = !this.checked
             this.checkedIds = []
@@ -81,12 +81,12 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onSortMe(columnName: string, sortOrder: string): void {
+    onSortMe(columnName: string, sortOrder: string) {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
 
-    public onGotoRow(key: any): void {
+    public onGotoRow(key: any) {
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
                 this.selectRow(this.table, key)
@@ -111,7 +111,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onToggleCheckBox(row: number): void {
+    onToggleCheckBox(row: number) {
         this.checkedIds = []
         this.totalPersons = 0
         this.table.rows[row].classList.toggle('checked')

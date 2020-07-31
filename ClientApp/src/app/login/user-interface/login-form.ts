@@ -30,24 +30,23 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     //#region 
-
     hidePassword = true
 
     //#endregion
 
     constructor(private accountService: AccountService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('userName')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -69,7 +68,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Alt.L': (event: KeyboardEvent): void => {
+            'Alt.L': (event: KeyboardEvent) => {
                 event.preventDefault()
                 document.getElementById('login').click()
             }
@@ -90,7 +89,8 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private initForm() {
         this.form = this.formBuilder.group({
             userName: [isDevMode ? 'sourvinos' : '', Validators.required],
-            password: [isDevMode ? '1234567890' : '', Validators.required]
+            password: [isDevMode ? '1234567890' : '', Validators.required],
+            isHuman: ['', Validators.requiredTrue]
         })
     }
 
@@ -98,7 +98,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string | string[], type: string): void {
+    private showSnackbar(message: string | string[], type: string) {
         this.snackbarService.open(message, type)
     }
 

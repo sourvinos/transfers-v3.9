@@ -19,7 +19,7 @@ export class InputFormatDirective {
         }
     }
 
-    @HostListener('keyup', ['$event']) onkeyup(event: { key: string; target: { getAttribute: { (arg0: string): void; (arg0: string): void } } }) {
+    @HostListener('keyup', ['$event']) onkeyup(event: { key: string; target: { getAttribute: { (arg0: string); (arg0: string) } } }) {
         if (this.format === 'date') {
             let value: string = this.el.nativeElement.value
             value = value.replace(/[-,.]/g, '/').replace(/[^0-9/]/g, '')

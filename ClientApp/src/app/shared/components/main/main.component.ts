@@ -8,15 +8,15 @@ import { AfterViewInit, Component, HostListener } from '@angular/core'
 
 export class MainComponent implements AfterViewInit {
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.positionHamburger()
     }
 
-    @HostListener('window:resize', ['$event']) onResize(): void {
+    @HostListener('window:resize', ['$event']) onResize() {
         this.positionHamburger()
     }
 
-    onToggleMenu(): void {
+    onToggleMenu() {
         document.getElementById('hamburger').classList.toggle('open')
         const sidebar = document.getElementById('sidebar')
         sidebar.style.width = sidebar.style.width === '17rem' ? '0' : '17rem'

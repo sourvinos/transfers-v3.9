@@ -4,22 +4,22 @@ import { Injectable } from '@angular/core'
 
 export class HelperService {
 
-    setFocus(element: string): void {
+    setFocus(element: string) {
         setTimeout(() => {
             document.getElementById(element).focus()
             document.execCommand('selectAll')
         }, 200)
     }
 
-    getUserIdFromLocalStorage(): string {
+    getUserIdFromLocalStorage() {
         return localStorage.getItem('userId')
     }
 
-    getDateFromLocalStorage(): string {
+    getDateFromLocalStorage() {
         return localStorage.getItem('date')
     }
 
-    getApplicationTitle(): string {
+    getApplicationTitle() {
         return 'People movers'
     }
 

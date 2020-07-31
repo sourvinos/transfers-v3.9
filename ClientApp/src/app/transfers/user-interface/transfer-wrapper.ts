@@ -35,24 +35,24 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.addShortcuts()
         this.focus('dateIn')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
         this.removeSelectedIdsFromLocalStorage()
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate(['/'])
     }
 
-    public onLoadTransfers(): void {
+    public onLoadTransfers() {
         this.clearSelectedArraysFromLocalStorage()
         if (this.onCheckValidDate()) {
             this.updateLocalStorageWithDate()

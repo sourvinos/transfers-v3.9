@@ -36,17 +36,17 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('userName')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -66,7 +66,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onChangePassword(): void {
+    public onChangePassword() {
         if (this.form.dirty) {
             this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.router.navigate(['/users/changePassword/' + this.form.value.id])
@@ -79,12 +79,12 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onDelete(): void {
+    public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(response => {
             if (response) {
                 this.userService.delete(this.form.value.id).subscribe((response) => {
-                    this.showSnackbar(response.response, 'info')
                     this.resetForm()
+                    this.showSnackbar(response.response, 'info')
                     this.onGoBack()
                 }, error => {
                     this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -93,11 +93,11 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate([this.url])
     }
 
-    public onSave(): void {
+    public onSave() {
         this.userService.update(this.form.value.id, this.form.value).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
             this.resetForm()
@@ -109,7 +109,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -176,7 +176,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

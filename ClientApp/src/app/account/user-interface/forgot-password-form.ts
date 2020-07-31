@@ -34,27 +34,27 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('email')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate([this.url])
     }
 
-    public onSave(): void {
+    public onSave() {
         const form = this.form.value
         this.accountService.forgotPassword(form.email).subscribe(response => {
             this.showSnackbar(response.response, 'info')
@@ -69,7 +69,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -99,7 +99,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

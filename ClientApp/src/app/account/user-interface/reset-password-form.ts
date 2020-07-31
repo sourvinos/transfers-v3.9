@@ -45,22 +45,22 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('password')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onSave(): void {
+    public onSave() {
         const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
@@ -98,7 +98,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         })
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

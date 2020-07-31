@@ -68,7 +68,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.scrollToForm()
@@ -76,11 +76,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.populateDropDowns()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('destinationDescription')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -102,15 +102,16 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onCalculateTotalPersons(): void {
+    public onCalculateTotalPersons() {
         const totalPersons = parseInt(this.form.value.adults, 10) + parseInt(this.form.value.kids, 10) + parseInt(this.form.value.free, 10)
         this.form.patchValue({ totalPersons: Number(totalPersons) ? totalPersons : 0 })
     }
 
-    public onDelete(): void {
+    public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
+                    this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, error => {
@@ -120,11 +121,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -144,7 +145,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSave(): void {
+    public onSave() {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')

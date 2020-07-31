@@ -16,30 +16,30 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
     constructor(private accountService: AccountService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
         this.displayName = this.accountService.currentDisplayName
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         setTimeout(() => {
             this.isNotLoaded = false
         }, 1000)
     }
 
-    triggerEvent(elem: HTMLElement, event: string): void {
+    triggerEvent(elem: HTMLElement, event: string) {
         const clickEvent = new Event(event)
         elem.dispatchEvent(clickEvent)
     }
 
-    onCloseSidebar(): void {
+    onCloseSidebar() {
         const hamburger = document.getElementById('hamburger')
         if (hamburger.className === 'open') {
             this.triggerEvent(hamburger, 'click')
         }
     }
 
-    onLogout(): void {
+    onLogout() {
         this.accountService.logout()
     }
 

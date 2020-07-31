@@ -48,17 +48,17 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('currentPassword')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -78,11 +78,11 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate([this.url])
     }
 
-    public onSave(): void {
+    public onSave() {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe((response) => {
             this.showSnackbar(response.response, 'info')
@@ -95,7 +95,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -166,7 +166,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

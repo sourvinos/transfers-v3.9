@@ -9,7 +9,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class TransferPdfService {
 
-    createReport(transfers: any[], drivers: any[], date: string): void {
+    createReport(transfers: any[], drivers: any[], date: string) {
         const array = this.sort(transfers)
         drivers.forEach(driver => {
             const filteredArray = array.filter(x => x.driver === driver)

@@ -78,13 +78,13 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.addShortcuts()
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.setWindowTitle()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
@@ -101,24 +101,24 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         }
     }
 
-    ngAfterViewChecked(): void {
+    ngAfterViewChecked() {
         document.getElementById('summaries').style.height = document.getElementById('listFormCombo').offsetHeight - 125 + 'px'
     }
 
-    ngDoCheck(): void {
+    ngDoCheck() {
         if (this.mustRefresh) {
             this.mustRefresh = false
             this.ngAfterViewInit()
         }
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onAssignDriver(): void {
+    public onAssignDriver() {
         if (this.isRecordSelected()) {
             const dialogRef = this.dialog.open(TransferAssignDriverComponent, {
                 height: '350px',
@@ -142,11 +142,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         }
     }
 
-    public onCreatePdf(): void {
+    public onCreatePdf() {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
     }
 
-    public onNew(): void {
+    public onNew() {
         this.driverService.getDefaultDriver().subscribe(() => {
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
@@ -154,7 +154,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         })
     }
 
-    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string): void {
+    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string) {
         this.toggleActiveItem(item, lookupArray)
         this.initCheckedPersons()
         this.filterByCriteria()
@@ -302,7 +302,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.router.navigate(['transfers/dateIn/', this.helperService.getDateFromLocalStorage()])
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate(['/'])
     }
 

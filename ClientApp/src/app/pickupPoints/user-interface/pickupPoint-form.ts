@@ -51,18 +51,18 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('routeDescription')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -86,6 +86,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.pickupPointService.delete(this.form.value.id).subscribe(() => {
+                    this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, error => {
@@ -95,7 +96,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -116,7 +117,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         }
     }
 
-    public onSave(): void {
+    public onSave() {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
@@ -138,7 +139,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -146,17 +147,17 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
             'Alt.D': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'delete')
             },
-            'Alt.S': (event: KeyboardEvent): void => {
+            'Alt.S': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'save')
                 }
             },
-            'Alt.C': (event: KeyboardEvent): void => {
+            'Alt.C': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
                     this.buttonClickService.clickOnButton(event, 'cancel')
                 }
             },
-            'Alt.O': (event: KeyboardEvent): void => {
+            'Alt.O': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
                     this.buttonClickService.clickOnButton(event, 'ok')
                 }
@@ -284,7 +285,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

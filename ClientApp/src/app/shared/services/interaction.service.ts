@@ -44,7 +44,7 @@ export class InteractionService {
      *  The caller(s) sends the selected item and the subscribers call the edit method
      *
     */
-    sendObject(record: any): void {
+    sendObject(record: any) {
         this._record.next(record)
     }
 

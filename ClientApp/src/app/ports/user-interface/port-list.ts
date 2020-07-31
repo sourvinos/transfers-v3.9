@@ -44,7 +44,7 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -53,7 +53,7 @@ export class PortListComponent implements OnInit, OnDestroy {
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.clearLocalStorageFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
@@ -65,7 +65,7 @@ export class PortListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         localStorage.removeItem('searchTermPort')
         this.router.navigate(['/'])
     }
@@ -76,13 +76,13 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (): void => {
+            'Escape': () => {
                 this.onGoBack()
             },
-            'Alt.F': (event: KeyboardEvent): void => {
+            'Alt.F': (event: KeyboardEvent) => {
                 this.focus(event, 'searchTerm')
             },
-            'Alt.N': (event: KeyboardEvent): void => {
+            'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
             }
         }, {

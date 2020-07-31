@@ -24,7 +24,7 @@ export class DialogAlertComponent {
         }
     }
 
-    onClose(): void {
+    onClose() {
         this.dialogRef.close()
     }
 

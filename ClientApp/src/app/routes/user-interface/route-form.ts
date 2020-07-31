@@ -47,18 +47,18 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('description')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -78,10 +78,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onDelete(): void {
+    public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.routeService.delete(this.form.value.id).subscribe(() => {
+                    this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, error => {
@@ -91,11 +92,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate([this.url])
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -112,7 +113,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSave(): void {
+    public onSave() {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
@@ -134,7 +135,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -268,7 +269,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

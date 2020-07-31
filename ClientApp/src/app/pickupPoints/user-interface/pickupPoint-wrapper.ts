@@ -33,19 +33,19 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private helperService: HelperService, private routeService: RouteService, private interactionService: InteractionService, private titleService: Title) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate(['/'])
     }
 

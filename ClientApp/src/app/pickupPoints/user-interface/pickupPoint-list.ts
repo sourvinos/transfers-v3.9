@@ -56,7 +56,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -65,7 +65,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -76,7 +76,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         localStorage.removeItem('searchTermPickupPoint')
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }

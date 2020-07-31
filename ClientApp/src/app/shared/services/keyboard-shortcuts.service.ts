@@ -75,7 +75,7 @@ export class KeyboardShortcuts {
         this.listeners = []
         this.normalizedKeys = Object.create(null)
         this.zone.runOutsideAngular(
-            (): void => {
+            () => {
                 window.addEventListener('keydown', this.handleKeyboardEvent)
             }
         )
@@ -89,7 +89,7 @@ export class KeyboardShortcuts {
             inputs: this.normalizeInputs(options.inputs),
             bindings: this.normalizeBindings(bindings)
         })
-        const unlisten = (): void => {
+        const unlisten = () => {
             this.removeListener(listener)
         }
         return (unlisten)
@@ -126,28 +126,28 @@ export class KeyboardShortcuts {
         return (this.normalizeKey(parts.join('.')))
     }
 
-    private handleKeyboardEvent = (event: KeyboardEvent): void => {
+    private handleKeyboardEvent = (event: KeyboardEvent) => {
         const key = this.getKeyFromEvent(event)
         const isInputEvent = this.isEventFromInput(event)
         let handler: Handler
         for (const listener of this.listeners) {
-            if (handler = listener.bindings[key]) {
-                if (!isInputEvent || listener.inputs) {
-                    const result = this.zone.runGuarded(
-                        (): boolean | void => {
-                            return (handler(event))
-                        }
-                    )
-                    if (result === false) {
-                        return
-                    } else if (result === true) {
-                        continue
+            handler = listener.bindings[key]
+            if (!isInputEvent || listener.inputs) {
+                const result = this.zone.runGuarded(
+                    (): boolean | void => {
+                        return (handler(event))
                     }
-                }
-                if (listener.terminal === 'match') {
+                )
+                if (result === false) {
                     return
+                } else if (result === true) {
+                    continue
                 }
             }
+            if (listener.terminal === 'match') {
+                return
+            }
+            // }
             if ((listener.terminal === true) && !listener.terminalWhitelist[key]) {
                 return
             }
@@ -216,7 +216,7 @@ export class KeyboardShortcuts {
         return (normalized)
     }
 
-    private removeListener(listenerToRemove: Listener): void {
+    private removeListener(listenerToRemove: Listener) {
         this.listeners = this.listeners.filter(
             (listener: Listener): boolean => {
                 return (listener !== listenerToRemove)

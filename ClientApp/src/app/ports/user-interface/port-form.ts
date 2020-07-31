@@ -37,17 +37,17 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.focus('description')
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -71,6 +71,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
             if (response) {
                 this.portService.delete(this.form.value.id).subscribe(() => {
+                    this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, error => {
@@ -80,11 +81,11 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGoBack(): void {
+    public onGoBack() {
         this.router.navigate([this.url])
     }
 
-    public onSave(): void {
+    public onSave() {
         if (this.form.value.id === 0) {
             this.portService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
@@ -106,7 +107,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': (event: KeyboardEvent): void => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
@@ -174,7 +175,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string): void {
+    private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
     }
 

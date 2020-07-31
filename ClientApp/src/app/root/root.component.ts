@@ -23,19 +23,19 @@ export class RootComponent implements OnInit, AfterViewInit {
         })
     }
 
-    @HostListener('window:resize', ['$event']) onResize(): void {
+    @HostListener('window:resize', ['$event']) onResize() {
         this.positionLoader()
     }
 
-    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander(): void {
+    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander() {
         this.accountService.logout()
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         console.clear()
     }
 
-    ngAfterViewInit(): void {
+    ngAfterViewInit() {
         this.positionLoader()
     }
 

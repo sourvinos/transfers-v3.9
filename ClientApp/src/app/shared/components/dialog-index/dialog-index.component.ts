@@ -33,11 +33,11 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
         this.records = data.records
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.subscribeToIndexinteractionService()
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }

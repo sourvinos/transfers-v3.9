@@ -23,7 +23,7 @@ export class DomChangeDirective implements OnDestroy {
         })
     }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         this.changes.disconnect()
     }
 }
