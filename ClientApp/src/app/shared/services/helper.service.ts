@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core'
 export class HelperService {
 
     setFocus(element: string) {
-        setTimeout(() => {
-            document.getElementById(element).focus()
-            document.execCommand('selectAll')
-        }, 200)
+        const input = <HTMLInputElement>document.getElementById(element)
+        input.focus()
+        input.select()
     }
 
     getUserIdFromLocalStorage() {

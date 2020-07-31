@@ -9,6 +9,7 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { AccountService } from '../../shared/services/account.service'
 import { SnackbarService } from './../../shared/services/snackbar.service'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 
 @Component({
     selector: 'login-form',
@@ -34,7 +35,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -69,12 +70,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Alt.F': (event: KeyboardEvent) => {
-                event.preventDefault()
-                document.getElementById('forgotPassword').click()
+                this.buttonClickService.clickOnButton(event, 'forgotPassword')
             },
             'Alt.L': (event: KeyboardEvent) => {
-                event.preventDefault()
-                document.getElementById('login').click()
+                this.buttonClickService.clickOnButton(event, 'login')
             }
         }, {
             priority: 1,
