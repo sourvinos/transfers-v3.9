@@ -230,6 +230,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getRecord(id: number) {
         this.transferService.getSingle(id).subscribe(result => {
+            console.log(result)
             this.populateFields(result)
         }, error => {
             this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -245,7 +246,6 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             customerId: [0, Validators.required], customerDescription: ['', Validators.required],
             pickupPointId: [0, Validators.required], pickupPointDescription: ['', Validators.required],
             driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
-            portId: [0, Validators.required], portDescription: [Validators.required],
             adults: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             kids: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             free: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
@@ -293,7 +293,6 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             destinationId: result.destination.id, destinationDescription: result.destination.description,
             customerId: result.customer.id, customerDescription: result.customer.description,
             pickupPointId: result.pickupPoint.id, pickupPointDescription: result.pickupPoint.description,
-            portId: result.pickupPoint.route.port.id, portDescription: result.pickupPoint.route.port.description,
             driverId: result.driver.id, driverDescription: result.driver.description,
             adults: result.adults,
             kids: result.kids,

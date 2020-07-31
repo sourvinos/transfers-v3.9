@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    // [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize(Policy = "RequireLoggedIn")]
     public class CustomersController : ControllerBase {
 
         private readonly ICustomerRepository repo;

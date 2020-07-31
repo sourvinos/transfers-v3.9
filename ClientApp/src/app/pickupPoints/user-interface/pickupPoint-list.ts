@@ -117,7 +117,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private getFilterFromLocalStorage() {
-        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm)
+        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm) != null ? localStorage.getItem(this.localStorageSearchTerm) : ''
     }
 
     private getRouteDescription(routeId: number) {
