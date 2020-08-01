@@ -5,7 +5,6 @@
 @import "buttons.css";
 @import "checkbox.css";
 @import "dialogs.css";
-@import "dividers.css";
 @import "expansion-panel.css";
 @import "headers.css";
 @import "inputs.css";
@@ -14,7 +13,8 @@
 @import "select.css";
 @import "snackbar.css";
 @import "loader.css";
-@import "variables.css";
+@import "big-screen-variables.css";
+@import "small-screen-variables.css";
 @import "colors-dark.css";
 
 * {
@@ -28,18 +28,6 @@ html, body {
 body, h1, h2, h3, p {
     margin: 0 !important;
     padding: 0 !important;
-}
-
-#section-one {
-    display: flex;
-    flex-direction: column;
-    grid-area: "section-one";
-}
-
-#section-two {
-    display: flex;
-    flex-direction: column;
-    grid-area: "section-two";
 }
 
 .hidden {
@@ -67,13 +55,4 @@ p.instructions {
 
 .info {
     background-color: var(--color-snackbar-background-info) !important;
-}
-
-/* Narrow screen */
-@media only screen and (max-width: 1366px) {
-    * {
-        --font-size-headers: 1.6rem;
-        --font-size-labels: 0.9rem;
-        --font-size-input: 0.9rem;
-    }
 }

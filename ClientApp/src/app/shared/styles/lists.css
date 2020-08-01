@@ -14,12 +14,11 @@
     grid-template-areas:
         "title searchbox";
     grid-template-columns: 1fr auto;
-    grid-template-rows: 66px;
     margin: 2rem;
 }
 
 #header #title {
-    align-items: baseline;
+    align-items: center;
     display: flex;
     grid-area: title;
     justify-content: flex-start;

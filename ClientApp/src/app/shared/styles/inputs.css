@@ -27,16 +27,27 @@ input[type=number] {
     text-align: right;
 }
 
+.mat-form-field {
+    width: 100% !important;
+}
+
+.mat-form-field-infix {
+    font-size: var(--font-size-height) !important;
+    padding-bottom: var(--input-bottom-margin) !important;
+    padding-top: 0 !important;
+}
+
 .mat-form-field-wrapper {
     margin-bottom: 0.7rem !important;
 }
 
-.mat-form-field-label-wrapper {
-    font-size: 1.2rem;
+.mat-form-field-label {
+    font-size: var(--font-size-labels) !important;
 }
 
 .mat-hint {
     color: var(--color-input-not-focus) !important;
+    margin-top: 3px !important;
 }
 
 .mat-icon {
@@ -49,6 +60,10 @@ input[type=number] {
 
 #search-box .mat-form-field-wrapper {
     margin: 0 !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+    font-size: var(--font-size-input) !important;
 }
 
 /* Not focused - Not error */
@@ -68,6 +83,10 @@ input[type=number] {
 
 .mat-form-field .mat-hint {
     color: var(--color-input-not-focus) !important;
+}
+
+.mat-error {
+    font-size: var(--font-size-mat-error) !important;
 }
 
 /* Focused */
@@ -103,12 +122,4 @@ input[type=number] {
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
     background-color: var(--color-input-text-error) !important;
-}
-
-.mat-form-field-infix {
-    padding-top: 0 !important;
-}
-
-input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
-    font-size: var(--font-size-input) !important;
 }

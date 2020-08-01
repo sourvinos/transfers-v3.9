@@ -158,7 +158,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
             address: ['', [Validators.maxLength(128)]],
             phones: ['', [Validators.maxLength(128)]],
             personInCharge: ['', [Validators.maxLength(128)]],
-            email: ['', [Validators.maxLength(128)]],
+            email: ['', [Validators.email, Validators.maxLength(128)]],
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
         })

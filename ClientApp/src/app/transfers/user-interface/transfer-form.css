@@ -14,59 +14,16 @@
     width: 100%;
 }
 
-#section-one, #section-two {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-#persons-panel {
+#group-field {
     display: flex;
 }
 
-#persons-details {
-    display: flex;
-    flex-direction: column;
-}
-
-@media only screen and (max-height: 799px) {
-    #persons-details {
-        flex-direction: row;
-    }
-
-    #persons-details .mat-form-field {
-        flex-direction: row;
-        margin-right: 0.5rem;
-        width: 5rem;
-    }
-
-    #persons-total {
-        margin-top: -34px;
-    }
-}
-
-#persons-total {
-    align-items: center;
-    display: flex;
-    margin-left: 1rem;
-}
-
-#persons-total p {
-    color: var(--color-input-not-focus);
-    font-family: var(--font-family-paragraphs);
-    font-size: 0.87rem !important;
-    margin-right: 0.5rem !important;
-}
-
-#persons-total span {
-    color: var(--color-input-focus);
-    font-family: var(--font-family-headers);
-    font-size: 2rem;
-    padding-bottom: 2px;
+#group-field .mat-form-field:not(:last-child) {
+    margin-right: 1rem;
 }
 
 #footer {
-    margin: 0;
+    margin: 2rem 0;
 }
 
 #footer #buttons {
@@ -74,15 +31,4 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 1rem;
-}
-
-/* Small heights */
-@media only screen and (max-height: 768px) {
-    form {
-        flex-direction: column !important;
-    }
-
-    #section-one {
-        margin-right: 1rem;
-    }
 }

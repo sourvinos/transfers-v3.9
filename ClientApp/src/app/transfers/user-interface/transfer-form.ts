@@ -245,11 +245,12 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             destinationId: [0, Validators.required], destinationDescription: ['', Validators.required],
             customerId: [0, Validators.required], customerDescription: ['', Validators.required],
             pickupPointId: [0, Validators.required], pickupPointDescription: ['', Validators.required],
-            driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
             adults: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             kids: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             free: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
-            totalPersons: 0,
+            totalPersons: [{ value: 0, disabled: true }],
+            driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
+            portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }, Validators.required],
             remarks: ['', Validators.maxLength(128)],
             userId: this.helperService.getUserIdFromLocalStorage()
         })
@@ -294,6 +295,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             customerId: result.customer.id, customerDescription: result.customer.description,
             pickupPointId: result.pickupPoint.id, pickupPointDescription: result.pickupPoint.description,
             driverId: result.driver.id, driverDescription: result.driver.description,
+            portId: result.pickupPoint.route.port.id, portDescription: result.pickupPoint.route.port.description,
             adults: result.adults,
             kids: result.kids,
             free: result.free,
@@ -314,8 +316,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             kids: 0,
             free: 0,
             totalPersons: 0,
-            driverId: driver.id,
-            driverDescription: driver.description,
+            driverId: driver.id, driverDescription: driver.description,
             portId: 0, portDescription: '',
             remarks: '',
             userId: this.helperService.getUserIdFromLocalStorage()

@@ -13,10 +13,10 @@ namespace Transfers {
 
     public class Startup {
 
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration) =>
             Configuration = configuration;
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services) {
             Extensions.AddIdentity(services);
@@ -29,7 +29,7 @@ namespace Transfers {
             services.AddEmailSenders();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper();
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:MySqlServerSmarterASP"]));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
             services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));

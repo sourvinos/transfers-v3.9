@@ -20,6 +20,20 @@
 
 .mat-option {
     color: var(--color-select-option-color) !important;
+    height: 2em !important;
+}
+
+.mat-select-trigger {
+    height: auto !important;
+}
+
+.mat-option-text {
+    font-size: var(--font-size-input) !important;
+}
+
+.mat-form-field .mat-select-value {
+    font-size: var(--font-size-input) !important;
+    padding-top: 10px !important;
 }
 
 .mat-form-field .mat-select-value-text {

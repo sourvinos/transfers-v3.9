@@ -14,8 +14,7 @@
     grid-template-areas:
         "navigation title";
     grid-template-columns: fit-content(0%) auto;
-    grid-template-rows: 66px;
-    margin: 1rem 2rem;
+    margin: 2rem;
 }
 
 #header #title {
@@ -65,10 +64,12 @@
     margin-right: 1rem;
 }
 
-#section-one, #section-two {
+#group-field {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+}
+
+#group-field .mat-form-field:first-child {
+    margin-right: 1rem;
 }
 
 /* ! Narrow screen */
@@ -79,16 +80,5 @@
 
     .navigation-icon {
         margin-left: 2rem !important;
-    }
-}
-
-/* Small heights */
-@media only screen and (max-height: 767px) {
-    form {
-        flex-direction: column !important;
-    }
-
-    #section-one {
-        margin-right: 1rem;
     }
 }
