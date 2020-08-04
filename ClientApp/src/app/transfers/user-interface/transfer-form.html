@@ -29,7 +29,7 @@
                 <mat-error *ngIf="!free.hasError('required') && free.errors?.min || free.errors?.max">This field is invalid!</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="number" matInput placeholder="Total" formControlName="totalPersons">
+                <input type="number" matInput placeholder="Total persons" id="totalPersons" formControlName="totalPersons">
             </mat-form-field>
         </div>
         <div id="group-field">

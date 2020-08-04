@@ -9,10 +9,10 @@ export class TransferFlat {
     adults: number
     kids: number
     free: number
+    totalPersons: number
     port: string
     driver: string
     dateIn: string
-    totalPersons: number
     userId: string
     remarks: string
 }

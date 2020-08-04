@@ -1,0 +1,31 @@
+PRAGMA foreign_keys = OFF;
+
+CREATE TABLE "Transfers_New" (
+	"Id" INTEGER NOT NULL,
+	"DateIn" TIMESTAMP,
+	"DestinationId"	INTEGER,
+	"CustomerId" INTEGER,
+	"PickupPointId" INTEGER,
+	"Adults" INTEGER,
+	"Kids" INTEGER,
+	"Free" INTEGER,
+	"TotalPersons" INTEGER,
+	"DriverId" INTEGER,
+	"PortId" INTEGER,
+	"Remarks" VARCHAR(128),
+	"UserId" VARCHAR(200),
+	CONSTRAINT "Id" PRIMARY KEY("Id"),
+	FOREIGN KEY(DestinationId) REFERENCES Destinations(Id),
+	FOREIGN KEY(CustomerId) REFERENCES Customers(Id),
+	FOREIGN KEY(PickupPointId) REFERENCES PickupPoints(Id),
+	FOREIGN KEY(DriverId) REFERENCES Drivers(Id),
+	FOREIGN KEY(PortId) REFERENCES Ports(Id)
+);
+
+INSERT INTO Transfers_New SELECT * FROM Transfers;
+
+DROP TABLE Transfers;
+
+ALTER TABLE Transfers_New RENAME TO Transfers;
+
+PRAGMA foreign_keys = ON;

@@ -1,4 +1,0 @@
-CREATE TABLE Transfers(
-	Id PRIMARY KEY,
-	DateIn TEXT,
-	Adults INTEGER NOT NULL,	Kids INTEGER NOT NULL,	Free INTEGER NOT NULL,	TotalPersons INT GENERATED ALWAYS AS (Adults + Kids + Free) VIRTUAL,	Remarks TEXT NULL,	UserId TEXT,	CustomerId INTEGER NOT NULL,	PickupPointId INTEGER NOT NULL,	DestinationId INTEGER NOT NULL,	DriverId INTEGER NOT NULL,	FOREIGN KEY(CustomerId) REFERENCES Customers(Id),	FOREIGN KEY(DestinationId) REFERENCES Destinations(Id),	FOREIGN KEY(PickupPointId) REFERENCES PickupPoints(Id),	FOREIGN KEY(DriverId) REFERENCES Drivers(Id))

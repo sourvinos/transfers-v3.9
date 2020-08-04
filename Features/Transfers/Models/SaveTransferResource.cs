@@ -9,6 +9,7 @@ namespace Transfers {
         public int Adults { get; set; }
         public int Kids { get; set; }
         public int Free { get; set; }
+        public int TotalPersons { get; set; }
         public string Remarks { get; set; }
         public string UserId { get; set; }
         public int CustomerId { get; set; }

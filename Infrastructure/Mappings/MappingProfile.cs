@@ -34,6 +34,7 @@ namespace Transfers {
                 .ForMember(v => v.Adults, opt => opt.MapFrom(vr => vr.Adults))
                 .ForMember(v => v.Kids, opt => opt.MapFrom(vr => vr.Kids))
                 .ForMember(v => v.Free, opt => opt.MapFrom(vr => vr.Free))
+                .ForMember(v => v.TotalPersons, opt => opt.MapFrom(vr => vr.TotalPersons))
                 .ForMember(v => v.DestinationId, opt => opt.MapFrom(vr => vr.DestinationId))
                 .ForMember(v => v.DriverId, opt => opt.MapFrom(vr => vr.DriverId))
                 .ForMember(v => v.Remarks, opt => opt.MapFrom(vr => vr.Remarks))

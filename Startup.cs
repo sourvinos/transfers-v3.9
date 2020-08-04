@@ -29,7 +29,7 @@ namespace Transfers {
             services.AddEmailSenders();
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper();
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SqliteConnection"]));
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
             services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));

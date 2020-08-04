@@ -1,0 +1,21 @@
+PRAGMA foreign_keys = OFF;
+
+CREATE TABLE "PickupPoints_New" (
+	"Id" INTEGER NOT NULL,
+	"RouteId" INTEGER,
+	"Description" VARCHAR(128),
+	"ExactPoint" VARCHAR(128),
+	"Time" VARCHAR(5),
+	"IsActive" VARCHAR(1),
+	"UserId" VARCHAR(200),
+	CONSTRAINT "PickupPoints_PK" PRIMARY KEY("Id"),
+	FOREIGN KEY(RouteId) REFERENCES Routes(Id)
+);
+
+INSERT INTO PickupPoints_New SELECT * FROM PickupPoints;
+
+DROP TABLE PickupPoints;
+
+ALTER TABLE PickupPoints_New RENAME TO PickupPoints;
+
+PRAGMA foreign_keys = ON;

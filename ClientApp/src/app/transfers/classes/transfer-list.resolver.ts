@@ -13,14 +13,6 @@ export class TransferListResolver implements Resolve<TransferListResolved> {
 
     constructor(private transferService: TransferService) { }
 
-    // resolve(route: ActivatedRouteSnapshot): any {
-    //     return this.transferService.getTransfers(route.params.dateIn)
-    //       .pipe(
-    //         map((transferList) => new ListResolved(transferList)),
-    //         catchError((err: any) => of(new ListResolved(null, err)))
-    //       )
-    // }
-
     resolve(route: ActivatedRouteSnapshot): Observable<TransferListResolved> {
         return this.transferService.getTransfers(route.params.dateIn)
             .pipe(
