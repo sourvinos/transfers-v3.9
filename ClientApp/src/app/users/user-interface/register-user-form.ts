@@ -118,9 +118,9 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     private flattenFormFields() {
         this.flatForm = {
-            email: this.form.value.email,
-            displayName: this.form.value.displayName,
             userName: this.form.value.userName,
+            displayName: this.form.value.displayName,
+            email: this.form.value.email,
             password: this.form.value.passwords.password,
             confirmPassword: this.form.value.passwords.confirmPassword
         }
@@ -132,9 +132,9 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     private initForm() {
         this.form = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
-            displayName: ['', [Validators.required, Validators.maxLength(32)]],
             userName: ['', [Validators.required, Validators.maxLength(32)]],
+            displayName: ['', [Validators.required, Validators.maxLength(32)]],
+            email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
                 confirmPassword: ['', [Validators.required]]

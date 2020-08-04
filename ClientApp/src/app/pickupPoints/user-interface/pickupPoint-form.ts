@@ -59,7 +59,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     ngAfterViewInit() {
-        this.focus('routeDescription')
+        this.focus('description')
     }
 
     ngOnDestroy() {
@@ -121,7 +121,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-                this.focus('routeDescription')
+                this.focus('description')
                 this.resetForm()
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -189,7 +189,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     private initForm() {
         this.form = this.formBuilder.group({
             id: 0,
-            routeId: ['', Validators.required], routeDescription: ['', Validators.required],
+            routeId: [0, Validators.required], routeDescription: [{ value: '', disabled: true }, Validators.required],
             description: ['', [Validators.required, Validators.maxLength(128)]],
             exactPoint: ['', [Validators.required, Validators.maxLength(128)]],
             time: ['', [Validators.required, Validators.pattern('[0-9][0-9]:[0-9][0-9]')]],

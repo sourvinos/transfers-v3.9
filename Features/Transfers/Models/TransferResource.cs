@@ -5,7 +5,7 @@ namespace Transfers {
     public class TransferResource {
 
         public int Id { get; set; }
-        public DateTime dateIn { get; set; }
+        public string dateIn { get; set; }
         public int Adults { get; set; }
         public int Kids { get; set; }
         public int Free { get; set; }

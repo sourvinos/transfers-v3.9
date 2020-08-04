@@ -8,19 +8,14 @@
 }
 
 #header {
-    display: grid;
-    grid-area: header;
-    grid-template-areas:
-        "title searchbox";
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto;
+    display: flex;
+    justify-content: space-between;
     margin: 2rem;
 }
 
 #header #title {
     align-items: center;
     display: flex;
-    grid-area: title;
     justify-content: flex-start;
     margin-left: 1rem;
 }
@@ -28,10 +23,18 @@
 #header #search-box {
     align-items: center;
     display: flex;
-    flex: auto;
-    grid-area: searchbox;
+    justify-content: flex-end;
     margin: 0 1rem 0 0;
-    width: 20rem;
+    max-width: fit-content;
+    width: auto;
+}
+
+#dateIn {
+    width: 10rem !important;
+}
+
+#search {
+    width: -webkit-fill-available;
 }
 
 #main {

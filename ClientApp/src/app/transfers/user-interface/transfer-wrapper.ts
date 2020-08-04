@@ -26,7 +26,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    dateIn = '20/04/2020'
+    dateIn = ''
     dateInISO = ''
     records: string[] = []
     transfersFlat: TransferFlat[] = []

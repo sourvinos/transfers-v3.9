@@ -5,7 +5,7 @@ namespace Transfers {
 
     public interface ITransferRepository : IRepository<Transfer> {
 
-        TransferGroupResultResource<TransferResource> Get(DateTime dateIn);
+        TransferGroupResultResource<TransferResource> Get(string dateIn);
         new Task<TransferResource> GetById(int id);
         Task<Transfer> GetByIdToDelete(int id);
         void Update(SaveTransferResource saveTransferResource);

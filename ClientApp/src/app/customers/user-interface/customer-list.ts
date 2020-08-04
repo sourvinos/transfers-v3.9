@@ -90,10 +90,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         })
     }
 
-    private clearLocalStorageFilter() {
-        localStorage.removeItem('searchTermCustomer')
-    }
-
     private editRecord(id: number) {
         this.router.navigate([this.url, id])
     }

@@ -90,10 +90,6 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         })
     }
 
-    private clearLocalStorageFilter() {
-        localStorage.removeItem(this.localStorageSearchTerm)
-    }
-
     private editRecord(id: number) {
         this.updateLocalStorageWithFilter()
         this.router.navigate([this.url, id])

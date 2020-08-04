@@ -13,7 +13,7 @@ namespace Transfers {
 
         public TransferRepository(AppDbContext appDbContext, IMapper mapper) : base(appDbContext) => (this.appDbContext, this.mapper) = (appDbContext, mapper);
 
-        TransferGroupResultResource<TransferResource> ITransferRepository.Get(DateTime dateIn) {
+        TransferGroupResultResource<TransferResource> ITransferRepository.Get(string dateIn) {
             var details = appDbContext.Transfers
                 .Include(x => x.Customer)
                 .Include(x => x.PickupPoint).ThenInclude(y => y.Route).ThenInclude(z => z.Port)

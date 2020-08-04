@@ -18,7 +18,7 @@ namespace Transfers {
             (this.repo, this.mapper) = (repo, mapper);
 
         [HttpGet("date/{dateIn}")]
-        public TransferGroupResultResource<TransferResource> Get(DateTime dateIn) {
+        public TransferGroupResultResource<TransferResource> Get(string dateIn) {
             return this.repo.Get(dateIn);
         }
 

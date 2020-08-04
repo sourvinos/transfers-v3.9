@@ -153,7 +153,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     private initForm() {
         this.form = this.formBuilder.group({
             id: 0,
-            abbreviation: ['', [Validators.maxLength(5)]],
+            abbreviation: ['', [Validators.required, Validators.maxLength(5)]],
             description: ['', [Validators.required, Validators.maxLength(128)]],
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
