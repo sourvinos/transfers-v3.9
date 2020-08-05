@@ -55,7 +55,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.unlisten()
     }
 
-    canDeactivate(): boolean {
+    canDeactivate() {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {

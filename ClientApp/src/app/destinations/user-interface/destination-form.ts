@@ -12,6 +12,7 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Destination } from './../classes/destination'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'destination-form',
@@ -29,6 +30,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     unlisten: Unlisten
     url = '/destinations'
     windowTitle = 'Destination'
+    environment: boolean = environment.production
 
     //#endregion
 
@@ -49,8 +51,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -180,6 +181,11 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters
