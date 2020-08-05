@@ -72,9 +72,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Alt.F': (event: KeyboardEvent) => {
+                event.preventDefault()
                 this.buttonClickService.clickOnButton(event, 'forgotPassword')
             },
             'Alt.L': (event: KeyboardEvent) => {
+                event.preventDefault()
                 this.buttonClickService.clickOnButton(event, 'login')
             }
         }, {
