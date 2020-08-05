@@ -51,8 +51,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -93,7 +92,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('description')
-                this.resetForm()
+                this.initForm()
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
@@ -181,7 +180,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private resetForm() {
-        this.initForm()
+        this.form.reset()
     }
 
     private setWindowTitle() {
@@ -190,6 +189,11 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters
