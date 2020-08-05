@@ -80,8 +80,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
     public onSave() {
         this.flattenFormFields()
         this.accountService.register(this.flatForm).subscribe((response) => {
-            this.showSnackbar(response.response, 'info')
             this.resetForm()
+            this.showSnackbar(response.response, 'info')
             this.onGoBack()
         }, error => {
             this.showSnackbar(error.error.response, 'error')

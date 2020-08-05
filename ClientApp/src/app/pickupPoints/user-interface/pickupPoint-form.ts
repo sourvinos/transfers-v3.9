@@ -120,9 +120,9 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     public onSave() {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('description')
-                this.resetForm()
+                this.initFormAfterDelay()
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
@@ -196,6 +196,12 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
         })
+    }
+
+    private initFormAfterDelay() {
+        setTimeout(() => {
+            this.initForm()
+        }, 200)
     }
 
     private patchFields(result: any, fields: any[]) {

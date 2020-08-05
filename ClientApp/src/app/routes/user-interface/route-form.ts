@@ -116,16 +116,16 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave() {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('description')
-                this.resetForm()
+                this.initFormAfterDelay()
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {
             this.routeService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.onGoBack()
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -191,6 +191,12 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
         })
+    }
+
+    private initFormAfterDelay() {
+        setTimeout(() => {
+            this.initForm()
+        }, 200)
     }
 
     private patchFields(result: any, fields: any[]) {

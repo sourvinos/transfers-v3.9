@@ -90,9 +90,9 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     public onSave() {
         if (this.form.value.id === 0) {
             this.destinationService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('abbreviation')
-                this.resetForm()
+                this.initFormAfterDelay()
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
@@ -159,6 +159,12 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
         })
+    }
+
+    private initFormAfterDelay() {
+        setTimeout(() => {
+            this.initForm()
+        }, 200)
     }
 
     private populateFields(result: Destination) {

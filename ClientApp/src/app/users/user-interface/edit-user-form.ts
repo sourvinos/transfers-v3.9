@@ -99,8 +99,8 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public onSave() {
         this.userService.update(this.form.value.id, this.form.value).subscribe((response) => {
-            this.showSnackbar(response.response, 'info')
             this.resetForm()
+            this.showSnackbar(response.response, 'info')
             this.onGoBack()
         }, error => {
             this.showSnackbar(error.error.response, 'error')

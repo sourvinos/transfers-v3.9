@@ -148,9 +148,9 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave() {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.focus('destinationDescription')
-                this.resetForm()
+                this.initFormAfterDelay()
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
                 this.populateFormWithDefaultValues(this.defaultDriver)
                 this.refreshSummaries()
             }, error => {
@@ -158,8 +158,8 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             })
         } else {
             this.transferService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
+                this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.onGoBack()
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -254,6 +254,12 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             remarks: ['', Validators.maxLength(128)],
             userId: this.helperService.getUserIdFromLocalStorage()
         })
+    }
+
+    private initFormAfterDelay() {
+        setTimeout(() => {
+            this.initForm()
+        }, 200)
     }
 
     private patchFields(result: any, fields: any[]) {
