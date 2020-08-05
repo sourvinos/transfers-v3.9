@@ -12,6 +12,7 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Customer } from '../classes/customer'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'customer-form',
@@ -29,6 +30,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/customers'
     windowTitle = 'Customer'
+    environment: boolean = environment.production
 
     //#endregion
 
@@ -179,7 +181,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private resetForm() {
-        this.form.reset()
+        this.initForm()
     }
 
     private setWindowTitle() {
