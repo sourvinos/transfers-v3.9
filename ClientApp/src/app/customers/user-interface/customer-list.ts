@@ -66,17 +66,19 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack() {
+    public onNavigateToHome() {
         this.router.navigate(['/'])
     }
+
     public onNew() {
-        this.router.navigate([this.url + '/new'])
+        this.updateLocalStorageWithFilter()
+        this.navigateToNew()
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': () => {
-                this.onGoBack()
+                this.onNavigateToHome()
             },
             'Alt.F': (event: KeyboardEvent) => {
                 this.focus(event, 'searchTerm')
@@ -111,6 +113,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }
+    }
+
+    private navigateToNew() {
+        this.router.navigate([this.url + '/new'])
     }
 
     private setWindowTitle() {
