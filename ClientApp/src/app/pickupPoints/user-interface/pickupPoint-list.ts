@@ -82,6 +82,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onNew() {
+        this.updateLocalStorageWithFilter()
         this.router.navigate([this.location.path() + '/pickupPoint/new'])
     }
 

@@ -61,13 +61,15 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.resetForm()
                     this.onGoBack()
                     return true
+                } else {
+                    this.focus('description')
                 }
             })
         } else {
             return true
         }
     }
-
+    s
     public onSetActiveState() {
         if (this.form.value.isDefault === false) { this.form.patchValue({ isActive: true }) }
     }

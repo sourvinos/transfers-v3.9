@@ -62,6 +62,8 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
                     this.resetForm()
                     this.onGoBack()
                     return true
+                } else {
+                    this.focus('abbreviation')
                 }
             })
         } else {

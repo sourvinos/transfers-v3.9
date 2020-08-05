@@ -70,6 +70,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
         this.router.navigate(['/'])
     }
     public onNew() {
+        this.updateLocalStorageWithFilter()
         this.router.navigate([this.url + '/new'])
     }
 
