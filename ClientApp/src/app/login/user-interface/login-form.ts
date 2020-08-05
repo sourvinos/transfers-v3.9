@@ -1,3 +1,4 @@
+import { MessageService } from './../../shared/services/message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -36,7 +37,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -64,7 +65,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.goHome()
             this.startTimer()
         }, error => {
-            this.showSnackbar(error.error.response, 'error')
+            this.showError(error)
         })
     }
 
@@ -91,16 +92,23 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private initForm() {
-        console.log(environment)
         this.form = this.formBuilder.group({
-            userName: ['', Validators.required],
-            password: ['', Validators.required],
+            userName: [environment.login.userName, Validators.required],
+            password: [environment.login.password, Validators.required],
             isHuman: ['', Validators.requiredTrue]
         })
     }
 
     private setWindowTitle() {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    }
+
+    private showError(error: { status: number; name: string | string[]; error: { response: string | string[] } }) {
+        if (error.status == 404) {
+            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+        } else {
+            this.showSnackbar(error.error.response, 'error')
+        }
     }
 
     private showSnackbar(message: string | string[], type: string) {

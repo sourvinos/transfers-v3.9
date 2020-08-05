@@ -18,7 +18,7 @@ export class MessageService {
     public noRecordsSelected(): string { return 'No records have been selected.' }
     public recordsHaveBeenProcessed(): string { return 'All records have been processed.' }
     public noDefaultDriverFound(): string { return 'A default driver has not been found.' }
-    public noContactWithApi(): string { return 'Unable to get any records from the server.' }
+    public noContactWithApi(): string { return 'Unable to get any response from the server.' }
     public resetPassword(): string { return 'If your email exists in our database, you will be redirected to the password reset page.' }
     public wrongCurrentPassword(): string { return 'The current password is wrong.' }
 
