@@ -13,7 +13,7 @@ namespace Transfers {
             await context.Routes.Include(p => p.Port).ToListAsync();
 
         public new async Task<Route> GetById(int routeId) =>
-            await context.Routes.Include(p => p.Port).AsNoTracking().SingleOrDefaultAsync(m => m.Id == routeId);
+            await context.Routes.Include(p => p.Port).SingleOrDefaultAsync(m => m.Id == routeId);
 
     }
 

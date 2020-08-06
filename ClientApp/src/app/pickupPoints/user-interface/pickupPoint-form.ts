@@ -15,6 +15,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { DialogService } from '../../shared/services/dialog.service'
 import { PickupPoint } from '../classes/pickupPoint'
 import { PickupPointService } from '../classes/pickupPoint.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'pickuppoint-form',
@@ -31,6 +32,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     windowTitle = 'Pickup point'
+    environment: boolean = environment.production
 
     //#endregion
 

@@ -28,7 +28,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     resolver = 'customerList'
     searchTerm = ''
     unlisten: Unlisten
-    url = '/customers'
+    baseUrl = '/customers'
+    newUrl = this.baseUrl + '/new'
     windowTitle = 'Customers'
     localStorageSearchTerm = 'searchTermCustomer'
 
@@ -56,6 +57,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -66,19 +68,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onNavigateToHome() {
-        this.router.navigate(['/'])
-    }
-
-    public onNew() {
-        this.updateLocalStorageWithFilter()
-        this.navigateToNew()
-    }
-
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.onNavigateToHome()
+            'Escape': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'goBack')
             },
             'Alt.F': (event: KeyboardEvent) => {
                 this.focus(event, 'searchTerm')
@@ -93,7 +86,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        this.router.navigate([this.url, id])
+        this.router.navigate([this.baseUrl, id])
     }
 
     private focus(event: KeyboardEvent, element: string) {
@@ -115,10 +108,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private navigateToNew() {
-        this.router.navigate([this.url + '/new'])
-    }
-
     private setWindowTitle() {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
@@ -135,7 +124,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     }
 
     private updateLocalStorageWithFilter() {
-        localStorage.setItem('searchTermCustomer', this.searchTerm)
+        localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
 
 }

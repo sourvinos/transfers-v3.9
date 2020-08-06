@@ -15,6 +15,7 @@ import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Route } from '../classes/route'
 import { RouteService } from '../classes/route.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'route-form',
@@ -32,6 +33,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/routes'
     windowTitle = 'Port'
+    environment: boolean = environment.production
 
     //#endregion
 

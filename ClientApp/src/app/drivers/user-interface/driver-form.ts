@@ -12,6 +12,7 @@ import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Driver } from '../classes/driver'
 import { DriverService } from '../classes/driver.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'driver-form',
@@ -29,6 +30,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/drivers'
     windowTitle = 'Driver'
+    environment: boolean = environment.production
 
     //#endregion
 

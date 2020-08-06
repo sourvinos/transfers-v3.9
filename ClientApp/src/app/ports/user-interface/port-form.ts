@@ -11,6 +11,7 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PortService } from '../classes/port.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'port-form',
@@ -28,6 +29,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/ports'
     windowTitle = 'Port'
+    environment: boolean = environment.production
 
     //#endregion
 

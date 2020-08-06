@@ -78,6 +78,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onGoBack() {
+        this.updateLocalStorageWithFilter()
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
@@ -96,7 +97,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
             },
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
-            },
+            }
         }, {
             priority: 0,
             inputs: true

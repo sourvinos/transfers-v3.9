@@ -28,7 +28,8 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     resolver = 'destinationList'
     searchTerm = ''
     unlisten: Unlisten
-    url = '/destinations'
+    baseUrl = '/destinations'
+    newUrl = this.baseUrl + '/new'
     windowTitle = 'Destinations'
     localStorageSearchTerm = 'searchTermDestination'
 
@@ -56,6 +57,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -66,19 +68,10 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onNavigateToHome() {
-        this.router.navigate(['/'])
-    }
-
-    public onNew() {
-        this.updateLocalStorageWithFilter()
-        this.navigateToNew()
-    }
-
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.onNavigateToHome()
+            'Escape': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'goBack')
             },
             'Alt.F': (event: KeyboardEvent) => {
                 this.focus(event, 'searchTerm')
@@ -93,7 +86,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        this.router.navigate([this.url, id])
+        this.router.navigate([this.baseUrl, id])
     }
 
     private focus(event: KeyboardEvent, element: string) {
@@ -113,10 +106,6 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         } else {
             this.showSnackbar(this.messageService.noContactWithApi(), 'error')
         }
-    }
-
-    private navigateToNew() {
-        this.router.navigate([this.url + '/new'])
     }
 
     private setWindowTitle() {

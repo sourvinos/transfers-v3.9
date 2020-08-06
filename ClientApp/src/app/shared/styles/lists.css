@@ -9,11 +9,11 @@
 }
 
 #header {
+    align-items: center;
     display: grid;
     grid-area: header;
-    grid-template-areas:
-        "title searchbox";
-    grid-template-columns: 1fr auto;
+    grid-template-areas: "navigation title searchbox";
+    grid-template-columns: auto 1fr auto;
     margin: 2rem;
 }
 

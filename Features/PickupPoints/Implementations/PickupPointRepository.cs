@@ -16,7 +16,7 @@ namespace Transfers {
             await context.PickupPoints.Include(x => x.Route).ThenInclude(y => y.Port).Where(m => m.RouteId == routeId).OrderBy(o => o.Time).ThenBy(o => o.Description).AsNoTracking().ToListAsync();
 
         public new async Task<PickupPoint> GetById(int pickupPointId) =>
-            await context.PickupPoints.Include(x => x.Route).ThenInclude(y => y.Port).AsNoTracking().SingleOrDefaultAsync(m => m.Id == pickupPointId);
+            await context.PickupPoints.Include(x => x.Route).ThenInclude(y => y.Port).SingleOrDefaultAsync(m => m.Id == pickupPointId);
 
     }
 
