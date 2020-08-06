@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.WebUtilities;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    // [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize(Policy = "RequireLoggedIn")]
     public class AccountController : Controller {
 
         private readonly IEmailSender emailSender;

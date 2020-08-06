@@ -51,8 +51,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -71,7 +70,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
             return true
         }
     }
-    s
+
     public onSetActiveState() {
         if (this.form.value.isDefault === false) { this.form.patchValue({ isActive: true }) }
     }
@@ -200,6 +199,11 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters
