@@ -104,6 +104,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
+                console.log(error)
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
         } else {

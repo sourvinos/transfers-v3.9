@@ -18,7 +18,6 @@ export class DataService {
     }
 
     update(id: string | number, formData: any): Observable<any> {
-        console.log(formData)
         return this.http.put<any>(this.url + '/' + id, formData)
     }
 

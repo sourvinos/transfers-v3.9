@@ -42,7 +42,7 @@ namespace Transfers {
         public async Task<IActionResult> PostDriver([FromBody] Driver Driver) {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             var defaultDriver = await repo.CheckDefaultDriverExists(null, Driver);
-            if (defaultDriver != null) { return BadRequest(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
+            if (defaultDriver != null) { return Conflict(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
             repo.Create(Driver);
             return Ok(new { response = ApiMessages.RecordCreated() });
         }
