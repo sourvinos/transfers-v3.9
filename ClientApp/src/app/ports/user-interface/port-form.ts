@@ -25,7 +25,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     form: FormGroup
     input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>();
+    ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     url = '/ports'
     windowTitle = 'Port'
@@ -50,8 +50,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -185,6 +184,11 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters

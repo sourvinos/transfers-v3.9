@@ -30,6 +30,8 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     resolver = 'pickupPointList'
     searchTerm = ''
     unlisten: Unlisten
+    baseUrl = this.location.path()
+    newUrl = this.baseUrl + '/pickupPoint/new'
     windowTitle = 'Pickup points'
     localStorageSearchTerm = 'searchTermPickupPoint'
 
@@ -67,6 +69,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -75,16 +78,6 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
-    }
-
-    public onGoBack() {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
-    }
-
-    public onNew() {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate([this.location.path() + '/pickupPoint/new'])
     }
 
     private addShortcuts() {
@@ -105,7 +98,6 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        this.updateLocalStorageWithFilter()
         this.router.navigate(['pickupPoint/', id], { relativeTo: this.activatedRoute })
     }
 

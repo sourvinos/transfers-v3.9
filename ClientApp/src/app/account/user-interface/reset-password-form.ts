@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -104,15 +104,15 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#region Getters
 
-    get Passwords(): AbstractControl {
+    get Passwords() {
         return this.form.get('passwords')
     }
 
-    get Password(): AbstractControl {
+    get Password() {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword(): AbstractControl {
+    get ConfirmPassword() {
         return this.form.get('passwords.confirmPassword')
     }
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -283,18 +283,18 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get description(): AbstractControl {
+    get description() {
         return this.form.get('description')
     }
 
-    get fullDescription(): AbstractControl {
+    get fullDescription() {
         return this.form.get('fullDescription')
     }
-    get portId(): AbstractControl {
+    get portId() {
         return this.form.get('portId')
     }
 
-    get portDescription(): AbstractControl {
+    get portDescription() {
         return this.form.get('portDescription')
     }
 

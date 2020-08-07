@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -102,7 +102,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region Getters
 
-    get email(): AbstractControl {
+    get email() {
         return this.form.get('email')
     }
 

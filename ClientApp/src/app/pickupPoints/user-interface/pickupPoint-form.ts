@@ -31,6 +31,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     input: InputTabStopDirective
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
+    url = '../../'
     windowTitle = 'Pickup point'
     environment: boolean = environment.production
 
@@ -65,8 +66,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -99,7 +99,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     public onGoBack() {
-        this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
+        this.router.navigate([this.url], { relativeTo: this.activatedRoute })
     }
 
     public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
@@ -295,6 +295,11 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters

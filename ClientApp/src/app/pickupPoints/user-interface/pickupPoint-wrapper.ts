@@ -7,6 +7,7 @@ import { RouteService } from 'src/app/routes/classes/route.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 
 @Component({
     selector: 'pickuppoint-wrapper',
@@ -31,7 +32,7 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private helperService: HelperService, private routeService: RouteService, private interactionService: InteractionService, private titleService: Title) { }
+    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private routeService: RouteService, private interactionService: InteractionService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -45,19 +46,15 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public onGoBack() {
-        this.router.navigate(['/'])
-    }
-
     public onLoadPickupPoints() {
         this.navigateToList()
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
+            'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
-                    this.onGoBack()
+                    this.buttonClickService.clickOnButton(event, 'goBack')
                 }
             }
         }, {

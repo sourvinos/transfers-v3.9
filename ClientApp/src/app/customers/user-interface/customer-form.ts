@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -206,27 +206,27 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get description(): AbstractControl {
+    get description() {
         return this.form.get('description')
     }
 
-    get profession(): AbstractControl {
+    get profession() {
         return this.form.get('profession')
     }
 
-    get address(): AbstractControl {
+    get address() {
         return this.form.get('address')
     }
 
-    get phones(): AbstractControl {
+    get phones() {
         return this.form.get('phones')
     }
 
-    get personInCharge(): AbstractControl {
+    get personInCharge() {
         return this.form.get('personInCharge')
     }
 
-    get email(): AbstractControl {
+    get email() {
         return this.form.get('email')
     }
 
