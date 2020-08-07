@@ -20,12 +20,16 @@
 }
 
 #header #title {
+    align-items: baseline;
+    display: flex;
     margin-left: 1rem;
 }
 
 #header #search-box {
+    align-items: center;
+    display: flex;
     margin-left: auto;
-    margin-right: 1.25rem;
+    margin-right: 1rem;
     width: 20rem;
 }
 

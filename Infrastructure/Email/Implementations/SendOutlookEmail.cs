@@ -21,14 +21,14 @@ namespace Transfers {
             mail.To.Add(userEmail);
             mail.Subject = "Complete your account setup";
             mail.Body = "<h1 style='color: #FE9F36; font-family: Roboto Condensed;'>Hello, " + displayName + "!" + "</h1>";
-            mail.Body += "<h2 style='color: #2e6c80;'>Welcome to People Movers.</h2>";
+            mail.Body += "<h2 style='color: #2e6c80;'>Welcome to Island Cruises.</h2>";
             mail.Body += "<p>Click the following button to confirm your email account.</p>";
             mail.Body += "<div id='button' style='padding: 1rem;'>";
             mail.Body += "<a style='background-color: #57617B; color: #ffffff; border-radius: 5px; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Confirm</a>";
             mail.Body += "</div>";
             mail.Body += "<p>If clicking doesn't work, copy and paste this link:</p>";
             mail.Body += "<p>" + callbackUrl + "</p>";
-            mail.Body += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; People Movers " + DateTime.Now.ToString("yyyy") + "</p>";
+            mail.Body += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
             mail.IsBodyHtml = true;
 
             using SmtpClient smtp = new SmtpClient(settings.SmtpClient, settings.Port) {
@@ -55,7 +55,7 @@ namespace Transfers {
                 mail.Body += "</div>";
                 mail.Body += "<p>If clicking doesn't work, copy and paste this link:</p>";
                 mail.Body += "<p>" + callbackUrl + "</p>";
-                mail.Body += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; People Movers " + DateTime.Now.ToString("yyyy") + "</p>";
+                mail.Body += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
                 mail.IsBodyHtml = true;
 
                 using SmtpClient smtp = new SmtpClient(settings.SmtpClient, settings.Port) {

@@ -21,7 +21,7 @@ export class HelperService {
     }
 
     getApplicationTitle() {
-        return 'People movers'
+        return 'Island cruises'
     }
 
 }

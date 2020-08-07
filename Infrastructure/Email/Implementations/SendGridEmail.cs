@@ -16,19 +16,19 @@ namespace Transfers {
 
             var apiKey = settings.SendGridKey;
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("no-reply@peoplemovers.com", "People Movers");
+            var from = new EmailAddress("no-reply@islandcruises.com", "Island Cruises");
             var subject = "Complete your account setup";
-            var to = new EmailAddress(userEmail, "People Movers");
+            var to = new EmailAddress(userEmail, "Island Cruises");
             var htmlContent = "<h1 style='color: #FE9F36; font-family: Roboto Condensed;'>Hello, " + displayName + "!" + "</h1>";
 
-            htmlContent += "<h2 style='color: #2e6c80;'>Welcome to People Movers.</h2>";
+            htmlContent += "<h2 style='color: #2e6c80;'>Welcome to Island Cruises.</h2>";
             htmlContent += "<p>Click the following button to confirm your email account</p>";
             htmlContent += "<div id='button' style='padding: 1rem;'>";
             htmlContent += "<a style='background-color: #57617B; color: #ffffff; border-radius: 5px; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Confirm</a>";
             htmlContent += "</div>";
             htmlContent += "<p>If clicking doesn't work, copy and paste this link:</p>";
             htmlContent += "<p>" + callbackUrl + "</p>";
-            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; People Movers " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlContent);
 
@@ -40,9 +40,9 @@ namespace Transfers {
 
             var apiKey = settings.SendGridKey;
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("no-reply@peoplemovers.com", "People Movers");
+            var from = new EmailAddress("no-reply@islandcruises.com", "Island Cruises");
             var subject = "Password reset";
-            var to = new EmailAddress(userEmail, "People Movers");
+            var to = new EmailAddress(userEmail, "Island Cruises");
             var htmlContent = "<h1 style='color: #FE9F36; font-family: Roboto Condensed;'>Hello, " + displayName + "!" + "</h1>";
 
             htmlContent += "<h2 style='color: #2e6c80;'>You have requested a password reset</h2>";
@@ -52,7 +52,7 @@ namespace Transfers {
             htmlContent += "</div>";
             htmlContent += "<p>If clicking doesn't work, copy and paste this link:</p>";
             htmlContent += "<p>" + callbackUrl + "</p>";
-            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; People Movers " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlContent);
 
