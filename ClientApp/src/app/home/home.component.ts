@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
 
     windowTitle = 'Home'
 
-    constructor(private helperService: HelperService, private titleService: Title) { }
-
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+
+    constructor(private helperService: HelperService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
