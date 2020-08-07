@@ -28,7 +28,8 @@ export class UserListComponent implements OnInit, OnDestroy {
     resolver = 'userList'
     searchTerm = ''
     unlisten: Unlisten
-    url = '/users'
+    baseUrl = '/users'
+    newUrl = this.baseUrl + '/new'
     windowTitle = 'Users'
     localStorageSearchTerm = 'searchTermUser'
 
@@ -57,27 +58,21 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
     public onFilter(query: string) {
+        this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.username.toLowerCase().includes(query.toLowerCase())) : this.records
-    }
-
-    public onGoBack() {
-        this.router.navigate(['/'])
-    }
-    public onNew() {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate([this.url + '/new'])
     }
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.onGoBack()
+            'Escape': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'goBack')
             },
             'Alt.F': () => {
                 this.focus('searchTerm')
@@ -92,8 +87,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate([this.url, id])
+        this.router.navigate([this.baseUrl, id])
     }
 
     private focus(element: string) {
