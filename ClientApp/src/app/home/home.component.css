@@ -1,0 +1,26 @@
+#wrapper {
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+#companyLogo {
+    cursor: pointer;
+    font-family: var(--font-family-logo);
+    margin: 0 auto 3rem;
+    opacity: 10%;
+    outline: 0;
+    text-align: center;
+}
+
+#companyLogo>:first-child {
+    color: var(--color-company-logo-first-child) !important;
+    font-size: 20rem !important;
+}
+
+#companyLogo>:last-child {
+    color: var(--color-company-logo-second-child) !important;
+    font-size: 5rem !important;
+    font-weight: normal !important;
+    margin: -6rem 0 0 0 !important;
+}

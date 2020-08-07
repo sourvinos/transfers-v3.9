@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { AccountService } from '../../services/account.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'app-sidebar',
@@ -13,6 +14,10 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     isNotLoaded = true
     loginStatus: Observable<boolean>
     displayName: Observable<string>
+    appName = {
+        header: environment.appName.header,
+        subHeader: environment.appName.subHeader
+    }
 
     constructor(private accountService: AccountService) { }
 

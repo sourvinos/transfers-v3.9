@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core'
+import { environment } from 'src/environments/environment'
 
 @Injectable({ providedIn: 'root' })
 
 export class HelperService {
+
+    appName = {
+        header: environment.appName.header,
+        subHeader: environment.appName.subHeader
+    }
 
     setFocus(element: string) {
         setTimeout(() => {
@@ -21,7 +27,7 @@ export class HelperService {
     }
 
     getApplicationTitle() {
-        return 'Island cruises'
+        return this.appName.header + ' ' + this.appName.subHeader
     }
 
 }

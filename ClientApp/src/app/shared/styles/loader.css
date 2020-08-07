@@ -8,14 +8,14 @@
     width: 100%;
 }
 
-#island {
+#header {
     color: var(--color-company-logo-first-child) !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-first-child) !important;
     margin: 0;
 }
 
-#cruises {
+#subHeader {
     color: var(--color-company-logo-second-child) !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-second-child) !important;
