@@ -54,6 +54,7 @@ export class PortListComponent implements OnInit, OnDestroy {
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
+        this.focus('searchTerm')
     }
 
     ngOnDestroy() {
@@ -73,8 +74,8 @@ export class PortListComponent implements OnInit, OnDestroy {
             'Escape': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'goBack')
             },
-            'Alt.F': (event: KeyboardEvent) => {
-                this.focus(event, 'searchTerm')
+            'Alt.F': () => {
+                this.focus('searchTerm')
             },
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -89,7 +90,7 @@ export class PortListComponent implements OnInit, OnDestroy {
         this.router.navigate([this.baseUrl, id])
     }
 
-    private focus(event: KeyboardEvent, element: string) {
+    private focus(element: string) {
         event.preventDefault()
         this.helperService.setFocus(element)
     }

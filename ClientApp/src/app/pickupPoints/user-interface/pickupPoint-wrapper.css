@@ -15,7 +15,7 @@
 }
 
 #header #navigation {
-    margin: 0 0 0 1rem;
+    margin-left: 1rem;
 }
 
 #header #title {
@@ -23,7 +23,14 @@
 }
 
 #header #search-box {
+    align-items: center;
+    display: flex;
     margin-left: auto;
     margin-right: 1rem;
+    max-width: fit-content;
     width: 20rem;
+}
+
+#header #search-box .mat-form-field {
+    width: 20rem !important;
 }

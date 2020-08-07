@@ -32,7 +32,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     url = '/routes'
-    windowTitle = 'Port'
+    windowTitle = 'Route'
     environment: boolean = environment.production
 
     //#endregion
@@ -61,8 +61,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.ngUnsubscribe.next()
-        this.ngUnsubscribe.unsubscribe()
+        this.unsubscribe()
         this.unlisten()
     }
 
@@ -279,6 +278,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private unsubscribe() {
+        this.ngUnsubscribe.next()
+        this.ngUnsubscribe.unsubscribe()
     }
 
     //#region Getters

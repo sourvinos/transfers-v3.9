@@ -53,6 +53,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
+        this.focus('searchTerm')
     }
 
     ngOnDestroy() {
@@ -78,8 +79,8 @@ export class UserListComponent implements OnInit, OnDestroy {
             'Escape': () => {
                 this.onGoBack()
             },
-            'Alt.F': (event: KeyboardEvent) => {
-                this.focus(event, 'searchTerm')
+            'Alt.F': () => {
+                this.focus('searchTerm')
             },
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -95,7 +96,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.router.navigate([this.url, id])
     }
 
-    private focus(event: KeyboardEvent, element: string) {
+    private focus(element: string) {
         event.preventDefault()
         this.helperService.setFocus(element)
     }

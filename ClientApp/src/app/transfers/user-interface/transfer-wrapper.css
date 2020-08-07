@@ -8,33 +8,31 @@
 }
 
 #header {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
+    grid-area: "header";
     margin: 2rem;
 }
 
+#header #navigation {
+    margin-left: 1rem;
+}
+
 #header #title {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
     margin-left: 1rem;
 }
 
 #header #search-box {
+    margin-left: auto;
+    margin-right: 1rem;
     align-items: center;
     display: flex;
-    justify-content: flex-end;
-    margin: 0 1rem 0 0;
     max-width: fit-content;
     width: auto;
 }
 
-#dateIn {
-    width: 10rem !important;
-}
-
-#search {
-    width: -webkit-fill-available;
+#header #search-box .mat-form-field {
+    width: 15rem !important;
 }
 
 #main {

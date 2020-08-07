@@ -28,7 +28,8 @@ export class RouteListComponent implements OnInit, OnDestroy {
     resolver = 'routeList'
     searchTerm = ''
     unlisten: Unlisten
-    url = '/routes'
+    baseUrl = '/routes'
+    newUrl = this.baseUrl + '/new'
     windowTitle = 'Routes'
     localStorageSearchTerm = 'searchTermRoute'
 
@@ -53,9 +54,11 @@ export class RouteListComponent implements OnInit, OnDestroy {
         this.addShortcuts()
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
+        this.focus('searchTerm')
     }
 
     ngOnDestroy() {
+        this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -66,21 +69,13 @@ export class RouteListComponent implements OnInit, OnDestroy {
         this.filteredRecords = query ? this.records.filter(p => p.fullDescription.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGoBack() {
-        this.router.navigate(['/'])
-    }
-    public onNew() {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate([this.url + '/new'])
-    }
-
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
-            'Escape': () => {
-                this.onGoBack()
+            'Escape': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'goBack')
             },
-            'Alt.F': (event: KeyboardEvent) => {
-                this.focus(event, 'searchTerm')
+            'Alt.F': () => {
+                this.focus('searchTerm')
             },
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
@@ -92,11 +87,10 @@ export class RouteListComponent implements OnInit, OnDestroy {
     }
 
     private editRecord(id: number) {
-        this.updateLocalStorageWithFilter()
-        this.router.navigate([this.url, id])
+        this.router.navigate([this.baseUrl, id])
     }
 
-    private focus(event: KeyboardEvent, element: string) {
+    private focus(element: string) {
         event.preventDefault()
         this.helperService.setFocus(element)
     }
