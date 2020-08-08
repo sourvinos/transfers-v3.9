@@ -14,7 +14,7 @@
     height: 100%;
 }
 
-#userInfo {
+#userInfoBig {
     color: var(--color-user-info);
     font-family: var(--font-family-user-info);
     font-size: var(--font-size-user-info);
@@ -23,7 +23,16 @@
     text-align: center;
 }
 
-#companyLogo {
+#userInfoSmall {
+    color: var(--color-user-info);
+    font-family: var(--font-family-user-info);
+    font-size: 11px;
+    margin: 1.3rem 0 0 0;
+    min-height: 1.875rem;
+    text-align: center;
+}
+
+.companyLogo {
     cursor: pointer;
     font-family: var(--font-family-logo);
     margin: 0 auto 1.5rem;
@@ -31,16 +40,33 @@
     text-align: center;
 }
 
-#companyLogo>:first-child {
+/* Logo BIG */
+
+#logoBig>:first-child {
     color: var(--color-company-logo-first-child) !important;
     font-size: var(--font-size-logo-first-child) !important;
 }
 
-#companyLogo>:last-child {
+#logoBig>:last-child {
     color: var(--color-company-logo-second-child) !important;
     font-size: var(--font-size-logo-second-child) !important;
-    font-weight: normal !important;
     margin: -1rem 0 0 0 !important;
+}
+
+/* Logo SMALL */
+.companyLogo#logoSmall {
+    margin: 0.9rem 0 1rem 0;
+}
+
+#logoSmall>:first-child {
+    color: var(--color-company-logo-first-child) !important;
+    font-size: 1.5625rem !important;
+}
+
+#logoSmall>:last-child {
+    color: var(--color-company-logo-second-child) !important;
+    font-size: 1rem !important;
+    margin-top: -0.5rem !important;
 }
 
 #double-ring {
@@ -115,7 +141,7 @@
 }
 
 /* ! Wide */
-@media only screen and (min-width: 1367px) {
+@media only screen and (min-width: 1681px) {
     #sidebar-wide {
         /* display: flex; */
         width: 17rem !important;
@@ -132,7 +158,7 @@
 }
 
 /* ! Narrow  */
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1680px) {
     #sidebar-wide {
         display: none;
     }
@@ -150,31 +176,17 @@
 
 /* Narrow */
 .item {
-    height: 3.5rem !important;
-    transition: 0.2s;
+    margin: 0.6rem;
+    width: 2rem;
 }
 
 .item:hover {
     transition: 0.2s;
 }
 
-#customers {
-    background: url("../../../../assets/customers.png") center / 32px no-repeat;
-    /* background-size: 32px; */
-    height: 60px;
-    width: 60px;
-}
-
 #customers:hover {
-    background: url("../../../../assets/hover-customers.png") center / 32px no-repeat;
-    /* background-size: 32px; */
+    /* background: url("../../../../assets/hover-customers.png") center / 32px no-repeat; */
     cursor: pointer;
-}
-
-#destinations {
-    background: url("../../../../assets/destinations.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
 }
 
 #destinations:hover {
@@ -182,21 +194,9 @@
     background: url("../../../../assets/hover-destinations.png") center / 32px no-repeat;
 }
 
-#drivers {
-    background: url("../../../../assets/drivers.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
-}
-
 #drivers:hover {
     cursor: pointer;
     background: url("../../../../assets/hover-drivers.png") center / 32px no-repeat;
-}
-
-#pickupPoints {
-    background: url("../../../../assets/pickupPoints.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
 }
 
 #pickupPoints:hover {
@@ -204,21 +204,9 @@
     background: url("../../../../assets/hover-pickupPoints.png") center / 32px no-repeat;
 }
 
-#routes {
-    background: url("../../../../assets/routes.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
-}
-
 #routes:hover {
     cursor: pointer;
     background: url("../../../../assets/hover-routes.png") center / 32px no-repeat;
-}
-
-#transfers {
-    background: url("../../../../assets/transfers.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
 }
 
 #transfers:hover {
@@ -226,21 +214,9 @@
     background: url("../../../../assets/hover-transfers.png") center / 32px no-repeat;
 }
 
-#users {
-    background: url("../../../../assets/users.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
-}
-
 #users:hover {
     cursor: pointer;
     background: url("../../../../assets/hover-users.png") center / 32px no-repeat;
-}
-
-#logout {
-    background: url("../../../../assets/logout.png") center / 32px no-repeat;
-    height: 60px;
-    width: 60px;
 }
 
 #logout:hover {
@@ -249,5 +225,7 @@
 }
 
 #menu-narrow {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
 }

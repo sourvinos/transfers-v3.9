@@ -18,6 +18,8 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+    customers = 'assets/customers.png'
+    customersHover = 'assets/customers-hover.png'
 
     constructor(private accountService: AccountService) { }
 

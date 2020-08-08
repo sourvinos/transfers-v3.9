@@ -1,11 +1,11 @@
 <div id="sidebar">
     <div id="sidebar-wide">
-        <div id="userInfo">
+        <div id="userInfoBig">
             <div *ngIf="(loginStatus | async)">
                 <div>Hello, {{ displayName | async }}</div>
             </div>
         </div>
-        <div id="companyLogo" [routerLink]="['/']">
+        <div class="companyLogo" id="logoBig" [routerLink]="['/']">
             <p>{{ appName.header }}</p>
             <p>{{ appName.subHeader }}</p>
         </div>
@@ -28,19 +28,25 @@
         <div id="copyright">Created with .NET Core<br />and Angular</div>
     </div>
     <div id="sidebar-narrow">
-        <div id="companyLogoNarrow" [routerLink]="['/']">
+        <div id="userInfoSmall">
+            <div *ngIf="(loginStatus | async)">
+                <div>Hello</div>
+                <div>{{ displayName | async }}</div>
+            </div>
+        </div>
+        <div class="companyLogo" id="logoSmall" [routerLink]="['/']">
             <p>{{ appName.header }}</p>
             <p>{{ appName.subHeader }}</p>
         </div>
         <div id="menu-narrow">
-            <div class="item" id="customers"> </div>
-            <div class="item" id="destinations"> </div>
-            <div class="item" id=drivers></div>
-            <div class="item" id="pickupPoints"> </div>
-            <div class="item" id="routes"></div>
-            <div class="item" id="transfers"></div>
-            <div class="item" id="users"></div>
-            <div class="item" id="logout"></div>
+            <img class="item" [src]="customersHover || customers" id="customers" (mouseover)="customers" (mouseout)="customersHover">
+            <img class="item" src="assets/destinations.png" id="destinations">
+            <img class="item" src="assets/drivers.png" id=drivers>
+            <img class="item" src="assets/pickupPoints.png" id="pickupPoints">
+            <img class="item" src="assets/routes.png" id="routes">
+            <img class="item" src="assets/transfers.png" id="transfers">
+            <img class="item" src="assets/users.png" id="users">
+            <img class="item" src="assets/logout.png" id="logout">
         </div>
     </div>
 </div>
