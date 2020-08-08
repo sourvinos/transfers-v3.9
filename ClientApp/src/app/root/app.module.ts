@@ -12,7 +12,6 @@ import { PickupPointModule } from '../pickupPoints/classes/pickupPoint.module'
 import { PortModule } from '../ports/classes/port.module'
 import { RouteModule } from '../routes/classes/route.module'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
-import { SidebarComponent } from '../shared/components/sidebar/sidebar.component'
 import { DomChangeDirective } from '../shared/directives/dom-change.directive'
 import { MaterialModule } from '../shared/modules/material.module'
 import { JwtInterceptor } from '../shared/services/jwt.interceptor'
@@ -26,17 +25,20 @@ import { MainComponent } from './../shared/components/main/main.component'
 import { TransferModule } from './../transfers/classes/transfer.module'
 import { AppRouting } from './app.routing'
 import { RootComponent } from './root.component'
+import { SidebarWideComponent } from '../shared/components/sidebar-wide/sidebar-wide.component'
+import { SidebarNarrowComponent } from '../shared/components/sidebar-narrow/sidebar-narrow.component'
 
 @NgModule({
     declarations: [
-        MainComponent,
-        RootComponent,
+        DomChangeDirective,
+        DoubleRingComponent,
+        EmptyPageComponent,
         HomeComponent,
         LoaderComponent,
-        SidebarComponent,
-        DoubleRingComponent,
-        DomChangeDirective,
-        EmptyPageComponent
+        MainComponent,
+        RootComponent,
+        SidebarNarrowComponent,
+        SidebarWideComponent,
     ],
     imports: [
         AppRouting,

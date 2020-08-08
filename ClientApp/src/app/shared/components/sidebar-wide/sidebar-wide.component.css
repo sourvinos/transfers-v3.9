@@ -1,0 +1,253 @@
+#sidebar {
+    background-color: var(--color-sidebar);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    position: sticky;
+    transition: 0.7s;
+    z-index: 2;
+}
+
+#sidebar-wide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#userInfo {
+    color: var(--color-user-info);
+    font-family: var(--font-family-user-info);
+    font-size: var(--font-size-user-info);
+    margin: 1.5rem auto 0;
+    min-height: 1.5rem;
+    text-align: center;
+}
+
+#companyLogo {
+    cursor: pointer;
+    font-family: var(--font-family-logo);
+    margin: 0 auto 1.5rem;
+    outline: 0;
+    text-align: center;
+}
+
+#companyLogo>:first-child {
+    color: var(--color-company-logo-first-child) !important;
+    font-size: var(--font-size-logo-first-child) !important;
+}
+
+#companyLogo>:last-child {
+    color: var(--color-company-logo-second-child) !important;
+    font-size: var(--font-size-logo-second-child) !important;
+    font-weight: normal !important;
+    margin: -1rem 0 0 0 !important;
+}
+
+#double-ring {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    outline: 0;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    margin: 1.4rem 0 1rem 0;
+}
+
+#menu ul {
+    color: var(--color-menu-list-items);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-menu-list-items);
+    font-size: var(--font-size-menu-list-items);
+    line-height: 2.5rem;
+    list-style: none;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+}
+
+#menu ul>li {
+    line-height: 2.5rem !important;
+    outline: 0;
+    transition-duration: 200ms;
+    transition: font-size;
+}
+
+#menu ul>li:last-child {
+    margin-top: auto;
+}
+
+#menu ul>li:hover, #menu ul>li.active {
+    color: var(--color-menu-active-item);
+    cursor: pointer;
+    font-size: var(--font-size-menu-list-item-active);
+}
+
+#copyright {
+    color: var(--color-copyright);
+    font-family: var(--font-family-copyright);
+    font-size: var(--font-size-copyright);
+    margin: auto auto 1.5rem;
+    min-height: 1.5rem;
+    text-align: center;
+}
+
+/* Small heights = hide bus circle */
+@media only screen and (max-height: 799px) {
+    #companyLogo {
+        margin-bottom: 1rem;
+    }
+
+    #double-ring {
+        display: none;
+    }
+
+    #menu {
+        margin-top: 0;
+    }
+
+    #menuItems {
+        line-height: 2rem !important;
+    }
+}
+
+/* ! Wide */
+@media only screen and (min-width: 1367px) {
+    #sidebar-wide {
+        /* display: flex; */
+        width: 17rem !important;
+    }
+
+    #sidebar-narrow {
+        display: none;
+        width: 0 !important;
+    }
+
+    #section {
+        margin-left: 17rem !important;
+    }
+}
+
+/* ! Narrow  */
+@media only screen and (max-width: 1366px) {
+    #sidebar-wide {
+        display: none;
+    }
+
+    #sidebar-narrow {
+        display: flex;
+        flex-direction: column;
+        width: 5rem !important;
+    }
+
+    #section {
+        margin-left: 5rem !important;
+    }
+}
+
+/* Narrow */
+.item {
+    height: 3.5rem !important;
+    transition: 0.2s;
+}
+
+.item:hover {
+    transition: 0.2s;
+}
+
+#customers {
+    background: url("../../../../assets/customers.png") center / 32px no-repeat;
+    /* background-size: 32px; */
+    height: 60px;
+    width: 60px;
+}
+
+#customers:hover {
+    background: url("../../../../assets/hover-customers.png") center / 32px no-repeat;
+    /* background-size: 32px; */
+    cursor: pointer;
+}
+
+#destinations {
+    background: url("../../../../assets/destinations.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#destinations:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-destinations.png") center / 32px no-repeat;
+}
+
+#drivers {
+    background: url("../../../../assets/drivers.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#drivers:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-drivers.png") center / 32px no-repeat;
+}
+
+#pickupPoints {
+    background: url("../../../../assets/pickupPoints.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#pickupPoints:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-pickupPoints.png") center / 32px no-repeat;
+}
+
+#routes {
+    background: url("../../../../assets/routes.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#routes:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-routes.png") center / 32px no-repeat;
+}
+
+#transfers {
+    background: url("../../../../assets/transfers.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#transfers:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-transfers.png") center / 32px no-repeat;
+}
+
+#users {
+    background: url("../../../../assets/users.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#users:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-users.png") center / 32px no-repeat;
+}
+
+#logout {
+    background: url("../../../../assets/logout.png") center / 32px no-repeat;
+    height: 60px;
+    width: 60px;
+}
+
+#logout:hover {
+    cursor: pointer;
+    background: url("../../../../assets/hover-logout.png") center / 32px no-repeat;
+}
+
+#menu-narrow {
+    margin: 0 auto;
+}

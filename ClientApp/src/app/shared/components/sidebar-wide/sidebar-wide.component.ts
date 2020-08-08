@@ -4,12 +4,12 @@ import { AccountService } from '../../services/account.service'
 import { environment } from 'src/environments/environment'
 
 @Component({
-    selector: 'app-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.css']
+    selector: 'app-sidebar-wide',
+    templateUrl: './sidebar-wide.component.html',
+    styleUrls: ['./sidebar-wide.component.css']
 })
 
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarWideComponent implements OnInit, AfterViewInit {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>

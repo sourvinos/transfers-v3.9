@@ -1,0 +1,46 @@
+<div id="sidebar">
+    <div id="sidebar-wide">
+        <div id="userInfo">
+            <div *ngIf="(loginStatus | async)">
+                <div>Hello, {{ displayName | async }}</div>
+            </div>
+        </div>
+        <div id="companyLogo" [routerLink]="['/']">
+            <p>{{ appName.header }}</p>
+            <p>{{ appName.subHeader }}</p>
+        </div>
+        <div id="double-ring" [routerLink]="['/']">
+            <double-ring></double-ring>
+        </div>
+        <div id="menu">
+            <ul id="menuItems" (click)="onCloseSidebar()">
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/transfers']" routerLinkActive="active">Transfers</li>
+                <li *ngIf="(loginStatus | async)" [routerLink]="['/users']" routerLinkActive="active">Users</li>
+                <li *ngIf="(loginStatus | async)" (click)="onLogout()" routerLinkActive="active">Logout</li>
+            </ul>
+        </div>
+        <div id="copyright">Created with .NET Core<br />and Angular</div>
+    </div>
+    <div id="sidebar-narrow">
+        <div id="companyLogoNarrow" [routerLink]="['/']">
+            <p>{{ appName.header }}</p>
+            <p>{{ appName.subHeader }}</p>
+        </div>
+        <div id="menu-narrow">
+            <div class="item" id="customers"> </div>
+            <div class="item" id="destinations"> </div>
+            <div class="item" id=drivers></div>
+            <div class="item" id="pickupPoints"> </div>
+            <div class="item" id="routes"></div>
+            <div class="item" id="transfers"></div>
+            <div class="item" id="users"></div>
+            <div class="item" id="logout"></div>
+        </div>
+    </div>
+</div>

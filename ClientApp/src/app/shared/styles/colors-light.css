@@ -1,8 +1,6 @@
 * {
     /* Sidebar */
-    --color-sidebar-top: #A6826D;
-    --color-sidebar-bottom: #A6826D;
-    --color-sidebar-background: linear-gradient(var(--color-sidebar-top), var(--color-sidebar-bottom));
+    --color-sidebar: #A6826D;
     --color-company-logo-first-child: #734230;
     --color-company-logo-second-child: #e1a07b;
     --color-menu-list-items: #F2CFBB;

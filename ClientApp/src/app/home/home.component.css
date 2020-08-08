@@ -5,7 +5,7 @@
 }
 
 #companyLogo {
-    cursor: pointer;
+    cursor: default;
     font-family: var(--font-family-logo);
     margin: 0 auto 3rem;
     opacity: 10%;
