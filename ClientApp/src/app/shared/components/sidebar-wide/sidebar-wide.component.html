@@ -12,17 +12,17 @@
         <div id="double-ring" [routerLink]="['/']">
             <double-ring></double-ring>
         </div>
-        <div id="menu">
-            <ul id="menuItems" (click)="onCloseSidebar()">
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/transfers']" routerLinkActive="active">Transfers</li>
-                <li *ngIf="(loginStatus | async)" [routerLink]="['/users']" routerLinkActive="active">Users</li>
-                <li *ngIf="(loginStatus | async)" (click)="onLogout()" routerLinkActive="active">Logout</li>
+        <div *ngIf="(loginStatus | async)" id="menuWide">
+            <ul id="menuItems">
+                <li [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
+                <li [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
+                <li [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
+                <li [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
+                <li [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
+                <li [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
+                <li [routerLink]="['/transfers']" routerLinkActive="active">Transfers</li>
+                <li [routerLink]="['/users']" routerLinkActive="active">Users</li>
+                <li (click)="onLogout()" routerLinkActive="active">Logout</li>
             </ul>
         </div>
         <div id="copyright">Created with .NET Core<br />and Angular</div>
@@ -38,15 +38,16 @@
             <p>{{ appName.header }}</p>
             <p>{{ appName.subHeader }}</p>
         </div>
-        <div *ngIf="(loginStatus | async)" id="menu-narrow">
-            <img class="item" [src]="customersImg" id="customers" (mouseenter)="show('customersImg', 'customers-hover')" (mouseleave)="hide('customersImg', 'customers')">
-            <img class="item" [src]="destinationsImg" id="destinations" (mouseenter)="show('destinationsImg', 'destinations-hover')" (mouseleave)="hide('destinationsImg', 'destinations')">
-            <img class="item" [src]="driversImg" id="drivers" (mouseenter)="show('driversImg', 'drivers-hover')" (mouseleave)="hide('driversImg', 'drivers')">
-            <img class="item" [src]="pickupPointsImg" id="pickupPoints" (mouseenter)="show('pickupPointsImg', 'pickupPoints-hover')" (mouseleave)="hide('pickupPointsImg', 'pickupPoints')">
-            <img class="item" [src]="routesImg" id="routes" (mouseenter)="show('routesImg', 'routes-hover')" (mouseleave)="hide('routesImg', 'routes')">
-            <img class="item" [src]="transfersImg" id="transfers" (mouseenter)="show('transfersImg', 'transfers-hover')" (mouseleave)="hide('transfersImg', 'transfers')">
-            <img class="item" [src]="usersImg" id="users" (mouseenter)="show('usersImg', 'users-hover')" (mouseleave)="hide('usersImg', 'users')">
-            <img class="item" [src]="logoutImg" id="users" (mouseenter)="show('logoutImg', 'logout-hover')" (mouseleave)="hide('logoutImg', 'logout')">
+        <div *ngIf="(loginStatus | async)" id="menuNarrow">
+            <img class="item" [routerLink]="['/customers']" [src]="customersImg" id="customers" (mouseenter)="onShow('customersImg', 'customers-hover')" (mouseleave)="onHide('customersImg', 'customers')">
+            <img class="item" [routerLink]="['/destinations']" [src]="destinationsImg" id="destinations" (mouseenter)="onShow('destinationsImg', 'destinations-hover')" (mouseleave)="onHide('destinationsImg', 'destinations')">
+            <img class="item" [routerLink]="['/drivers']" [src]="driversImg" id="drivers" (mouseenter)="onShow('driversImg', 'drivers-hover')" (mouseleave)="onHide('driversImg', 'drivers')">
+            <img class="item" [routerLink]="['/pickupPoints']" [src]="pickupPointsImg" id="pickupPoints" (mouseenter)="onShow('pickupPointsImg', 'pickupPoints-hover')" (mouseleave)="onHide('pickupPointsImg', 'pickupPoints')">
+            <img class="item" [routerLink]="['/ports']" [src]="portsImg" id="ports" (mouseenter)="onShow('portsImg', 'ports-hover')" (mouseleave)="onHide('portsImg', 'ports')">
+            <img class="item" [routerLink]="['/routes']" [src]="routesImg" id="routes" (mouseenter)="onShow('routesImg', 'routes-hover')" (mouseleave)="onHide('routesImg', 'routes')">
+            <img class="item" [routerLink]="['/transfers']" [src]="transfersImg" id="transfers" (mouseenter)="onShow('transfersImg', 'transfers-hover')" (mouseleave)="onHide('transfersImg', 'transfers')">
+            <img class="item" [routerLink]="['/users']" [src]="usersImg" id="users" (mouseenter)="onShow('usersImg', 'users-hover')" (mouseleave)="onHide('usersImg', 'users')">
+            <img class="item" (click)="onLogout()" [src]="logoutImg" id="users" (mouseenter)="onShow('logoutImg', 'logout-hover')" (mouseleave)="onHide('logoutImg', 'logout')">
         </div>
     </div>
 </div>

@@ -42,7 +42,7 @@ p.instructions {
     width: 800px;
 }
 
-.mat-icon {
+.mat-icon, .item {
     outline: 0 !important;
 }
 

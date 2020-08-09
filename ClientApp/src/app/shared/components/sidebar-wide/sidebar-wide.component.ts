@@ -23,6 +23,7 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     driversImg = 'assets/drivers.png'
     pickupPointsImg = 'assets/pickupPoints.png'
     routesImg = 'assets/routes.png'
+    portsImg = 'assets/ports.png'
     transfersImg = 'assets/transfers.png'
     usersImg = 'assets/users.png'
     logoutImg = 'assets/logout.png'
@@ -56,11 +57,11 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         this.accountService.logout()
     }
 
-    show(variable: string | number, image: string) {
+    onShow(variable: string | number, image: string) {
         this[variable] = 'assets/' + image + '.png'
     }
 
-    hide(variable: string | number, image: string) {
+    onHide(variable: string | number, image: string) {
         this[variable] = 'assets/' + image + '.png'
     }
 
