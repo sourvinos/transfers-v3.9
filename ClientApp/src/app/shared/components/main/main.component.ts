@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
     selector: 'app-main',
@@ -6,25 +6,4 @@ import { AfterViewInit, Component, HostListener } from '@angular/core'
     styleUrls: ['./main.component.css']
 })
 
-export class MainComponent implements AfterViewInit {
-
-    ngAfterViewInit() {
-        this.positionHamburger()
-    }
-
-    @HostListener('window:resize', ['$event']) onResize() {
-        this.positionHamburger()
-    }
-
-    onToggleMenu() {
-        document.getElementById('hamburger').classList.toggle('open')
-        const sidebar = document.getElementById('sidebar')
-        sidebar.style.width = sidebar.style.width === '17rem' ? '0' : '17rem'
-    }
-
-    private positionHamburger() {
-        const hamburger = document.getElementById('hamburger')
-        hamburger.style.top = window.innerHeight - 68 + 'px'
-    }
-
-}
+export class MainComponent { }
