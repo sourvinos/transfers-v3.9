@@ -31,13 +31,17 @@
     font-size: var(--font-size-input) !important;
 }
 
-.mat-form-field-type-mat-select .mat-form-field-infix {
-    padding-bottom: 9px !important;
+.mat-form-field-type-mat-select {
+    margin-bottom: 0px !important;
+}
+
+.mat-form-field-type .mat-select .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding-bottom: 10px !important;
 }
 
 .mat-form-field .mat-select-value {
     font-size: var(--font-size-input) !important;
-    padding-top: 10px !important;
+    padding-top: 0 !important;
 }
 
 .mat-form-field .mat-select-value-text {

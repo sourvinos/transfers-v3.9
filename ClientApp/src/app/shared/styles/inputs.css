@@ -31,10 +31,12 @@ input[type=number] {
     width: 100% !important;
 }
 
+.mat-form-field-type .mat-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding-bottom: 10px !important;
+}
+
 .mat-form-field-infix {
     font-size: var(--font-size-height) !important;
-    padding-bottom: var(--input-bottom-margin) !important;
-    padding-top: 0 !important;
 }
 
 .mat-form-field-wrapper {
@@ -56,10 +58,6 @@ input[type=number] {
 
 #search-box .mat-form-field {
     flex: auto;
-}
-
-#search-box .mat-form-field-wrapper {
-    margin: 0 !important;
 }
 
 input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
