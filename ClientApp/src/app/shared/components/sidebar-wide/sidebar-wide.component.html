@@ -1,11 +1,11 @@
 <div id="sidebar">
     <div id="sidebar-wide">
-        <div id="userInfoBig">
+        <div class="userInfo" id="wide">
             <div *ngIf="(loginStatus | async)">
                 <div>Hello, {{ displayName | async }}</div>
             </div>
         </div>
-        <div class="companyLogo" id="logoBig" [routerLink]="['/']">
+        <div class="companyLogo" id="wide" [routerLink]="['/']">
             <p>{{ appName.header }}</p>
             <p>{{ appName.subHeader }}</p>
         </div>
@@ -28,25 +28,25 @@
         <div id="copyright">Created with .NET Core<br />and Angular</div>
     </div>
     <div id="sidebar-narrow">
-        <div id="userInfoSmall">
+        <div class="userInfo" id="narrow">
             <div *ngIf="(loginStatus | async)">
                 <div>Hello</div>
                 <div>{{ displayName | async }}</div>
             </div>
         </div>
-        <div class="companyLogo" id="logoSmall" [routerLink]="['/']">
+        <div class="companyLogo" id="narrow" [routerLink]="['/']">
             <p>{{ appName.header }}</p>
             <p>{{ appName.subHeader }}</p>
         </div>
-        <div id="menu-narrow">
-            <img class="item" [src]="customersHover || customers" id="customers" (mouseover)="customers" (mouseout)="customersHover">
-            <img class="item" src="assets/destinations.png" id="destinations">
-            <img class="item" src="assets/drivers.png" id=drivers>
-            <img class="item" src="assets/pickupPoints.png" id="pickupPoints">
-            <img class="item" src="assets/routes.png" id="routes">
-            <img class="item" src="assets/transfers.png" id="transfers">
-            <img class="item" src="assets/users.png" id="users">
-            <img class="item" src="assets/logout.png" id="logout">
+        <div *ngIf="(loginStatus | async)" id="menu-narrow">
+            <img class="item" [src]="customersImg" id="customers" (mouseenter)="show('customersImg', 'customers-hover')" (mouseleave)="hide('customersImg', 'customers')">
+            <img class="item" [src]="destinationsImg" id="destinations" (mouseenter)="show('destinationsImg', 'destinations-hover')" (mouseleave)="hide('destinationsImg', 'destinations')">
+            <img class="item" [src]="driversImg" id="drivers" (mouseenter)="show('driversImg', 'drivers-hover')" (mouseleave)="hide('driversImg', 'drivers')">
+            <img class="item" [src]="pickupPointsImg" id="pickupPoints" (mouseenter)="show('pickupPointsImg', 'pickupPoints-hover')" (mouseleave)="hide('pickupPointsImg', 'pickupPoints')">
+            <img class="item" [src]="routesImg" id="routes" (mouseenter)="show('routesImg', 'routes-hover')" (mouseleave)="hide('routesImg', 'routes')">
+            <img class="item" [src]="transfersImg" id="transfers" (mouseenter)="show('transfersImg', 'transfers-hover')" (mouseleave)="hide('transfersImg', 'transfers')">
+            <img class="item" [src]="usersImg" id="users" (mouseenter)="show('usersImg', 'users-hover')" (mouseleave)="hide('usersImg', 'users')">
+            <img class="item" [src]="logoutImg" id="users" (mouseenter)="show('logoutImg', 'logout-hover')" (mouseleave)="hide('logoutImg', 'logout')">
         </div>
     </div>
 </div>

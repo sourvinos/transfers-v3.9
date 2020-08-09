@@ -18,8 +18,14 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
-    customers = 'assets/customers.png'
-    customersHover = 'assets/customers-hover.png'
+    customersImg = 'assets/customers.png'
+    destinationsImg = 'assets/destinations.png'
+    driversImg = 'assets/drivers.png'
+    pickupPointsImg = 'assets/pickupPoints.png'
+    routesImg = 'assets/routes.png'
+    transfersImg = 'assets/transfers.png'
+    usersImg = 'assets/users.png'
+    logoutImg = 'assets/logout.png'
 
     constructor(private accountService: AccountService) { }
 
@@ -48,6 +54,14 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
 
     onLogout() {
         this.accountService.logout()
+    }
+
+    show(variable: string | number, image: string) {
+        this[variable] = 'assets/' + image + '.png'
+    }
+
+    hide(variable: string | number, image: string) {
+        this[variable] = 'assets/' + image + '.png'
     }
 
 }
