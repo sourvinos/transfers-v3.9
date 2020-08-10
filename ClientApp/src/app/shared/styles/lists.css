@@ -11,7 +11,6 @@
 #header {
     align-items: center;
     display: flex;
-    margin: 2rem;
 }
 
 #header #navigation {
@@ -35,7 +34,6 @@
 #content {
     grid-area: content;
     grid-auto-rows: 100%;
-    margin: 0 1.8rem 0 2rem;
     overflow-x: hidden;
     overflow-y: scroll;
     width: auto;
@@ -43,7 +41,6 @@
 
 #footer {
     grid-area: footer;
-    margin: 2rem 2rem 2rem 2rem;
 }
 
 #footer #buttons {
@@ -53,9 +50,32 @@
     margin-right: 1rem;
 }
 
-/* ! Narrow screen */
+/* Wide */
+@media only screen and (min-width: 1367px) {
+    #header {
+        margin: 2rem;
+    }
+
+    #content {
+        margin: 0 2rem 0 2rem;
+    }
+
+    #footer {
+        margin: 2rem;
+    }
+}
+
+/* Narrow */
 @media only screen and (max-width: 1366px) {
-    h1 {
-        margin-left: 0 !important;
+    #header {
+        margin: 1.5rem;
+    }
+
+    #content {
+        margin: 0 1.5rem 0 1.5rem;
+    }
+
+    #footer {
+        margin: 1.5rem;
     }
 }

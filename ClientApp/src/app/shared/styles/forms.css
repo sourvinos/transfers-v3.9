@@ -14,7 +14,6 @@
     grid-template-areas:
         "navigation title";
     grid-template-columns: fit-content(0%) auto;
-    margin: 2rem;
 }
 
 #header #title {
@@ -54,7 +53,6 @@
 
 #footer {
     grid-area: footer;
-    margin: 1rem 2rem 2rem 2rem;
 }
 
 #footer #buttons {
@@ -72,13 +70,24 @@
     margin-right: 1rem;
 }
 
-/* ! Narrow screen */
-@media only screen and (max-width: 1366px) {
-    h1 {
-        margin-left: 0 !important;
+/* Wide */
+@media only screen and (min-width: 1367px) {
+    #header {
+        margin: 2rem;
     }
 
-    .navigation-icon {
-        margin-left: 2rem !important;
+    #footer {
+        margin: 2rem;
+    }
+}
+
+/* Narrow */
+@media only screen and (max-width: 1366px) {
+    #header {
+        margin: 1.5rem;
+    }
+
+    #footer {
+        margin: 1.5rem;
     }
 }

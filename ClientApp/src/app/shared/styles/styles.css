@@ -13,8 +13,8 @@
 @import "select.css";
 @import "snackbar.css";
 @import "loader.css";
-@import "big-screen-variables.css";
-@import "small-screen-variables.css";
+@import "variables-narrow.css";
+@import "variables-wide.css";
 @import "colors-dark.css";
 
 * {

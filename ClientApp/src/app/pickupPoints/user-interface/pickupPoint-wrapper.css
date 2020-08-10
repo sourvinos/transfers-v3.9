@@ -11,7 +11,6 @@
     align-items: center;
     display: flex;
     grid-area: "header";
-    margin: 2rem;
 }
 
 #header #navigation {
@@ -33,4 +32,18 @@
 
 #header #search-box .mat-form-field {
     width: 20rem !important;
+}
+
+/* Wide */
+@media only screen and (min-width: 1367px) {
+    #header {
+        margin: 2rem;
+    }
+}
+
+/* Narrow */
+@media only screen and (max-width: 1366px) {
+    #header {
+        margin: 1.5rem;
+    }
 }

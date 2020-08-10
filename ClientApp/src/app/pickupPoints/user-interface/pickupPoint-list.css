@@ -5,7 +5,6 @@
     grid-template-areas:
         "navigation title searchbox";
     grid-template-columns: fit-content(0%) 1fr auto;
-    margin: 2rem;
 }
 
 #header #navigation {
@@ -22,4 +21,18 @@ span#routeDescription {
     font-size: 24px;
     font-weight: bold;
     margin: 6px 0 0 10px;
+}
+
+/* Wide */
+@media only screen and (min-width: 1367px) {
+    #header {
+        margin: 2rem;
+    }
+}
+
+/* Narrow */
+@media only screen and (max-width: 1366px) {
+    #header {
+        margin: 1.5rem;
+    }
 }
