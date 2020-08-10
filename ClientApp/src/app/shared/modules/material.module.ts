@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDividerModule } from '@angular/material/divider'
@@ -15,6 +16,7 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 @NgModule({
     exports: [
         MatButtonModule,
+        MatButtonToggleModule,
         MatCheckboxModule,
         MatDialogModule,
         MatDividerModule,

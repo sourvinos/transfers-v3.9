@@ -1,51 +1,13 @@
-#sidebar {
-    background-color: var(--color-sidebar);
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-    position: sticky;
-    transition: 0.7s;
-    z-index: 2;
-}
-
 #sidebar-wide {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.userInfo {
-    color: var(--color-user-info);
-    font-family: var(--font-family-user-info);
-    text-align: center;
-}
-
 .userInfo#wide {
     font-size: var(--font-size-user-info);
     margin: 1.5rem auto 0;
     min-height: 1.5rem;
-}
-
-.userInfo#narrow {
-    font-size: 11px;
-    margin: 1.3rem 0 0 0;
-    min-height: 1.875rem;
-}
-
-.companyLogo {
-    cursor: pointer;
-    font-family: var(--font-family-logo);
-    margin: 0 auto 1.5rem;
-    outline: 0;
-    text-align: center;
-}
-
-.companyLogo :nth-child(1) {
-    color: var(--color-company-logo-first-child) !important;
-}
-
-.companyLogo :nth-child(2) {
-    color: var(--color-company-logo-second-child) !important;
 }
 
 .companyLogo#wide :nth-child(1) {
@@ -55,19 +17,6 @@
 .companyLogo#wide :nth-child(2) {
     font-size: var(--font-size-logo-second-child) !important;
     margin: -1rem 0 0 0 !important;
-}
-
-.companyLogo#narrow {
-    margin: 0.9rem 0 1rem 0;
-}
-
-.companyLogo#narrow :nth-child(1) {
-    font-size: 1.5625rem !important;
-}
-
-.companyLogo#narrow :nth-child(2) {
-    font-size: 1rem !important;
-    margin-top: -0.5rem !important;
 }
 
 #double-ring {
@@ -112,18 +61,6 @@
     color: var(--color-menu-active-item);
     cursor: pointer;
     font-size: var(--font-size-menu-list-item-active);
-}
-
-#menuNarrow {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-}
-
-#menuNarrow .item {
-    cursor: pointer;
-    margin: 0.6rem;
-    width: 2rem;
 }
 
 #copyright {
@@ -177,6 +114,7 @@
     }
 
     #sidebar-narrow {
+        align-items: center;
         display: flex;
         flex-direction: column;
         width: 5rem !important;

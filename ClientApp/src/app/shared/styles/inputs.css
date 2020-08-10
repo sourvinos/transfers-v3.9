@@ -40,7 +40,7 @@ input[type=number] {
 }
 
 .mat-form-field-wrapper {
-    margin-bottom: 0.7rem !important;
+    margin-bottom: 0.625rem !important;
 }
 
 .mat-form-field-label {
@@ -120,4 +120,8 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
     background-color: var(--color-input-text-error) !important;
+}
+
+.no-bottom-margin > .mat-form-field-wrapper {
+    margin-bottom: 0 !important;
 }

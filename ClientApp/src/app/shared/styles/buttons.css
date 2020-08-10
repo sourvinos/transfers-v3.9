@@ -6,7 +6,6 @@ button {
     font-family: var(--font-family-buttons) !important;
     font-weight: var(--font-weight-buttons) !important;
     justify-content: center;
-    margin: 0 0 0 0.5rem !important;
     min-width: 0 !important;
     outline: 0 !important;
     padding-top: 1px !important;
@@ -14,15 +13,18 @@ button {
 
 button.primary {
     background-color: var(--color-button-primary) !important;
+    margin: 0 0 0 0.5rem !important;
 }
 
 button.secondary {
     background-color: var(--color-button-secondary) !important;
     color: var(--color-button-text-secondary) !important;
+    margin: 0 0 0 0.5rem !important;
 }
 
 button.delete {
     background-color: var(--color-button-delete) !important;
+    margin: 0 0 0 0.5rem !important;
 }
 
 button.navigation {
@@ -34,6 +36,7 @@ button.navigation {
 button.transparent {
     background-color: var(--color-button-background-transparent) !important;
     color: var(--color-button-text-transparent) !important;
+    margin: 0 0 0 0.5rem !important;
 }
 
 button::first-letter {
@@ -51,6 +54,10 @@ button:not(:disabled) {
 
 .mat-mini-fab .mat-button-wrapper {
     padding: 6px 0 !important;
+}
+
+.mat-button-toggle-label-content {
+    padding-bottom: 3px !important;
 }
 
 #goBack {

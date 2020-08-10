@@ -1,0 +1,28 @@
+<div id="sidebar-wide">
+    <div class="userInfo" id="wide">
+        <div *ngIf="(loginStatus | async)">
+            <div>Hello, {{ displayName | async }}</div>
+        </div>
+    </div>
+    <div class="companyLogo" id="wide" [routerLink]="['/']">
+        <p>{{ appName.header }}</p>
+        <p>{{ appName.subHeader }}</p>
+    </div>
+    <div id="double-ring" [routerLink]="['/']">
+        <double-ring></double-ring>
+    </div>
+    <div *ngIf="(loginStatus | async)" id="menuWide">
+        <ul id="menuItems">
+            <li [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
+            <li [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
+            <li [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
+            <li [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
+            <li [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
+            <li [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
+            <li [routerLink]="['/transfers']" routerLinkActive="active">Transfers</li>
+            <li [routerLink]="['/users']" routerLinkActive="active">Users</li>
+            <li (click)="onLogout()" routerLinkActive="active">Logout</li>
+        </ul>
+    </div>
+    <div id="copyright">Created with .NET Core<br />and Angular</div>
+</div>

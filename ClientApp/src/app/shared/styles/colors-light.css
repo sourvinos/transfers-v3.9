@@ -21,6 +21,8 @@
     --color-button-text-secondary: #734230;
     --color-button-background-transparent: #F9D6C2;
     --color-button-text-transparent: #734230;
+    /* Narrow navigation buttons */
+    --color-toggle-background: #F2CFBB;
     /* Input boxes */
     --color-input-text-caret: #ffffff;
     --color-input-text-selected: #FFC29E;

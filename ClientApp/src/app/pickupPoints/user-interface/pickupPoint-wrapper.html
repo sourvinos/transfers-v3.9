@@ -8,7 +8,7 @@
         <h1>Pickup points</h1>
     </div>
     <div id="search-box">
-        <mat-form-field>
+        <mat-form-field class="no-bottom-margin">
             <mat-label>Routes</mat-label>
             <mat-select [(value)]="id" (selectionChange)="onLoadPickupPoints()">
                 <mat-option *ngFor=" let route of routes" [value]="route.id">

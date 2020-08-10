@@ -1,0 +1,24 @@
+<div id="sidebar-narrow">
+    <div class="userInfo" id="narrow">
+        <div *ngIf="(loginStatus | async)">
+            <div>Hello,</div>
+            <div>{{ displayName | async }}</div>
+        </div>
+    </div>
+    <div class="companyLogo" id="narrow" [routerLink]="['/']">
+        <p>{{ appName.header }}</p>
+        <p>{{ appName.subHeader }}</p>
+    </div>
+    <div *ngIf="(loginStatus | async)" id="menuNarrow">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle routerLink="/customers" routerLinkActive="active"><img src="/assets/customers.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/drivers" routerLinkActive="active"><img src="/assets/drivers.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/destinations" routerLinkActive="active"><img src="/assets/destinations.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/pickupPoints" routerLinkActive="active"><img src="/assets/pickupPoints.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/ports" routerLinkActive="active"><img src="/assets/ports.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/routes" routerLinkActive="active"><img src="/assets/routes.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle routerLink="/transfers" routerLinkActive="active"><img src="/assets/transfers.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle (click)="onLogout()" routerLinkActive="active"><img src="/assets/logout.png" width="24px"></mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>

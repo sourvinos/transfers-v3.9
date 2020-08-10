@@ -1,0 +1,31 @@
+#sidebar {
+    background-color: var(--color-sidebar);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    position: sticky;
+    transition: 0.7s;
+    z-index: 2;
+}
+
+.userInfo {
+    color: var(--color-user-info);
+    font-family: var(--font-family-user-info);
+    text-align: center;
+}
+
+.companyLogo {
+    cursor: pointer;
+    font-family: var(--font-family-logo);
+    margin: 0 auto 1.5rem;
+    outline: 0;
+    text-align: center;
+}
+
+.companyLogo :nth-child(1) {
+    color: var(--color-company-logo-first-child) !important;
+}
+
+.companyLogo :nth-child(2) {
+    color: var(--color-company-logo-second-child) !important;
+}

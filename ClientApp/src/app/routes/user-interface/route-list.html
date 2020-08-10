@@ -8,7 +8,7 @@
         <h1>Routes</h1>
     </div>
     <div id="search-box">
-        <mat-form-field>
+        <mat-form-field class="no-bottom-margin">
             <input type="text" matInput placeholder="Search" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
             <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
                 <mat-icon>close</mat-icon>
