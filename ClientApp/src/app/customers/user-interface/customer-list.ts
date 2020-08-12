@@ -11,6 +11,8 @@ import { Customer } from '../classes/customer'
 import { SnackbarService } from './../../shared/services/snackbar.service'
 import { takeUntil } from 'rxjs/operators'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { IndexDBService } from 'src/app/shared/services/indexdb.service'
+import { Setting } from 'src/app/shared/classes/setting'
 
 @Component({
     selector: 'customer-list',
@@ -45,7 +47,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private indexDBService: IndexDBService) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -55,9 +57,17 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
         this.focus('searchTerm')
+
+        const setting: Setting = { 'id': 'jwt', 'key': 'adf5a99c-dc70-11ea-87d0-0242ac130003' }
+        this.indexDBService.addSetting(setting)
+
     }
 
     ngOnDestroy() {
+
+        const editSetting: Setting = { 'id': 'jwt', 'key': 'somethingElse' }
+        this.indexDBService.editSetting(editSetting)
+
         this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()

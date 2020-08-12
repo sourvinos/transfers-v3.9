@@ -29,6 +29,7 @@ import { SidebarWrapperComponent } from '../shared/components/sidebar/sidebar-wr
 import { TransferModule } from './../transfers/classes/transfer.module'
 import { UserIdleModule } from 'angular-user-idle'
 import { UserModule } from '../users/classes/user.module'
+import { IndexDBService } from '../shared/services/indexdb.service'
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { UserModule } from '../users/classes/user.module'
         UserIdleModule.forRoot({ idle: 3600, timeout: 60, ping: 60 })
     ],
     providers: [
+        IndexDBService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     ],
     bootstrap: [RootComponent]

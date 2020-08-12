@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { UserIdleService } from 'angular-user-idle'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { IndexDBService } from './indexdb.service'
 
 @Injectable({ providedIn: 'root' })
 
@@ -19,7 +20,7 @@ export class AccountService {
     private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
 
-    constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
+    constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService, private indexDBService: IndexDBService) { }
 
     forgotPassword(email: string) {
         return this.httpClient.post<any>(this.urlForgotPassword, { email })
@@ -35,6 +36,9 @@ export class AccountService {
     }
 
     logout() {
+
+        this.indexDBService.deleteSetting('jwt')
+
         this.setLoginStatus(false)
         this.clearLocalStorage()
         this.resetTimer()
