@@ -13,7 +13,7 @@ export class SidebarNarrowComponent {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
-    displayName: Observable<string>
+    displayName: Promise<string>
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -23,7 +23,7 @@ export class SidebarNarrowComponent {
 
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
-        this.displayName = this.accountService.currentDisplayName
+        this.displayName = this.accountService.getUsername()
     }
 
     ngAfterViewInit() {

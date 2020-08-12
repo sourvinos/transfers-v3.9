@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
 
@@ -12,8 +11,8 @@ import { AccountService } from 'src/app/shared/services/account.service'
 export class SidebarWideComponent implements OnInit, AfterViewInit {
 
     isNotLoaded = true
-    loginStatus: Observable<boolean>
-    displayName: Observable<string>
+    loginStatus: Promise<number>
+    displayName: Promise<string>
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -22,8 +21,8 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     constructor(private accountService: AccountService) { }
 
     ngOnInit() {
-        this.loginStatus = this.accountService.isLoggedIn
-        this.displayName = this.accountService.currentDisplayName
+        this.loginStatus = this.accountService.getLoginStatus()
+        this.displayName = this.accountService.getUsername()
     }
 
     ngAfterViewInit() {

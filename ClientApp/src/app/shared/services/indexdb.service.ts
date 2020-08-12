@@ -22,13 +22,25 @@ export class IndexDBService {
         }
     }
 
+    async getSetting(id: string) {
+        const object = await this.db.settings.get(id)
+        console.log('getSetting', object.key)
+        return object.key
+    }
+
     deleteSetting(id) {
         this.db.settings.delete(id)
+    }
+
+    deleteDatabase() {
+        this.db.delete()
     }
 
     private createDatabase() {
         this.db = new Dexie('Island Cruises')
         this.db.version(1).stores({ settings: 'id, key' })
     }
+
+
 
 }

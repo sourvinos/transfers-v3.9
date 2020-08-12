@@ -57,10 +57,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.subscribeToInteractionService()
         this.onFilter(this.searchTerm)
         this.focus('searchTerm')
-
-        const setting: Setting = { 'id': 'jwt', 'key': 'adf5a99c-dc70-11ea-87d0-0242ac130003' }
-        this.indexDBService.addSetting(setting)
-
     }
 
     ngOnDestroy() {

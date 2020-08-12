@@ -11,6 +11,7 @@
     <div id="double-ring" [routerLink]="['/']">
         <double-ring></double-ring>
     </div>
+    {{ loginStatus | async }}
     <div *ngIf="(loginStatus | async)" id="menuWide">
         <ul id="menuItems">
             <li [routerLink]="['/customers']" routerLinkActive="active">Customers</li>

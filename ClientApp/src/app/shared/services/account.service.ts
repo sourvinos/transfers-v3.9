@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { UserIdleService } from 'angular-user-idle'
-import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { IndexDBService } from './indexdb.service'
+import { Observable } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 
@@ -16,9 +16,7 @@ export class AccountService {
     private urlToken = '/api/auth/auth'
     private urlChangePassword = '/api/account/changePassword'
 
-    private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus())
-    private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
-    private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
+    private loginStatus: Promise<string>
 
     constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService, private indexDBService: IndexDBService) { }
 
@@ -29,18 +27,15 @@ export class AccountService {
     login(userName: string, password: string) {
         const grantType = 'password'
         return this.httpClient.post<any>(this.urlToken, { userName, password, grantType }).pipe(map(response => {
-            this.setLoginStatus(true)
-            this.setLocalStorage(response)
-            this.setUserData()
+            this.setIndexedDB(response)
+            // this.setLocalStorage(response)
+            // this.getUserData()
         }))
     }
 
     logout() {
-
-        this.indexDBService.deleteSetting('jwt')
-
-        this.setLoginStatus(false)
         this.clearLocalStorage()
+        this.deleteIndexedDB()
         this.resetTimer()
         this.navigateToLogin()
     }
@@ -61,7 +56,7 @@ export class AccountService {
             map(response => {
                 console.log('Refresh token' + response.response.token)
                 if (response.response.token) {
-                    this.setLoginStatus(true)
+                    // this.setLoginStatus(true)
                     this.setLocalStorage(response)
                 }
                 return <any>response
@@ -69,8 +64,9 @@ export class AccountService {
         )
     }
 
-    private checkLoginStatus(): boolean {
-        const loginCookie = localStorage.getItem('loginStatus')
+    private async checkLoginStatus(): Promise<boolean> {
+        // const loginCookie = localStorage.getItem('loginStatus')
+        const loginCookie = await this.indexDBService.getSetting('loginStatus')
         if (loginCookie === '1') {
             if (localStorage.getItem('jwt') !== null || localStorage.getItem('jwt') !== undefined) {
                 return true
@@ -89,6 +85,10 @@ export class AccountService {
         localStorage.removeItem('userId')
     }
 
+    private deleteIndexedDB() {
+        this.indexDBService.deleteDatabase()
+    }
+
     private navigateToLogin() {
         this.router.navigate(['/login'])
     }
@@ -98,8 +98,14 @@ export class AccountService {
         this.userIdleService.resetTimer()
     }
 
-    private setLoginStatus(status: boolean) {
-        this.loginStatus.next(status)
+    private setIndexedDB(response: any) {
+        this.indexDBService.addSetting({ 'id': 'displayName', 'key': response.response.displayName })
+        this.indexDBService.addSetting({ 'id': 'expiration', 'key': response.response.expiration })
+        this.indexDBService.addSetting({ 'id': 'jwt', 'key': response.response.token })
+        this.indexDBService.addSetting({ 'id': 'loginStatus', 'key': '1' })
+        this.indexDBService.addSetting({ 'id': 'refreshToken', 'key': response.response.refresh_token })
+        this.indexDBService.addSetting({ 'id': 'userRole', 'key': response.response.roles })
+        this.indexDBService.addSetting({ 'id': 'userId', 'key': response.response.userId })
     }
 
     private setLocalStorage(response: any) {
@@ -112,21 +118,12 @@ export class AccountService {
         localStorage.setItem('userId', response.response.userId)
     }
 
-    private setUserData() {
-        this.displayName.next(localStorage.getItem('displayName'))
-        this.userRole.next(localStorage.getItem('userRole'))
+    async getUsername() {
+        return await this.indexDBService.getSetting('displayName')
     }
 
-    //#region Getters
-
-    get currentDisplayName(): Observable<string> {
-        return this.displayName.asObservable()
+    async getLoginStatus() {
+        return await this.indexDBService.getSetting('loginStatus')
     }
-
-    get isLoggedIn(): Observable<boolean> {
-        return this.loginStatus.asObservable()
-    }
-
-    //#endregion
 
 }
