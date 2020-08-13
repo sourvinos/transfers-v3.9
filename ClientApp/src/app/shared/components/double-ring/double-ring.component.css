@@ -21,7 +21,7 @@
     position: absolute;
 }
 
-#double-ring-outer:after {
+#double-ring-outer::after {
     content: " ";
     display: block;
     width: 150px;
@@ -46,7 +46,7 @@
     position: absolute;
 }
 
-#double-ring-inner:after {
+#double-ring-inner::after {
     content: " ";
     display: block;
     width: 140px;

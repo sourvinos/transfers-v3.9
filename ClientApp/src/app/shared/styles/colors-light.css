@@ -1,84 +1,104 @@
 * {
+
     /* Sidebar */
-    --color-sidebar: #A6826D;
+    --color-sidebar: #a6826d;
     --color-company-logo-first-child: #734230;
     --color-company-logo-second-child: #e1a07b;
-    --color-menu-list-items: #F2CFBB;
+    --color-menu-list-items: #f2cfbb;
     --color-menu-active-item: #734230;
-    --color-user-info: #F2CFBB;
-    --color-copyright: #F2CFBB;
+    --color-user-info: #f2cfbb;
+    --color-copyright: #f2cfbb;
+
     /* Main background */
-    --color-background: #F2CFBB;
+    --color-background: #f2cfbb;
+
     /* Loader */
-    --color-loader-background: #F2CFBB;
+    --color-loader-background: #f2cfbb;
     --color-loader-progress: #ffa500;
     --color-loader-progress-background: #734230;
+
     /* Buttons */
-    --color-button-primary: #A6826D;
-    --color-button-delete: #F78787;
-    --color-button-secondary: #FFBB9C;
-    --color-button-text-all: #FFEBE2;
+    --color-button-primary: #a6826d;
+    --color-button-delete: #f78787;
+    --color-button-secondary: #ffbb9c;
+    --color-button-text-all: #ffebe2;
     --color-button-text-secondary: #734230;
-    --color-button-background-transparent: #F9D6C2;
+    --color-button-background-transparent: #f9d6c2;
     --color-button-text-transparent: #734230;
+
     /* Narrow navigation buttons */
-    --color-toggle-background: #F2CFBB;
+    --color-toggle-background: #f2cfbb;
+
     /* Input boxes */
     --color-input-text-caret: #ffffff;
-    --color-input-text-selected: #FFC29E;
-    --color-input-focus: #0D0D0D;
+    --color-input-text-selected: #ffc29e;
+    --color-input-focus: #0d0d0d;
     --color-input-not-focus: #734230;
-    --color-input-text-error: #EF1717;
+    --color-input-text-error: #ef1717;
+
     /* Navigation icon */
-    --color-navigation-button: #A6826D;
-    --color-navigation-arrow: #F2CFBB;
+    --color-navigation-button: #a6826d;
+    --color-navigation-arrow: #f2cfbb;
+
     /* Scrollbars */
     --color-scrollbar: #734230;
-    --color-scrollbar-background: #F2CFBB;
+    --color-scrollbar-background: #f2cfbb;
+
     /* Tables */
-    --color-table-background: #F2CFBB;
+    --color-table-background: #f2cfbb;
     --color-table-header: #474747;
-    --color-table-header-border: #A6826D;
+    --color-table-header-border: #a6826d;
     --color-table-row: #474747;
-    --color-table-row-even: #FFE0D2;
-    --color-table-row-odd: #F2CFBB;
-    --color-table-row-selected: #FFBB9C;
+    --color-table-row-even: #ffe0d2;
+    --color-table-row-odd: #f2cfbb;
+    --color-table-row-selected: #ffbb9c;
     --color-table-rows-hover: #000000;
+
     /* All headers */
     --color-headers: #734230;
+
     /* Dialogs */
-    --color-dialog-background: #F2CFBB;
+    --color-dialog-background: #f2cfbb;
     --color-dialog-content: #734230;
+
     /* Snackbars */
-    --color-snackbar-text: #FFEBE2;
+    --color-snackbar-text: #ffebe2;
     --color-snackbar-background-danger: #a52a2a;
     --color-snackbar-background-info: #0e8d97;
+
     /* Instructions on forms */
     --color-paragraphs: #734230;
+
     /* Transfer summary boxes */
-    --color-summary-block-background: #F2CFBB;
-    --color-summary-block-border: #A6826D;
+    --color-summary-block-background: #f2cfbb;
+    --color-summary-block-border: #a6826d;
     --color-summary-block-expansion-indicator: #939393;
     --color-summary-block-item-border-active: #734230;
     --color-summary-block-item-border-inactive: #939393;
-    --color-summary-block-item-hover-background: #F2CFBB;
-    --color-summary-block-item-hover-color: #FFFFFF;
+    --color-summary-block-item-hover-background: #f2cfbb;
+    --color-summary-block-item-hover-color: #ffffff;
     --color-summary-block-item: #474747;
+
     /* Checkboxes */
     --color-checkbox-checked: #734230;
+
     /* Spinner */
     --color-spinner: #d67474;
     --color-spinner-background: #ffe85c;
+
     /* Select */
-    --color-select-background-color: #A6826D;
+    --color-select-background-color: #a6826d;
     --color-select-border: #fe9f36;
-    --color-select-option-color: #F2CFBB;
+    --color-select-option-color: #f2cfbb;
+
     /* Transfers totals */
     --color-label: #474747;
     --color-sum: #734230;
+
     /* Route description at pickup point list */
     --color-route-description: #d47e5e;
-    /* Checkboxes*/
+
+    /* Checkboxes */
     --color-bar-checked: #e1a07b;
     --color-thumb-checked: #734230;
 }

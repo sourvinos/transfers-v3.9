@@ -1,40 +1,49 @@
 * {
+
     /* Sidebar */
-    --color-sidebar: #1D2733;
-    --color-company-logo-first-child: #FE9F36;
-    --color-company-logo-second-child: #FFE85C;
-    --color-menu-list-items: #9F9F9F;
-    --color-menu-active-item: #FE9F36;
-    --color-user-info: #FFE85C;
-    --color-copyright: #FE9F36;
+    --color-sidebar: #1d2733;
+    --color-company-logo-first-child: #fe9f36;
+    --color-company-logo-second-child: #ffe85c;
+    --color-menu-list-items: #9f9f9f;
+    --color-menu-active-item: #fe9f36;
+    --color-user-info: #ffe85c;
+    --color-copyright: #fe9f36;
+
     /* Main background */
-    --color-background: #373F46;
+    --color-background: #373f46;
+
     /* Loader */
-    --color-loader-background: #373F46;
+    --color-loader-background: #373f46;
     --color-loader-progress: #ffa500;
-    --color-loader-progress-background: #1D2733;
+    --color-loader-progress-background: #1d2733;
+
     /* Buttons */
-    --color-button-primary: #57617B;
-    --color-button-delete: #D67474;
-    --color-button-secondary: #5A75BC;
-    --color-button-text-all: #FFFDDD;
-    --color-button-text-secondary: #FFFDDD;
-    --color-button-background-transparent: #434A50;
+    --color-button-primary: #57617b;
+    --color-button-delete: #d67474;
+    --color-button-secondary: #5a75bc;
+    --color-button-text-all: #fffddd;
+    --color-button-text-secondary: #fffddd;
+    --color-button-background-transparent: #434a50;
     --color-button-text-transparent: #939393;
+
     /* Narrow navigation buttons */
-    --color-toggle-background: #373F46;
+    --color-toggle-background: #373f46;
+
     /* Input boxes */
     --color-input-text-caret: #ffffff;
-    --color-input-text-selected: #5F5E5E;
+    --color-input-text-selected: #5f5e5e;
     --color-input-focus: #fe9f36;
     --color-input-not-focus: #939393;
-    --color-input-text-error: #EF1717;
+    --color-input-text-error: #ef1717;
+
     /* Navigation icon */
-    --color-navigation-button: #373F46;
-    --color-navigation-arrow: #F2CFBB;
+    --color-navigation-button: #373f46;
+    --color-navigation-arrow: #f2cfbb;
+
     /* Scrollbars */
     --color-scrollbar: #fe9f36;
-    --color-scrollbar-background: #373F46;
+    --color-scrollbar-background: #373f46;
+
     /* Tables */
     --color-table-background: #373f46;
     --color-table-header: #b3b2b2;
@@ -43,18 +52,23 @@
     --color-table-row-even: #3c434b;
     --color-table-row-odd: #363d44;
     --color-table-row-selected: #394d59;
-    --color-table-rows-hover: #FFE85C;
+    --color-table-rows-hover: #ffe85c;
+
     /* All headers */
     --color-headers: #ffc788;
+
     /* Dialogs */
     --color-dialog-background: #373f46;
     --color-dialog-content: #939393;
+
     /* Snackbars */
-    --color-snackbar-text: #FFFDDD;
+    --color-snackbar-text: #fffddd;
     --color-snackbar-background-danger: #a52a2a;
     --color-snackbar-background-info: #0e8d97;
+
     /* Instructions on forms */
     --color-paragraphs: #ffc788;
+
     /* Transfer summary boxes */
     --color-summary-block-background: #373f46;
     --color-summary-block-border: #57617b;
@@ -64,21 +78,27 @@
     --color-summary-block-item-hover-background: #373f46;
     --color-summary-block-item-hover-color: #ffffff;
     --color-summary-block-item: #b3b2b2;
+
     /* Checkboxes */
     --color-checkbox-checked: #fe9f36;
+
     /* Spinner */
     --color-spinner: #d67474;
     --color-spinner-background: #ffe85c;
+
     /* Select */
-    --color-select-background-color: #373F46;
+    --color-select-background-color: #373f46;
     --color-select-border: #fe9f36;
     --color-select-option-color: #b3b2b2;
+
     /* Transfers totals */
     --color-label: #b3b2b2;
     --color-sum: #fe9f36;
+
     /* Route description at pickup point list */
     --color-route-description: #d47e5e;
-    /* Checkboxes*/
-    --color-bar-checked: #FFE85C;
+
+    /* Checkboxes */
+    --color-bar-checked: #ffe85c;
     --color-thumb-checked: #fe9f36;
 }

@@ -11,7 +11,7 @@
     </div>
     <div *ngIf="(loginStatus | async)" id="menuNarrow">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle routerLink="/customers" routerLinkActive="active"><img src="/assets/customers.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle id="customeronia" routerLink="/customers" routerLinkActive="active"><img src="/assets/customers.png" width="24px"></mat-button-toggle>
             <mat-button-toggle routerLink="/drivers" routerLinkActive="active"><img src="/assets/drivers.png" width="24px"></mat-button-toggle>
             <mat-button-toggle routerLink="/destinations" routerLinkActive="active"><img src="/assets/destinations.png" width="24px"></mat-button-toggle>
             <mat-button-toggle routerLink="/pickupPoints" routerLinkActive="active"><img src="/assets/pickupPoints.png" width="24px"></mat-button-toggle>

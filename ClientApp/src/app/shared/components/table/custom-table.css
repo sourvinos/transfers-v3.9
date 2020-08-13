@@ -20,7 +20,7 @@ th {
     padding: 0.5rem 0.5rem;
     position: sticky;
     text-align: center;
-    top: 0px;
+    top: 0;
     z-index: 1;
 }
 
@@ -42,13 +42,7 @@ tbody tr:nth-child(even) {
 }
 
 tr.selected {
-    background-color: var(--color-table-row-selected) !important
-}
-
-tr:hover td {
-    color: var(--color-table-rows-hover);
-    cursor: pointer;
-    font-weight: bold;
+    background-color: var(--color-table-row-selected) !important;
 }
 
 td {
@@ -60,6 +54,12 @@ td {
     padding: 0.7rem 0.5rem;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+tr:hover td {
+    color: var(--color-table-rows-hover);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 #custom-table-input {

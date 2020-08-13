@@ -48,6 +48,7 @@
 }
 
 /* ! Wide */
+
 @media only screen and (min-width: 1367px) {
     #sidebar-wide {
         width: 17rem !important;
@@ -64,6 +65,7 @@
 }
 
 /* ! Narrow  */
+
 @media only screen and (max-width: 1366px) {
     #sidebar-wide {
         display: none;

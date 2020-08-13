@@ -30,6 +30,7 @@
 }
 
 /* Wide */
+
 @media only screen and (min-width: 1367px) {
     #footer {
         margin: 2rem 0;
@@ -37,6 +38,7 @@
 }
 
 /* Narrow */
+
 @media only screen and (max-width: 1366px) {
     #footer {
         margin: 1.5rem 0;

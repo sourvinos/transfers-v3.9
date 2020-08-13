@@ -31,12 +31,12 @@ input[type=number] {
     width: 100% !important;
 }
 
-.mat-form-field-type .mat-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
-    padding-bottom: 10px !important;
-}
-
 .mat-form-field-infix {
     font-size: var(--font-size-height) !important;
+}
+
+.mat-form-field-type .mat-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding-bottom: 10px !important;
 }
 
 .mat-form-field-wrapper {
@@ -76,7 +76,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 }
 
 .mat-form-field-underline {
-    background-color: var(--color-input-not-focus) !important
+    background-color: var(--color-input-not-focus) !important;
 }
 
 .mat-form-field .mat-hint {
@@ -99,7 +99,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
-    background-color: var(--color-input-focus) !important
+    background-color: var(--color-input-focus) !important;
 }
 
 .mat-form-field.mat-focused .mat-hint {

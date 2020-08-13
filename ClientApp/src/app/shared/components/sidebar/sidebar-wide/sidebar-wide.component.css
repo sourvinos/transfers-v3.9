@@ -46,18 +46,18 @@
     padding: 0;
 }
 
-#menuWide ul>li {
+#menuWide ul > li {
     line-height: 2.5rem !important;
     outline: 0;
-    transition-duration: 200ms;
     transition: font-size;
+    transition-duration: 200ms;
 }
 
-#menuWide ul>li:last-child {
+#menuWide ul > li:last-child {
     margin-top: auto;
 }
 
-#menuWide ul>li:hover, #menuWide ul>li.active {
+#menuWide ul > li:hover, #menuWide ul > li.active {
     color: var(--color-menu-active-item);
     cursor: pointer;
     font-size: var(--font-size-menu-list-item-active);
@@ -73,6 +73,7 @@
 }
 
 /* Small heights = hide bus circle */
+
 @media only screen and (max-height: 799px) {
     #companyLogo {
         margin-bottom: 1rem;
@@ -92,6 +93,7 @@
 }
 
 /* ! Wide */
+
 @media only screen and (min-width: 1367px) {
     #sidebar-wide {
         width: 17rem !important;
@@ -108,6 +110,7 @@
 }
 
 /* ! Narrow  */
+
 @media only screen and (max-width: 1366px) {
     #sidebar-wide {
         display: none;

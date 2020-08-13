@@ -2,8 +2,7 @@
     align-items: center;
     display: grid;
     grid-area: header;
-    grid-template-areas:
-        "navigation title searchbox";
+    grid-template-areas: "navigation title searchbox";
     grid-template-columns: fit-content(0%) 1fr auto;
 }
 
@@ -24,6 +23,7 @@ span#routeDescription {
 }
 
 /* Wide */
+
 @media only screen and (min-width: 1367px) {
     #header {
         margin: 2rem;
@@ -31,6 +31,7 @@ span#routeDescription {
 }
 
 /* Narrow */
+
 @media only screen and (max-width: 1366px) {
     #header {
         margin: 1.5rem;
