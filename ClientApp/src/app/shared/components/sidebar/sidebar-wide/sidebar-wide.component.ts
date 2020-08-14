@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
@@ -18,8 +18,15 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+    isScreenWide: boolean
 
-    constructor(private accountService: AccountService) { }
+    constructor(private accountService: AccountService) {
+        this.isScreenWide = this.getScreenWidth()
+    }
+
+    @HostListener('window:resize', ['$event']) onResize() {
+        this.isScreenWide = this.getScreenWidth()
+    }
 
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
@@ -34,6 +41,10 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
 
     onLogout() {
         this.accountService.logout()
+    }
+
+    private getScreenWidth(){
+        return document.getElementsByTagName("section")[0].clientWidth > 1366
     }
 
 }

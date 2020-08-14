@@ -1,7 +1,9 @@
 #sidebar-narrow {
+    align-items: center;
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 5rem !important;
 }
 
 .userInfo#narrow {
@@ -47,38 +49,6 @@
     transition: background 300ms;
 }
 
-/* ! Wide */
-
-@media only screen and (min-width: 1367px) {
-    #sidebar-wide {
-        width: 17rem !important;
-    }
-
-    #sidebar-narrow {
-        display: none;
-        width: 0 !important;
-    }
-
-    #section {
-        margin-left: 17rem !important;
-    }
-}
-
-/* ! Narrow  */
-
-@media only screen and (max-width: 1366px) {
-    #sidebar-wide {
-        display: none;
-    }
-
-    #sidebar-narrow {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 5rem !important;
-    }
-
-    #section {
-        margin-left: 5rem !important;
-    }
+#section {
+    margin-left: 5rem !important;
 }

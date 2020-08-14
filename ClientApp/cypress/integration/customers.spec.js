@@ -5,7 +5,7 @@ context('Customers', () => {
     })
 
     it('Should go to the /customers', () => {
-        cy.get('#customeronia').click()
+        cy.get('[data-cy=customers]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers')
     })
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
@@ -18,8 +18,15 @@ export class SidebarNarrowComponent {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+    isScreenNarrow: boolean
 
-    constructor(private accountService: AccountService) { }
+    constructor(private accountService: AccountService) { 
+        this.isScreenNarrow = this.getScreenWidth()
+    }
+
+    @HostListener('window:resize', ['$event']) onResize() {
+        this.isScreenNarrow = this.getScreenWidth()
+    }
 
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
@@ -34,6 +41,10 @@ export class SidebarNarrowComponent {
 
     onLogout() {
         this.accountService.logout()
+    }
+
+    private getScreenWidth(){
+        return document.getElementsByTagName("section")[0].clientWidth <= 1366
     }
 
 }
