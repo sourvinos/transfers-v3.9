@@ -1,7 +1,7 @@
 <div id="header">
     <div id="navigation">
-        <button mat-mini-fab class="navigation">
-            <mat-icon id="goBack" [routerLink]="['/']">home</mat-icon>
+        <button data-cy="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
+            <mat-icon>home</mat-icon>
         </button>
     </div>
     <div id="title">
@@ -9,8 +9,8 @@
     </div>
     <div id="search-box">
         <mat-form-field class="no-bottom-margin">
-            <input type="text" matInput placeholder="Search" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
-            <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
+            <input data-cy="searchTerm" type="text" matInput placeholder="Search" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
+            <button data-cy="clearFilter" mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
                 <mat-icon>close</mat-icon>
             </button>
             <mat-hint>Search by description</mat-hint>
@@ -24,6 +24,6 @@
 
 <div id="footer">
     <div id="buttons">
-        <button mat-flat-button class="primary" id="new" [routerLink]="newUrl">New</button>
+        <button data-cy="new"mat-flat-button class="primary" id="new" [routerLink]="newUrl">New</button>
     </div>
 </div>

@@ -14,8 +14,8 @@
     <div *ngIf="(loginStatus | async)" id="menuWide">
         <ul id="menuItems">
             <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
-            <li data-cy="drivers" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
             <li data-cy="destinations" [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
+            <li data-cy="drivers" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
             <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
             <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
             <li data-cy="routes" [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
