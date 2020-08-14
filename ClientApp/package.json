@@ -25,6 +25,7 @@
         "angular-user-idle": "2.2.2",
         "aspnet-prerendering": "3.0.1",
         "core-js": "3.6.5",
+        "dexie": "3.0.2",
         "jwt-decode": "2.2.0",
         "moment": "2.25.3",
         "pdfmake": "0.1.65",
