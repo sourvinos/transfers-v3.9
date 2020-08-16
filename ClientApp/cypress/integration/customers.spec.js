@@ -1,86 +1,167 @@
 context('Customers', () => {
 
     before(() => {
-        cy.login()
+        cy.visit('/')
     })
 
-    context('Customer list', () => {
+    describe('List', () => {
 
-        it('Should got to the customers list', () => {
+        beforeEach(() => {
+            cy.restoreLocalStorage()
+        })
+
+        it('Login', () => {
+            cy.url().should('eq', Cypress.config().baseUrl + '/login')
+                .get('#login').click()
+                .url().should('eq', Cypress.config().baseUrl + '/')
+        })
+
+        it('Go to the customers list', () => {
             cy.get('[data-cy=customers]').click()
-            cy.url().should('eq', Cypress.config().baseUrl + '/customers')
-            cy.get('h1').contains('Customers')
+                .url().should('eq', Cypress.config().baseUrl + '/customers')
         })
 
-        it('Should hava a home button', () => {
-            cy.get('[data-cy=goBack]')
-        })
-
-        it('Should have a search box', () => {
-            cy.get('[data-cy=searchTerm]').should('exist')
-        })
-
-        it('Should filter the list by typing in the search box', () => {
+        it('Filter the list by typing in the search box', () => {
             cy.get('[data-cy=searchTerm]')
                 .type('corfu')
-                .get('tr')
-                .should(($tr) => {
+                .get('tr').should(($tr) => {
                     expect($tr).to.have.length(15)
                 })
         })
 
-        it('Should clear the filter when the "X" is clicked', () => {
+        it('Clear the filter when the "X" is clicked', () => {
             cy.get('[data-cy=clearFilter').click()
-            cy.get('[data-cy=searchTerm]')
+                .get('[data-cy=searchTerm]')
                 .should('have.text', '')
         })
+
+        it('Go to an empty form', () => {
+            cy.get('[data-cy=new').click()
+                .location().should((path) => {
+                    expect(path.href).to.include('customers/new')
+                })
+        })
+
+        it('Go back to the customers list when the back icon is clicked', () => {
+            cy.get('[data-cy=goBack]').click()
+                .url().should('eq', Cypress.config().baseUrl + '/customers')
+        })
+
+        afterEach(() => {
+            cy.saveLocalStorage()
+        })
+
     })
 
-    context('Customer new form', () => {
+    describe('New', () => {
 
-        it('Should go to an empty form', () => {
-            cy.get('[data-cy=new').click()
-            cy.location().should((path) => {
-                expect(path.href).to.include('/customers/new')
-            })
+        beforeEach(() => {
+            cy.restoreLocalStorage()
         })
 
-        it('Should show error when description is left blank', () => {
-            cy.get('[data-cy=description]')
-                .clear()
-                .type('{enter}')
-                .should('have.class', 'ng-invalid')
-            cy.get('[data-cy=form')
-                .should('have.class', 'ng-invalid')
-            cy.get('[data-cy=save')
-                .should('have.attr', 'disabled')
+        it('Go to the customers list by clicking a link', () => {
+            cy.gotoUrl('customers', 'customers')
         })
 
-        it('Should show error when description is too long', () => {
-            cy.get('[data-cy=description]')
-                .clear()
-                .type('1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890{enter}')
-                .should('have.class', 'ng-invalid')
-            cy.get('[data-cy=form')
-                .should('have.class', 'ng-invalid')
-            cy.get('[data-cy=save')
-                .should('have.attr', 'disabled')
+        it('Go to an empty form by clicking a button', () => {
+            cy.gotoUrl('customers/new', 'new')
         })
 
-        it('Should clear the error when description is valid', () => {
-            cy.get('[data-cy=description]')
-                .clear()
-                .type('1234567890{enter}')
-                .should('not.have.class', 'ng-invalid')
-            cy.get('[data-cy=form')
-                .should('not.have.class', 'ng-invalid')
-            cy.get('[data-cy=save]')
-                .should('not.have.attr', 'disabled')
+        it('Description is not valid when blank', () => {
+            cy.typeIntoField('description', 0)
+                .elementShouldBeInvalid('description')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
         })
 
-        it('Should show confirmation message', () => {
+        it('Description is not valid when too long', () => {
+            cy.typeIntoField('description', 129)
+                .elementShouldBeInvalid('description')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Profession is not valid when too long', () => {
+            cy.typeIntoField('profession', 129)
+                .elementShouldBeInvalid('profession')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Address is not valid when too long', () => {
+            cy.typeIntoField('address', 129)
+                .elementShouldBeInvalid('address')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Phones is not valid when too long', () => {
+            cy.typeIntoField('phones', 129)
+                .elementShouldBeInvalid('phones')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Person in charge is not valid when too long', () => {
+            cy.typeIntoField('personInCharge', 129)
+                .elementShouldBeInvalid('personInCharge')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Email is not in valid form', () => {
+            cy.typeIntoField('email', 12)
+                .elementShouldBeInvalid('email')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it.skip('Email is not valid when too long', () => {
+            cy.typeIntoField('email', 129)
+                .elementShouldBeInvalid('email')
+                .elementShouldBeInvalid('form')
+                .buttonShouldBeDisabled('save')
+        })
+
+        it('Mark record as not active', () => {
+            cy.get('[data-cy=isActive]').click()
+        })
+
+        it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
-            cy.get('.mat-dialog-container')
+                .get('.mat-dialog-container')
+                .get('[data-cy=cancel]').click()
+                .url().should('eq', Cypress.config().baseUrl + '/customers/new')
+        })
+
+        it('Choose to abort when the back icon is clicked', () => {
+            cy.get('[data-cy=goBack]').click()
+                .get('.mat-dialog-container')
+                .get('[data-cy=ok]').click()
+                .url().should('eq', Cypress.config().baseUrl + '/customers')
+        })
+
+        it('Go to an empty form', () => {
+            cy.get('[data-cy=new').click()
+                .location().should((path) => {
+                    expect(path.href).to.include('customers/new')
+                })
+        })
+
+        it('Description is valid', () => {
+            cy.typeIntoField('description', 12)
+                .elementShouldBeValid('description')
+                .elementShouldBeValid('form')
+                .buttonShouldBeEnabled('save')
+        })
+
+        it('Save when the save button is clicked and display a snackbar', () => {
+            cy.get('[data-cy=save]').click()
+                .get('[data-cy=customSnackbar]')
+        })
+
+        afterEach(() => {
+            cy.saveLocalStorage()
         })
 
     })

@@ -17,29 +17,29 @@
             <mat-error *ngIf="description.errors?.maxlength">This field can be up to {{ description.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input type="text" matInput placeholder="Profession" formControlName="profession" data-tabindex="2" id="profession" [inputTabStop]="input">
+            <input data-cy="profession" type="text" matInput placeholder="Profession" formControlName="profession" data-tabindex="2" id="profession" [inputTabStop]="input">
             <mat-error *ngIf="profession.errors?.maxlength">This field can be up to {{ profession.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input type="text" matInput placeholder="Address" formControlName="address" data-tabindex="3" id="address" [inputTabStop]="input">
+            <input data-cy="address" type="text" matInput placeholder="Address" formControlName="address" data-tabindex="3" id="address" [inputTabStop]="input">
             <mat-error *ngIf="address.errors?.maxlength">This field can be up to {{ address.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
         <div id="group-field">
             <mat-form-field>
-                <input type="text" matInput placeholder="Phones" formControlName="phones" data-tabindex="4" id="phones" [inputTabStop]="input">
+                <input data-cy="phones" type="text" matInput placeholder="Phones" formControlName="phones" data-tabindex="4" id="phones" [inputTabStop]="input">
                 <mat-error *ngIf="phones.errors?.maxlength">This field can be up to {{ phones.errors.maxlength.requiredLength }} characters long</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput placeholder="Person in charge" formControlName="personInCharge" data-tabindex="5" id="personInCharge" [inputTabStop]="input">
+                <input data-cy="personInCharge" type="text" matInput placeholder="Person in charge" formControlName="personInCharge" data-tabindex="5" id="personInCharge" [inputTabStop]="input">
                 <mat-error *ngIf="personInCharge.errors?.maxlength">This field can be up to {{ personInCharge.errors.maxlength.requiredLength }} characters long</mat-error>
             </mat-form-field>
         </div>
         <mat-form-field>
-            <input type="text" matInput placeholder="Email" formControlName="email" data-tabindex="6" id="email" [inputTabStop]="input">
+            <input data-cy="email" type="text" matInput placeholder="Email" formControlName="email" data-tabindex="6" id="email" [inputTabStop]="input">
             <mat-error *ngIf="email.errors?.email">This doesn't look like an email</mat-error>
             <mat-error *ngIf="email.errors?.maxlength">This field can be up to {{ email.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
-        <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
+        <mat-slide-toggle data-cy="isActive" formControlName="isActive">Active</mat-slide-toggle>
     </form>
     <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
 </div>
