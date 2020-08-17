@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,7 @@ namespace Transfers {
             services.Configure<OutlookSettings>(options => Configuration.GetSection("OutlookSettings").Bind(options));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {

@@ -17,6 +17,10 @@ namespace Transfers {
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
-    }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "Admin".ToUpper() });
+        }
 
+    }
 }

@@ -1,8 +1,9 @@
 import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('login', () => {
-    cy.visit('/')
-    cy.get('#login').click()
+    cy.url().should('eq', Cypress.config().baseUrl + '/login')
+        .get('#login').click()
+        .url().should('eq', Cypress.config().baseUrl + '/')
 })
 
 Cypress.Commands.add('gotoUrl', (url, fromElement) => {
@@ -10,10 +11,16 @@ Cypress.Commands.add('gotoUrl', (url, fromElement) => {
         .url().should('eq', Cypress.config().baseUrl + '/' + url)
 })
 
-Cypress.Commands.add('typeIntoField', (fieldName, length) => {
+Cypress.Commands.add('typeGibberish', (fieldName, length) => {
     cy.get('[data-cy=' + fieldName + ']')
         .clear()
         .type(createRandomLetters(length) + '{enter}')
+})
+
+Cypress.Commands.add('typeNotGibberish', (fieldName, fieldContent) => {
+    cy.get('[data-cy=' + fieldName + ']')
+        .clear()
+        .type(fieldContent + '{enter}')
 })
 
 Cypress.Commands.add('elementShouldBeInvalid', (element) => {
