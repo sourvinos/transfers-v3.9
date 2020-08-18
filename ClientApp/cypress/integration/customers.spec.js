@@ -21,14 +21,15 @@ context('Customers', () => {
         it('Filter the list by typing in the search box', () => {
             cy.get('[data-cy=searchTerm]')
                 .type('corfu')
-                .get('tr').should(($tr) => {
-                    expect($tr).to.have.length(15)
+            cy.get('[data-cy=row]')
+                .should(($tr) => {
+                    expect($tr).to.have.length(14)
                 })
         })
 
         it('Clear the filter when the "X" is clicked', () => {
             cy.get('[data-cy=clearFilter').click()
-                .get('[data-cy=searchTerm]')
+            cy.get('[data-cy=searchTerm]')
                 .should('have.text', '')
         })
 
@@ -45,15 +46,15 @@ context('Customers', () => {
             beforeEach(() => {
                 cy.restoreLocalStorage()
             })
-    
+
             it('Login', () => {
                 cy.login()
             })
-    
+
             it('Goto the customers list', () => {
                 cy.gotoUrl('customers', 'customers')
             })
-    
+
             it('Go to an empty form', () => {
                 cy.gotoUrl('customers/new', 'new')
             })
@@ -120,16 +121,16 @@ context('Customers', () => {
 
             it('Choose not to abort when the back icon is clicked', () => {
                 cy.get('[data-cy=goBack]').click()
-                    .get('.mat-dialog-container')
-                    .get('[data-cy=cancel]').click()
-                    .url().should('eq', Cypress.config().baseUrl + '/customers/new')
+                cy.get('.mat-dialog-container')
+                cy.get('[data-cy=cancel]').click()
+                cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
             })
 
             it('Choose to abort when the back icon is clicked', () => {
                 cy.get('[data-cy=goBack]').click()
-                    .get('.mat-dialog-container')
-                    .get('[data-cy=ok]').click()
-                    .url().should('eq', Cypress.config().baseUrl + '/customers')
+                cy.get('.mat-dialog-container')
+                cy.get('[data-cy=ok]').click()
+                cy.url().should('eq', Cypress.config().baseUrl + '/customers')
             })
 
             afterEach(() => {
@@ -138,12 +139,12 @@ context('Customers', () => {
 
         })
 
-        describe('New customer with save', () => {
+        describe.skip('New customer with save', () => {
 
             beforeEach(() => {
                 cy.restoreLocalStorage()
             })
-    
+
             it('Login', () => {
                 cy.login()
             })
@@ -154,9 +155,9 @@ context('Customers', () => {
 
             it('Go to an empty form', () => {
                 cy.get('[data-cy=new').click()
-                    .location().should((path) => {
-                        expect(path.href).to.include('customers/new')
-                    })
+                cy.location().should((path) => {
+                    expect(path.href).to.include('customers/new')
+                })
             })
 
             it('Description is valid', () => {
@@ -168,12 +169,12 @@ context('Customers', () => {
 
             it('Save and display a snackbar', () => {
                 cy.get('[data-cy=save]').click()
-                    .get('[data-cy=customSnackbar]')
+                cy.get('[data-cy=customSnackbar]')
             })
 
             it('Goto the customer list', () => {
                 cy.get('[data-cy="goBack"]').click()
-                    .url().should('eq', Cypress.config().baseUrl + '/customers')
+                cy.url().should('eq', Cypress.config().baseUrl + '/customers')
             })
 
             afterEach(() => {
