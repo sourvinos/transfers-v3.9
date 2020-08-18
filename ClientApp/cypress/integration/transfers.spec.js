@@ -14,7 +14,7 @@ context('Transfers', () => {
             cy.login()
         })
 
-        it('Go to the transfers list by clicking a link', () => {
+        it('Go to transfers', () => {
             cy.gotoUrl('transfers', 'transfers')
         })
 
@@ -75,7 +75,7 @@ context('Transfers', () => {
                 .should('have.length', 14)
         })
 
-        it('Select all rows by clicking in the first column header', () => {
+        it('Select all rows by clicking on the first column header', () => {
             cy.get('table')
                 .within(() => {
                     cy.get('[data-cy=header]:nth-child(1)').click()
@@ -163,6 +163,8 @@ context('Transfers', () => {
             cy.get('table tbody tr')
                 .should('have.length', 2)
         })
+
+        it('')
 
         afterEach(() => {
             cy.saveLocalStorage()
