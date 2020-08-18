@@ -33,12 +33,6 @@ button.mat-mini-fab {
     outline: 0 !important;
 }
 
-button.transparent {
-    background-color: var(--color-button-background-transparent) !important;
-    color: var(--color-button-text-transparent) !important;
-    margin: 0 0 0 0.5rem !important;
-}
-
 button::first-letter {
     text-decoration: underline;
 }
@@ -61,5 +55,5 @@ button:not(:disabled) {
 }
 
 #goBack {
-    color: var(--color-navigation-arrow) !important;
+    background-color: var(--color-navigation-button) !important;
 }

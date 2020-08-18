@@ -23,15 +23,14 @@
     --color-button-secondary: #5a75bc;
     --color-button-text-all: #fffddd;
     --color-button-text-secondary: #fffddd;
-    --color-button-background-transparent: #434a50;
-    --color-button-text-transparent: #939393;
 
-    /* Narrow navigation buttons */
-    --color-toggle-background: #373f46;
+    /* Narrow menu icons and navigation buttons */
+    --color-navigation-button: #3e464c;
+    --color-navigation-icon: #ffffff;
 
     /* Input boxes */
     --color-input-text-caret: #ffffff;
-    --color-input-text-selected: #5f5e5e;
+    --color-input-text-selected: #a9aaa9;
     --color-input-focus: #fe9f36;
     --color-input-not-focus: #939393;
     --color-input-text-error: #ef1717;
@@ -101,4 +100,8 @@
     /* Checkboxes */
     --color-bar-checked: #ffe85c;
     --color-thumb-checked: #fe9f36;
+
+    /* Double ring on wide sidebar */
+    --color-ring-inner: #ffe85c;
+    --color-ring-outer: #fe9f36;
 }

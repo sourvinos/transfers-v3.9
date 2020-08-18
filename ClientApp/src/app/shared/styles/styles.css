@@ -14,7 +14,7 @@
 @import "loader.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
-@import "colors-dark.css";
+@import "colors-light.css";
 
 * {
     box-sizing: border-box !important;
@@ -42,6 +42,7 @@ p.instructions {
 }
 
 .mat-icon, .item {
+    color: var(--color-navigation-icon);
     outline: 0 !important;
 }
 

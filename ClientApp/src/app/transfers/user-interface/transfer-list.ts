@@ -272,7 +272,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         this.totals.push(
             { description: 'ALL', sum: 0 },
             { description: 'DISPLAYED', sum: 0 },
-            { description: 'CHECKED', sum: 0 }
+            { description: 'SELECTED', sum: 0 }
         )
     }
 

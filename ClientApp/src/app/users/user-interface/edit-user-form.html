@@ -1,7 +1,7 @@
 <div id="header">
     <div id="navigation">
-        <button mat-mini-fab class="navigation">
-            <mat-icon id="goBack" (click)="onGoBack()">arrow_back</mat-icon>
+        <button data-cy="goBack" id="goBack" [routerLink]="['/users']" mat-mini-fab>
+            <mat-icon>arrow_back</mat-icon>
         </button>
     </div>
     <div id="title">
@@ -33,7 +33,7 @@
 <div id="footer">
     <div id="buttons">
         <button mat-flat-button class="delete" id="delete" (click)="onDelete()">Delete</button>
-        <button mat-flat-button class="primary" id="changePassword" (click)="onChangePassword()">Change password</button>
+        <button mat-flat-button class="secondary" id="changePassword" (click)="onChangePassword()">Change password</button>
         <button mat-flat-button class="primary" id="save" (click)="onSave()" [disabled]="!form.valid">Save</button>
     </div>
 </div>
