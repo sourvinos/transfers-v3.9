@@ -62,11 +62,11 @@ tr:hover td {
     font-weight: bold;
 }
 
+.mat-checkbox {
+    padding: 0;
+}
+
 #custom-table-input {
     position: absolute;
     z-index: -1;
-}
-
-.mat-checkbox {
-    padding: 0;
 }

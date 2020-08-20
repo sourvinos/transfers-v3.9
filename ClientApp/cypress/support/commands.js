@@ -1,13 +1,13 @@
 import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('login', () => {
-    cy.url().should('eq', Cypress.config().baseUrl + '/login')
-    cy.get('[data-cy=isHuman]', { timeout: 0 }).click()
-    cy.get('[data-cy=login]').click()
-        .url().should('eq', Cypress.config().baseUrl + '/')
+    cy.visit('/login')
+        .get('[data-cy=isHuman]').click()
+        .pause()
+        .get('[data-cy=login]').click()
 })
 
-Cypress.Commands.add('gotoUrl', (url, fromElement) => {
+Cypress.Commands.add('gotoUrlFromElement', (url, fromElement) => {
     cy.get('[data-cy=' + fromElement + ']').click()
         .url().should('eq', Cypress.config().baseUrl + '/' + url)
 })

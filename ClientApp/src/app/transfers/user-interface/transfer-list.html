@@ -70,7 +70,7 @@
                 <div id="buttons">
                     <button mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0" (click)="onAssignDriver()">Assign driver</button>
                     <button mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0" (click)="onCreatePdf()">Create PDFs</button>
-                    <button mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
+                    <button data-cy="new" mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
                 </div>
             </div>
         </div>
