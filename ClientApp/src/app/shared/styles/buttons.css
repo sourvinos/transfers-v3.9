@@ -4,6 +4,7 @@ button {
     cursor: default !important;
     display: flex;
     font-family: var(--font-family-buttons) !important;
+    font-size: var(--font-size-buttons) !important;
     font-weight: var(--font-weight-buttons) !important;
     justify-content: center;
     min-width: 0 !important;

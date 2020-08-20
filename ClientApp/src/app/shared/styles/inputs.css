@@ -125,3 +125,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 .no-bottom-margin > .mat-form-field-wrapper {
     margin-bottom: 0 !important;
 }
+
+@media only screen and (min-width: 1367px) {
+    .mat-form-field-infix {
+        padding-top: 0 !important;
+    }
+}

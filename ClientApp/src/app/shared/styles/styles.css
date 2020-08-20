@@ -14,7 +14,7 @@
 @import "loader.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
-@import "colors-light.css";
+@import "colors-dark.css";
 
 * {
     box-sizing: border-box !important;

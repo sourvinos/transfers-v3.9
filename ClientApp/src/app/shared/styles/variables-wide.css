@@ -5,7 +5,7 @@
         --font-weight-table-headers: 100 !important;
         --font-weight-labels: 500 !important;
 
-        /* Font sizes */
+        /* Headers */
         --font-size-headers: 2rem;
 
         /* input boxes */
@@ -26,8 +26,10 @@
         --font-size-snackbar: 0.95rem;
 
         /* Transfer summary boxes */
+        --font-family-summary-block: "Noto Sans";
         --font-size-summary-block-header: 1.3rem;
         --font-size-summary-block-item: 0.95rem;
+        --line-height-summary-block-item: 1.6rem;
 
         /* Sidebar - Menu */
         --font-size-copyright: 0.6rem;
@@ -49,6 +51,7 @@
 
         /* Buttons */
         --font-family-buttons: "Noto Sans";
+        --font-size-buttons: 0.9rem;
 
         /* All headers */
         --font-family-headers: "Noto Sans";
@@ -62,9 +65,6 @@
 
         /* Tables */
         --font-family-table: 'Noto Sans';
-
-        /* Transfer summary boxes */
-        --font-family-summary-block: "Noto Sans";
 
         /* Sidebar  */
         --font-family-user-info: "Noto Sans";
