@@ -17,7 +17,7 @@
             </button>
             <mat-error *ngIf="Password?.hasError('required')">This is a required field!</mat-error>
         </mat-form-field>
-        <mat-slide-toggle data-cy="isHuman" formControlName="isHuman">I'm not a robot</mat-slide-toggle>
+        <mat-slide-toggle data-cy="isHuman" id="isHuman" formControlName="isHuman">I'm not a robot</mat-slide-toggle>
     </form>
     <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
 </div>

@@ -1,4 +1,4 @@
-describe('New transfer without save', () => {
+describe.skip('New transfer without save', () => {
 
     describe('Init', () => {
 

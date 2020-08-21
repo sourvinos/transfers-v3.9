@@ -1,4 +1,4 @@
-context('Transfers list', () => {
+context.skip('Transfers list', () => {
 
     before(() => {
         cy.login()

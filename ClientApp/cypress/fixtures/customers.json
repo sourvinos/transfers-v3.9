@@ -1,0 +1,35 @@
+[
+    {
+        "id": 5,
+        "description": "ASPROKAVOS",
+        "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
+        "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗ",
+        "phones": "0662.61281",
+        "personInCharge": "",
+        "email": "",
+        "isActive": true,
+        "userId": "ΜΑΡΙΑ"
+    },
+    {
+        "id": 8,
+        "description": "LORD TRAVEL",
+        "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
+        "address": "ΕΘΝΙΚΗ ΛΕΥΚΙΜΜΗΣ 38 - ΚΕΡΚΥΡΑ",
+        "phones": "0661.91617",
+        "personInCharge": "KALOUDIS VASILIS",
+        "email": "",
+        "isActive": true,
+        "userId": "Eva"
+    },
+    {
+        "id": 10,
+        "description": "STAR TRAVEL",
+        "profession": "-",
+        "address": "-",
+        "phones": "",
+        "personInCharge": "",
+        "email": "",
+        "isActive": true,
+        "userId": "Μαρία"
+    }
+]

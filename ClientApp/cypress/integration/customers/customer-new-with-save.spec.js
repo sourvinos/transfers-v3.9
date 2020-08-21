@@ -1,19 +1,20 @@
 describe('New customer with save', () => {
 
-    beforeEach(() => {
-        cy.restoreLocalStorage()
-    })
-
-    it('Login', () => {
+    before(() => {
         cy.login()
     })
 
     it('Goto the customers list from the home page', () => {
-        cy.gotoUrlFromElement('customers', 'customers')
+        cy.server()
+            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            .get('[data-cy=customers]').click()
+            .wait('@getCustomers').its('status').should('eq', 200)
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
 
     it('Go to an empty form', () => {
         cy.gotoUrlFromElement('customers/new', 'new')
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
     })
 
     it('Description is valid', () => {
@@ -24,17 +25,19 @@ describe('New customer with save', () => {
     })
 
     it('Save and display a snackbar', () => {
-        cy.get('[data-cy=save]').click()
-        cy.get('[data-cy=customSnackbar]')
+        cy.server()
+            .route('POST', 'https://localhost:5001/api/customers', 'fixture:customer.json').as('saveCustomer')
+            .get('[data-cy=save]').click()
+            .wait('@saveCustomer').its('status').should('eq', 200)
+            .get('[data-cy=customSnackbar]')
     })
 
     it('Goto the customer list', () => {
-        cy.get('[data-cy="goBack"]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers')
-    })
-
-    afterEach(() => {
-        cy.saveLocalStorage()
+        cy.server()
+            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            .get('[data-cy="goBack"]').click()
+            .wait('@getCustomers').its('status').should('eq', 200)
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
 
 })

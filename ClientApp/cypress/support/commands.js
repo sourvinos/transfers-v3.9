@@ -3,7 +3,6 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('login', () => {
     cy.visit('/login')
         .get('[data-cy=isHuman]').click()
-        .pause()
         .get('[data-cy=login]').click()
 })
 

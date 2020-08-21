@@ -1,19 +1,20 @@
 describe('New customer without save', () => {
 
-    beforeEach(() => {
-        cy.restoreLocalStorage()
-    })
-
-    it('Login', () => {
+    before(() => {
         cy.login()
     })
 
     it('Goto the customers list from the home page', () => {
-        cy.gotoUrlFromElement('customers', 'customers')
+        cy.server()
+            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            .get('[data-cy=customers]').click()
+            .wait('@getCustomers').its('status').should('eq', 200)
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
 
     it('Go to an empty form', () => {
         cy.gotoUrlFromElement('customers/new', 'new')
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
     })
 
     it('Description is not valid when blank', () => {
@@ -84,14 +85,13 @@ describe('New customer without save', () => {
     })
 
     it('Choose to abort when the back icon is clicked', () => {
-        cy.get('[data-cy=goBack]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=ok]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers')
-    })
-
-    afterEach(() => {
-        cy.saveLocalStorage()
+        cy.server()
+            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            .get('[data-cy=goBack]').click()
+            .get('.mat-dialog-container')
+            .get('[data-cy=ok]').click()
+            .wait('@getCustomers').its('status').should('eq', 200)
+            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
 
 })
