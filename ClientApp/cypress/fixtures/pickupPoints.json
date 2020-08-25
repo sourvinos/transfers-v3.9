@@ -1,0 +1,2440 @@
+[
+    {
+        "id": 1,
+        "description": "RESTIA SUITES",
+        "exactPoint": "MAI ROAD",
+        "time": "06:55",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "description": "ARION HOTEL",
+        "exactPoint": "MAIN ROAD",
+        "time": "08:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "description": "PALEO DISCO",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 4,
+        "description": "MOODY BLUE BAR PALEOK.",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 5,
+        "description": "SOPHIAS CORNER",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:29",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 6,
+        "description": "FOUNTAIN BAR",
+        "exactPoint": "CROSSROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 7,
+        "description": "DASSIA PHARMACY",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:31",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 8,
+        "description": "SILVERSTONE GO CARTS",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 9,
+        "description": "ANGELINA",
+        "exactPoint": "MAIN ROAD - KALUA BAR",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 10,
+        "description": "VILLA MIRTO",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 11,
+        "description": "SAN MARINA",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 12,
+        "description": "CAPTAINS AG.PETROS",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 13,
+        "description": "SCRIVAS",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 14,
+        "description": "NSK OFFICE SIDARI (MELISSA)",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 15,
+        "description": "PANORAMA",
+        "exactPoint": "SIDARI SCONTO MARKET",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 16,
+        "description": "SPIROS S/M SIDARI",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:37",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 17,
+        "description": "TZORAS S/M ACHARAVI",
+        "exactPoint": "MAIN ROAD",
+        "time": "06:57",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 18,
+        "description": "EKATI HOTEL",
+        "exactPoint": "OFFICE",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 19,
+        "description": "ISLAND HOLIDAYS",
+        "exactPoint": "OFFICE",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 20,
+        "description": "LEMON GROVE",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 21,
+        "description": "LAKONES JUNCTION",
+        "exactPoint": "JUNCTION",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 22,
+        "description": "ROSA BELLA",
+        "exactPoint": "ERMONES BRIDGE",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 23,
+        "description": "ERMONES BUS STOP",
+        "exactPoint": "BUS STOP",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 24,
+        "description": "GLYFADA BUS STOP",
+        "exactPoint": "BUS STOP",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 26,
+        "description": "AKTI ARILLAS HOTEL",
+        "exactPoint": "AKTI ARILLAS",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 27,
+        "description": "SUNRISE TAVERNA",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:20",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 28,
+        "description": "UNCLE HARRY S/M",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 29,
+        "description": "CATHOLIC CHURCH MESSONGHI",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:11",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 30,
+        "description": "VIVA BAR",
+        "exactPoint": "M.ROAD",
+        "time": "07:31",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 31,
+        "description": "SUMMERTIME HOTEL",
+        "exactPoint": "SAXOPHONE BAR",
+        "time": "07:34",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 32,
+        "description": "CORFU MARE",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:54",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 33,
+        "description": "NISSAKI KATERINA'S S/M",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 34,
+        "description": "ROSE GARDEN APTS",
+        "exactPoint": "PARADISE S/M ST. STEF.",
+        "time": "07:10",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 35,
+        "description": "GR.MEDITTERANNEO",
+        "exactPoint": "HOTEL",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 36,
+        "description": "POTAMOS",
+        "exactPoint": "CROSSROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 37,
+        "description": "STARS STDS",
+        "exactPoint": "M.ROAD",
+        "time": "09:41",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 38,
+        "description": "NAFSIKA SAN STEFANO",
+        "exactPoint": "M.ROAD",
+        "time": "07:10",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 39,
+        "description": "BRETAGNE HOTEL",
+        "exactPoint": "M.ROAD",
+        "time": "08:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 40,
+        "description": "BUTCHERS CORNER PIRGI",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 41,
+        "description": "FIRE STATION",
+        "exactPoint": "M.ROAD",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 42,
+        "description": "MARGARITA DASSIA-IPSOS",
+        "exactPoint": "M.ROAD",
+        "time": "07:25",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 43,
+        "description": "NIKOS APTS AG.PETROS",
+        "exactPoint": "M.ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 44,
+        "description": "OULA APTS",
+        "exactPoint": "CROSSROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 45,
+        "description": "LITTLE PRINCE",
+        "exactPoint": "ASPA S/M",
+        "time": "07:10",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 46,
+        "description": "ATHINA",
+        "exactPoint": "ASPA S/M",
+        "time": "07:10",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 47,
+        "description": "KOMENO BAY",
+        "exactPoint": "7bf9acf1-74c2-459c-8366-82f05bfa3e28 P. CROSSROAD",
+        "time": "07:38",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 48,
+        "description": "BOSTONIA VILLAGE",
+        "exactPoint": "TZORAS S/M",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 49,
+        "description": "MARINA ARILLAS",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 50,
+        "description": "PHILOXENIA",
+        "exactPoint": "BRIDGE",
+        "time": "07:05",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 51,
+        "description": "OCEANIS",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 52,
+        "description": "AKTI PERAMA",
+        "exactPoint": "M.ROAD",
+        "time": "08:30",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 53,
+        "description": "KIRKI TAVERNA",
+        "exactPoint": "M.ROAD",
+        "time": "07:31",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 54,
+        "description": "PRIMAVERA HOTEL",
+        "exactPoint": "M.ROAD-OPPOSITE",
+        "time": "07:35",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 55,
+        "description": "LAGOON",
+        "exactPoint": "M.ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 56,
+        "description": "CORFU RESIDENSE",
+        "exactPoint": "M.ROAD",
+        "time": "07:06",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 57,
+        "description": "GIANNIS RENT A BIKE KASSIOPI",
+        "exactPoint": "M.ROAD",
+        "time": "06:40",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 58,
+        "description": "PALEO CAMPING",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 59,
+        "description": "MORFEAS HOTEL",
+        "exactPoint": "M.ROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 60,
+        "description": "SIDARI MIMOZA",
+        "exactPoint": "M.ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 61,
+        "description": "RODA BP",
+        "exactPoint": "M.ROAD",
+        "time": "07:06",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 62,
+        "description": "ALMYROS NATURA",
+        "exactPoint": "HOTEL",
+        "time": "06:55",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 63,
+        "description": "PALEO INN",
+        "exactPoint": "HOTEL",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 64,
+        "description": "ROMANZA HOTEL ST.STEFANO",
+        "exactPoint": "HOTEL",
+        "time": "07:10",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 65,
+        "description": "PERIVOLI GAS STATION",
+        "exactPoint": "M.ROAD",
+        "time": "09:40",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 66,
+        "description": "ODYSSEUS",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 67,
+        "description": "NIKOS SUPERMARKET",
+        "exactPoint": "M.ROAD",
+        "time": "06:40",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 68,
+        "description": "ALKION",
+        "exactPoint": "M.ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 69,
+        "description": "ANDROMEDA HOTEL",
+        "exactPoint": "HOTEL",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 70,
+        "description": "GOLDEN SUNSET BUKARI",
+        "exactPoint": "M.ROAD",
+        "time": "08:55",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 71,
+        "description": "RODA TAXI RANK",
+        "exactPoint": "M.ROAD",
+        "time": "07:09",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 72,
+        "description": "SPIROS TAVERNA",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 73,
+        "description": "MICHELANGELO KASSIOPI",
+        "exactPoint": "NIKOS SUPERMARKET",
+        "time": "06:40",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 74,
+        "description": "THEO HOTEL PAGOI",
+        "exactPoint": "HOTEL",
+        "time": "06:50",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 75,
+        "description": "FAROS",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 76,
+        "description": "OLGA",
+        "exactPoint": "M.ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 77,
+        "description": "KALOUDIS",
+        "exactPoint": "MARINA ARILLAS HOTEL",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 78,
+        "description": "MARVEL HOTEL",
+        "exactPoint": "M.ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 79,
+        "description": "SUNNY CORFU SIDARI",
+        "exactPoint": "M. ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 80,
+        "description": "SIDARI SCONTO MARKET",
+        "exactPoint": "M. ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 81,
+        "description": "KAVOS PLAZA",
+        "exactPoint": "M.ROAD",
+        "time": "09:45",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 82,
+        "description": "IMEROLIA KASIOPI",
+        "exactPoint": "M. ROAD",
+        "time": "06:40",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 83,
+        "description": "PARADISE BAR",
+        "exactPoint": "M. ROAD",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 84,
+        "description": "COSTAS GOLDEN BEACH-PAGOI",
+        "exactPoint": "MAIN GATE",
+        "time": "06:50",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 32,
+        "route": {
+            "id": 32,
+            "description": "PAGOI",
+            "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 85,
+        "description": "BARBATI BEACH",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 86,
+        "description": "YIANETTA",
+        "exactPoint": "M. ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 87,
+        "description": "PALEO ART NOUVEAU",
+        "exactPoint": "M. ROAD",
+        "time": "07:00",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 22,
+        "route": {
+            "id": 22,
+            "description": "WEST",
+            "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 88,
+        "description": "ARITI",
+        "exactPoint": "M. ROAD",
+        "time": "08:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 89,
+        "description": "SOCRATIS",
+        "exactPoint": "M.ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 90,
+        "description": "MAYFLOWER",
+        "exactPoint": "EKO-MORAITIKA",
+        "time": "09:10",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 91,
+        "description": "BARBATI CHURCH",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 92,
+        "description": "CORFU PALACE",
+        "exactPoint": "M. ROAD",
+        "time": "08:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 93,
+        "description": "BRETANIA HOTEL",
+        "exactPoint": "M. ROAD",
+        "time": "08:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 94,
+        "description": "IPSOS ΔΗΜΑΡΧΕΙΟ",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 95,
+        "description": "KYANEA",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 96,
+        "description": "SEA SIDE",
+        "exactPoint": "MAIN ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 97,
+        "description": "EKO DASSIA",
+        "exactPoint": "EKO DASSIA",
+        "time": "07:20",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 98,
+        "description": "SUNRISE",
+        "exactPoint": "M.ROAD",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 99,
+        "description": "TILEMACHOS HOTEL",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:35",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 100,
+        "description": "TARTAYIA BAR",
+        "exactPoint": "M.ROAD-APENANTI",
+        "time": "07:30",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 101,
+        "description": "TATIANA HOUSE",
+        "exactPoint": "NEXT DIMOS MELITEION",
+        "time": "09:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 102,
+        "description": "TSAKI",
+        "exactPoint": "TSAKI-SPIROS BIKES",
+        "time": "08:55",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 103,
+        "description": "CAPO DI CORFU",
+        "exactPoint": "M.GATE",
+        "time": "09:44",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 29,
+        "route": {
+            "id": 29,
+            "description": "KAVOS",
+            "fullDescription": "KAVOS",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 104,
+        "description": "MARE BLUE = BLUE BAY",
+        "exactPoint": "HOTEL",
+        "time": "06:50",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "routeId": 28,
+        "route": {
+            "id": 28,
+            "description": "ACH-SID",
+            "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 105,
+        "description": "RIVIERA BARBATI",
+        "exactPoint": "MAIN ROAD",
+        "time": "07:15",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 106,
+        "description": "ALEXANDROS",
+        "exactPoint": "M.ROAD",
+        "time": "08:46",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 20,
+        "route": {
+            "id": 20,
+            "description": "SOUTH",
+            "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+            "isActive": true,
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "portId": 2,
+            "port": {
+                "id": 2,
+                "description": "LEFKIMMI PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    },
+    {
+        "id": 107,
+        "description": "SAINT NICHOLAS",
+        "exactPoint": "JET OIL",
+        "time": "07:41",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "routeId": 19,
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "isActive": true,
+            "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+            "portId": 1,
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT",
+                "isActive": true,
+                "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            }
+        }
+    }
+]

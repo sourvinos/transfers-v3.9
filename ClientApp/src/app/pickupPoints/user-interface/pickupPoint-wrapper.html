@@ -11,7 +11,7 @@
         <mat-form-field class="no-bottom-margin">
             <mat-label>Routes</mat-label>
             <mat-select [(value)]="id" (selectionChange)="onLoadPickupPoints()">
-                <mat-option *ngFor=" let route of routes" [value]="route.id">
+                <mat-option *ngFor="let route of routes" [value]="route.id">
                     {{ route.description }}
                 </mat-option>
             </mat-select>

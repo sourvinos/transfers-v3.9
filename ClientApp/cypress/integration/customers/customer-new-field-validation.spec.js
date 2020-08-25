@@ -17,6 +17,11 @@ describe('New customer without save', () => {
             .url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
     })
 
+    it('Critical elements', () => {
+        cy.get('[data-cy=goBack]')
+        cy.get('[data-cy=save]')
+    })
+
     it('Description is not valid when blank', () => {
         cy.typeGibberish('description', 0)
             .elementShouldBeInvalid('description')

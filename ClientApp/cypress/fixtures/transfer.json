@@ -1,0 +1,38 @@
+{
+    "id": 100001,
+    "dateIn": "2020-08-04",
+    "adults": 3,
+    "kids": 2,
+    "free": 2,
+    "totalPersons": 7,
+    "remarks": "",
+    "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+    "customer": {
+        "id": 92,
+        "description": "PANDIS TRAVEL-GOUVIA"
+    },
+    "destination": {
+        "id": 1,
+        "abbreviation": "PA",
+        "description": "PAXOS - ANTIPAXOS"
+    },
+    "pickupPoint": {
+        "id": 207,
+        "description": "KIOSK GOUVIA",
+        "exactPoint": "KIOSK GOUVIA",
+        "time": "07:42",
+        "route": {
+            "id": 19,
+            "description": "NISAKI",
+            "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+            "port": {
+                "id": 1,
+                "description": "CORFU PORT"
+            }
+        }
+    },
+    "driver": {
+        "id": 1,
+        "description": "STAMATIS 6972 771 185"
+    }
+}

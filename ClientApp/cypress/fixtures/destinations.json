@@ -1,0 +1,170 @@
+[
+    {
+        "id": 1,
+        "abbreviation": "PA",
+        "description": "PAXOS - ANTIPAXOS",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28"
+    },
+    {
+        "id": 2,
+        "abbreviation": "BL",
+        "description": "BLUE LAGOON",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 3,
+        "abbreviation": "",
+        "description": "AQUALAND",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 4,
+        "abbreviation": "",
+        "description": "SAFARI CRUISE",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 5,
+        "abbreviation": "",
+        "description": "B.B.Q",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 6,
+        "abbreviation": "",
+        "description": "GRAND ISLAND",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 7,
+        "abbreviation": "",
+        "description": "CORFU BY NIGHT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 8,
+        "abbreviation": "",
+        "description": "GREEK NIGHT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 10,
+        "abbreviation": "",
+        "description": "ALBANIA",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 11,
+        "abbreviation": "CS",
+        "description": "CORFU SUNSET CRUISE",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28"
+    },
+    {
+        "id": 12,
+        "abbreviation": "",
+        "description": "OLYMPIC FLAME",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 13,
+        "abbreviation": "",
+        "description": "OLYMPIC FLAME",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 15,
+        "abbreviation": "",
+        "description": "CORFU DELIGHT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 17,
+        "abbreviation": "",
+        "description": "MOONLIGHT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 18,
+        "abbreviation": "",
+        "description": "TRANSFER BLUE LAGOON",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 19,
+        "abbreviation": "",
+        "description": "ALBANIA",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 21,
+        "abbreviation": "",
+        "description": "SCHOOL TRANSFER",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 23,
+        "abbreviation": "",
+        "description": "AIRPORT TRANSFER",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 24,
+        "abbreviation": "",
+        "description": "AQUALAND TRANSFER",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 25,
+        "abbreviation": "",
+        "description": "BOOZE CRUISE",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 26,
+        "abbreviation": "",
+        "description": "SCUBA DIVING",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 27,
+        "abbreviation": "",
+        "description": "OLIKH NAYLOSH",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    },
+    {
+        "id": 29,
+        "abbreviation": "PAC",
+        "description": "PAXOS - ANTIPAXOS - SPACE SAFE",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28"
+    },
+    {
+        "id": 30,
+        "abbreviation": "BL",
+        "description": "BLUE LAGOON-SPACE SAFE",
+        "isActive": true,
+        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28"
+    }
+]

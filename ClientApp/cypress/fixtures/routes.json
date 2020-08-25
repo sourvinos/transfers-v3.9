@@ -1,0 +1,114 @@
+[
+    {
+        "id": 19,
+        "description": "NISAKI",
+        "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "portId": 1,
+        "port": {
+            "id": 1,
+            "description": "CORFU PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 20,
+        "description": "SOUTH",
+        "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "portId": 2,
+        "port": {
+            "id": 2,
+            "description": "LEFKIMMI PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 22,
+        "description": "WEST",
+        "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+        "portId": 1,
+        "port": {
+            "id": 1,
+            "description": "CORFU PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 28,
+        "description": "ACH-SID",
+        "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "portId": 1,
+        "port": {
+            "id": 1,
+            "description": "CORFU PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 29,
+        "description": "KAVOS",
+        "fullDescription": "KAVOS",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "portId": 2,
+        "port": {
+            "id": 2,
+            "description": "LEFKIMMI PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 31,
+        "description": "NT - TOWN",
+        "fullDescription": "NO TRANSFER - TOWN",
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+        "portId": 1,
+        "port": {
+            "id": 1,
+            "description": "CORFU PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 32,
+        "description": "PAGOI",
+        "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+        "isActive": true,
+        "userId": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "portId": 1,
+        "port": {
+            "id": 1,
+            "description": "CORFU PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    },
+    {
+        "id": 33,
+        "description": "NT - LEFK",
+        "fullDescription": "NO TRANSFER - LEFKIMMI",
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+        "portId": 2,
+        "port": {
+            "id": 2,
+            "description": "LEFKIMMI PORT",
+            "isActive": true,
+            "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+        }
+    }
+]

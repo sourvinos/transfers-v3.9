@@ -1,0 +1,173 @@
+{
+    "persons": 23,
+    "transfers": [
+        {
+            "id": 100001,
+            "dateIn": "2020-08-04",
+            "adults": 3,
+            "kids": 2,
+            "free": 2,
+            "totalPersons": 7,
+            "remarks": "",
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "customer": {
+                "id": 92,
+                "description": "PANDIS TRAVEL-GOUVIA"
+            },
+            "destination": {
+                "id": 1,
+                "abbreviation": "PA",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 207,
+                "description": "KIOSK GOUVIA",
+                "exactPoint": "KIOSK GOUVIA",
+                "time": "07:42",
+                "route": {
+                    "id": 19,
+                    "description": "NISAKI",
+                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+                    "port": {
+                        "id": 1,
+                        "description": "CORFU PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
+            }
+        },
+        {
+            "id": 100002,
+            "dateIn": "2020-08-04",
+            "adults": 3,
+            "kids": 2,
+            "free": 1,
+            "totalPersons": 6,
+            "remarks": "",
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "customer": {
+                "id": 190,
+                "description": "MEETING POINT HELLAS AE"
+            },
+            "destination": {
+                "id": 1,
+                "abbreviation": "PA",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 116,
+                "description": "PERAMA KIOSK",
+                "exactPoint": "OASIS",
+                "time": "08:40",
+                "route": {
+                    "id": 20,
+                    "description": "SOUTH",
+                    "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+                    "port": {
+                        "id": 2,
+                        "description": "LEFKIMMI PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 17,
+                "description": "SCHERIA KOTINAS"
+            }
+        },
+        {
+            "id": 100003,
+            "dateIn": "2020-08-04",
+            "adults": 10,
+            "kids": 0,
+            "free": 0,
+            "totalPersons": 10,
+            "remarks": "",
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+            "customer": {
+                "id": 62,
+                "description": "PATRAS TRAVEL CORFU"
+            },
+            "destination": {
+                "id": 1,
+                "abbreviation": "PA",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 19,
+                "description": "ISLAND HOLIDAYS",
+                "exactPoint": "OFFICE",
+                "time": "09:45",
+                "route": {
+                    "id": 29,
+                    "description": "KAVOS",
+                    "fullDescription": "KAVOS",
+                    "port": {
+                        "id": 2,
+                        "description": "LEFKIMMI PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 17,
+                "description": "SCHERIA KOTINAS"
+            }
+        }
+    ],
+    "personsPerCustomer": [
+        {
+            "description": "MEETING POINT HELLAS AE",
+            "persons": 6
+        },
+        {
+            "description": "PANDIS TRAVEL-GOUVIA",
+            "persons": 7
+        },
+        {
+            "description": "PATRAS TRAVEL CORFU",
+            "persons": 10
+        }
+    ],
+    "personsPerDestination": [
+        {
+            "description": "PAXOS - ANTIPAXOS",
+            "persons": 23
+        }
+    ],
+    "personsPerRoute": [
+        {
+            "description": "KAVOS",
+            "persons": 10
+        },
+        {
+            "description": "NISAKI",
+            "persons": 7
+        },
+        {
+            "description": "SOUTH",
+            "persons": 6
+        }
+    ],
+    "personsPerDriver": [
+        {
+            "description": "SCHERIA KOTINAS",
+            "persons": 16
+        },
+        {
+            "description": "STAMATIS 6972 771 185",
+            "persons": 7
+        }
+    ],
+    "personsPerPort": [
+        {
+            "description": "CORFU PORT",
+            "persons": 7
+        },
+        {
+            "description": "LEFKIMMI PORT",
+            "persons": 16
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "username": "george",
+        "displayname": "George",
+        "email": "george@outlook.com"
+    },
+    {
+        "id": "25439d25-4e36-409d-b9d3-9fb41c289541",
+        "username": "maria",
+        "displayname": "Maria",
+        "email": "maria@hotmail.com"
+    },
+    {
+        "id": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
+        "username": "sourvinos",
+        "displayname": "John",
+        "email": "johnsourvinos@hotmail.com"
+    }
+]

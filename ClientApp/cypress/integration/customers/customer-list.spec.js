@@ -12,12 +12,19 @@ context('Customer list', () => {
             .wait('@getCustomers').its('status').should('eq', 200)
     })
 
+    it('Critical elements', () => {
+        cy.get('[data-cy=goBack]')
+        cy.get('[data-cy=searchTerm]')
+        cy.get('[data-cy=content]')
+        cy.get('[data-cy=new]')
+    })
+
     it('Filter the list by typing in the search box', () => {
         cy.get('[data-cy=searchTerm]')
             .type('travel')
             .get('[data-cy=row]')
             .should(($tr) => {
-                expect($tr).to.have.length(2)
+                expect($tr).to.have.length(24)
             })
     })
 
@@ -25,6 +32,10 @@ context('Customer list', () => {
         cy.get('[data-cy=clearFilter').click()
             .get('[data-cy=searchTerm]')
             .should('have.text', '')
+            .get('[data-cy=row]')
+            .should(($tr) => {
+                expect($tr).to.have.length(94)
+            })
     })
 
 })

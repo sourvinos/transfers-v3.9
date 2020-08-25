@@ -11,7 +11,7 @@
                     <div class="total"> {{ item.persons }} </div>
                 </div>
             </mat-expansion-panel>
-            <mat-expansion-panel data-cy="summaryBlock" data-cy="summaryBlock" class="summaryBlock">
+            <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
                 <mat-expansion-panel-header class="summaryHeader">
                     <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
                     <header>Customers</header>

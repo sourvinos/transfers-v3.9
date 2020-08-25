@@ -17,6 +17,11 @@ describe('New customer with save', () => {
             .url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
     })
 
+    it('Critical elements', () => {
+        cy.get('[data-cy=goBack]')
+        cy.get('[data-cy=save]')
+    })
+
     it('Description is valid', () => {
         cy.typeGibberish('description', 12)
             .elementShouldBeValid('description')
@@ -35,7 +40,7 @@ describe('New customer with save', () => {
     it('Goto the customer list', () => {
         cy.server()
             .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
-            .get('[data-cy="goBack"]').click()
+            .get('[data-cy=goBack]').click()
             .wait('@getCustomers').its('status').should('eq', 200)
             .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
