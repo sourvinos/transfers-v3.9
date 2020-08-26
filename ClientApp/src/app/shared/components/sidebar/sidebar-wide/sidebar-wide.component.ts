@@ -14,6 +14,7 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     isNotLoaded = true
     loginStatus: Observable<boolean>
     displayName: Observable<string>
+    countdown: any
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -43,7 +44,7 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         this.accountService.logout()
     }
 
-    private getScreenWidth(){
+    private getScreenWidth() {
         return document.getElementsByTagName("section")[0].clientWidth > 1366
     }
 
