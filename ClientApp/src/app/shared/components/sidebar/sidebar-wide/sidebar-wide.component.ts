@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
 
 @Component({
     selector: 'app-sidebar-wide',
@@ -14,14 +15,15 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     isNotLoaded = true
     loginStatus: Observable<boolean>
     displayName: Observable<string>
-    countdown: any
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
     isScreenWide: boolean
+    theme = ''
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private helperService: HelperService) {
+        this.theme = this.helperService.getThemeFromLocalStorage
         this.isScreenWide = this.getScreenWidth()
     }
 

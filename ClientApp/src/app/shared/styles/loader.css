@@ -1,6 +1,6 @@
 #loader {
     align-items: center;
-    background: var(--color-loader-background);
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -9,14 +9,14 @@
 }
 
 #logo-header {
-    color: var(--color-company-logo-first-child) !important;
+    color: #355070 !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-first-child) !important;
     margin: 0;
 }
 
 #logo-subHeader {
-    color: var(--color-company-logo-second-child) !important;
+    color: #b56576 !important;
     font-family: var(--font-family-logo);
     font-size: var(--font-size-logo-second-child) !important;
     font-weight: normal !important;
@@ -24,7 +24,7 @@
 }
 
 #loading-message {
-    color: var(--color-company-logo-first-child);
+    color: #355070;
     font-family: var(--font-family-headers);
     margin-top: 0.5rem !important;
 }
@@ -35,14 +35,14 @@
 }
 
 .progress-line {
-    background-color: var(--color-loader-progress-background);
+    background-color: #734230;
     display: -webkit-flex;
     display: flex;
     margin: 2rem 0;
 }
 
 .progress-line::before {
-    background-color: var(--color-loader-progress);
+    background-color: #ffa500;
     content: '';
     animation: running-progress 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }

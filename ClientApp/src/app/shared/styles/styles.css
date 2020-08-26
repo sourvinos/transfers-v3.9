@@ -8,12 +8,13 @@
 @import "headers.css";
 @import "inputs.css";
 @import "labels.css";
+@import "loader.css";
 @import "scrollable.css";
 @import "select.css";
 @import "snackbar.css";
-@import "loader.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
+@import "colors-light.css";
 @import "colors-dark.css";
 
 * {

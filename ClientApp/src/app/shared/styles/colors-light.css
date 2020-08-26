@@ -1,7 +1,7 @@
-* {
+section.light {
 
     /* Sidebar */
-    --color-sidebar: #ffffff;
+    --color-sidebar: #fbfbfb;
     --color-company-logo-first-child: #355070;
     --color-company-logo-second-child: #b56576;
     --color-menu-list-items: #b5838d;
@@ -11,11 +11,6 @@
 
     /* Main background */
     --color-background: #ffffff;
-
-    /* App loader */
-    --color-loader-background: #ffffff;
-    --color-loader-progress: #ffa500;
-    --color-loader-progress-background: #734230;
 
     /* Buttons */
     --color-button-primary: #355070;

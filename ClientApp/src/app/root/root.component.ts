@@ -1,3 +1,4 @@
+import { HelperService } from 'src/app/shared/services/helper.service'
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
@@ -10,9 +11,10 @@ import { AccountService } from '../shared/services/account.service'
 
 export class RootComponent implements OnInit, AfterViewInit {
 
+    theme = ''
     showLoadingIndication = true
 
-    constructor(private accountService: AccountService, private router: Router) {
+    constructor(private accountService: AccountService, private router: Router, private helperService: HelperService) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -32,7 +34,7 @@ export class RootComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        console.clear()
+        this.theme = this.helperService.getThemeFromLocalStorage
     }
 
     ngAfterViewInit() {

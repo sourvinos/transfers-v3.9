@@ -30,4 +30,12 @@ export class HelperService {
         return this.appName.header + ' ' + this.appName.subHeader
     }
 
+    get getThemeFromLocalStorage() {
+        return localStorage.getItem('theme') || 'light'
+    }
+
+    saveThemeToLocalStorage(theme: string) {
+        localStorage.setItem('theme', theme)
+    }
+
 }

@@ -14,7 +14,6 @@ import { DriverModule } from '../drivers/classes/driver.module'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
 import { JwtInterceptor } from '../shared/services/jwt.interceptor'
-import { LoaderComponent } from './../shared/components/loader/loader.component'
 import { LoginModule } from './../login/classes/login.module'
 import { MainComponent } from './../shared/components/main/main.component'
 import { MaterialModule } from '../shared/modules/material.module'
@@ -36,7 +35,6 @@ import { UserModule } from '../users/classes/user.module'
         DoubleRingComponent,
         EmptyPageComponent,
         HomeComponent,
-        LoaderComponent,
         MainComponent,
         RootComponent,
         SidebarWrapperComponent,

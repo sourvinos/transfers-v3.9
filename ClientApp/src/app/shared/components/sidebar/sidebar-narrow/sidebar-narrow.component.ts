@@ -1,3 +1,4 @@
+import { HelperService } from 'src/app/shared/services/helper.service'
 import { Component, HostListener } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { Observable } from 'rxjs'
@@ -19,8 +20,10 @@ export class SidebarNarrowComponent {
         subHeader: environment.appName.subHeader
     }
     isScreenNarrow: boolean
+    theme = ''
 
-    constructor(private accountService: AccountService) { 
+    constructor(private accountService: AccountService, private helperService: HelperService) {
+        this.theme = this.helperService.getThemeFromLocalStorage
         this.isScreenNarrow = this.getScreenWidth()
     }
 
@@ -43,7 +46,7 @@ export class SidebarNarrowComponent {
         this.accountService.logout()
     }
 
-    private getScreenWidth(){
+    private getScreenWidth() {
         return document.getElementsByTagName("section")[0].clientWidth <= 1366
     }
 
