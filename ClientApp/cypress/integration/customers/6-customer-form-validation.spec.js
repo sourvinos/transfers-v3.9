@@ -1,20 +1,21 @@
-describe('New customer without save', () => {
+describe('Form validation', () => {
 
     before(() => {
         cy.login()
+        cy.saveLocalStorage()
+    })
+
+    beforeEach(() => {
+        cy.restoreLocalStorage()
     })
 
     it('Goto the customers list from the home page', () => {
-        cy.server()
-            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
-            .get('[data-cy=customers]').click()
-            .wait('@getCustomers').its('status').should('eq', 200)
-            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
+        cy.gotoCustomerListWithSuccess()
     })
 
     it('Go to an empty form', () => {
         cy.gotoUrlFromElement('customers/new', 'new')
-            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
+        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
     })
 
     it('Critical elements', () => {
@@ -91,12 +92,12 @@ describe('New customer without save', () => {
 
     it('Choose to abort when the back icon is clicked', () => {
         cy.server()
-            .route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
-            .get('[data-cy=goBack]').click()
-            .get('.mat-dialog-container')
-            .get('[data-cy=ok]').click()
-            .wait('@getCustomers').its('status').should('eq', 200)
-            .url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
+        cy.route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+        cy.get('[data-cy=goBack]').click()
+        cy.get('.mat-dialog-container')
+        cy.get('[data-cy=ok]').click()
+        cy.wait('@getCustomers').its('status').should('eq', 200)
+        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
     })
 
 })

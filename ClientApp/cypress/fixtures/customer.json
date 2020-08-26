@@ -1,11 +1,11 @@
 {
-    "id": 12,
-    "description": "ASK 2 TRAVEL",
-    "profession": "ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ ΤΑΞΙΔΙΩΤΙΚΩΝ ΠΡΑΚΤΟΡΕΙΩΝ",
-    "address": "ΛΕΩΦ. ΣΥΓΓΡΟΥ 188, 17671 ΚΑΛΛΙΘΕΑ-ΑΘΗΝΑ",
-    "phones": "",
-    "personInCharge": "",
+    "id": 155,
+    "description": "AKVILA TRAVEL",
+    "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
+    "address": "ΑΓ. ΓΕΩΡΓΙΟΣ ΑΡΓΥΡΑΔΩΝ - ΚΕΡΚΥΡΑ ",
+    "phones": "2662051679",
+    "personInCharge": "ΚΑΒΒΑΔΙΑΣ ΚΩΝ. ΠΡΟΚΟΠΙΟΣ",
     "email": "",
-    "isActive": true,
+    "isActive": false,
     "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
 }
