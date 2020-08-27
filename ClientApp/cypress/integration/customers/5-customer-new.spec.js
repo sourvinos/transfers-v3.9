@@ -1,4 +1,4 @@
-describe('New customer', () => {
+context('New', () => {
 
     before(() => {
         cy.login()
@@ -10,15 +10,15 @@ describe('New customer', () => {
     })
 
     it('Goto the customers list from the home page', () => {
-        cy.gotoCustomerListWithSuccess()
+        cy.gotoCustomerListFromHomePage()
     })
 
     it('Go to an empty form', () => {
-        cy.gotoUrlFromElement('customers/new', 'new')
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
+        cy.get('[data-cy=new]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
 
-    it('Critical elements', () => {
+    it('Elements must exist', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=save]')
     })

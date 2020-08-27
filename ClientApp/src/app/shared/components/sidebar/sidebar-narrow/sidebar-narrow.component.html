@@ -5,7 +5,7 @@
             <div>{{ displayName | async }}</div>
         </div>
     </div>
-    <div class="companyLogo" id="narrow" [routerLink]="['/']">
+    <div data-cy="companyLogo" class="companyLogo" id="narrow" [routerLink]="['/']">
         <p>{{ appName.header }}</p>
         <p>{{ appName.subHeader }}</p>
     </div>

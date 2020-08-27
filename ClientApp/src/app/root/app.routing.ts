@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     {
         path: 'transfers', component: TransferWrapperComponent, canActivate: [AuthGuardService], children: [
             {
-                path: 'dateIn/:dateIn', component: TransferListComponent, canActivate: [AuthGuardService], resolve: { transferList: TransferListResolver }, children: [
+                path: 'date/:dateIn', component: TransferListComponent, canActivate: [AuthGuardService], resolve: { transferList: TransferListResolver }, children: [
                     { path: 'transfer/new', component: TransferFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
                     { path: 'transfer/:id', component: TransferFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard], resolve: { transferForm: TransferFormResolver } }
                 ], runGuardsAndResolvers: 'always'

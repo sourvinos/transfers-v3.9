@@ -1,4 +1,4 @@
-context('Transfers list', () => {
+context('List', () => {
 
     before(() => {
         cy.login()
@@ -9,32 +9,43 @@ context('Transfers list', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Successful attempt to go to the list from the home page', () => {
-        cy.gotoTransferListWithSuccess()
+    it('Go to the list from the home page', () => {
+        cy.get('[data-cy=transfers]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
     })
 
-    it('Search by a given date', () => {
+    it('Unsuccessful attempt to search by a given date', () => {
+        cy.server()
+        cy.route({
+            method: 'GET',
+            url: 'https://localhost:5001/api/transfers/date/2020-01-01',
+            status: 404,
+            response: { error: 'ERROR!' }
+        }).as('getTransfers')
+        cy.get('[data-cy=transfers]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
         cy.get('[data-cy=dateIn]')
             .clear()
-            .type('4/8/2020{enter}')
-            .should('be', '04/08/2020')
-        cy.buttonShouldBeEnabled('search')
+            .type('1/1/2020{enter}')
+            .should('be', '01/01/2020')
         cy.get('[data-cy=search]').click()
+        cy.wait('@getTransfers').its('status').should('eq', 404)
+        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'transfers/date/2020-01-01')
+        cy.get('[data-cy=goBack]').click()
     })
 
-    it('Element check', () => {
+    it('Successful attempt to search by a given date', () => {
+        cy.get('[data-cy=transfers]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
+        cy.searchTransfersWithSuccess()
+    })
+
+    it('Check for elements presence', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=assignDriver]')
         cy.get('[data-cy=createPdf]')
         cy.get('[data-cy=new]')
-    })
-
-
-    it('There should be five panels, one for each group', () => {
         cy.get('[data-cy=summaryBlock]').should('have.length', 5)
-    })
-
-    it('The table should have forteen columns', () => {
         cy.get('[data-cy=header]').should('have.length', 14)
     })
 
@@ -45,15 +56,14 @@ context('Transfers list', () => {
     })
 
     it('Selected sum should be equal to the displayed sum', () => {
-        let displayed
+        let displayedSum
         cy.get('[data-cy=sum]')
             .eq(1)
             .then(response => {
-                displayed = response.text()
-                console.log(displayed)
+                displayedSum = response.text()
                 cy.get('[data-cy=sum]')
                     .eq(2)
-                    .should('have.text', displayed)
+                    .should('have.text', displayedSum)
             })
     })
 

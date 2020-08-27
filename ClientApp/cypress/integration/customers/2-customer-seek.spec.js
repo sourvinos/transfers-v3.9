@@ -1,4 +1,4 @@
-describe('Seek customer', () => {
+context('Seek', () => {
 
     before(() => {
         cy.login()
@@ -9,16 +9,20 @@ describe('Seek customer', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Goto the customers list from the home page', () => {
-        cy.gotoCustomerListWithSuccess()
+    it('Go to the list from the home page', () => {
+        cy.gotoCustomerListFromHomePage()
     })
 
-    it('Unsuccessful attempt to edit the second row', () => {
-        cy.seekCustomerRecordWithError()
-    })
-
-    it('Successful attempt to seek the first row', () => {
-        cy.seekCustomerRecordWithSuccess()
+    it('Unsuccessful attempt to seek a record', () => {
+        cy.server()
+        cy.route({
+            method: 'GET',
+            url: 'https://localhost:5001/api/customers/155',
+            status: 404,
+            response: { error: 'ERROR!' }
+        }).as('getCustomer')
+        cy.get('[data-cy=row]:nth-child(1)').dblclick()
+        cy.wait('@getCustomer').its('status').should('eq', 404)
     })
 
     afterEach(() => {

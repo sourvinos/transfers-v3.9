@@ -299,7 +299,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     private navigateToList() {
-        this.router.navigate(['transfers/dateIn/', this.helperService.getDateFromLocalStorage()])
+        this.router.navigate(['transfers/date/', this.helperService.getDateFromLocalStorage()])
     }
 
     public onGoBack() {

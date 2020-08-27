@@ -6,11 +6,6 @@ Cypress.Commands.add('login', () => {
         .get('[data-cy=login]').click()
 })
 
-Cypress.Commands.add('gotoUrlFromElement', (url, fromElement) => {
-    cy.get('[data-cy=' + fromElement + ']').click()
-        .url().should('eq', Cypress.config().baseUrl + '/' + url)
-})
-
 Cypress.Commands.add('typeGibberish', (fieldName, length) => {
     cy.get('[data-cy=' + fieldName + ']')
         .clear()

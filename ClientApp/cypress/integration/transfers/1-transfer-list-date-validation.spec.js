@@ -1,5 +1,5 @@
-context('Transfers list', () => {
-    
+context('Date validation', () => {
+
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -11,8 +11,9 @@ context('Transfers list', () => {
             cy.restoreLocalStorage()
         })
 
-        it('Goto the transfers list from the home page', () => {
-            cy.gotoUrlFromElement('transfers', 'transfers')
+        it('Goto the list from the home page', () => {
+            cy.get('[data-cy=transfers]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
         })
 
         it('Wrong day', () => {
@@ -44,14 +45,15 @@ context('Transfers list', () => {
         })
 
         it('Goto the transfers list from the home page', () => {
-            cy.gotoUrlFromElement('transfers', 'transfers')
+            cy.get('[data-cy=transfers]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
         })
 
         it('Valid day', () => {
             cy.get('[data-cy=dateIn]')
                 .clear()
                 .type('5{enter}')
-                .should('be', '05/' + new Date().getMonth() + '/2020')
+                .should('be', '05/' + new Date().getMonth() + '/' + new Date().getFullYear())
             cy.buttonShouldBeEnabled('search')
         })
 
@@ -59,7 +61,7 @@ context('Transfers list', () => {
             cy.get('[data-cy=dateIn]')
                 .clear()
                 .type('5/8{enter}')
-                .should('be', '05/08/2020')
+                .should('be', '05/08/' + new Date().getFullYear())
             cy.buttonShouldBeEnabled('search')
         })
 

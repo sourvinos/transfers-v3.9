@@ -1,4 +1,4 @@
-describe('Form validation', () => {
+context('Form validation', () => {
 
     before(() => {
         cy.login()
@@ -10,17 +10,12 @@ describe('Form validation', () => {
     })
 
     it('Goto the customers list from the home page', () => {
-        cy.gotoCustomerListWithSuccess()
+        cy.gotoCustomerListFromHomePage()
     })
 
     it('Go to an empty form', () => {
-        cy.gotoUrlFromElement('customers/new', 'new')
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers/new')
-    })
-
-    it('Critical elements', () => {
-        cy.get('[data-cy=goBack]')
-        cy.get('[data-cy=save]')
+        cy.get('[data-cy=new]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
 
     it('Description is not valid when blank', () => {

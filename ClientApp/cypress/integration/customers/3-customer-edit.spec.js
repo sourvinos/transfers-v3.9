@@ -1,4 +1,4 @@
-describe('Edit customer', () => {
+context('Edit', () => {
 
     before(() => {
         cy.login()
@@ -9,15 +9,15 @@ describe('Edit customer', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Goto the customers list from the home page', () => {
-        cy.gotoCustomerListWithSuccess()
+    it('Go to the list from the home page', () => {
+        cy.gotoCustomerListFromHomePage()
     })
 
-    it('Seek the first row', () => {
-        cy.seekCustomerRecordWithSuccess()
+    it('Successful attempt to seek a record', () => {
+        cy.seekCustomer()
     })
 
-    it('Element check', () => {
+    it('Elements must exist', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=delete]')
         cy.get('[data-cy=save]')

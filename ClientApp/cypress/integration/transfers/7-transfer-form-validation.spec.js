@@ -1,4 +1,4 @@
-describe.skip('New transfer without save', () => {
+context('Form validation', () => {
 
     describe('Init', () => {
 
@@ -10,8 +10,9 @@ describe.skip('New transfer without save', () => {
             cy.login()
         })
 
-        it('Goto the transfers list from the home page', () => {
-            cy.gotoUrlFromElement('transfers', 'transfers')
+        it('Go to the list from the home page', () => {
+            cy.get('[data-cy=transfers]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
         })
 
         it('Valid date', () => {
@@ -24,7 +25,8 @@ describe.skip('New transfer without save', () => {
         })
 
         it('Go to an empty form', () => {
-            cy.gotoUrlFromElement('transfers/dateIn/2020-01-01/transfer/new', 'new')
+            cy.get('[data-cy=new]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/new')
         })
 
         afterEach(() => {
@@ -137,7 +139,7 @@ describe.skip('New transfer without save', () => {
             cy.get('#dialog').within(() => {
                 cy.get('[data-cy=cancel]').click()
             })
-            cy.url().should('eq', Cypress.config().baseUrl + '/transfers/dateIn/2020-01-01/transfer/new')
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/new')
         })
 
         it('Choose to abort when the cancel button is clicked', () => {
@@ -145,7 +147,7 @@ describe.skip('New transfer without save', () => {
             cy.get('#dialog').within(() => {
                 cy.get('[data-cy=ok]').click()
             })
-            cy.url().should('eq', Cypress.config().baseUrl + '/transfers/dateIn/2020-01-01')
+            cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01')
         })
 
         afterEach(() => {

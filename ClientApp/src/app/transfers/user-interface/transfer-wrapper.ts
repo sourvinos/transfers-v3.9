@@ -97,7 +97,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
     }
 
     private navigateToList() {
-        this.router.navigate(['dateIn/', this.dateInISO], { relativeTo: this.activatedRoute })
+        this.router.navigate(['date/', this.dateInISO], { relativeTo: this.activatedRoute })
     }
 
     private removeSelectedIdsFromLocalStorage() {
