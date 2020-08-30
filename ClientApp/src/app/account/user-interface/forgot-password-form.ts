@@ -13,7 +13,7 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 @Component({
     selector: 'forgot-password-form',
     templateUrl: './forgot-password-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {

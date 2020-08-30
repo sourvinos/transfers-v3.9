@@ -15,7 +15,7 @@ import { Destination } from '../classes/destination'
 @Component({
     selector: 'destination-list',
     templateUrl: './destination-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class DestinationListComponent implements OnInit, OnDestroy {

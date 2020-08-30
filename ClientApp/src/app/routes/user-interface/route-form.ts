@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'route-form',
     templateUrl: './route-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {

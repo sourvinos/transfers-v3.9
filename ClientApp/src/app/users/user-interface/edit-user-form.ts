@@ -15,7 +15,7 @@ import { UserService } from '../classes/user.service'
 @Component({
     selector: 'edit-user-form',
     templateUrl: './edit-user-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {

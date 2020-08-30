@@ -1,7 +1,11 @@
 :host {
-    display: grid;
+    display: flex;
 }
 
 #main {
     background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: webkit-fill-available;
 }

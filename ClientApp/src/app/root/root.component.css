@@ -1,9 +1,10 @@
 section {
-    display: grid;
+    display: flex;
+    /* display: grid;
     grid-template-areas: "sidebar""main";
     grid-template-columns: auto 1fr;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; */
 }
 
 #spinner {
@@ -20,7 +21,6 @@ section {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }

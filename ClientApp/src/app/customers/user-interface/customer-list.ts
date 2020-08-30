@@ -15,7 +15,7 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 @Component({
     selector: 'customer-list',
     templateUrl: './customer-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class CustomerListComponent implements OnInit, OnDestroy {

@@ -1,4 +1,9 @@
-section.light {
+:root {
+
+    /* Snackbars */
+    --color-snackbar-text: #ffebe2;
+    --color-snackbar-background-error: #e27676;
+    --color-snackbar-background-info: #0e8d97;
 
     /* Sidebar */
     --color-sidebar: #fbfbfb;
@@ -54,11 +59,6 @@ section.light {
     /* Dialogs */
     --color-dialog-background: #ffffff;
     --color-dialog-content: #355070;
-
-    /* Snackbars */
-    --color-snackbar-text: #ffebe2;
-    --color-snackbar-background-danger: #a52a2a;
-    --color-snackbar-background-info: #0e8d97;
 
     /* Instructions on forms */
     --color-paragraphs: #734230;

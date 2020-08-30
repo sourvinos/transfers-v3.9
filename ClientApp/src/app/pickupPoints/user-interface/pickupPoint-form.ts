@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'pickuppoint-form',
     templateUrl: './pickupPoint-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestroy {

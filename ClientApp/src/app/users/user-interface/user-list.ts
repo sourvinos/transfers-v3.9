@@ -15,7 +15,7 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 @Component({
     selector: 'user-list',
     templateUrl: './user-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class UserListComponent implements OnInit, OnDestroy {

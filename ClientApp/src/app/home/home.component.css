@@ -13,12 +13,12 @@
     text-align: center;
 }
 
-#companyLogo > :first-child {
+#companyLogo> :first-child {
     color: var(--color-company-logo-first-child) !important;
     font-size: 20rem !important;
 }
 
-#companyLogo > :last-child {
+#companyLogo> :last-child {
     color: var(--color-company-logo-second-child) !important;
     font-size: 5rem !important;
     font-weight: normal !important;

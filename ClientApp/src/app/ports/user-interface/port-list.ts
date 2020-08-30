@@ -15,7 +15,7 @@ import { Port } from '../classes/port'
 @Component({
     selector: 'port-list',
     templateUrl: './port-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class PortListComponent implements OnInit, OnDestroy {

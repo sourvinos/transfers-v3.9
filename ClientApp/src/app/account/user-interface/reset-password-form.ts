@@ -13,7 +13,7 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 @Component({
     selector: 'reset-password-form',
     templateUrl: './reset-password-form.html',
-    styleUrls: ['../../shared/styles/forms.css', './reset-password-form.css']
+    styleUrls: ['../../../assets/styles/forms.css', './reset-password-form.css']
 })
 
 export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {

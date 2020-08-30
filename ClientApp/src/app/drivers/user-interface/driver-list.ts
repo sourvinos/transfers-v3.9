@@ -15,7 +15,7 @@ import { Driver } from '../classes/driver'
 @Component({
     selector: 'driver-list',
     templateUrl: './driver-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class DriverListComponent implements OnInit, OnDestroy {

@@ -17,7 +17,7 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 @Component({
     selector: 'register-user-form',
     templateUrl: './register-user-form.html',
-    styleUrls: ['../../shared/styles/forms.css', './register-user-form.css']
+    styleUrls: ['../../../assets/styles/forms.css', './register-user-form.css']
 })
 
 export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestroy {

@@ -17,7 +17,7 @@ import { ChangePassword } from './../classes/change-password'
 @Component({
     selector: 'change-password-form',
     templateUrl: './change-password-form.html',
-    styleUrls: ['../../shared/styles/forms.css', './change-password-form.css']
+    styleUrls: ['../../../assets/styles/forms.css', './change-password-form.css']
 })
 
 export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {

@@ -17,7 +17,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'driver-form',
     templateUrl: './driver-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {

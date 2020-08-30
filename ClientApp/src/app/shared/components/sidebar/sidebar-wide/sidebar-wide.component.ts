@@ -20,10 +20,8 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         subHeader: environment.appName.subHeader
     }
     isScreenWide: boolean
-    theme = ''
 
-    constructor(private accountService: AccountService, private helperService: HelperService) {
-        this.theme = this.helperService.getThemeFromLocalStorage
+    constructor(private accountService: AccountService) {
         this.isScreenWide = this.getScreenWidth()
     }
 

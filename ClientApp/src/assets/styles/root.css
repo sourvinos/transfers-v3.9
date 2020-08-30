@@ -11,17 +11,14 @@
 @import "loader.css";
 @import "scrollable.css";
 @import "select.css";
-@import "snackbar.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
-@import "colors-light.css";
-@import "colors-dark.css";
-
 * {
     box-sizing: border-box !important;
 }
 
 html, body {
+    background-color: #000000;
     height: 100vh;
 }
 
@@ -48,7 +45,7 @@ p.instructions {
 }
 
 .error {
-    background-color: var(--color-snackbar-background-danger) !important;
+    background-color: var(--color-snackbar-background-error) !important;
 }
 
 .info {

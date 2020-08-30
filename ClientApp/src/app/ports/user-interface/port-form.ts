@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'port-form',
     templateUrl: './port-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {

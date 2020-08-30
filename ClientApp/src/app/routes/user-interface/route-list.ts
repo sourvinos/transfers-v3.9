@@ -15,7 +15,7 @@ import { Route } from '../classes/route'
 @Component({
     selector: 'route-list',
     templateUrl: './route-list.html',
-    styleUrls: ['../../shared/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css']
 })
 
 export class RouteListComponent implements OnInit, OnDestroy {

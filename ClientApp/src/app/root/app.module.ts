@@ -25,6 +25,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling'
 import { SidebarNarrowComponent } from '../shared/components/sidebar/sidebar-narrow/sidebar-narrow.component'
 import { SidebarWideComponent } from '../shared/components/sidebar/sidebar-wide/sidebar-wide.component'
 import { SidebarWrapperComponent } from '../shared/components/sidebar/sidebar-wrapper/sidebar-wrapper.component'
+import { ThemeTogglerComponent } from './../shared/components/themeToggler/themeToggler.component'
 import { TransferModule } from './../transfers/classes/transfer.module'
 import { UserIdleModule } from 'angular-user-idle'
 import { UserModule } from '../users/classes/user.module'
@@ -40,6 +41,7 @@ import { UserModule } from '../users/classes/user.module'
         SidebarWrapperComponent,
         SidebarWideComponent,
         SidebarNarrowComponent,
+        ThemeTogglerComponent
     ],
     imports: [
         AppRouting,

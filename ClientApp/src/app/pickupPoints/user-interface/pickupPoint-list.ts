@@ -17,7 +17,7 @@ import { PickupPoint } from '../classes/pickupPoint'
 @Component({
     selector: 'pickuppoint-list',
     templateUrl: './pickupPoint-list.html',
-    styleUrls: ['../../shared/styles/lists.css', './pickupPoint-list.css']
+    styleUrls: ['../../../assets/styles/lists.css', './pickupPoint-list.css']
 })
 
 export class PickupPointListComponent implements OnInit, OnDestroy {

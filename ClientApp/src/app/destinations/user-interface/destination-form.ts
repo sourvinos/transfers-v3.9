@@ -17,7 +17,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'destination-form',
     templateUrl: './destination-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestroy {

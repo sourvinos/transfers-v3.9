@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'login-form',
     templateUrl: './login-form.html',
-    styleUrls: ['../../shared/styles/forms.css', './login-form.css']
+    styleUrls: ['../../../assets/styles/forms.css', './login-form.css']
 })
 
 export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {

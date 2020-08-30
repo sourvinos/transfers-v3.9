@@ -9,7 +9,7 @@
 #header #navigation {
     align-items: center;
     display: flex;
-    grid-area: "navigation";
+    grid-area: navigation;
     justify-content: flex-start;
     margin: 0 0 0 1rem;
 }
@@ -22,6 +22,7 @@ span#routeDescription {
     margin: 6px 0 0 10px;
 }
 
+
 /* Wide */
 
 @media only screen and (min-width: 1367px) {
@@ -29,6 +30,7 @@ span#routeDescription {
         margin: 2rem;
     }
 }
+
 
 /* Narrow */
 

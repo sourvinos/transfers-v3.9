@@ -11,7 +11,7 @@ import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 @Component({
     selector: 'transfer-wrapper',
     templateUrl: './transfer-wrapper.html',
-    styleUrls: ['../../shared/styles/lists.css', './transfer-wrapper.css']
+    styleUrls: ['../../../assets/styles/lists.css', './transfer-wrapper.css']
 })
 
 export class TransferWrapperComponent implements OnInit, OnDestroy {

@@ -5,7 +5,7 @@ import { Driver } from 'src/app/drivers/classes/driver'
 @Component({
     selector: 'transfer-assign-driver',
     templateUrl: './transfer-assign-driver.html',
-    styleUrls: ['../../shared/styles/dialogs.css', './transfer-assign-driver.css']
+    styleUrls: ['../../../assets/styles/dialogs.css', './transfer-assign-driver.css']
 })
 
 export class TransferAssignDriverComponent implements OnInit {

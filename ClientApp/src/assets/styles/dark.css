@@ -1,4 +1,9 @@
-section.dark {
+:root {
+
+    /* Snackbars */
+    --color-snackbar-text: #fffddd;
+    --color-snackbar-background-error: #a52a2a;
+    --color-snackbar-background-info: #0e8d97;
 
     /* Sidebar */
     --color-sidebar: #1d2733;
@@ -54,11 +59,6 @@ section.dark {
     /* Dialogs */
     --color-dialog-background: #373f46;
     --color-dialog-content: #939393;
-
-    /* Snackbars */
-    --color-snackbar-text: #fffddd;
-    --color-snackbar-background-danger: #a52a2a;
-    --color-snackbar-background-info: #0e8d97;
 
     /* Instructions on forms */
     --color-paragraphs: #ffc788;

@@ -7,7 +7,7 @@ import { IndexInteractionService } from '../../services/index-interaction.servic
 @Component({
     selector: 'dialog-index',
     templateUrl: './dialog-index.component.html',
-    styleUrls: ['../../styles/dialogs.css']
+    styleUrls: ['../../../../assets/styles/dialogs.css']
 })
 
 export class DialogIndexComponent implements OnInit, OnDestroy {

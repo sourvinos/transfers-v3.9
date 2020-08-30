@@ -17,7 +17,7 @@ import { environment } from 'src/environments/environment'
 @Component({
     selector: 'customer-form',
     templateUrl: './customer-form.html',
-    styleUrls: ['../../shared/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css']
 })
 
 export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
