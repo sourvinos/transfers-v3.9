@@ -4,11 +4,11 @@ import { AccountService } from '../shared/services/account.service'
 
 @Component({
     selector: 'app-root',
-    templateUrl: './root.component.html',
-    styleUrls: ['./root.component.css']
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 
-export class RootComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit {
 
     showLoadingIndication = true
 

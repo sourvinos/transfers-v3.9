@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
 
 @Component({
     selector: 'app-sidebar-wide',
@@ -45,7 +44,7 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     }
 
     private getScreenWidth() {
-        return document.getElementsByTagName("section")[0].clientWidth > 1366
+        return document.getElementById("wrapper").clientWidth > 1366
     }
 
 }

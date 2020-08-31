@@ -1,11 +1,12 @@
+:host {
+    display: flex;
+}
+
 #sidebar {
     background-color: var(--color-sidebar);
     display: flex;
     height: 100vh;
-    overflow: hidden;
-    position: sticky;
     transition: 0.7s;
-    z-index: 2;
 }
 
 .userInfo {

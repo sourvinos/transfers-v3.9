@@ -13,12 +13,14 @@
 @import "select.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
+
 * {
     box-sizing: border-box !important;
 }
 
 html, body {
     background-color: #000000;
+    display: flex;
     height: 100vh;
 }
 

@@ -1,29 +1,33 @@
-<div id="header">
-    <div id="navigation">
-        <button data-cy="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
-            <mat-icon>home</mat-icon>
-        </button>
-    </div>
-    <div id="title">
-        <h1>Customers</h1>
-    </div>
-    <div id="search-box">
-        <mat-form-field class="no-bottom-margin">
-            <input data-cy="searchTerm" type="text" matInput placeholder="Search" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
-            <button data-cy="clearFilter" mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
-                <mat-icon>close</mat-icon>
+<div id="list">
+
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
+                <mat-icon>home</mat-icon>
             </button>
-            <mat-hint>Search by description</mat-hint>
-        </mat-form-field>
+        </div>
+        <div id="title">
+            <h1>Customers</h1>
+        </div>
+        <div id="search-box">
+            <mat-form-field class="no-bottom-margin">
+                <input data-cy="searchTerm" type="text" matInput placeholder="Search" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
+                <button data-cy="clearFilter" mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-hint>Search by description</mat-hint>
+            </mat-form-field>
+        </div>
     </div>
-</div>
 
-<div data-cy="content" id="content" class="scrollable">
-    <custom-table [records]="filteredRecords" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
-</div>
-
-<div id="footer">
-    <div id="buttons">
-        <button data-cy="new" mat-flat-button class="primary" id="new" [routerLink]="newUrl">New</button>
+    <div data-cy="content" id="content" class="scrollable">
+        <custom-table [records]="filteredRecords" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
     </div>
+
+    <div id="footer">
+        <div id="buttons">
+            <button data-cy="new" mat-flat-button class="primary" id="new" [routerLink]="newUrl">New</button>
+        </div>
+    </div>
+
 </div>

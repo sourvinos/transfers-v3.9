@@ -44,7 +44,7 @@ export class SidebarNarrowComponent {
     }
 
     private getScreenWidth() {
-        return document.getElementsByTagName("section")[0].clientWidth <= 1366
+        return document.getElementById("wrapper").clientWidth <= 1366
     }
 
 }

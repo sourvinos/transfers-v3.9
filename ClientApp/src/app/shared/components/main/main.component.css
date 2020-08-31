@@ -6,6 +6,8 @@
     background-color: var(--color-background);
     display: flex;
     flex-direction: column;
+    width: 100%;
+    flex: 1;
     height: 100vh;
-    width: webkit-fill-available;
+    overflow-y: hidden;
 }

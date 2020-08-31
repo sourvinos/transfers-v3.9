@@ -19,7 +19,7 @@ import { MainComponent } from './../shared/components/main/main.component'
 import { MaterialModule } from '../shared/modules/material.module'
 import { PickupPointModule } from '../pickupPoints/classes/pickupPoint.module'
 import { PortModule } from '../ports/classes/port.module'
-import { RootComponent } from './root.component'
+import { AppComponent } from './app.component'
 import { RouteModule } from '../routes/classes/route.module'
 import { ScrollingModule } from '@angular/cdk/scrolling'
 import { SidebarNarrowComponent } from '../shared/components/sidebar/sidebar-narrow/sidebar-narrow.component'
@@ -32,15 +32,15 @@ import { UserModule } from '../users/classes/user.module'
 
 @NgModule({
     declarations: [
+        AppComponent,
         DomChangeDirective,
         DoubleRingComponent,
         EmptyPageComponent,
         HomeComponent,
         MainComponent,
-        RootComponent,
-        SidebarWrapperComponent,
-        SidebarWideComponent,
         SidebarNarrowComponent,
+        SidebarWideComponent,
+        SidebarWrapperComponent,
         ThemeTogglerComponent
     ],
     imports: [
@@ -67,7 +67,7 @@ import { UserModule } from '../users/classes/user.module'
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     ],
-    bootstrap: [RootComponent]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }
