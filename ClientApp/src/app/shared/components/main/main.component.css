@@ -1,7 +1,3 @@
-:host {
-    display: flex;
-}
-
 #main {
     background-color: var(--color-background);
     display: flex;
@@ -10,4 +6,5 @@
     flex: 1;
     height: 100vh;
     overflow-y: hidden;
+    transition: 0.7s;
 }

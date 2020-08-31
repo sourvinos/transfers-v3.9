@@ -4,12 +4,12 @@ import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
 
 @Component({
-    selector: 'app-sidebar-wide',
-    templateUrl: './sidebar-wide.component.html',
-    styleUrls: ['../sidebar-wrapper/sidebar-wrapper.component.css', './sidebar-wide.component.css']
+    selector: 'nav-wide',
+    templateUrl: './nav-wide.component.html',
+    styleUrls: ['../nav-wrapper/nav-wrapper.component.css', './nav-wide.component.css']
 })
 
-export class SidebarWideComponent implements OnInit, AfterViewInit {
+export class NavWideComponent implements OnInit, AfterViewInit {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>

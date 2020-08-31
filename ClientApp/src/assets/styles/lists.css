@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+=======
+/* :host { */
+
+
+/* display: grid; */
+
+
+/* grid-template-areas: "header" "content" "footer"; */
+
+
+/* grid-template-rows: max-content auto max-content; */
+
+
+/* height: -webkit-fill-available; */
+
+
+/* } */
+
+>>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a
 #header {
     align-items: center;
     display: flex;

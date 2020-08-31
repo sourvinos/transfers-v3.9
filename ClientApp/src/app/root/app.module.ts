@@ -22,9 +22,9 @@ import { PortModule } from '../ports/classes/port.module'
 import { AppComponent } from './app.component'
 import { RouteModule } from '../routes/classes/route.module'
 import { ScrollingModule } from '@angular/cdk/scrolling'
-import { SidebarNarrowComponent } from '../shared/components/sidebar/sidebar-narrow/sidebar-narrow.component'
-import { SidebarWideComponent } from '../shared/components/sidebar/sidebar-wide/sidebar-wide.component'
-import { SidebarWrapperComponent } from '../shared/components/sidebar/sidebar-wrapper/sidebar-wrapper.component'
+import { NavNarrowComponent } from '../shared/components/nav/nav-narrow/nav-narrow.component'
+import { NavWideComponent } from '../shared/components/nav/nav-wide/nav-wide.component'
+import { NavWrapperComponent } from '../shared/components/nav/nav-wrapper/nav-wrapper.component'
 import { ThemeTogglerComponent } from './../shared/components/themeToggler/themeToggler.component'
 import { TransferModule } from './../transfers/classes/transfer.module'
 import { UserIdleModule } from 'angular-user-idle'
@@ -38,9 +38,16 @@ import { UserModule } from '../users/classes/user.module'
         EmptyPageComponent,
         HomeComponent,
         MainComponent,
+<<<<<<< HEAD
         SidebarNarrowComponent,
         SidebarWideComponent,
         SidebarWrapperComponent,
+=======
+        RootComponent,
+        NavWrapperComponent,
+        NavWideComponent,
+        NavNarrowComponent,
+>>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a
         ThemeTogglerComponent
     ],
     imports: [

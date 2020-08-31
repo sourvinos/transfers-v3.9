@@ -4,12 +4,12 @@ import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 
 @Component({
-    selector: 'app-sidebar-narrow',
-    templateUrl: './sidebar-narrow.component.html',
-    styleUrls: ['../sidebar-wrapper/sidebar-wrapper.component.css', './sidebar-narrow.component.css']
+    selector: 'nav-narrow',
+    templateUrl: './nav-narrow.component.html',
+    styleUrls: ['../nav-wrapper/nav-wrapper.component.css', './nav-narrow.component.css']
 })
 
-export class SidebarNarrowComponent {
+export class NavNarrowComponent {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
