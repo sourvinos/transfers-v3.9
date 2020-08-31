@@ -18,7 +18,8 @@
 }
 
 html, body {
-    background-color: #000000;
+    background-color: #dd0000;
+    display: flex;
     height: 100vh;
 }
 

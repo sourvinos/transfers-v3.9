@@ -1,9 +1,19 @@
-:host {
-    display: grid;
-    grid-template-areas: "header" "content" "footer";
-    grid-template-rows: max-content auto max-content;
-    height: -webkit-fill-available;
-}
+/* :host { */
+
+
+/* display: grid; */
+
+
+/* grid-template-areas: "header" "content" "footer"; */
+
+
+/* grid-template-rows: max-content auto max-content; */
+
+
+/* height: -webkit-fill-available; */
+
+
+/* } */
 
 #header {
     align-items: center;

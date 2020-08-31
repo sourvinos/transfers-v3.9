@@ -1,10 +1,7 @@
-section {
+main {
     display: flex;
-    /* display: grid;
-    grid-template-areas: "sidebar""main";
-    grid-template-columns: auto 1fr;
     height: 100vh;
-    overflow: hidden; */
+    width: 100vw;
 }
 
 #spinner {

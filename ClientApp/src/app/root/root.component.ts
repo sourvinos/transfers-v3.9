@@ -36,8 +36,8 @@ export class RootComponent implements AfterViewInit {
     }
 
     private positionLoader() {
-        document.getElementById('spinner').style.left = (document.getElementsByTagName('app-main')[0].clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementById('sidebar').clientWidth + 'px'
-        document.getElementById('spinner').style.top = (document.getElementsByTagName('app-main')[0].clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'
+        document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementsByTagName('nav')[0].clientWidth + 'px'
+        document.getElementById('spinner').style.top = (document.getElementById('main').clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'
     }
 
 }

@@ -1,16 +1,15 @@
-import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
+import { AccountService } from 'src/app/shared/services/account.service'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
-import { AccountService } from 'src/app/shared/services/account.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
 
 @Component({
-    selector: 'app-sidebar-wide',
-    templateUrl: './sidebar-wide.component.html',
-    styleUrls: ['../sidebar-wrapper/sidebar-wrapper.component.css', './sidebar-wide.component.css']
+    selector: 'nav-narrow',
+    templateUrl: './nav-narrow.component.html',
+    styleUrls: ['../nav-wrapper/nav-wrapper.component.css', './nav-narrow.component.css']
 })
 
-export class SidebarWideComponent implements OnInit, AfterViewInit {
+export class NavNarrowComponent {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
@@ -19,14 +18,14 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
-    isScreenWide: boolean
+    isScreenNarrow: boolean
 
     constructor(private accountService: AccountService) {
-        this.isScreenWide = this.getScreenWidth()
+        this.isScreenNarrow = this.getScreenWidth()
     }
 
     @HostListener('window:resize', ['$event']) onResize() {
-        this.isScreenWide = this.getScreenWidth()
+        this.isScreenNarrow = this.getScreenWidth()
     }
 
     ngOnInit() {
@@ -45,7 +44,7 @@ export class SidebarWideComponent implements OnInit, AfterViewInit {
     }
 
     private getScreenWidth() {
-        return document.getElementsByTagName("section")[0].clientWidth > 1366
+        return document.getElementsByTagName("body")[0].clientWidth <= 1366
     }
 
 }

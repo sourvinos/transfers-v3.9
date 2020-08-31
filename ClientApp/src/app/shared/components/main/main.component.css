@@ -1,11 +1,6 @@
-:host {
-    display: flex;
-}
-
 #main {
-    background-color: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: webkit-fill-available;
+    /* background-color: var(--color-background); */
+    background-color: khaki;
+    overflow-y: hidden;
+    transition: 0.7s;
 }
