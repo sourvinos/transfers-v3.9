@@ -2,7 +2,7 @@
     /* Main background */
     --color-background: #ffffff;
     /* Sidebar */
-    --color-sidebar: #fbfbfb;
+    --color-sidebar: #eaeaea;
     --color-company-logo-first-child: #355070;
     --color-company-logo-second-child: #b56576;
     --color-menu-list-items: #b5838d;
@@ -13,6 +13,10 @@
     --color-snackbar-text: #ffebe2;
     --color-snackbar-background-error: #b56576;
     --color-snackbar-background-info: #355070;
+    /* Language bar */
+    --color-language-menu: #fbfbfb;
+    --color-menu-items: #2e5266;
+    --color-menu-items-hover: #e8e8e8;
     /* Buttons */
     --color-button-primary: #355070;
     --color-button-delete: #b56576;

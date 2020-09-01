@@ -26,6 +26,7 @@ import { AppComponent } from './app.component'
 import { DoubleRingComponent } from './../shared/components/double-ring/double-ring.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
+import { LanguageBarComponent } from '../shared/components/language-bar/language-bar.component'
 import { MainComponent } from './../shared/components/main/main.component'
 import { NavNarrowComponent } from '../shared/components/nav/nav-narrow/nav-narrow.component'
 import { NavWideComponent } from '../shared/components/nav/nav-wide/nav-wide.component'
@@ -43,6 +44,7 @@ import { DomChangeDirective } from '../shared/directives/dom-change.directive'
         DoubleRingComponent,
         EmptyPageComponent,
         HomeComponent,
+        LanguageBarComponent,
         MainComponent,
         NavNarrowComponent,
         NavNarrowComponent,

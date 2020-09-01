@@ -13,6 +13,10 @@
     --color-snackbar-text: #fffddd;
     --color-snackbar-background-error: #a52a2a;
     --color-snackbar-background-info: #0e8d97;
+    /* Language bar */
+    --color-language-menu: #1d2733;
+    --color-menu-items: #fffddd;
+    --color-menu-items-hover: #373f46;
     /* Buttons */
     --color-button-primary: #57617b;
     --color-button-delete: #d67474;

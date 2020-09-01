@@ -13,6 +13,7 @@
 @import "select.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
+
 * {
     box-sizing: border-box !important;
 }
@@ -38,6 +39,10 @@ p.instructions {
     font-size: var(--font-size-paragraphs);
     overflow: hidden;
     width: 800px;
+}
+
+.mat-menu-content {
+    background-color: var(--color-language-menu) !important;
 }
 
 .mat-icon, .item {

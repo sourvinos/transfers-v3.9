@@ -8,10 +8,12 @@ export class InteractionService {
     _record = new Subject<string[]>()
     _checked = new Subject<number>()
     _refreshList = new Subject<any>()
+    _language = new Subject<string>()
 
     record = this._record.asObservable()
     checked = this._checked.asObservable()
     refreshList = this._refreshList.asObservable()
+    language = this._language.asObservable()
 
     /**
      * Caller(s):
@@ -21,7 +23,7 @@ export class InteractionService {
      *  transfer-list.ts
      *
      * Description:
-     *  The caller tells the list to refresh when a record is saved
+     *  The form tells the list to refresh when a record is saved
      */
     mustRefreshList() {
         this._refreshList.next()
@@ -41,7 +43,7 @@ export class InteractionService {
      *  user-list.ts
      *
      * Description:
-     *  The caller(s) sends the selected item and the subscribers call the edit method
+     *  The caller(s) send the selected item and the subscribers call the edit method
      *
     */
     sendObject(record: any) {
@@ -63,6 +65,10 @@ export class InteractionService {
      */
     setCheckedTotalPersons(total: number) {
         this._checked.next(total)
+    }
+
+    updateLanguage(message: string) {
+        this._language.next(message)
     }
 
 }

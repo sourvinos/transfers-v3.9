@@ -1,0 +1,15 @@
+#selector {
+    margin: -3px 1rem 0 0;
+}
+
+.option {
+    color: var(--color-menu-items);
+    font-family: "PF Handbook Pro";
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+}
+
+.mat-menu-item:hover {
+    background-color: var(--color-menu-items-hover) !important;
+}

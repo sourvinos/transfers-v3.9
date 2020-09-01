@@ -1,0 +1,18 @@
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onSaveLanguage('el')">
+        <mat-icon svgIcon="el"></mat-icon>
+        <span class="option">Ελληνικα</span>
+    </button>
+    <button mat-menu-item (click)="onSaveLanguage('en')">
+        <mat-icon svgIcon="en"></mat-icon>
+        <span class="option">English</span>
+    </button>
+    <button mat-menu-item (click)="onSaveLanguage('de')">
+        <mat-icon svgIcon="de"></mat-icon>
+        <span class="option">Deutsch</span>
+    </button>
+</mat-menu>
+
+<button id="selector" mat-icon-button [matMenuTriggerFor]="menu">
+    <img src="/assets/images/flags/{{ language }}.svg" width="25px">
+</button>
