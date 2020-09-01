@@ -1,21 +1,25 @@
-<div id="header">
-    <div id="navigation">
-        <button data-cy="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
-            <mat-icon>home</mat-icon>
-        </button>
-    </div>
-    <div id="title">
-        <h1>Transfers</h1>
-    </div>
-    <div id="search-box">
-        <mat-form-field class="no-bottom-margin">
-            <input data-cy="dateIn" type="text" matInput class="center" placeholder="Date" [(ngModel)]="dateIn" [inputFormat]="'date'" id="dateIn" autocomplete="off">
-            <mat-hint>Search by date</mat-hint>
-        </mat-form-field>
-        <button data-cy="search" mat-flat-button id="search" class="primary" [disabled]="!onCheckValidDate()" (click)="onLoadTransfers()">Search</button>
-    </div>
-</div>
+<div id="list">
 
-<div id="main">
-    <router-outlet></router-outlet>
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
+                <mat-icon>home</mat-icon>
+            </button>
+        </div>
+        <div id="title">
+            <h1>Transfers</h1>
+        </div>
+        <div id="search-box">
+            <mat-form-field class="no-bottom-margin">
+                <input data-cy="dateIn" type="text" matInput class="center" placeholder="Date" [(ngModel)]="dateIn" [inputFormat]="'date'" id="dateIn" autocomplete="off">
+                <mat-hint>Search by date</mat-hint>
+            </mat-form-field>
+            <button data-cy="search" mat-flat-button id="search" class="primary" [disabled]="!onCheckValidDate()" (click)="onLoadTransfers()">Search</button>
+        </div>
+    </div>
+
+    <div id="content">
+        <router-outlet></router-outlet>
+    </div>
+
 </div>

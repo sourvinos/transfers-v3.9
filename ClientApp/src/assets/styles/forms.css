@@ -1,42 +1,29 @@
-:host {
-    /* display: grid;
-    grid-template-areas: "header" "content" "footer";
-    grid-template-rows: max-content auto max-content;
-    height: 100vh; */
+#form {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
+    height: 100%;
 }
 
 #header {
-    display: grid;
-    grid-area: header;
-    grid-template-areas: "navigation title";
-    grid-template-columns: fit-content(0%) auto;
+    display: flex;
 }
 
 #header #title {
     align-items: center;
     display: flex;
-    grid-area: title;
-    justify-content: flex-start;
     margin-left: 1rem;
 }
 
 #header #navigation {
     align-items: center;
     display: flex;
-    grid-area: "navigation";
-    justify-content: flex-start;
-    margin: 0 0 0 1rem;
+    margin-left: 1rem;
 }
 
 #content {
-    align-content: flex-start;
     display: flex;
     flex-direction: column;
-    grid-area: content;
-    height: -webkit-fill-available;
+    flex: 1;
     justify-content: center;
     margin: 0 auto;
     width: 80%;
@@ -50,10 +37,6 @@
 
 #content #instructions {
     margin-top: auto;
-}
-
-#footer {
-    grid-area: footer;
 }
 
 #footer #buttons {

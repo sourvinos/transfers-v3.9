@@ -1,10 +1,6 @@
 :root {
-
-    /* Snackbars */
-    --color-snackbar-text: #ffebe2;
-    --color-snackbar-background-error: #e27676;
-    --color-snackbar-background-info: #0e8d97;
-
+    /* Main background */
+    --color-background: #ffffff;
     /* Sidebar */
     --color-sidebar: #fbfbfb;
     --color-company-logo-first-child: #355070;
@@ -13,36 +9,31 @@
     --color-menu-active-item: #2e5266;
     --color-user-info: #355070;
     --color-copyright: #355070;
-
-    /* Main background */
-    --color-background: #ffffff;
-
+    /* Snackbars */
+    --color-snackbar-text: #ffebe2;
+    --color-snackbar-background-error: #b56576;
+    --color-snackbar-background-info: #355070;
     /* Buttons */
     --color-button-primary: #355070;
     --color-button-delete: #b56576;
     --color-button-secondary: #6e8898;
     --color-button-text-all: #ffffff;
     --color-button-text-secondary: #ffffff;
-
     /* Narrow menu icons and navigation buttons */
     --color-navigation-button: #355070;
     --color-navigation-icon: #ffffff;
-
     /* Input boxes */
     --color-input-text-caret: #2e5266;
     --color-input-text-selected: #cedfe9;
     --color-input-focus: #2e5266;
     --color-input-not-focus: #6e8898;
     --color-input-text-error: #ef1717;
-
     /* Navigation icon */
     --color-navigation-button: #355070;
     --color-navigation-arrow: #f2cfbb;
-
     /* Scrollbars */
     --color-scrollbar: #355070;
     --color-scrollbar-background: #ffffff;
-
     /* Tables */
     --color-table-background: #ffffff;
     --color-table-header: #355070;
@@ -52,17 +43,13 @@
     --color-table-row-odd: #f4f4f4;
     --color-table-row-selected: #e0e3e6;
     --color-table-rows-hover: #355070;
-
     /* All headers */
     --color-headers: #355070;
-
     /* Dialogs */
     --color-dialog-background: #ffffff;
     --color-dialog-content: #355070;
-
     /* Instructions on forms */
     --color-paragraphs: #734230;
-
     /* Transfer summary boxes */
     --color-summary-block-background: #ffffff;
     --color-summary-block-border: #355070;
@@ -72,30 +59,23 @@
     --color-summary-block-item-hover-background: #ffffff;
     --color-summary-block-item-hover-color: #355070;
     --color-summary-block-item: #474747;
-
     /* Checkboxes */
     --color-checkbox-checked: #355070;
-
     /* Spinner */
     --color-spinner: #d67474;
     --color-spinner-background: #ffe85c;
-
     /* Select */
     --color-select-background-color: #ffffff;
     --color-select-border: #355070;
     --color-select-option-color: #355070;
-
     /* Transfers totals */
     --color-label: #474747;
     --color-sum: #734230;
-
     /* Route description at pickup point list */
     --color-route-description: #d47e5e;
-
     /* Checkboxes and toggle slides */
     --color-bar-checked: #6e8898;
     --color-thumb-checked: #355070;
-
     /* Double ring on wide sidebar */
     --color-ring-inner: #b56576;
     --color-ring-outer: #355070;

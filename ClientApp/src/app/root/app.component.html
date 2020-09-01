@@ -1,7 +1,17 @@
 <div id="wrapper">
-    <app-sidebar-wrapper></app-sidebar-wrapper>
+
+    <nav-wrapper></nav-wrapper>
+
     <div id="main">
-        <app-main></app-main>
+
+        <themeToggler></themeToggler>
+
+        <div id="content">
+            <router-outlet></router-outlet>
+        </div>
+
         <div [class.hidden]="!showLoadingIndication" id="spinner"></div>
+
     </div>
+
 </div>

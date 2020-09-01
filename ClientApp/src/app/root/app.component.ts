@@ -3,7 +3,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { AccountService } from '../shared/services/account.service'
 
 @Component({
-    selector: 'app-root',
+    selector: 'root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })

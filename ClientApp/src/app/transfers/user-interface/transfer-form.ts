@@ -375,7 +375,9 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private scrollToForm() {
-        document.getElementById('content').style.width = this.getFormWidth()
+        // document.getElementById('content').style.width = this.getFormWidth()
+        // document.getElementById('content').style.height = this.getListHeight()
+        document.getElementById('content').style.width = "1232px"
         document.getElementById('content').style.height = this.getListHeight()
         document.getElementById('transferList').style.display = 'none'
     }

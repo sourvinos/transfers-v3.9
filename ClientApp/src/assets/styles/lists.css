@@ -1,23 +1,9 @@
-<<<<<<< HEAD
-=======
-/* :host { */
+#list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-
-/* display: grid; */
-
-
-/* grid-template-areas: "header" "content" "footer"; */
-
-
-/* grid-template-rows: max-content auto max-content; */
-
-
-/* height: -webkit-fill-available; */
-
-
-/* } */
-
->>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a
 #header {
     align-items: center;
     display: flex;
@@ -42,10 +28,8 @@
 }
 
 #content {
-    grid-area: content;
-    grid-auto-rows: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: auto;
 }
 
@@ -67,13 +51,11 @@
     #header {
         margin: 0 2rem 2rem 2rem;
     }
-
     #content {
         margin: 0 2rem 0 2rem;
     }
-
     #footer {
-        margin: 2rem;
+        margin: 2rem 1rem 2rem 1rem;
     }
 }
 
@@ -84,11 +66,9 @@
     #header {
         margin: 0 1.5rem 1.5rem 1.5rem;
     }
-
     #content {
         margin: 0 1.5rem 0 1.5rem;
     }
-
     #footer {
         margin: 1.5rem;
     }

@@ -48,18 +48,17 @@
     padding: 0;
 }
 
-#menuWide ul > li {
+#menuWide ul>li {
     line-height: 2.5rem !important;
     outline: 0;
-    transition: font-size;
     transition-duration: 200ms;
 }
 
-#menuWide ul > li:last-child {
+#menuWide ul>li:last-child {
     margin-top: auto;
 }
 
-#menuWide ul > li:hover, #menuWide ul > li.active {
+#menuWide ul>li:hover, #menuWide ul>li.active {
     color: var(--color-menu-active-item);
     cursor: pointer;
     font-size: var(--font-size-menu-list-item-active);
@@ -78,21 +77,19 @@
     margin-left: 17rem !important;
 }
 
+
 /* Small heights = hide bus circle */
 
 @media only screen and (max-height: 799px) {
     .companyLogo {
         margin-bottom: 1rem;
     }
-
     #double-ring {
         display: none;
     }
-
     #menuWide {
         margin-top: 0;
     }
-
     #menuItems {
         line-height: 2rem !important;
     }

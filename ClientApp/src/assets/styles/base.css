@@ -13,17 +13,12 @@
 @import "select.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
-
 * {
     box-sizing: border-box !important;
 }
 
 html, body {
-<<<<<<< HEAD:ClientApp/src/assets/styles/base.css
     background-color: #000000;
-=======
-    background-color: #dd0000;
->>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a:ClientApp/src/assets/styles/root.css
     display: flex;
     height: 100vh;
 }

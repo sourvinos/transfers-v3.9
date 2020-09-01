@@ -1,16 +1,13 @@
 :host {
-<<<<<<< HEAD:ClientApp/src/app/shared/components/sidebar/sidebar-wrapper/sidebar-wrapper.component.css
     display: flex;
 }
 
 #sidebar {
-=======
     display: grid;
     height: 100%;
 }
 
 nav {
->>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a:ClientApp/src/app/shared/components/nav/nav-wrapper/nav-wrapper.component.css
     background-color: var(--color-sidebar);
     display: flex;
     height: 100vh;

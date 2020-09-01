@@ -1,12 +1,3 @@
-:host {
-    display: grid;
-    grid-template-areas:
-        "header"
-        "main";
-    grid-template-rows: max-content auto;
-    height: 100vh;
-}
-
 #header #search-box {
     margin-right: 1rem;
     width: auto;
@@ -17,16 +8,11 @@
 }
 
 #main {
-    grid-area: main;
-    grid-auto-rows: 100%;
-    overflow-x: hidden;
+    flex: 1;
+    height: 100%;
     overflow-y: hidden;
-    width: auto;
 }
 
-#footer {
-    grid-area: footer;
-}
 
 /* Wide */
 
@@ -35,6 +21,7 @@
         margin: 0 2rem;
     }
 }
+
 
 /* Narrow */
 

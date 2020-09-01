@@ -1,28 +1,21 @@
-<<<<<<< HEAD:ClientApp/src/app/root/app.component.css
 #wrapper {
-    background-color: #ffffff;
+    background-color: var(--color-background);
     display: flex;
     height: 100vh;
     width: 100vw;
+    transition: 0.7s;
 }
 
 #main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    transition: 0.7s;
 }
 
 #content {
     flex: 1;
-    height: 100%;
+    justify-content: center;
     overflow-y: hidden;
-=======
-main {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
->>>>>>> f1435254360c9f4ce0dd2b94b901c23bccb6771a:ClientApp/src/app/root/root.component.css
 }
 
 #spinner {
@@ -39,7 +32,6 @@ main {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }

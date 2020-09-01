@@ -1,8 +1,10 @@
+#content {
+    height: 100%;
+}
+
 #results {
     display: grid;
-    grid-template-areas:
-        "summaries listFormCombo"
-        "summaries listFormCombo";
+    grid-template-areas: "summaries listFormCombo" "summaries listFormCombo";
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr;
     height: 100%;
@@ -130,6 +132,7 @@
     font-size: var(--font-size-sum);
 }
 
+
 /* Wide */
 
 @media only screen and (min-width: 1367px) {
@@ -137,6 +140,7 @@
         margin: 2rem 0;
     }
 }
+
 
 /* Narrow */
 
