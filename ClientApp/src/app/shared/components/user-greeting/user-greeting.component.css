@@ -1,0 +1,6 @@
+.userInfo {
+    color: var(--color-user-info);
+    font-family: var(--font-family-user-info);
+    margin-right: 1rem;
+    text-align: center;
+}

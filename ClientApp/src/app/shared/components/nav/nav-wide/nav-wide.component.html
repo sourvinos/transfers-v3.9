@@ -1,9 +1,4 @@
 <div *ngIf="isScreenWide" id="sidebar-wide">
-    <div class="userInfo" id="wide">
-        <div *ngIf="(loginStatus | async)">
-            <div>Hello, {{ displayName | async }}</div>
-        </div>
-    </div>
     <div class="companyLogo" id="wide" [routerLink]="['/']">
         <p>{{ appName.header }}</p>
         <p>{{ appName.subHeader }}</p>

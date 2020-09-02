@@ -1,0 +1,5 @@
+<div class="userInfo" id="wide">
+    <div *ngIf="(loginStatus | async)">
+        <div>Hello, {{ displayName | async }}</div>
+    </div>
+</div>

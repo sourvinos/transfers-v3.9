@@ -35,7 +35,8 @@ import { ThemeTogglerComponent } from './../shared/components/themeToggler/theme
 
 // Utils
 import { JwtInterceptor } from '../shared/services/jwt.interceptor'
-import { DomChangeDirective } from '../shared/directives/dom-change.directive'
+import { DomChangeDirective } from '../shared/directives/dom-change.directive';
+import { UserGreetingComponent } from '../shared/components/user-greeting/user-greeting.component'
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { DomChangeDirective } from '../shared/directives/dom-change.directive'
         NavWideComponent,
         NavWrapperComponent,
         NavWrapperComponent,
-        ThemeTogglerComponent
+        ThemeTogglerComponent,
+        UserGreetingComponent
     ],
     imports: [
         AccountModule,

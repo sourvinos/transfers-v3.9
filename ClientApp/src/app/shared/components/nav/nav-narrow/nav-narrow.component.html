@@ -1,10 +1,4 @@
 <div *ngIf="isScreenNarrow" id="sidebar-narrow">
-    <div class="userInfo" id="narrow">
-        <div *ngIf="(loginStatus | async)">
-            <div>Hello</div>
-            <div>{{ displayName | async }}</div>
-        </div>
-    </div>
     <div data-cy="companyLogo" class="companyLogo" id="narrow" [routerLink]="['/']">
         <p>{{ appName.header }}</p>
         <p>{{ appName.subHeader }}</p>

@@ -16,7 +16,6 @@ export class NavWideComponent implements OnInit, AfterViewInit {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
-    displayName: Observable<string>
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -36,7 +35,6 @@ export class NavWideComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
-        this.displayName = this.accountService.currentDisplayName
         this.updateNavigation()
         this.subscribeToInteractionService()
     }

@@ -13,7 +13,6 @@ export class NavNarrowComponent {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
-    displayName: Observable<string>
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -31,7 +30,6 @@ export class NavNarrowComponent {
 
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
-        this.displayName = this.accountService.currentDisplayName
     }
 
     ngAfterViewInit() {

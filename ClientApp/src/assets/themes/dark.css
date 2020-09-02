@@ -7,8 +7,9 @@
     --color-company-logo-second-child: #ffe85c;
     --color-menu-list-items: #9f9f9f;
     --color-menu-active-item: #fe9f36;
-    --color-user-info: #ffe85c;
     --color-copyright: #fe9f36;
+    /* User greeting */
+    --color-user-info: #939393;
     /* Snackbars */
     --color-snackbar-text: #fffddd;
     --color-snackbar-background-error: #a52a2a;
