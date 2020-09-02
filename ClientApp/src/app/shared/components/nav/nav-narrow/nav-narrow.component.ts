@@ -18,6 +18,7 @@ export class NavNarrowComponent {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+    imagePathName = '/assets/images/navigation/'
     isScreenNarrow: boolean
 
     constructor(private accountService: AccountService) {

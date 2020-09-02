@@ -13,15 +13,15 @@
     </div>
     <div *ngIf="(loginStatus | async)" id="menuWide">
         <ul id="menuItems">
-            <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">Customers</li>
-            <li data-cy="destinations" [routerLink]="['/drivers']" routerLinkActive="active">Drivers</li>
-            <li data-cy="drivers" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
-            <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">Pickup points</li>
-            <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">Ports</li>
-            <li data-cy="routes" [routerLink]="['/routes']" routerLinkActive="active">Routes</li>
-            <li data-cy="transfers" [routerLink]="['/transfers']" routerLinkActive="active">Transfers</li>
-            <li data-cy="users" [routerLink]="['/users']" routerLinkActive="active">Users</li>
-            <li data-cy="logout" (click)="onLogout()" routerLinkActive="active">Logout</li>
+            <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">{{ menuItems[0] }}</li>
+            <li data-cy="destinations" [routerLink]="['/drivers']" routerLinkActive="active">{{ menuItems[1] }}</li>
+            <li data-cy="drivers" [routerLink]="['/destinations']" routerLinkActive="active">{{ menuItems[2] }}</li>
+            <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">{{ menuItems[3] }}</li>
+            <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">{{ menuItems[4] }}</li>
+            <li data-cy="routes" [routerLink]="['/routes']" routerLinkActive="active">{{ menuItems[5] }}</li>
+            <li data-cy="transfers" [routerLink]="['/transfers']" routerLinkActive="active">{{ menuItems[6] }}</li>
+            <li data-cy="users" [routerLink]="['/users']" routerLinkActive="active">{{ menuItems[7] }}</li>
+            <li data-cy="logout" (click)="onLogout()" routerLinkActive="active">{{ menuItems[8] }}</li>
         </ul>
     </div>
     <div id="copyright">Created with .NET Core<br />and Angular</div>

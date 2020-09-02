@@ -1,7 +1,10 @@
+import { MessageService } from './../../../services/message.service'
 import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
     selector: 'nav-wide',
@@ -18,9 +21,12 @@ export class NavWideComponent implements OnInit, AfterViewInit {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }
+    menuItems: string[] = []
+    language = ''
+    ngUnsubscribe = new Subject<void>()
     isScreenWide: boolean
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private messageService: MessageService, private interactionService: InteractionService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -31,6 +37,8 @@ export class NavWideComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
         this.displayName = this.accountService.currentDisplayName
+        this.updateNavigation()
+        this.subscribeToInteractionService()
     }
 
     ngAfterViewInit() {
@@ -45,6 +53,22 @@ export class NavWideComponent implements OnInit, AfterViewInit {
 
     private getScreenWidth() {
         return document.getElementById("wrapper").clientWidth > 1366
+    }
+
+    private subscribeToInteractionService() {
+        this.interactionService.language.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+            this.language = result
+            this.menuItems = []
+            this.updateNavigation()
+        })
+    }
+
+    private updateNavigation() {
+        this.messageService.getMenu().then((res: any[]) => {
+            res.forEach(element => {
+                this.menuItems.push(element.message)
+            })
+        })
     }
 
 }

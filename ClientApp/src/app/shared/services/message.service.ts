@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({ providedIn: 'root' })
 
 export class MessageService {
+
+    messages: any = []
+
+    constructor(private httpClient: HttpClient) { }
 
     public httpMessages = [
         { id: 400, description: 'This record is in use and can not be deleted.' },
@@ -26,5 +31,22 @@ export class MessageService {
         const message = this.httpMessages.filter(x => x.id == id)
         return message ? message[0].description : 'Something went very wrong.'
     }
+
+    getMenu() {
+        const promise = new Promise((resolve) => {
+            this.httpClient.get('assets/languages/menu.' + localStorage.getItem('language') + '.json').toPromise().then(
+                response => {
+                    this.messages = response
+                    resolve(this.messages)
+                })
+        })
+        return promise
+    }
+
+    getMessage(messageNo: string) {
+        const filteredMessages = this.messages.filter((message: { id: string }) => message.id == messageNo)
+        return filteredMessages[0].message
+    }
+
 
 }

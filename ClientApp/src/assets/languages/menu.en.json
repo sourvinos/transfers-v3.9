@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "message": "Customers"
+    },
+    {
+        "id": "2",
+        "message": "Drivers"
+    },
+    {
+        "id": "3",
+        "message": "Destinations"
+    },
+    {
+        "id": "4",
+        "message": "Pickup points"
+    },
+    {
+        "id": "5",
+        "message": "Ports"
+    },
+    {
+        "id": "6",
+        "message": "Routes"
+    },
+    {
+        "id": "7",
+        "message": "Transfers"
+    },
+    {
+        "id": "8",
+        "message": "Logout"
+    }
+]

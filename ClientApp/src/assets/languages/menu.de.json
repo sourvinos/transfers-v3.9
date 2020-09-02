@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "message": "Kunden"
+    },
+    {
+        "id": "2",
+        "message": "Fahrer"
+    },
+    {
+        "id": "3",
+        "message": "Reiseziele"
+    },
+    {
+        "id": "4",
+        "message": "Aufenthalte"
+    },
+    {
+        "id": "5",
+        "message": "Häfen"
+    },
+    {
+        "id": "6",
+        "message": "Routen"
+    },
+    {
+        "id": "7",
+        "message": "Transfers"
+    },
+    {
+        "id": "8",
+        "message": "Logout"
+    }
+]

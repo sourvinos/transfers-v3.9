@@ -31,7 +31,7 @@ export class InteractionService {
 
     /** 
      * Caller(s):
-     *  Custom-table.ts
+     *  Custom-table.component.ts
      *
      * Subscriber(s):
      *  customer-list.ts
@@ -67,6 +67,16 @@ export class InteractionService {
         this._checked.next(total)
     }
 
+    /** 
+     * Caller(s):
+     *  language-bar.component.ts
+     * 
+     * Subscriber(s):
+     *  nav-wide.component.ts
+     * 
+     * Description:
+     *  The caller(s) send the language so that the subscriber(s) can display the appropriate messages
+     */
     updateLanguage(message: string) {
         this._language.next(message)
     }

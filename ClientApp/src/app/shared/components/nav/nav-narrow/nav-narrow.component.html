@@ -11,15 +11,15 @@
     </div>
     <div *ngIf="(loginStatus | async)" id="menuNarrow">
         <mat-button-toggle-group>
-            <mat-button-toggle data-cy="customers" routerLink="/customers" routerLinkActive="active"><img src="/assets/customers-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="destinations" routerLink="/destinations" routerLinkActive="active"><img src="/assets/destinations-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="drivers" routerLink="/drivers" routerLinkActive="active"><img src="/assets/drivers-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="pickupPoints" routerLink="/pickupPoints" routerLinkActive="active"><img src="/assets/pickupPoints-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="ports" routerLink="/ports" routerLinkActive="active"><img src="/assets/ports-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="routes" routerLink="/routes" routerLinkActive="active"><img src="/assets/routes-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="transfers" routerLink="/transfers" routerLinkActive="active"><img src="/assets/transfers-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="users" routerLink="/users" routerLinkActive="active"><img src="/assets/users-light.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="logout" (click)="onLogout()" routerLinkActive="active"><img src="/assets/logout-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="customers" routerLink="/customers" routerLinkActive="active"><img src="{{imagePathName}}customers-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="destinations" routerLink="/destinations" routerLinkActive="active"><img src="{{imagePathName}}destinations-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="drivers" routerLink="/drivers" routerLinkActive="active"><img src="{{imagePathName}}drivers-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="pickupPoints" routerLink="/pickupPoints" routerLinkActive="active"><img src="{{imagePathName}}pickupPoints-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="ports" routerLink="/ports" routerLinkActive="active"><img src="{{imagePathName}}ports-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="routes" routerLink="/routes" routerLinkActive="active"><img src="{{imagePathName}}routes-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="transfers" routerLink="/transfers" routerLinkActive="active"><img src="{{imagePathName}}transfers-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="users" routerLink="/users" routerLinkActive="active"><img src="{{imagePathName}}users-light.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="logout" (click)="onLogout()" routerLinkActive="active"><img src="{{imagePathName}}logout-light.png" width="24px"></mat-button-toggle>
         </mat-button-toggle-group>
     </div>
 </div>
