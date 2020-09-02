@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core'
-import { TransferAssignDriverComponent } from '../user-interface/transfer-assign-driver'
-import { TransferFormComponent } from '../user-interface/transfer-form'
-import { TransferListComponent } from '../user-interface/transfer-list'
-import { TransferWrapperComponent } from '../user-interface/transfer-wrapper'
+import { TransferAssignDriverComponent } from '../user-interface/transfer-assign-driver.component'
+import { TransferFormComponent } from '../user-interface/transfer-form.component'
+import { TransferListComponent } from '../user-interface/transfer-list.component'
+import { TransferWrapperComponent } from '../user-interface/transfer-wrapper.component'
 import { MaterialModule } from './../../shared/modules/material.module'
 import { SharedModule } from './../../shared/modules/shared.module'
 

@@ -7,8 +7,8 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
 import { DialogIndexComponent } from '../components/dialog-index/dialog-index.component'
 import { SnackbarComponent } from '../components/snackbar/snackbar.component'
-import { CustomTableComponent } from '../components/table/custom-table'
-import { SafeStylePipe } from '../pipes/safeStyle'
+import { CustomTableComponent } from '../components/table/custom-table.component'
+import { SafeStylePipe } from '../pipes/safeStyle.pipe'
 import { MaterialModule } from './material.module'
 
 @NgModule({

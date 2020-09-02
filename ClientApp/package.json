@@ -1,6 +1,6 @@
 {
     "name": "transfers",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "scripts": {
         "ng": "ng",
         "start": "ngserve",

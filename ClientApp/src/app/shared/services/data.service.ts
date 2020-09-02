@@ -14,6 +14,7 @@ export class DataService {
     }
 
     add(formData: any): Observable<any> {
+        console.log(formData)
         return this.http.post<any>(this.url, formData)
     }
 

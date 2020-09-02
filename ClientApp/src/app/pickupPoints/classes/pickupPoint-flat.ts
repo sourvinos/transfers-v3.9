@@ -3,4 +3,5 @@ export class PickupPointFlat {
     pickupPointDescription: string
     exactPoint: string
     time: string
+    portId: number
 }

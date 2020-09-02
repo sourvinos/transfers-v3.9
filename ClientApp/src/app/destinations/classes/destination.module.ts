@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core'
 import { MaterialModule } from '../../shared/modules/material.module'
 import { SharedModule } from '../../shared/modules/shared.module'
-import { DestinationFormComponent } from '../user-interface/destination-form'
-import { DestinationListComponent } from '../user-interface/destination-list'
+import { DestinationFormComponent } from '../user-interface/destination-form.component'
+import { DestinationListComponent } from '../user-interface/destination-list.component'
 
 @NgModule({
     declarations: [
