@@ -14,8 +14,10 @@
 
 #utility-bar {
     align-items: center;
+    background-color: var(--color-sidebar);
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 2rem;
     padding-right: 2.2rem;
 }
 

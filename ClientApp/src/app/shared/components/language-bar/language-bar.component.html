@@ -11,6 +11,10 @@
         <mat-icon svgIcon="de"></mat-icon>
         <span class="option">Deutsch</span>
     </button>
+    <button mat-menu-item (click)="onSaveLanguage('cz')">
+        <mat-icon svgIcon="cz"></mat-icon>
+        <span class="option">Česky</span>
+    </button>
 </mat-menu>
 
 <button id="selector" mat-icon-button [matMenuTriggerFor]="menu">

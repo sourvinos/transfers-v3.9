@@ -1,5 +1,5 @@
 #selector {
-    margin: -3px 1rem 0 0;
+    margin: -5px 1rem 0 0;
 }
 
 .option {
@@ -8,6 +8,11 @@
     font-size: 19px;
     font-variant-caps: small-caps;
     font-weight: 500;
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .mat-menu-item:hover {
