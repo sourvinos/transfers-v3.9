@@ -13,11 +13,13 @@ import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Customer } from '../classes/customer'
 import { environment } from 'src/environments/environment'
+import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'customer-form',
     templateUrl: './customer-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {

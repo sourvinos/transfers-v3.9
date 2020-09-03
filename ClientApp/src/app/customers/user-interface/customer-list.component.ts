@@ -11,11 +11,13 @@ import { Customer } from '../classes/customer'
 import { SnackbarService } from '../../shared/services/snackbar.service'
 import { takeUntil } from 'rxjs/operators'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
+import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'customer-list',
     templateUrl: './customer-list.component.html',
-    styleUrls: ['../../../assets/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class CustomerListComponent implements OnInit, OnDestroy {

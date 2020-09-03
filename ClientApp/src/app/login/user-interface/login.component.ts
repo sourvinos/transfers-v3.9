@@ -12,11 +12,13 @@ import { AccountService } from '../../shared/services/account.service'
 import { SnackbarService } from '../../shared/services/snackbar.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { environment } from 'src/environments/environment'
+import { fade, slideFromLeft, slideFromRight, slideFromBottom } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'login-form',
     templateUrl: './login.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './login.component.css']
+    styleUrls: ['../../../assets/styles/forms.css', './login.component.css'],
+    animations: [fade, slideFromLeft, slideFromRight, slideFromBottom]
 })
 
 export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {

@@ -6,7 +6,7 @@
                 <mat-icon>home</mat-icon>
             </button>
         </div>
-        <div id="title">
+        <div @slideFromLeft id="title">
             <h1>Customers</h1>
         </div>
         <div id="search-box">
@@ -24,7 +24,7 @@
         <custom-table [records]="filteredRecords" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
     </div>
 
-    <div id="footer">
+    <div @slideFromRight id="footer">
         <div id="buttons">
             <button data-cy="new" mat-flat-button class="primary" id="new" [routerLink]="newUrl">New</button>
         </div>

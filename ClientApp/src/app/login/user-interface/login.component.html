@@ -1,6 +1,6 @@
 <div id="form">
 
-    <div id="header">
+    <div @slideFromLeft id="header">
         <div id="title">
             <h1>Login</h1>
         </div>
@@ -24,7 +24,7 @@
         <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 
-    <div id="footer">
+    <div @slideFromRight id="footer">
         <div id="buttons">
             <button mat-flat-button class="secondary" id="forgotPassword" (click)="onForgotPassword()">Forgot password?</button>
             <button data-cy="login" mat-flat-button class="primary" id="login" [disabled]="!form.valid" (click)="onLogin()">Login</button>

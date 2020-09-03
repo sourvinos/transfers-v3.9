@@ -6,7 +6,7 @@
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </div>
-        <div id="title">
+        <div @slideFromLeft id="title">
             <h1>Customer</h1>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 
-    <div id="footer">
+    <div @slideFromRight id="footer">
         <div id="buttons">
             <button data-cy="delete" mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">Delete</button>
             <button data-cy="save" mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">Save</button>
