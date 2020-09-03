@@ -1,87 +1,84 @@
 :root {
-    /* Main background */
+    /* #ffffff */
     --color-background: #ffffff;
-    /* Sidebar */
-    --color-sidebar: #eaeaea;
-    --color-company-logo-first-child: #355070;
-    --color-company-logo-second-child: #b56576;
-    --color-menu-list-items: #b5838d;
-    --color-menu-active-item: #2e5266;
-    --color-copyright: #355070;
-    /* User greeting */
-    --color-user-info: #355070;
-    /* Snackbars */
-    --color-snackbar-text: #ffebe2;
-    --color-snackbar-background-error: #b56576;
-    --color-snackbar-background-info: #355070;
-    /* Language bar */
-    --color-language-menu: #fbfbfb;
-    --color-menu-items: #2e5266;
-    --color-menu-items-hover: #e8e8e8;
-    /* Buttons */
-    --color-button-primary: #355070;
-    --color-button-delete: #b56576;
-    --color-button-secondary: #6e8898;
-    --color-button-text-all: #ffffff;
-    --color-button-text-secondary: #ffffff;
-    /* Narrow menu icons and navigation buttons */
-    --color-navigation-button: #355070;
-    --color-navigation-icon: #ffffff;
-    /* Input boxes */
-    --color-input-text-caret: #2e5266;
-    --color-input-text-selected: #cedfe9;
-    --color-input-focus: #2e5266;
-    --color-input-not-focus: #6e8898;
-    --color-input-text-error: #ef1717;
-    /* Navigation icon */
-    --color-navigation-button: #355070;
-    --color-navigation-arrow: #f2cfbb;
-    /* Scrollbars */
-    --color-scrollbar: #355070;
-    --color-scrollbar-background: #ffffff;
-    /* Tables */
-    --color-table-background: #ffffff;
-    --color-table-header: #355070;
-    --color-table-header-border: #355070;
-    --color-table-row: #355070;
-    --color-table-row-even: #ffffff;
-    --color-table-row-odd: #f4f4f4;
-    --color-table-row-selected: #e0e3e6;
-    --color-table-rows-hover: #355070;
-    /* All headers */
-    --color-headers: #355070;
-    /* Dialogs */
     --color-dialog-background: #ffffff;
-    --color-dialog-content: #355070;
-    /* Instructions on forms */
-    --color-paragraphs: #734230;
-    /* Transfer summary boxes */
-    --color-summary-block-background: #ffffff;
-    --color-summary-block-border: #355070;
-    --color-summary-block-expansion-indicator: #939393;
-    --color-summary-block-item-border-active: #355070;
-    --color-summary-block-item-border-inactive: #d0cece;
-    --color-summary-block-item-hover-background: #ffffff;
-    --color-summary-block-item-hover-color: #355070;
-    --color-summary-block-item: #474747;
-    /* Checkboxes */
-    --color-checkbox-checked: #355070;
-    /* Spinner */
-    --color-spinner: #d67474;
-    --color-spinner-background: #ffe85c;
-    /* Select */
+    --color-scrollbar-background: #ffffff;
     --color-select-background-color: #ffffff;
-    --color-select-border: #355070;
-    --color-select-option-color: #355070;
-    /* Transfers totals */
-    --color-label: #474747;
-    --color-sum: #734230;
-    /* Route description at pickup point list */
-    --color-route-description: #d47e5e;
-    /* Checkboxes and toggle slides */
-    --color-bar-checked: #6e8898;
-    --color-thumb-checked: #355070;
-    /* Double ring on wide sidebar */
+    --color-select-items-hover: #ffffff;
+    --color-summary-block-background: #ffffff;
+    --color-summary-block-item-hover-background: #ffffff;
+    --color-table-background: #ffffff;
+    --color-table-row-even: #ffffff;
+    /* #d67474 */
+    --color-button-delete: #d67474;
+    /* #57617b */
+    --color-button-primary: #57617b;
+    /* #5a75bc */
+    --color-button-secondary: #5a75bc;
+    /* #fffddd */
+    --color-button-text-all: #fffddd;
+    --color-button-text-secondary: #fffddd;
+    --color-snackbar-text: #fffddd;
+    --color-snackbar-close-button: #fffddd;
+    /* #734230 */
+    --color-paragraphs: #734230;
+    --color-ring-outer: #734230;
+    --color-route-description: #734230;
+    /* #eaeaea */
+    --color-language-menu: #eaeaea;
+    --color-navigation-button: #eaeaea;
+    --color-sidebar: #eaeaea;
+    --color-summary-block-item-border-inactive: #eaeaea;
+    /* #a52a2a */
+    --color-snackbar-background-error: #a52a2a;
+    /* #0e8d97 */
+    --color-snackbar-background-info: #0e8d97;
+    /* #2e5266 */
+    --color-table-header: #2e5266;
+    --color-table-row: #2e5266;
+    /* #b56576 */
+    --color-company-logo-second-child: #b56576;
     --color-ring-inner: #b56576;
-    --color-ring-outer: #355070;
+    --color-sum-persons: #b56576;
+    /* #426186 */
+    --color-dialog-content: #426186;
+    --color-headers: #426186;
+    --color-label: #426186;
+    --color-user-greeting: #426186;
+    /* #355070 */
+    --color-checkbox-checked: #355070;
+    --color-company-logo-first-child: #355070;
+    --color-copyright: #355070;
+    --color-input-focus: #355070;
+    --color-menu-active-item: #355070;
+    --color-scrollbar: #355070;
+    --color-select-border: #355070;
+    --color-spinner: #355070;
+    --color-summary-block-border: #355070;
+    --color-summary-block-item-border-active: #355070;
+    --color-summary-block-item-hover-color: #355070;
+    --color-table-rows-hover: #355070;
+    --color-thumb-checked: #355070;
+    /* #e0e3e6 */
+    --color-table-row-selected: #e0e3e6;
+    /* #f4f4f4 */
+    --color-table-row-odd: #f4f4f4;
+    /* 2e5266 */
+    --color-menu-list-items: #2e5266;
+    --color-navigation-icon: #2e5266;
+    --color-select-items: #2e5266;
+    --color-select-option-color: #2e5266;
+    --color-summary-block-item: #2e5266;
+    --color-table-header-border: #2e5266;
+    /* #738dad */
+    --color-slider-button-on: #738dad;
+    --color-spinner-background: #738dad;
+    /* #5f5f5f */
+    --color-input-not-focus: #5f5f5f;
+    --color-input-text-caret: #5f5f5f;
+    --color-summary-block-expansion-indicator: #5f5f5f;
+    /* #cfcfcf */
+    --color-input-text-selected: #cfcfcf;
+    /* #ff0000 */
+    --color-input-text-error: #ff0000;
 }

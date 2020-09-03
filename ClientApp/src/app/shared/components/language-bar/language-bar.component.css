@@ -3,7 +3,7 @@
 }
 
 .option {
-    color: var(--color-menu-items);
+    color: var(--color-select-items);
     font-family: "PF Handbook Pro";
     font-size: 19px;
     font-variant-caps: small-caps;
@@ -16,5 +16,5 @@
 }
 
 .mat-menu-item:hover {
-    background-color: var(--color-menu-items-hover) !important;
+    background-color: var(--color-select-items-hover) !important;
 }

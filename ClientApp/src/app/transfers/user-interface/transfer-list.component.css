@@ -120,7 +120,7 @@
 }
 
 .selection .sum {
-    color: var(--color-sum);
+    color: var(--color-sum-persons);
     font-size: var(--font-size-sum);
 }
 
