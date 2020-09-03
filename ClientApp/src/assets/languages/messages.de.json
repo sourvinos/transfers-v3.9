@@ -1,0 +1,10 @@
+[
+    {
+        "id": "recordCreated",
+        "message": "This record has been created."
+    },
+    {
+        "id": "recordUpdated",
+        "message": "This record has been updated."
+    }
+]

@@ -295,7 +295,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
         if (transferListResolved.error === null) {
             this.queryResult = transferListResolved.result
         } else {
-            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         }
     }
 

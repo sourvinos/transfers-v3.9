@@ -1,10 +1,10 @@
-import { MessageService } from './../../../services/message.service'
 import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { takeUntil } from 'rxjs/operators'
+import { MenuItemsService } from 'src/app/shared/services/menu-items.service'
 
 @Component({
     selector: 'nav-wide',
@@ -25,7 +25,7 @@ export class NavWideComponent implements OnInit, AfterViewInit {
     ngUnsubscribe = new Subject<void>()
     isScreenWide: boolean
 
-    constructor(private accountService: AccountService, private messageService: MessageService, private interactionService: InteractionService) {
+    constructor(private accountService: AccountService, private menuItemsService: MenuItemsService, private interactionService: InteractionService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -62,7 +62,7 @@ export class NavWideComponent implements OnInit, AfterViewInit {
     }
 
     private updateNavigation() {
-        this.messageService.getMenu().then((res: any[]) => {
+        this.menuItemsService.getMenuItems().then((res: any[]) => {
             res.forEach(element => {
                 this.menuItems.push(element.message)
             })

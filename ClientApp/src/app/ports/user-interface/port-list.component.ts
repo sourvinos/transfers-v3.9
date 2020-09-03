@@ -105,7 +105,7 @@ export class PortListComponent implements OnInit, OnDestroy {
             this.records = portListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         }
     }
 

@@ -105,7 +105,7 @@ export class UserListComponent implements OnInit, OnDestroy {
             this.records = userListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageService.noContactWithApi(), 'error')
+            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         }
     }
 

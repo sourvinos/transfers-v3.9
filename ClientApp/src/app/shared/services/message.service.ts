@@ -7,7 +7,9 @@ export class MessageService {
 
     messages: any = []
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) {
+        this.getMessages(localStorage.getItem('language') || 'en')
+    }
 
     public httpMessages = [
         { id: 400, description: 'This record is in use and can not be deleted.' },
@@ -15,26 +17,26 @@ export class MessageService {
         { id: 409, description: 'There is already a default driver.' }
     ]
 
-    public recordCreated(): string { return 'This record has been created.' }
-    public recordUpdated(): string { return 'This record has been updated.' }
-    public recordDeleted(): string { return 'This record has been deleted.' }
-    public askConfirmationToAbortEditing(): string { return 'If you continue, changes will be lost.' }
-    public askConfirmationToDelete(): string { return 'If you continue, this record will be lost for ever.' }
-    public noRecordsSelected(): string { return 'No records have been selected.' }
-    public recordsHaveBeenProcessed(): string { return 'All records have been processed.' }
-    public noDefaultDriverFound(): string { return 'A default driver has not been found.' }
-    public noContactWithApi(): string { return 'Unable to get any response from the server.' }
-    public resetPassword(): string { return 'If your email exists in our database, you will be redirected to the password reset page.' }
-    public wrongCurrentPassword(): string { return 'The current password is wrong.' }
+    public recordCreated(): string { return this.messages[0].message }
+    public recordUpdated(): string { return this.messages[1].message }
+    public recordDeleted(): string { return this.messages[2].message }
+    public askConfirmationToAbortEditing(): string { return this.messages[3].message }
+    public askConfirmationToDelete(): string { return this.messages[4].message }
+    public noRecordsSelected(): string { return this.messages[5].message }
+    public recordsHaveBeenProcessed(): string { return this.messages[6].message }
+    public noDefaultDriverFound(): string { return this.messages[7].message }
+    public noContactWithServer(): string { return this.messages[8].message }
+    public resetPassword(): string { return this.messages[9].message }
+    public wrongCurrentPassword(): string { return this.messages[10].message }
 
     public getHttpErrorMessage(id: number) {
         const message = this.httpMessages.filter(x => x.id == id)
-        return message ? message[0].description : 'Something went very wrong.'
+        return message ? message[0].description : this.messages[11].message
     }
 
-    getMenu() {
+    getMessages(language: string) {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/menu.' + localStorage.getItem('language') + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/messages.' + language + '.json').toPromise().then(
                 response => {
                     this.messages = response
                     resolve(this.messages)
@@ -42,11 +44,5 @@ export class MessageService {
         })
         return promise
     }
-
-    getMessage(messageNo: string) {
-        const filteredMessages = this.messages.filter((message: { id: string }) => message.id == messageNo)
-        return filteredMessages[0].message
-    }
-
 
 }

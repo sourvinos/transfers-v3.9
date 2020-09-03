@@ -15,7 +15,7 @@ export class UserGreetingComponent implements OnInit {
 
     constructor(private accountService: AccountService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.loginStatus = this.accountService.isLoggedIn
         this.displayName = this.accountService.currentDisplayName
     }

@@ -1,0 +1,41 @@
+[
+    {
+        "message": "The record was created."
+    },
+    {
+        "message": "The record was updated."
+    },
+    {
+        "message": "The record was deleted."
+    },
+    {
+        "message": "If you continue, the changes will be lost."
+    },
+    {
+        "message": "If you continue, this record will be lost for ever."
+    },
+    {
+        "message": "You have not selected any records."
+    },
+    {
+        "message": "All records have been updated."
+    },
+    {
+        "message": "The default driver was not found."
+    },
+    {
+        "message": "There is no contact with the database."
+    },
+    {
+        "message": "If the email you gave us exists in our database, you will be able to change yous password."
+    },
+    {
+        "message": "The current password is wrong."
+    },
+    {
+        "mesage": "Something went very wrong"
+    },
+    {
+        "message": "This record is in use and can not be deleted."
+    }
+]

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { InteractionService } from '../../services/interaction.service'
+import { MessageService } from '../../services/message.service'
 
 @Component({
     selector: 'language-bar',
@@ -9,11 +10,9 @@ import { InteractionService } from '../../services/interaction.service'
     styleUrls: ['./language-bar.component.css']
 })
 
-export class LanguageBarComponent implements OnInit {
+export class LanguageBarComponent {
 
-    language = ''
-
-    constructor(private interactionService: InteractionService, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry) {
+    constructor(private interactionService: InteractionService, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private messageService: MessageService) {
         this.matIconRegistry
             .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
             .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
@@ -21,14 +20,15 @@ export class LanguageBarComponent implements OnInit {
             .addSvgIcon('cz', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cz.svg'))
     }
 
-    ngOnInit(): void {
-        this.language = localStorage.getItem("language") || 'en'
+    onGetLanguage() {
+        return localStorage.getItem("language") == null ? this.onSaveLanguage('en') : localStorage.getItem("language")
     }
 
     onSaveLanguage(language: string) {
         localStorage.setItem('language', language)
-        this.language = language
-        this.interactionService.updateLanguage(this.language)
+        this.interactionService.updateLanguage(language)
+        this.messageService.getMessages(language)
+        return language
     }
 
 }
