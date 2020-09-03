@@ -31,12 +31,13 @@ import { MainComponent } from './../shared/components/main/main.component'
 import { NavNarrowComponent } from '../shared/components/nav/nav-narrow/nav-narrow.component'
 import { NavWideComponent } from '../shared/components/nav/nav-wide/nav-wide.component'
 import { NavWrapperComponent } from '../shared/components/nav/nav-wrapper/nav-wrapper.component'
-import { ThemeTogglerComponent } from './../shared/components/themeToggler/themeToggler.component'
+import { ThemeBarComponent } from './../shared/components/theme-bar/theme-bar.component'
+import { TopBarComponent } from '../shared/components/top-bar/top-bar.component'
+import { UserGreetingComponent } from '../shared/components/user-greeting/user-greeting.component'
 
 // Utils
 import { JwtInterceptor } from '../shared/services/jwt.interceptor'
-import { DomChangeDirective } from '../shared/directives/dom-change.directive';
-import { UserGreetingComponent } from '../shared/components/user-greeting/user-greeting.component'
+import { DomChangeDirective } from '../shared/directives/dom-change.directive'
 
 @NgModule({
     declarations: [
@@ -53,8 +54,9 @@ import { UserGreetingComponent } from '../shared/components/user-greeting/user-g
         NavWideComponent,
         NavWrapperComponent,
         NavWrapperComponent,
-        ThemeTogglerComponent,
-        UserGreetingComponent
+        ThemeBarComponent,
+        TopBarComponent,
+        UserGreetingComponent,
     ],
     imports: [
         AccountModule,

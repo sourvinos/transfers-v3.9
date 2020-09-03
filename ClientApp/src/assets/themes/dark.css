@@ -5,11 +5,11 @@
     --color-sidebar: #1d2733;
     --color-company-logo-first-child: #fe9f36;
     --color-company-logo-second-child: #ffe85c;
-    --color-menu-list-items: #9f9f9f;
+    --color-menu-list-items: #b7b7b7;
     --color-menu-active-item: #fe9f36;
     --color-copyright: #fe9f36;
     /* User greeting */
-    --color-user-info: #939393;
+    --color-user-info: #b7b7b7;
     /* Snackbars */
     --color-snackbar-text: #fffddd;
     --color-snackbar-background-error: #a52a2a;
@@ -29,9 +29,9 @@
     --color-navigation-icon: #ffffff;
     /* Input boxes */
     --color-input-text-caret: #ffffff;
-    --color-input-text-selected: #a9aaa9;
+    --color-input-text-selected: #b7b7b7;
     --color-input-focus: #fe9f36;
-    --color-input-not-focus: #939393;
+    --color-input-not-focus: #b7b7b7;
     --color-input-text-error: #ef1717;
     /* Navigation icon */
     --color-navigation-button: #373f46;

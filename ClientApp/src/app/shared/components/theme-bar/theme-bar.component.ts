@@ -2,12 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
 @Component({
-    selector: 'themeToggler',
-    templateUrl: './themeToggler.component.html',
-    styleUrls: ['./themeToggler.component.css']
+    selector: 'theme-bar',
+    templateUrl: './theme-bar.component.html',
+    styleUrls: ['./theme-bar.component.css']
 })
 
-export class ThemeTogglerComponent implements OnInit {
+export class ThemeBarComponent implements OnInit {
 
     theme = 'light'
     checked: boolean
