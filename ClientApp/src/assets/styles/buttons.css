@@ -3,9 +3,9 @@ button {
     color: var(--color-button-text-all) !important;
     cursor: default !important;
     display: flex;
-    font-family: var(--font-family-buttons) !important;
-    font-size: var(--font-size-buttons) !important;
-    font-weight: var(--font-weight-buttons) !important;
+    font-family: var(--font-family-button) !important;
+    font-size: var(--font-size-button) !important;
+    font-weight: var(--font-weight-button) !important;
     justify-content: center;
     min-width: 0 !important;
     outline: 0 !important;

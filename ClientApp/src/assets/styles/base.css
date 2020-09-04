@@ -34,8 +34,8 @@ body, h1, h2, h3, p {
 
 p.instructions {
     color: var(--color-paragraphs);
-    font-family: var(--font-family-paragraphs);
-    font-size: var(--font-size-paragraphs);
+    font-family: var(--font-family-paragraph);
+    font-size: var(--font-size-paragraph);
     overflow: hidden;
     width: 800px;
 }

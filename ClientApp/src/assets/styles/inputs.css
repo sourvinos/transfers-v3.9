@@ -32,7 +32,7 @@ input[type=number] {
 }
 
 .mat-form-field-infix {
-    font-size: var(--font-size-height) !important;
+    font-size: var(--font-size-input-height) !important;
 }
 
 .mat-form-field-type .mat-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
@@ -44,7 +44,7 @@ input[type=number] {
 }
 
 .mat-form-field-label {
-    font-size: var(--font-size-labels) !important;
+    font-size: var(--font-size-label) !important;
 }
 
 .mat-hint {
@@ -64,7 +64,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     font-size: var(--font-size-input) !important;
 }
 
+
 /* Not focused - Not error */
+
 .mat-form-field .mat-form-field-label {
     color: var(--color-input-not-focus) !important;
 }
@@ -87,7 +89,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     font-size: var(--font-size-mat-error) !important;
 }
 
+
 /* Focused */
+
 .mat-form-field.mat-focused .mat-form-field-label {
     color: var(--color-input-focus) !important;
 }
@@ -106,7 +110,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     color: var(--color-input-focus) !important;
 }
 
+
 /* Error */
+
 .mat-form-field.mat-form-field-invalid .mat-form-field-label {
     color: var(--color-input-text-error) !important;
     font-weight: bold !important;
@@ -122,7 +128,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     background-color: var(--color-input-text-error) !important;
 }
 
-.no-bottom-margin > .mat-form-field-wrapper {
+.no-bottom-margin>.mat-form-field-wrapper {
     margin-bottom: 0 !important;
 }
 

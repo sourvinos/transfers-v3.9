@@ -1,5 +1,5 @@
 label {
     color: var(--color-input-text-label) !important;
-    font-size: var(--font-size-labels) !important;
-    font-weight: var(--font-weight-labels) !important;
+    font-size: var(--font-size-label) !important;
+    font-weight: var(--font-weight-label) !important;
 }

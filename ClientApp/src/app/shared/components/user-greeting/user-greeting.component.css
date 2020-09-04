@@ -1,8 +1,9 @@
-.userInfo {
+.userGreeting {
     color: var(--color-user-greeting);
-    font-family: var(--font-family-user-info);
-    font-weight: 600;
+    font-family: var(--font-family-user-greeting);
+    font-size: var(--font-size-user-greeting);
+    font-weight: var(--font-weight-user-greeting);
     margin-right: 1rem;
-    margin-top: -2px;
+    margin-top: -1px;
     text-align: center;
 }
