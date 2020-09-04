@@ -11,11 +11,13 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Port } from '../classes/port'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'port-list',
     templateUrl: './port-list.component.html',
-    styleUrls: ['../../../assets/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class PortListComponent implements OnInit, OnDestroy {

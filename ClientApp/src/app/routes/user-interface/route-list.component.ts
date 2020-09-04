@@ -11,11 +11,13 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Route } from '../classes/route'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'route-list',
     templateUrl: './route-list.component.html',
-    styleUrls: ['../../../assets/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class RouteListComponent implements OnInit, OnDestroy {

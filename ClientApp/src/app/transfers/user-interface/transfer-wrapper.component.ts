@@ -7,11 +7,13 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'transfer-wrapper',
     templateUrl: './transfer-wrapper.component.html',
-    styleUrls: ['../../../assets/styles/lists.css', './transfer-wrapper.component.css']
+    styleUrls: ['../../../assets/styles/lists.css', './transfer-wrapper.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class TransferWrapperComponent implements OnInit, OnDestroy {

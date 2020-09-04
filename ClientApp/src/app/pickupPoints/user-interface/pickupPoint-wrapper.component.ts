@@ -8,11 +8,13 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'pickuppoint-wrapper',
     templateUrl: './pickupPoint-wrapper.component.html',
-    styleUrls: ['./pickupPoint-wrapper.component.css']
+    styleUrls: ['./pickupPoint-wrapper.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class PickupPointWrapperComponent implements OnInit, OnDestroy {

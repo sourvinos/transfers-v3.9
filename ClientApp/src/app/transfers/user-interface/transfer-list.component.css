@@ -21,7 +21,7 @@
     grid-area: listFormCombo;
     height: 100%;
     justify-content: flex-start;
-    overflow-y: hidden;
+    overflow: hidden;
     padding-left: 22rem;
 }
 

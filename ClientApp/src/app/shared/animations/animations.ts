@@ -16,7 +16,7 @@ export const slideFromLeft = trigger('slideFromLeft', [
 
 export const slideFromRight = trigger('slideFromRight', [
     transition(':enter', [
-        style({ transform: 'translateX(100px)' }),
+        style({ transform: 'translateX(400px)' }),
         animate('0.5s ease-out')
     ])
 ])

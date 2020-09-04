@@ -17,11 +17,13 @@ import { TransferPdfService } from '../classes/transfer-pdf.service'
 import { TransferService } from '../classes/transfer.service'
 import { TransferViewModel } from '../classes/transferViewModel'
 import { TransferAssignDriverComponent } from './transfer-assign-driver.component'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'transfer-list',
     templateUrl: './transfer-list.component.html',
-    styleUrls: ['./transfer-list.component.css']
+    styleUrls: ['./transfer-list.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 

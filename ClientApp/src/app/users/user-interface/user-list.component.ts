@@ -11,11 +11,13 @@ import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'user-list',
     templateUrl: './user-list.component.html',
-    styleUrls: ['../../../assets/styles/lists.css']
+    styleUrls: ['../../../assets/styles/lists.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class UserListComponent implements OnInit, OnDestroy {

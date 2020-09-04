@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div id="footer">
+        <div @slideFromRight id="footer">
             <div id="buttons">
                 <button data-cy="assignDriver" mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0" (click)="onAssignDriver()">Assign driver</button>
                 <button data-cy="createPdf" mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0" (click)="onCreatePdf()">Create PDFs</button>
