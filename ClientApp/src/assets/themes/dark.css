@@ -41,10 +41,10 @@
     --color-ring-inner: #ffe85c;
     --color-sum-persons: #ffe85c;
     /* #939393 */
-    --color-dialog-content: #939393;
-    --color-headers: #939393;
-    --color-label: #939393;
-    --color-user-greeting: #939393;
+    --color-dialog-content: #b7b7b8;
+    --color-headers: #b7b7b8;
+    --color-label: #b7b7b8;
+    --color-user-greeting: #b7b7b8;
     /* #fe9f36 */
     --color-checkbox-checked: #fe9f36;
     --color-company-logo-first-child: #fe9f36;
@@ -81,4 +81,7 @@
     --color-input-text-selected: #b4b4b4;
     /* #ff0000 */
     --color-input-text-error: #ff0000;
+
+    --slide-toggle-off-bar: #b7b7b8;
+    --slide-toggle-off-thumb: #e3e3e4;
 }

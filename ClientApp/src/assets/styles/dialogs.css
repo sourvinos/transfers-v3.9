@@ -21,6 +21,8 @@
 
 #dialog-header h1 {
     font-family: var(--font-family-dialog-header) !important;
+    font-size: var(--font-size-dialog-header) !important;
+    font-weight: var(--font-weight-header) !important;
     margin: 0 !important;
 }
 
@@ -28,6 +30,8 @@
     color: var(--color-dialog-content);
     flex: 1;
     font-family: var(--font-family-dialog-content) !important;
+    font-size: var(--font-size-dialog-content) !important;
+    font-weight: var(--font-weight-dialog-content) !important;
     line-height: 2rem;
 }
 

@@ -48,10 +48,10 @@ tr.selected {
 td {
     color: var(--color-table-row);
     font-family: var(--font-family-table);
-    font-size: var(--font-size-table-rows);
+    font-size: var(--font-size-table-row);
     max-width: 0;
     overflow: hidden;
-    padding: 0.7rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -59,7 +59,6 @@ td {
 tr:hover td {
     color: var(--color-table-rows-hover);
     cursor: pointer;
-    font-weight: bold;
 }
 
 .mat-checkbox {

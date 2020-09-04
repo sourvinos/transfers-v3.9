@@ -16,7 +16,11 @@
 }
 
 #customSnackbar .mat-icon {
+    align-items: center;
     color: var(--color-snackbar-close-button) !important;
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
 }
 
 #customSnackbar .mat-icon:hover {

@@ -1,49 +1,50 @@
 @media only screen and (max-width: 1366px) {
     * {
         /* Font names */
-        --font-family-button: "Noto Sans";
+        --font-family-button: "Ubuntu Condensed";
         --font-family-checkbox: "Noto Sans";
         --font-family-copyright: "Noto Sans";
-        --font-family-dialog-content: "Noto Sans";
-        --font-family-dialog-header: "Noto Sans";
+        --font-family-dialog-content: "PF Handbook Pro";
+        --font-family-dialog-header: "PF Handbook Pro";
         --font-family-header: "PF Handbook Pro";
         --font-family-logo: "Anton";
         --font-family-menu-list-item: "PF Handbook Pro";
         --font-family-paragraph: "Noto Sans";
-        --font-family-snackbar: "Noto Sans";
+        --font-family-snackbar: "PF Handbook Pro";
         --font-family-summary-block: "Noto Sans";
         --font-family-table: 'Noto Sans';
         --font-family-user-greeting: "Noto Sans";
         /* Font sizes */
-        --font-size-button: 0.8rem;
+        --font-size-button: 1rem;
         --font-size-checkbox: 0.9rem;
         --font-size-copyright: 0.6rem;
-        --font-size-header: 1.6rem;
+        --font-size-header: 2rem;
         --font-size-input-height: 1rem;
         --font-size-input: 0.9rem;
         --font-size-label: 1rem;
         --font-size-logo-first-child: 4.375rem;
         --font-size-logo-second-child: 2.5rem;
-        --font-size-mat-dialog-content: 1.1rem;
-        --font-size-mat-dialog-title: 2rem;
+        --font-size-dialog-content: 1.5rem;
+        --font-size-dialog-header: 2.5rem;
         --font-size-mat-error: 0.7rem;
         --font-size-menu-list-item-active: 2rem;
         --font-size-menu-list-item: 1.8rem;
         --font-size-paragraph: 0.7rem;
-        --font-size-snackbar: 0.95rem;
+        --font-size-snackbar: 1.2rem;
         --font-size-sum: 1rem;
         --font-size-summary-block-header: 1.1rem;
         --font-size-summary-block-item: 0.85rem;
         --font-size-table-header: 1rem;
-        --font-size-table-row: 0.75rem;
+        --font-size-table-row: 0.9rem;
         --font-size-user-greeting: 0.9rem;
         /* Font weights */
         --font-weight-button: 100 !important;
-        --font-weight-checkbox: bold !important;
+        --font-weight-checkbox: 400 !important;
+        --font-weight-dialog-content: 300 !important;
         --font-weight-header: 300 !important;
         --font-weight-label: 500 !important;
         --font-weight-menu-list-item: 300;
-        --font-weight-table-header: 100 !important;
+        --font-weight-table-header: 300 !important;
         --font-weight-user-greeting: bold;
     }
 }
