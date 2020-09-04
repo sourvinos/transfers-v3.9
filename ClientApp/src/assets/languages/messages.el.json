@@ -1,41 +1,62 @@
 [
     {
-        "message": "Η εγγραφή δημιουργήθηκε."
+        "id": "recordCreated",
+        "message": "A new record was created."
     },
     {
-        "message": "Η εγγραφή ενημερώθηκε."
+        "id": "recordUpdated",
+        "message": "This record was updated."
     },
     {
-        "message": "Η εγγραφή διαγράφηκε."
+        "id": "recordDeleted",
+        "message": "This record was deleted."
     },
     {
-        "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν."
+        "id": "askConfirmationToAbortEditing",
+        "message": "If you continue, the changes will be lost."
     },
     {
-        "message": "Αν συνεχίσετε η εγγραφή θα διαγραφεί οριστικά."
+        "id": "askConfirmationToDelete",
+        "message": "If you continue, this record will be lost for ever."
     },
     {
-        "message": "Δεν έχετε επιλέξει εγγραφές."
+        "id": "noRecordsSelected",
+        "message": "You have not selected any records to update."
     },
     {
-        "message": "Ολες οι επιλεγμένες εγγραφές ενημερώθηκαν."
+        "id": "selectedRecordsHaveBeenProcessed",
+        "message": "All selected records have been updated."
     },
     {
-        "message": "Δεν βρέθηκε κανένας εξ' ορισμού οδηγός."
+        "id": "noDefaultDriverFound",
+        "message": "A default driver was not found."
     },
     {
-        "message": "Δεν υπάρχει επικοινωνία με τη βάση δεδομένων."
+        "id": "noContactWithServer",
+        "message": "There is no contact with the server."
     },
     {
-        "message": "Αν το email που δώσατε υπάρχει στο αρχείο μας, θα μπορέσετε να αλλάξετε τον κωδικό σας."
+        "id": "resetPassword",
+        "message": "If the email you gave us exists in our database, you will be able to change yous password."
     },
     {
-        "message": "Ο τωρινός κωδικός είναι λάθος."
+        "id": "wrongCurrentPassword",
+        "message": "The current password is wrong."
     },
     {
-        "mesage": "Κάτι εξαιρετικά απρόβλεπτο συνέβη"
+        "id": "veryBad",
+        "message": "Something went very wrong."
     },
     {
-        "message": "Η εγγραφή χρησιμοποιείται και δεν μπορεί να διαγραφεί."
+        "id": "recordIsInUse",
+        "message": "This record is in use and can not be deleted."
+    },
+    {
+        "id": "recordNotFound",
+        "message": "This record can not be found."
+    },
+    {
+        "id": "defaultDriverExists",
+        "message": "There is already a default driver."
     }
 ]

@@ -1,41 +1,77 @@
 [
     {
-        "message": "The record was created."
+        "id": 0,
+        "description": "recordCreated",
+        "message": "A new record was created."
     },
     {
-        "message": "The record was updated."
+        "id": 1,
+        "description": "recordUpdated",
+        "message": "This record was updated."
     },
     {
-        "message": "The record was deleted."
+        "id": 2,
+        "description": "recordDeleted",
+        "message": "This record was deleted."
     },
     {
+        "id": 3,
+        "description": "askConfirmationToAbortEditing",
         "message": "If you continue, the changes will be lost."
     },
     {
+        "id": 4,
+        "description": "askConfirmationToDelete",
         "message": "If you continue, this record will be lost for ever."
     },
     {
-        "message": "You have not selected any records."
+        "id": 5,
+        "description": "noRecordsSelected",
+        "message": "You have not selected any records to update."
     },
     {
-        "message": "All records have been updated."
+        "id": 6,
+        "description": "selectedRecordsHaveBeenProcessed",
+        "message": "All selected records have been updated."
     },
     {
-        "message": "The default driver was not found."
+        "id": 7,
+        "description": "noDefaultDriverFound",
+        "message": "A default driver was not found."
     },
     {
-        "message": "There is no contact with the database."
+        "id": 8,
+        "description": "noContactWithServer",
+        "message": "There is no contact with the server."
     },
     {
+        "id": 9,
+        "description": "resetPassword",
         "message": "If the email you gave us exists in our database, you will be able to change yous password."
     },
     {
+        "id": 10,
+        "description": "wrongCurrentPassword",
         "message": "The current password is wrong."
     },
     {
-        "mesage": "Something went very wrong"
+        "id": 11,
+        "description": "veryBad",
+        "mesage": "Something went very wrong."
     },
     {
+        "id": 400,
+        "description": "recordIsInUse",
         "message": "This record is in use and can not be deleted."
+    },
+    {
+        "id": 404,
+        "description": "recordNotFound",
+        "message": "This record can not be found."
+    },
+    {
+        "id": 409,
+        "description": "defaultDriverExists",
+        "message": "There is already a default driver."
     }
 ]

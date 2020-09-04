@@ -1,48 +1,57 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { Message } from '../classes/message'
 
 @Injectable({ providedIn: 'root' })
 
 export class MessageService {
 
-    messages: any = []
+    private messages: Message[] = []
 
     constructor(private httpClient: HttpClient) {
         this.getMessages(localStorage.getItem('language') || 'en')
     }
 
-    public httpMessages = [
-        { id: 400, description: 'This record is in use and can not be deleted.' },
-        { id: 404, description: 'This record does not exist.' },
-        { id: 409, description: 'There is already a default driver.' }
-    ]
-
-    public recordCreated(): string { return this.messages[0].message }
-    public recordUpdated(): string { return this.messages[1].message }
-    public recordDeleted(): string { return this.messages[2].message }
-    public askConfirmationToAbortEditing(): string { return this.messages[3].message }
-    public askConfirmationToDelete(): string { return this.messages[4].message }
-    public noRecordsSelected(): string { return this.messages[5].message }
-    public recordsHaveBeenProcessed(): string { return this.messages[6].message }
-    public noDefaultDriverFound(): string { return this.messages[7].message }
-    public noContactWithServer(): string { return this.messages[8].message }
-    public resetPassword(): string { return this.messages[9].message }
-    public wrongCurrentPassword(): string { return this.messages[10].message }
+    public recordCreated(): string { return this.getMessage("recordCreated") }
+    public recordUpdated(): string { return this.getMessage("recordUpdated") }
+    public recordDeleted(): string { return this.getMessage("recordDeleted") }
+    public askConfirmationToAbortEditing(): string { return this.getMessage("askConfirmationToAbortEditing") }
+    public askConfirmationToDelete(): string { return this.getMessage("askConfirmationToDelete") }
+    public noRecordsSelected(): string { return this.getMessage("noRecordsSelected") }
+    public selectedRecordsHaveBeenProcessed(): string { return this.getMessage("selectedRecordsHaveBeenProcessed") }
+    public noDefaultDriverFound(): string { return this.getMessage("noDefaultDriverFound") }
+    public noContactWithServer(): string { return this.getMessage("noContactWithServer") }
+    public resetPassword(): string { return this.getMessage("resetPassword") }
+    public wrongCurrentPassword(): string { return this.getMessage("wrongCurrentPassword") }
+    public recordIsInUse(): string { return this.getMessage("recordIsInUse") }
+    public recordNotFound(): string { return this.getMessage("recordNotFound") }
+    public defaultDriverExists(): string { return this.getMessage("defaultDriverExists") }
 
     public getHttpErrorMessage(id: number) {
-        const message = this.httpMessages.filter(x => x.id == id)
-        return message ? message[0].description : this.messages[11].message
+        const message = this.messages.filter(x => x.id == id)
+        return message ? message[0].message : this.getMessage("veryBad")
     }
 
-    getMessages(language: string) {
+    public getMessages(language: string) {
         const promise = new Promise((resolve) => {
             this.httpClient.get('assets/languages/messages.' + language + '.json').toPromise().then(
                 response => {
-                    this.messages = response
+                    this.updateMessageArray(response)
                     resolve(this.messages)
                 })
         })
         return promise
+    }
+
+    private updateMessageArray(response: any) {
+        response.forEach((element: Message) => {
+            this.messages.push(element)
+        })
+    }
+
+    private getMessage(description: string): string {
+        const found = this.messages.find(element => element.description == description)
+        return found.message
     }
 
 }

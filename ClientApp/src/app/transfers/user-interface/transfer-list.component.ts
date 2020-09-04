@@ -138,7 +138,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
                     this.transferService.assignDriver(result, this.records).subscribe(() => {
                         this.removeSelectedIdsFromLocalStorage()
                         this.navigateToList()
-                        this.showSnackbar(this.messageService.recordsHaveBeenProcessed(), 'info')
+                        this.showSnackbar(this.messageService.selectedRecordsHaveBeenProcessed(), 'info')
                     })
                 }
             })

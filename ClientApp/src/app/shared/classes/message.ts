@@ -1,5 +1,5 @@
 export interface Message {
-    id: string,
-    lang: string,
+    id: number
+    description: string
     message: string
 }
