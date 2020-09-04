@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, HostListener } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
@@ -14,7 +14,7 @@ import { fade } from 'src/app/shared/animations/animations'
     animations: [fade]
 })
 
-export class NavWideComponent implements OnInit, AfterViewInit {
+export class NavWideComponent {
 
     isNotLoaded = true
     loginStatus: Observable<boolean>
@@ -39,12 +39,6 @@ export class NavWideComponent implements OnInit, AfterViewInit {
         this.loginStatus = this.accountService.isLoggedIn
         this.updateNavigation()
         this.subscribeToInteractionService()
-    }
-
-    ngAfterViewInit() {
-        setTimeout(() => {
-            this.isNotLoaded = false
-        }, 1000)
     }
 
     onLogout() {

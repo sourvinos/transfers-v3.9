@@ -3,7 +3,7 @@ import { trigger, transition, style, animate } from '@angular/animations'
 export const fade = trigger('fade', [
     transition(':enter', [
         style({ opacity: 0 }),
-        animate('0.5s')
+        animate('1s')
     ]),
 ])
 
