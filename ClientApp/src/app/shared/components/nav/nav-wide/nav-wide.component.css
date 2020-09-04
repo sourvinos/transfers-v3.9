@@ -26,7 +26,7 @@
     display: flex;
     height: 100%;
     justify-content: center;
-    margin: 1.4rem 0 1rem 0;
+    margin: 2.8rem 0 2rem 0;
 }
 
 #menuWide ul {
@@ -35,6 +35,7 @@
     flex-direction: column;
     font-family: var(--font-family-menu-list-item);
     font-size: var(--font-size-menu-list-item);
+    font-weight: var(--font-weight-menu-list-item);
     line-height: 2.5rem;
     list-style: none;
     margin: 0;

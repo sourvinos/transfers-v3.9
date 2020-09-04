@@ -7,7 +7,7 @@
         --font-family-dialog-header: "Noto Sans";
         --font-family-header: "Noto Sans";
         --font-family-logo: "Anton";
-        --font-family-menu-list-item: "Noto Sans";
+        --font-family-menu-list-item: "PF Handbook Pro";
         --font-family-paragraph: "Noto Sans";
         --font-family-snackbar: "Noto Sans";
         --font-family-summary-block: "Noto Sans";
@@ -25,8 +25,8 @@
         --font-size-mat-dialog-content: 1.1rem;
         --font-size-mat-dialog-title: 2rem;
         --font-size-mat-error: 0.85rem;
-        --font-size-menu-list-item-active: 1.3rem;
-        --font-size-menu-list-item: 1.3rem;
+        --font-size-menu-list-item-active: 2rem;
+        --font-size-menu-list-item: 1.8rem;
         --font-size-paragraph: 0.7rem;
         --font-size-snackbar: 0.95rem;
         --font-size-sum: 1rem;
@@ -39,6 +39,7 @@
         --font-weight-checkbox: bold !important;
         --font-weight-header: 100 !important;
         --font-weight-label: 500 !important;
+        --font-weight-menu-list-item: 300;
         --font-weight-table-header: 100 !important;
         --font-weight-user-greeting: bold;
         --input-bottom-margin: 0.7rem;

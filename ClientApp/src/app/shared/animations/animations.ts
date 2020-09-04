@@ -2,12 +2,9 @@ import { trigger, transition, style, animate } from '@angular/animations'
 
 export const fade = trigger('fade', [
     transition(':enter', [
-        style({ transform: 'translateX(-10px)' }),
-        animate(500)
+        style({ opacity: 0 }),
+        animate('0.5s')
     ]),
-    transition(':leave', [
-        animate(400, style({ transform: 'translateX(-100%)' }))
-    ])
 ])
 
 export const slideFromLeft = trigger('slideFromLeft', [

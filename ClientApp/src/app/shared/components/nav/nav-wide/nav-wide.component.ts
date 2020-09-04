@@ -5,11 +5,13 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { takeUntil } from 'rxjs/operators'
 import { MenuItemsService } from 'src/app/shared/services/menu-items.service'
+import { fade } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'nav-wide',
     templateUrl: './nav-wide.component.html',
-    styleUrls: ['../nav-wrapper/nav-wrapper.component.css', './nav-wide.component.css']
+    styleUrls: ['../nav-wrapper/nav-wrapper.component.css', './nav-wide.component.css'],
+    animations: [fade]
 })
 
 export class NavWideComponent implements OnInit, AfterViewInit {

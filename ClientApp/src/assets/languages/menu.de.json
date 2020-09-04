@@ -1,15 +1,14 @@
-[
-    {
+[{
         "id": "1",
         "message": "Kunden"
     },
     {
         "id": "2",
-        "message": "Fahrer"
+        "message": "Reiseziele"
     },
     {
         "id": "3",
-        "message": "Reiseziele"
+        "message": "Fahrer"
     },
     {
         "id": "4",
@@ -29,6 +28,10 @@
     },
     {
         "id": "8",
+        "message": "User"
+    },
+    {
+        "id": "9",
         "message": "Logout"
     }
 ]
