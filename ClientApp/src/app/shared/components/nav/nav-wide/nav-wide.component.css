@@ -53,7 +53,8 @@
     margin-top: auto;
 }
 
-#menuWide ul>li:hover, #menuWide ul>li.active {
+#menuWide ul>li:hover,
+#menuWide ul>li.active {
     color: var(--color-menu-active-item);
     cursor: pointer;
     font-size: var(--font-size-menu-list-item-active);
@@ -66,10 +67,6 @@
     margin: auto auto 1.5rem;
     min-height: 1.5rem;
     text-align: center;
-}
-
-#section {
-    margin-left: 17rem !important;
 }
 
 

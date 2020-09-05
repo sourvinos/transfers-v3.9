@@ -6,7 +6,7 @@
     <div id="double-ring" [routerLink]="['/']">
         <double-ring></double-ring>
     </div>
-    <div *ngIf="(loginStatus | async)" id="menuWide">
+    <div id="menuWide">
         <ul @fade id="menuItems">
             <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">{{ menuItems[0] }}</li>
             <li data-cy="destinations" [routerLink]="['/destinations']" routerLinkActive="active">{{ menuItems[1] }}</li>

@@ -22,17 +22,24 @@
 #menuNarrow {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    margin-bottom: 2.5rem;
 }
 
 .mat-button-toggle-group {
     border: 0;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .mat-button-toggle {
     border: 0 !important;
     background-color: var(--color-sidebar);
+}
+
+.mat-button-toggle:last-child {
+    margin-top: auto;
 }
 
 .mat-button-toggle-checked {
@@ -42,8 +49,4 @@
 .mat-button-toggle:hover {
     background-color: var(--color-toggle-background);
     transition: background 300ms;
-}
-
-#section {
-    margin-left: 5rem !important;
 }

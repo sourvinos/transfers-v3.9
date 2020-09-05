@@ -3,7 +3,7 @@
         <p>{{ appName.header }}</p>
         <p>{{ appName.subHeader }}</p>
     </div>
-    <div *ngIf="(loginStatus | async)" id="menuNarrow">
+    <div id="menuNarrow">
         <mat-button-toggle-group @fade>
             <mat-button-toggle data-cy="customers" routerLink="/customers" routerLinkActive="active"><img src="{{imagePathName}}customers-{{theme}}.png" width="24px"></mat-button-toggle>
             <mat-button-toggle data-cy="destinations" routerLink="/destinations" routerLinkActive="active"><img src="{{imagePathName}}destinations-{{theme}}.png" width="24px"></mat-button-toggle>
