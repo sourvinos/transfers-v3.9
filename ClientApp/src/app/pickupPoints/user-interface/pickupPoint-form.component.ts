@@ -16,11 +16,13 @@ import { DialogService } from '../../shared/services/dialog.service'
 import { PickupPoint } from '../classes/pickupPoint'
 import { PickupPointService } from '../classes/pickupPoint.service'
 import { environment } from 'src/environments/environment'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'pickuppoint-form',
     templateUrl: './pickupPoint-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestroy {

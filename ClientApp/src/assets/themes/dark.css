@@ -21,7 +21,7 @@
     --color-language-menu: #1d2733;
     --color-menu-active-item: #fe9f36;
     --color-menu-list-items: #b7b7b7;
-    --color-navigation-button: #1d2733;
+    --color-navigation-button: #373f46;
     --color-navigation-icon: #b7b7b7;
     --color-paragraphs: #ffc788;
     --color-ring-inner: #ffe85c;
@@ -45,7 +45,8 @@
     --color-snackbar-text: #fffddd;
     --color-spinner-background: #738dad;
     --color-spinner: #fe9f36;
-    --color-sum-persons: #ffe85c;
+    --color-sum-persons-labels: #b7b7b8;
+    --color-sum-persons-numbers: #ffe85c;
     --color-summary-block-background: #373f46;
     --color-summary-block-border: #fe9f36;
     --color-summary-block-expansion-indicator: #b7b7b9;

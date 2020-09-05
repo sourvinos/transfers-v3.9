@@ -16,11 +16,13 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Route } from '../classes/route'
 import { RouteService } from '../classes/route.service'
 import { environment } from 'src/environments/environment'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'route-form',
     templateUrl: './route-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {

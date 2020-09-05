@@ -37,6 +37,10 @@
     background-color: var(--color-checkbox-checked) !important;
 }
 
+.mat-slide-toggle {
+    margin: 1rem 0;
+}
+
 .mat-slide-toggle-content {
     color: var(--color-label) !important;
     font-family: var(--font-family-checkbox) !important;

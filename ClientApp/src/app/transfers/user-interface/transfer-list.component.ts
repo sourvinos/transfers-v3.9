@@ -26,7 +26,6 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
     animations: [slideFromLeft, slideFromRight]
 })
 
-
 export class TransferListComponent implements OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
 
     //#region 
@@ -88,7 +87,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     ngAfterViewInit() {
         this.setWindowTitle()
-        console.log(document.getElementById('transferList').clientWidth)
+        this.storeElementsDimensions()
+        document.getElementById('summaries').style.height = localStorage.getItem('formHeight') + 'px'
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -105,7 +105,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
     }
 
     ngAfterViewChecked() {
-        document.getElementById('summaries').style.height = document.getElementById('listFormCombo').offsetHeight - 125 + 'px'
+        // this.storeElementsDimensions()
+        // document.getElementById('summaries').style.height = localStorage.getItem('formHeight') + 'px'
     }
 
     ngDoCheck() {
@@ -273,9 +274,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     private initPersonsSumArray() {
         this.totals.push(
-            { description: 'ALL', sum: 0 },
-            { description: 'DISPLAYED', sum: 0 },
-            { description: 'SELECTED', sum: 0 }
+            { description: 'All', sum: 0 },
+            { description: 'Displayed', sum: 0 },
+            { description: 'Selected', sum: 0 }
         )
     }
 
@@ -344,6 +345,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
+    }
+
+    private storeElementsDimensions() {
+        localStorage.setItem('formWidth', String(document.getElementById('transferList').offsetWidth))
+        localStorage.setItem('formHeight', String(document.getElementById('transferList').offsetHeight))
     }
 
     private subscribeToInteractionService() {

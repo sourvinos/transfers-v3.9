@@ -12,11 +12,13 @@ import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PortService } from '../classes/port.service'
 import { environment } from 'src/environments/environment'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'port-form',
     templateUrl: './port-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {

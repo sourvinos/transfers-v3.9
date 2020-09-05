@@ -45,7 +45,7 @@
             <mat-error *ngIf="remarks.errors?.maxlength">This field can be up to {{ remarks.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
     </form>
-    <p class="instructions" [class.hidden]=false>{{ form.value | json }} {{ form.valid }}</p>
+    <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     <div id="footer">
         <div id="buttons">
             <button data-cy="delete" mat-flat-button class="delete" *ngIf="form.value.id !== 0" (click)="onDelete()">Delete</button>

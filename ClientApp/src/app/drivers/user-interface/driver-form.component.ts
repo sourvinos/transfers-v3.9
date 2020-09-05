@@ -13,11 +13,13 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Driver } from '../classes/driver'
 import { DriverService } from '../classes/driver.service'
 import { environment } from 'src/environments/environment'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'driver-form',
     templateUrl: './driver-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {

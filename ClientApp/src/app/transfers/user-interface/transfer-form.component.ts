@@ -22,6 +22,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Transfer } from '../classes/transfer'
 import { TransferService } from '../classes/transfer.service'
 import { PickupPointFlat } from '../../pickupPoints/classes/pickupPoint-flat'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'transfer-form',
@@ -38,6 +39,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     windowTitle = 'Transfer'
+    environment: boolean = environment.production
 
     //#endregion
 
@@ -221,12 +223,12 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.helperService.setFocus(field)
     }
 
-    private getListHeight() {
+    private getFormHeight() {
         return document.getElementById('listFormCombo').offsetHeight + 'px'
     }
 
     private getFormWidth() {
-        return document.getElementById('listFormCombo').offsetWidth - 352 + 'px'
+        return localStorage.getItem('formWidth') + 'px'
     }
 
     private getRecord(id: number) {
@@ -376,12 +378,9 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private scrollToForm() {
-        // document.getElementById('results').style.width = this.getFormWidth()
-        // document.getElementById('results').style.height = this.getListHeight()
         document.getElementById('transferList').style.display = 'none'
-        document.getElementById('form').style.width = '1232px'
-        // document.getElementById('content').style.height = this.getListHeight()
-        // document.getElementById('content').style.width = "1232px"
+        document.getElementById('form').style.width = this.getFormWidth()
+        document.getElementById('form').style.height = this.getFormHeight()
     }
 
     private scrollToList() {

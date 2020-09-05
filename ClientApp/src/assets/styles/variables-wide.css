@@ -14,6 +14,7 @@
         --font-family-summary-block: "Noto Sans";
         --font-family-table: 'Noto Sans';
         --font-family-user-greeting: "Noto Sans";
+        --font-family-totals: "PF Handbook Pro";
         /* Font sizes */
         --font-size-button: 1.1rem;
         --font-size-checkbox: 0.9rem;
@@ -31,7 +32,7 @@
         --font-size-menu-list-item: 1.8rem;
         --font-size-paragraph: 0.7rem;
         --font-size-snackbar: 1.2rem;
-        --font-size-sum: 1rem;
+        --font-size-sum: 1.5rem;
         --font-size-summary-block-header: 1.3rem;
         --font-size-summary-block-item: 0.95rem;
         --font-size-table-header: 1rem;
@@ -46,5 +47,6 @@
         --font-weight-menu-list-item: 300;
         --font-weight-table-header: 300 !important;
         --font-weight-user-greeting: bold;
+        --font-weight-sum-persons: 300;
     }
 }

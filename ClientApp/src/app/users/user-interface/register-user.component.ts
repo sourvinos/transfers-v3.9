@@ -13,11 +13,13 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { RegisterUser } from '../../account/classes/register-user'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'register-user-form',
     templateUrl: './register-user.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './register-user.component.css']
+    styleUrls: ['../../../assets/styles/forms.css', './register-user.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestroy {

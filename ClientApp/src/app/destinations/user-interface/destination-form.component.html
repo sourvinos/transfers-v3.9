@@ -1,34 +1,38 @@
-<div id="header">
-    <div id="navigation">
-        <button data-cy="goBack" id="goBack" [routerLink]="['/destinations']" mat-mini-fab>
-            <mat-icon>arrow_back</mat-icon>
-        </button>
-    </div>
-    <div id="title">
-        <h1>Destination</h1>
-    </div>
-</div>
+<div id="form">
 
-<div id="content">
-    <form [formGroup]="form" autocomplete="off">
-        <mat-form-field>
-            <input type="text" matInput placeholder="Abbreviation" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
-            <mat-error *ngIf="abbreviation.hasError('required')">This is a required field!</mat-error>
-            <mat-error *ngIf="abbreviation.errors?.maxlength">This field can be up to {{ abbreviation.errors.maxlength.requiredLength }} characters long</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input type="text" matInput placeholder="Description" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">
-            <mat-error *ngIf="description.hasError('required')">This is a required field!</mat-error>
-            <mat-error *ngIf="description.errors?.maxlength">This field can be up to {{ description.errors.maxlength.requiredLength }} characters long</mat-error>
-        </mat-form-field>
-        <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
-    </form>
-    <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
-</div>
-
-<div id="footer">
-    <div id="buttons">
-        <button mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">Delete</button>
-        <button mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">Save</button>
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBack" id="goBack" [routerLink]="['/destinations']" mat-mini-fab>
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div @slideFromLeft id="title">
+            <h1>Destination</h1>
+        </div>
     </div>
+
+    <div id="content">
+        <form [formGroup]="form" autocomplete="off">
+            <mat-form-field>
+                <input type="text" matInput placeholder="Abbreviation" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
+                <mat-error *ngIf="abbreviation.hasError('required')">This is a required field!</mat-error>
+                <mat-error *ngIf="abbreviation.errors?.maxlength">This field can be up to {{ abbreviation.errors.maxlength.requiredLength }} characters long</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Description" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">
+                <mat-error *ngIf="description.hasError('required')">This is a required field!</mat-error>
+                <mat-error *ngIf="description.errors?.maxlength">This field can be up to {{ description.errors.maxlength.requiredLength }} characters long</mat-error>
+            </mat-form-field>
+            <mat-slide-toggle formControlName="isActive">Active</mat-slide-toggle>
+        </form>
+        <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
+    </div>
+
+    <div @slideFromRight id="footer">
+        <div id="buttons">
+            <button mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">Delete</button>
+            <button mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">Save</button>
+        </div>
+    </div>
+
 </div>

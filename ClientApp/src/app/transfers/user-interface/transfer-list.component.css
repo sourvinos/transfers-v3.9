@@ -6,7 +6,6 @@
     align-content: flex-start;
     background-color: var(--color-background);
     grid-area: summaries;
-    height: -webkit-fill-available;
     overflow-x: hidden;
     overflow-y: scroll;
     position: absolute;
@@ -99,29 +98,33 @@
 
 #totals {
     display: flex;
+    font-family: var(--font-family-totals);
+    font-weight: var(--font-weight-totals);
     justify-content: flex-end;
-    margin: 2rem 1rem 0 0 !important;
+    margin: 2rem 1rem 0 0;
     text-align: right;
 }
 
 .selection {
     align-items: baseline;
     display: flex;
-    font-family: var(--font-family-header);
+    font-family: var(--font-family-totals);
     font-size: var(--font-size-table-row);
-    margin: 0 1rem 0 1rem;
+    margin-left: 1rem;
     text-align: right;
 }
 
 .selection .label {
-    color: var(--color-label);
+    color: var(--color-sum-persons-labels);
     font-size: var(--font-size-label);
+    font-weight: var(--font-weight-sum-persons);
     margin: 0 0.5rem 0 0;
 }
 
 .selection .sum {
-    color: var(--color-sum-persons);
+    color: var(--color-sum-persons-numbers);
     font-size: var(--font-size-sum);
+    font-weight: var(--font-weight-sum-persons);
 }
 
 
