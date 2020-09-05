@@ -34,7 +34,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPickupPoint(int id) {
             PickupPoint pickupPoint = await repo.GetById(id);
-            if (pickupPoint == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (pickupPoint == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(pickupPoint);
         }
 
@@ -47,12 +47,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutPickupPoint([FromRoute] int id, [FromBody] PickupPoint pickupPoint) {
-            if (id != pickupPoint.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+            if (id != pickupPoint.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(pickupPoint);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -60,12 +60,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePickupPoint([FromRoute] int id) {
             PickupPoint pickupPoint = await repo.GetById(id);
-            if (pickupPoint == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (pickupPoint == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             try {
                 repo.Delete(pickupPoint);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiMessages.RecordInUse() });
+                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
             }
         }
 

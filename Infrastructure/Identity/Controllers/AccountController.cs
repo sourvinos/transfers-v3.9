@@ -91,7 +91,7 @@ namespace Transfers {
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByEmailAsync(model.Email);
-                if (user == null) { return BadRequest(new { response = ApiMessages.EmailNotFound(model.Email) }); }
+                if (user == null) { return BadRequest(new { response = ApiErrorMessages.EmailNotFound(model.Email) }); }
                 var tokenDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token));
                 var result = await userManager.ResetPasswordAsync(user, tokenDecoded, model.Password);
                 if (result.Succeeded) {
@@ -106,7 +106,7 @@ namespace Transfers {
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByIdAsync(vm.UserId);
-                if (user == null) { return NotFound(new { response = ApiMessages.UserNotFound() }); }
+                if (user == null) { return NotFound(new { response = ApiErrorMessages.UserNotFound() }); }
                 var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password);
                 if (result.Succeeded) {
                     await signInManager.RefreshSignInAsync(user);

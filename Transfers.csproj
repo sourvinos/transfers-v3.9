@@ -17,6 +17,7 @@
         <PackageReference Include="AutoMapper" Version="8.0.0" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
         <PackageReference Include="JsonNet.PrivateSettersContractResolvers" Version="1.0.0" />
+        <PackageReference Include="LiteDB" Version="5.0.9" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.3" />

@@ -27,7 +27,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPort(int id) {
             Port Port = await repo.GetById(id);
-            if (Port == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (Port == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(Port);
         }
 
@@ -40,12 +40,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutPort([FromRoute] int id, [FromBody] Port Port) {
-            if (id != Port.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+            if (id != Port.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(Port);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -53,12 +53,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePort([FromRoute] int id) {
             Port Port = await repo.GetById(id);
-            if (Port == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (Port == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             try {
                 repo.Delete(Port);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiMessages.RecordInUse() });
+                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
             }
         }
 

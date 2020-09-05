@@ -24,7 +24,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransfer(int id) {
             var transfer = await repo.GetById(id);
-            if (transfer == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (transfer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(transfer);
         }
 
@@ -38,12 +38,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutTransfer([FromRoute] int id, [FromBody] SaveTransferResource saveTransferResource) {
-            if (id != saveTransferResource.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+            if (id != saveTransferResource.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(saveTransferResource);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -51,7 +51,7 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransfer([FromRoute] int id) {
             var transfer = await repo.GetByIdToDelete(id);
-            if (transfer == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (transfer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             repo.Delete(transfer);
             return Ok(new { response = ApiMessages.RecordDeleted() });
         }

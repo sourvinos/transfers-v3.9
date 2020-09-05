@@ -27,14 +27,14 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDriver(int id) {
             Driver driver = await repo.GetById(id);
-            if (driver == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (driver == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(driver);
         }
 
         [HttpGet("defaultDriver")]
         public async Task<IActionResult> GetDefaultDriver() {
             Driver driver = await repo.GetDefaultDriver();
-            if (driver == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (driver == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(driver);
         }
 
@@ -42,21 +42,21 @@ namespace Transfers {
         public async Task<IActionResult> PostDriver([FromBody] Driver Driver) {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             var defaultDriver = await repo.CheckDefaultDriverExists(null, Driver);
-            if (defaultDriver != null) { return Conflict(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
+            if (defaultDriver != null) { return Conflict(new { response = ApiErrorMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
             repo.Create(Driver);
             return Ok(new { response = ApiMessages.RecordCreated() });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDriver([FromRoute] int id, [FromBody] Driver Driver) {
-            if (id != Driver.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+            if (id != Driver.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
             var defaultDriver = await repo.CheckDefaultDriverExists(id, Driver);
-            if (defaultDriver != null) { return Conflict(new { response = ApiMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
+            if (defaultDriver != null) { return Conflict(new { response = ApiErrorMessages.DefaultDriverAlreadyExists(defaultDriver) }); };
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(Driver);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -64,12 +64,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDriver([FromRoute] int id) {
             Driver Driver = await repo.GetById(id);
-            if (Driver == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (Driver == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             try {
                 repo.Delete(Driver);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiMessages.RecordInUse() });
+                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
             }
         }
 

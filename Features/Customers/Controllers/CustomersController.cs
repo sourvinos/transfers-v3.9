@@ -27,7 +27,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (customer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             return Ok(customer);
         }
 
@@ -40,12 +40,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutCustomer([FromRoute] int id, [FromBody] Customer customer) {
-            if (id != customer.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+            if (id != customer.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(customer);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -53,12 +53,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer([FromRoute] int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = ApiMessages.RecordNotFound() });
+            if (customer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             try {
                 repo.Delete(customer);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiMessages.RecordInUse() });
+                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
             }
         }
 

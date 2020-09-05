@@ -38,13 +38,13 @@ namespace Transfers {
                 vm.Email = user.Email;
                 return Ok(vm);
             }
-            return NotFound(new { response = ApiMessages.RecordNotFound() });
+            return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] string id, [FromBody] UserViewModel vm) {
             if (ModelState.IsValid) {
-                if (id != vm.Id) return BadRequest(new { response = ApiMessages.InvalidId() });
+                if (id != vm.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
                 AppUser user = await userManager.FindByIdAsync(id);
                 if (user != null) {
                     user.UserName = vm.Username;
@@ -56,7 +56,7 @@ namespace Transfers {
                     }
                     return BadRequest(new { response = result.Errors.Select(x => x.Description) });
                 }
-                return NotFound(new { response = ApiMessages.RecordNotFound() });
+                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
             }
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
@@ -70,7 +70,7 @@ namespace Transfers {
                     return Ok(new { response = ApiMessages.RecordDeleted() });
                 }
             }
-            return NotFound(new { response = ApiMessages.RecordNotFound() });
+            return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
         }
 
     }
