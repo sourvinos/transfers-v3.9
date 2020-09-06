@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
-using JsonNet.PrivateSettersContractResolvers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -11,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 
-namespace Transfers {
+namespace Transfers
+{
 
     public static class Extensions {
 
@@ -87,17 +85,6 @@ namespace Transfers {
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
-        }
-
-        public static void Seedit(string jsonData, IServiceProvider serviceProvider) {
-            JsonSerializerSettings settings = new JsonSerializerSettings {
-                ContractResolver = new PrivateSetterContractResolver()
-            };
-            List<Transfer> events = JsonConvert.DeserializeObject<List<Transfer>>(jsonData, settings);
-            using IServiceScope serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-            context.AddRange(events);
-            context.SaveChanges();
         }
 
     }
