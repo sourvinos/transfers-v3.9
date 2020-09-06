@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core'
+import { AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
@@ -26,7 +26,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class TransferListComponent implements OnInit, AfterViewInit, AfterViewChecked, DoCheck, OnDestroy {
+export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
     //#region 
 
@@ -102,11 +102,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, AfterViewCh
             this.updateTotals()
             this.flattenResults()
         }
-    }
-
-    ngAfterViewChecked() {
-        // this.storeElementsDimensions()
-        // document.getElementById('summaries').style.height = localStorage.getItem('formHeight') + 'px'
     }
 
     ngDoCheck() {

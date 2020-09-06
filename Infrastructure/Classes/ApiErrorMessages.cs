@@ -1,45 +1,41 @@
-using System;
+using System.Collections.Generic;
 using System.IO;
-using LiteDB;
+using System.Linq;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Transfers {
 
+    partial class Welcome {
+
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+    }
+
+    // These are returned "as-they-are" to the front-end in case of an error
+
     public static class ApiErrorMessages {
 
-        public static string RecordNotFound() { return "Record does not exist."; }
-        public static string InvalidId() { return "Given Id and actual Id do not match."; }
-        public static string RecordInUse() { return "Record is in use and can not be deleted."; }
-        public static string AccountNotConfirmed() { return "This account is pending email confirmation."; }
-        public static string EmailNotFound(string email) { return $"Email { email } does not exist."; }
-        public static string AuthenticationFailed() { return ReadFromLiteDB(); }
-        public static string UserNotFound() { return "User not found."; }
-        public static string DefaultDriverAlreadyExists(string defaultDriver) { return $"Driver {defaultDriver} is already the default driver."; }
+        private static Dictionary<string, string> messages = new Dictionary<string, string>() { { "RecordNotFound", "This record was not found." }, { "InvalidId", "Given Id and actual Id do not match." }, { "RecordInUse", "Record is in use and can not be deleted." }, { "AccountNotConfirmed", "This account is pending email confirmation." }, { "EmailNotFound", "This email was not found." }, { "AuthenticationFailed", "Authentication failed." }, { "UserNotFound", "This user was not found." }, { "DefaultDriverAlreadyExists", "There is already a default driver." } };
 
-        public static string InsertToLiteDB() {
-            using(var db = new LiteDatabase(@"D:\Downloads\MyData.db.light")) {
-                var col = db.GetCollection<Language>("languages");
-                var language = new Language {
-                    Description = "en"
-                };
-                col.Insert(language);
-                col.EnsureIndex(x => x.Description);
-            }
-            return "";
+        public static string RecordNotFound() { return GetMessage("RecordNotFound"); }
+        public static string InvalidId() { return GetMessage("InvalidId"); }
+        public static string RecordInUse() { return GetMessage("RecordInUse"); }
+        public static string AccountNotConfirmed() { return GetMessage("AccountNotConfirmed"); }
+        public static string EmailNotFound(string email) { return GetMessage("EmailNotFound"); }
+        public static string AuthenticationFailed() { return OpenLanguageFile(); }
+        public static string UserNotFound() { return GetMessage("UserNotFound"); }
+        public static string DefaultDriverAlreadyExists(string defaultDriver) { return GetMessage("DefaultDriverAlreadyExists"); }
+
+        private static string GetMessage(string lookupKey) {
+            return messages.FirstOrDefault(x => x.Key == lookupKey).Value;
         }
 
-        public static string UpdateLiteDB() {
-            using(var db = new LiteDatabase(@"D:\Downloads\MyData.db.light")) {
-                var languages = db.GetCollection<Language>("languages");
-                var result = languages.FindOne(x => x.Description == "de");
-                if (result != null) {
-                    result.Description = "el";
-                }
-                languages.Update(result);
-            };
-            return "";
-        }
-
-        public static string ReadFromLiteDB() {
+        private static string GetLanguageFromFile() {
             try {
                 using(var sReader = new StreamReader("D:\\Downloads\\lang.txt")) {
                     string language = sReader.ReadToEnd();
@@ -49,6 +45,14 @@ namespace Transfers {
                 return "en";
             }
         }
+
+        private static string OpenLanguageFile() {
+            var jsonString = File.ReadAllText("D:\\Downloads\\messages.en.json");
+            var welcome = JsonConvert.DeserializeObject<List<Welcome>>(jsonString);
+            System.Console.Write(welcome);
+            return "Test auth failure";
+        }
+
     }
 
 }
