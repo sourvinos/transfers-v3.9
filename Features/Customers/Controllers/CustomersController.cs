@@ -12,9 +12,10 @@ namespace Transfers {
     public class CustomersController : ControllerBase {
 
         private readonly ICustomerRepository repo;
+        private readonly ProductService productService;
 
-        public CustomersController(ICustomerRepository repo) =>
-            (this.repo) = (repo);
+        public CustomersController(ICustomerRepository repo, ProductService productService) =>
+            (this.repo, this.productService) = (repo, productService);
 
         [HttpGet]
         public async Task<IEnumerable<Customer>> Get() =>
@@ -27,7 +28,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (customer == null) return NotFound(new { response = productService.GetMessage() });
             return Ok(customer);
         }
 

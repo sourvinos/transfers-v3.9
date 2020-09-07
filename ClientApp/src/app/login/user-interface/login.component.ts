@@ -109,6 +109,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         if (error.status == 404) {
             this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         } else {
+            console.log('From backend', error.error)
             this.showSnackbar(error.error.response, 'error')
         }
     }

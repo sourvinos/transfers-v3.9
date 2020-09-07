@@ -10,8 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Transfers
-{
+namespace Transfers {
 
     public static class Extensions {
 
@@ -85,6 +84,7 @@ namespace Transfers
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
+            services.AddTransient<ProductService>();
         }
 
     }

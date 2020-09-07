@@ -17,9 +17,10 @@ namespace Transfers {
         private readonly UserManager<AppUser> userManager;
         private readonly TokenSettings settings;
         private readonly AppDbContext db;
+        private readonly ProductService productService;
 
-        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) =>
-            (this.userManager, this.settings, this.db) = (userManager, settings.Value, db);
+        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db, ProductService productService) =>
+            (this.userManager, this.settings, this.db, this.productService) = (userManager, settings.Value, db, productService);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Auth([FromBody] TokenRequest model) {
@@ -29,7 +30,8 @@ namespace Transfers {
                 case "refresh_token":
                     return await RefreshToken(model);
                 default:
-                    return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+                    // return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+                    return Unauthorized(new { response = "OH MY!" });
             }
         }
 
