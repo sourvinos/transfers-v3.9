@@ -27,7 +27,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 2px solid;
+    border: 0.125rem solid;
     border-color: var(--color-ring-outer) transparent var(--color-ring-outer) transparent;
     animation: double-ring-outer 120s linear infinite;
 }
@@ -51,7 +51,7 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    border: 3px solid;
+    border: 0.1875rem solid;
     border-color: var(--color-ring-inner) transparent var(--color-ring-inner) transparent;
     animation: double-ring-inner 120s linear infinite;
 }

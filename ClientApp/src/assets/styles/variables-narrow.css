@@ -31,7 +31,7 @@
         --font-size-menu-list-item-active: 2rem;
         --font-size-menu-list-item: 1.8rem;
         --font-size-paragraph: 0.7rem;
-        --font-size-snackbar: 1.2rem;
+        --font-size-snackbar: 1.3rem;
         --font-size-sum: 1.5rem;
         --font-size-summary-block-header: 1.1rem;
         --font-size-summary-block-item: 0.85rem;
@@ -48,5 +48,6 @@
         --font-weight-table-header: 300 !important;
         --font-weight-user-greeting: bold;
         --font-weight-sum-persons: 300;
+        --font-weight-snackbar: 300;
     }
 }

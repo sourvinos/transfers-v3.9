@@ -17,10 +17,10 @@ namespace Transfers {
         private readonly UserManager<AppUser> userManager;
         private readonly TokenSettings settings;
         private readonly AppDbContext db;
-        private readonly ProductService productService;
+        private readonly MessageService messageService;
 
-        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db, ProductService productService) =>
-            (this.userManager, this.settings, this.db, this.productService) = (userManager, settings.Value, db, productService);
+        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db, MessageService messageService) =>
+            (this.userManager, this.settings, this.db, this.messageService) = (userManager, settings.Value, db, messageService);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Auth([FromBody] TokenRequest model) {
@@ -30,8 +30,7 @@ namespace Transfers {
                 case "refresh_token":
                     return await RefreshToken(model);
                 default:
-                    // return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
-                    return Unauthorized(new { response = "OH MY!" });
+                    return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed", model.Language) });
             }
         }
 
@@ -39,7 +38,7 @@ namespace Transfers {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
-                    return BadRequest(new { response = ApiErrorMessages.AccountNotConfirmed() });
+                    return BadRequest(new { response = messageService.GetMessage("AccountNotConfirmed", "en") });
                 }
                 var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
@@ -53,7 +52,7 @@ namespace Transfers {
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
                 return Ok(new { response = accessToken });
             }
-            return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+            return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed", model.Language) });
         }
 
         private Token CreateRefreshToken(string clientId, string userId) {
@@ -100,9 +99,9 @@ namespace Transfers {
             try {
                 var rt = db.Tokens.FirstOrDefault(t => t.ClientId == settings.ClientId && t.Value == model.RefreshToken.ToString());
                 if (rt == null) return new UnauthorizedResult();
-                if (rt.ExpiryTime < DateTime.UtcNow) return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+                if (rt.ExpiryTime < DateTime.UtcNow) return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed", model.Language) });
                 var user = await userManager.FindByIdAsync(rt.UserId);
-                if (user == null) return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+                if (user == null) return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed", model.Language) });
                 var rtNew = CreateRefreshToken(rt.ClientId, rt.UserId);
                 db.Tokens.Remove(rt);
                 db.Tokens.Add(rtNew);
@@ -110,7 +109,7 @@ namespace Transfers {
                 var token = await CreateAccessToken(user, rtNew.Value);
                 return Ok(new { response = token });
             } catch {
-                return Unauthorized(new { response = ApiErrorMessages.AuthenticationFailed() });
+                return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed", model.Language) });
             }
         }
 

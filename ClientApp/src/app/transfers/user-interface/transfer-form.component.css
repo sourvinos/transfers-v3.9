@@ -1,6 +1,6 @@
 #form {
     align-content: flex-start;
-    border-top: 1px solid var(--color-background);
+    border-top: 0.0625rem solid var(--color-background);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

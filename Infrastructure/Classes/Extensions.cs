@@ -84,7 +84,8 @@ namespace Transfers {
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
-            services.AddTransient<ProductService>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddScoped<MessageService>();
         }
 
     }

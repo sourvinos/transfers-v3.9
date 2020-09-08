@@ -12,9 +12,10 @@ namespace Transfers {
     public class RoutesController : ControllerBase {
 
         private readonly IRouteRepository repo;
+        private readonly MessageService messageService;
 
-        public RoutesController(IRouteRepository repo) =>
-            (this.repo) = (repo);
+        public RoutesController(IRouteRepository repo, MessageService messageService) =>
+            (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
         public async Task<IEnumerable<Route>> Get() =>
@@ -27,7 +28,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRoute(int id) {
             Route route = await repo.GetById(id);
-            if (route == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (route == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             return Ok(route);
         }
 
@@ -40,12 +41,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutRoute([FromRoute] int id, [FromBody] Route route) {
-            if (id != route.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
+            if (id != route.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(route);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -53,12 +54,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoute([FromRoute] int id) {
             Route route = await repo.GetById(id);
-            if (route == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (route == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             try {
                 repo.Delete(route);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse", "en") });
             }
         }
 

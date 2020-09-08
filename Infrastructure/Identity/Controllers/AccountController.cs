@@ -16,9 +16,10 @@ namespace Transfers {
         private readonly IEmailSender emailSender;
         private readonly SignInManager<AppUser> signInManager;
         private readonly UserManager<AppUser> userManager;
+        private readonly MessageService messageService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender) =>
-            (this.userManager, this.signInManager, this.emailSender) = (userManager, signInManager, emailSender);
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender, MessageService messageService) =>
+            (this.userManager, this.signInManager, this.emailSender, this.messageService) = (userManager, signInManager, emailSender, messageService);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel formData) {
@@ -91,7 +92,7 @@ namespace Transfers {
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByEmailAsync(model.Email);
-                if (user == null) { return BadRequest(new { response = ApiErrorMessages.EmailNotFound(model.Email) }); }
+                if (user == null) { return BadRequest(new { response = messageService.GetMessage("EmailNotFound", "en") }); }
                 var tokenDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token));
                 var result = await userManager.ResetPasswordAsync(user, tokenDecoded, model.Password);
                 if (result.Succeeded) {
@@ -106,7 +107,7 @@ namespace Transfers {
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByIdAsync(vm.UserId);
-                if (user == null) { return NotFound(new { response = ApiErrorMessages.UserNotFound() }); }
+                if (user == null) { return NotFound(new { response = messageService.GetMessage("UserNotFound", "en") }); }
                 var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password);
                 if (result.Succeeded) {
                     await signInManager.RefreshSignInAsync(user);

@@ -27,7 +27,8 @@ export class AccountService {
 
     login(userName: string, password: string) {
         const grantType = 'password'
-        return this.httpClient.post<any>(this.urlToken, { userName, password, grantType }).pipe(map(response => {
+        const language = localStorage.getItem('language') || 'en'
+        return this.httpClient.post<any>(this.urlToken, { language, userName, password, grantType }).pipe(map(response => {
             this.setLoginStatus(true)
             this.setLocalStorage(response)
             this.setUserData()

@@ -12,9 +12,10 @@ namespace Transfers {
     public class PickupPointsController : ControllerBase {
 
         private readonly IPickupPointRepository repo;
+        private readonly MessageService messageService;
 
-        public PickupPointsController(IPickupPointRepository repo) =>
-            (this.repo) = (repo);
+        public PickupPointsController(IPickupPointRepository repo, MessageService messageService) =>
+            (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
         public async Task<IEnumerable<PickupPoint>> Get() {
@@ -34,7 +35,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPickupPoint(int id) {
             PickupPoint pickupPoint = await repo.GetById(id);
-            if (pickupPoint == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (pickupPoint == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             return Ok(pickupPoint);
         }
 
@@ -47,12 +48,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutPickupPoint([FromRoute] int id, [FromBody] PickupPoint pickupPoint) {
-            if (id != pickupPoint.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
+            if (id != pickupPoint.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(pickupPoint);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -60,12 +61,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePickupPoint([FromRoute] int id) {
             PickupPoint pickupPoint = await repo.GetById(id);
-            if (pickupPoint == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (pickupPoint == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             try {
                 repo.Delete(pickupPoint);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse", "en") });
             }
         }
 

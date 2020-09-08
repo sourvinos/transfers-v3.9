@@ -27,7 +27,7 @@ export class LanguageBarComponent {
     onSaveLanguage(language: string) {
         localStorage.setItem('language', language)
         this.interactionService.updateLanguage(language)
-        this.messageService.getMessages(language)
+        this.messageService.getMessagesFromJson(language)
         return language
     }
 

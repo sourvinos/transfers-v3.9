@@ -105,12 +105,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showError(error: { status: number; name: string | string[]; error: { response: string | string[] } }) {
+    private showError(error: { status: number; error: { response: { result: string | string[] } } }) {
         if (error.status == 404) {
             this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         } else {
-            console.log('From backend', error.error)
-            this.showSnackbar(error.error.response, 'error')
+            this.showSnackbar(error.error.response.result, 'error')
         }
     }
 

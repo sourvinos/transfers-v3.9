@@ -14,7 +14,7 @@
 
 .scrollable::-webkit-scrollbar-track {
     background-color: var(--color-scrollbar-background);
-    margin-top: 42px;
+    margin-top: 2.625rem;
 }
 
 .scrollable::-webkit-scrollbar-thumb {

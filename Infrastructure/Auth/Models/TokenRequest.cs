@@ -6,6 +6,7 @@ namespace Transfers {
         public string Password { get; set; }
         public string GrantType { get; set; }
         public string RefreshToken { get; set; }
+        public string Language { get; set; }
 
     }
 

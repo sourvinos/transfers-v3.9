@@ -12,10 +12,10 @@ namespace Transfers {
     public class CustomersController : ControllerBase {
 
         private readonly ICustomerRepository repo;
-        private readonly ProductService productService;
+        private readonly MessageService messageService;
 
-        public CustomersController(ICustomerRepository repo, ProductService productService) =>
-            (this.repo, this.productService) = (repo, productService);
+        public CustomersController(ICustomerRepository repo, MessageService messageService) =>
+            (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
         public async Task<IEnumerable<Customer>> Get() =>
@@ -28,7 +28,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = productService.GetMessage() });
+            if (customer == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             return Ok(customer);
         }
 
@@ -41,12 +41,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutCustomer([FromRoute] int id, [FromBody] Customer customer) {
-            if (id != customer.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
+            if (id != customer.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(customer);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -54,12 +54,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer([FromRoute] int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (customer == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             try {
                 repo.Delete(customer);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse", "en") });
             }
         }
 

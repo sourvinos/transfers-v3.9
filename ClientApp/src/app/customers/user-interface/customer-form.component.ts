@@ -33,6 +33,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     url = '/customers'
     windowTitle = 'Customer'
     environment: boolean = environment.production
+    language = localStorage.getItem('language') || 'en'
 
     //#endregion
 

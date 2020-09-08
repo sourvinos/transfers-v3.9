@@ -5,14 +5,14 @@
 
 table, #table-transfer {
     table-layout: fixed;
-    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-horizontal-spacing: 0.125rem;
     -webkit-border-vertical-spacing: 0;
 }
 
 th {
     background-color: var(--color-table-background);
-    border-radius: 4px;
-    border: 1px dotted var(--color-table-header-border);
+    border-radius: 0.25rem;
+    border: 0.0625rem dotted var(--color-table-header-border);
     color: var(--color-table-header);
     font-family: var(--font-family-table);
     font-size: var(--font-size-table-header);

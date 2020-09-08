@@ -9,7 +9,7 @@ export class MessageService {
     private messages: Message[] = []
 
     constructor(private httpClient: HttpClient) {
-        this.getMessages(localStorage.getItem('language') || 'en')
+        this.getMessagesFromJson(localStorage.getItem('language') || 'en')
     }
 
     public recordCreated(): string { return this.getMessage("recordCreated") }
@@ -32,7 +32,7 @@ export class MessageService {
         return message ? message[0].message : this.getMessage("veryBad")
     }
 
-    public getMessages(language: string) {
+    public getMessagesFromJson(language: string) {
         const promise = new Promise((resolve) => {
             this.httpClient.get('assets/languages/messages.' + language + '.json').toPromise().then(
                 response => {

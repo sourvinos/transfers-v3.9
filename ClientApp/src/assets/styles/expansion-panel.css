@@ -3,7 +3,7 @@
 }
 
 .mat-expansion-panel {
-    border: 1px dotted var(--color-summary-block-border) !important;
+    border: 0.0625rem dotted var(--color-summary-block-border) !important;
 }
 
 .mat-expansion-panel-body {

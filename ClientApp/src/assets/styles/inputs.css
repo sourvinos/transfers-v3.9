@@ -49,7 +49,7 @@ input[type=number] {
 
 .mat-hint {
     color: var(--color-input-not-focus) !important;
-    margin-top: 3px !important;
+    margin-top: 0.1875rem !important;
 }
 
 .mat-icon {

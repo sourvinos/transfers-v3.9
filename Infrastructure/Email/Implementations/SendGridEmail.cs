@@ -24,11 +24,11 @@ namespace Transfers {
             htmlContent += "<h2 style='color: #2e6c80;'>Welcome to Island Cruises.</h2>";
             htmlContent += "<p>Click the following button to confirm your email account</p>";
             htmlContent += "<div id='button' style='padding: 1rem;'>";
-            htmlContent += "<a style='background-color: #57617B; color: #ffffff; border-radius: 5px; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Confirm</a>";
+            htmlContent += "<a style='background-color: #57617B; color: #ffffff; border-radius: 0.6875rem; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Confirm</a>";
             htmlContent += "</div>";
             htmlContent += "<p>If clicking doesn't work, copy and paste this link:</p>";
             htmlContent += "<p>" + callbackUrl + "</p>";
-            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p style='font-size: 0.6875rem; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlContent);
 
@@ -48,11 +48,11 @@ namespace Transfers {
             htmlContent += "<h2 style='color: #2e6c80;'>You have requested a password reset</h2>";
             htmlContent += "<p>Click the following button to reset your password</p>";
             htmlContent += "<div id='button' style='padding: 1rem;'>";
-            htmlContent += "<a style='background-color: #57617B; color: #ffffff; border-radius: 5px; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Reset password</a>";
+            htmlContent += "<a style='background-color: #57617B; color: #ffffff; border-radius: 0.6875rem; padding: 1rem 2rem; text-decoration: none;' href=" + callbackUrl + ">Reset password</a>";
             htmlContent += "</div>";
             htmlContent += "<p>If clicking doesn't work, copy and paste this link:</p>";
             htmlContent += "<p>" + callbackUrl + "</p>";
-            htmlContent += "<p style='font-size: 11px; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p style='font-size: 0.6875rem; margin: 2rem 0;'>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlContent);
 

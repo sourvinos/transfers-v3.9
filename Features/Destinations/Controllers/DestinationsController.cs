@@ -12,9 +12,10 @@ namespace Transfers {
     public class DestinationsController : ControllerBase {
 
         private readonly IDestinationRepository repo;
+        private readonly MessageService messageService;
 
-        public DestinationsController(IDestinationRepository repo) =>
-            (this.repo) = (repo);
+        public DestinationsController(IDestinationRepository repo, MessageService messageService) =>
+            (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
         public async Task<IEnumerable<Destination>> Get() =>
@@ -27,7 +28,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDestination(int id) {
             Destination Destination = await repo.GetById(id);
-            if (Destination == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            if (Destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             return Ok(Destination);
         }
 
@@ -40,25 +41,25 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination Destination) {
-            if (id != Destination.Id) return BadRequest(new { response = ApiErrorMessages.InvalidId() });
+            if (id != Destination.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(Destination);
             } catch (System.Exception) {
-                return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDestination([FromRoute] int id) {
-            Destination Destination = await repo.GetById(id);
-            if (Destination == null) return NotFound(new { response = ApiErrorMessages.RecordNotFound() });
+            Destination destination = await repo.GetById(id);
+            if (destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
             try {
-                repo.Delete(Destination);
+                repo.Delete(destination);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = ApiErrorMessages.RecordInUse() });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse", "en") });
             }
         }
 
