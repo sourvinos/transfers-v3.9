@@ -73,8 +73,8 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.router.navigate(['/users/changePassword/' + this.form.value.id])
                 this.resetForm()
-            }, error => {
-                this.showSnackbar(error.error.response, 'error')
+            }, () => {
+                this.showSnackbar(this.messageService.unableToChangePassword(), 'error')
             })
         } else {
             this.router.navigate(['/users/changePassword/' + this.form.value.id])
@@ -84,9 +84,9 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(response => {
             if (response) {
-                this.userService.delete(this.form.value.id).subscribe((response) => {
+                this.userService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
-                    this.showSnackbar(response.response, 'info')
+                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, error => {
                     this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -100,12 +100,12 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onSave() {
-        this.userService.update(this.form.value.id, this.form.value).subscribe((response) => {
+        this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
             this.resetForm()
-            this.showSnackbar(response.response, 'info')
+            this.showSnackbar(this.messageService.recordUpdated(), 'info')
             this.onGoBack()
-        }, error => {
-            this.showSnackbar(error.error.response, 'error')
+        }, () => {
+            this.showSnackbar(this.messageService.unableToSaveRecord(), 'error')
         })
     }
 

@@ -39,13 +39,13 @@ namespace Transfers {
                 vm.Email = user.Email;
                 return Ok(vm);
             }
-            return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+            return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] string id, [FromBody] UserViewModel vm) {
             if (ModelState.IsValid) {
-                if (id != vm.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
+                if (id != vm.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
                 AppUser user = await userManager.FindByIdAsync(id);
                 if (user != null) {
                     user.UserName = vm.Username;
@@ -57,7 +57,7 @@ namespace Transfers {
                     }
                     return BadRequest(new { response = result.Errors.Select(x => x.Description) });
                 }
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             }
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
@@ -71,7 +71,7 @@ namespace Transfers {
                     return Ok(new { response = ApiMessages.RecordDeleted() });
                 }
             }
-            return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+            return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
         }
 
     }

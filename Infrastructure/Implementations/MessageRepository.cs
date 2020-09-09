@@ -8,8 +8,8 @@ namespace Transfers {
 
         public MessageRepository(AppDbContext context) : base(context) { }
 
-        async Task<string> IMessageRepository.GetByKey(string key, string language) {
-            return await context.Messages.AsNoTracking().Where(x => x.Key == key && x.Language == language).Select(a => a.Description).FirstAsync();
+        async Task<string> IMessageRepository.GetByKey(string key) {
+            return await context.Messages.AsNoTracking().Where(x => x.Key == key).Select(a => a.Description).FirstAsync();
         }
     }
 

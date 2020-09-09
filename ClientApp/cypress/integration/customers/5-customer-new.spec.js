@@ -30,12 +30,23 @@ context('New', () => {
             .buttonShouldBeEnabled('save')
     })
 
+    it('Unable to save and display a snackbar', () => {
+        cy.server()
+        cy.route({
+            method: 'POST',
+            url: 'https://localhost:5001/api/customers'
+        })
+        cy.get('[data-cy=save]').click()
+        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record could not be saved.')
+    })
+
     it('Save and display a snackbar', () => {
+        cy.pause()
         cy.server()
         cy.route('POST', 'https://localhost:5001/api/customers', 'fixture:customer.json').as('saveCustomer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]')
+        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'A new record was created.')
     })
 
     it('Goto the customer list', () => {

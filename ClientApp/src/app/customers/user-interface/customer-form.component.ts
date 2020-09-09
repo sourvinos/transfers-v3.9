@@ -97,17 +97,17 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.focus('description')
                 this.initFormAfterDelay()
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                this.showSnackbar(this.messageService.recordCreated(), 'info') // Tested
+            }, () => {
+                this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info')
+                this.showSnackbar(this.messageService.recordUpdated(), 'info') // Tested
                 this.resetForm()
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, () => {
+                this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
             })
         }
     }
@@ -150,8 +150,8 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string | number) {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, () => {
+            this.showSnackbar(this.messageService.recordNotFound(), 'error') 
             this.onGoBack()
         })
     }

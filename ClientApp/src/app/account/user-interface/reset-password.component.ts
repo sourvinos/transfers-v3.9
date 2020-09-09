@@ -1,3 +1,4 @@
+import { MessageService } from 'src/app/shared/services/message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -38,7 +39,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
@@ -63,10 +64,10 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     public onSave() {
         const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe((response) => {
-            this.showSnackbar(response.response, 'info')
+            this.showSnackbar(this.messageService.passwordChanged(), 'info')
             this.router.navigate([this.url])
-        }, error => {
-            this.showSnackbar(error.error.response, 'error')
+        }, () => {
+            this.showSnackbar(this.messageService.unableToResetPassword(), 'error')
         })
     }
 

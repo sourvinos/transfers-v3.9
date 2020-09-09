@@ -107,7 +107,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
             this.records = customerListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
+            this.showSnackbar(this.messageService.noContactWithServer(), 'error') // Tested
         }
     }
 

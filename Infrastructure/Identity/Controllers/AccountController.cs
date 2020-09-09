@@ -70,8 +70,9 @@ namespace Transfers {
                     string passwordResetLink = Url.Content($"{baseUrl}/resetPassword?email={model.Email}&token={tokenEncoded}");
                     emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
                     // return Ok(new { response = $"resetPassword/{model.Email}/{tokenEncoded}" });
+                    return Ok(new { response = ApiMessages.EmailInstructions() });
                 }
-                return Ok(new { response = ApiMessages.EmailInstructions(model.Email) });
+                return Ok(new { response = ApiMessages.EmailInstructions() });
                 // return Ok(new { response = "/" });
             }
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
@@ -92,7 +93,7 @@ namespace Transfers {
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByEmailAsync(model.Email);
-                if (user == null) { return BadRequest(new { response = messageService.GetMessage("EmailNotFound", "en") }); }
+                if (user == null) { return BadRequest(new { response = messageService.GetMessage("EmailNotFound") }); }
                 var tokenDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token));
                 var result = await userManager.ResetPasswordAsync(user, tokenDecoded, model.Password);
                 if (result.Succeeded) {
@@ -107,7 +108,7 @@ namespace Transfers {
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByIdAsync(vm.UserId);
-                if (user == null) { return NotFound(new { response = messageService.GetMessage("UserNotFound", "en") }); }
+                if (user == null) { return NotFound(new { response = messageService.GetMessage("UserNotFound") }); }
                 var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password);
                 if (result.Succeeded) {
                     await signInManager.RefreshSignInAsync(user);

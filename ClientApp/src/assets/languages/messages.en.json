@@ -57,7 +57,42 @@
     {
         "id": 11,
         "description": "veryBad",
-        "mesage": "Something went very wrong."
+        "message": "Something went very wrong."
+    },
+    {
+        "id": 12,
+        "description": "unableToRegisterUser",
+        "message": "A user with these details can not be created."
+    },
+    {
+        "id": 13,
+        "description": "accountNotConfirmed",
+        "message": "This account is pending email confirmation."
+    },
+    {
+        "id": 14,
+        "description": "unableToResetPassword",
+        "message": "The password can not be reset."
+    },
+    {
+        "id": 15,
+        "description": "unableToChangePassword",
+        "message": "The password can not be changed."
+    },
+    {
+        "id": 16,
+        "description": "unableToSaveRecord",
+        "message": "This record could not be saved."
+    },
+    {
+        "id": 17,
+        "description": "emailSent",
+        "message": "An email was sent with instructions."
+    },
+    {
+        "id": 18,
+        "description": "passwordChanged",
+        "message": "The password was changed, you must login with the new password."
     },
     {
         "id": 400,

@@ -1,3 +1,4 @@
+import { MessageService } from 'src/app/shared/services/message.service';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -29,7 +30,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -53,8 +54,8 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     public onSave() {
         const form = this.form.value
-        this.accountService.forgotPassword(form.email).subscribe(response => {
-            this.showSnackbar(response.response, 'info')
+        this.accountService.forgotPassword(form.email).subscribe(() => {
+            this.showSnackbar(this.messageService.emailSent(), 'info')
             this.onGoBack()
             // this.dialogService.open('Important', 'warningColor', this.messageService.resetPassword(), ['cancel', 'ok']).subscribe(response => {
             //     if (response) {

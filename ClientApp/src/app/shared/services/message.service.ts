@@ -21,11 +21,17 @@ export class MessageService {
     public selectedRecordsHaveBeenProcessed(): string { return this.getMessage("selectedRecordsHaveBeenProcessed") }
     public noDefaultDriverFound(): string { return this.getMessage("noDefaultDriverFound") }
     public noContactWithServer(): string { return this.getMessage("noContactWithServer") }
-    public resetPassword(): string { return this.getMessage("resetPassword") }
+    public emailSent(): string { return this.getMessage("emailSent") }
     public wrongCurrentPassword(): string { return this.getMessage("wrongCurrentPassword") }
     public recordIsInUse(): string { return this.getMessage("recordIsInUse") }
     public recordNotFound(): string { return this.getMessage("recordNotFound") }
     public defaultDriverExists(): string { return this.getMessage("defaultDriverExists") }
+    public unableToRegisterUser(): string { return this.getMessage("unableToRegisterUser") }
+    public accountNotConfirmed(): string { return this.getMessage("accountNotConfirmed") }
+    public unableToResetPassword(): string { return this.getMessage("unableToResetPassword") }
+    public passwordChanged(): string { return this.getMessage("passwordChanged") }
+    public unableToChangePassword(): string { return this.getMessage("unableToChangePassword") }
+    public unableToSaveRecord(): string { return this.getMessage("unableToSaveRecord") }
 
     public getHttpErrorMessage(id: number) {
         const message = this.messages.filter(x => x.id == id)

@@ -84,8 +84,8 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     public onSave() {
         this.flattenFormFields()
-        this.userService.updatePassword(this.flatForm).subscribe((response) => {
-            this.showSnackbar(response.response, 'info')
+        this.userService.updatePassword(this.flatForm).subscribe(() => {
+            this.showSnackbar(this.messageService.passwordChanged(), 'error')
             this.resetForm()
             this.onGoBack()
         }, () => {

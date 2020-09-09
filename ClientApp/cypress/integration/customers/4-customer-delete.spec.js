@@ -37,7 +37,7 @@ context('Delete', () => {
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()
         cy.wait('@deleteCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]')
+        cy.get('[data-cy=customSnackbar]').children('div').contains('This record was deleted.')
     })
 
     afterEach(() => {

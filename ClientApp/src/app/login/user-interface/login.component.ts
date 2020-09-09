@@ -109,7 +109,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         if (error.status == 404) {
             this.showSnackbar(this.messageService.noContactWithServer(), 'error')
         } else {
-            this.showSnackbar(error.error.response.result, 'error')
+            this.showSnackbar(this.messageService.accountNotConfirmed(), 'error')
         }
     }
 

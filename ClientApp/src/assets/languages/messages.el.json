@@ -1,62 +1,82 @@
 [
     {
-        "id": "recordCreated",
+        "id": 0,
+        "description": "recordCreated",
         "message": "A new record was created."
     },
     {
-        "id": "recordUpdated",
+        "id": 1,
+        "description": "recordUpdated",
         "message": "This record was updated."
     },
     {
-        "id": "recordDeleted",
+        "id": 2,
+        "description": "recordDeleted",
         "message": "This record was deleted."
     },
     {
-        "id": "askConfirmationToAbortEditing",
+        "id": 3,
+        "description": "askConfirmationToAbortEditing",
         "message": "If you continue, the changes will be lost."
     },
     {
-        "id": "askConfirmationToDelete",
+        "id": 4,
+        "description": "askConfirmationToDelete",
         "message": "If you continue, this record will be lost for ever."
     },
     {
-        "id": "noRecordsSelected",
+        "id": 5,
+        "description": "noRecordsSelected",
         "message": "You have not selected any records to update."
     },
     {
-        "id": "selectedRecordsHaveBeenProcessed",
+        "id": 6,
+        "description": "selectedRecordsHaveBeenProcessed",
         "message": "All selected records have been updated."
     },
     {
-        "id": "noDefaultDriverFound",
+        "id": 7,
+        "description": "noDefaultDriverFound",
         "message": "A default driver was not found."
     },
     {
-        "id": "noContactWithServer",
+        "id": 8,
+        "description": "noContactWithServer",
         "message": "There is no contact with the server."
     },
     {
-        "id": "resetPassword",
+        "id": 9,
+        "description": "resetPassword",
         "message": "If the email you gave us exists in our database, you will be able to change yous password."
     },
     {
-        "id": "wrongCurrentPassword",
+        "id": 10,
+        "description": "wrongCurrentPassword",
         "message": "The current password is wrong."
     },
     {
-        "id": "veryBad",
+        "id": 11,
+        "description": "veryBad",
         "message": "Something went very wrong."
     },
     {
-        "id": "recordIsInUse",
+        "id": 12,
+        "description": "unableToRegisterUser",
+        "message": "A user with these details can not be created."
+    },
+    {
+        "id": 400,
+        "description": "recordIsInUse",
         "message": "This record is in use and can not be deleted."
     },
     {
-        "id": "recordNotFound",
+        "id": 404,
+        "description": "recordNotFound",
         "message": "This record can not be found."
     },
     {
-        "id": "defaultDriverExists",
+        "id": 409,
+        "description": "defaultDriverExists",
         "message": "There is already a default driver."
     }
 ]

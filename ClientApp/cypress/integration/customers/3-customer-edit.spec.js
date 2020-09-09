@@ -23,12 +23,26 @@ context('Edit', () => {
         cy.get('[data-cy=save]')
     })
 
+    it('Unable to update and display a snackbar', () => {
+        cy.server()
+        cy.route({
+            method: 'PUT',
+            url: 'https://localhost:5001/api/customers/155',
+            status: 400,
+            response: { error: 'Dummy response' },
+            delay: 500
+        })
+        cy.get('[data-cy=save]').click()
+        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record could not be saved.')
+    })
+
     it('Update and display a snackbar', () => {
+        cy.pause()
         cy.server()
         cy.route('PUT', 'https://localhost:5001/api/customers/155', 'fixture:customer.json').as('saveCustomer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]')
+        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record was updated.')
     })
 
     afterEach(() => {

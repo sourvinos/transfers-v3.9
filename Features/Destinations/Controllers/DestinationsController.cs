@@ -28,7 +28,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDestination(int id) {
             Destination Destination = await repo.GetById(id);
-            if (Destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+            if (Destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             return Ok(Destination);
         }
 
@@ -41,12 +41,12 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination Destination) {
-            if (id != Destination.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId", "en") });
+            if (id != Destination.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(Destination);
             } catch (System.Exception) {
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             }
             return Ok(new { response = ApiMessages.RecordUpdated() });
         }
@@ -54,12 +54,12 @@ namespace Transfers {
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDestination([FromRoute] int id) {
             Destination destination = await repo.GetById(id);
-            if (destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound", "en") });
+            if (destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             try {
                 repo.Delete(destination);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new { response = messageService.GetMessage("RecordInUse", "en") });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse") });
             }
         }
 
