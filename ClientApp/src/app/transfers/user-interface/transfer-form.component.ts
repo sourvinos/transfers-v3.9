@@ -23,11 +23,13 @@ import { Transfer } from '../classes/transfer'
 import { TransferService } from '../classes/transfer.service'
 import { PickupPointFlat } from '../../pickupPoints/classes/pickupPoint-flat'
 import { environment } from 'src/environments/environment'
+import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'transfer-form',
     templateUrl: './transfer-form.component.html',
-    styleUrls: ['./transfer-form.component.css']
+    styleUrls: ['./transfer-form.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -73,7 +75,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         this.setWindowTitle()
         this.initForm()
-        this.scrollToForm()
+        this.showModalForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
@@ -88,18 +90,17 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.unlisten()
     }
 
-    canDeactivate(): boolean {
+    canDeactivate() {
         if (this.form.dirty) {
             this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
-                    this.scrollToList()
                     this.onGoBack()
                     return true
                 }
             })
         } else {
-            this.scrollToList()
+            this.hideModalForm()
             return true
         }
     }
@@ -150,11 +151,11 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave() {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
-                this.focus('destinationDescription')
-                this.initFormAfterDelay()
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
+                this.initForm()
                 this.populateFormWithDefaultValues(this.defaultDriver)
                 this.refreshSummaries()
+                this.focus('destinationDescription')
+                this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
                 this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             })
@@ -223,14 +224,6 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.helperService.setFocus(field)
     }
 
-    private getFormHeight() {
-        return document.getElementById('listFormCombo').offsetHeight + 'px'
-    }
-
-    private getFormWidth() {
-        return localStorage.getItem('formWidth') + 'px'
-    }
-
     private getRecord(id: number) {
         this.transferService.getSingle(id).subscribe(result => {
             this.populateFields(result)
@@ -238,6 +231,10 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
+    }
+
+    private hideModalForm() {
+        document.getElementById('transferFormModal').style.visibility = "hidden"
     }
 
     private initForm() {
@@ -256,12 +253,6 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             remarks: ['', Validators.maxLength(128)],
             userId: this.helperService.getUserIdFromLocalStorage()
         })
-    }
-
-    private initFormAfterDelay() {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
     }
 
     private patchFields(result: any, fields: any[]) {
@@ -377,18 +368,8 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private scrollToForm() {
-        document.getElementById('transferList').style.display = 'none'
-        document.getElementById('form').style.width = this.getFormWidth()
-        document.getElementById('form').style.height = this.getFormHeight()
-    }
-
-    private scrollToList() {
-        document.getElementById('form').style.display = 'none'
-        document.getElementById('transferList').style.display = "flex"
-        document.getElementById('transferList').style.width = this.getFormWidth()
-        document.getElementById('transferList').style.height = this.getFormHeight()
-        document.getElementById('custom-table-input').focus()
+    private showModalForm() {
+        document.getElementById('transferFormModal').style.visibility = "visible"
     }
 
     private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {

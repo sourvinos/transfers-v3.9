@@ -13,20 +13,21 @@
         --font-family-snackbar: "PF Handbook Pro";
         --font-family-summary-block: "Noto Sans";
         --font-family-table: 'Noto Sans';
-        --font-family-user-greeting: "Noto Sans";
         --font-family-totals: "PF Handbook Pro";
+        --font-family-user-greeting: "Noto Sans";
         /* Font sizes */
         --font-size-button: 1rem;
         --font-size-checkbox: 0.9rem;
         --font-size-copyright: 0.5rem;
+        --font-size-dialog-content: 1.5rem;
+        --font-size-dialog-header: 2.5rem;
         --font-size-header: 2rem;
         --font-size-input-height: 1rem;
+        --font-size-input-hint: 0.75rem;
         --font-size-input: 0.9rem;
         --font-size-label: 1rem;
         --font-size-logo-first-child: 4.375rem;
         --font-size-logo-second-child: 2.5rem;
-        --font-size-dialog-content: 1.5rem;
-        --font-size-dialog-header: 2.5rem;
         --font-size-mat-error: 0.7rem;
         --font-size-menu-list-item-active: 2rem;
         --font-size-menu-list-item: 1.8rem;
@@ -45,9 +46,9 @@
         --font-weight-header: 300 !important;
         --font-weight-label: 500 !important;
         --font-weight-menu-list-item: 300;
-        --font-weight-table-header: 300 !important;
-        --font-weight-user-greeting: bold;
-        --font-weight-sum-persons: 300;
         --font-weight-snackbar: 300;
+        --font-weight-sum-persons: 300;
+        --font-weight-table-header: 300 !important;
+        --font-weight-user-greeting: 300;
     }
 }

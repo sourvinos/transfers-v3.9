@@ -87,7 +87,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     ngAfterViewInit() {
         this.setWindowTitle()
-        this.storeElementsDimensions()
+        this.positionElements()
         document.getElementById('summaries').style.height = localStorage.getItem('formHeight') + 'px'
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
@@ -143,6 +143,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onCreatePdf() {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
+    }
+
+    public onGoBack() {
+        this.router.navigate(['/'])
     }
 
     public onNew() {
@@ -301,8 +305,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.router.navigate(['transfers/date/', this.helperService.getDateFromLocalStorage()])
     }
 
-    public onGoBack() {
-        this.router.navigate(['/'])
+    private positionElements() {
+        document.getElementById('summaries').style.height = document.getElementById('table').offsetHeight + 'px'
     }
 
     private removeSelectedIdsFromLocalStorage() {
@@ -342,9 +346,27 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.snackbarService.open(message, type)
     }
 
-    private storeElementsDimensions() {
-        localStorage.setItem('formWidth', String(document.getElementById('transferList').offsetWidth))
-        localStorage.setItem('formHeight', String(document.getElementById('transferList').offsetHeight))
+    private storeDimensions() {
+
+        const width = document.getElementById('transferList').offsetWidth + 'px'
+        const height = document.getElementById('transferList').offsetHeight + 'px'
+        console.log('Current width', width, 'Current height', height)
+
+        const storedWidth = localStorage.getItem('width')
+        const storedHeight = localStorage.getItem('height')
+        console.log('Stored width', storedWidth, 'Stored height', storedHeight)
+
+        if (storedWidth == null) {
+            console.log('Current width is null, storing width', width)
+            localStorage.setItem('width', width)
+        }
+
+        if (storedHeight == null) {
+            console.log('Current height is null, storing height', height)
+            localStorage.setItem('height', height)
+        }
+
+
     }
 
     private subscribeToInteractionService() {

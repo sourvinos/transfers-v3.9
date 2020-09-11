@@ -49,6 +49,7 @@ input[type=number] {
 
 .mat-hint {
     color: var(--color-input-not-focus) !important;
+    font-size: var(--font-size-input-hint) !important;
     margin-top: 0.1875rem !important;
 }
 
@@ -86,6 +87,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 }
 
 .mat-error {
+    color: var(--color-input-text-error) !important;
     font-size: var(--font-size-mat-error) !important;
 }
 

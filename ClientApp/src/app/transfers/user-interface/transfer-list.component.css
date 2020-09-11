@@ -5,12 +5,11 @@
 #summaries {
     align-content: flex-start;
     background-color: var(--color-background);
-    grid-area: summaries;
     overflow-x: hidden;
     overflow-y: scroll;
     position: absolute;
     row-gap: 0.5rem;
-    width: 20rem;
+    width: 17rem;
 }
 
 #listFormCombo {
@@ -21,7 +20,7 @@
     height: 100%;
     justify-content: flex-start;
     overflow: hidden;
-    padding-left: 22rem;
+    padding-left: 19rem;
 }
 
 #footer #buttons {
@@ -35,7 +34,20 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+}
+
+#transferFormModal {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100vw;
+    z-index: 1;
 }
 
 .summaryBlock {
@@ -90,6 +102,7 @@
     display: flex;
     font-family: var(--font-family-summary-block);
     font-size: var(--font-size-summary-block-item);
+    padding-left: 1rem;
 }
 
 .activeItem {

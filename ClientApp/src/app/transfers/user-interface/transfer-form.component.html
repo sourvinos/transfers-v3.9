@@ -1,4 +1,16 @@
 <div id="form">
+
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBack" id="goBack" (click)="onGoBack()" mat-mini-fab>
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div @slideFromLeft id="title">
+            <h1>Transfer</h1>
+        </div>
+    </div>
+
     <form data-cy="form" [formGroup]="form" autocomplete="off">
         <mat-form-field>
             <input data-cy="destination" type="text" matInput placeholder="Destination" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'Destinations', ['destinationId', 'destinationDescription'], ['destinationId', 'destinationDescription'], ['Id', 'Description'], ['1px', '440px'], ['none', ''], ['center', 'left'], $event)">
@@ -45,12 +57,14 @@
             <mat-error *ngIf="remarks.errors?.maxlength">This field can be up to {{ remarks.errors.maxlength.requiredLength }} characters long</mat-error>
         </mat-form-field>
     </form>
+
     <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
+
     <div id="footer">
         <div id="buttons">
             <button data-cy="delete" mat-flat-button class="delete" *ngIf="form.value.id !== 0" (click)="onDelete()">Delete</button>
-            <button data-cy="cancel-edit" mat-flat-button class="secondary" id="delete" (click)="onGoBack()">Cancel</button>
             <button data-cy="save" mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">Save</button>
         </div>
     </div>
+
 </div>

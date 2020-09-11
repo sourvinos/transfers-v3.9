@@ -1,21 +1,38 @@
 #form {
-    align-content: flex-start;
-    border-top: 0.0625rem solid var(--color-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 auto;
+    background-color: var(--color-transfer-form-modal);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: minmax(400px, 1fr);
+    padding: 2rem;
+    width: 500px;
+    z-index: 1;
 }
 
-#form form {
+#header {
     display: flex;
-    flex-direction: column;
-    height: -webkit-fill-available;
-    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#header #title {
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+}
+
+#header #navigation {
+    align-items: center;
+    display: flex;
+    margin-left: 1rem;
+}
+
+#header #navigation button {
+    background-color: var(--color-navigation-button-form-modal) !important;
 }
 
 #group-field {
-    display: flex;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
 }
 
 #group-field .mat-form-field:not(:last-child) {

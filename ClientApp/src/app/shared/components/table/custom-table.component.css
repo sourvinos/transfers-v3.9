@@ -64,8 +64,3 @@ tr:hover td {
 .mat-checkbox {
     padding: 0;
 }
-
-#custom-table-input {
-    position: absolute;
-    z-index: -1;
-}

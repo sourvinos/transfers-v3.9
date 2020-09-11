@@ -22,6 +22,7 @@
     --color-menu-active-item: #fe9f36;
     --color-menu-list-items: #2e5266;
     --color-navigation-button: #fffff4;
+    --color-navigation-button-form-modal: #eaeaea;
     --color-navigation-icon: #2e5266;
     --color-paragraphs: #734230;
     --color-ring-inner: #b56576;
@@ -63,5 +64,6 @@
     --color-table-row-selected: #e0e3e6;
     --color-table-row: #2e5266;
     --color-table-rows-hover: #b56576;
+    --color-transfer-form-modal: #eaeaea;
     --color-user-greeting: #426186;
 }

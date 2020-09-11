@@ -19,6 +19,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     currentRow = 0
     tableContainer: any
     table: any
+    tableInput: any
     rowHeight = 0
     rowCount = 0
     checked = false
@@ -139,6 +140,8 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         this.tableContainer = this.table.parentNode.parentNode
         this.rowHeight = this.table.rows[1] ? this.table.rows[1].offsetHeight : 0
         this.rowCount = this.table.rows.length - 1
+        document.getElementById('custom-table-input-' + this.randomTableId).style.zIndex = '-1'
+        document.getElementById('custom-table-input-' + this.randomTableId).style.position = 'absolute'
     }
 
     private isRowIntoView(row: HTMLTableRowElement, direction: string) {
@@ -169,7 +172,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
             if (direction === 'up') { this.currentRow-- }
             if (direction === 'down') { ++this.currentRow }
         }
-        document.getElementById('custom-table-input').focus()
+        document.getElementById('custom-table-input-' + this.randomTableId).focus()
         if (this.rowHeight !== 0) { table.rows[this.currentRow].classList.add('selected') }
     }
 

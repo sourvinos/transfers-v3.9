@@ -15,13 +15,14 @@
     --color-input-focus: #fe9f36;
     --color-input-not-focus: #b7b7b9;
     --color-input-text-caret: #b7b7b9;
-    --color-input-text-error: #ff0000;
+    --color-input-text-error: #ff8981;
     --color-input-text-selected: #b4b4b4;
     --color-label: #b7b7b8;
     --color-language-menu: #1d2733;
     --color-menu-active-item: #fe9f36;
     --color-menu-list-items: #b7b7b7;
     --color-navigation-button: #373f46;
+    --color-navigation-button-form-modal: #696d71;
     --color-navigation-icon: #b7b7b7;
     --color-paragraphs: #ffc788;
     --color-ring-inner: #ffe85c;
@@ -63,5 +64,6 @@
     --color-table-row-selected: #394d59;
     --color-table-row: #b7b7b8;
     --color-table-rows-hover: #fe9f36;
+    --color-transfer-form-modal: #696D71;
     --color-user-greeting: #b7b7b8;
 }

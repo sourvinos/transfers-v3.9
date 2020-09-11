@@ -1,5 +1,5 @@
 <div class="scrollable" id="summaries">
-    <mat-accordion multi="true">
+    <mat-accordion>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
@@ -54,7 +54,7 @@
 </div>
 <div id="listFormCombo">
     <div id="transferList">
-        <div class="scrollable">
+        <div class="scrollable" id="table">
             <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
         </div>
         <div id="totals">
@@ -73,5 +73,7 @@
             </div>
         </div>
     </div>
-    <router-outlet></router-outlet>
+    <div id="transferFormModal">
+        <router-outlet></router-outlet>
+    </div>
 </div>
