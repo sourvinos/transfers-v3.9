@@ -63,3 +63,15 @@
 .mat-slide-toggle-thumb {
     background-color: var(--color-slider-off-thumb) !important;
 }
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: var(--color-checkbox-indeterminate) !important;
+}
+
+.mat-checkbox-mixedmark {
+    background-color: var(--color-checkbox-svg) !important;
+}
+
+.mat-checkbox-checkmark-path {
+    stroke: var(--color-checkbox-svg) !important;
+}

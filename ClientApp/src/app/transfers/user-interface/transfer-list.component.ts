@@ -56,6 +56,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     checkedDrivers = true
     checkedPorts = true
     mustRefresh = true
+    indeterminateDestinations: boolean
+    indeterminateCustomers: boolean
+    indeterminateRoutes: boolean
+    indeterminateDrivers: boolean
+    indeterminatePorts: boolean
 
     //#endregion
 
@@ -157,14 +162,14 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, className: string) {
+    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, indeterminate: any, className: string) {
         this.toggleActiveItem(item, lookupArray)
         this.initCheckedPersons()
         this.filterByCriteria()
         this.updateTotals()
         this.flattenResults()
         this.saveArraysToLocalStorage()
-        this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, className)
+        this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, indeterminate, className)
     }
 
     public onToggleItems(className: string, lookupArray: any[], checkedArray: any) {
@@ -220,12 +225,15 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private checkToToggleHeaderCheckbox(lookupArray: string[], checkedVariable: any, className: string) {
+    private checkToToggleHeaderCheckbox(lookupArray: string[], checkedVariable: any, indeterminateVariable: any, className: string) {
+        this[indeterminateVariable] = true
         if (lookupArray.length === 0) {
             this[checkedVariable] = false
+            this[indeterminateVariable] = false
         }
         if (lookupArray.length === document.getElementsByClassName('item ' + className).length) {
             this[checkedVariable] = true
+            this[indeterminateVariable] = false
         }
     }
 

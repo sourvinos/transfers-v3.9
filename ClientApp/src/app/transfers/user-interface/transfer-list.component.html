@@ -2,50 +2,50 @@
     <mat-accordion>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
-                <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
+                <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" [(indeterminate)]="indeterminateDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
                 <header>Destinations</header>
             </mat-expansion-panel-header>
-            <div *ngFor="let item of queryResult.personsPerDestination" (click)="onToggleItem(item, this.selectedDestinations, 'checkedDestinations', 'destination')" class="item destination" [class.active]="item.isSelected" [id]="item.description">
+            <div *ngFor="let item of queryResult.personsPerDestination" (click)="onToggleItem(item, this.selectedDestinations, 'checkedDestinations', 'indeterminateDestinations', 'destination')" class="item destination" [class.active]="item.isSelected" [id]="item.description">
                 <div class="description"> {{ item.description }} </div>
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
             <mat-expansion-panel-header class="summaryHeader">
-                <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
+                <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" [(indeterminate)]="indeterminateCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
                 <header>Customers</header>
             </mat-expansion-panel-header>
-            <div *ngFor="let item of queryResult.personsPerCustomer" (click)="onToggleItem(item, this.selectedCustomers, 'checkedCustomers', 'customer')" class="item customer" [class.active]="item.isSelected" [id]="item.description">
+            <div *ngFor="let item of queryResult.personsPerCustomer" (click)="onToggleItem(item, this.selectedCustomers, 'checkedCustomers', 'indeterminateCustomers', 'customer')" class="item customer" [class.active]="item.isSelected" [id]="item.description">
                 <div class="description"> {{ item.description }} </div>
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
             <mat-expansion-panel-header class="summaryHeader">
-                <mat-checkbox data-cy="routesCheckbox" class="checkbox route" [(ngModel)]="checkedRoutes" (click)="onToggleItems('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
+                <mat-checkbox data-cy="routesCheckbox" class="checkbox route" [(ngModel)]="checkedRoutes" [(indeterminate)]="indeterminateRoutes" (click)="onToggleItems('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
                 <header>Routes</header>
             </mat-expansion-panel-header>
-            <div *ngFor="let item of queryResult.personsPerRoute" (click)="onToggleItem(item, this.selectedRoutes, 'checkedRoutes', 'route')" class="item route" [class.activeItem]="item.isSelected" [id]="item.description">
+            <div *ngFor="let item of queryResult.personsPerRoute" (click)="onToggleItem(item, this.selectedRoutes, 'checkedRoutes', 'indeterminateRoutes', 'route')" class="item route" [class.activeItem]="item.isSelected" [id]="item.description">
                 <div class="description"> {{ item.description }} </div>
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
             <mat-expansion-panel-header class="summaryHeader">
-                <mat-checkbox data-cy="driversCheckbox" class="checkbox driver" [(ngModel)]="checkedDrivers" (click)="onToggleItems('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
+                <mat-checkbox data-cy="driversCheckbox" class="checkbox driver" [(ngModel)]="checkedDrivers" [(indeterminate)]="indeterminateDrivers" (click)="onToggleItems('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
                 <header>Drivers</header>
             </mat-expansion-panel-header>
-            <div *ngFor="let item of queryResult.personsPerDriver" (click)="onToggleItem(item, this.selectedDrivers, 'checkedDrivers', 'driver')" class="item driver" [class.active]="item.isSelected" [id]="item.description">
+            <div *ngFor="let item of queryResult.personsPerDriver" (click)="onToggleItem(item, this.selectedDrivers, 'checkedDrivers', 'indeterminateDrivers', 'driver')" class="item driver" [class.active]="item.isSelected" [id]="item.description">
                 <div class="description"> {{ item.description }} </div>
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
             <mat-expansion-panel-header class="summaryHeader">
-                <mat-checkbox data-cy="portsCheckbox" class="checkbox port" [(ngModel)]="checkedPorts" (click)="onToggleItems('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
+                <mat-checkbox data-cy="portsCheckbox" class="checkbox port" [(ngModel)]="checkedPorts" [(indeterminate)]="indeterminatePorts" (click)="onToggleItems('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
                 <header>Ports</header>
             </mat-expansion-panel-header>
-            <div data-cy="port" *ngFor="let item of queryResult.personsPerPort" (click)="onToggleItem(item, this.selectedPorts, 'checkedPorts', 'port')" class="item port" [class.active]="item.isSelected" [id]="item.description">
+            <div data-cy="port" *ngFor="let item of queryResult.personsPerPort" (click)="onToggleItem(item, this.selectedPorts, 'checkedPorts', 'indeterminatePorts', 'port')" class="item port" [class.active]="item.isSelected" [id]="item.description">
                 <div class="description"> {{ item.description }} </div>
                 <div class="total"> {{ item.persons }} </div>
             </div>

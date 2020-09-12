@@ -6,6 +6,8 @@
     --color-button-text-all: #fffddd;
     --color-button-text-secondary: #fffddd;
     --color-checkbox-checked: #fe9f36;
+    --color-checkbox-indeterminate: #ffe85c;
+    --color-checkbox-svg: #000000;
     --color-company-logo-first-child: #fe9f36;
     --color-company-logo-second-child: #ffe85c;
     --color-copyright: #fe9f36;
