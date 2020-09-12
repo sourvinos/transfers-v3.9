@@ -47,6 +47,7 @@ context('Edit', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
+        cy.pause()
     })
 
 })

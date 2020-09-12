@@ -95,16 +95,16 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave() {
         if (this.form.value.id === 0) {
             this.customerService.add(this.form.value).subscribe(() => {
+                this.initForm()
                 this.focus('description')
-                this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info') // Tested
             }, () => {
                 this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info') // Tested
                 this.resetForm()
+                this.showSnackbar(this.messageService.recordUpdated(), 'info') // Tested
                 this.onGoBack()
             }, () => {
                 this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
@@ -151,7 +151,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, () => {
-            this.showSnackbar(this.messageService.recordNotFound(), 'error') 
+            this.showSnackbar(this.messageService.recordNotFound(), 'error')
             this.onGoBack()
         })
     }
@@ -171,9 +171,7 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private initFormAfterDelay() {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
+        this.initForm()
     }
 
     private populateFields(result: Customer) {

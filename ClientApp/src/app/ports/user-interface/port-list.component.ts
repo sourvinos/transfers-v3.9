@@ -39,11 +39,11 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    headers = ['S', 'Id', 'Description']
-    widths = ['40px', '0px', '']
-    visibility = ['none', 'none', '']
-    justify = ['center', 'center', 'left']
-    fields = ['', 'id', 'description']
+    headers = ['S', 'Id', 'Description', '']
+    widths = ['40px', '0', '', '56px']
+    visibility = ['none', 'none']
+    justify = ['center', 'center', 'left', 'center']
+    fields = ['', 'id', 'description', '']
 
     //#endregion
 

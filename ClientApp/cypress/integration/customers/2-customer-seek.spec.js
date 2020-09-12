@@ -13,8 +13,13 @@ context('Seek', () => {
         cy.gotoCustomerListFromHomePage()
     })
 
+    it('Successful attempt to seek a record', () => {
+        cy.seekCustomer()
+    })
+
     afterEach(() => {
         cy.saveLocalStorage()
+        cy.pause()
     })
 
 })

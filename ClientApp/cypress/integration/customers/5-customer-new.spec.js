@@ -41,7 +41,6 @@ context('New', () => {
     })
 
     it('Save and display a snackbar', () => {
-        cy.pause()
         cy.server()
         cy.route('POST', 'https://localhost:5001/api/customers', 'fixture:customer.json').as('saveCustomer')
         cy.get('[data-cy=save]').click()
@@ -55,6 +54,10 @@ context('New', () => {
         cy.get('[data-cy=goBack]').click()
         cy.wait('@getCustomers').its('status').should('eq', 200)
         cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
+    })
+
+    afterEach(() => {
+        cy.pause()
     })
 
 })

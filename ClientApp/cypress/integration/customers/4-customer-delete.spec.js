@@ -42,6 +42,7 @@ context('Delete', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
+        cy.pause()
     })
 
 })

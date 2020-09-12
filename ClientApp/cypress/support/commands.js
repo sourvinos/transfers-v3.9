@@ -2,7 +2,6 @@ import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('login', () => {
     cy.visit('/login')
-        .get('mat-slide-toggle[data-cy=isHuman] input').click({ force: true })
         .get('[data-cy=login]').click()
 })
 

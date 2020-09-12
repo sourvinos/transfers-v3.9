@@ -58,3 +58,7 @@ button:not(:disabled) {
 #goBack {
     background-color: var(--color-navigation-button) !important;
 }
+
+.mat-menu-item span {
+    color: var(--color-table-row-menu-item);
+}

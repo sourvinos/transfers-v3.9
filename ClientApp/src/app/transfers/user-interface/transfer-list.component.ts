@@ -61,11 +61,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region
 
-    headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port']
-    widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px']
-    visibility = ['', 'none', '', 'none', '', '', '', '', '', '', '', '', '', '']
-    justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left']
-    fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port']
+    headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port', '']
+    widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
+    visibility = ['', 'none', '', 'none']
+    justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
+    fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port', '']
 
     //#endregion
 

@@ -44,8 +44,8 @@
     --color-snackbar-background-info: #0e8d97;
     --color-snackbar-close-button: #fffff4;
     --color-snackbar-text: #fffff4;
-    --color-spinner-background: #738dad;
-    --color-spinner: #355070;
+    --color-spinner-background: #d4d4d4;
+    --color-spinner: #b56576;
     --color-sum-persons-labels: #000000;
     --color-sum-persons-numbers: #b56576;
     --color-summary-block-background: #fffff4;
@@ -60,9 +60,11 @@
     --color-table-header-border: #2e5266;
     --color-table-header: #2e5266;
     --color-table-row-even: #fffff4;
+    --color-table-row-menu-item: #355070;
     --color-table-row-odd: #f4f4f4;
     --color-table-row-selected: #e0e3e6;
     --color-table-row: #2e5266;
+    --color-table-rows-background-hover: #e0e3e6;
     --color-table-rows-hover: #b56576;
     --color-transfer-form-modal: #eaeaea;
     --color-user-greeting: #426186;

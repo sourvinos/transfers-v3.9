@@ -11,13 +11,12 @@ table, #table-transfer {
 
 th {
     background-color: var(--color-table-background);
-    border-radius: 0.25rem;
     border: 0.0625rem dotted var(--color-table-header-border);
     color: var(--color-table-header);
     font-family: var(--font-family-table);
     font-size: var(--font-size-table-header);
     font-weight: var(--font-weight-table-header);
-    padding: 0.5rem 0.5rem;
+    padding: 0.8rem 0.5rem;
     position: sticky;
     text-align: center;
     top: 0;
@@ -57,10 +56,24 @@ td {
 }
 
 tr:hover td {
+    background-color: var(--color-table-rows-background-hover);
     color: var(--color-table-rows-hover);
     cursor: pointer;
+    transition: background-color;
+    transition-duration: 400ms;
+}
+
+tr:hover td:last-child>div>.button-row-menu {
+    visibility: visible;
 }
 
 .mat-checkbox {
     padding: 0;
+}
+
+.button-row-menu {
+    height: 30px;
+    line-height: 30px;
+    visibility: hidden;
+    width: 30px;
 }

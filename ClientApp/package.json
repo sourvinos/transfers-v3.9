@@ -1,6 +1,6 @@
 {
     "name": "transfers",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ngserve",
@@ -24,7 +24,6 @@
         "angular-user-idle": "2.2.2",
         "aspnet-prerendering": "3.0.1",
         "core-js": "3.6.5",
-        "dexie": "3.0.2",
         "jwt-decode": "2.2.0",
         "moment": "2.25.3",
         "pdfmake": "0.1.65",
@@ -41,7 +40,7 @@
         "@typescript-eslint/eslint-plugin": "3.2.0",
         "@typescript-eslint/parser": "3.2.0",
         "cypress": "4.12.1",
-        "cypress-localstorage-commands": "1.2.1",
+        "cypress-localstorage-commands": "1.2.2",
         "eslint": "7.2.0",
         "eslint-plugin-cypress": "2.11.1",
         "stylelint": "13.6.1",

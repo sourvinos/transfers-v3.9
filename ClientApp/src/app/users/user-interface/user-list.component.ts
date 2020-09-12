@@ -39,11 +39,11 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    headers = ['S', 'Id', 'Display name', 'User name', 'Email']
-    widths = ['40px', '', '30%', '30%', '']
-    visibility = ['none', 'none', '', '', '', '']
-    justify = ['center', 'left', 'left', 'left', 'left']
-    fields = ['', 'id', 'displayname', 'username', 'email']
+    headers = ['S', 'Id', 'Display name', 'User name', 'Email', '']
+    widths = ['40px', '', '30%', '30%', '', '56px']
+    visibility = ['none', 'none']
+    justify = ['center', 'left', 'left', 'left', 'left', 'center']
+    fields = ['', 'id', 'displayname', 'username', 'email', '']
 
     //#endregion
 

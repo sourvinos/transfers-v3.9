@@ -53,6 +53,7 @@ context('List', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
+        cy.pause()
     })
 
 })

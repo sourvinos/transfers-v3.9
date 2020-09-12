@@ -39,11 +39,11 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     //#region   
 
-    headers = ['S', 'Id', 'Name', 'Phones']
-    widths = ['40px', '0px', '50%', '']
-    visibility = ['none', 'none', '', '']
-    justify = ['center', 'center', 'left', 'left']
-    fields = ['', 'id', 'description', 'phones']
+    headers = ['S', 'Id', 'Name', 'Phones', '']
+    widths = ['40px', '0px', '50%', '', '56px']
+    visibility = ['none', 'none']
+    justify = ['center', 'center', 'left', 'left', 'center']
+    fields = ['', 'id', 'description', 'phones', '']
 
     //#endregion
 

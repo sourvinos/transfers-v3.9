@@ -44,7 +44,7 @@
     --color-snackbar-background-info: #0e8d97;
     --color-snackbar-close-button: #fffddd;
     --color-snackbar-text: #fffddd;
-    --color-spinner-background: #738dad;
+    --color-spinner-background: #ffe85c;
     --color-spinner: #fe9f36;
     --color-sum-persons-labels: #b7b7b8;
     --color-sum-persons-numbers: #ffe85c;
@@ -60,10 +60,12 @@
     --color-table-header-border: #b7b7b7;
     --color-table-header: #b7b7b8;
     --color-table-row-even: #373f46;
+    --color-table-row-menu-item: #b7b7b8;
     --color-table-row-odd: #363d44;
     --color-table-row-selected: #394d59;
     --color-table-row: #b7b7b8;
     --color-table-rows-hover: #fe9f36;
+    --color-table-rows-background-hover: #1d2733;
     --color-transfer-form-modal: #696D71;
     --color-user-greeting: #b7b7b8;
 }

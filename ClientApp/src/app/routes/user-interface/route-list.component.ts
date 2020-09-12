@@ -39,11 +39,11 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     //#region 
 
-    headers = ['S', 'Id', 'Description', 'Full description']
-    widths = ['40px', '0px', '150px', '']
-    visibility = ['none', 'none', '', '']
-    justify = ['center', 'center', 'center', 'left']
-    fields = ['', 'id', 'description', 'fullDescription']
+    headers = ['S', 'Id', 'Description', 'Full description', '']
+    widths = ['40px', '0px', '150px', '', '56px']
+    visibility = ['none', 'none']
+    justify = ['center', 'center', 'center', 'left', 'center']
+    fields = ['', 'id', 'description', 'fullDescription', '']
 
     //#endregion
 

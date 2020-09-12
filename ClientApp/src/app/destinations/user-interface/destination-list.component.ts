@@ -39,11 +39,11 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#region
 
-    headers = ['S', 'Id', 'Abbreviation', 'Description']
-    widths = ['40px', '0px', '150px', '']
-    visibility = ['none', 'none', '', '', '']
-    justify = ['center', 'center', 'center', 'left']
-    fields = ['', 'id', 'abbreviation', 'description']
+    headers = ['S', 'Id', 'Abbreviation', 'Description', '']
+    widths = ['40px', '0px', '150px', '', '56px']
+    visibility = ['none', 'none']
+    justify = ['center', 'center', 'center', 'left', 'center']
+    fields = ['', 'id', 'abbreviation', 'description', '']
 
     //#endregion
 

@@ -13,15 +13,15 @@
 
     <form data-cy="form" [formGroup]="form" autocomplete="off">
         <mat-form-field>
-            <input data-cy="destination" type="text" matInput placeholder="Destination" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'Destinations', ['destinationId', 'destinationDescription'], ['destinationId', 'destinationDescription'], ['Id', 'Description'], ['1px', '440px'], ['none', ''], ['center', 'left'], $event)">
+            <input data-cy="destination" type="text" matInput placeholder="Destination" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'Destinations', ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['Id', 'Description', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
             <mat-error *ngIf="destinationDescription.hasError('required')">This is a required field!</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input data-cy="customer" type="text" matInput placeholder="Customer" formControlName="customerDescription" data-tabindex="2" id="customerDescription" [inputTabStop]="input" (change)="onLookupIndex(customers, 'Customers', ['customerId', 'customerDescription'], ['customerId', 'customerDescription'], ['Id', 'Description'], ['1px', '440px'], ['none', ''], ['center', 'left'], $event)">
+            <input data-cy="customer" type="text" matInput placeholder="Customer" formControlName="customerDescription" data-tabindex="2" id="customerDescription" [inputTabStop]="input" (change)="onLookupIndex(customers, 'Customers', ['customerId', 'customerDescription', ''], ['customerId', 'customerDescription', ''], ['Id', 'Description', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
             <mat-error *ngIf="customerDescription.hasError('required')">This is a required field!</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input data-cy="pickupPoint" type="text" matInput placeholder="Pickup point" formControlName="pickupPointDescription" data-tabindex="3" id="pickupPointDescription" [inputTabStop]="input" (change)="onLookupIndex(pickupPointsFlat, 'Pickup points', ['pickuPointId', 'pickupPointDescription'], ['pickuPointId', 'pickupPointDescription', 'exactPoint', 'time'], ['Id', 'Description', 'Exact point', 'Time'], ['1px', '440px', '440px', '100px'], ['none', '', '', ''], ['center', 'left', 'left', 'center'], $event)">
+            <input data-cy="pickupPoint" type="text" matInput placeholder="Pickup point" formControlName="pickupPointDescription" data-tabindex="3" id="pickupPointDescription" [inputTabStop]="input" (change)="onLookupIndex(pickupPointsFlat, 'Pickup points', ['pickuPointId', 'pickupPointDescription', ''], ['pickuPointId', 'pickupPointDescription', 'exactPoint', 'time', ''], ['Id', 'Description', 'Exact point', 'Time', ''], ['1px', '440px', '440px', '100px', '56px'], ['none'], ['center', 'left', 'left', 'center', 'center'], $event)">
             <mat-error *ngIf="pickupPointDescription.hasError('required')">This is a required field!</mat-error>
         </mat-form-field>
         <div id="group-field">
