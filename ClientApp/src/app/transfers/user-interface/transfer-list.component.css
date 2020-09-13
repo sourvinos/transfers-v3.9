@@ -1,15 +1,32 @@
+:host {
+    display: flex;
+    width: 100%;
+}
+
 #content {
     height: 100%;
+}
+
+#something {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+#myButtons {
+    margin-bottom: 1rem;
 }
 
 #summaries {
     align-content: flex-start;
     background-color: var(--color-background);
+    column-gap: 0.5rem;
+    display: flex;
     overflow-x: hidden;
     overflow-y: scroll;
-    position: absolute;
     row-gap: 0.5rem;
-    width: 17rem;
 }
 
 #listFormCombo {
@@ -20,7 +37,6 @@
     height: 100%;
     justify-content: flex-start;
     overflow: hidden;
-    padding-left: 19rem;
 }
 
 #footer #buttons {
@@ -54,7 +70,7 @@
     background-color: var(--color-summary-block-background) !important;
     border: 0.0625rem dotted var(--color-summary-block-border) !important;
     box-shadow: none;
-    height: fit-content;
+    height: auto;
     margin-right: 0.125rem;
     margin-top: 0.0625rem;
     padding: 0;

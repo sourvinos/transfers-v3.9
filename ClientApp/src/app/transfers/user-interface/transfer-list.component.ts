@@ -61,6 +61,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     indeterminateRoutes: boolean
     indeterminateDrivers: boolean
     indeterminatePorts: boolean
+    isVisible: boolean
 
     //#endregion
 
@@ -88,12 +89,12 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.addShortcuts()
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
+        this.focusOnSummaryPanel()
     }
 
     ngAfterViewInit() {
         this.setWindowTitle()
-        this.positionElements()
-        document.getElementById('summaries').style.height = localStorage.getItem('formHeight') + 'px'
+        // this.positionElements()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -105,7 +106,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             this.filterByCriteria()
             this.initCheckedPersons()
             this.updateTotals()
-            this.flattenResults()
+            // this.flattenResults()
         }
     }
 
@@ -156,6 +157,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onNew() {
         this.driverService.getDefaultDriver().subscribe(() => {
+            document.getElementById('listButton').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
             this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
@@ -167,7 +169,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.initCheckedPersons()
         this.filterByCriteria()
         this.updateTotals()
-        this.flattenResults()
+        // this.flattenResults()
         this.saveArraysToLocalStorage()
         this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, indeterminate, className)
     }
@@ -180,7 +182,16 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.initCheckedPersons()
         this.saveArraysToLocalStorage()
         this.updateTotals()
-        this.flattenResults()
+        // this.flattenResults()
+    }
+
+    public onToggleVisibility(button: string) {
+        this.isVisible = !this.isVisible
+        if (!this.isVisible) {
+            this.flattenResults()
+        }
+        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'))
+        document.getElementById(button).classList.add('active')
     }
 
     private addActiveClassToElements(className: string, lookupArray: string[]) {
@@ -270,6 +281,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
+    private focusOnSummaryPanel() {
+        this.isVisible = true
+        document.getElementById('summary').classList.add('active')
+    }
     private getDriversFromLocalStorage() {
         const localStorageData = JSON.parse(localStorage.getItem('transfers'))
         return JSON.parse(localStorageData.drivers)
@@ -313,10 +328,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.router.navigate(['transfers/date/', this.helperService.getDateFromLocalStorage()])
     }
 
-    private positionElements() {
-        document.getElementById('summaries').style.height = document.getElementById('table').offsetHeight + 'px'
-    }
-
     private removeSelectedIdsFromLocalStorage() {
         localStorage.removeItem('selectedIds')
     }
@@ -352,29 +363,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     private showSnackbar(message: string, type: string) {
         this.snackbarService.open(message, type)
-    }
-
-    private storeDimensions() {
-
-        const width = document.getElementById('transferList').offsetWidth + 'px'
-        const height = document.getElementById('transferList').offsetHeight + 'px'
-        console.log('Current width', width, 'Current height', height)
-
-        const storedWidth = localStorage.getItem('width')
-        const storedHeight = localStorage.getItem('height')
-        console.log('Stored width', storedWidth, 'Stored height', storedHeight)
-
-        if (storedWidth == null) {
-            console.log('Current width is null, storing width', width)
-            localStorage.setItem('width', width)
-        }
-
-        if (storedHeight == null) {
-            console.log('Current height is null, storing height', height)
-            localStorage.setItem('height', height)
-        }
-
-
     }
 
     private subscribeToInteractionService() {

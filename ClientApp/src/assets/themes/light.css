@@ -5,6 +5,9 @@
     --color-button-secondary: #5a75bc;
     --color-button-text-all: #fffff4;
     --color-button-text-secondary: #fffff4;
+    --color-button-tab-background: #fffff4;
+    --color-button-tab: #355070;
+    --color-button-tab-border: #b56576;
     --color-checkbox-checked: #355070;
     --color-checkbox-indeterminate: #d67474;
     --color-checkbox-svg: #ffffff;
@@ -21,7 +24,7 @@
     --color-input-text-selected: #cfcfcf;
     --color-label: #426186;
     --color-language-menu: #eaeaea;
-    --color-menu-active-item: #fe9f36;
+    --color-menu-active-item: #b56576;
     --color-menu-list-items: #2e5266;
     --color-navigation-button: #fffff4;
     --color-navigation-button-form-modal: #eaeaea;
@@ -31,7 +34,7 @@
     --color-ring-outer: #734230;
     --color-route-description: #b56576;
     --color-scrollbar-background: #fffff4;
-    --color-scrollbar: #355070;
+    --color-scrollbar: #b56576;
     --color-select-background-color: #ffffff;
     --color-select-border: #355070;
     --color-select-items-hover: #fffff4;

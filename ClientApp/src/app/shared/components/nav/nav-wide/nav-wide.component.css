@@ -58,6 +58,7 @@
     color: var(--color-menu-active-item);
     cursor: pointer;
     font-size: var(--font-size-menu-list-item-active);
+    font-weight: var(--font-weight-menu-active-item);
 }
 
 #copyright {

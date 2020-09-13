@@ -1,6 +1,12 @@
-<div class="scrollable" id="summaries">
-    <mat-accordion>
-        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock" expanded=true>
+<div id="something">
+
+    <div id="myButtons">
+        <button mat-flat-button class="tab" id="summary" (click)="onToggleVisibility('summary')">Summary</button>
+        <button mat-flat-button class="tab" id="listButton" (click)="onToggleVisibility('listButton')">List</button>
+    </div>
+
+    <div id="summaries" [class.hidden]="!isVisible" class="scrollable">
+        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock scrollable" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" [(indeterminate)]="indeterminateDestinations" (click)="onToggleItems('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
                 <header>Destinations</header>
@@ -10,7 +16,7 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
+        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock scrollable" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" [(indeterminate)]="indeterminateCustomers" (click)="onToggleItems('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
                 <header>Customers</header>
@@ -20,7 +26,7 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
+        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock scrollable" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="routesCheckbox" class="checkbox route" [(ngModel)]="checkedRoutes" [(indeterminate)]="indeterminateRoutes" (click)="onToggleItems('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
                 <header>Routes</header>
@@ -30,7 +36,7 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
+        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock scrollable" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="driversCheckbox" class="checkbox driver" [(ngModel)]="checkedDrivers" [(indeterminate)]="indeterminateDrivers" (click)="onToggleItems('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
                 <header>Drivers</header>
@@ -40,7 +46,7 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock">
+        <mat-expansion-panel data-cy="summaryBlock" class="summaryBlock scrollable" expanded=true>
             <mat-expansion-panel-header class="summaryHeader">
                 <mat-checkbox data-cy="portsCheckbox" class="checkbox port" [(ngModel)]="checkedPorts" [(indeterminate)]="indeterminatePorts" (click)="onToggleItems('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
                 <header>Ports</header>
@@ -50,30 +56,33 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
-    </mat-accordion>
-</div>
-<div id="listFormCombo">
-    <div id="transferList">
-        <div class="scrollable" id="table">
-            <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
-        </div>
-        <div id="totals">
-            <div *ngFor="let item of totals">
-                <div class="selection">
-                    <div class="label"> {{ item.description }} </div>
-                    <div data-cy="sum" class="sum">{{ item.sum }}</div>
+    </div>
+
+    <div id="listFormCombo" [class.hidden]="isVisible">
+        <div id="transferList">
+            <div class="scrollable" id="table">
+                <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+            </div>
+            <div id="totals">
+                <div *ngFor="let item of totals">
+                    <div class="selection">
+                        <div class="label"> {{ item.description }} </div>
+                        <div data-cy="sum" class="sum">{{ item.sum }}</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div @slideFromRight id="footer">
-            <div id="buttons">
-                <button data-cy="assignDriver" mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0" (click)="onAssignDriver()">Assign driver</button>
-                <button data-cy="createPdf" mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0" (click)="onCreatePdf()">Create PDFs</button>
-                <button data-cy="new" mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
-            </div>
+        <div id="transferFormModal">
+            <router-outlet></router-outlet>
         </div>
     </div>
-    <div id="transferFormModal">
-        <router-outlet></router-outlet>
+
+    <div @slideFromRight id="footer">
+        <div id="buttons">
+            <button data-cy="assignDriver" mat-flat-button class="secondary" id="assignDriver" [class.hidden]="queryResult.persons == 0 || this.isVisible" (click)="onAssignDriver()">Assign driver</button>
+            <button data-cy="createPdf" mat-flat-button class="secondary" id="createPdf" [class.hidden]="queryResult.persons == 0 || this.isVisible" (click)="onCreatePdf()">Create PDFs</button>
+            <button data-cy="new" mat-flat-button class="primary" id="new" (click)="onNew()">New</button>
+        </div>
     </div>
+
 </div>

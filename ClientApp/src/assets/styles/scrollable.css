@@ -5,7 +5,6 @@
     scroll-behavior: smooth;
     scrollbar-color: var(--color-scrollbar) var(--color-scrollbar-background);
     scrollbar-width: thin;
-    width: 100%;
 }
 
 .scrollable::-webkit-scrollbar {
@@ -14,7 +13,7 @@
 
 .scrollable::-webkit-scrollbar-track {
     background-color: var(--color-scrollbar-background);
-    margin-top: 2.625rem;
+    margin-top: 2.875rem;
 }
 
 .scrollable::-webkit-scrollbar-thumb {

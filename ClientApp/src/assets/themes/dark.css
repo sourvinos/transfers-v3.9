@@ -5,6 +5,9 @@
     --color-button-secondary: #5a75bc;
     --color-button-text-all: #fffddd;
     --color-button-text-secondary: #fffddd;
+    --color-button-tab-background: #373f46;
+    --color-button-tab: #fffddd;
+    --color-button-tab-border: #fe9f36;
     --color-checkbox-checked: #fe9f36;
     --color-checkbox-indeterminate: #ffe85c;
     --color-checkbox-svg: #000000;
@@ -54,7 +57,7 @@
     --color-summary-block-border: #fe9f36;
     --color-summary-block-expansion-indicator: #b7b7b9;
     --color-summary-block-item-border-active: #fe9f36;
-    --color-summary-block-item-border-inactive: #1d2733;
+    --color-summary-block-item-border-inactive: #b7b7b8;
     --color-summary-block-item-hover-background: #373f46;
     --color-summary-block-item-hover-color: #fe9f36;
     --color-summary-block-item: #b7b7b7;
