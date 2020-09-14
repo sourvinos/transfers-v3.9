@@ -226,6 +226,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getRecord(id: number) {
         this.transferService.getSingle(id).subscribe(result => {
+            document.getElementById('summaryTab').click()
             this.populateFields(result)
         }, error => {
             this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')

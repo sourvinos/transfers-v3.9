@@ -86,14 +86,14 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     }
 
     ngOnInit() {
+        this.setWindowTitle()
         this.addShortcuts()
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
-        this.focusOnSummaryPanel()
+        this.onFocusOnSummaryPanel()
     }
 
     ngAfterViewInit() {
-        this.setWindowTitle()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -105,6 +105,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             this.filterByCriteria()
             this.initCheckedPersons()
             this.updateTotals()
+            this.updateSummaryCheckboxes()
         }
     }
 
@@ -155,7 +156,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onNew() {
         this.driverService.getDefaultDriver().subscribe(() => {
-            document.getElementById('listTab').click()
+            document.getElementById('summaryTab').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
             this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
@@ -268,17 +269,17 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    public focusOnListPanel() {
+    public onFocusOnListPanel() {
         this.activePanel = 'list'
         document.getElementById('summaryTab').classList.remove('active')
         document.getElementById('listTab').classList.add('active')
         this.flattenResults()
     }
 
-    public focusOnSummaryPanel() {
+    public onFocusOnSummaryPanel() {
         this.activePanel = 'summary'
-        document.getElementById('listTab').classList.remove('active')
         document.getElementById('summaryTab').classList.add('active')
+        document.getElementById('listTab').classList.remove('active')
     }
 
     private getDriversFromLocalStorage() {
@@ -413,6 +414,33 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.interactionService.checked.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
             this.totals[2].sum = result
         })
+    }
+
+    private updateSummaryCheckboxes() {
+        setTimeout(() => {
+            this.updateSummaryCheckBox('destination', 'indeterminateDestinations', 'checkedDestinations')
+            this.updateSummaryCheckBox('customer', 'indeterminateCustomers', 'checkedCustomers')
+            this.updateSummaryCheckBox('route', 'indeterminateRoutes', 'checkedRoutes')
+            this.updateSummaryCheckBox('driver', 'indeterminateDrivers', 'checkedDrivers')
+            this.updateSummaryCheckBox('port', 'indeterminatePorts', 'checkedPorts')
+        }, 100)
+    }
+
+    private updateSummaryCheckBox(className: string, indeterminateVariable: string, checkedVariable: string) {
+        const allItems = document.querySelectorAll('.item.' + className).length
+        const activeItems = document.querySelectorAll('.item.' + className + '.activeItem').length
+        if (activeItems == allItems) {
+            this[indeterminateVariable] = false
+            this[checkedVariable] = true
+        }
+        if (activeItems == 0) {
+            this[indeterminateVariable] = false
+            this[checkedVariable] = false
+        }
+        if (activeItems < allItems && activeItems != 0) {
+            this[indeterminateVariable] = true
+            this[checkedVariable] = false
+        }
     }
 
 }

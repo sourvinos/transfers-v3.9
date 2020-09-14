@@ -1,8 +1,12 @@
 <div id="wrapper">
 
     <div id="panelButtons">
-        <button mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="focusOnSummaryPanel()">Summary</button>
-        <button mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="focusOnListPanel()">List</button>
+        <button mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusOnSummaryPanel()">Summary</button>
+        <button mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusOnListPanel()">List</button>
+        <div class="selection">
+            <div class="label">{{ totals[0].description }}</div>
+            <div class="sum">{{ totals[0].sum }}</div>
+        </div>
     </div>
 
     <div id="summary" [class.hidden]="activePanel=='list'" class="scrollable">
@@ -56,6 +60,9 @@
                 <div class="total"> {{ item.persons }} </div>
             </div>
         </mat-expansion-panel>
+        <div id="transferFormModal">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 
     <div id="listFormCombo" [class.hidden]="activePanel=='summary'">
@@ -71,9 +78,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="transferFormModal">
-            <router-outlet></router-outlet>
         </div>
     </div>
 
