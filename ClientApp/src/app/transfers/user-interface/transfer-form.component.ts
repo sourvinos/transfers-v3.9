@@ -153,7 +153,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.transferService.add(this.form.value).subscribe(() => {
                 this.initForm()
                 this.populateFormWithDefaultValues(this.defaultDriver)
-                this.refreshSummaries()
+                this.refreshSummary()
                 this.focus('destinationDescription')
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
             }, error => {
@@ -322,7 +322,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private refreshSummaries() {
+    private refreshSummary() {
         this.interactionService.mustRefreshList()
     }
 

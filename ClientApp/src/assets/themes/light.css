@@ -3,11 +3,12 @@
     --color-button-delete: #d67474;
     --color-button-primary: #57617b;
     --color-button-secondary: #5a75bc;
+    --color-button-tab-background: #fffff4;
+    --color-button-tab-border-hover: #f7d3d0;
+    --color-button-tab-border: #b56576;
+    --color-button-tab: #355070;
     --color-button-text-all: #fffff4;
     --color-button-text-secondary: #fffff4;
-    --color-button-tab-background: #fffff4;
-    --color-button-tab: #355070;
-    --color-button-tab-border: #b56576;
     --color-checkbox-checked: #355070;
     --color-checkbox-indeterminate: #d67474;
     --color-checkbox-svg: #ffffff;
@@ -26,8 +27,8 @@
     --color-language-menu: #eaeaea;
     --color-menu-active-item: #b56576;
     --color-menu-list-items: #2e5266;
-    --color-navigation-button: #fffff4;
     --color-navigation-button-form-modal: #eaeaea;
+    --color-navigation-button: #fffff4;
     --color-navigation-icon: #2e5266;
     --color-paragraphs: #734230;
     --color-ring-inner: #b56576;
@@ -56,6 +57,7 @@
     --color-summary-block-background: #fffff4;
     --color-summary-block-border: #355070;
     --color-summary-block-expansion-indicator: #5f5f5f;
+    --color-summary-block-headers: #b56576;
     --color-summary-block-item-border-active: #355070;
     --color-summary-block-item-border-inactive: #c7c7c7;
     --color-summary-block-item-hover-background: #fffff4;

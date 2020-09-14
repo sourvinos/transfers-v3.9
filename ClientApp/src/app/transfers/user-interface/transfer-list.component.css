@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-#something {
+#wrapper {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -15,11 +15,12 @@
     overflow: hidden;
 }
 
-#myButtons {
+#panelButtons {
+    display: flex;
     margin-bottom: 1rem;
 }
 
-#summaries {
+#summary {
     align-content: flex-start;
     background-color: var(--color-background);
     column-gap: 0.5rem;
@@ -43,13 +44,14 @@
     align-items: flex-end;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 #transferList {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 }
 
 #transferFormModal {
@@ -70,6 +72,7 @@
     background-color: var(--color-summary-block-background) !important;
     border: 0.0625rem dotted var(--color-summary-block-border) !important;
     box-shadow: none;
+    flex: 1;
     height: auto;
     margin-right: 0.125rem;
     margin-top: 0.0625rem;
@@ -83,7 +86,7 @@
 }
 
 .summaryBlock header {
-    color: var(--color-headers);
+    color: var(--color-summary-block-headers);
     font-family: var(--font-family-summary-block);
     font-size: var(--font-size-summary-block-header);
 }
@@ -130,7 +133,7 @@
     font-family: var(--font-family-totals);
     font-weight: var(--font-weight-totals);
     justify-content: flex-end;
-    margin: 2rem 1rem 0 0;
+    margin-top: 2rem;
     text-align: right;
 }
 

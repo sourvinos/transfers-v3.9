@@ -61,7 +61,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     indeterminateRoutes: boolean
     indeterminateDrivers: boolean
     indeterminatePorts: boolean
-    isVisible: boolean
+    activePanel: string
 
     //#endregion
 
@@ -94,7 +94,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     ngAfterViewInit() {
         this.setWindowTitle()
-        // this.positionElements()
         if (this.queryResult.transfers.length !== 0) {
             if (this.isDataInLocalStorage()) {
                 this.updateSelectedArraysFromLocalStorage()
@@ -106,7 +105,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             this.filterByCriteria()
             this.initCheckedPersons()
             this.updateTotals()
-            // this.flattenResults()
         }
     }
 
@@ -157,7 +155,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onNew() {
         this.driverService.getDefaultDriver().subscribe(() => {
-            document.getElementById('listButton').click()
+            document.getElementById('listTab').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
             this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
@@ -169,7 +167,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.initCheckedPersons()
         this.filterByCriteria()
         this.updateTotals()
-        // this.flattenResults()
         this.saveArraysToLocalStorage()
         this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, indeterminate, className)
     }
@@ -182,16 +179,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.initCheckedPersons()
         this.saveArraysToLocalStorage()
         this.updateTotals()
-        // this.flattenResults()
-    }
-
-    public onToggleVisibility(button: string) {
-        this.isVisible = !this.isVisible
-        if (!this.isVisible) {
-            this.flattenResults()
-        }
-        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'))
-        document.getElementById(button).classList.add('active')
     }
 
     private addActiveClassToElements(className: string, lookupArray: string[]) {
@@ -281,10 +268,19 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    private focusOnSummaryPanel() {
-        this.isVisible = true
-        document.getElementById('summary').classList.add('active')
+    public focusOnListPanel() {
+        this.activePanel = 'list'
+        document.getElementById('summaryTab').classList.remove('active')
+        document.getElementById('listTab').classList.add('active')
+        this.flattenResults()
     }
+
+    public focusOnSummaryPanel() {
+        this.activePanel = 'summary'
+        document.getElementById('listTab').classList.remove('active')
+        document.getElementById('summaryTab').classList.add('active')
+    }
+
     private getDriversFromLocalStorage() {
         const localStorageData = JSON.parse(localStorage.getItem('transfers'))
         return JSON.parse(localStorageData.drivers)
