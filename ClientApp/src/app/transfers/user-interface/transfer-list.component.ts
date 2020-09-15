@@ -90,23 +90,21 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.addShortcuts()
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
-        this.onFocusOnSummaryPanel()
+        this.onFocusSummaryPanel()
     }
 
     ngAfterViewInit() {
-        if (this.queryResult.transfers.length !== 0) {
-            if (this.isDataInLocalStorage()) {
-                this.updateSelectedArraysFromLocalStorage()
-            } else {
-                this.updateSelectedArraysFromInitialResults()
-                this.saveArraysToLocalStorage()
-            }
-            this.addActiveClassToSelectedArrays()
-            this.filterByCriteria()
-            this.initCheckedPersons()
-            this.updateTotals()
-            this.updateSummaryCheckboxes()
+        if (this.isDataInLocalStorage()) {
+            this.updateSelectedArraysFromLocalStorage()
+        } else {
+            this.updateSelectedArraysFromInitialResults()
+            this.saveArraysToLocalStorage()
         }
+        this.addActiveClassToSelectedArrays()
+        this.filterByCriteria()
+        this.initCheckedPersons()
+        this.updateTotals()
+        this.updateSummaryCheckboxes()
     }
 
     ngDoCheck() {
@@ -169,7 +167,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.filterByCriteria()
         this.updateTotals()
         this.saveArraysToLocalStorage()
-        this.checkToToggleHeaderCheckbox(lookupArray, checkedVariable, indeterminate, className)
+        this.updateSummaryCheckBox(className, indeterminate, checkedVariable)
     }
 
     public onToggleItems(className: string, lookupArray: any[], checkedArray: any) {
@@ -218,6 +216,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             'Alt.N': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'new')
             },
+            'Alt.S': (event: KeyboardEvent) => {
+                this.buttonClickService.clickOnButton(event, 'search')
+            }
         }, {
             priority: 2,
             inputs: true
@@ -269,14 +270,14 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    public onFocusOnListPanel() {
+    public onFocusListPanel() {
         this.activePanel = 'list'
         document.getElementById('summaryTab').classList.remove('active')
         document.getElementById('listTab').classList.add('active')
         this.flattenResults()
     }
 
-    public onFocusOnSummaryPanel() {
+    public onFocusSummaryPanel() {
         this.activePanel = 'summary'
         document.getElementById('summaryTab').classList.add('active')
         document.getElementById('listTab').classList.remove('active')
@@ -429,18 +430,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     private updateSummaryCheckBox(className: string, indeterminateVariable: string, checkedVariable: string) {
         const allItems = document.querySelectorAll('.item.' + className).length
         const activeItems = document.querySelectorAll('.item.' + className + '.activeItem').length
-        if (activeItems == allItems) {
-            this[indeterminateVariable] = false
-            this[checkedVariable] = true
-        }
-        if (activeItems == 0) {
-            this[indeterminateVariable] = false
-            this[checkedVariable] = false
-        }
-        if (activeItems < allItems && activeItems != 0) {
-            this[indeterminateVariable] = true
-            this[checkedVariable] = false
-        }
+        this[indeterminateVariable] = activeItems == allItems || activeItems == 0 ? false : true
+        this[checkedVariable] = activeItems == 0 || (activeItems < allItems && activeItems != 0) ? false : true
     }
 
 }

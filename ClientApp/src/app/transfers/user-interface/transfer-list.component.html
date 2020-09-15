@@ -1,8 +1,8 @@
 <div id="wrapper">
 
     <div id="panelButtons">
-        <button mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusOnSummaryPanel()">Summary</button>
-        <button mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusOnListPanel()">List</button>
+        <button mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusSummaryPanel()">Summary</button>
+        <button mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusListPanel()">List</button>
         <div class="selection">
             <div class="label">{{ totals[0].description }}</div>
             <div class="sum">{{ totals[0].sum }}</div>
