@@ -40,13 +40,13 @@ context('List', () => {
         cy.searchTransfersWithSuccess()
     })
 
-    it('Check for elements presence', () => {
+    it('Click on the list tab, display the list and check for elements', () => {
+        cy.get('#listTab').click()
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=assignDriver]')
         cy.get('[data-cy=createPdf]')
         cy.get('[data-cy=new]')
-        cy.get('[data-cy=summaryBlock]').should('have.length', 5)
-        cy.get('[data-cy=header]').should('have.length', 14)
+        cy.get('[data-cy=header]').should('have.length', 15)
     })
 
     it('Select all rows by clicking on the first column header', () => {
@@ -68,70 +68,90 @@ context('List', () => {
     })
 
     it('Unselect all destinations and table should have no rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=destinationsCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 0)
     })
 
     it('Select all destinations and table should have three rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=destinationsCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 3)
     })
 
     it('Unselect all customers and table should have no rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=customersCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 0)
     })
 
     it('Select all customers and table should have three rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=customersCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 3)
     })
 
     it('Unselect all routes and table should have no rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=routesCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 0)
     })
 
     it('Select all routes and table should have three rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=routesCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 3)
     })
 
     it('Unselect all drivers and table should have no rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=driversCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 0)
     })
 
     it('Select all drivers and table should have three rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=driversCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 3)
     })
 
     it('Unselect all ports and table should have no rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=portsCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 0)
     })
 
     it('Select all ports and table should have three rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=portsCheckbox]').click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 3)
     })
 
-    it('Expand the ports summary, unselect the first port and table should have two rows', () => {
-        cy.get('[data-cy=summaryBlock')
-            .eq(4).click()
+    it('Unselect the first port and table should have two rows', () => {
+        cy.get('#summaryTab').click()
         cy.get('[data-cy=port]')
             .eq(0).click()
+        cy.get('#listTab').click()
         cy.get('table tbody tr')
             .should('have.length', 2)
     })

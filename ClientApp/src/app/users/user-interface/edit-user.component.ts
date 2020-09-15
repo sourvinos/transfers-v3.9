@@ -56,7 +56,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -82,7 +82,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'cancel']).subscribe(response => {
+        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['ok', 'abort']).subscribe(response => {
             if (response) {
                 this.userService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
@@ -118,7 +118,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
             },
             'Alt.C': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
-                    this.buttonClickService.clickOnButton(event, 'cancel')
+                    this.buttonClickService.clickOnButton(event, 'abort')
                 } else {
                     this.buttonClickService.clickOnButton(event, 'changePassword')
                 }

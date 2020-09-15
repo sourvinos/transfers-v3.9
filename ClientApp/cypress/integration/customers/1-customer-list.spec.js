@@ -20,7 +20,7 @@ context('List', () => {
         cy.get('[data-cy=customers]').click()
         cy.wait('@getCustomers').its('status').should('eq', 404)
         cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
-        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'There is no contact with the server.')
+        cy.get('[data-cy=customSnackbar]')
         cy.get('[data-cy=goBack').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
@@ -53,7 +53,6 @@ context('List', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
-        cy.pause()
     })
 
 })

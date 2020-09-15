@@ -81,7 +81,7 @@ context('Form validation', () => {
     it('Choose not to abort when the back icon is clicked', () => {
         cy.get('[data-cy=goBack]').click()
         cy.get('.mat-dialog-container')
-        cy.get('[data-cy=cancel]').click()
+        cy.get('[data-cy=abort]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
 

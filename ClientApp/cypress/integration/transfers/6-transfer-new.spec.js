@@ -92,13 +92,6 @@ context('New', () => {
             cy.get('[data-cy=customSnackbar]')
         })
 
-        it('Go to the list', () => {
-            // cy.get('[data-cy=transfers]').click()
-            // cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
-            // cy.gotoUrlFromElement('transfers', 'transfers')
-            // cy.searchTransfersWithSuccess()
-        })
-
         afterEach(() => {
             cy.saveLocalStorage()
         })

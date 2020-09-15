@@ -21,6 +21,7 @@ context('Edit', () => {
     })
 
     it('Successful attempt to seek the first row', () => {
+        cy.get('#listTab').click()
         cy.seekTransferWithSuccess()
     })
 

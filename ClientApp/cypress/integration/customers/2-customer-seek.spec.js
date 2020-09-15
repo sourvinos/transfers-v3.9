@@ -19,7 +19,6 @@ context('Seek', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
-        cy.pause()
     })
 
 })

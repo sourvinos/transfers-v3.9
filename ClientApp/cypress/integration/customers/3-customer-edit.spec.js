@@ -33,21 +33,19 @@ context('Edit', () => {
             delay: 500
         })
         cy.get('[data-cy=save]').click()
-        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record could not be saved.')
+        cy.get('[data-cy=customSnackbar]')
     })
 
     it('Update and display a snackbar', () => {
-        cy.pause()
         cy.server()
         cy.route('PUT', 'https://localhost:5001/api/customers/155', 'fixture:customer.json').as('saveCustomer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record was updated.')
+        cy.get('[data-cy=customSnackbar]')
     })
 
     afterEach(() => {
         cy.saveLocalStorage()
-        cy.pause()
     })
 
 })

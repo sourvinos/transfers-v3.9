@@ -14,7 +14,7 @@
         </mat-dialog-actions>
 
         <mat-dialog-actions *ngIf="data.actions.length == 2">
-            <button data-cy="cancel" mat-flat-button class="primary" id="cancel" tabindex="-1" (click)="onClose()">Cancel</button>
+            <button data-cy="abort" mat-flat-button class="primary" id="abort" tabindex="-1" (click)="onClose()">abort</button>
             <button data-cy="ok" mat-flat-button class="delete" id="ok" tabindex="-1" mat-dialog-close="true">OK</button>
         </mat-dialog-actions>
     </div>

@@ -26,7 +26,7 @@ context('Delete', () => {
     it('Ask to delete and abort', () => {
         cy.get('[data-cy=delete]').click()
         cy.get('.mat-dialog-container')
-        cy.get('[data-cy=cancel]').click()
+        cy.get('[data-cy=abort]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/155')
     })
 
@@ -37,12 +37,11 @@ context('Delete', () => {
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()
         cy.wait('@deleteCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]').children('div').contains('This record was deleted.')
+        cy.get('[data-cy=customSnackbar]')
     })
 
     afterEach(() => {
         cy.saveLocalStorage()
-        cy.pause()
     })
 
 })

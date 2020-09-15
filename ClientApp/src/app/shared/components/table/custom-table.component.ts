@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiffer, IterableDiffers, OnInit } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { slideToLeft } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'custom-table',
     templateUrl: './custom-table.component.html',
-    styleUrls: ['./custom-table.component.css']
+    styleUrls: ['./custom-table.component.css'],
+    animations: [slideToLeft]
 })
 
 export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {

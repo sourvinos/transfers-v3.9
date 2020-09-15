@@ -73,7 +73,7 @@
 }
 
 
-/* Small heights = hide bus circle */
+/* Small heights = hide logo */
 
 @media only screen and (max-height: 799px) {
     .companyLogo {

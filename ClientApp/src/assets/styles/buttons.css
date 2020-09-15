@@ -10,6 +10,7 @@ button {
     min-width: 0 !important;
     outline: 0 !important;
     padding-top: 0.0625rem !important;
+    transition: background-color 0.7s;
 }
 
 button.primary {
@@ -21,6 +22,17 @@ button.secondary {
     background-color: var(--color-button-secondary) !important;
     color: var(--color-button-text-secondary) !important;
     margin: 0 0 0 0.5rem !important;
+}
+
+button.transparent {
+    background-color: rgba(0, 0, 0, 0.001) !important;
+    color: var(--color-button-transparent-text) !important;
+    margin: 0 0 0 0.5rem !important;
+}
+
+button.transparent:hover {
+    background-color: var(--color-button-transparent-background-hover) !important;
+    transition-duration: 500ms;
 }
 
 button.delete {

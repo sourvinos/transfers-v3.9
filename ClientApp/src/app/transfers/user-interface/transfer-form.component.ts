@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -32,7 +32,7 @@ import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animati
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#region 
 
@@ -65,6 +65,8 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.driverService.getDefaultDriver().subscribe(result => {
                     this.defaultDriver = result
                     this.populateFormWithDefaultValues(this.defaultDriver)
+                    this.showModalForm()
+                    this.focus('destinationDescription')
                 }, () => {
                     this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
                 })
@@ -75,15 +77,9 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         this.setWindowTitle()
         this.initForm()
-        this.showModalForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
-
-    ngAfterViewInit() {
-        this.focus('destinationDescription')
-    }
-
     ngOnDestroy() {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
@@ -92,7 +88,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     canDeactivate() {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -111,17 +107,30 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
+        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
-                    this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
+                    this.removeRow(this.form.value.id)
+                    this.resetForm()
                 }, error => {
                     this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
                 })
             }
         })
+    }
+
+    private removeRow(id: string) {
+        const table = <HTMLTableElement>document.querySelector('table')
+        for (let i = 0; i < table.rows.length; i++) {
+            const rowText = table.rows[i].cells[1].innerText
+            console.log(id, rowText)
+            if (rowText == id) {
+                console.log('Found', id)
+                document.querySelector('table').rows[i].remove()
+            }
+        }
     }
 
     public onGoBack() {
@@ -187,7 +196,7 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
             },
             'Alt.C': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
-                    this.buttonClickService.clickOnButton(event, 'cancel')
+                    this.buttonClickService.clickOnButton(event, 'abort')
                 }
             },
             'Alt.O': (event: KeyboardEvent) => {
@@ -226,8 +235,9 @@ export class TransferFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private getRecord(id: number) {
         this.transferService.getSingle(id).subscribe(result => {
-            document.getElementById('summaryTab').click()
+            this.showModalForm()
             this.populateFields(result)
+            this.focus('destinationDescription')
         }, error => {
             this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()

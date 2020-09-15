@@ -13,6 +13,5 @@ export class TransferFlat {
     port: string
     driver: string
     dateIn: string
-    userId: string
     remarks: string
 }

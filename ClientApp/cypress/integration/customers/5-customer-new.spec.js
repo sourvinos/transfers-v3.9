@@ -37,7 +37,7 @@ context('New', () => {
             url: 'https://localhost:5001/api/customers'
         })
         cy.get('[data-cy=save]').click()
-        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'This record could not be saved.')
+        cy.get('[data-cy=customSnackbar]')
     })
 
     it('Save and display a snackbar', () => {
@@ -45,7 +45,7 @@ context('New', () => {
         cy.route('POST', 'https://localhost:5001/api/customers', 'fixture:customer.json').as('saveCustomer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]').children('div').should('have.text', 'A new record was created.')
+        cy.get('[data-cy=customSnackbar]')
     })
 
     it('Goto the customer list', () => {
@@ -54,10 +54,6 @@ context('New', () => {
         cy.get('[data-cy=goBack]').click()
         cy.wait('@getCustomers').its('status').should('eq', 200)
         cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
-    })
-
-    afterEach(() => {
-        cy.pause()
     })
 
 })

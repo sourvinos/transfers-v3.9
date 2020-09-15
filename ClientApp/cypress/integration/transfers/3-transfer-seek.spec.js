@@ -28,6 +28,7 @@ context('Seek', () => {
             status: 404,
             response: { error: 'ERROR!' }
         }).as('getTransfer')
+        cy.get('#listTab').click()
         cy.get('[data-cy=row]:nth-child(1)').dblclick()
         cy.wait('@getTransfer').its('status').should('eq', 404)
         cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01')

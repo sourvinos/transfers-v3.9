@@ -98,13 +98,13 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             this.updateSelectedArraysFromLocalStorage()
         } else {
             this.updateSelectedArraysFromInitialResults()
-            this.saveArraysToLocalStorage()
+            this.saveSelectedItemsToLocalStorage()
         }
-        this.addActiveClassToSelectedArrays()
+        this.addActiveClassToSummaryItems()
         this.filterByCriteria()
         this.initCheckedPersons()
         this.updateTotals()
-        this.updateSummaryCheckboxes()
+        this.updateParentCheckboxes()
     }
 
     ngDoCheck() {
@@ -121,14 +121,14 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     }
 
     public onAssignDriver() {
-        if (this.isRecordSelected()) {
+        if (this.isAnyRowSelected()) {
             const dialogRef = this.dialog.open(TransferAssignDriverComponent, {
                 height: '350px',
                 width: '550px',
                 data: {
                     title: 'Assign driver',
                     drivers: this.driverService.getAllActive(),
-                    actions: ['cancel', 'ok']
+                    actions: ['abort', 'ok']
                 },
                 panelClass: 'dialog'
             })
@@ -154,7 +154,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onNew() {
         this.driverService.getDefaultDriver().subscribe(() => {
-            document.getElementById('summaryTab').click()
+            document.getElementById('listTab').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
             this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
@@ -166,17 +166,17 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.initCheckedPersons()
         this.filterByCriteria()
         this.updateTotals()
-        this.saveArraysToLocalStorage()
-        this.updateSummaryCheckBox(className, indeterminate, checkedVariable)
+        this.saveSelectedItemsToLocalStorage()
+        this.updateParentCheckBox(className, indeterminate, checkedVariable)
     }
 
-    public onToggleItems(className: string, lookupArray: any[], checkedArray: any) {
+    public onToggleParentCheckbox(className: string, lookupArray: any[], checkedArray: any) {
         event.stopPropagation()
         lookupArray.splice(0)
         this.selectItems(className, lookupArray, !checkedArray)
         this.filterByCriteria()
         this.initCheckedPersons()
-        this.saveArraysToLocalStorage()
+        this.saveSelectedItemsToLocalStorage()
         this.updateTotals()
     }
 
@@ -190,7 +190,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private addActiveClassToSelectedArrays() {
+    private addActiveClassToSummaryItems() {
         setTimeout(() => {
             this.addActiveClassToElements('.item.destination', this.selectedDestinations)
             this.addActiveClassToElements('.item.customer', this.selectedCustomers)
@@ -225,18 +225,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private checkToToggleHeaderCheckbox(lookupArray: string[], checkedVariable: any, indeterminateVariable: any, className: string) {
-        this[indeterminateVariable] = true
-        if (lookupArray.length === 0) {
-            this[checkedVariable] = false
-            this[indeterminateVariable] = false
-        }
-        if (lookupArray.length === document.getElementsByClassName('item ' + className).length) {
-            this[checkedVariable] = true
-            this[indeterminateVariable] = false
-        }
-    }
-
     private editRecord(id: number) {
         this.router.navigate(['transfer/', id], { relativeTo: this.activatedRoute })
     }
@@ -262,11 +250,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             totalPersons: h,
             pickupPoint: { description: i, time: j, route: { description: k, port: { description: l } } },
             driver: { description: m },
-            userId: n,
-            dateIn: o,
-            remarks: p
+            dateIn: n,
+            remarks: o
         } of this.queryResultClone.transfers) {
-            this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m, userId: n, dateIn: o, remarks: p })
+            this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m,  dateIn: n, remarks: o })
         }
     }
 
@@ -304,7 +291,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         return localStorage.getItem('transfers')
     }
 
-    private isRecordSelected() {
+    private isAnyRowSelected() {
         if (this.totals[2].sum === 0) {
             this.showSnackbar(this.messageService.noRecordsSelected(), 'error')
             return false
@@ -330,7 +317,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         localStorage.removeItem('selectedIds')
     }
 
-    private saveArraysToLocalStorage() {
+    private saveSelectedItemsToLocalStorage() {
         const summaryItems = {
             'destinations': JSON.stringify(this.selectedDestinations),
             'customers': JSON.stringify(this.selectedCustomers),
@@ -417,19 +404,19 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private updateSummaryCheckboxes() {
+    private updateParentCheckboxes() {
         setTimeout(() => {
-            this.updateSummaryCheckBox('destination', 'indeterminateDestinations', 'checkedDestinations')
-            this.updateSummaryCheckBox('customer', 'indeterminateCustomers', 'checkedCustomers')
-            this.updateSummaryCheckBox('route', 'indeterminateRoutes', 'checkedRoutes')
-            this.updateSummaryCheckBox('driver', 'indeterminateDrivers', 'checkedDrivers')
-            this.updateSummaryCheckBox('port', 'indeterminatePorts', 'checkedPorts')
+            this.updateParentCheckBox('destination', 'indeterminateDestinations', 'checkedDestinations')
+            this.updateParentCheckBox('customer', 'indeterminateCustomers', 'checkedCustomers')
+            this.updateParentCheckBox('route', 'indeterminateRoutes', 'checkedRoutes')
+            this.updateParentCheckBox('driver', 'indeterminateDrivers', 'checkedDrivers')
+            this.updateParentCheckBox('port', 'indeterminatePorts', 'checkedPorts')
         }, 100)
     }
 
-    private updateSummaryCheckBox(className: string, indeterminateVariable: string, checkedVariable: string) {
-        const allItems = document.querySelectorAll('.item.' + className).length
-        const activeItems = document.querySelectorAll('.item.' + className + '.activeItem').length
+    private updateParentCheckBox(summary: string, indeterminateVariable: string, checkedVariable: string) {
+        const allItems = document.querySelectorAll('.item.' + summary).length
+        const activeItems = document.querySelectorAll('.item.' + summary + '.activeItem').length
         this[indeterminateVariable] = activeItems == allItems || activeItems == 0 ? false : true
         this[checkedVariable] = activeItems == 0 || (activeItems < allItems && activeItems != 0) ? false : true
     }

@@ -57,7 +57,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.accountService.forgotPassword(form.email).subscribe(() => {
             this.showSnackbar(this.messageService.emailSent(), 'info')
             this.onGoBack()
-            // this.dialogService.open('Important', 'warningColor', this.messageService.resetPassword(), ['cancel', 'ok']).subscribe(response => {
+            // this.dialogService.open('Important', 'warningColor', this.messageService.resetPassword(), ['abort', 'ok']).subscribe(response => {
             //     if (response) {
             //         this.router.navigate([url.response])
             //     }

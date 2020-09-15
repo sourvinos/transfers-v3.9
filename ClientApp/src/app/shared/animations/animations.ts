@@ -21,9 +21,8 @@ export const slideFromRight = trigger('slideFromRight', [
     ])
 ])
 
-export const slideFromBottom = trigger('slideFromBottom', [
-    transition(':enter', [
-        style({ transform: 'translateY(150px)' }),
-        animate('2s ease-out')
+export const slideToLeft = trigger('slideToLeft', [
+    transition('* => void', [
+        animate(2000, style({ opacity: 0 }))
     ])
 ])

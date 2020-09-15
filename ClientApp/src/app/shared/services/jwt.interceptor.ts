@@ -30,7 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
                                     return this.handleHttpErrorResponse(request, next)
                                 case 404:
                                     console.log('Interceptor 404')
-                                    return throwError('404')
+                                    return throwError(404)
                                 case 409:
                                     console.log('Interceptor 409')
                                     return throwError('409')

@@ -69,7 +69,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['cancel', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -82,7 +82,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['cancel', 'ok']).subscribe(response => {
+        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.routeService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
@@ -153,7 +153,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
             },
             'Alt.C': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
-                    this.buttonClickService.clickOnButton(event, 'cancel')
+                    this.buttonClickService.clickOnButton(event, 'abort')
                 }
             },
             'Alt.O': (event: KeyboardEvent) => {
