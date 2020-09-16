@@ -1,9 +1,11 @@
 :host {
-    display: grid;
+    display: flex;
     width: 100%;
 }
 
-table, #table-transfer {
+table,
+#table-transfer {
+    flex: 1;
     table-layout: fixed;
     -webkit-border-horizontal-spacing: 0.125rem;
     -webkit-border-vertical-spacing: 0;

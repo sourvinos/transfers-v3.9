@@ -2,11 +2,6 @@
     display: flex;
 }
 
-#sidebar {
-    display: grid;
-    height: 100%;
-}
-
 nav {
     background-color: var(--color-sidebar);
     display: flex;

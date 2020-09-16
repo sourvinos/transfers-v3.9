@@ -1,15 +1,10 @@
 #header {
-    align-items: center;
-    display: grid;
-    grid-area: header;
-    grid-template-areas: "navigation title searchbox";
-    grid-template-columns: fit-content(0%) 1fr auto;
+    display: flex;
 }
 
 #header #navigation {
     align-items: center;
     display: flex;
-    grid-area: navigation;
     justify-content: flex-start;
     margin: 0 0 0 1rem;
 }

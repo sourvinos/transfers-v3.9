@@ -13,7 +13,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 @Component({
     selector: 'pickuppoint-wrapper',
     templateUrl: './pickupPoint-wrapper.component.html',
-    styleUrls: ['./pickupPoint-wrapper.component.css'],
+    styleUrls: ['../../../assets/styles/lists.css', './pickupPoint-wrapper.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
