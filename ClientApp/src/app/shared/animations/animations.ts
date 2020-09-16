@@ -22,7 +22,7 @@ export const slideFromRight = trigger('slideFromRight', [
 ])
 
 export const slideToLeft = trigger('slideToLeft', [
-    transition('* => void', [
-        animate(2000, style({ opacity: 0 }))
+    transition(':leave', [
+        animate('0.8s', style({ transform: 'translateX(-100%)' }))
     ])
 ])

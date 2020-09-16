@@ -30,6 +30,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     sortOrder = 'desc'
     differences: IterableDiffer<any>;
     randomTableId = Math.floor(Math.random() * 1000) + 1
+    isAnimationEnabled: boolean
 
     constructor(private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
 
@@ -46,6 +47,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         const changes: IterableChanges<any> = this.differences.diff(this.records)
         if (changes) {
             this.checked = false
+            this.isAnimationEnabled = false
         }
     }
 
@@ -178,17 +180,14 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         if (this.rowHeight !== 0) { table.rows[this.currentRow].classList.add('selected') }
     }
 
-    private sendRowToBaseService() {
-        this.interactionService.sendObject(this.records[this.currentRow - 1])
-    }
-
     private sendRowToIndexService() {
         this.indexInteractionService.sendObject(this.records[this.currentRow - 1])
     }
 
     public sendRowToService() {
         if (document.getElementsByClassName('mat-dialog-container').length === 0) {
-            this.sendRowToBaseService()
+            this.isAnimationEnabled = true
+            this.interactionService.sendObject(this.records[this.currentRow - 1])
         } else {
             this.indexInteractionService.action(true)
         }
@@ -203,5 +202,10 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     private unselectRow() {
         this.table.rows[this.currentRow].classList.remove('selected')
     }
+
+    sendRecord(row: any) {
+        this.interactionService.removeTableRow(row)
+    }
+
 
 }

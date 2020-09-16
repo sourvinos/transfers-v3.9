@@ -14,7 +14,3 @@
     display: flex;
     justify-content: flex-start;
 }
-
-.mat-menu-item:hover {
-    background-color: var(--color-select-items-hover) !important;
-}

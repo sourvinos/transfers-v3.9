@@ -360,6 +360,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
                 this.ngAfterViewInit()
             })
         })
+        this.interactionService.tableRow.subscribe(result => {
+            this.transfersFlat.splice(Number(result), 1)
+            this.updateTotals()
+        })
+
     }
 
     private toggleActiveItem(item: { description: string }, lookupArray: string[]) {

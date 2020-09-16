@@ -9,11 +9,13 @@ export class InteractionService {
     _checked = new Subject<number>()
     _refreshList = new Subject<any>()
     _language = new Subject<string>()
+    _tableRow = new Subject()
 
     record = this._record.asObservable()
     checked = this._checked.asObservable()
     refreshList = this._refreshList.asObservable()
     language = this._language.asObservable()
+    tableRow = this._tableRow.asObservable()
 
     /**
      * Caller(s):
@@ -79,6 +81,20 @@ export class InteractionService {
      */
     updateLanguage(message: string) {
         this._language.next(message)
+    }
+
+    /**
+     * Caller(s):
+     *  transfer-form.component.ts
+     * 
+     * Subscriber(s):
+     *  transfer-list.component.ts
+     * 
+     * Description:
+     *  The caller(s) send the id of the deleted record so that the subscriber(s) can find the table row and remove it
+     */
+    removeTableRow(rowIndex: number) {
+        this._tableRow.next(rowIndex)
     }
 
 }

@@ -10,7 +10,7 @@ button {
     min-width: 0 !important;
     outline: 0 !important;
     padding-top: 0.0625rem !important;
-    transition: background-color 0.7s;
+    transition: background-color 0.5s;
 }
 
 button.primary {

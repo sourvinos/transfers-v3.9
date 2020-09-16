@@ -112,7 +112,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                    this.removeRow(this.form.value.id)
+                    this.interactionService.removeTableRow(this.getRowIndex(this.form.value.id))
                     this.resetForm()
                 }, error => {
                     this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
@@ -121,14 +121,11 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private removeRow(id: string) {
+    private getRowIndex(recordId: string) {
         const table = <HTMLTableElement>document.querySelector('table')
         for (let i = 0; i < table.rows.length; i++) {
-            const rowText = table.rows[i].cells[1].innerText
-            console.log(id, rowText)
-            if (rowText == id) {
-                console.log('Found', id)
-                document.querySelector('table').rows[i].remove()
+            if (table.rows[i].cells[1].innerText == recordId) {
+                return i - 1
             }
         }
     }

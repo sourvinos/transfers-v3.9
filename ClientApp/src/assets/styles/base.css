@@ -44,6 +44,10 @@ p.instructions {
     background-color: var(--color-language-menu) !important;
 }
 
+.mat-menu-item:hover {
+    background-color: var(--color-select-items-hover) !important;
+}
+
 .mat-icon, .item {
     color: var(--color-navigation-icon);
     outline: 0 !important;
