@@ -4,7 +4,6 @@
 @import "buttons.css";
 @import "checkbox.css";
 @import "dialogs.css";
-@import "expansion-panel.css";
 @import "headers.css";
 @import "inputs.css";
 @import "labels.css";
@@ -17,13 +16,18 @@
     box-sizing: border-box !important;
 }
 
-html, body {
+html,
+body {
     background-color: #000000;
     display: flex;
     height: 100vh;
 }
 
-body, h1, h2, h3, p {
+body,
+h1,
+h2,
+h3,
+p {
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -48,7 +52,8 @@ p.instructions {
     background-color: var(--color-select-items-hover) !important;
 }
 
-.mat-icon, .item {
+.mat-icon,
+.item {
     color: var(--color-navigation-icon);
     outline: 0 !important;
 }

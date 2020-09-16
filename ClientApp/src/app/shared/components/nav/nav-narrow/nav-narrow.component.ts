@@ -29,7 +29,6 @@ export class NavNarrowComponent {
 
     @HostListener('window:resize', ['$event']) onResize() {
         this.isScreenNarrow = this.getScreenWidth()
-        this.theme = this.getTheme()
     }
 
     ngOnInit() {
