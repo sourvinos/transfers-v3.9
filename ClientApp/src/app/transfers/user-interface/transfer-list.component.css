@@ -81,6 +81,8 @@
     background-color: var(--color-summary-block-background) !important;
     border: 0.0625rem dotted var(--color-summary-block-border) !important;
     box-shadow: none;
+    display: flex;
+    flex-direction: column;
     flex: 1;
     height: auto;
     margin-right: 0.125rem;
@@ -90,9 +92,14 @@
 }
 
 .summaryHeader {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
-    padding: 0.1rem 1.6rem 0 0.4rem;
+    padding: 0.5rem;
+}
+
+.summaryContent {
+    margin-bottom: 1.8rem;
+    padding: 0 1.5rem;
 }
 
 .summaryBlock header {
@@ -123,7 +130,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 13rem;
 }
 
 .summaryBlock .item .total {
@@ -167,6 +173,10 @@
     color: var(--color-sum-persons-numbers);
     font-size: var(--font-size-sum);
     font-weight: var(--font-weight-sum-persons);
+}
+
+.scrollable::-webkit-scrollbar-track {
+    margin-top: 1rem;
 }
 
 
