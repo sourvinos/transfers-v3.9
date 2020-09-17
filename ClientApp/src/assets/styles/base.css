@@ -10,24 +10,20 @@
 @import "loader.css";
 @import "scrollable.css";
 @import "select.css";
+@import "variables.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
 * {
     box-sizing: border-box !important;
 }
 
-html,
-body {
+html, body {
     background-color: #000000;
     display: flex;
     height: 100vh;
 }
 
-body,
-h1,
-h2,
-h3,
-p {
+body, h1, h2, h3, p {
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -44,16 +40,16 @@ p.instructions {
     width: 800px;
 }
 
-.mat-menu-content {
+.mat-menu-panel, .mat-menu-content {
     background-color: var(--color-language-menu) !important;
+    border-radius: 4px !important;
 }
 
 .mat-menu-item:hover {
-    background-color: var(--color-select-items-hover) !important;
+    background-color: var(--color-select-items-hover-background) !important;
 }
 
-.mat-icon,
-.item {
+.mat-icon, .item {
     color: var(--color-navigation-icon);
     outline: 0 !important;
 }

@@ -24,6 +24,11 @@ button.secondary {
     margin: 0 0 0 0.5rem !important;
 }
 
+button.abort {
+    background-color: var(--color-button-abort) !important;
+    margin: 0 0 0 0.5rem !important;
+}
+
 button.transparent {
     background-color: rgba(0, 0, 0, 0.001) !important;
     color: var(--color-button-transparent-text) !important;
@@ -83,6 +88,7 @@ button:not(:disabled) {
 }
 
 .mat-button-toggle-label-content {
+    line-height: 2.5rem !important;
     padding-bottom: 0.1875rem !important;
 }
 

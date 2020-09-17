@@ -1,3 +1,5 @@
+<input data-cy="custom-table-input" type="text" id="custom-table-input-{{ randomTableId }}" (keydown)="onCheckKeyboard($event)" autocomplete="off">
+
 <table id="custom-table-{{ randomTableId }}" (domChange)="onDomChange()">
     <thead>
         <tr>
@@ -5,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr @slideToLeft [@.disabled]="!isAnimationEnabled" data-cy="row" *ngFor="let record of records, index as rowIndex" (click)="onGotoRow(rowIndex + 1)" (dblclick)="sendRowToService()" id="{{ randomTableId }}-{{ rowIndex + 1 }}">
+        <tr data-cy="row" *ngFor="let record of records, index as rowIndex" (click)="onGotoRow(rowIndex + 1)" (dblclick)="sendRowToService()" id="{{ randomTableId }}-{{ rowIndex + 1 }}">
             <td *ngFor="let field of fields, index as i" [style.text-align]="justify[i]" [style.display]="visibility[i]">
                 <div *ngIf="i == 0">
                     <mat-checkbox (click)="onToggleCheckBox(rowIndex + 1)" [checked]="checked"></mat-checkbox>
@@ -25,5 +27,3 @@
         </tr>
     </tbody>
 </table>
-
-<input data-cy="custom-table-input" type="text" id="custom-table-input-{{ randomTableId }}" (keydown)="onCheckKeyboard($event)" autocomplete="off">

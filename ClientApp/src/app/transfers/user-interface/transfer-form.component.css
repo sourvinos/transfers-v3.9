@@ -8,27 +8,6 @@
     z-index: 1;
 }
 
-#header {
-    display: flex;
-    margin-bottom: 2rem;
-}
-
-#header #title {
-    align-items: center;
-    display: flex;
-    margin-left: 1rem;
-}
-
-#header #navigation {
-    align-items: center;
-    display: flex;
-    margin-left: 1rem;
-}
-
-#header #navigation button {
-    background-color: var(--color-navigation-button-form-modal) !important;
-}
-
 #group-field {
     display: grid;
     grid-gap: 1rem;
@@ -47,5 +26,9 @@
     align-items: flex-end;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1rem;
+    margin: 0 1rem;
+}
+
+#footer #buttons> :first-child {
+    margin: 0 auto 0 0 !important;
 }

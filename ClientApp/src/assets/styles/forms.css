@@ -60,7 +60,7 @@
 
 @media only screen and (min-width: 1367px) {
     #header {
-        margin: 2rem 2rem 2rem 2rem;
+        margin: 2rem;
     }
     #footer {
         margin: 2rem;
@@ -72,7 +72,7 @@
 
 @media only screen and (max-width: 1366px) {
     #header {
-        margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+        margin: 1.5rem;
     }
     #footer {
         margin: 1.5rem;

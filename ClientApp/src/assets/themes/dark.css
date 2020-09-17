@@ -3,6 +3,7 @@
     --color-button-delete: #d67474;
     --color-button-primary: #57617b;
     --color-button-secondary: #5a75bc;
+    --color-button-abort: #797979;
     --color-button-transparent-text: #fffddd;
     --color-button-transparent-background-hover: #5a5a5a;
     --color-button-tab-background: #373f46;
@@ -39,7 +40,7 @@
     --color-scrollbar: #fe9f36;
     --color-select-background-color: #373f46;
     --color-select-border: #fe9f36;
-    --color-select-items-hover: #53595f;
+    --color-select-items-hover-background: #57617b;
     --color-select-items: #b7b7b7;
     --color-select-option-color: #b7b7b7;
     --color-sidebar: #1d2733;

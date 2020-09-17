@@ -3,8 +3,7 @@
     width: 100%;
 }
 
-table,
-#table-transfer {
+table {
     flex: 1;
     table-layout: fixed;
     -webkit-border-horizontal-spacing: 0.125rem;

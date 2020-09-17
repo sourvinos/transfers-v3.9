@@ -2,6 +2,7 @@ import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiff
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { slideToLeft } from 'src/app/shared/animations/animations'
+import { Subject } from 'rxjs'
 
 @Component({
     selector: 'custom-table',
@@ -18,6 +19,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     @Input() visibility: any
     @Input() justify: any
     @Input() fields: any
+
     currentRow = 0
     tableContainer: any
     table: any
@@ -30,7 +32,8 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     sortOrder = 'desc'
     differences: IterableDiffer<any>;
     randomTableId = Math.floor(Math.random() * 1000) + 1
-    isAnimationEnabled: boolean
+    tableAnimations: true
+    ngUnsubscribe = new Subject<void>()
 
     constructor(private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
 
@@ -47,7 +50,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         const changes: IterableChanges<any> = this.differences.diff(this.records)
         if (changes) {
             this.checked = false
-            this.isAnimationEnabled = false
         }
     }
 
@@ -92,6 +94,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     }
 
     public onGotoRow(key: any) {
+        console.log(key)
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
                 this.selectRow(this.table, key)
@@ -142,7 +145,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     private initVariables() {
         this.table = document.getElementById('custom-table-' + this.randomTableId)
         this.tableContainer = this.table.parentNode.parentNode
-        this.rowHeight = this.table.rows[1] ? this.table.rows[1].offsetHeight : 0
+        this.rowHeight = 46
         this.rowCount = this.table.rows.length - 1
         document.getElementById('custom-table-input-' + this.randomTableId).style.zIndex = '-1'
         document.getElementById('custom-table-input-' + this.randomTableId).style.position = 'absolute'
@@ -177,7 +180,10 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
             if (direction === 'down') { ++this.currentRow }
         }
         document.getElementById('custom-table-input-' + this.randomTableId).focus()
-        if (this.rowHeight !== 0) { table.rows[this.currentRow].classList.add('selected') }
+        console.log(this.rowHeight)
+        if (this.rowHeight !== 0) {
+            table.rows[this.currentRow].classList.add('selected')
+        }
     }
 
     private sendRowToIndexService() {
@@ -186,7 +192,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     public sendRowToService() {
         if (document.getElementsByClassName('mat-dialog-container').length === 0) {
-            this.isAnimationEnabled = true
             this.interactionService.sendObject(this.records[this.currentRow - 1])
         } else {
             this.indexInteractionService.action(true)
@@ -202,10 +207,5 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     private unselectRow() {
         this.table.rows[this.currentRow].classList.remove('selected')
     }
-
-    sendRecord(row: any) {
-        this.interactionService.removeTableRow(row)
-    }
-
 
 }

@@ -253,7 +253,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             dateIn: n,
             remarks: o
         } of this.queryResultClone.transfers) {
-            this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m,  dateIn: n, remarks: o })
+            this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m, dateIn: n, remarks: o })
         }
     }
 

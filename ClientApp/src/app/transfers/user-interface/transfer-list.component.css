@@ -147,7 +147,7 @@
     font-family: var(--font-family-totals);
     font-weight: var(--font-weight-totals);
     justify-content: flex-end;
-    margin: 2rem 1rem 0 0;
+    margin-left: auto;
     text-align: right;
 }
 
@@ -174,7 +174,7 @@
 }
 
 .scrollable::-webkit-scrollbar-track {
-    margin-top: 0;
+    margin-top: 3rem;
 }
 
 
