@@ -1,4 +1,4 @@
-import { MessageService } from '../../shared/services/message.service'
+import { MessageService } from '../../shared/services/snackbar-message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -13,6 +13,7 @@ import { SnackbarService } from '../../shared/services/snackbar.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { environment } from 'src/environments/environment'
 import { fade, slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelService } from 'src/app/shared/services/label.service.'
 
 @Component({
     selector: 'login-form',
@@ -31,9 +32,9 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Login'
-    fieldLabels = ['login', 'userName', 'password']
-    snapshot(item: string) {
-        return 'Κωδικός'
+
+    fieldLabel(id: string) {
+        return this.labelService.getLabel(id)
     }
 
     //#endregion
@@ -43,13 +44,12 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
-        this.fieldLabels[0] = 'Login'
     }
 
     ngAfterViewInit() {

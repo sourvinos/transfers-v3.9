@@ -1,0 +1,13 @@
+[{
+        "id": "login",
+        "label": "Login"
+    },
+    {
+        "id": "username",
+        "label": "Username"
+    },
+    {
+        "id": "password",
+        "label": "Password"
+    }
+]

@@ -1,4 +1,4 @@
-import { MessageService } from 'src/app/shared/services/message.service'
+import { MessageService } from 'src/app/shared/services/snackbar-message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'

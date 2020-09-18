@@ -7,7 +7,7 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
-import { MessageService } from 'src/app/shared/services/message.service'
+import { MessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { UserService } from '../classes/user.service'

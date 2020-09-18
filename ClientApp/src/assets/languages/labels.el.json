@@ -1,0 +1,13 @@
+[{
+        "id": "login",
+        "label": "Σύνδεση"
+    },
+    {
+        "id": "username",
+        "label": "Χρήστης"
+    },
+    {
+        "id": "password",
+        "label": "Κωδικός"
+    }
+]
