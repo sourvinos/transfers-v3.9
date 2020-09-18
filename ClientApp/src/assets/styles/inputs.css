@@ -44,6 +44,7 @@ input[type=number] {
 }
 
 .mat-form-field-label {
+    font-family: var(--font-family-header) !important;
     font-size: var(--font-size-label) !important;
 }
 

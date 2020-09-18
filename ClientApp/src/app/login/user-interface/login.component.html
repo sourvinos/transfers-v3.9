@@ -2,7 +2,7 @@
 
     <div @slideFromLeft id="header">
         <div id="title">
-            <h1>Login</h1>
+            <h1>{{ snapshot('login') }}</h1>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
                 <mat-error *ngIf="Username.errors?.required">This field is required</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input [type]="hidePassword ? 'password' : 'text'" matInput placeholder="Password" formControlName="password" data-tabindex="2" id="password" [inputTabStop]="input">
+                <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="snapshot('password')" formControlName="password" data-tabindex="2" id="password" [inputTabStop]="input">
                 <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                     <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>

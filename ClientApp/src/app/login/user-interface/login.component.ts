@@ -31,6 +31,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Login'
+    fieldLabels = ['login', 'userName', 'password']
+    snapshot(item: string) {
+        return 'Κωδικός'
+    }
 
     //#endregion
 
@@ -45,6 +49,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
+        this.fieldLabels[0] = 'Login'
     }
 
     ngAfterViewInit() {
