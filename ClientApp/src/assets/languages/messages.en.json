@@ -1,103 +1,85 @@
 [
     {
-        "id": 0,
         "description": "recordCreated",
-        "message": "A new record was created."
+        "message": "A record was created."
     },
     {
-        "id": 1,
         "description": "recordUpdated",
         "message": "This record was updated."
     },
     {
-        "id": 2,
         "description": "recordDeleted",
         "message": "This record was deleted."
     },
     {
-        "id": 3,
         "description": "askConfirmationToAbortEditing",
-        "message": "If you continue, the changes will be lost."
+        "message": "If you continue, all changes will be lost."
     },
     {
-        "id": 4,
         "description": "askConfirmationToDelete",
         "message": "If you continue, this record will be lost for ever."
     },
     {
-        "id": 5,
         "description": "noRecordsSelected",
-        "message": "You have not selected any records to update."
+        "message": "You have not selected any records for update."
     },
     {
-        "id": 6,
         "description": "selectedRecordsHaveBeenProcessed",
         "message": "All selected records have been updated."
     },
     {
-        "id": 7,
         "description": "noDefaultDriverFound",
         "message": "A default driver was not found."
     },
     {
-        "id": 8,
         "description": "noContactWithServer",
         "message": "There is no contact with the server."
     },
     {
-        "id": 9,
-        "description": "resetPassword",
-        "message": "If the email you gave us exists in our database, you will be able to change yous password."
-    },
-    {
-        "id": 10,
         "description": "wrongCurrentPassword",
         "message": "The current password is wrong."
     },
     {
-        "id": 11,
         "description": "veryBad",
         "message": "Something went very wrong."
     },
     {
-        "id": 12,
         "description": "unableToRegisterUser",
         "message": "A user with these details can not be created."
     },
     {
-        "id": 13,
         "description": "accountNotConfirmed",
         "message": "This account is pending email confirmation."
     },
     {
-        "id": 14,
         "description": "unableToResetPassword",
         "message": "The password can not be reset."
     },
     {
-        "id": 15,
-        "description": "unableToChangePassword",
-        "message": "The password can not be changed."
+        "description": "formIsDirty",
+        "message": "Before you continue, all changes must be saved."
     },
     {
-        "id": 16,
         "description": "unableToSaveRecord",
         "message": "This record could not be saved."
     },
     {
-        "id": 17,
         "description": "emailSent",
         "message": "An email was sent with instructions."
     },
     {
-        "id": 18,
         "description": "passwordChanged",
-        "message": "The password was changed, you must login with the new password."
+        "message": "The password was changed, you must login again."
     },
     {
         "id": 400,
         "description": "recordIsInUse",
         "message": "This record is in use and can not be deleted."
+    },
+    {
+        "id": 401,
+        "description": "authenticationFailed",
+        "message": "Authentication failed."
     },
     {
         "id": 404,

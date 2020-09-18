@@ -13,6 +13,7 @@ import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/ser
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { UserService } from '../classes/user.service'
 import { ChangePassword } from '../classes/change-password'
+import { AccountService } from 'src/app/shared/services/account.service'
 
 @Component({
     selector: 'change-password-form',
@@ -42,7 +43,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -85,9 +86,9 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     public onSave() {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe(() => {
-            this.showSnackbar(this.messageService.passwordChanged(), 'error')
+            this.showSnackbar(this.messageService.passwordChanged(), 'info')
             this.resetForm()
-            this.onGoBack()
+            this.accountService.logout()
         }, () => {
             this.showSnackbar(this.messageService.wrongCurrentPassword(), 'error')
         })

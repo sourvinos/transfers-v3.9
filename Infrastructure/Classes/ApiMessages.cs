@@ -3,7 +3,7 @@ namespace Transfers {
     public static class ApiMessages {
 
         // Only used by the API
-        // In normal program execution they will be replaced by Angular and in the appropriate language
+        // In normal program execution they will be replaced by Angular in the appropriate language
 
         public static string RecordCreated() { return "Record created."; }
         public static string RecordUpdated() { return "Record updated."; }

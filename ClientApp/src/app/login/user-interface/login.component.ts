@@ -105,11 +105,14 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showError(error: { status: number; error: { response: { result: string | string[] } } }) {
-        if (error.status == 404) {
-            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
-        } else {
-            this.showSnackbar(this.messageService.accountNotConfirmed(), 'error')
+    private showError(error: any) {
+        switch (error.status) {
+            case 400:
+                this.showSnackbar(this.messageService.accountNotConfirmed(), 'error')
+                break
+            case 401:
+                this.showSnackbar(this.messageService.authenticationFailed(), 'error')
+                break
         }
     }
 

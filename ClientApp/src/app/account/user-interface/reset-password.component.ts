@@ -63,7 +63,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     public onSave() {
         const form = this.form.value
-        this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe((response) => {
+        this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe(() => {
             this.showSnackbar(this.messageService.passwordChanged(), 'info')
             this.router.navigate([this.url])
         }, () => {

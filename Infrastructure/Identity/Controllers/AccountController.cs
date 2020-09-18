@@ -69,11 +69,9 @@ namespace Transfers {
                     string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
                     string passwordResetLink = Url.Content($"{baseUrl}/resetPassword?email={model.Email}&token={tokenEncoded}");
                     emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
-                    // return Ok(new { response = $"resetPassword/{model.Email}/{tokenEncoded}" });
                     return Ok(new { response = ApiMessages.EmailInstructions() });
                 }
                 return Ok(new { response = ApiMessages.EmailInstructions() });
-                // return Ok(new { response = "/" });
             }
             return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }

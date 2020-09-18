@@ -28,9 +28,10 @@ export class MessageService {
     public defaultDriverExists(): string { return this.getMessage("defaultDriverExists") }
     public unableToRegisterUser(): string { return this.getMessage("unableToRegisterUser") }
     public accountNotConfirmed(): string { return this.getMessage("accountNotConfirmed") }
+    public authenticationFailed(): string { return this.getMessage("authenticationFailed") }
     public unableToResetPassword(): string { return this.getMessage("unableToResetPassword") }
     public passwordChanged(): string { return this.getMessage("passwordChanged") }
-    public unableToChangePassword(): string { return this.getMessage("unableToChangePassword") }
+    public formIsDirty(): string { return this.getMessage("formIsDirty") }
     public unableToSaveRecord(): string { return this.getMessage("unableToSaveRecord") }
 
     public getHttpErrorMessage(id: number) {
@@ -57,7 +58,7 @@ export class MessageService {
 
     private getMessage(description: string): string {
         const found = this.messages.find(element => element.description == description)
-        return found.message
+        return found ? found.message : 'This message was not found in the collection.'
     }
 
 }

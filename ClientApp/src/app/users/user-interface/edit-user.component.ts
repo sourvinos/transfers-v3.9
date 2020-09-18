@@ -70,12 +70,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public onChangePassword() {
         if (this.form.dirty) {
-            this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.router.navigate(['/users/changePassword/' + this.form.value.id])
-                this.resetForm()
-            }, () => {
-                this.showSnackbar(this.messageService.unableToChangePassword(), 'error')
-            })
+            this.showSnackbar(this.messageService.formIsDirty(), 'error')
         } else {
             this.router.navigate(['/users/changePassword/' + this.form.value.id])
         }

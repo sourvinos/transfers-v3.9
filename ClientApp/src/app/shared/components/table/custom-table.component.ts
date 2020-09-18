@@ -94,7 +94,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     }
 
     public onGotoRow(key: any) {
-        console.log(key)
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
                 this.selectRow(this.table, key)
@@ -180,7 +179,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
             if (direction === 'down') { ++this.currentRow }
         }
         document.getElementById('custom-table-input-' + this.randomTableId).focus()
-        console.log(this.rowHeight)
         if (this.rowHeight !== 0) {
             table.rows[this.currentRow].classList.add('selected')
         }

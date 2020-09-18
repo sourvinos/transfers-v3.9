@@ -1,82 +1,94 @@
 [
     {
-        "id": 0,
         "description": "recordCreated",
-        "message": "A new record was created."
+        "message": "Η εγγραφή δημιουργήθηκε!"
     },
     {
-        "id": 1,
         "description": "recordUpdated",
-        "message": "This record was updated."
+        "message": "Η εγγραφή ενημερώθηκε!"
     },
     {
-        "id": 2,
         "description": "recordDeleted",
-        "message": "This record was deleted."
+        "message": "Η εγγραφή διαγράφηκε!"
     },
     {
-        "id": 3,
         "description": "askConfirmationToAbortEditing",
-        "message": "If you continue, the changes will be lost."
+        "message": "Αν συνεχίσετε, όλες οι αλλαγές θα χαθούν!"
     },
     {
-        "id": 4,
         "description": "askConfirmationToDelete",
-        "message": "If you continue, this record will be lost for ever."
+        "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα!"
     },
     {
-        "id": 5,
         "description": "noRecordsSelected",
-        "message": "You have not selected any records to update."
+        "message": "Δεν έχετε επιλέξει εγγραφές για ενημέρωση!"
     },
     {
-        "id": 6,
         "description": "selectedRecordsHaveBeenProcessed",
-        "message": "All selected records have been updated."
+        "message": "Ολες οι επιλεγμένες εγγραφές ενημερώθηκαν!"
     },
     {
-        "id": 7,
         "description": "noDefaultDriverFound",
-        "message": "A default driver was not found."
+        "message": "Δεν βρέθηκε κάποιος προεπιλεγμένος οδηγός!"
     },
     {
-        "id": 8,
         "description": "noContactWithServer",
-        "message": "There is no contact with the server."
+        "message": "Δεν υπάρχει επικοινωνία με τη βάση δεδομένων!"
     },
     {
-        "id": 9,
-        "description": "resetPassword",
-        "message": "If the email you gave us exists in our database, you will be able to change yous password."
-    },
-    {
-        "id": 10,
         "description": "wrongCurrentPassword",
-        "message": "The current password is wrong."
+        "message": "Ο υπάρχων κωδικός είναι λάθος!"
     },
     {
-        "id": 11,
         "description": "veryBad",
-        "message": "Something went very wrong."
+        "message": "Κάτι πήγε πολύ στραβά!"
     },
     {
-        "id": 12,
         "description": "unableToRegisterUser",
-        "message": "A user with these details can not be created."
+        "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί!"
+    },
+    {
+        "description": "accountNotConfirmed",
+        "message": "Η εγγραφή αυτού του χρήστη δεν έχει ακόμη επιβεβαιωθεί!"
+    },
+    {
+        "description": "unableToResetPassword",
+        "message": "Δεν μπορεί να γίνει επαναφορά κωδικού!"
+    },
+    {
+        "description": "formIsDirty",
+        "message": "Πριν συνεχίσετε, οι αλλαγές πρέπει να αποθηκευτούν!"
+    },
+    {
+        "description": "unableToSaveRecord",
+        "message": "Η εγγραφή δεν αποθηκεύτηκε!"
+    },
+    {
+        "description": "emailSent",
+        "message": "Στάλθηκε ένα email με οδηγίες!"
+    },
+    {
+        "description": "passwordChanged",
+        "message": "Ο κωδικός άλλαξε, πρέπει να συνδεθείτε ξανά!"
     },
     {
         "id": 400,
         "description": "recordIsInUse",
-        "message": "This record is in use and can not be deleted."
+        "message": "Η εγγραφή χρησιμοποιείται και δεν μπορεί να διαγραφεί!"
+    },
+    {
+        "id": 401,
+        "description": "authenticationFailed",
+        "message": "Ο συνδυασμός χρήστη και κωδικού είναι λάθος!"
     },
     {
         "id": 404,
         "description": "recordNotFound",
-        "message": "This record can not be found."
+        "message": "Η εγγραφή δεν βρέθηκε!"
     },
     {
         "id": 409,
         "description": "defaultDriverExists",
-        "message": "There is already a default driver."
+        "message": "Υπάρχει ήδη ένας προεπιλεγμένος οδηγός!"
     }
 ]
