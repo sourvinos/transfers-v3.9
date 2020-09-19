@@ -32,10 +32,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Login'
-
-    fieldLabel(id: string) {
-        return this.labelService.getLabel(id)
-    }
+    feature = 'login'
 
     //#endregion
 
@@ -60,6 +57,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public labelId(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onForgotPassword() {

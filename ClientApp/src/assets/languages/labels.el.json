@@ -1,13 +1,30 @@
-[{
-        "id": "login",
-        "label": "Σύνδεση"
-    },
+[
     {
-        "id": "username",
-        "label": "Χρήστης"
-    },
-    {
-        "id": "password",
-        "label": "Κωδικός"
+        "login": [
+            {
+                "id": "loginHeader",
+                "description": "Σύνδεση"
+            },
+            {
+                "id": "usernameLabel",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "passwordLabel",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "noRobotCheckbox",
+                "description": "Δεν είμαι ρομπότ"
+            },
+            {
+                "id": "forgotPasswordButton",
+                "description": "Ξέχασα τον κωδικό μου"
+            },
+            {
+                "id": "loginButton",
+                "description": "Σύνδεση"
+            }
+        ]
     }
 ]

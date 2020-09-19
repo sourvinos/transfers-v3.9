@@ -70,10 +70,6 @@ button.mat-mini-fab {
     outline: 0 !important;
 }
 
-button::first-letter {
-    text-decoration: underline;
-}
-
 button:disabled {
     cursor: not-allowed !important;
     pointer-events: all !important;

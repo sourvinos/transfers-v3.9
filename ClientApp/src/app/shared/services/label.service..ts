@@ -22,9 +22,11 @@ export class LabelService {
         return promise
     }
 
-    getLabel(id: any) {
-        const country = this.labels.find((label: { id: any }) => label.id === id)
-        return country.label || 'Unknown'
+    getLabelDescription(feature: string, id: string) {
+        const f = this.labels.find((element: { feature: string }) => element.feature == feature)
+        const p = f.labels.find((element: { id: string }) => { element.id == id })
+        return p.description
     }
 
 }
+

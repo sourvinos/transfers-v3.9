@@ -1,10 +1,9 @@
 [
     {
-        "feature": "login",
-        "labels": [
+        "login": [
             {
                 "id": "loginHeader",
-                "description": "Login"
+                "description": "Anmeldung"
             },
             {
                 "id": "usernameLabel",
@@ -12,28 +11,19 @@
             },
             {
                 "id": "passwordLabel",
-                "description": "Password"
+                "description": "Passwort"
             },
             {
                 "id": "noRobotCheckbox",
-                "description": "I am not a robot"
+                "description": "Ich bin kein Roboter"
             },
             {
                 "id": "forgotPasswordButton",
-                "description": "Forgot password"
+                "description": "Passwort vergessen"
             },
             {
                 "id": "loginButton",
-                "description": "Login"
-            }
-        ]
-    },
-    {
-        "feature": "customers",
-        "labels": [
-            {
-                "id": "customerDescription",
-                "description": "Description"
+                "description": "Anmeldung"
             }
         ]
     }
