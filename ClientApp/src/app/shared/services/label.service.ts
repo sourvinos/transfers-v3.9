@@ -13,7 +13,7 @@ export class LabelMessageService {
 
     public getLabelMessages() {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/labels.' + localStorage.getItem('language') + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/labels/labels.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
                     this.labels = response
                     resolve(this.labels)

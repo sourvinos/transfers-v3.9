@@ -13,7 +13,7 @@ import { SnackbarService } from '../../shared/services/snackbar.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { environment } from 'src/environments/environment'
 import { fade, slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service.'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'login-form',

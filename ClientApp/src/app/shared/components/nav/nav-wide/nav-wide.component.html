@@ -9,14 +9,14 @@
     <div id="menuWide">
         <ul @fade id="menuItems">
             <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">{{ getLabel('customers') }}</li>
-            <li data-cy="destinations" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
-            <li data-cy="drivers" [routerLink]="['/drivers']" routerLinkActive="active">{{ menuItems[2] }}</li>
-            <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">{{ menuItems[3] }}</li>
-            <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">{{ menuItems[4] }}</li>
-            <li data-cy="routes" [routerLink]="['/routes']" routerLinkActive="active">{{ menuItems[5] }}</li>
-            <li data-cy="transfers" [routerLink]="['/transfers']" routerLinkActive="active">{{ menuItems[6] }}</li>
-            <li data-cy="users" [routerLink]="['/users']" routerLinkActive="active">{{ menuItems[7] }}</li>
-            <li data-cy="logout" (click)="onLogout()" routerLinkActive="active">{{ menuItems[8] }}</li>
+            <li data-cy="destinations" [routerLink]="['/destinations']" routerLinkActive="active">{{ getLabel('destinations') }}</li>
+            <li data-cy="drivers" [routerLink]="['/drivers']" routerLinkActive="active">{{ getLabel('drivers') }}</li>
+            <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">{{ getLabel('pickupPoints') }}</li>
+            <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">{{ getLabel('ports') }}</li>
+            <li data-cy="routes" [routerLink]="['/routes']" routerLinkActive="active">{{ getLabel('routes') }}</li>
+            <li data-cy="transfers" [routerLink]="['/transfers']" routerLinkActive="active">{{ getLabel('transfers') }}</li>
+            <li data-cy="users" [routerLink]="['/users']" routerLinkActive="active">{{ getLabel('users') }}</li>
+            <li data-cy="logout" (click)="onLogout()" routerLinkActive="active">{{ getLabel('logout') }}</li>
         </ul>
     </div>
     <div id="copyright">Created with .NET Core<br />and Angular</div>

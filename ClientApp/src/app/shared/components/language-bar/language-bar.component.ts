@@ -1,9 +1,8 @@
 import { Component } from '@angular/core'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
-import { InteractionService } from '../../services/interaction.service'
 import { SnackbarMessageService } from '../../services/snackbar-message.service'
-import { LabelMessageService } from '../../services/label.service.'
+import { LabelMessageService } from '../../services/label.service'
 import { MenuItemService } from '../../services/menu-items.service'
 
 @Component({
@@ -14,7 +13,7 @@ import { MenuItemService } from '../../services/menu-items.service'
 
 export class LanguageBarComponent {
 
-    constructor(private interactionService: InteractionService, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private menuItemService:MenuItemService) {
+    constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private menuItemService: MenuItemService) {
         this.matIconRegistry
             .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
             .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
@@ -22,15 +21,15 @@ export class LanguageBarComponent {
             .addSvgIcon('cz', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cz.svg'))
     }
 
-    onGetLanguage() {
+    public onGetLanguage() {
         return localStorage.getItem("language") == null ? this.onSaveLanguage('en') : localStorage.getItem("language")
     }
 
-    onSaveLanguage(language: string) {
+    public onSaveLanguage(language: string) {
         localStorage.setItem('language', language)
+        this.menuItemService.getMenuItems()
         this.messageService.getSnackbarMessages()
         this.labelService.getLabelMessages()
-        this.menuItemService.getMenuItems()
         return language
     }
 

@@ -1,0 +1,293 @@
+[{
+        "feature": "loginForm",
+        "labels": [{
+                "id": "header",
+                "description": "Σύνδεση"
+            },
+            {
+                "id": "usernameLabel",
+                "description": "Χρήστης"
+            },
+            {
+                "id": "passwordLabel",
+                "description": "Κωδικός"
+            },
+            {
+                "id": "noRobotCheckbox",
+                "description": "Δεν είμαι ρομπότ"
+            },
+            {
+                "id": "forgotPasswordButton",
+                "description": "Ξέχασα τον κωδικό μου"
+            },
+            {
+                "id": "loginButton",
+                "description": "Σύνδεση"
+            }
+        ]
+    },
+    {
+        "feature": "customerList",
+        "labels": [{
+                "id": "header",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζήτηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Αναζήτηση με βάση την επωνυμία"
+            },
+            {
+                "id": "newButton",
+                "description": "Νέος"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Επωνυμία"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
+            }
+        ]
+    },
+    {
+        "feature": "customerForm",
+        "labels": [{
+                "id": "header",
+                "description": "Πελάτης"
+            },
+            {
+                "id": "description",
+                "description": "Επωνυμία"
+            },
+            {
+                "id": "profession",
+                "description": "Δραστηριότητα"
+            },
+            {
+                "id": "address",
+                "description": "Διεύθυνση"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "personInCharge",
+                "description": "Υπεύθυνος επικοινωνίας"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Διαγραφή"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθήκευση"
+            }
+        ]
+    },
+    {
+        "feature": "destinationList",
+        "labels": [{
+                "id": "header",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζήτηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Αναζήτηση με βάση την περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "Νέος"
+            },
+            {
+                "id": "headerAbbreviation",
+                "description": "Συντομογραφία"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Περιγραφή"
+            }
+        ]
+    },
+    {
+        "feature": "destinationForm",
+        "labels": [{
+                "id": "header",
+                "description": "Προορισμός"
+            },
+            {
+                "id": "abbreviation",
+                "description": "Συντομογραφία"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Διαγραφή"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθήκευση"
+            }
+        ]
+    },
+    {
+        "feature": "driverList",
+        "labels": [{
+                "id": "header",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζήτηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Αναζήτηση με βάση το όνομα"
+            },
+            {
+                "id": "newButton",
+                "description": "Νέος"
+            },
+            {
+                "id": "headerName",
+                "description": "Ονομα"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Τηλέφωνα"
+            }
+        ]
+    },
+    {
+        "feature": "driverForm",
+        "labels": [{
+                "id": "header",
+                "description": "Οδηγός"
+            },
+            {
+                "id": "name",
+                "description": "Ονομα"
+            },
+            {
+                "id": "phones",
+                "description": "Τηλέφωνα"
+            },
+            {
+                "id": "isDefault",
+                "description": "Εξ ορισμού"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Διαγραφή"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθήκευση"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointWrapper",
+        "labels": [{
+                "id": "header",
+                "description": "Σημεία παραλαβής"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "searchHint",
+                "description": "Επιλέξτε από τη λίστα"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointList",
+        "labels": [{
+                "id": "header",
+                "description": "Σημεία παραλαβής διαδρομής: "
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζήτηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Αναζήτηση με βάση την περιγραφή"
+            },
+            {
+                "id": "newButton",
+                "description": "Νέο"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointForm",
+        "labels": [{
+                "id": "header",
+                "description": "Σημείο παραλαβής"
+            },
+            {
+                "id": "route",
+                "description": "Διαδρομή"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφή"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Ακριβές σημείο"
+            },
+            {
+                "id": "time",
+                "description": "Ωρα"
+            },
+            {
+                "id": "isActive",
+                "description": "Ενεργό"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Διαγραφή"
+            },
+            {
+                "id": "saveButton",
+                "description": "Αποθήκευση"
+            }
+        ]
+    }
+]

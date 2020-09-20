@@ -14,7 +14,7 @@ export class SnackbarMessageService {
 
     public getSnackbarMessages() {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/snackbar.' + localStorage.getItem('language') + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/snackbar/snackbar.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
                     this.messages = response
                     resolve(this.messages)

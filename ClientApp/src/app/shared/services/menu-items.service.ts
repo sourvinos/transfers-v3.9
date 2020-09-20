@@ -13,10 +13,9 @@ export class MenuItemService {
 
     getMenuItems() {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/menu.' + localStorage.getItem('language') + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/menu/menu.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
                     this.labels = response
-                    console.log(this.labels)
                     resolve(this.labels)
                 })
         })

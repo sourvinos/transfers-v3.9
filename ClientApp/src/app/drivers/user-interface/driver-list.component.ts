@@ -12,6 +12,7 @@ import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Driver } from '../classes/driver'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'driver-list',
@@ -34,12 +35,13 @@ export class DriverListComponent implements OnInit, OnDestroy {
     newUrl = this.baseUrl + '/new'
     windowTitle = 'Drivers'
     localStorageSearchTerm = 'searchTermDriver'
+    feature = 'driverList'
 
     //#endregion
 
     //#region   
 
-    headers = ['S', 'Id', 'Name', 'Phones', '']
+    headers = ['S', 'Id', this.getLabel('headerName'), this.getLabel('headerPhones'), '']
     widths = ['40px', '0px', '50%', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center']
@@ -47,7 +49,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -64,6 +66,10 @@ export class DriverListComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onFilter(query: string) {

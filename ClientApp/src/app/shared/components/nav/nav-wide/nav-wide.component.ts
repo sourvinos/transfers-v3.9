@@ -2,8 +2,6 @@ import { Component, HostListener } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { takeUntil } from 'rxjs/operators'
 import { MenuItemService } from 'src/app/shared/services/menu-items.service'
 import { fade } from 'src/app/shared/animations/animations'
 
@@ -28,7 +26,7 @@ export class NavWideComponent {
     isScreenWide: boolean
     feature = 'menu'
 
-    constructor(private accountService: AccountService, private menuItemsService: MenuItemService, private interactionService: InteractionService) {
+    constructor(private accountService: AccountService, private menuItemsService: MenuItemService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -37,29 +35,24 @@ export class NavWideComponent {
     }
 
     ngOnInit() {
-        this.loginStatus = this.accountService.isLoggedIn
+        this.getLoginStatus()
         this.updateNavigation()
-        this.subscribeToInteractionService()
     }
 
-    onLogout() {
+    public onLogout() {
         this.accountService.logout()
     }
 
     public getLabel(id: string) {
-        return this.menuItemsService.getMessageDescription(this.feature,id)
+        return this.menuItemsService.getMessageDescription(this.feature, id)
     }
 
+    private getLoginStatus() {
+        this.loginStatus = this.accountService.isLoggedIn
+    }
+ 
     private getScreenWidth() {
         return document.getElementById("wrapper").clientWidth > 1366
-    }
-
-    private subscribeToInteractionService() {
-        // this.interactionService.language.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
-        //     this.language = result
-        //     this.menuItems = []
-        //     this.updateNavigation()
-        // })
     }
 
     private updateNavigation() {

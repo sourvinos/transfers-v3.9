@@ -14,6 +14,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Destination } from './../classes/destination'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'destination-form',
@@ -33,10 +34,11 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     url = '/destinations'
     windowTitle = 'Destination'
     environment: boolean = environment.production
+    feature = 'destinationForm'
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -71,6 +73,10 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
         } else {
             return true
         }
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onDelete() {

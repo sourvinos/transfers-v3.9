@@ -12,6 +12,7 @@ import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Destination } from '../classes/destination'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'destination-list',
@@ -34,12 +35,13 @@ export class DestinationListComponent implements OnInit, OnDestroy {
     newUrl = this.baseUrl + '/new'
     windowTitle = 'Destinations'
     localStorageSearchTerm = 'searchTermDestination'
+    feature = 'destinationList'
 
     //#endregion
 
     //#region
 
-    headers = ['S', 'Id', 'Abbreviation', 'Description', '']
+    headers = ['S', 'Id', this.getLabel('headerAbbreviation'), this.getLabel('headerDescription'), '']
     widths = ['40px', '0px', '150px', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']
@@ -47,7 +49,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -64,6 +66,10 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onFilter(query: string) {

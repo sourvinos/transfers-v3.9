@@ -8,13 +8,11 @@ export class InteractionService {
     _record = new Subject<string[]>()
     _checked = new Subject<number>()
     _refreshList = new Subject<any>()
-    _language = new Subject<string>()
     _tableRow = new Subject()
 
     record = this._record.asObservable()
     checked = this._checked.asObservable()
     refreshList = this._refreshList.asObservable()
-    language = this._language.asObservable()
     tableRow = this._tableRow.asObservable()
 
     /**
@@ -67,20 +65,6 @@ export class InteractionService {
      */
     setCheckedTotalPersons(total: number) {
         this._checked.next(total)
-    }
-
-    /** 
-     * Caller(s):
-     *  language-bar.component.ts
-     * 
-     * Subscriber(s):
-     *  nav-wide.component.ts
-     * 
-     * Description:
-     *  The caller(s) send the language so that the subscriber(s) can display the appropriate messages
-     */
-    updateLanguage(message: string) {
-        this._language.next(message)
     }
 
     /**

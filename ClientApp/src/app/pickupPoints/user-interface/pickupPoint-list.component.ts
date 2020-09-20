@@ -14,6 +14,7 @@ import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PickupPoint } from '../classes/pickupPoint'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'pickuppoint-list',
@@ -36,6 +37,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     newUrl = this.baseUrl + '/pickupPoint/new'
     windowTitle = 'Pickup points'
     localStorageSearchTerm = 'searchTermPickupPoint'
+    feature = 'pickupPointList'
 
     //#endregion
 
@@ -55,7 +57,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageService: SnackbarMessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private location: Location, private messageService: SnackbarMessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
@@ -75,6 +77,10 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onFilter(query: string) {

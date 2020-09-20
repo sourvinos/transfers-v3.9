@@ -14,7 +14,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Customer } from '../classes/customer'
 import { environment } from 'src/environments/environment'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service.'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'customer-form',

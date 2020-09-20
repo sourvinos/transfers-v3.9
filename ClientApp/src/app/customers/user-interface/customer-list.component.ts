@@ -12,7 +12,7 @@ import { SnackbarService } from '../../shared/services/snackbar.service'
 import { takeUntil } from 'rxjs/operators'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service.'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'customer-list',
@@ -41,7 +41,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#region
 
-    headers = ['S', 'Id', this.getlabel('headerDescription'), this.getlabel('headerPhones'), this.getlabel('headerEmail'), '']
+    headers = ['S', 'Id', this.getLabel('headerDescription'), this.getLabel('headerPhones'), this.getLabel('headerEmail'), '']
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
@@ -68,7 +68,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public getlabel(id: string) {
+    public getLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 

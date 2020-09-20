@@ -1,0 +1,293 @@
+[{
+        "feature": "loginForm",
+        "labels": [{
+                "id": "header",
+                "description": "Login"
+            },
+            {
+                "id": "usernameLabel",
+                "description": "Username"
+            },
+            {
+                "id": "passwordLabel",
+                "description": "Password"
+            },
+            {
+                "id": "noRobotCheckbox",
+                "description": "I am not a robot"
+            },
+            {
+                "id": "forgotPasswordButton",
+                "description": "Forgot password"
+            },
+            {
+                "id": "loginButton",
+                "description": "Login"
+            }
+        ]
+    },
+    {
+        "feature": "customerList",
+        "labels": [{
+                "id": "header",
+                "description": "Customers"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by description"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Phones"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
+            }
+        ]
+    },
+    {
+        "feature": "customerForm",
+        "labels": [{
+                "id": "header",
+                "description": "Customer"
+            },
+            {
+                "id": "description",
+                "description": "Νame"
+            },
+            {
+                "id": "profession",
+                "description": "Profession"
+            },
+            {
+                "id": "address",
+                "description": "Address"
+            },
+            {
+                "id": "phones",
+                "description": "Phones"
+            },
+            {
+                "id": "personInCharge",
+                "description": "Person in charge"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "destinationList",
+        "labels": [{
+                "id": "header",
+                "description": "Destinations"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by description"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            },
+            {
+                "id": "headerAbbreviation",
+                "description": "Abbreviation"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
+            }
+        ]
+    },
+    {
+        "feature": "destinationForm",
+        "labels": [{
+                "id": "header",
+                "description": "Destination"
+            },
+            {
+                "id": "abbreviation",
+                "description": "Abbreviation"
+            },
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "driverList",
+        "labels": [{
+                "id": "header",
+                "description": "Drivers"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by name"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            },
+            {
+                "id": "headerName",
+                "description": "Name"
+            },
+            {
+                "id": "headerPhones",
+                "description": "Phones"
+            }
+        ]
+    },
+    {
+        "feature": "driverForm",
+        "labels": [{
+                "id": "header",
+                "description": "Driver"
+            },
+            {
+                "id": "name",
+                "description": "Name"
+            },
+            {
+                "id": "phones",
+                "description": "Phones"
+            },
+            {
+                "id": "isDefault",
+                "description": "Default"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointWrapper",
+        "labels": [{
+                "id": "header",
+                "description": "Pickup points"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Routes"
+            },
+            {
+                "id": "searchHint",
+                "description": "Select from the list"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointList",
+        "labels": [{
+                "id": "header",
+                "description": "Pickup points for route: "
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by description"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            }
+        ]
+    },
+    {
+        "feature": "pickupPointForm",
+        "labels": [{
+                "id": "header",
+                "description": "Pickup point"
+            },
+            {
+                "id": "route",
+                "description": "Route"
+            },
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Exact point"
+            },
+            {
+                "id": "time",
+                "description": "Time"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    }
+]

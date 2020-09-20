@@ -17,6 +17,7 @@ import { PickupPoint } from '../classes/pickupPoint'
 import { PickupPointService } from '../classes/pickupPoint.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'pickuppoint-form',
@@ -36,6 +37,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     url = '../../'
     windowTitle = 'Pickup point'
     environment: boolean = environment.production
+    feature = 'pickupPointForm'
 
     //#endregion
 
@@ -45,7 +47,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
@@ -84,6 +86,10 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         } else {
             return true
         }
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onDelete() {
