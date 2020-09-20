@@ -1,38 +1,43 @@
 [
     {
-        "id": "1",
-        "message": "Customers"
-    },
-    {
-        "id": "2",
-        "message": "Destinations"
-    },
-    {
-        "id": "3",
-        "message": "Drivers"
-    },
-    {
-        "id": "4",
-        "message": "Pickup points"
-    },
-    {
-        "id": "5",
-        "message": "Ports"
-    },
-    {
-        "id": "6",
-        "message": "Routes"
-    },
-    {
-        "id": "7",
-        "message": "Transfers"
-    },
-    {
-        "id": "8",
-        "message": "Users"
-    },
-    {
-        "id": "9",
-        "message": "Logout"
+        "feature": "menu",
+        "labels": [
+            {
+                "id": "customers",
+                "description": "Customers"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "drivers",
+                "description": "Drivers"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Pickup points"
+            },
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "routes",
+                "description": "Routes"
+            },
+            {
+                "id": "transfers",
+                "description": "Transfers"
+            },
+            {
+                "id": "users",
+                "description": "Users"
+            },
+            {
+                "id": "logout",
+                "description": "Logout"
+            }
+        ]
     }
 ]

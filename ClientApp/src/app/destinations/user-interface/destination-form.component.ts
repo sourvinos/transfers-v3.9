@@ -9,7 +9,7 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Destination } from './../classes/destination'
 import { environment } from 'src/environments/environment'
@@ -36,7 +36,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })

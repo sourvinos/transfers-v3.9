@@ -2,8 +2,9 @@ import { Component } from '@angular/core'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
 import { InteractionService } from '../../services/interaction.service'
-import { MessageService } from '../../services/snackbar-message.service'
-import { LabelService } from '../../services/label.service.'
+import { SnackbarMessageService } from '../../services/snackbar-message.service'
+import { LabelMessageService } from '../../services/label.service.'
+import { MenuItemService } from '../../services/menu-items.service'
 
 @Component({
     selector: 'language-bar',
@@ -13,7 +14,7 @@ import { LabelService } from '../../services/label.service.'
 
 export class LanguageBarComponent {
 
-    constructor(private interactionService: InteractionService, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private labelService: LabelService, private messageService: MessageService) {
+    constructor(private interactionService: InteractionService, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private menuItemService:MenuItemService) {
         this.matIconRegistry
             .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
             .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
@@ -27,9 +28,9 @@ export class LanguageBarComponent {
 
     onSaveLanguage(language: string) {
         localStorage.setItem('language', language)
-        this.interactionService.updateLanguage(language)
-        this.messageService.getMessagesFromJson(language)
-        this.labelService.getLabels()
+        this.messageService.getSnackbarMessages()
+        this.labelService.getLabelMessages()
+        this.menuItemService.getMenuItems()
         return language
     }
 

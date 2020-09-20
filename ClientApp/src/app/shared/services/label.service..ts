@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http'
 
 @Injectable({ providedIn: 'root' })
 
-export class LabelService {
+export class LabelMessageService {
 
     labels: any = []
 
     constructor(private httpClient: HttpClient) {
-        this.getLabels()
+        this.getLabelMessages()
     }
 
-    getLabels() {
+    public getLabelMessages() {
         const promise = new Promise((resolve) => {
             this.httpClient.get('assets/languages/labels.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
@@ -22,10 +22,18 @@ export class LabelService {
         return promise
     }
 
-    getLabelDescription(feature: string, id: string) {
-        const f = this.labels.find((element: { feature: string }) => element.feature == feature)
-        const p = f.labels.find((element: { id: string }) => { element.id == id })
-        return p.description
+    public getLabelDescription(feature: string, id: string) {
+        let returnValue = ''
+        this.labels.filter((f: { feature: string; labels: any[] }) => {
+            if (f.feature === feature) {
+                f.labels.filter(l => {
+                    if (l.id == id) {
+                        returnValue = l.description
+                    }
+                })
+            }
+        })
+        return returnValue
     }
 
 }

@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { RegisterUser } from '../../account/classes/register-user'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
@@ -43,7 +43,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()

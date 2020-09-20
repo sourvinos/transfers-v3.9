@@ -1,4 +1,4 @@
-import { MessageService } from '../../shared/services/snackbar-message.service'
+import { SnackbarMessageService } from '../../shared/services/snackbar-message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -13,7 +13,7 @@ import { SnackbarService } from '../../shared/services/snackbar.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { environment } from 'src/environments/environment'
 import { fade, slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelService } from 'src/app/shared/services/label.service.'
+import { LabelMessageService } from 'src/app/shared/services/label.service.'
 
 @Component({
     selector: 'login-form',
@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Login'
-    feature = 'login'
+    feature = 'loginForm'
 
     //#endregion
 
@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private snackbarMessageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -59,7 +59,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.unlisten()
     }
 
-    public labelId(id: string) {
+    public getLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 
@@ -114,10 +114,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private showError(error: any) {
         switch (error.status) {
             case 400:
-                this.showSnackbar(this.messageService.accountNotConfirmed(), 'error')
+                this.showSnackbar(this.snackbarMessageService.accountNotConfirmed(), 'error')
                 break
             case 401:
-                this.showSnackbar(this.messageService.authenticationFailed(), 'error')
+                this.showSnackbar(this.snackbarMessageService.authenticationFailed(), 'error')
                 break
         }
     }

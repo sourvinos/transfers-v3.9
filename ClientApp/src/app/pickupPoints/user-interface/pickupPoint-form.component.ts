@@ -10,7 +10,7 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { DialogService } from '../../shared/services/dialog.service'
 import { PickupPoint } from '../classes/pickupPoint'
@@ -45,7 +45,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)

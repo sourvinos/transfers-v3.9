@@ -5,13 +5,14 @@ import { Subject } from 'rxjs'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { ListResolved } from '../../shared/classes/list-resolved'
 import { Customer } from '../classes/customer'
 import { SnackbarService } from '../../shared/services/snackbar.service'
 import { takeUntil } from 'rxjs/operators'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service.'
 
 @Component({
     selector: 'customer-list',
@@ -34,12 +35,13 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     newUrl = this.baseUrl + '/new'
     windowTitle = 'Customers'
     localStorageSearchTerm = 'searchTermCustomer'
+    feature = 'customerList'
 
     //#endregion
 
     //#region
 
-    headers = ['S', 'Id', 'Description', 'Phones', 'Email', '']
+    headers = ['S', 'Id', this.getlabel('headerDescription'), this.getlabel('headerPhones'), this.getlabel('headerEmail'), '']
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
@@ -47,7 +49,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -64,6 +66,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getlabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onFilter(query: string) {

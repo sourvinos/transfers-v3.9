@@ -17,7 +17,7 @@ import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Transfer } from '../classes/transfer'
 import { TransferService } from '../classes/transfer.service'
@@ -57,7 +57,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private messageService: MessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)

@@ -10,7 +10,7 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/snackbar-message.service'
+import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { TransferFlat } from '../classes/transfer-flat'
 import { TransferPdfService } from '../classes/transfer-pdf.service'
@@ -75,7 +75,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: SnackbarMessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private titleService: Title) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {

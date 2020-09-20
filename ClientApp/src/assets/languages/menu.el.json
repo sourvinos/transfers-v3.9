@@ -1,37 +1,43 @@
-[{
-        "id": "1",
-        "message": "Πελάτες"
-    },
+[
     {
-        "id": "2",
-        "message": "Προορισμοί"
-    },
-    {
-        "id": "3",
-        "message": "Οδηγοί"
-    },
-    {
-        "id": "4",
-        "message": "Σημεία παραλαβής"
-    },
-    {
-        "id": "5",
-        "message": "Λιμάνια"
-    },
-    {
-        "id": "6",
-        "message": "Διαδρομές"
-    },
-    {
-        "id": "7",
-        "message": "Μεταφορές"
-    },
-    {
-        "id": "8",
-        "message": "Χρήστες"
-    },
-    {
-        "id": "9",
-        "message": "Αποσύνδεση"
+        "feature": "menu",
+        "labels": [
+            {
+                "id": "customers",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "drivers",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Σημεία παραλαβής"
+            },
+            {
+                "id": "ports",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "routes",
+                "description": "Διαδρομές"
+            },
+            {
+                "id": "transfers",
+                "description": "Μεταφορές"
+            },
+            {
+                "id": "users",
+                "description": "Χρήστες"
+            },
+            {
+                "id": "logout",
+                "description": "Εξοδος"
+            }
+        ]
     }
 ]

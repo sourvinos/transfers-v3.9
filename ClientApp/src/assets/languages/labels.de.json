@@ -1,7 +1,6 @@
-[
-    {
-        "login": [
-            {
+[{
+        "feature": "login",
+        "labels": [{
                 "id": "loginHeader",
                 "description": "Anmeldung"
             },
@@ -26,5 +25,12 @@
                 "description": "Anmeldung"
             }
         ]
+    },
+    {
+        "feature": "customers",
+        "labels": [{
+            "id": "customerDescription",
+            "description": "Description"
+        }]
     }
 ]

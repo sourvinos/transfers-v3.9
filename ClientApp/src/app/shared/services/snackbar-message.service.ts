@@ -1,64 +1,68 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Message } from '../classes/message'
 
 @Injectable({ providedIn: 'root' })
 
-export class MessageService {
+export class SnackbarMessageService {
 
-    private messages: Message[] = []
+    messages: any = []
+    feature = 'snackbarMessages'
 
     constructor(private httpClient: HttpClient) {
-        this.getMessagesFromJson(localStorage.getItem('language') || 'en')
+        this.getSnackbarMessages()
     }
 
-    public recordCreated(): string { return this.getMessage("recordCreated") }
-    public recordUpdated(): string { return this.getMessage("recordUpdated") }
-    public recordDeleted(): string { return this.getMessage("recordDeleted") }
-    public askConfirmationToAbortEditing(): string { return this.getMessage("askConfirmationToAbortEditing") }
-    public askConfirmationToDelete(): string { return this.getMessage("askConfirmationToDelete") }
-    public noRecordsSelected(): string { return this.getMessage("noRecordsSelected") }
-    public selectedRecordsHaveBeenProcessed(): string { return this.getMessage("selectedRecordsHaveBeenProcessed") }
-    public noDefaultDriverFound(): string { return this.getMessage("noDefaultDriverFound") }
-    public noContactWithServer(): string { return this.getMessage("noContactWithServer") }
-    public emailSent(): string { return this.getMessage("emailSent") }
-    public wrongCurrentPassword(): string { return this.getMessage("wrongCurrentPassword") }
-    public recordIsInUse(): string { return this.getMessage("recordIsInUse") }
-    public recordNotFound(): string { return this.getMessage("recordNotFound") }
-    public defaultDriverExists(): string { return this.getMessage("defaultDriverExists") }
-    public unableToRegisterUser(): string { return this.getMessage("unableToRegisterUser") }
-    public accountNotConfirmed(): string { return this.getMessage("accountNotConfirmed") }
-    public authenticationFailed(): string { return this.getMessage("authenticationFailed") }
-    public unableToResetPassword(): string { return this.getMessage("unableToResetPassword") }
-    public passwordChanged(): string { return this.getMessage("passwordChanged") }
-    public formIsDirty(): string { return this.getMessage("formIsDirty") }
-    public unableToSaveRecord(): string { return this.getMessage("unableToSaveRecord") }
-
-    public getHttpErrorMessage(id: number) {
-        const message = this.messages.filter(x => x.id == id)
-        return message ? message[0].message : this.getMessage("veryBad")
-    }
-
-    public getMessagesFromJson(language: string) {
+    public getSnackbarMessages() {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/messages.' + language + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/snackbar.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
-                    this.updateMessageArray(response)
+                    this.messages = response
                     resolve(this.messages)
                 })
         })
         return promise
     }
 
-    private updateMessageArray(response: any) {
-        response.forEach((element: Message) => {
-            this.messages.push(element)
+    public getMessageDescription(feature: string, id: string) {
+        let returnValue = ''
+        console.log(feature, id)
+        this.messages.filter((f: { feature: string; labels: any[] }) => {
+            if (f.feature === feature) {
+                f.labels.filter(l => {
+                    if (l.id == id) {
+                        returnValue = l.description
+                    }
+                })
+            }
         })
+        return returnValue
     }
 
-    private getMessage(description: string): string {
-        const found = this.messages.find(element => element.description == description)
-        return found ? found.message : 'This message was not found in the collection.'
+    public recordCreated(): string { return this.getMessageDescription(this.feature, "recordCreated") }
+    public recordUpdated(): string { return this.getMessageDescription(this.feature, "recordUpdated") }
+    public recordDeleted(): string { return this.getMessageDescription(this.feature, "recordDeleted") }
+    public askConfirmationToAbortEditing(): string { return this.getMessageDescription(this.feature, "askConfirmationToAbortEditing") }
+    public askConfirmationToDelete(): string { return this.getMessageDescription(this.feature, "askConfirmationToDelete") }
+    public noRecordsSelected(): string { return this.getMessageDescription(this.feature, "noRecordsSelected") }
+    public selectedRecordsHaveBeenProcessed(): string { return this.getMessageDescription(this.feature, "selectedRecordsHaveBeenProcessed") }
+    public noDefaultDriverFound(): string { return this.getMessageDescription(this.feature, "noDefaultDriverFound") }
+    public noContactWithServer(): string { return this.getMessageDescription(this.feature, "noContactWithServer") }
+    public emailSent(): string { return this.getMessageDescription(this.feature, "emailSent") }
+    public wrongCurrentPassword(): string { return this.getMessageDescription(this.feature, "wrongCurrentPassword") }
+    public recordIsInUse(): string { return this.getMessageDescription(this.feature, "recordIsInUse") }
+    public recordNotFound(): string { return this.getMessageDescription(this.feature, "recordNotFound") }
+    public defaultDriverExists(): string { return this.getMessageDescription(this.feature, "defaultDriverExists") }
+    public unableToRegisterUser(): string { return this.getMessageDescription(this.feature, "unableToRegisterUser") }
+    public accountNotConfirmed(): string { return this.getMessageDescription(this.feature, "accountNotConfirmed") }
+    public authenticationFailed(): string { return this.getMessageDescription(this.feature, "authenticationFailed") }
+    public unableToResetPassword(): string { return this.getMessageDescription(this.feature, "unableToResetPassword") }
+    public passwordChanged(): string { return this.getMessageDescription(this.feature, "passwordChanged") }
+    public formIsDirty(): string { return this.getMessageDescription(this.feature, "formIsDirty") }
+    public unableToSaveRecord(): string { return this.getMessageDescription(this.feature, "unableToSaveRecord") }
+
+    public getHttpErrorMessage(id: number) {
+        const message = this.messages.filter(x => x.id == id)
+        return message ? message[0].message : this.getMessageDescription(this.feature, "veryBad")
     }
 
 }

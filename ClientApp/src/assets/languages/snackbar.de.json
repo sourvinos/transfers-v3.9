@@ -1,0 +1,95 @@
+[
+    {
+        "feature": "snackbarMessages",
+        "labels": [
+            {
+                "id": "recordCreated",
+                "description": "(D) A record was created."
+            },
+            {
+                "id": "recordUpdated",
+                "description": "(D) This record was updated."
+            },
+            {
+                "id": "recordDeleted",
+                "description": "(D) This record was deleted."
+            },
+            {
+                "id": "askConfirmationToAbortEditing",
+                "description": "(D) If you continue, all changes will be lost."
+            },
+            {
+                "id": "askConfirmationToDelete",
+                "description": "(D) If you continue, this record will be lost for ever."
+            },
+            {
+                "id": "noRecordsSelected",
+                "description": "(D) You have not selected any records for update."
+            },
+            {
+                "id": "noDefaultDriverFound",
+                "description": "(D) A default driver was not found."
+            },
+            {
+                "id": "noContactWithServer",
+                "description": "(D) There is no contact with the server."
+            },
+            {
+                "id": "wrongCurrentPassword",
+                "description": "(D) The current password is wrong."
+            },
+            {
+                "id": "veryBad",
+                "description": "(D) Something went very wrong."
+            },
+            {
+                "id": "unableToRegisterUser",
+                "description": "(D) A user with these details can not be created."
+            },
+            {
+                "id": "accountNotConfirmed",
+                "message": "(D) This account is pending email confirmation."
+            },
+            {
+                "id": "unableToResetPassword",
+                "message": "(D) The password can not be reset."
+            },
+            {
+                "id": "formIsDirty",
+                "message": "(D) Before you continue, all changes must be saved."
+            },
+            {
+                "id": "unableToSaveRecord",
+                "message": "(D) This record could not be saved."
+            },
+            {
+                "id": "emailSent",
+                "message": "(D) An email was sent with instructions."
+            },
+            {
+                "id": "passwordChanged",
+                "message": "(D) The password was changed, you must login again."
+            },
+            {
+                "error": 400,
+                "id": "recordIsInUse",
+                "message": "(D) This record is in use and can not be deleted."
+            },
+            {
+                "error": 401,
+                "id": "authenticationFailed",
+                "description": "(D) Authentication failed."
+            },
+            {
+                "error": 404,
+                "id": "recordNotFound",
+                "description": "(D) This record can not be found."
+            },
+            {
+                "error": 409,
+                "id": "defaultDriverExists",
+                "description": "(D) There is already a default driver."
+            }
+        ]
+    }
+]

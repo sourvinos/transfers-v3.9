@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { takeUntil } from 'rxjs/operators'
-import { MenuItemsService } from 'src/app/shared/services/menu-items.service'
+import { MenuItemService } from 'src/app/shared/services/menu-items.service'
 import { fade } from 'src/app/shared/animations/animations'
 
 @Component({
@@ -26,8 +26,9 @@ export class NavWideComponent {
     language = ''
     ngUnsubscribe = new Subject<void>()
     isScreenWide: boolean
+    feature = 'menu'
 
-    constructor(private accountService: AccountService, private menuItemsService: MenuItemsService, private interactionService: InteractionService) {
+    constructor(private accountService: AccountService, private menuItemsService: MenuItemService, private interactionService: InteractionService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -45,16 +46,20 @@ export class NavWideComponent {
         this.accountService.logout()
     }
 
+    public getLabel(id: string) {
+        return this.menuItemsService.getMessageDescription(this.feature,id)
+    }
+
     private getScreenWidth() {
         return document.getElementById("wrapper").clientWidth > 1366
     }
 
     private subscribeToInteractionService() {
-        this.interactionService.language.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
-            this.language = result
-            this.menuItems = []
-            this.updateNavigation()
-        })
+        // this.interactionService.language.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
+        //     this.language = result
+        //     this.menuItems = []
+        //     this.updateNavigation()
+        // })
     }
 
     private updateNavigation() {

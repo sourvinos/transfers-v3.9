@@ -8,8 +8,8 @@
     </div>
     <div id="menuWide">
         <ul @fade id="menuItems">
-            <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">{{ menuItems[0] }}</li>
-            <li data-cy="destinations" [routerLink]="['/destinations']" routerLinkActive="active">{{ menuItems[1] }}</li>
+            <li data-cy="customers" [routerLink]="['/customers']" routerLinkActive="active">{{ getLabel('customers') }}</li>
+            <li data-cy="destinations" [routerLink]="['/destinations']" routerLinkActive="active">Destinations</li>
             <li data-cy="drivers" [routerLink]="['/drivers']" routerLinkActive="active">{{ menuItems[2] }}</li>
             <li data-cy="pickupPoints" [routerLink]="['/pickupPoints']" routerLinkActive="active">{{ menuItems[3] }}</li>
             <li data-cy="ports" [routerLink]="['/ports']" routerLinkActive="active">{{ menuItems[4] }}</li>

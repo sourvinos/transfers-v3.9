@@ -1,37 +1,43 @@
-[{
-        "id": "1",
-        "message": "Kunden"
-    },
+[
     {
-        "id": "2",
-        "message": "Reiseziele"
-    },
-    {
-        "id": "3",
-        "message": "Fahrer"
-    },
-    {
-        "id": "4",
-        "message": "Aufenthalte"
-    },
-    {
-        "id": "5",
-        "message": "Häfen"
-    },
-    {
-        "id": "6",
-        "message": "Routen"
-    },
-    {
-        "id": "7",
-        "message": "Transfers"
-    },
-    {
-        "id": "8",
-        "message": "User"
-    },
-    {
-        "id": "9",
-        "message": "Logout"
+        "feature": "menu",
+        "labels": [
+            {
+                "id": "customers",
+                "description": "Kunden"
+            },
+            {
+                "id": "destinations",
+                "description": "Reiseziele"
+            },
+            {
+                "id": "drivers",
+                "description": "Fahrer"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Aufenthalte"
+            },
+            {
+                "id": "ports",
+                "description": "Häfen"
+            },
+            {
+                "id": "routes",
+                "description": "Routen"
+            },
+            {
+                "id": "transfers",
+                "description": "Transfers"
+            },
+            {
+                "id": "users",
+                "description": "User"
+            },
+            {
+                "id": "logout",
+                "description": "Logout"
+            }
+        ]
     }
 ]
