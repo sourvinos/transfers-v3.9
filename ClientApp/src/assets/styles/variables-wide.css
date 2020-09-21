@@ -2,26 +2,28 @@
     * {
         /* Font sizes */
         --font-size-button: 1.1rem;
-        --font-size-checkbox: 0.9rem;
+        --font-size-checkbox: 1.3rem;
         --font-size-copyright: 0.6rem;
         --font-size-dialog-content: 1.5rem;
         --font-size-dialog-header: 2.5rem;
         --font-size-header: 2.5rem;
         --font-size-input-height: 1.5rem;
-        --font-size-input-hint: 0.8rem;
+        --font-size-input-hint: 0.85rem;
         --font-size-input: 1rem;
-        --font-size-label: 1.6rem;
+        --font-size-label: 1.9rem;
         --font-size-logo-first-child: 4.375rem;
         --font-size-logo-second-child: 2.5rem;
         --font-size-mat-error: 0.8rem;
         --font-size-menu-list-item: 1.8rem;
+        --font-size-panel-buttons: 1.375rem;
         --font-size-paragraph: 0.7rem;
         --font-size-snackbar: 1.3rem;
         --font-size-sum: 1.5rem;
-        --font-size-summary-block-header: 1.3rem;
+        --font-size-summary-block-header: 1.6rem;
         --font-size-summary-block-item: 0.95rem;
         --font-size-table-header: 1rem;
         --font-size-table-row: 0.9rem;
+        --font-size-sum-persons: 1.25rem;
         --font-size-user-greeting: 0.9rem;
     }
 }

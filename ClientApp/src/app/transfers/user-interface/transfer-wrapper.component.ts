@@ -8,6 +8,7 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -23,6 +24,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
     windowTitle = 'Transfers'
+    feature = 'transferWrapper'
 
     //#endregion
 
@@ -35,7 +37,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private labelService: LabelMessageService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -48,6 +50,10 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
         this.removeSelectedIdsFromLocalStorage()
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {

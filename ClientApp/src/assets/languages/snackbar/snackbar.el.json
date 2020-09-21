@@ -22,7 +22,7 @@
         },
         {
             "id": "noRecordsSelected",
-            "description": "Δεν έχετε επιλέξει εγγραφές για ενημέρωση."
+            "description": "Δεν έχετε επιλέξει εγγραφές για ανάθεση."
         },
         {
             "id": "selectedRecordsHaveBeenProcessed",

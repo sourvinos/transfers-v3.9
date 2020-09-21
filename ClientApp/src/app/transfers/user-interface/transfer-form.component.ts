@@ -24,6 +24,7 @@ import { TransferService } from '../classes/transfer.service'
 import { PickupPointFlat } from '../../pickupPoints/classes/pickupPoint-flat'
 import { environment } from 'src/environments/environment'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'transfer-form',
@@ -42,6 +43,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
     unlisten: Unlisten
     windowTitle = 'Transfer'
     environment: boolean = environment.production
+    feature = 'transferForm'
 
     //#endregion
 
@@ -57,7 +59,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, public dialog: MatDialog, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private transferService: TransferService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)
@@ -99,6 +101,10 @@ export class TransferFormComponent implements OnInit, OnDestroy {
             this.hideModalForm()
             return true
         }
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onCalculateTotalPersons() {

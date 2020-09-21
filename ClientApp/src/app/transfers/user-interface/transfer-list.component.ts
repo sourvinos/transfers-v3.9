@@ -18,6 +18,7 @@ import { TransferService } from '../classes/transfer.service'
 import { TransferViewModel } from '../classes/transferViewModel'
 import { TransferAssignDriverComponent } from './transfer-assign-driver.component'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'transfer-list',
@@ -35,6 +36,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     resolver = 'transferList'
     unlisten: Unlisten
     windowTitle = 'Transfers'
+    feature = 'transferList'
 
     //#endregion
 
@@ -75,7 +77,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: SnackbarMessageService, private keyboardShortcutsService: KeyboardShortcuts, private buttonClickService: ButtonClickService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: SnackbarMessageService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private buttonClickService: ButtonClickService, private titleService: Title) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
@@ -118,6 +120,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onAssignDriver() {
@@ -281,9 +287,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     private initPersonsSumArray() {
         this.totals.push(
-            { description: 'All', sum: 0 },
-            { description: 'Displayed', sum: 0 },
-            { description: 'Selected', sum: 0 }
+            { description: this.getLabel('total'), sum: 0 },
+            { description: this.getLabel('displayed'), sum: 0 },
+            { description: this.getLabel('selected'), sum: 0 }
         )
     }
 

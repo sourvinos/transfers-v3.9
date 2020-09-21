@@ -41,6 +41,7 @@
     color: var(--color-label) !important;
     font-family: var(--font-family-checkbox) !important;
     font-size: var(--font-size-checkbox) !important;
+    font-variant-caps: petite-caps !important;
     font-weight: var(--font-weight-checkbox) !important;
 }
 

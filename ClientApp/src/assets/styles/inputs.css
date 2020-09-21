@@ -33,6 +33,11 @@ input[type=number] {
 
 .mat-form-field-infix {
     font-size: var(--font-size-input-height) !important;
+    padding-top: 4px !important;
+}
+
+.mat-form-field-infix span {
+    font-variant-caps: petite-caps !important;
 }
 
 .mat-form-field-type .mat-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
@@ -44,13 +49,14 @@ input[type=number] {
 }
 
 .mat-form-field-label {
-    font-family: var(--font-family-header) !important;
+    font-family: var(--font-family-label) !important;
     font-size: var(--font-size-label) !important;
 }
 
 .mat-hint {
     color: var(--color-input-not-focus) !important;
     font-size: var(--font-size-input-hint) !important;
+    font-variant-caps: petite-caps !important;
     margin-top: 0.1875rem !important;
 }
 
@@ -135,8 +141,8 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     margin-bottom: 0 !important;
 }
 
-@media only screen and (min-width: 1367px) {
+@media only screen and (max-width: 1366px) {
     .mat-form-field-infix {
-        padding-top: 0 !important;
+        padding-top: 8px !important;
     }
 }

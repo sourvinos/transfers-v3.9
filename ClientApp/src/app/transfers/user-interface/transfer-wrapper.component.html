@@ -7,14 +7,14 @@
             </button>
         </div>
         <div @slideFromLeft id="title">
-            <h1>Transfers</h1>
+            <h1>{{ getLabel('header')}}</h1>
         </div>
         <div id="search-box">
             <mat-form-field class="no-bottom-margin">
-                <input data-cy="dateIn" type="text" matInput class="center" placeholder="Date" [(ngModel)]="dateIn" [inputFormat]="'date'" id="dateIn" autocomplete="off">
-                <mat-hint>Search by date</mat-hint>
+                <input data-cy="dateIn" type="text" matInput class="center" [placeholder]="getLabel('searchLabel')" [(ngModel)]="dateIn" [inputFormat]="'date'" id="dateIn" autocomplete="off">
+                <mat-hint>{{ getLabel('searchHint') }}</mat-hint>
             </mat-form-field>
-            <button data-cy="search" mat-flat-button id="search" class="primary" [disabled]="!onCheckValidDate()" (click)="onLoadTransfers()">Search</button>
+            <button data-cy="search" mat-flat-button id="search" class="primary" [disabled]="!onCheckValidDate()" (click)="onLoadTransfers()">{{ getLabel('searchButton') }}</button>
         </div>
     </div>
 

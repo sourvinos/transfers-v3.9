@@ -1,17 +1,18 @@
 * {
     /* Font names */
     --font-family-button: "Ubuntu Condensed";
-    --font-family-checkbox: "Noto Sans";
+    --font-family-checkbox: "Ubuntu";
     --font-family-copyright: "Noto Sans";
     --font-family-dialog-content: "PF Handbook Pro";
     --font-family-dialog-header: "PF Handbook Pro";
     --font-family-header: "PF Handbook Pro";
-    --font-family-label: "PF Handbook Pro";
+    --font-family-label: "Ubuntu";
     --font-family-logo: "Anton";
     --font-family-menu-list-item: "PF Handbook Pro";
     --font-family-paragraph: "Noto Sans";
     --font-family-snackbar: "PF Handbook Pro";
     --font-family-summary-block: "Noto Sans";
+    --font-family-summary-header: "PF Handbook Pro";
     --font-family-table: 'Noto Sans';
     --font-family-totals: "PF Handbook Pro";
     --font-family-user-greeting: "Noto Sans";
@@ -25,6 +26,7 @@
     --font-weight-menu-list-item: 300;
     --font-weight-snackbar: 300;
     --font-weight-sum-persons: 300;
+    --font-weight-summary-header:300;
     --font-weight-table-header: 300 !important;
     --font-weight-user-greeting: 300;
 }

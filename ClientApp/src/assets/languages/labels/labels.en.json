@@ -1,6 +1,8 @@
-[{
+[
+    {
         "feature": "loginForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Login"
             },
@@ -18,7 +20,7 @@
             },
             {
                 "id": "forgotPasswordButton",
-                "description": "Forgot password"
+                "description": "I forgot my password"
             },
             {
                 "id": "loginButton",
@@ -28,7 +30,8 @@
     },
     {
         "feature": "customerList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Customers"
             },
@@ -60,7 +63,8 @@
     },
     {
         "feature": "customerForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Customer"
             },
@@ -104,7 +108,8 @@
     },
     {
         "feature": "destinationList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Destinations"
             },
@@ -132,7 +137,8 @@
     },
     {
         "feature": "destinationForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Destination"
             },
@@ -160,7 +166,8 @@
     },
     {
         "feature": "driverList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Drivers"
             },
@@ -188,7 +195,8 @@
     },
     {
         "feature": "driverForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Driver"
             },
@@ -220,7 +228,8 @@
     },
     {
         "feature": "pickupPointWrapper",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup points"
             },
@@ -236,7 +245,8 @@
     },
     {
         "feature": "pickupPointList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup points for route: "
             },
@@ -256,7 +266,8 @@
     },
     {
         "feature": "pickupPointForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup point"
             },
@@ -279,6 +290,353 @@
             {
                 "id": "isActive",
                 "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "portList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Ports"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by description"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            }
+        ]
+    },
+    {
+        "feature": "portForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Port"
+            },
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "routeList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Routes"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by full description"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            }
+        ]
+    },
+    {
+        "feature": "routeForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Route"
+            },
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "fullDescription",
+                "description": "Full description"
+            },
+            {
+                "id": "port",
+                "description": "Port"
+            },
+            {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "transferWrapper",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Transfers"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by date"
+            },
+            {
+                "id": "searchButton",
+                "description": "Search"
+            }
+        ]
+    },
+    {
+        "feature": "userList",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Users"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by username"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            }
+        ]
+    },
+    {
+        "feature": "editUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "User"
+            },
+            {
+                "id": "userName",
+                "description": "Name"
+            },
+            {
+                "id": "displayName",
+                "description": "Displayed name"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "deleteButton",
+                "description": "Delete"
+            },
+            {
+                "id": "changePasswordButton",
+                "description": "Change password"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "registerUserForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "User"
+            },
+            {
+                "id": "userName",
+                "description": "Name"
+            },
+            {
+                "id": "displayName",
+                "description": "Displayed name"
+            },
+            {
+                "id": "email",
+                "description": "Email"
+            },
+            {
+                "id": "password",
+                "description": "Password"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Confirm password"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "changePasswordForm",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Change password"
+            },
+            {
+                "id": "currentPassword",
+                "description": "Current password"
+            },
+            {
+                "id": "newPassword",
+                "description": "New password"
+            },
+            {
+                "id": "confirmPassword",
+                "description": "Confirm new password"
+            },
+            {
+                "id": "saveButton",
+                "description": "Save"
+            }
+        ]
+    },
+    {
+        "feature": "transferList",
+        "labels": [
+            {
+                "id": "summaryTab",
+                "description": "Summary"
+            },
+            {
+                "id": "listTab",
+                "description": "List"
+            },
+            {
+                "id": "summaryHeaderDestinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "summaryHeaderCustomers",
+                "description": "Customers"
+            },
+            {
+                "id": "summaryHeaderRoutes",
+                "description": "Routes"
+            },
+            {
+                "id": "summaryHeaderDrivers",
+                "description": "Drivers"
+            },
+            {
+                "id": "summaryHeaderPorts",
+                "description": "Ports"
+            },
+            {
+                "id": "assignDriverButton",
+                "description": "Assign to driver"
+            },
+            {
+                "id": "createPdfButton",
+                "description": "Create PDF"
+            },
+            {
+                "id": "newButton",
+                "description": "New"
+            },
+            {
+                "id": "total",
+                "description": "All"
+            },
+            {
+                "id": "displayed",
+                "description": "Displayed"
+            },
+            {
+                "id": "selected",
+                "description": "Selected"
+            }
+        ]
+    },
+    {
+        "feature": "transferForm",
+        "labels": [
+            {
+                "id": "destination",
+                "description": "Destination"
+            },
+            {
+                "id": "customer",
+                "description": "Customer"
+            },
+            {
+                "id": "pickupPoint",
+                "description": "Pickup point"
+            },
+            {
+                "id": "adults",
+                "description": "Adults"
+            },
+            {
+                "id": "kids",
+                "description": "Kids"
+            },
+            {
+                "id": "free",
+                "description": "Free"
+            },
+            {
+                "id": "totalPersons",
+                "description": "Total"
+            },
+            {
+                "id": "driver",
+                "description": "Driver"
+            },
+            {
+                "id": "port",
+                "description": "Port"
+            },
+            {
+                "id": "remarks",
+                "description": "Remarks"
+            },
+            {
+                "id": "abortButton",
+                "description": "Abort"
             },
             {
                 "id": "deleteButton",

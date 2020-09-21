@@ -24,7 +24,7 @@
             },
             {
                 "id": "noRecordsSelected",
-                "description": "You have not selected any records for update."
+                "description": "You have not selected any records to assign."
             },
             {
                 "id": "noDefaultDriverFound",

@@ -14,6 +14,7 @@ import { RegisterUser } from '../../account/classes/register-user'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'register-user-form',
@@ -32,6 +33,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
     unlisten: Unlisten
     url = '/users'
     windowTitle = 'User'
+    feature = 'registerUserForm'
 
     //#endregion
 
@@ -43,7 +45,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -73,6 +75,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         } else {
             return true
         }
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {

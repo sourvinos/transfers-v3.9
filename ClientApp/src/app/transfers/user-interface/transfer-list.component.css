@@ -60,6 +60,12 @@
     transition: background-color 1.7s;
 }
 
+#panelButtons button {
+    border-radius: 0;
+    font-size: var(--font-size-panel-buttons) !important;
+    font-variant-caps: petite-caps;
+}
+
 #transferFormModal {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
@@ -102,8 +108,10 @@
 
 .summaryBlock header {
     color: var(--color-summary-block-headers);
-    font-family: var(--font-family-summary-block);
+    font-family: var(--font-family-summary-header);
     font-size: var(--font-size-summary-block-header);
+    font-variant-caps: petite-caps;
+    font-weight: var(--font-weight-summary-header);
 }
 
 .summaryBlock .item {
@@ -162,7 +170,8 @@
 
 .selection .label {
     color: var(--color-sum-persons-labels);
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-sum-persons);
+    font-variant-caps: petite-caps;
     font-weight: var(--font-weight-sum-persons);
     margin: 0 0.5rem 0 0;
 }

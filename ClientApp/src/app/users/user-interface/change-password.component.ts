@@ -14,6 +14,7 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 import { UserService } from '../classes/user.service'
 import { ChangePassword } from '../classes/change-password'
 import { AccountService } from 'src/app/shared/services/account.service'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'change-password-form',
@@ -31,9 +32,9 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     unlisten: Unlisten
     url = '/users'
     windowTitle = 'Change password'
+    feature = 'changePasswordForm'
 
     //#endregion
-
 
     //#region Form
 
@@ -43,7 +44,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private userService: UserService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -77,6 +78,10 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         } else {
             return true
         }
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {
