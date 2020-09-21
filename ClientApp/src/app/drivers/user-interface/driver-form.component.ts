@@ -15,6 +15,7 @@ import { DriverService } from '../classes/driver.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { HintService } from 'src/app/shared/services/hint.service'
 
 @Component({
     selector: 'driver-form',
@@ -38,7 +39,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -73,6 +74,10 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             return true
         }
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
     }
 
     public getLabel(id: string) {

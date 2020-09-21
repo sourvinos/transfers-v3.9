@@ -10,6 +10,8 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
+import { HintService } from 'src/app/shared/services/hint.service'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 @Component({
     selector: 'forgot-password-form',
@@ -27,10 +29,12 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
     unlisten: Unlisten
     url = '/login'
     windowTitle = 'Forgot password'
+    feature = 'forgotPasswordForm'
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(
+        private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -46,6 +50,14 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {

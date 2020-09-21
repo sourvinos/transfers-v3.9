@@ -10,14 +10,14 @@
         <form [formGroup]="form" autocomplete="off">
             <mat-form-field>
                 <input type="text" matInput [placeholder]="getLabel('usernameLabel')" formControlName="userName" data-tabindex="1" id="userName" [inputTabStop]="input">
-                <mat-error *ngIf="Username.errors?.required">This field is required</mat-error>
+                <mat-error *ngIf="Username.errors?.required">{{ getHint('required') }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="getLabel('passwordLabel')" formControlName="password" data-tabindex="2" id="password" [inputTabStop]="input">
                 <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                     <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
-                <mat-error *ngIf="Password?.hasError('required')">This is a required field!</mat-error>
+                <mat-error *ngIf="Password?.hasError('required')">{{ getHint('required') }}</mat-error>
             </mat-form-field>
             <mat-slide-toggle data-cy="isHuman" id="isHuman" formControlName="isHuman">{{ getLabel('noRobotCheckbox') }}</mat-slide-toggle>
         </form>

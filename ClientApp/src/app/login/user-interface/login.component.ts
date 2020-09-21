@@ -1,3 +1,4 @@
+import { HintService } from './../../shared/services/hint.service'
 import { SnackbarMessageService } from '../../shared/services/snackbar-message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
@@ -41,7 +42,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private snackbarMessageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private userIdleService: UserIdleService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private router: Router, private snackbarMessageService: SnackbarMessageService, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -57,6 +58,10 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
     }
 
     public getLabel(id: string) {

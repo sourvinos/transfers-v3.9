@@ -1,0 +1,27 @@
+{
+    "labels": [{
+            "id": "required",
+            "description": "Το πεδιο ειναι υποχρεωτικο"
+        },
+        {
+            "id": "minLength",
+            "description": "Το πεδιο πρεπει να εχει μηκος τουλαχιστον ΧΧ χαρακτηρες"
+        },
+        {
+            "id": "maxLength",
+            "description": "Το πεδιο μπορει να εχει μηκος μεχρι ΧΧ χαρακτηρες"
+        },
+        {
+            "id": "invalid",
+            "description": "Το πεδιο ειναι λαθος"
+        },
+        {
+            "id": "passwordsNoMatch",
+            "description": "Ο κωδικος και η επιβεβαιωση κωδικου πρεπει να συμφωνουν"
+        },
+        {
+            "id": "noSpaces",
+            "description": "Τα κενα απαγορευονται"
+        }
+    ]
+}

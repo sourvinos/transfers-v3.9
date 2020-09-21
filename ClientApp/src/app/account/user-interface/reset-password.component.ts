@@ -10,6 +10,8 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
+import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { HintService } from 'src/app/shared/services/hint.service'
 
 @Component({
     selector: 'reset-password-form',
@@ -27,7 +29,8 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     unlisten: Unlisten
     url = '/'
     windowTitle = 'Reset password'
-
+    feature = 'resetPasswordForm'
+    
     //#endregion
 
     //#region
@@ -39,11 +42,12 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService) {
-        this.activatedRoute.queryParams.subscribe((p) => {
-            this.email = p['email']
-            this.token = p['token']
-        })
+    constructor(
+        private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService) {
+            this.activatedRoute.queryParams.subscribe((p) => {
+                this.email = p['email']
+                this.token = p['token']
+            })
     }
 
     ngOnInit() {
@@ -59,6 +63,14 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
+    }
+
+    public getLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onSave() {

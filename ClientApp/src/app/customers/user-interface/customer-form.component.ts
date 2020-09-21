@@ -15,6 +15,7 @@ import { Customer } from '../classes/customer'
 import { environment } from 'src/environments/environment'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { HintService } from 'src/app/shared/services/hint.service'
 
 @Component({
     selector: 'customer-form',
@@ -38,10 +39,11 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
-        this.activatedRoute.params.subscribe(p => {
-            if (p.id) { this.getRecord(p.id) }
-        })
+    constructor(
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+            this.activatedRoute.params.subscribe(p => {
+                if (p.id) { this.getRecord(p.id) }
+            })
     }
 
     ngOnInit() {
@@ -73,6 +75,10 @@ export class CustomerFormComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
             return true
         }
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
     }
 
     public getLabel(id: string) {

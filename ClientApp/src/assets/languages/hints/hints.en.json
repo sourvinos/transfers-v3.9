@@ -1,0 +1,31 @@
+{
+    "labels": [{
+            "id": "required",
+            "description": "This field is required"
+        },
+        {
+            "id": "minLength",
+            "description": "This field must be at least XX characters long"
+        },
+        {
+            "id": "maxLength",
+            "description": "This field can be up to XX characters long"
+        },
+        {
+            "id": "invalid",
+            "description": "This field seems to be invalid"
+        },
+        {
+            "id": "passwordsNoMatch",
+            "description": "Password and confirm password do not match!"
+        },
+        {
+            "id": "noSpaces",
+            "description": "Spaces are not allowed!"
+        },
+        {
+            "id": "otherErrors",
+            "description": "This field has errors"
+        }
+    ]
+}

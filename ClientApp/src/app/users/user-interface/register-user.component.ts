@@ -15,6 +15,7 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { HintService } from 'src/app/shared/services/hint.service'
 
 @Component({
     selector: 'register-user-form',
@@ -45,7 +46,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(
+        private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -75,6 +77,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         } else {
             return true
         }
+    }
+
+    public getHint(id: string) {
+        return this.hintService.getHintDescription(id)
     }
 
     public getLabel(id: string) {
