@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -24,7 +24,8 @@ import { HintService } from 'src/app/shared/services/hint.service'
 
 export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region 
+    //#region variables
+
     form: FormGroup
     input: InputTabStopDirective
     ngUnsubscribe = new Subject<void>()
@@ -41,6 +42,8 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
             if (p.id) { this.getRecord(p.id) }
         })
     }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -72,13 +75,9 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
-    }
+    //#endregion
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#region public methods
 
     public onChangePassword() {
         if (this.form.dirty) {
@@ -102,6 +101,14 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
+    }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
     public onGoBack() {
         this.router.navigate([this.url])
     }
@@ -115,6 +122,10 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.showSnackbar(this.messageService.unableToSaveRecord(), 'error')
         })
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -189,16 +200,18 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
-    get Username(): AbstractControl {
+    //#endregion
+
+    //#region getters
+    get username() {
         return this.form.get('userName')
     }
 
-    get Displayname(): AbstractControl {
+    get displayname() {
         return this.form.get('displayName')
     }
 
-    get Email(): AbstractControl {
+    get email() {
         return this.form.get('email')
     }
 

@@ -12,16 +12,18 @@ import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shor
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
 import { LabelMessageService } from 'src/app/shared/services/label.service'
 import { HintService } from 'src/app/shared/services/hint.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'reset-password-form',
     templateUrl: './reset-password.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './reset-password.component.css']
+    styleUrls: ['../../../assets/styles/forms.css', './reset-password.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region
+    //#region variables
 
     form: FormGroup
     input: InputTabStopDirective
@@ -30,10 +32,10 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     url = '/'
     windowTitle = 'Reset password'
     feature = 'resetPasswordForm'
-    
+
     //#endregion
 
-    //#region
+    //#region particular variables
 
     email: string
     token: string
@@ -44,11 +46,13 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     constructor(
         private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
-            this.activatedRoute.queryParams.subscribe((p) => {
-                this.email = p['email']
-                this.token = p['token']
-            })
+        this.activatedRoute.queryParams.subscribe((p) => {
+            this.email = p['email']
+            this.token = p['token']
+        })
     }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.initForm()
@@ -65,11 +69,15 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         this.unlisten()
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
+    //#endregion
+   
+    //#region global methods
+
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 
@@ -83,6 +91,9 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         })
     }
 
+    //#endregion
+
+    //#region private methods
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Alt.S': (event: KeyboardEvent) => {
@@ -115,21 +126,23 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
+    //#endregion
 
-    get Passwords() {
+    //#region getters
+
+    get passwords() {
         return this.form.get('passwords')
     }
 
-    get Password() {
+    get password() {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword() {
+    get confirmPassword() {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords(): boolean {
+    get matchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

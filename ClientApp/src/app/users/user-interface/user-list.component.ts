@@ -23,7 +23,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class UserListComponent implements OnInit, OnDestroy {
 
-    //#region   
+    //#region variables
 
     filteredRecords: User[] = []
     ngUnsubscribe = new Subject<void>()
@@ -39,7 +39,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region 
+    //#region table
 
     headers = ['S', 'Id', 'Display name', 'User name', 'Email', '']
     widths = ['40px', '', '30%', '30%', '', '56px']
@@ -50,6 +50,8 @@ export class UserListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -68,14 +70,22 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#endregion
+
+    //#region public methods
 
     public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.username.toLowerCase().includes(query.toLowerCase())) : this.records
     }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -135,5 +145,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     private updateLocalStorageWithFilter() {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
+
+    //#endregion
 
 }

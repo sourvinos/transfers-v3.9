@@ -19,7 +19,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class TransferWrapperComponent implements OnInit, OnDestroy {
 
-    //#region 
+    //#region variables
 
     ngUnsubscribe = new Subject<void>()
     unlisten: Unlisten
@@ -28,7 +28,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region 
+    //#region particular variables
 
     dateIn = ''
     dateInISO = ''
@@ -38,6 +38,8 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private labelService: LabelMessageService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -52,7 +54,23 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         this.removeSelectedIdsFromLocalStorage()
     }
 
-    public getLabel(id: string) {
+    //#endregion
+
+    //#region public methods
+
+    public onCheckValidDate(): boolean {
+        const date = (<HTMLInputElement>document.getElementById('dateIn')).value
+        if (date.length === 10) {
+            this.dateInISO = moment(date, 'DD/MM/YYYY').toISOString(true)
+            this.dateInISO = moment(this.dateInISO).format('YYYY-MM-DD')
+            return true
+        } else {
+            this.dateInISO = ''
+            return false
+        }
+    }
+
+    public onGetLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 
@@ -68,17 +86,9 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         }
     }
 
-    public onCheckValidDate(): boolean {
-        const date = (<HTMLInputElement>document.getElementById('dateIn')).value
-        if (date.length === 10) {
-            this.dateInISO = moment(date, 'DD/MM/YYYY').toISOString(true)
-            this.dateInISO = moment(this.dateInISO).format('YYYY-MM-DD')
-            return true
-        } else {
-            this.dateInISO = ''
-            return false
-        }
-    }
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -119,5 +129,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
     private updateLocalStorageWithDate() {
         localStorage.setItem('date', this.dateInISO)
     }
+
+    //#endregion
 
 }

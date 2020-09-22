@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -36,7 +36,7 @@ import { HintService } from 'src/app/shared/services/hint.service'
 
 export class TransferFormComponent implements OnInit, OnDestroy {
 
-    //#region 
+    //#region variables
 
     form: FormGroup
     input: InputTabStopDirective
@@ -48,7 +48,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region
+    //#region particular variables
 
     defaultDriver: any
     customers: any
@@ -97,6 +97,8 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
+    //#region lifecycle hooks
+
     ngOnInit() {
         this.setWindowTitle()
         this.initForm()
@@ -125,13 +127,9 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         }
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
-    }
+    //#endregion
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#region public methods
 
     public onCalculateTotalPersons() {
         const totalPersons = parseInt(this.form.value.adults, 10) + parseInt(this.form.value.kids, 10) + parseInt(this.form.value.free, 10)
@@ -153,13 +151,12 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private getRowIndex(recordId: string) {
-        const table = <HTMLTableElement>document.querySelector('table')
-        for (let i = 0; i < table.rows.length; i++) {
-            if (table.rows[i].cells[1].innerText == recordId) {
-                return i - 1
-            }
-        }
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
+    }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -207,6 +204,11 @@ export class TransferFormComponent implements OnInit, OnDestroy {
             })
         }
     }
+
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -271,6 +273,15 @@ export class TransferFormComponent implements OnInit, OnDestroy {
             this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
             this.onGoBack()
         })
+    }
+
+    private getRowIndex(recordId: string) {
+        const table = <HTMLTableElement>document.querySelector('table')
+        for (let i = 0; i < table.rows.length; i++) {
+            if (table.rows[i].cells[1].innerText == recordId) {
+                return i - 1
+            }
+        }
     }
 
     private hideModalForm() {
@@ -434,68 +445,70 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
+    //#endregion
 
-    get destinationId(): AbstractControl {
+    //#region getters
+
+    get destinationId() {
         return this.form.get('destinationId')
     }
 
-    get destinationDescription(): AbstractControl {
+    get destinationDescription() {
         return this.form.get('destinationDescription')
     }
 
-    get customerId(): AbstractControl {
+    get customerId() {
         return this.form.get('customerId')
     }
 
-    get customerDescription(): AbstractControl {
+    get customerDescription() {
         return this.form.get('customerDescription')
     }
 
-    get pickupPointId(): AbstractControl {
+    get pickupPointId() {
         return this.form.get('pickupPointId')
     }
 
-    get pickupPointDescription(): AbstractControl {
+    get pickupPointDescription() {
         return this.form.get('pickupPointDescription')
     }
 
-    get adults(): AbstractControl {
+    get adults() {
         return this.form.get('adults')
     }
 
-    get kids(): AbstractControl {
+    get kids() {
         return this.form.get('kids')
     }
 
-    get free(): AbstractControl {
+    get free() {
         return this.form.get('free')
     }
 
-    get totalPersons(): AbstractControl {
+    get totalPersons() {
         return this.form.get('totalPersons')
     }
 
-    get driverId(): AbstractControl {
+    get driverId() {
         return this.form.get('driverId')
     }
 
-    get driverDescription(): AbstractControl {
+    get driverDescription() {
         return this.form.get('driverDescription')
     }
 
-    get portId(): AbstractControl {
+    get portId() {
         return this.form.get('portId')
     }
 
-    get portDescription(): AbstractControl {
+    get portDescription() {
         return this.form.get('portDescription')
     }
 
-    get remarks(): AbstractControl {
+    get remarks() {
         return this.form.get('remarks')
     }
 
-    //#endregion Getters
+    //#endregion
 
 }

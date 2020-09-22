@@ -23,7 +23,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class CustomerListComponent implements OnInit, OnDestroy {
 
-    //#region
+    //#region variables
 
     filteredRecords: Customer[] = []
     ngUnsubscribe = new Subject<void>()
@@ -39,9 +39,9 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region
+    //#region table
 
-    headers = ['S', 'Id', this.getLabel('headerDescription'), this.getLabel('headerPhones'), this.getLabel('headerEmail'), '']
+    headers = ['S', 'Id', this.onGetLabel('headerDescription'), this.onGetLabel('headerPhones'), this.onGetLabel('headerEmail'), '']
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
@@ -50,6 +50,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -68,14 +70,22 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#endregion
+
+    //#region public methods
 
     public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -135,5 +145,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     private updateLocalStorageWithFilter() {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
+
+    //#endregion
 
 }

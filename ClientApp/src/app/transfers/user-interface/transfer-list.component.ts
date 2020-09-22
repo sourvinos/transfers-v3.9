@@ -29,7 +29,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
-    //#region 
+    //#region variables
 
     ngUnsubscribe = new Subject<void>()
     records: string[] = []
@@ -40,7 +40,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    //#region 
+    //#region particular variables
 
     dateIn: string
     queryResult = new TransferViewModel()
@@ -67,7 +67,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    //#region
+    //#region table
 
     headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port', '']
     widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
@@ -86,6 +86,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             }
         })
     }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -122,10 +124,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.unlisten()
     }
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#endregion
 
+    //#region public methods
+    
     public onAssignDriver() {
         if (this.isAnyRowSelected()) {
             const dialogRef = this.dialog.open(TransferAssignDriverComponent, {
@@ -152,6 +154,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     public onCreatePdf() {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
+    }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -185,6 +191,10 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.saveSelectedItemsToLocalStorage()
         this.updateTotals()
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addActiveClassToElements(className: string, lookupArray: string[]) {
         const elements = document.querySelectorAll(className)
@@ -287,9 +297,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     private initPersonsSumArray() {
         this.totals.push(
-            { description: this.getLabel('total'), sum: 0 },
-            { description: this.getLabel('displayed'), sum: 0 },
-            { description: this.getLabel('selected'), sum: 0 }
+            { description: this.onGetLabel('total'), sum: 0 },
+            { description: this.onGetLabel('displayed'), sum: 0 },
+            { description: this.onGetLabel('selected'), sum: 0 }
         )
     }
 
@@ -431,5 +441,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this[indeterminateVariable] = activeItems == allItems || activeItems == 0 ? false : true
         this[checkedVariable] = activeItems == 0 || (activeItems < allItems && activeItems != 0) ? false : true
     }
+
+    //#endregion
 
 }

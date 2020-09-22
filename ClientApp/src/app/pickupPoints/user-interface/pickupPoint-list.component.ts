@@ -25,7 +25,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class PickupPointListComponent implements OnInit, OnDestroy {
 
-    //#region 
+    //#region variables
 
     filteredRecords: PickupPoint[] = []
     ngUnsubscribe = new Subject<void>()
@@ -41,13 +41,13 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region 
+    //#region particular variables
 
     routeDescription: string
 
     //#endregion
 
-    //#region 
+    //#region table
 
     headers = ['S', 'Id', 'Description', 'Exact point', 'Time', '']
     widths = ['40px', '0', '45%', '', '100px', '56px']
@@ -62,6 +62,8 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
             this.getRouteDescription(p.routeId)
         })
     }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -79,14 +81,22 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#endregion
+
+    //#region public methods
 
     public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -152,5 +162,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     private updateLocalStorageWithFilter() {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
+
+    //#endregion
 
 }

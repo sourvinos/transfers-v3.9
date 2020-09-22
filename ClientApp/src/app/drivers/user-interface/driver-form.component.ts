@@ -81,7 +81,6 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     //#region public methods
-
     public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {

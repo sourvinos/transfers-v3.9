@@ -12,16 +12,18 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { HintService } from 'src/app/shared/services/hint.service'
 import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'forgot-password-form',
     templateUrl: './forgot-password.component.html',
-    styleUrls: ['../../../assets/styles/forms.css']
+    styleUrls: ['../../../assets/styles/forms.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region
+    //#region variables
 
     form: FormGroup
     input: InputTabStopDirective
@@ -33,8 +35,9 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -52,11 +55,15 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.unlisten()
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
+    //#endregion
+
+    //#region public methods
+
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 
@@ -71,6 +78,10 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
             this.onGoBack()
         })
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -108,7 +119,9 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
+    //#endregion
+
+    //#region getters
 
     get email() {
         return this.form.get('email')

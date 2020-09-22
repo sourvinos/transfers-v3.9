@@ -23,7 +23,7 @@ import { LabelMessageService } from 'src/app/shared/services/label.service'
 
 export class RouteListComponent implements OnInit, OnDestroy {
 
-    //#region 
+    //#region variables
 
     filteredRecords: Route[] = []
     ngUnsubscribe = new Subject<void>()
@@ -39,7 +39,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    //#region 
+    //#region table
 
     headers = ['S', 'Id', 'Description', 'Full description', '']
     widths = ['40px', '0px', '150px', '', '56px']
@@ -51,7 +51,9 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit() {        
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -68,14 +70,22 @@ export class RouteListComponent implements OnInit, OnDestroy {
         this.unlisten()
     }
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#endregion
+
+    //#region public methods
 
     public onFilter(query: string) {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.fullDescription.toLowerCase().includes(query.toLowerCase())) : this.records
     }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -135,5 +145,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
     private updateLocalStorageWithFilter() {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
+
+    //#endregion
 
 }
