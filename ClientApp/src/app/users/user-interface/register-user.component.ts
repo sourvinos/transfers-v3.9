@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
-import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
+import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { RegisterUser } from '../../account/classes/register-user'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
@@ -26,7 +26,7 @@ import { HintService } from 'src/app/shared/services/hint.service'
 
 export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region
+    //#region variables
 
     form: FormGroup
     input: InputTabStopDirective
@@ -38,7 +38,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    //#region
+    //#region particular variables
 
     flatForm: RegisterUser
     hidePassword = true
@@ -46,8 +46,9 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -79,11 +80,15 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         }
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
+    //#endregion
+
+    //#region public methods
+
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string) {
         return this.labelService.getLabelDescription(this.feature, id)
     }
 
@@ -101,6 +106,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             this.showSnackbar(this.messageService.unableToRegisterUser(), 'error')
         })
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -168,33 +177,35 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         this.snackbarService.open(message, type)
     }
 
-    //#region Getters
+    //#endregion
 
-    get Email(): AbstractControl {
+    //#region getters
+
+    get email(): AbstractControl {
         return this.form.get('email')
     }
 
-    get DisplayName(): AbstractControl {
+    get displayName(): AbstractControl {
         return this.form.get('displayName')
     }
 
-    get UserName(): AbstractControl {
+    get userName(): AbstractControl {
         return this.form.get('userName')
     }
 
-    get Passwords(): AbstractControl {
+    get passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get Password(): AbstractControl {
+    get password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword(): AbstractControl {
+    get confirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords(): boolean {
+    get matchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

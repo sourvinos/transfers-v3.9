@@ -17,7 +17,7 @@ import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
+import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Transfer } from '../classes/transfer'
 import { TransferService } from '../classes/transfer.service'
@@ -74,7 +74,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         private keyboardShortcutsService: KeyboardShortcuts,
         public dialog: MatDialog,
         private labelService: LabelMessageService,
-        private messageService: SnackbarMessageService,
+        private messageService: MessageService,
         private pickupPointService: PickupPointService,
         private portService: PortService,
         private router: Router,

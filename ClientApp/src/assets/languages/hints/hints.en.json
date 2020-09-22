@@ -1,15 +1,16 @@
 {
-    "labels": [{
+    "labels": [
+        {
             "id": "required",
             "description": "This field is required"
         },
         {
             "id": "minLength",
-            "description": "This field must be at least XX characters long"
+            "description": "This field must be at least xx characters long"
         },
         {
             "id": "maxLength",
-            "description": "This field can be up to XX characters long"
+            "description": "This field can be up to xx characters long"
         },
         {
             "id": "invalid",

@@ -8,7 +8,7 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { SnackbarMessageService } from 'src/app/shared/services/snackbar-message.service'
+import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PortService } from '../classes/port.service'
 import { environment } from 'src/environments/environment'
@@ -25,7 +25,7 @@ import { HintService } from 'src/app/shared/services/hint.service'
 
 export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    //#region
+    //#region variables
 
     form: FormGroup
     input: InputTabStopDirective
@@ -39,11 +39,13 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: SnackbarMessageService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
     }
+
+    //#region lifecycle hooks
 
     ngOnInit() {
         this.setWindowTitle()
@@ -74,13 +76,9 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
-    }
+    //#endregion
 
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
+    //#region public methods
 
     public onDelete() {
         this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
@@ -94,6 +92,14 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 })
             }
         })
+    }
+
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
+    }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -119,6 +125,10 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
             })
         }
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts() {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -205,7 +215,9 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ngUnsubscribe.unsubscribe()
     }
 
-    //#region Getters
+    //#endregion
+
+    //#region getters
 
     get description() {
         return this.form.get('description')

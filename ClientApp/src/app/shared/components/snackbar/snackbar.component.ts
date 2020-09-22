@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core'
 import { MAT_SNACK_BAR_DATA, MatSnackBar } from '@angular/material/snack-bar'
-import { SnackbarMessageService } from '../../services/snackbar-message.service'
+import { MessageService } from '../../services/message.service'
 
 @Component({
     selector: 'app-snackbar',
@@ -10,6 +10,6 @@ import { SnackbarMessageService } from '../../services/snackbar-message.service'
 
 export class SnackbarComponent {
 
-    constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any, public snackBar: MatSnackBar, public snackbarMessageService: SnackbarMessageService) { }
+    constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any, public snackBar: MatSnackBar, public snackbarMessageService: MessageService) { }
 
 }

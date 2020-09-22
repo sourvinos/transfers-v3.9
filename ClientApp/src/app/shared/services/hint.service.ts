@@ -22,14 +22,14 @@ export class HintService {
         return promise
     }
 
-    public getHintDescription(id: string) {
-        let returnValue = ''
+    public getHintDescription(id: string, stringLength = 0) {
+        let hint = ''
         this.hints.labels.filter((l: { id: string; description: string }) => {
             if (l.id == id) {
-                returnValue = l.description
+                hint = l.description.replace('xx', stringLength.toString())
             }
         })
-        return returnValue
+        return hint
     }
 
 }

@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { MenuItemService } from 'src/app/shared/services/menu-items.service'
+import { MenuService } from 'src/app/shared/services/menu.service'
 import { fade } from 'src/app/shared/animations/animations'
 
 @Component({
@@ -26,7 +26,7 @@ export class NavWideComponent {
     isScreenWide: boolean
     feature = 'menu'
 
-    constructor(private accountService: AccountService, private menuItemsService: MenuItemService) {
+    constructor(private accountService: AccountService, private menuItemsService: MenuService) {
         this.isScreenWide = this.getScreenWidth()
     }
 

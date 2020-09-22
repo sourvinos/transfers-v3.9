@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 
 @Injectable({ providedIn: 'root' })
 
-export class SnackbarMessageService {
+export class MessageService {
 
     messages: any = []
     feature = 'snackbarMessages'
@@ -25,7 +25,6 @@ export class SnackbarMessageService {
 
     public getMessageDescription(feature: string, id: string) {
         let returnValue = ''
-        console.log(feature, id)
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
                 f.labels.filter(l => {

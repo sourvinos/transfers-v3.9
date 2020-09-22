@@ -7,35 +7,35 @@
             </button>
         </div>
         <div @slideFromLeft id="title">
-            <h1>{{ getLabel('header') }}</h1>
+            <h1>{{ onGetLabel('header') }}</h1>
         </div>
     </div>
 
     <div id="content">
         <form [formGroup]='form' autocomplete='off'>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="getLabel('description')" formControlName="description" data-tabindex="1" id="description" [inputTabStop]="input">
-                <mat-error *ngIf="description.hasError('required')">{{ getHint('required') }}</mat-error>
-                <mat-error *ngIf="description.errors?.maxlength">{{ getHint('maxLength') }}</mat-error>
+                <input type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="1" id="description" [inputTabStop]="input">
+                <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="description.errors?.maxlength">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="getLabel('fullDescription')" formControlName="fullDescription" data-tabindex="2" id="fullDescription" [inputTabStop]="input">
-                <mat-error *ngIf="fullDescription.hasError('required')">{{ getHint('required') }}</mat-error>
-                <mat-error *ngIf="fullDescription.errors?.maxlength">{{ getHint('maxLength') }}</mat-error>
+                <input type="text" matInput [placeholder]="onGetLabel('fullDescription')" formControlName="fullDescription" data-tabindex="2" id="fullDescription" [inputTabStop]="input">
+                <mat-error *ngIf="fullDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="fullDescription.errors?.maxlength">{{ onGetHint('maxLength', fullDescription.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="getLabel('port')" formControlName="portDescription" data-tabindex="3" id="portDescription" [inputTabStop]="input" (change)="onLookupIndex(ports, 'Ports', ['portId', 'portDescription'], ['portId', 'portDescription'], ['Id', 'Description'], ['1px', '440px'], ['none', ''], ['center', 'left'], $event)">
-                <mat-error *ngIf="portDescription.hasError('required')">{{ getHint('required') }}</mat-error>
+                <input type="text" matInput [placeholder]="onGetLabel('port')" formControlName="portDescription" data-tabindex="3" id="portDescription" [inputTabStop]="input" (change)="onLookupIndex(ports, 'Ports', ['portId', 'portDescription'], ['portId', 'portDescription'], ['Id', 'Description'], ['1px', '440px'], ['none', ''], ['center', 'left'], $event)">
+                <mat-error *ngIf="portDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
             </mat-form-field>
-            <mat-slide-toggle formControlName="isActive">{{ getLabel('isActive') }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 
     <div @slideFromRight id="footer">
         <div id="buttons">
-            <button mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">{{ getLabel('deleteButton') }}</button>
-            <button mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ getLabel('saveButton') }}</button>
+            <button mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
+            <button mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ onGetLabel('saveButton') }}</button>
         </div>
     </div>
 

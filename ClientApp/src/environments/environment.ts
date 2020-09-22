@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     login: {
-        userName: 'sourvinos',
+        username: 'sourvinos',
         password: '46929e6c-ee70-447a-ba35-542b4be14746',
         isHuman: true
     },

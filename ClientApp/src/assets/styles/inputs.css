@@ -60,6 +60,10 @@ input[type=number] {
     margin-top: 0.1875rem !important;
 }
 
+.mat-error {
+    font-variant-caps: all-petite-caps !important;
+}
+
 .mat-icon {
     color: var(--color-input-not-focus);
 }

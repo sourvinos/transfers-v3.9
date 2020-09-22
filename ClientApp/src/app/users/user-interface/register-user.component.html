@@ -7,46 +7,46 @@
             </button>
         </div>
         <div @slideFromLeft id="title">
-            <h1>{{ getLabel('header') }}</h1>
+            <h1>{{ onGetLabel('header') }}</h1>
         </div>
     </div>
 
     <div id="content">
         <form [formGroup]="form" autocomplete="off">
             <mat-form-field>
-                <input type="text" matInput [placeholder]="getLabel('userName')" formControlName="userName" data-tabindex="1" id="userName" [inputTabStop]="input">
-                <mat-error *ngIf="UserName.errors?.required">{{ getHint('required') }}</mat-error>
-                <mat-error *ngIf="UserName.errors?.maxlength">{{ getHint('maxLength') }}</mat-error>
+                <input type="text" matInput [placeholder]="onGetLabel('userName')" formControlName="userName" data-tabindex="1" id="userName" [inputTabStop]="input">
+                <mat-error *ngIf="userName.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="userName.errors?.maxlength">{{ onGetHint('maxLength', userName.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="getLabel('displayName')" formControlName="displayName" data-tabindex="2" id="displayName" [inputTabStop]="input">
-                <mat-error *ngIf="DisplayName.errors?.required">{{ getHint('required') }}</mat-error>
-                <mat-error *ngIf="DisplayName.errors?.maxlength">{{ getHint('maxLength') }}</mat-error>
+                <input type="text" matInput [placeholder]="onGetLabel('displayName')" formControlName="displayName" data-tabindex="2" id="displayName" [inputTabStop]="input">
+                <mat-error *ngIf="displayName.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="displayName.errors?.maxlength">{{ onGetHint('maxLength', displayName.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="email" matInput [placeholder]="getLabel('email')" formControlName="email" data-tabindex="3" id="email" [inputTabStop]="input">
-                <mat-error *ngIf="Email?.hasError('required')">{{ getHint('required') }}</mat-error>
-                <mat-error *ngIf="Email?.hasError('email')">{{ getHint('invalid') }}</mat-error>
+                <input type="email" matInput [placeholder]="onGetLabel('email')" formControlName="email" data-tabindex="3" id="email" [inputTabStop]="input">
+                <mat-error *ngIf="email.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="email.hasError('email')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <div formGroupName="passwords" id="passwords">
                 <mat-form-field>
-                    <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="getLabel('password')" formControlName="password" data-tabindex="4" id="password" [inputTabStop]="input">
+                    <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="onGetLabel('password')" formControlName="password" data-tabindex="4" id="password" [inputTabStop]="input">
                     <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
-                    <mat-error *ngIf="Password?.hasError('required')">{{ getHint('required') }}</mat-error>
-                    <mat-error *ngIf="Password?.hasError('containsSpace')">{{ getHint('noSpaces') }}</mat-error>
-                    <mat-error *ngIf="Password?.hasError('minlength') && !Password?.hasError('containsSpace')">{{ getHint('minLength') }}</mat-error>
-                    <mat-error *ngIf="Password?.hasError('maxlength') && !Password?.hasError('containsSpace')">{{ getHint('maxLength') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('containsSpace')">{{ onGetHint('noSpaces') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('minlength') && !password.hasError('containsSpace')">{{ onGetHint('minLength') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('containsSpace')">{{ onGetHint('maxLength') }}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                    <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="getLabel('confirmPassword')" formControlName="confirmPassword" data-tabindex="5" id="confirmPassword" [inputTabStop]="input" [errorStateMatcher]="confirmValidParentMatcher">
+                    <input [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="onGetLabel('confirmPassword')" formControlName="confirmPassword" data-tabindex="5" id="confirmPassword" [inputTabStop]="input" [errorStateMatcher]="confirmValidParentMatcher">
                     <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
-                    <mat-error *ngIf="ConfirmPassword?.hasError('required')">{{ getHint('required') }}</mat-error>
-                    <mat-error *ngIf="!ConfirmPassword?.hasError('required') && !MatchingPasswords">{{ getHint('passwordsNoMatch') }}</mat-error>
-                    <mat-error *ngIf="!ConfirmPassword?.hasError('required') && MatchingPasswords">{{ getHint('invalid') }}</mat-error>
+                    <mat-error *ngIf="confirmPassword?.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="!confirmPassword?.hasError('required') && !matchingPasswords">{{ onGetHint('passwordsNoMatch') }}</mat-error>
+                    <mat-error *ngIf="!confirmPassword?.hasError('required') && matchingPasswords">{{ onGetHint('invalid') }}</mat-error>
                 </mat-form-field>
             </div>
         </form>
@@ -55,7 +55,7 @@
 
     <div @slideFromRight id="footer">
         <div id="buttons">
-            <button mat-flat-button class="primary" (click)="onSave()" [disabled]="!form.valid">{{ getLabel('saveButton') }}</button>
+            <button mat-flat-button class="primary" (click)="onSave()" [disabled]="!form.valid">{{ onGetLabel('saveButton') }}</button>
         </div>
     </div>
 

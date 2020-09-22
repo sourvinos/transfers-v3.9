@@ -1,5 +1,5 @@
 import { HintService } from './../../shared/services/hint.service'
-import { SnackbarMessageService } from '../../shared/services/snackbar-message.service'
+import { MessageService } from '../../shared/services/message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -42,7 +42,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private router: Router, private snackbarMessageService: SnackbarMessageService, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private router: Router, private snackbarMessageService: MessageService, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -51,7 +51,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.focus('userName')
+        this.focus('username')
     }
 
     ngOnDestroy() {
@@ -60,21 +60,21 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.unlisten()
     }
 
-    public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
-    }
-
-    public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
-    }
-
     public onForgotPassword() {
         this.router.navigate(['/forgotPassword'])
     }
 
+    public onGetHint(id: string, minmax = 0) {
+        return this.hintService.getHintDescription(id, minmax)
+    }
+
+    public onGetLabel(id: string) {
+        return this.labelService.getLabelDescription(this.feature, id)
+    }
+
     public onLogin() {
         const form = this.form.value
-        this.accountService.login(form.userName, form.password).subscribe(() => {
+        this.accountService.login(form.username, form.password).subscribe(() => {
             this.goHome()
             this.startTimer()
         }, error => {
@@ -106,7 +106,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private initForm() {
         this.form = this.formBuilder.group({
-            userName: [environment.login.userName, Validators.required],
+            username: [environment.login.username, Validators.required],
             password: [environment.login.password, Validators.required],
             isHuman: [environment.login.isHuman, Validators.requiredTrue]
         })
@@ -143,11 +143,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get Username() {
-        return this.form.get('userName')
+    get username() {
+        return this.form.get('username')
     }
 
-    get Password() {
+    get password() {
         return this.form.get('password')
     }
 
