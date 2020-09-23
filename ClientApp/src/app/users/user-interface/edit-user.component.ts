@@ -94,8 +94,8 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -118,10 +118,10 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.resetForm()
             this.showSnackbar(this.messageService.recordUpdated(), 'info')
             this.onGoBack()
-        }, () => {
-            this.showSnackbar(this.messageService.unableToSaveRecord(), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
         })
-    }
+}
 
     //#endregion
 
@@ -167,6 +167,9 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string) {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+            this.onGoBack()
         })
     }
 

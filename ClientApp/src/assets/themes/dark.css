@@ -1,17 +1,17 @@
 :root {
     --color-background: #373f46;
+    --color-button-abort: #797979;
     --color-button-delete: #d67474;
     --color-button-primary: #57617b;
     --color-button-secondary: #5a75bc;
-    --color-button-abort: #797979;
-    --color-button-transparent-text: #fffddd;
-    --color-button-transparent-background-hover: #5a5a5a;
     --color-button-tab-background: #373f46;
     --color-button-tab-border-hover: #fffddd;
     --color-button-tab-border: #fe9f36;
     --color-button-tab: #fffddd;
     --color-button-text-all: #fffddd;
     --color-button-text-secondary: #fffddd;
+    --color-button-transparent-background-hover: #5a5a5a;
+    --color-button-transparent-text: #fffddd;
     --color-checkbox-checked: #fe9f36;
     --color-checkbox-indeterminate: #ffe85c;
     --color-checkbox-svg: #000000;
@@ -74,6 +74,8 @@
     --color-table-row: #b7b7b8;
     --color-table-rows-background-hover: #1d2733;
     --color-table-rows-hover: #fe9f36;
+    --color-tooltip-background:#ffc88a;
+    --color-tooltip:#1d2733;
     --color-transfer-form-modal: #696d71;
     --color-user-greeting: #b7b7b8;
 }

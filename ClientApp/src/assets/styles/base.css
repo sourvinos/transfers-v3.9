@@ -40,18 +40,29 @@ p.instructions {
     width: 800px;
 }
 
-.mat-menu-panel, .mat-menu-content {
-    background-color: var(--color-language-menu) !important;
-    border-radius: 4px !important;
+.mat-icon, .item {
+    color: var(--color-navigation-icon);
+    outline: 0 !important;
 }
 
 .mat-menu-item:hover {
     background-color: var(--color-select-items-hover-background) !important;
 }
 
-.mat-icon, .item {
-    color: var(--color-navigation-icon);
-    outline: 0 !important;
+.mat-menu-panel, .mat-menu-content {
+    background-color: var(--color-language-menu) !important;
+    border-radius: 4px !important;
+}
+
+.mat-snack-bar-container {
+    min-width: 30rem !important;
+}
+
+.mat-tooltip {
+    background-color: var(--color-tooltip-background);
+    color: var(--color-tooltip) !important;
+    font-size: 0.7rem;
+    font-variant-caps: petite-caps;
 }
 
 .error {

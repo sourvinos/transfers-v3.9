@@ -87,8 +87,8 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -112,16 +112,16 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.focus('description')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.portService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -168,8 +168,8 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string | number) {
         this.portService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

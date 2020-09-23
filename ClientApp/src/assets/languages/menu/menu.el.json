@@ -4,35 +4,35 @@
         "labels": [
             {
                 "id": "customers",
-                "description": "Πελάτες"
+                "description": "Πελατες"
             },
             {
                 "id": "destinations",
-                "description": "Προορισμοί"
+                "description": "Προορισμοι"
             },
             {
                 "id": "drivers",
-                "description": "Οδηγοί"
+                "description": "Οδηγοι"
             },
             {
                 "id": "pickupPoints",
-                "description": "Σημεία παραλαβής"
+                "description": "Σημεια παραλαβης"
             },
             {
                 "id": "ports",
-                "description": "Λιμάνια"
+                "description": "Λιμανια"
             },
             {
                 "id": "routes",
-                "description": "Διαδρομές"
+                "description": "Διαδρομες"
             },
             {
                 "id": "transfers",
-                "description": "Μεταφορές"
+                "description": "Μεταφορες"
             },
             {
                 "id": "users",
-                "description": "Χρήστες"
+                "description": "Χρηστες"
             },
             {
                 "id": "logout",

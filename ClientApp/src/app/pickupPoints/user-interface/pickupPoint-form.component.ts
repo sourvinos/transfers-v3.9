@@ -104,8 +104,8 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -146,16 +146,16 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
                 this.focus('description')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.pickupPointService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -207,8 +207,8 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     private getRecord(id: number) {
         this.pickupPointService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

@@ -47,7 +47,7 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     //#region lifecycle hooks
-    
+
     ngOnInit() {
         this.setWindowTitle()
         this.initForm()
@@ -90,8 +90,8 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -115,16 +115,16 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
                 this.focus('abbreviation')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.destinationService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -171,8 +171,8 @@ export class DestinationFormComponent implements OnInit, AfterViewInit, OnDestro
     private getRecord(id: string | number) {
         this.destinationService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

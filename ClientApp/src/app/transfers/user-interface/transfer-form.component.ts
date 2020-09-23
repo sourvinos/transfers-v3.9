@@ -144,8 +144,8 @@ export class TransferFormComponent implements OnInit, OnDestroy {
                     this.onGoBack()
                     this.interactionService.removeTableRow(this.getRowIndex(this.form.value.id))
                     this.resetForm()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -191,16 +191,16 @@ export class TransferFormComponent implements OnInit, OnDestroy {
                 this.refreshSummary()
                 this.focus('destinationDescription')
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.transferService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.resetForm()
                 this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -269,8 +269,8 @@ export class TransferFormComponent implements OnInit, OnDestroy {
             this.showModalForm()
             this.populateFields(result)
             this.focus('destinationDescription')
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

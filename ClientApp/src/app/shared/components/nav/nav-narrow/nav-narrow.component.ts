@@ -3,6 +3,7 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { fade } from 'src/app/shared/animations/animations'
+import { MenuService } from 'src/app/shared/services/menu.service'
 
 @Component({
     selector: 'nav-narrow',
@@ -14,7 +15,7 @@ import { fade } from 'src/app/shared/animations/animations'
 export class NavNarrowComponent {
 
     isNotLoaded = true
-    loginStatus: Observable<boolean> 
+    loginStatus: Observable<boolean>
     appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
@@ -22,8 +23,9 @@ export class NavNarrowComponent {
     imagePathName = '/assets/images/navigation/'
     theme = ''
     isScreenNarrow: boolean
+    feature = 'menu'
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private menuItemsService: MenuService) {
         this.isScreenNarrow = this.getScreenWidth()
     }
 
@@ -48,6 +50,10 @@ export class NavNarrowComponent {
 
     onLogout() {
         this.accountService.logout()
+    }
+
+    public getLabel(id: string) {
+        return this.menuItemsService.getMessageDescription(this.feature, id)
     }
 
     private compareCurrentThemeWithLocalStorage() {

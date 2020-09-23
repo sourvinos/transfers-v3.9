@@ -4,47 +4,47 @@
         "labels": [
             {
                 "id": "recordCreated",
-                "description": "(D) A record was created."
+                "message": "(D) A record was created."
             },
             {
                 "id": "recordUpdated",
-                "description": "(D) This record was updated."
+                "message": "(D) This record was updated."
             },
             {
                 "id": "recordDeleted",
-                "description": "(D) This record was deleted."
+                "message": "(D) This record was deleted."
             },
             {
                 "id": "askConfirmationToAbortEditing",
-                "description": "(D) If you continue, all changes will be lost."
+                "message": "(D) If you continue, all changes will be lost."
             },
             {
                 "id": "askConfirmationToDelete",
-                "description": "(D) If you continue, this record will be lost for ever."
+                "message": "(D) If you continue, this record will be lost for ever."
             },
             {
                 "id": "noRecordsSelected",
-                "description": "(D) You have not selected any records for update."
+                "message": "(D) You have not selected any records for update."
             },
             {
                 "id": "noDefaultDriverFound",
-                "description": "(D) A default driver was not found."
+                "message": "(D) A default driver was not found."
             },
             {
                 "id": "noContactWithServer",
-                "description": "(D) There is no contact with the server."
+                "message": "(D) There is no contact with the server."
             },
             {
                 "id": "wrongCurrentPassword",
-                "description": "(D) The current password is wrong."
+                "message": "(D) The current password is wrong."
             },
             {
                 "id": "veryBad",
-                "description": "(D) Something went very wrong."
+                "message": "(D) Something went very wrong."
             },
             {
                 "id": "unableToRegisterUser",
-                "description": "(D) A user with these details can not be created."
+                "message": "(D) A user with these details can not be created."
             },
             {
                 "id": "accountNotConfirmed",
@@ -78,17 +78,17 @@
             {
                 "error": 401,
                 "id": "authenticationFailed",
-                "description": "(D) Authentication failed."
+                "message": "(D) Authentication failed."
             },
             {
                 "error": 404,
                 "id": "recordNotFound",
-                "description": "(D) This record can not be found."
+                "message": "(D) This record can not be found."
             },
             {
                 "error": 409,
                 "id": "defaultDriverExists",
-                "description": "(D) There is already a default driver."
+                "message": "(D) There is already a default driver."
             }
         ]
     }

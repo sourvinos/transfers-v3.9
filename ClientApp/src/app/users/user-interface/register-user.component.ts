@@ -102,10 +102,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             this.resetForm()
             this.showSnackbar(this.messageService.recordCreated(), 'info')
             this.onGoBack()
-        }, () => {
-            this.showSnackbar(this.messageService.unableToRegisterUser(), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
         })
-    }
+}
 
     //#endregion
 

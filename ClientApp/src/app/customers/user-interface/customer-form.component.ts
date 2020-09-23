@@ -103,8 +103,8 @@ export class CustomerFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -128,16 +128,16 @@ export class CustomerFormComponent {
                 this.initForm()
                 this.focus('description')
                 this.showSnackbar(this.messageService.recordCreated(), 'info') // Tested
-            }, () => {
-                this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.resetForm()
                 this.showSnackbar(this.messageService.recordUpdated(), 'info') // Tested
                 this.onGoBack()
-            }, () => {
-                this.showSnackbar(this.messageService.unableToSaveRecord(), 'error') // Tested
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -184,8 +184,8 @@ export class CustomerFormComponent {
     private getRecord(id: string | number) {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, () => {
-            this.showSnackbar(this.messageService.recordNotFound(), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

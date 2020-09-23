@@ -14,6 +14,14 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'
 import { MatTabsModule } from '@angular/material/tabs'
+import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip'
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+    showDelay: 0,
+    hideDelay: 50,
+    touchendHideDelay: 50,
+    position: 'right'
+}
 
 @NgModule({
     exports: [
@@ -30,11 +38,13 @@ import { MatTabsModule } from '@angular/material/tabs'
         MatSelectModule,
         MatSlideToggleModule,
         MatSnackBarModule,
-        MatTabsModule
+        MatTabsModule,
+        MatTooltipModule
     ],
     providers: [
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'always' } },
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+        { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
     ]
 })
 

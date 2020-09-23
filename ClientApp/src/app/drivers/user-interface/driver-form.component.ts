@@ -88,8 +88,8 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
                     this.resetForm()
                     this.showSnackbar(this.messageService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, error => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+                }, errorCode => {
+                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
@@ -113,16 +113,16 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.focus('description')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageService.recordCreated(), 'info')
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.driverService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
-            }, error => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+            }, errorCode => {
+                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -177,8 +177,8 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private getRecord(id: string | number) {
         this.driverService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, error => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(error), 'error')
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

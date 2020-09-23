@@ -5,15 +5,15 @@
     </div>
     <div id="menuNarrow">
         <mat-button-toggle-group @fade>
-            <mat-button-toggle data-cy="customers" routerLink="/customers" routerLinkActive="active"><img src="{{imagePathName}}customers-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="destinations" routerLink="/destinations" routerLinkActive="active"><img src="{{imagePathName}}destinations-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="drivers" routerLink="/drivers" routerLinkActive="active"><img src="{{imagePathName}}drivers-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="pickupPoints" routerLink="/pickupPoints" routerLinkActive="active"><img src="{{imagePathName}}pickupPoints-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="ports" routerLink="/ports" routerLinkActive="active"><img src="{{imagePathName}}ports-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="routes" routerLink="/routes" routerLinkActive="active"><img src="{{imagePathName}}routes-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="transfers" routerLink="/transfers" routerLinkActive="active"><img src="{{imagePathName}}transfers-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="users" routerLink="/users" routerLinkActive="active"><img src="{{imagePathName}}users-{{theme}}.png" width="24px"></mat-button-toggle>
-            <mat-button-toggle data-cy="logout" (click)="onLogout()" routerLinkActive="active"><img src="{{imagePathName}}logout-{{theme}}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="customers" routerLink="/customers" routerLinkActive="active" matTooltip="{{ getLabel('customers') }}"><img src="{{ imagePathName }}customers-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="destinations" routerLink="/destinations" routerLinkActive="active" matTooltip="{{ getLabel('destinations') }}"><img src="{{ imagePathName }}destinations-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="drivers" routerLink="/drivers" routerLinkActive="active" matTooltip="{{ getLabel('drivers') }}"><img src="{{ imagePathName }}drivers-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="pickupPoints" routerLink="/pickupPoints" routerLinkActive="active" matTooltip="{{ getLabel('pickupPoints') }}"><img src="{{ imagePathName }}pickupPoints-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="ports" routerLink="/ports" routerLinkActive="active" matTooltip="{{ getLabel('ports') }}"><img src="{{ imagePathName }}ports-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="routes" routerLink="/routes" routerLinkActive="active" matTooltip="{{ getLabel('routes') }}"><img src="{{ imagePathName }}routes-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="transfers" routerLink="/transfers" routerLinkActive="active" matTooltip="{{ getLabel('transfers') }}"><img src="{{ imagePathName }}transfers-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="users" routerLink="/users" routerLinkActive="active" matTooltip="{{ getLabel('users') }}"><img src="{{ imagePathName }}users-{{ theme }}.png" width="24px"></mat-button-toggle>
+            <mat-button-toggle data-cy="logout" (click)="onLogout()" routerLinkActive="active" matTooltip="{{ getLabel('logout') }}"><img src="{{ imagePathName }}logout-{{ theme }}.png" width="24px"></mat-button-toggle>
         </mat-button-toggle-group>
     </div>
 </div>

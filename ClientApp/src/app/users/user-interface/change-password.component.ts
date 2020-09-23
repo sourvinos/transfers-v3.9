@@ -150,6 +150,9 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     private getRecord(id: string) {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
+        }, errorCode => {
+            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+            this.onGoBack()
         })
     }
 
