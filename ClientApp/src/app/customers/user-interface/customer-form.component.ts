@@ -9,13 +9,13 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/message.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Customer } from '../classes/customer'
 import { environment } from 'src/environments/environment'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
-import { HintService } from 'src/app/shared/services/hint.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'customer-form',
@@ -46,10 +46,10 @@ export class CustomerFormComponent {
         private dialogService: DialogService,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
-        private hintService: HintService,
+        private messageHintService: MessageHintService,
         private keyboardShortcutsService: KeyboardShortcuts,
-        private labelService: LabelMessageService,
-        private messageService: MessageService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
         private router: Router,
         private snackbarService: SnackbarService,
         private titleService: Title
@@ -78,7 +78,7 @@ export class CustomerFormComponent {
 
     canDeactivate() {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -97,25 +97,25 @@ export class CustomerFormComponent {
     //#region public methods
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
+        this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.customerService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
-                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
+                    this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, errorCode => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
     }
 
     public onGetHint(id: string, minmax = 0) {
-        return this.hintService.getHintDescription(id, minmax)
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -127,17 +127,17 @@ export class CustomerFormComponent {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.initForm()
                 this.focus('description')
-                this.showSnackbar(this.messageService.recordCreated(), 'info') // Tested
+                this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info') // Tested
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.resetForm()
-                this.showSnackbar(this.messageService.recordUpdated(), 'info') // Tested
+                this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info') // Tested
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -185,7 +185,7 @@ export class CustomerFormComponent {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

@@ -8,7 +8,7 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
     selector: 'pickuppoint-wrapper',
@@ -35,7 +35,7 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private labelService: LabelMessageService, private routeService: RouteService, private titleService: Title) { }
+    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private messageLabelService: MessageLabelService, private routeService: RouteService, private titleService: Title) { }
 
     ngOnInit() {
         this.setWindowTitle()
@@ -50,7 +50,7 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
     }
 
     public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onLoadPickupPoints() {

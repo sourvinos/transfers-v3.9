@@ -2,8 +2,8 @@ import { Component, HostListener } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { MenuService } from 'src/app/shared/services/menu.service'
 import { fade } from 'src/app/shared/animations/animations'
+import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
 
 @Component({
     selector: 'nav-wide',
@@ -26,7 +26,7 @@ export class NavWideComponent {
     isScreenWide: boolean
     feature = 'menu'
 
-    constructor(private accountService: AccountService, private menuItemsService: MenuService) {
+    constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -44,7 +44,7 @@ export class NavWideComponent {
     }
 
     public getLabel(id: string) {
-        return this.menuItemsService.getMessageDescription(this.feature, id)
+        return this.messageMenuService.getDescription(this.feature, id)
     }
 
     private getLoginStatus() {
@@ -56,7 +56,7 @@ export class NavWideComponent {
     }
 
     private updateNavigation() {
-        this.menuItemsService.getMenuItems().then((res: any[]) => {
+        this.messageMenuService.getMessages().then((res: any[]) => {
             res.forEach(element => {
                 this.menuItems.push(element.message)
             })

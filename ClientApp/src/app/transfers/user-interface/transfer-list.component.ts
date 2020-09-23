@@ -10,7 +10,6 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { TransferFlat } from '../classes/transfer-flat'
 import { TransferPdfService } from '../classes/transfer-pdf.service'
@@ -18,7 +17,8 @@ import { TransferService } from '../classes/transfer.service'
 import { TransferViewModel } from '../classes/transferViewModel'
 import { TransferAssignDriverComponent } from './transfer-assign-driver.component'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 
 @Component({
     selector: 'transfer-list',
@@ -77,7 +77,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageService: MessageService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private buttonClickService: ButtonClickService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageSnackbarService: MessageSnackbarService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private buttonClickService: ButtonClickService, private titleService: Title) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
@@ -145,7 +145,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
                     this.transferService.assignDriver(result, this.records).subscribe(() => {
                         this.removeSelectedIdsFromLocalStorage()
                         this.navigateToList()
-                        this.showSnackbar(this.messageService.selectedRecordsHaveBeenProcessed(), 'info')
+                        this.showSnackbar(this.messageSnackbarService.selectedRecordsHaveBeenProcessed(), 'info')
                     })
                 }
             })
@@ -157,7 +157,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -169,7 +169,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             document.getElementById('listTab').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
         }, () => {
-            this.showSnackbar(this.messageService.noDefaultDriverFound(), 'error')
+            this.showSnackbar(this.messageSnackbarService.noDefaultDriverFound(), 'error')
         })
     }
 
@@ -309,7 +309,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     private isAnyRowSelected() {
         if (this.totals[2].sum === 0) {
-            this.showSnackbar(this.messageService.noRecordsSelected(), 'error')
+            this.showSnackbar(this.messageSnackbarService.noRecordsSelected(), 'error')
             return false
         }
         this.records = JSON.parse(localStorage.getItem('selectedIds'))
@@ -321,7 +321,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         if (transferListResolved.error === null) {
             this.queryResult = transferListResolved.result
         } else {
-            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
+            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
         }
     }
 

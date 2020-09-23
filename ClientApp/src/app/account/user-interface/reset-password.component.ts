@@ -1,4 +1,4 @@
-import { MessageService } from 'src/app/shared/services/message.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -10,8 +10,8 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { ConfirmValidParentMatcher, ValidationService } from '../../shared/services/validation.service'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
-import { HintService } from 'src/app/shared/services/hint.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
@@ -45,7 +45,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     //#endregion
 
     constructor(
-        private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService) {
+        private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
@@ -74,20 +74,20 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     //#region global methods
 
     public onGetHint(id: string, minmax = 0) {
-        return this.hintService.getHintDescription(id, minmax)
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onSave() {
         const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe(() => {
-            this.showSnackbar(this.messageService.passwordChanged(), 'info')
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.router.navigate([this.url])
         }, () => {
-            this.showSnackbar(this.messageService.unableToResetPassword(), 'error')
+            this.showSnackbar(this.messageSnackbarService.unableToResetPassword(), 'error')
         })
     }
 

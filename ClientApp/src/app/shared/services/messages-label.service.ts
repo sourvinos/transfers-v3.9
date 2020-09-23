@@ -3,28 +3,28 @@ import { HttpClient } from '@angular/common/http'
 
 @Injectable({ providedIn: 'root' })
 
-export class MenuService {
+export class MessageLabelService {
 
-    labels: any = []
+    messages: any = []
 
     constructor(private httpClient: HttpClient) {
-        this.getMenuItems()
+        this.getMessages()
     }
 
-    getMenuItems() {
+    public getMessages() {
         const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/menu/menu.' + localStorage.getItem('language') + '.json').toPromise().then(
+            this.httpClient.get('assets/languages/label/label.' + localStorage.getItem('language') + '.json').toPromise().then(
                 response => {
-                    this.labels = response
-                    resolve(this.labels)
+                    this.messages = response
+                    resolve(this.messages)
                 })
         })
         return promise
     }
 
-    public getMessageDescription(feature: string, id: string) {
+    public getDescription(feature: string, id: string) {
         let returnValue = ''
-        this.labels.filter((f: { feature: string; labels: any[] }) => {
+        this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
                 f.labels.filter(l => {
                     if (l.id == id) {
@@ -37,3 +37,4 @@ export class MenuService {
     }
 
 }
+

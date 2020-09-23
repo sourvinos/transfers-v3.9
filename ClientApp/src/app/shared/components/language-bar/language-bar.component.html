@@ -1,3 +1,7 @@
+<button id="selector" mat-icon-button [matMenuTriggerFor]="menu">
+    <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
+</button>
+
 <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="onSaveLanguage('el')">
         <mat-icon svgIcon="el"></mat-icon>
@@ -16,7 +20,3 @@
         <span class="option">Česky</span>
     </button>
 </mat-menu>
-
-<button id="selector" mat-icon-button [matMenuTriggerFor]="menu">
-    <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
-</button>

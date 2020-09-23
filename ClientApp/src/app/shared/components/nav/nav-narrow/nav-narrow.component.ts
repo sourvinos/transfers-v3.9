@@ -3,7 +3,7 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { fade } from 'src/app/shared/animations/animations'
-import { MenuService } from 'src/app/shared/services/menu.service'
+import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
 
 @Component({
     selector: 'nav-narrow',
@@ -25,7 +25,7 @@ export class NavNarrowComponent {
     isScreenNarrow: boolean
     feature = 'menu'
 
-    constructor(private accountService: AccountService, private menuItemsService: MenuService) {
+    constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
         this.isScreenNarrow = this.getScreenWidth()
     }
 
@@ -53,7 +53,7 @@ export class NavNarrowComponent {
     }
 
     public getLabel(id: string) {
-        return this.menuItemsService.getMessageDescription(this.feature, id)
+        return this.messageMenuService.getDescription(this.feature, id)
     }
 
     private compareCurrentThemeWithLocalStorage() {

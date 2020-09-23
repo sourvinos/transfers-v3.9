@@ -10,15 +10,15 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/message.service'
+import {  MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { DialogService } from '../../shared/services/dialog.service'
 import { PickupPoint } from '../classes/pickupPoint'
 import { PickupPointService } from '../classes/pickupPoint.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
-import { HintService } from 'src/app/shared/services/hint.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'pickuppoint-form',
@@ -50,7 +50,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
@@ -112,11 +112,11 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     public onGetHint(id: string, minmax = 0) {
-        return this.hintService.getHintDescription(id, minmax)
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {

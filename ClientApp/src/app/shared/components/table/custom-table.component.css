@@ -80,3 +80,8 @@ tr:hover td:last-child>div>.button-row-menu {
     visibility: hidden;
     width: 30px;
 }
+
+span {
+    font-size: 1.5rem;
+    font-variant-caps: petite-caps;
+}

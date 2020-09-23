@@ -1,4 +1,3 @@
-import { MessageService } from 'src/app/shared/services/message.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -10,9 +9,10 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
-import { HintService } from 'src/app/shared/services/hint.service'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 
 @Component({
     selector: 'forgot-password-form',
@@ -35,7 +35,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -60,11 +60,11 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
     //#region public methods
 
     public onGetHint(id: string, minmax = 0) {
-        return this.hintService.getHintDescription(id, minmax)
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -74,7 +74,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
     public onSave() {
         const form = this.form.value
         this.accountService.forgotPassword(form.email).subscribe(() => {
-            this.showSnackbar(this.messageService.emailSent(), 'info')
+            this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
             this.onGoBack()
         })
     }

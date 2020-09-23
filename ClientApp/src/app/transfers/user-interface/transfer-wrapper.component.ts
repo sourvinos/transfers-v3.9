@@ -8,7 +8,7 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -37,7 +37,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private labelService: LabelMessageService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private messageLabelService: MessageLabelService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -71,7 +71,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {

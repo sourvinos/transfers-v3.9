@@ -10,11 +10,11 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PickupPoint } from '../classes/pickupPoint'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
     selector: 'pickuppoint-list',
@@ -57,7 +57,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private location: Location, private messageService: MessageService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private location: Location, private messageSnackbarService: MessageSnackbarService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
@@ -91,7 +91,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     //#endregion
@@ -140,7 +140,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
             this.records = pickupPointListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageService.noContactWithServer(), 'error')
+            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
         }
     }
 

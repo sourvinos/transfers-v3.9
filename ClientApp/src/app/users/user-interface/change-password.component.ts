@@ -7,15 +7,15 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
-import { MessageService } from 'src/app/shared/services/message.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/services/validation.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { UserService } from '../classes/user.service'
 import { ChangePassword } from '../classes/change-password'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
-import { HintService } from 'src/app/shared/services/hint.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 
 @Component({
     selector: 'change-password-form',
@@ -46,11 +46,25 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     //#endregion
 
     constructor(
-        private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService,) {
+        private accountService: AccountService,
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private messageHintService: MessageHintService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title,
+        private userService: UserService,
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
-        
+
     }
 
     ngOnInit() {
@@ -71,7 +85,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -84,11 +98,11 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     }
 
     public getHint(id: string) {
-        return this.hintService.getHintDescription(id)
+        return this.messageHintService.getDescription(id)
     }
 
     public getLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -98,11 +112,11 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
     public onSave() {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe(() => {
-            this.showSnackbar(this.messageService.passwordChanged(), 'info')
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.resetForm()
             this.accountService.logout()
         }, () => {
-            this.showSnackbar(this.messageService.wrongCurrentPassword(), 'error')
+            this.showSnackbar(this.messageSnackbarService.wrongCurrentPassword(), 'error')
         })
     }
 
@@ -151,7 +165,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

@@ -1,3 +1,4 @@
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
@@ -8,13 +9,12 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { MessageService } from 'src/app/shared/services/message.service'
-import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { PortService } from '../classes/port.service'
 import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
-import { LabelMessageService } from 'src/app/shared/services/label.service'
-import { HintService } from 'src/app/shared/services/hint.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'port-form',
@@ -39,7 +39,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private hintService: HintService, private keyboardShortcutsService: KeyboardShortcuts, private labelService: LabelMessageService, private messageService: MessageService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private portService: PortService, private router: Router, private messageSnackbarService: MessageSnackbarService, private titleService: Title, private snackbarService: SnackbarService) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -64,7 +64,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     canDeactivate() {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -81,25 +81,25 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#region public methods
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
+        this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.portService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
-                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
+                    this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
                 }, errorCode => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
                 })
             }
         })
     }
 
     public onGetHint(id: string, minmax = 0) {
-        return this.hintService.getHintDescription(id, minmax)
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string) {
-        return this.labelService.getLabelDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack() {
@@ -111,17 +111,17 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
             this.portService.add(this.form.value).subscribe(() => {
                 this.focus('description')
                 this.initFormAfterDelay()
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
+                this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.portService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info')
+                this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             })
         }
     }
@@ -169,7 +169,7 @@ export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
         this.portService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             this.onGoBack()
         })
     }

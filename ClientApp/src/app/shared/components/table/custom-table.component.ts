@@ -3,6 +3,7 @@ import { IndexInteractionService } from 'src/app/shared/services/index-interacti
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { slideToLeft } from 'src/app/shared/animations/animations'
 import { Subject } from 'rxjs'
+import { MessageTableService } from '../../services/messages-table.service'
 
 @Component({
     selector: 'custom-table',
@@ -34,8 +35,9 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     randomTableId = Math.floor(Math.random() * 1000) + 1
     tableAnimations: true
     ngUnsubscribe = new Subject<void>()
+    feature = 'table'
 
-    constructor(private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
+    constructor(private messageTableService: MessageTableService, private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
 
     ngOnInit() {
         this.differences = this.iterableDiffers.find(this.records).create()
@@ -64,6 +66,10 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     onDomChange() {
         this.onGotoRow(1)
+    }
+
+    public onGetLabel(id: string) {
+        return this.messageTableService.getDescription(this.feature, id)
     }
 
     onHeaderClick(columnName: string, sortOrder: string, column: any) {
