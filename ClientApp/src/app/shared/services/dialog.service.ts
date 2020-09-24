@@ -7,9 +7,15 @@ import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.co
 
 export class DialogService {
 
+    //#region variables
+
     response: any
 
+    //#endregion
+
     constructor(public dialog: MatDialog) { }
+
+    //#region public methods
 
     public open(titleColor: string, message: string, actions: string[]): Observable<boolean> {
         this.response = this.dialog.open(DialogAlertComponent, {
@@ -24,5 +30,7 @@ export class DialogService {
         })
         return this.response.afterClosed()
     }
+
+    //#endregion
 
 }

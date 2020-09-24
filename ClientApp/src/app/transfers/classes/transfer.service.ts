@@ -16,7 +16,7 @@ export class TransferService extends DataService {
         return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
     }
 
-    assignDriver(driverId: string, ids: string[]) {
+    assignDriver(driverId: string, ids: string[]): Observable<any> {
         let params = new HttpParams().set('driverId', driverId).set('id', ids[0])
         ids.forEach((element, index) => {
             if (index > 0) {

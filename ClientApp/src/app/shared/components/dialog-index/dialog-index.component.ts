@@ -12,8 +12,9 @@ import { IndexInteractionService } from '../../services/index-interaction.servic
 
 export class DialogIndexComponent implements OnInit, OnDestroy {
 
-    title: string
+    //#region variables
 
+    title: string
     fields: any[]
     headers: any[]
     justify: any[]
@@ -23,7 +24,9 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
     selectedRecord: any
     ngUnsubscribe = new Subject<void>();
 
-    constructor(public dialogRef: MatDialogRef<DialogIndexComponent>, private indexInteractionService: IndexInteractionService, @Inject(MAT_DIALOG_DATA) public data: any) {
+    //#endregion
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private indexInteractionService: IndexInteractionService, public dialogRef: MatDialogRef<DialogIndexComponent>) {
         this.title = data.title
         this.fields = data.fields
         this.headers = data.headers
@@ -33,16 +36,22 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
         this.records = data.records
     }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.subscribeToIndexinteractionService()
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
 
-    private subscribeToIndexinteractionService() {
+    //#endregion
+
+    //#region private methods
+
+    private subscribeToIndexinteractionService(): void {
         this.indexInteractionService.data.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.selectedRecord = response
             this.indexInteractionService.dialogMustClose.subscribe(x => {
@@ -52,5 +61,7 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
             })
         })
     }
+
+    //#endregion
 
 }

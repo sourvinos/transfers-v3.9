@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
-import { forkJoin, Subject } from 'rxjs'
+import { forkJoin, Subject, Subscription } from 'rxjs'
 import { CustomerService } from 'src/app/customers/classes/customer.service'
 import { DestinationService } from 'src/app/destinations/classes/destination.service'
 import { Driver } from 'src/app/drivers/classes/driver'
@@ -69,18 +69,19 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         private driverService: DriverService,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
-        private messageHintService: MessageHintService,
         private interactionService: InteractionService,
         private keyboardShortcutsService: KeyboardShortcuts,
-        public dialog: MatDialog,
+        private messageHintService: MessageHintService,
         private messageLabelService: MessageLabelService,
         private messageSnackbarService: MessageSnackbarService,
         private pickupPointService: PickupPointService,
         private portService: PortService,
         private router: Router,
         private snackbarService: SnackbarService,
+        private titleService: Title,
         private transferService: TransferService,
-        private titleService: Title) {
+        public dialog: MatDialog
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)
@@ -99,20 +100,20 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
@@ -131,12 +132,12 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#region public methods
 
-    public onCalculateTotalPersons() {
+    public onCalculateTotalPersons(): void {
         const totalPersons = parseInt(this.form.value.adults, 10) + parseInt(this.form.value.kids, 10) + parseInt(this.form.value.free, 10)
         this.form.patchValue({ totalPersons: Number(totalPersons) ? totalPersons : 0 })
     }
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.transferService.delete(this.form.value.id).subscribe(() => {
@@ -151,19 +152,19 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -183,7 +184,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.transferService.add(this.form.value).subscribe(() => {
                 this.initForm()
@@ -210,7 +211,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': () => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -241,7 +242,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private clearFields(result: any, id: any, description: any) {
+    private clearFields(result: any, id: any, description: any): void {
         this.form.patchValue({ [id]: result ? result.id : '' })
         this.form.patchValue({ [description]: result ? result.description : '' })
     }
@@ -260,11 +261,11 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         return this.pickupPointsFlat
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: number) {
+    private getRecord(id: number): void {
         this.transferService.getSingle(id).subscribe(result => {
             this.showModalForm()
             this.populateFields(result)
@@ -275,7 +276,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private getRowIndex(recordId: string) {
+    private getRowIndex(recordId: string): number {
         const table = <HTMLTableElement>document.querySelector('table')
         for (let i = 0; i < table.rows.length; i++) {
             if (table.rows[i].cells[1].innerText == recordId) {
@@ -284,11 +285,11 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         }
     }
 
-    private hideModalForm() {
+    private hideModalForm(): void {
         document.getElementById('transferFormModal').style.visibility = "hidden"
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
             dateIn: '',
@@ -306,7 +307,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private patchFields(result: any, fields: any[]) {
+    private patchFields(result: any, fields: any[]): void {
         if (result) {
             Object.entries(result).forEach(([key, value]) => {
                 this.form.patchValue({ [key]: value })
@@ -318,7 +319,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         }
     }
 
-    private populateDropDowns() {
+    private populateDropDowns(): Subscription {
         const sources = []
         sources.push(this.customerService.getAllActive())
         sources.push(this.destinationService.getAllActive())
@@ -337,7 +338,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
             })
     }
 
-    private populateFields(result: Transfer) {
+    private populateFields(result: Transfer): void {
         this.form.setValue({
             id: result.id,
             dateIn: result.dateIn,
@@ -355,7 +356,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private populateFormWithDefaultValues(driver: Driver) {
+    private populateFormWithDefaultValues(driver: Driver): void {
         this.form.patchValue({
             id: 0,
             dateIn: this.helperService.getDateFromLocalStorage(),
@@ -373,18 +374,18 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private refreshSummary() {
+    private refreshSummary(): void {
         this.interactionService.mustRefreshList()
     }
 
-    private renameKey(obj: any, oldKey: string, newKey: string) {
+    private renameKey(obj: any, oldKey: string, newKey: string): void {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
         }
     }
 
-    private renameObjects() {
+    private renameObjects(): void {
         this.destinations.forEach(obj => {
             this.renameKey(obj, 'id', 'destinationId')
             this.renameKey(obj, 'description', 'destinationDescription')
@@ -411,19 +412,19 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showModalForm() {
+    private showModalForm(): void {
         document.getElementById('transferFormModal').style.visibility = "visible"
     }
 
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {
+    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
         const dialog = this.dialog.open(DialogIndexComponent, {
             height: '685px',
             data: {
@@ -441,7 +442,7 @@ export class TransferFormComponent implements OnInit, OnDestroy {
         })
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
@@ -449,63 +450,63 @@ export class TransferFormComponent implements OnInit, OnDestroy {
 
     //#region getters
 
-    get destinationId() {
+    get destinationId(): AbstractControl {
         return this.form.get('destinationId')
     }
 
-    get destinationDescription() {
+    get destinationDescription(): AbstractControl {
         return this.form.get('destinationDescription')
     }
 
-    get customerId() {
+    get customerId(): AbstractControl {
         return this.form.get('customerId')
     }
 
-    get customerDescription() {
+    get customerDescription(): AbstractControl {
         return this.form.get('customerDescription')
     }
 
-    get pickupPointId() {
+    get pickupPointId(): AbstractControl {
         return this.form.get('pickupPointId')
     }
 
-    get pickupPointDescription() {
+    get pickupPointDescription(): AbstractControl {
         return this.form.get('pickupPointDescription')
     }
 
-    get adults() {
+    get adults(): AbstractControl {
         return this.form.get('adults')
     }
 
-    get kids() {
+    get kids(): AbstractControl {
         return this.form.get('kids')
     }
 
-    get free() {
+    get free(): AbstractControl {
         return this.form.get('free')
     }
 
-    get totalPersons() {
+    get totalPersons(): AbstractControl {
         return this.form.get('totalPersons')
     }
 
-    get driverId() {
+    get driverId(): AbstractControl {
         return this.form.get('driverId')
     }
 
-    get driverDescription() {
+    get driverDescription(): AbstractControl {
         return this.form.get('driverDescription')
     }
 
-    get portId() {
+    get portId(): AbstractControl {
         return this.form.get('portId')
     }
 
-    get portDescription() {
+    get portDescription(): AbstractControl {
         return this.form.get('portDescription')
     }
 
-    get remarks() {
+    get remarks(): AbstractControl {
         return this.form.get('remarks')
     }
 

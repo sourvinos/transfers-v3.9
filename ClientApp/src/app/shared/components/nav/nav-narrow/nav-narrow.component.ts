@@ -14,6 +14,8 @@ import { MessageMenuService } from 'src/app/shared/services/messages-menu.servic
 
 export class NavNarrowComponent {
 
+    //#region variables
+
     isNotLoaded = true
     loginStatus: Observable<boolean>
     appName = {
@@ -25,49 +27,63 @@ export class NavNarrowComponent {
     isScreenNarrow: boolean
     feature = 'menu'
 
+    //#endregion
+
     constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
         this.isScreenNarrow = this.getScreenWidth()
     }
 
-    @HostListener('window:resize', ['$event']) onResize() {
+    @HostListener('window:resize', ['$event']) onResize(): any {
         this.isScreenNarrow = this.getScreenWidth()
     }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.theme = this.getTheme()
         this.loginStatus = this.accountService.isLoggedIn
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         setTimeout(() => {
             this.isNotLoaded = false
         }, 1000)
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         this.compareCurrentThemeWithLocalStorage()
     }
 
-    onLogout() {
-        this.accountService.logout()
-    }
+    //#endregion
 
-    public getLabel(id: string) {
+    //#region public methods
+
+    public onGetLabel(id: string): string {
         return this.messageMenuService.getDescription(this.feature, id)
     }
 
-    private compareCurrentThemeWithLocalStorage() {
+    public onLogout(): void {
+        this.accountService.logout()
+    }
+
+    //#endregion
+
+    //#region private methods
+
+    private compareCurrentThemeWithLocalStorage(): void {
         if (localStorage.getItem('theme') != this.theme) {
             this.theme = localStorage.getItem('theme')
         }
     }
 
-    private getScreenWidth() {
+    private getScreenWidth(): boolean {
         return document.getElementById("wrapper").clientWidth <= 1366
     }
 
-    private getTheme() {
+    private getTheme(): string {
         return localStorage.getItem('theme')
     }
+
+    //#endregion
 
 }

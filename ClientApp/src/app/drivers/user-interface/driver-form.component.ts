@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -39,7 +39,21 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private driverService: DriverService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -47,22 +61,22 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
@@ -81,7 +95,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     //#region public methods
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.driverService.delete(this.form.value.id).subscribe(() => {
@@ -95,19 +109,19 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.driverService.add(this.form.value).subscribe(() => {
                 this.focus('description')
@@ -127,11 +141,11 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSetActiveState() {
+    public onSetActiveState(): void {
         if (this.form.value.isDefault === false) { this.form.patchValue({ isActive: true }) }
     }
 
-    public onSetDefaultState() {
+    public onSetDefaultState(): void {
         if (this.form.value.isActive === true) { this.form.patchValue({ isDefault: false }) }
     }
 
@@ -139,7 +153,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -170,11 +184,11 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number) {
+    private getRecord(id: string | number): void {
         this.driverService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
@@ -183,7 +197,7 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
@@ -194,13 +208,13 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private initFormAfterDelay() {
+    private initFormAfterDelay(): void {
         setTimeout(() => {
             this.initForm()
         }, 200)
     }
 
-    private populateFields(result: Driver) {
+    private populateFields(result: Driver): void {
         this.form.setValue({
             id: result.id,
             description: result.description,
@@ -211,19 +225,19 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private unsubscribe() {
+    private unsubscribe(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
@@ -232,15 +246,15 @@ export class DriverFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region getters
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get phones() {
+    get phones(): AbstractControl {
         return this.form.get('phones')
     }
 
-    get isActive() {
+    get isActive(): AbstractControl {
         return this.form.get('isActive')
     }
 

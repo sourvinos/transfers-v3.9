@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
-import { forkJoin, Subject } from 'rxjs'
+import { forkJoin, Subject, Subscription } from 'rxjs'
 import { RouteService } from 'src/app/routes/classes/route.service'
 import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import {  MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { DialogService } from '../../shared/services/dialog.service'
 import { PickupPoint } from '../classes/pickupPoint'
@@ -50,7 +50,22 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageService: MessageSnackbarService,
+        private pickupPointService: PickupPointService,
+        private routeService: RouteService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title,
+        public dialog: MatDialog
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
@@ -63,23 +78,23 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
@@ -97,7 +112,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region public methods
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.pickupPointService.delete(this.form.value.id).subscribe(() => {
@@ -111,19 +126,19 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -140,7 +155,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.focus('description')
@@ -164,7 +179,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -195,16 +210,16 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private clearFields(result: any, id: any, description: any) {
+    private clearFields(result: any, id: any, description: any): void {
         this.form.patchValue({ [id]: result ? result.id : '' })
         this.form.patchValue({ [description]: result ? result.description : '' })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: number) {
+    private getRecord(id: number): void {
         this.pickupPointService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
@@ -213,7 +228,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
             routeId: [0, Validators.required], routeDescription: [{ value: '', disabled: true }, Validators.required],
@@ -225,13 +240,13 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private initFormAfterDelay() {
+    private initFormAfterDelay(): void {
         setTimeout(() => {
             this.initForm()
         }, 200)
     }
 
-    private patchFields(result: any, fields: any[]) {
+    private patchFields(result: any, fields: any[]): void {
         if (result) {
             Object.entries(result).forEach(([key, value]) => {
                 this.form.patchValue({ [key]: value })
@@ -243,7 +258,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         }
     }
 
-    private patchRouteFields() {
+    private patchRouteFields(): void {
         setTimeout(() => {
             const route: any[] = this.routes.filter(x => x.routeId === this.routeId)
             this.form.patchValue({
@@ -253,7 +268,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         }, 500)
     }
 
-    private populateDropDowns() {
+    private populateDropDowns(): Subscription {
         const sources = []
         sources.push(this.routeService.getAllActive())
         return forkJoin(sources).subscribe(
@@ -264,7 +279,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         )
     }
 
-    private populateFields(result: PickupPoint) {
+    private populateFields(result: PickupPoint): void {
         this.form.setValue({
             id: result.id,
             routeId: result.route.id, routeDescription: result.route.description,
@@ -276,14 +291,14 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private renameKey(obj: unknown, oldKey: string, newKey: string) {
+    private renameKey(obj: unknown, oldKey: string, newKey: string): void {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
         }
     }
 
-    private renameObjects() {
+    private renameObjects(): void {
         this.routes.forEach((obj: any) => {
             this.renameKey(obj, 'id', 'routeId')
             this.renameKey(obj, 'description', 'routeDescription')
@@ -292,15 +307,15 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {
+    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
         const dialog = this.dialog.open(DialogIndexComponent, {
             height: '685px',
             data: {
@@ -318,11 +333,11 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
         })
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private unsubscribe() {
+    private unsubscribe(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
@@ -331,19 +346,19 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     //#region getters
 
-    get routeDescription() {
+    get routeDescription(): AbstractControl {
         return this.form.get('routeDescription')
     }
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get exactPoint() {
+    get exactPoint(): AbstractControl {
         return this.form.get('exactPoint')
     }
 
-    get time() {
+    get time(): AbstractControl {
         return this.form.get('time')
     }
 

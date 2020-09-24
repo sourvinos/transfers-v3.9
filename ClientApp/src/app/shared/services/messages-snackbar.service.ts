@@ -5,25 +5,20 @@ import { HttpClient } from '@angular/common/http'
 
 export class MessageSnackbarService {
 
+    //#region variables
+
     messages: any = []
     feature = 'snackbarMessages'
+
+    //#endregion
 
     constructor(private httpClient: HttpClient) {
         this.getMessages()
     }
 
-    public getMessages() {
-        const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/snackbar/snackbar.' + localStorage.getItem('language') + '.json').toPromise().then(
-                response => {
-                    this.messages = response
-                    resolve(this.messages)
-                })
-        })
-        return promise
-    }
+    //#region public methods
 
-    public getDescription(feature: string, id: string) {
+    public getDescription(feature: string, id: string): string {
         let description = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
@@ -35,6 +30,17 @@ export class MessageSnackbarService {
             }
         })
         return description
+    }
+
+    public getMessages(): Promise<any> {
+        const promise = new Promise((resolve) => {
+            this.httpClient.get('assets/languages/snackbar/snackbar.' + localStorage.getItem('language') + '.json').toPromise().then(
+                response => {
+                    this.messages = response
+                    resolve(this.messages)
+                })
+        })
+        return promise
     }
 
     public recordCreated(): string { return this.getDescription(this.feature, "recordCreated") }
@@ -54,7 +60,7 @@ export class MessageSnackbarService {
     public passwordChanged(): string { return this.getDescription(this.feature, "passwordChanged") }
     public formIsDirty(): string { return this.getDescription(this.feature, "formIsDirty") }
 
-    public getHttpErrorMessage(errorCode: number, feature = 'snackbarMessages') {
+    public getHttpErrorMessage(errorCode: number, feature = 'snackbarMessages'): string {
         let returnValue = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
@@ -67,5 +73,7 @@ export class MessageSnackbarService {
         })
         return returnValue
     }
+
+    //#endregion
 
 }

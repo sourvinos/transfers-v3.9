@@ -1,6 +1,6 @@
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -45,7 +45,18 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     //#endregion
 
     constructor(
-        private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService) {
+        private accountService: AccountService,
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService
+    ) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
@@ -54,34 +65,34 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('password')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
     //#endregion
-   
+
     //#region global methods
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onSave() {
+    public onSave(): void {
         const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
@@ -94,7 +105,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
     //#endregion
 
     //#region private methods
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Alt.S': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -107,11 +118,11 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             email: [this.email],
             token: [this.token],
@@ -122,7 +133,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
         })
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
@@ -130,15 +141,15 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#region getters
 
-    get passwords() {
+    get passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get password() {
+    get password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get confirmPassword() {
+    get confirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 

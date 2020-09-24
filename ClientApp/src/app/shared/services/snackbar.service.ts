@@ -6,9 +6,11 @@ import { SnackbarComponent } from '../components/snackbar/snackbar.component'
 
 export class SnackbarService {
 
-    constructor(public snackBar: MatSnackBar, private zone: NgZone) { }
+    constructor(private zone: NgZone, public snackBar: MatSnackBar) { }
 
-    public open(message: string | string[], type: string) {
+    //#region public methods
+
+    public open(message: string | string[], type: string): void {
         this.zone.run(() => {
             let errors = ''
             if (typeof (message) === 'object') {
@@ -27,5 +29,7 @@ export class SnackbarService {
             })
         })
     }
+
+    //#endregion
 
 }

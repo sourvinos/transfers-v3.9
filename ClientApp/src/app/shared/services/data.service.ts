@@ -5,24 +5,28 @@ export class DataService {
 
     constructor(public http: HttpClient, public url: string) { }
 
-    getAll(): Observable<any[]> {
-        return this.http.get<any[]>(this.url)
-    }
+    //#region public methods
 
-    getSingle(id: string | number) {
-        return this.http.get<any>(this.url + '/' + id)
-    }
-
-    add(formData: any): Observable<any> {
+    public add(formData: any): Observable<any> {
         return this.http.post<any>(this.url, formData)
     }
 
-    update(id: string | number, formData: any): Observable<any> {
+    public delete(id: string | number): Observable<any> {
+        return this.http.delete<any>(this.url + '/' + id)
+    }
+
+    public getAll(): Observable<any[]> {
+        return this.http.get<any[]>(this.url)
+    }
+
+    public getSingle(id: string | number): Observable<any> {
+        return this.http.get<any>(this.url + '/' + id)
+    }
+
+    public update(id: string | number, formData: any): Observable<any> {
         return this.http.put<any>(this.url + '/' + id, formData)
     }
 
-    delete(id: string | number): Observable<any> {
-        return this.http.delete<any>(this.url + '/' + id)
-    }
+    //#endregion
 
 }

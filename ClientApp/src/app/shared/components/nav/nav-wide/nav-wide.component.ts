@@ -14,6 +14,8 @@ import { MessageMenuService } from 'src/app/shared/services/messages-menu.servic
 
 export class NavWideComponent {
 
+    //#region variables
+
     isNotLoaded = true
     loginStatus: Observable<boolean>
     appName = {
@@ -26,41 +28,55 @@ export class NavWideComponent {
     isScreenWide: boolean
     feature = 'menu'
 
+    //#endregion
+
     constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
-    @HostListener('window:resize', ['$event']) onResize() {
+    @HostListener('window:resize', ['$event']) onResize(): any {
         this.isScreenWide = this.getScreenWidth()
     }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.getLoginStatus()
         this.updateNavigation()
     }
 
-    public onLogout() {
+    //#endregion
+
+    //#region public methods
+
+    public onLogout(): void {
         this.accountService.logout()
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageMenuService.getDescription(this.feature, id)
     }
 
-    private getLoginStatus() {
+    //#endregion
+
+    //#region private methods
+
+    private getLoginStatus(): void {
         this.loginStatus = this.accountService.isLoggedIn
     }
- 
-    private getScreenWidth() {
+
+    private getScreenWidth(): boolean {
         return document.getElementById("wrapper").clientWidth > 1366
     }
 
-    private updateNavigation() {
+    private updateNavigation(): void {
         this.messageMenuService.getMessages().then((res: any[]) => {
             res.forEach(element => {
                 this.menuItems.push(element.message)
             })
         })
     }
+
+    //#endregion
 
 }

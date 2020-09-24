@@ -14,6 +14,8 @@ import { MessageTableService } from '../../services/messages-table.service'
 
 export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
+    //#region variables
+
     @Input() records: any[]
     @Input() headers: any
     @Input() widths: any
@@ -37,25 +39,33 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     ngUnsubscribe = new Subject<void>()
     feature = 'table'
 
-    constructor(private messageTableService: MessageTableService, private interactionService: InteractionService, private indexInteractionService: IndexInteractionService, private iterableDiffers: IterableDiffers) { }
+    //#endregion
 
-    ngOnInit() {
+    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageTableService: MessageTableService) { }
+
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.differences = this.iterableDiffers.find(this.records).create()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.initVariables()
         this.onGotoRow(1)
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         const changes: IterableChanges<any> = this.differences.diff(this.records)
         if (changes) {
             this.checked = false
         }
     }
 
-    onCheckKeyboard(event: any) {
+    //#endregion
+
+    //#region public methods
+
+    public onCheckKeyboard(event: any): void {
         switch (event.keyCode) {
             case 38: this.onGotoRow('Up'); break
             case 40: this.onGotoRow('Down'); break
@@ -64,15 +74,15 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onDomChange() {
+    public onDomChange(): void {
         this.onGotoRow(1)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageTableService.getDescription(this.feature, id)
     }
 
-    onHeaderClick(columnName: string, sortOrder: string, column: any) {
+    public onHeaderClick(columnName: string, sortOrder: string, column: any): void {
         if (column.toElement.cellIndex === 0) {
             this.checked = !this.checked
             this.checkedIds = []
@@ -94,12 +104,12 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onSortMe(columnName: string, sortOrder: string) {
+    public onSortMe(columnName: string, sortOrder: string): void {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
 
-    public onGotoRow(key: any) {
+    public onGotoRow(key: any): void {
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
                 this.selectRow(this.table, key)
@@ -124,7 +134,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    onToggleCheckBox(row: number) {
+    public onToggleCheckBox(row: number): void {
         this.checkedIds = []
         this.totalPersons = 0
         this.table.rows[row].classList.toggle('checked')
@@ -136,8 +146,20 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         this.interactionService.setCheckedTotalPersons(this.totalPersons)
     }
 
-    private compareValues(key: string, order = 'asc') {
-        return function innerSort(a: { [x: string]: any; hasOwnProperty: (arg0: string) => any }, b: { [x: string]: any; hasOwnProperty: (arg0: string) => any }) {
+    public sendRowToService(): void {
+        if (document.getElementsByClassName('mat-dialog-container').length === 0) {
+            this.interactionService.sendObject(this.records[this.currentRow - 1])
+        } else {
+            this.indexInteractionService.action(true)
+        }
+    }
+
+    //#endregion
+
+    //#region private methods
+
+    private compareValues(key: string, order = 'asc'): any {
+        return function innerSort(a: { [x: string]: any; hasOwnProperty: (arg0: string) => any }, b: { [x: string]: any; hasOwnProperty: (arg0: string) => any }): number {
             if (!Object.prototype.hasOwnProperty.call(a, key) || !Object.prototype.hasOwnProperty.call(b, key)) { return 0 }
             let comparison = 0
             const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key]
@@ -147,7 +169,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    private initVariables() {
+    private initVariables(): void {
         this.table = document.getElementById('custom-table-' + this.randomTableId)
         this.tableContainer = this.table.parentNode.parentNode
         this.rowHeight = 46
@@ -156,7 +178,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         document.getElementById('custom-table-input-' + this.randomTableId).style.position = 'absolute'
     }
 
-    private isRowIntoView(row: HTMLTableRowElement, direction: string) {
+    private isRowIntoView(row: HTMLTableRowElement, direction: string): boolean {
         const rowOffsetTop = row.offsetTop
         const scrollTop = this.tableContainer.scrollTop
         const rowTopPlusHeight = rowOffsetTop + row.offsetHeight
@@ -177,7 +199,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    private selectRow(table: HTMLTableElement, direction: any) {
+    private selectRow(table: HTMLTableElement, direction: any): void {
         if (!isNaN(direction)) {
             this.currentRow = parseInt(direction, 10)
         } else {
@@ -190,26 +212,20 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
         }
     }
 
-    private sendRowToIndexService() {
+    private sendRowToIndexService(): void {
         this.indexInteractionService.sendObject(this.records[this.currentRow - 1])
     }
 
-    public sendRowToService() {
-        if (document.getElementsByClassName('mat-dialog-container').length === 0) {
-            this.interactionService.sendObject(this.records[this.currentRow - 1])
-        } else {
-            this.indexInteractionService.action(true)
-        }
-    }
-
-    private async unselectAllRows() {
+    private async unselectAllRows(): Promise<void> {
         await this.table.querySelectorAll('tr').forEach((element: { classList: { remove: (arg0: string) => void } }) => {
             element.classList.remove('selected')
         })
     }
 
-    private unselectRow() {
+    private unselectRow(): void {
         this.table.rows[this.currentRow].classList.remove('selected')
     }
+
+    //#endregion
 
 }

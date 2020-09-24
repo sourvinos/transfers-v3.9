@@ -9,17 +9,17 @@ export class InputFormatDirective {
 
     constructor(private el: ElementRef) { }
 
-    @HostListener('click', ['$event.target']) onClick() {
+    @HostListener('click', ['$event.target']) onClick(): any {
         this.el.nativeElement.select()
     }
 
-    @HostListener('blur') onBlur() {
+    @HostListener('blur') onBlur(): any {
         if (this.format === 'date') {
             this.el.nativeElement.value = this.formatDate(this.el.nativeElement.value)
         }
     }
 
-    @HostListener('keyup', ['$event']) onkeyup(event: { key: string; target: { getAttribute: { (arg0: string); (arg0: string) } } }) {
+    @HostListener('keyup', ['$event']) onkeyup(event: { key: string; target: { getAttribute: { (arg0: string); (arg0: string) } } }): any {
         if (this.format === 'date') {
             let value: string = this.el.nativeElement.value
             value = value.replace(/[-,.]/g, '/').replace(/[^0-9/]/g, '')
@@ -30,7 +30,7 @@ export class InputFormatDirective {
         }
     }
 
-    private formatDate(value: string) {
+    private formatDate(value: string): string {
         let day: number
         let month: number
         let year: number

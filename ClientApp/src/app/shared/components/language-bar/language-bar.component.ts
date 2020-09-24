@@ -15,15 +15,7 @@ import { MessageTableService } from './../../services/messages-table.service'
 
 export class LanguageBarComponent {
 
-    constructor(
-        private domSanitizer: DomSanitizer,
-        private matIconRegistry: MatIconRegistry,
-        private messageHintService: MessageHintService,
-        private messageMenuService: MessageMenuService,
-        private messageSnackbarService: MessageSnackbarService,
-        private messageTableService: MessageTableService,
-        private messagelabelService: MessageLabelService,
-    ) {
+    constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService) {
         this.matIconRegistry
             .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
             .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
@@ -31,11 +23,13 @@ export class LanguageBarComponent {
             .addSvgIcon('cz', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cz.svg'))
     }
 
-    public onGetLanguage() {
+    //#region public methods
+
+    public onGetLanguage(): string {
         return localStorage.getItem("language") == null ? this.onSaveLanguage('en') : localStorage.getItem("language")
     }
 
-    public onSaveLanguage(language: string) {
+    public onSaveLanguage(language: string): string {
         localStorage.setItem('language', language)
         this.messageHintService.getMessages()
         this.messageMenuService.getMessages()
@@ -44,5 +38,7 @@ export class LanguageBarComponent {
         this.messagelabelService.getMessages()
         return language
     }
+
+    //#endregion
 
 }

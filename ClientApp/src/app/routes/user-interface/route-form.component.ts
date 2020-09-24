@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
-import { forkJoin, Subject } from 'rxjs'
+import { forkJoin, Subject, Subscription } from 'rxjs'
 import { PortService } from 'src/app/ports/classes/port.service'
 import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -49,7 +49,22 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, public dialog: MatDialog, private titleService: Title) {
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private portService: PortService,
+        private routeService: RouteService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title,
+        public dialog: MatDialog
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -57,18 +72,18 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe()
         this.unlisten()
     }
@@ -91,7 +106,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region public methods
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.routeService.delete(this.form.value.id).subscribe(() => {
@@ -105,19 +120,19 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }) {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -134,7 +149,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
                 this.focus('description')
@@ -158,7 +173,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -189,16 +204,16 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private clearFields(result: any, id: any, description: any) {
+    private clearFields(result: any, id: any, description: any): void {
         this.form.patchValue({ [id]: result ? result.id : '' })
         this.form.patchValue({ [description]: result ? result.description : '' })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number) {
+    private getRecord(id: string | number): void {
         this.routeService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
@@ -207,7 +222,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(10)]],
@@ -218,13 +233,13 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private initFormAfterDelay() {
+    private initFormAfterDelay(): void {
         setTimeout(() => {
             this.initForm()
         }, 200)
     }
 
-    private patchFields(result: any, fields: any[]) {
+    private patchFields(result: any, fields: any[]): void {
         if (result) {
             Object.entries(result).forEach(([key, value]) => {
                 this.form.patchValue({ [key]: value })
@@ -236,7 +251,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    private populateDropDowns() {
+    private populateDropDowns(): Subscription {
         const sources = []
         sources.push(this.portService.getAllActive())
         return forkJoin(sources).subscribe(
@@ -247,7 +262,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         )
     }
 
-    private populateFields(result: Route) {
+    private populateFields(result: Route): void {
         this.form.setValue({
             id: result.id,
             description: result.description,
@@ -258,14 +273,14 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private renameKey(obj: any, oldKey: string, newKey: string) {
+    private renameKey(obj: any, oldKey: string, newKey: string): void {
         if (oldKey !== newKey) {
             Object.defineProperty(obj, newKey, Object.getOwnPropertyDescriptor(obj, oldKey))
             delete obj[oldKey]
         }
     }
 
-    private renameObjects() {
+    private renameObjects(): void {
         this.ports.forEach((obj: any) => {
             this.renameKey(obj, 'id', 'portId')
             this.renameKey(obj, 'description', 'portDescription')
@@ -274,15 +289,15 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]) {
+    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
         const dialog = this.dialog.open(DialogIndexComponent, {
             height: '685px',
             data: {
@@ -300,11 +315,11 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private unsubscribe() {
+    private unsubscribe(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
@@ -313,18 +328,18 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region getters
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get fullDescription() {
+    get fullDescription(): AbstractControl {
         return this.form.get('fullDescription')
     }
-    get portId() {
+    get portId(): AbstractControl {
         return this.form.get('portId')
     }
 
-    get portDescription() {
+    get portDescription(): AbstractControl {
         return this.form.get('portDescription')
     }
 

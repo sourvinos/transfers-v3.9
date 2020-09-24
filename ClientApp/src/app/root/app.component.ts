@@ -12,7 +12,10 @@ export class AppComponent implements AfterViewInit {
 
     showLoadingIndication = true
 
-    constructor(private accountService: AccountService, private router: Router) {
+    constructor(
+        private accountService: AccountService,
+        private router: Router
+    ) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -23,19 +26,19 @@ export class AppComponent implements AfterViewInit {
         })
     }
 
-    @HostListener('window:resize', ['$event']) onResize() {
+    @HostListener('window:resize', ['$event']) onResize(): any {
         this.positionLoader()
     }
 
-    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander() {
+    @HostListener('window:beforeunload', ['$event']) beforeUnloadHander(): any {
         this.accountService.logout()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit():void {
         this.positionLoader()
     }
 
-    private positionLoader() {
+    private positionLoader() :void{
         document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementsByTagName('nav')[0].clientWidth + 'px'
         document.getElementById('spinner').style.top = (document.getElementById('main').clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'
     }

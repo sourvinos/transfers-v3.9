@@ -77,7 +77,24 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private interactionService: InteractionService, private service: TransferService, private pdfService: TransferPdfService, private driverService: DriverService, private location: Location, private snackbarService: SnackbarService, public dialog: MatDialog, private transferService: TransferService, private helperService: HelperService, private messageSnackbarService: MessageSnackbarService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private buttonClickService: ButtonClickService, private titleService: Title) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private driverService: DriverService,
+        private helperService: HelperService,
+        private interactionService: InteractionService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private location: Location,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private pdfService: TransferPdfService,
+        private router: Router,
+        private service: TransferService,
+        private snackbarService: SnackbarService,
+        private titleService: Title,
+        private transferService: TransferService,
+        public dialog: MatDialog
+    ) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
@@ -89,7 +106,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.addShortcuts()
         this.initPersonsSumArray()
@@ -97,7 +114,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.onFocusSummaryPanel()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.isDataInLocalStorage()) {
             this.updateSelectedArraysFromLocalStorage()
         } else {
@@ -111,14 +128,14 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.updateParentCheckboxes()
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.mustRefresh) {
             this.mustRefresh = false
             this.ngAfterViewInit()
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -127,8 +144,8 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     //#endregion
 
     //#region public methods
-    
-    public onAssignDriver() {
+
+    public onAssignDriver(): void {
         if (this.isAnyRowSelected()) {
             const dialogRef = this.dialog.open(TransferAssignDriverComponent, {
                 height: '350px',
@@ -152,19 +169,19 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    public onCreatePdf() {
+    public onCreatePdf(): void {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['/'])
     }
 
-    public onNew() {
+    public onNew(): void {
         this.driverService.getDefaultDriver().subscribe(() => {
             document.getElementById('listTab').click()
             this.router.navigate([this.location.path() + '/transfer/new']) // OK
@@ -173,7 +190,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, indeterminate: any, className: string) {
+    public onToggleItem(item: any, lookupArray: string[], checkedVariable: any, indeterminate: any, className: string): void {
         this.toggleActiveItem(item, lookupArray)
         this.initCheckedPersons()
         this.filterByCriteria()
@@ -182,7 +199,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.updateParentCheckBox(className, indeterminate, checkedVariable)
     }
 
-    public onToggleParentCheckbox(className: string, lookupArray: any[], checkedArray: any) {
+    public onToggleParentCheckbox(className: string, lookupArray: any[], checkedArray: any): void {
         event.stopPropagation()
         lookupArray.splice(0)
         this.selectItems(className, lookupArray, !checkedArray)
@@ -196,7 +213,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region private methods
 
-    private addActiveClassToElements(className: string, lookupArray: string[]) {
+    private addActiveClassToElements(className: string, lookupArray: string[]): void {
         const elements = document.querySelectorAll(className)
         elements.forEach((element) => {
             const position = lookupArray.indexOf(element.id)
@@ -206,7 +223,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private addActiveClassToSummaryItems() {
+    private addActiveClassToSummaryItems(): void {
         setTimeout(() => {
             this.addActiveClassToElements('.item.destination', this.selectedDestinations)
             this.addActiveClassToElements('.item.customer', this.selectedCustomers)
@@ -216,7 +233,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }, 100)
     }
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': () => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -241,11 +258,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private editRecord(id: number) {
+    private editRecord(id: number): void {
         this.router.navigate(['transfer/', id], { relativeTo: this.activatedRoute })
     }
 
-    private filterByCriteria() {
+    private filterByCriteria(): void {
         this.queryResultClone.transfers = this.queryResult.transfers
             .filter((destination: { destination: { description: string } }) => this.selectedDestinations.indexOf(destination.destination.description) !== -1)
             .filter((customer: { customer: { description: string } }) => this.selectedCustomers.indexOf(customer.customer.description) !== -1)
@@ -254,7 +271,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             .filter((port: { pickupPoint: { route: { port: { description: string } } } }) => this.selectedPorts.indexOf(port.pickupPoint.route.port.description) !== -1)
     }
 
-    private flattenResults() {
+    private flattenResults(): void {
         this.transfersFlat.splice(0)
         for (const {
             id: a,
@@ -273,29 +290,29 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    public onFocusListPanel() {
+    public onFocusListPanel(): void {
         this.activePanel = 'list'
         document.getElementById('summaryTab').classList.remove('active')
         document.getElementById('listTab').classList.add('active')
         this.flattenResults()
     }
 
-    public onFocusSummaryPanel() {
+    public onFocusSummaryPanel(): void {
         this.activePanel = 'summary'
         document.getElementById('summaryTab').classList.add('active')
         document.getElementById('listTab').classList.remove('active')
     }
 
-    private getDriversFromLocalStorage() {
+    private getDriversFromLocalStorage(): any {
         const localStorageData = JSON.parse(localStorage.getItem('transfers'))
         return JSON.parse(localStorageData.drivers)
     }
 
-    private initCheckedPersons() {
+    private initCheckedPersons(): void {
         this.interactionService.setCheckedTotalPersons(0)
     }
 
-    private initPersonsSumArray() {
+    private initPersonsSumArray(): void {
         this.totals.push(
             { description: this.onGetLabel('total'), sum: 0 },
             { description: this.onGetLabel('displayed'), sum: 0 },
@@ -303,11 +320,11 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         )
     }
 
-    private isDataInLocalStorage() {
+    private isDataInLocalStorage(): string {
         return localStorage.getItem('transfers')
     }
 
-    private isAnyRowSelected() {
+    private isAnyRowSelected(): boolean {
         if (this.totals[2].sum === 0) {
             this.showSnackbar(this.messageSnackbarService.noRecordsSelected(), 'error')
             return false
@@ -316,7 +333,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         return true
     }
 
-    private loadRecords() {
+    private loadRecords(): void {
         const transferListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (transferListResolved.error === null) {
             this.queryResult = transferListResolved.result
@@ -325,15 +342,15 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    private navigateToList() {
+    private navigateToList(): void {
         this.router.navigate(['transfers/date/', this.helperService.getDateFromLocalStorage()])
     }
 
-    private removeSelectedIdsFromLocalStorage() {
+    private removeSelectedIdsFromLocalStorage(): void {
         localStorage.removeItem('selectedIds')
     }
 
-    private saveSelectedItemsToLocalStorage() {
+    private saveSelectedItemsToLocalStorage(): void {
         const summaryItems = {
             'destinations': JSON.stringify(this.selectedDestinations),
             'customers': JSON.stringify(this.selectedCustomers),
@@ -345,7 +362,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         localStorage.removeItem('selectedIds')
     }
 
-    private selectItems(className: string, lookupArray: string[], checked: boolean) {
+    private selectItems(className: string, lookupArray: string[], checked: boolean): void {
         const elements = document.getElementsByClassName('item ' + className)
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index]
@@ -358,15 +375,15 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private subscribeToInteractionService() {
+    private subscribeToInteractionService(): void {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.editRecord(response['id'])
         })
@@ -383,7 +400,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     }
 
-    private toggleActiveItem(item: { description: string }, lookupArray: string[]) {
+    private toggleActiveItem(item: { description: string }, lookupArray: string[]): void {
         const element = document.getElementById(item.description)
         if (element.classList.contains('activeItem')) {
             for (let i = 0; i < lookupArray.length; i++) {
@@ -400,7 +417,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }
     }
 
-    private updateSelectedArraysFromInitialResults() {
+    private updateSelectedArraysFromInitialResults(): void {
         this.queryResult.personsPerDestination.forEach((element: { description: string }) => { this.selectedDestinations.push(element.description) })
         this.queryResult.personsPerCustomer.forEach((element: { description: string }) => { this.selectedCustomers.push(element.description) })
         this.queryResult.personsPerRoute.forEach((element: { description: string }) => { this.selectedRoutes.push(element.description) })
@@ -408,7 +425,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.queryResult.personsPerPort.forEach((element: { description: string }) => { this.selectedPorts.push(element.description) })
     }
 
-    private updateSelectedArraysFromLocalStorage() {
+    private updateSelectedArraysFromLocalStorage(): void {
         const localStorageData = JSON.parse(localStorage.getItem('transfers'))
         this.selectedDestinations = JSON.parse(localStorageData.destinations)
         this.selectedCustomers = JSON.parse(localStorageData.customers)
@@ -417,7 +434,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         this.selectedPorts = JSON.parse(localStorageData.ports)
     }
 
-    private updateTotals() {
+    private updateTotals(): void {
         this.totals[0].sum = this.queryResult.persons
         this.totals[1].sum = this.queryResultClone.transfers.reduce((sum: number, array: { totalPersons: number }) => sum + array.totalPersons, 0)
         this.interactionService.checked.pipe(takeUntil(this.ngUnsubscribe)).subscribe(result => {
@@ -425,7 +442,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         })
     }
 
-    private updateParentCheckboxes() {
+    private updateParentCheckboxes(): void {
         setTimeout(() => {
             this.updateParentCheckBox('destination', 'indeterminateDestinations', 'checkedDestinations')
             this.updateParentCheckBox('customer', 'indeterminateCustomers', 'checkedCustomers')
@@ -435,7 +452,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
         }, 100)
     }
 
-    private updateParentCheckBox(summary: string, indeterminateVariable: string, checkedVariable: string) {
+    private updateParentCheckBox(summary: string, indeterminateVariable: string, checkedVariable: string): void {
         const allItems = document.querySelectorAll('.item.' + summary).length
         const activeItems = document.querySelectorAll('.item.' + summary + '.activeItem').length
         this[indeterminateVariable] = activeItems == allItems || activeItems == 0 ? false : true

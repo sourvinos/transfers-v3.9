@@ -5,6 +5,8 @@ import { Subject } from 'rxjs'
 
 export class InteractionService {
 
+    //#region variables
+
     _record = new Subject<string[]>()
     _checked = new Subject<number>()
     _refreshList = new Subject<any>()
@@ -14,6 +16,10 @@ export class InteractionService {
     checked = this._checked.asObservable()
     refreshList = this._refreshList.asObservable()
     tableRow = this._tableRow.asObservable()
+
+    //#endregion
+
+    //#region public methods
 
     /**
      * Caller(s):
@@ -25,7 +31,7 @@ export class InteractionService {
      * Description:
      *  The form tells the list to refresh when a record is saved
      */
-    mustRefreshList() {
+    public mustRefreshList(): void {
         this._refreshList.next()
     }
 
@@ -46,7 +52,7 @@ export class InteractionService {
      *  The caller(s) send the selected item and the subscribers call the edit method
      *
     */
-    sendObject(record: any) {
+    public sendObject(record: any): void {
         this._record.next(record)
     }
 
@@ -63,7 +69,7 @@ export class InteractionService {
      *
      * @param total
      */
-    setCheckedTotalPersons(total: number) {
+    public setCheckedTotalPersons(total: number): void {
         this._checked.next(total)
     }
 
@@ -77,8 +83,10 @@ export class InteractionService {
      * Description:
      *  The caller(s) send the id of the deleted record so that the subscriber(s) can find the table row and remove it
      */
-    removeTableRow(rowIndex: number) {
+    public removeTableRow(rowIndex: number): void {
         this._tableRow.next(rowIndex)
     }
+
+    //#endregion
 
 }

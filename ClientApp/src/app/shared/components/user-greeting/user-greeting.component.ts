@@ -10,14 +10,22 @@ import { Observable } from 'rxjs'
 
 export class UserGreetingComponent implements OnInit {
 
+    //#region variables
+
     displayName: Observable<string>
     loginStatus: Observable<boolean>
 
+    //#endregion
+
     constructor(private accountService: AccountService) { }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.loginStatus = this.accountService.isLoggedIn
         this.displayName = this.accountService.currentDisplayName
     }
+
+    //#endregion
 
 }

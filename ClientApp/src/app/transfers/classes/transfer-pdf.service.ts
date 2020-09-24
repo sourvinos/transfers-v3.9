@@ -9,7 +9,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class TransferPdfService {
 
-    createReport(transfers: any[], drivers: any[], date: string) {
+    createReport(transfers: any[], drivers: any[], date: string): void {
         const array = this.sort(transfers)
         drivers.forEach(driver => {
             const filteredArray = array.filter(x => x.driver === driver)
@@ -25,7 +25,7 @@ export class TransferPdfService {
         })
     }
 
-    private table(data: any[], columns: any[], align: any[], driver: string) {
+    private table(data: any[], columns: any[], align: any[], driver: string): any {
         return {
             table: {
                 headerRows: 1,
@@ -35,16 +35,15 @@ export class TransferPdfService {
                 widths: [20, '*', 15, 15, 15, 15, 150, 180, 20],
             },
             layout: {
-                hLineColor: function (i: number, node: { table: { widths: string | any[] } }) { return (i === 0 || i === node.table.widths.length) ? '#dddddd' : '#dddddd' },
-                vLineColor: function (i: number, node: { table: { widths: string | any[] } }) { return (i === 1 || i === node.table.widths.length - 1) ? '#dddddd' : '#dddddd' },
-                vLineStyle: function () { return { dash: { length: 50, space: 0 } } },
-                paddingTop: function (i: number) { return (i === 0) ? 5 : 5 },
-                paddingBottom: function () { return 2 }
+                vLineColor: function (i: number, node: { table: { widths: string | any[] } }): any { return (i === 1 || i === node.table.widths.length - 1) ? '#dddddd' : '#dddddd' },
+                vLineStyle: function (): any { return { dash: { length: 50, space: 0 } } },
+                paddingTop: function (i: number): number { return (i === 0) ? 5 : 5 },
+                paddingBottom: function (): number { return 2 }
             }
         }
     }
 
-    private buildTableBody(data: any[], columns: any[], align: any[], driver: string) {
+    private buildTableBody(data: any[], columns: any[], align: any[], driver: string): void {
         const body: any = []
         let pickupPointCount = 0
         let pickupPointPersons: number[] = [0, 0, 0, 0]
@@ -78,7 +77,7 @@ export class TransferPdfService {
         return body
     }
 
-    private createTableHeaders() {
+    private createTableHeaders(): any[] {
         return [
             { text: 'TIME', style: 'tableHeader', alignment: 'center', bold: true },
             { text: 'PICKUP POINT', style: 'tableHeader', alignment: 'center', bold: true },
@@ -92,7 +91,7 @@ export class TransferPdfService {
         ]
     }
 
-    private createPickupPointTotalLine(pickupPoint: string, total: any[]) {
+    private createPickupPointTotalLine(pickupPoint: string, total: any[]): any[] {
         return [
             { text: '' },
             { text: 'TOTAL FROM ' + pickupPoint, bold: true },
@@ -106,7 +105,7 @@ export class TransferPdfService {
         ]
     }
 
-    private sort(array: TransferFlat[]) {
+    private sort(array: TransferFlat[]): any {
         const sortedArray = array.sort((a, b) => {
             if (a.driver > b.driver) { return 1 }
             if (a.driver > b.driver) { return 1 }
@@ -123,7 +122,7 @@ export class TransferPdfService {
     }
 
     private createPageHeader(driver: string, date: string) {
-        return function () {
+        return function (): any {
             return {
                 table: {
                     widths: '*',
@@ -138,7 +137,7 @@ export class TransferPdfService {
     }
 
     private createPageFooter() {
-        return function (currentPage: any, pageCount: any) {
+        return function (currentPage: any, pageCount: any): any {
             return {
                 table: {
                     widths: '*',
@@ -149,7 +148,7 @@ export class TransferPdfService {
         }
     }
 
-    private addPersonsToDriver(totals: number[], row: { adults: any; kids: any; free: any; totalPersons: any }) {
+    private addPersonsToDriver(totals: number[], row: { adults: any; kids: any; free: any; totalPersons: any }): number[] {
         totals[0] += Number(row.adults)
         totals[1] += Number(row.kids)
         totals[2] += Number(row.free)
@@ -157,7 +156,7 @@ export class TransferPdfService {
         return totals
     }
 
-    private replaceZerosWithBlanks(columns: any[], row: { [x: string]: { toString: () => any } }, dataRow: any[], align: any[]) {
+    private replaceZerosWithBlanks(columns: any[], row: { [x: string]: { toString: () => any } }, dataRow: any[], align: any[]): any {
         columns.forEach((element, index) => {
             if (row[element].toString() === '0') { row[element] = '' }
             dataRow.push({ text: row[element].toString(), alignment: align[index].toString(), color: '#000000', noWrap: false, })
@@ -165,7 +164,7 @@ export class TransferPdfService {
         return dataRow
     }
 
-    private initPickupPointPersons(total: number[], row: any) {
+    private initPickupPointPersons(total: number[], row: any): any[] {
         total[0] = Number(row.adults)
         total[1] = Number(row.kids)
         total[2] = Number(row.free)
@@ -173,7 +172,7 @@ export class TransferPdfService {
         return total
     }
 
-    private createTotalLineForDriver(driver: string, totals: any[]) {
+    private createTotalLineForDriver(driver: string, totals: any[]): any[] {
         const dataRow = []
         dataRow.push(
             { text: '' },
@@ -189,7 +188,7 @@ export class TransferPdfService {
         return dataRow
     }
 
-    private addPersonsToPickupPoint(pickupPointCount: number, total: number[], row: { adults: any; kids: any; free: any; totalPersons: any }) {
+    private addPersonsToPickupPoint(pickupPointCount: number, total: number[], row: { adults: any; kids: any; free: any; totalPersons: any }): any {
         pickupPointCount += 1
         total[0] += Number(row.adults)
         total[1] += Number(row.kids)
@@ -198,7 +197,7 @@ export class TransferPdfService {
         return { pickupPointCount, total }
     }
 
-    private createBlankLine() {
+    private createBlankLine(): any {
         const dataRow = []
         dataRow.push(
             { text: '' },
@@ -214,7 +213,7 @@ export class TransferPdfService {
         return dataRow
     }
 
-    private createPdf(document: any, driver: string) {
+    private createPdf(document: any, driver: string): void {
         pdfMake.createPdf(document).download(driver + '.pdf')
     }
 

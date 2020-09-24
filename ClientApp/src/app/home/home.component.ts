@@ -18,13 +18,16 @@ export class HomeComponent implements OnInit {
         subHeader: environment.appName.subHeader
     }
 
-    constructor(private helperService: HelperService, private titleService: Title) { }
+    constructor(
+        private helperService: HelperService,
+        private titleService: Title
+    ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 

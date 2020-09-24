@@ -17,17 +17,20 @@ export class TransferAssignDriverComponent implements OnInit {
 
     //#endregion
 
-    constructor(private dialogRef: MatDialogRef<TransferAssignDriverComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private dialogRef: MatDialogRef<TransferAssignDriverComponent>,
+    ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.populateDropDowns()
     }
 
-    public onClose() {
+    public onClose(): void {
         this.dialogRef.close()
     }
 
-    private populateDropDowns() {
+    private populateDropDowns(): void {
         this.data.drivers.subscribe((result: any) => {
             this.drivers = result.sort((a: { description: number; }, b: { description: number; }) => (a.description > b.description) ? 1 : -1)
         })

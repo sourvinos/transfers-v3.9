@@ -6,13 +6,13 @@ export class InputTabStopDirective {
 
     @Input('inputTabStop') format: string;
 
-    @HostListener('keydown', ['$event']) onkeydown(event: { target: { getAttribute: (arg0: string) => string; }; key: string; preventDefault: () => void; }) {
+    @HostListener('keydown', ['$event']) onkeydown(event: { target: { getAttribute: (arg0: string) => string; }; key: string; preventDefault: () => void; }): any {
         if (event.target.getAttribute('type') === 'number' && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
             event.preventDefault()
         }
     }
 
-    @HostListener('keyup', ['$event']) onkeyup(event: { preventDefault: () => void; key: string; target: { getAttribute: (arg0: string) => any; }; }) {
+    @HostListener('keyup', ['$event']) onkeyup(event: { preventDefault: () => void; key: string; target: { getAttribute: (arg0: string) => any; }; }): any {
 
         const elements = Array.prototype.slice.apply(document.querySelectorAll('input[data-tabindex]'))
 

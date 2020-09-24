@@ -5,17 +5,17 @@
         </button>
     </div>
     <div @slideFromLeft id="title">
-        <h1>{{ getLabel('header') }}</h1>
+        <h1>{{ onGetLabel('header') }}</h1>
     </div>
     <div id="search-box">
         <mat-form-field class="no-bottom-margin">
-            <mat-label>{{ getLabel('searchLabel') }}</mat-label>
+            <mat-label>{{ onGetLabel('searchLabel') }}</mat-label>
             <mat-select [(value)]="id" (selectionChange)="onLoadPickupPoints()">
                 <mat-option *ngFor="let route of routes" [value]="route.id">
                     {{ route.description }}
                 </mat-option>
             </mat-select>
-            <mat-hint>{{ getLabel('searchHint') }}</mat-hint>
+            <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
         </mat-form-field>
     </div>
 </div>

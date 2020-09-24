@@ -37,17 +37,25 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private messageLabelService: MessageLabelService, private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private titleService: Title) { }
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageLabelService: MessageLabelService,
+        private router: Router,
+        private titleService: Title
+    ) { }
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.addShortcuts()
         this.focus('dateIn')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -70,15 +78,15 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         }
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate(['/'])
     }
 
-    public onLoadTransfers() {
+    public onLoadTransfers(): void {
         this.clearSelectedArraysFromLocalStorage()
         if (this.onCheckValidDate()) {
             this.updateLocalStorageWithDate()
@@ -90,7 +98,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': () => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -106,27 +114,27 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
         })
     }
 
-    private clearSelectedArraysFromLocalStorage() {
+    private clearSelectedArraysFromLocalStorage(): void {
         localStorage.removeItem('transfers')
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private navigateToList() {
+    private navigateToList(): void {
         this.router.navigate(['date/', this.dateInISO], { relativeTo: this.activatedRoute })
     }
 
-    private removeSelectedIdsFromLocalStorage() {
+    private removeSelectedIdsFromLocalStorage(): void {
         localStorage.removeItem('selectedIds')
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private updateLocalStorageWithDate() {
+    private updateLocalStorageWithDate(): void {
         localStorage.setItem('date', this.dateInISO)
     }
 

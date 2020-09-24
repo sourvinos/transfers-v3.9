@@ -10,6 +10,8 @@ export class AuthGuardService implements CanActivate {
 
     constructor(private accountService: AccountService, private router: Router) { }
 
+    //#region lifecycle hooks
+    
     canActivate(): Observable<boolean> {
         return this.accountService.isLoggedIn.pipe(take(1), map((loginStatus: boolean) => {
             if (!loginStatus) {
@@ -19,5 +21,7 @@ export class AuthGuardService implements CanActivate {
             return true
         }))
     }
+
+    //#endregion
 
 }

@@ -1,4 +1,4 @@
-import { MessageLabelService } from 'src/app/shared/services/messages-label.service';
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { Component, OnInit, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
@@ -10,34 +10,47 @@ import { DOCUMENT } from '@angular/common'
 
 export class ThemeBarComponent implements OnInit {
 
+    //#region variables
+
     theme = 'light'
     checked: boolean
     feature = 'themeColor'
 
+    //#endregion
+
     constructor(@Inject(DOCUMENT) private document: Document, private messageLabelService: MessageLabelService) { }
 
-    ngOnInit() {
+    //#region lifecycle hooks
+
+    ngOnInit(): void {
         this.applyTheme()
     }
 
-    public onGetLabel(id: string) {
+    //#endregion
+
+    //#region public methods
+
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onToggleTheme() {
+    public onToggleTheme(): void {
         this.changeTheme()
         this.attachStylesheetToHead()
         this.updateLocalStorage()
     }
 
-    private applyTheme() {
+    //#endregion
+
+    //#region private methods
+
+    private applyTheme(): void {
         this.updateVariables()
         this.attachStylesheetToHead()
         this.updateLocalStorage()
     }
 
-
-    private attachStylesheetToHead() {
+    private attachStylesheetToHead(): void {
         const headElement = this.document.getElementsByTagName('head')[0]
         const newLinkElement = this.document.createElement('link')
         newLinkElement.rel = 'stylesheet'
@@ -45,17 +58,19 @@ export class ThemeBarComponent implements OnInit {
         headElement.appendChild(newLinkElement)
     }
 
-    private updateLocalStorage() {
-        localStorage.setItem('theme', this.theme)
-    }
-
-    private changeTheme() {
+    private changeTheme(): void {
         this.theme = this.theme == 'light' ? 'dark' : 'light'
     }
 
-    private updateVariables() {
+    private updateLocalStorage(): void {
+        localStorage.setItem('theme', this.theme)
+    }
+
+    private updateVariables(): void {
         this.theme = localStorage.getItem('theme') || 'light'
         this.checked = this.theme == 'light' ? false : true
     }
+
+    //#endregion
 
 }

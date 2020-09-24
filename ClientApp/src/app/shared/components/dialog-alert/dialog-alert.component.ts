@@ -10,10 +10,14 @@ import { MessageLabelService } from '../../services/messages-label.service'
 
 export class DialogAlertComponent {
 
+    //#region variables
+
     titleColor = ''
     feature = 'dialog'
 
-    constructor(private messageLabelService: MessageLabelService, private dialogRef: MatDialogRef<DialogAlertComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    //#endregion
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogAlertComponent>, private messageLabelService: MessageLabelService) {
         switch (data.titleColor) {
             case 'warningColor':
                 this.titleColor = '#fe9f36'
@@ -26,12 +30,16 @@ export class DialogAlertComponent {
         }
     }
 
-    onClose() {
+    //#region public methods
+
+    public onClose(): void {
         this.dialogRef.close()
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
+
+    //#endregion
 
 }

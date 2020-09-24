@@ -35,29 +35,38 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private keyboardShortcutsService: KeyboardShortcuts, private router: Router, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private messageLabelService: MessageLabelService, private routeService: RouteService, private titleService: Title) { }
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageLabelService: MessageLabelService,
+        private routeService: RouteService,
+        private router: Router,
+        private titleService: Title
+    ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.addShortcuts()
         this.populateDropDowns()
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onLoadPickupPoints() {
+    public onLoadPickupPoints(): void {
         this.navigateToList()
     }
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -70,17 +79,17 @@ export class PickupPointWrapperComponent implements OnInit, OnDestroy {
         })
     }
 
-    private navigateToList() {
+    private navigateToList(): void {
         this.router.navigate(['routeId/', this.id], { relativeTo: this.activatedRoute })
     }
 
-    private populateDropDowns() {
+    private populateDropDowns(): void {
         this.routeService.getAllActive().subscribe((result: any) => {
             this.routes = result.sort((a: { description: number; }, b: { description: number; }) => (a.description > b.description) ? 1 : -1)
         })
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 

@@ -5,24 +5,19 @@ import { HttpClient } from '@angular/common/http'
 
 export class MessageTableService {
 
+    //#region variables
+
     messages: any = []
+
+    //#endregion
 
     constructor(private httpClient: HttpClient) {
         this.getMessages()
     }
 
-    public getMessages() {
-        const promise = new Promise((resolve) => {
-            this.httpClient.get('assets/languages/table/table.' + localStorage.getItem('language') + '.json').toPromise().then(
-                response => {
-                    this.messages = response
-                    resolve(this.messages)
-                })
-        })
-        return promise
-    }
+    //#region public methods
 
-    public getDescription(feature: string, id: string) {
+    public getDescription(feature: string, id: string): string {
         let description = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
@@ -35,6 +30,19 @@ export class MessageTableService {
         })
         return description
     }
+
+    public getMessages(): Promise<any> {
+        const promise = new Promise((resolve) => {
+            this.httpClient.get('assets/languages/table/table.' + localStorage.getItem('language') + '.json').toPromise().then(
+                response => {
+                    this.messages = response
+                    resolve(this.messages)
+                })
+        })
+        return promise
+    }
+
+    //#endregion
 
 }
 

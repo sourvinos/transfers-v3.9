@@ -89,7 +89,7 @@ export class KeyboardShortcuts {
             inputs: this.normalizeInputs(options.inputs),
             bindings: this.normalizeBindings(bindings)
         })
-        const unlisten = () => {
+        const unlisten = (): void => {
             this.removeListener(listener)
         }
         return (unlisten)
@@ -126,7 +126,7 @@ export class KeyboardShortcuts {
         return (this.normalizeKey(parts.join('.')))
     }
 
-    private handleKeyboardEvent = (event: KeyboardEvent) => {
+    private handleKeyboardEvent = (event: KeyboardEvent): void => {
         const key = this.getKeyFromEvent(event)
         const isInputEvent = this.isEventFromInput(event)
         let handler: Handler
@@ -216,7 +216,7 @@ export class KeyboardShortcuts {
         return (normalized)
     }
 
-    private removeListener(listenerToRemove: Listener) {
+    private removeListener(listenerToRemove: Listener): void {
         this.listeners = this.listeners.filter(
             (listener: Listener): boolean => {
                 return (listener !== listenerToRemove)

@@ -5,18 +5,26 @@ import { Subject } from 'rxjs'
 
 export class IndexInteractionService {
 
+    //#region variables
+
     private _data = new Subject<unknown>()
     private _dialogMustClose = new Subject<boolean>()
 
     data = this._data.asObservable()
     dialogMustClose = this._dialogMustClose.asObservable()
 
-    sendObject(data: any) {
+    //#endregion
+
+    //#region public methods
+
+    public sendObject(data: any): void {
         this._data.next(data)
     }
 
-    action(action: boolean) {
+    public action(action: boolean): void {
         this._dialogMustClose.next(action)
     }
+
+    //#endregion
 
 }

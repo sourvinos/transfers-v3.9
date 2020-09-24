@@ -52,14 +52,14 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         private dialogService: DialogService,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
-        private messageHintService: MessageHintService,
         private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
         private messageLabelService: MessageLabelService,
         private messageSnackbarService: MessageSnackbarService,
         private router: Router,
         private snackbarService: SnackbarService,
         private titleService: Title,
-        private userService: UserService,
+        private userService: UserService
     ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
@@ -67,17 +67,17 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('currentPassword')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -97,19 +97,19 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
-    public getHint(id: string) {
+    public getHint(id: string): string {
         return this.messageHintService.getDescription(id)
     }
 
-    public getLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
@@ -120,7 +120,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -148,7 +148,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
-    private flattenFormFields() {
+    private flattenFormFields(): void {
         this.flatForm = {
             userId: this.form.value.userId,
             currentPassword: this.form.value.currentPassword,
@@ -157,11 +157,11 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string) {
+    private getRecord(id: string): void {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
@@ -170,7 +170,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             userId: '',
             currentPassword: ['', [Validators.required]],
@@ -182,21 +182,21 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     }
 
-    private populateFields(result: { id: any }) {
+    private populateFields(result: { id: any }): void {
         this.form.patchValue({
             userId: result.id
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 

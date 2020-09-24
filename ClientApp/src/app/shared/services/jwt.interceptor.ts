@@ -8,12 +8,18 @@ import { AccountService } from './account.service'
 
 export class JwtInterceptor implements HttpInterceptor {
 
+    //#region variables
+
     private isTokenRefreshing = false;
     private tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
+    //#endregion
+
     constructor(private accountService: AccountService) { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    //#region public methods
+
+    public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (this.isUserLoggedIn()) {
             return next.handle(this.attachTokenToRequest(request)).pipe(
                 tap((event: HttpEvent<any>) => {
@@ -42,7 +48,28 @@ export class JwtInterceptor implements HttpInterceptor {
         }
     }
 
-    private handleHttpErrorResponse(request: HttpRequest<any>, next: HttpHandler) {
+    //#endregion
+
+    //#region private methods
+
+    private attachTokenToRequest(request: HttpRequest<any>): HttpRequest<any> {
+        const token = localStorage.getItem('jwt')
+        return request.clone({
+            setHeaders: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+    }
+
+    private handleError(errorResponse: HttpErrorResponse): string {
+        if (errorResponse.error instanceof Error) {
+            return `Front-end error ${errorResponse.error.message}`
+        } else {
+            return `Server error ${errorResponse.status} ${errorResponse.error}`
+        }
+    }
+
+    private handleHttpErrorResponse(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
         if (!this.isTokenRefreshing) {
             this.isTokenRefreshing = true
             this.tokenSubject.next(null)
@@ -76,25 +103,10 @@ export class JwtInterceptor implements HttpInterceptor {
         }
     }
 
-    private attachTokenToRequest(request: HttpRequest<any>) {
-        const token = localStorage.getItem('jwt')
-        return request.clone({
-            setHeaders: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-    }
-
-    private handleError(errorResponse: HttpErrorResponse) {
-        if (errorResponse.error instanceof Error) {
-            return `Front-end error ${errorResponse.error.message}`
-        } else {
-            return `Server error ${errorResponse.status} ${errorResponse.error}`
-        }
-    }
-
-    private isUserLoggedIn() {
+    private isUserLoggedIn(): boolean {
         return localStorage.getItem('loginStatus') === '1'
     }
+
+    //#endregion
 
 }

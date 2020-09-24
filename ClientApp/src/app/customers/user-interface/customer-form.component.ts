@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -46,8 +46,8 @@ export class CustomerFormComponent {
         private dialogService: DialogService,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
-        private messageHintService: MessageHintService,
         private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
         private messageLabelService: MessageLabelService,
         private messageSnackbarService: MessageSnackbarService,
         private router: Router,
@@ -61,22 +61,22 @@ export class CustomerFormComponent {
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('description')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe()
         this.unlisten()
     }
 
-    canDeactivate() {
+    canDeactivate(): boolean {
         if (this.form.dirty) {
             this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
@@ -96,7 +96,7 @@ export class CustomerFormComponent {
 
     //#region public methods
 
-    public onDelete() {
+    public onDelete(): void {
         this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.customerService.delete(this.form.value.id).subscribe(() => {
@@ -110,19 +110,19 @@ export class CustomerFormComponent {
         })
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         if (this.form.value.id === 0) {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.initForm()
@@ -146,7 +146,7 @@ export class CustomerFormComponent {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -177,11 +177,11 @@ export class CustomerFormComponent {
         })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number) {
+    private getRecord(id: string | number): void {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
         }, errorCode => {
@@ -190,7 +190,7 @@ export class CustomerFormComponent {
         })
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
@@ -204,7 +204,7 @@ export class CustomerFormComponent {
         })
     }
 
-    private populateFields(result: Customer) {
+    private populateFields(result: Customer): void {
         this.form.setValue({
             id: result.id,
             description: result.description,
@@ -218,19 +218,19 @@ export class CustomerFormComponent {
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private unsubscribe() {
+    private unsubscribe(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
     }
@@ -239,27 +239,27 @@ export class CustomerFormComponent {
 
     //#region getters
 
-    get description() {
+    get description(): AbstractControl {
         return this.form.get('description')
     }
 
-    get profession() {
+    get profession(): AbstractControl {
         return this.form.get('profession')
     }
 
-    get address() {
+    get address(): AbstractControl {
         return this.form.get('address')
     }
 
-    get phones() {
+    get phones(): AbstractControl {
         return this.form.get('phones')
     }
 
-    get personInCharge() {
+    get personInCharge(): AbstractControl {
         return this.form.get('personInCharge')
     }
 
-    get email() {
+    get email(): AbstractControl {
         return this.form.get('email')
     }
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -35,21 +35,33 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(
+        private accountService: AccountService,
+        private buttonClickService: ButtonClickService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title
+    ) { }
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit() : void{
         this.focus('email')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy() : void{
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -59,19 +71,19 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region public methods
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         const form = this.form.value
         this.accountService.forgotPassword(form.email).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
@@ -83,7 +95,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -101,21 +113,21 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
         })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         })
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
@@ -123,7 +135,7 @@ export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region getters
 
-    get email() {
+    get email(): AbstractControl {
         return this.form.get('email')
     }
 

@@ -46,21 +46,34 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private messageHintService: MessageHintService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(
+        private accountService: AccountService,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title
+    ) { }
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('userName')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -84,19 +97,19 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#region public methods
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onGoBack() {
+    public onGoBack(): void {
         this.router.navigate([this.url])
     }
 
-    public onSave() {
+    public onSave(): void {
         this.flattenFormFields()
         this.accountService.register(this.flatForm).subscribe(() => {
             this.resetForm()
@@ -105,13 +118,13 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         }, errorCode => {
             this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
         })
-}
+    }
 
     //#endregion
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
@@ -139,7 +152,7 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         })
     }
 
-    private flattenFormFields() {
+    private flattenFormFields(): void {
         this.flatForm = {
             userName: this.form.value.userName,
             displayName: this.form.value.displayName,
@@ -149,11 +162,11 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         }
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             userName: ['', [Validators.required, Validators.maxLength(32)]],
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
@@ -165,15 +178,15 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
         })
     }
 
-    private resetForm() {
+    private resetForm(): void {
         this.form.reset()
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string | string[], type: string) {
+    private showSnackbar(message: string | string[], type: string): void {
         this.snackbarService.open(message, type)
     }
 

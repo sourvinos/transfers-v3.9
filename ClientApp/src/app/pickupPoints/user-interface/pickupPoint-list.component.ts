@@ -57,7 +57,20 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private location: Location, private messageSnackbarService: MessageSnackbarService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private helperService: HelperService,
+        private interactionService: InteractionService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private location: Location,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private routeService: RouteService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title
+    ) {
         this.activatedRoute.params.subscribe(p => {
             this.getRouteDescription(p.routeId)
         })
@@ -65,7 +78,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region lifecycle hooks
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -74,7 +87,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         this.onFilter(this.searchTerm)
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
@@ -85,12 +98,12 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region public methods
 
-    public onFilter(query: string) {
+    public onFilter(query: string): void {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
@@ -98,7 +111,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'goBack')
@@ -115,26 +128,26 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         })
     }
 
-    private editRecord(id: number) {
+    private editRecord(id: number): void {
         this.router.navigate(['pickupPoint/', id], { relativeTo: this.activatedRoute })
     }
 
-    private focus(event: KeyboardEvent, element: string) {
+    private focus(event: KeyboardEvent, element: string): void {
         event.preventDefault()
         this.helperService.setFocus(element)
     }
 
-    private getFilterFromLocalStorage() {
+    private getFilterFromLocalStorage(): void {
         this.searchTerm = localStorage.getItem(this.localStorageSearchTerm) != null ? localStorage.getItem(this.localStorageSearchTerm) : ''
     }
 
-    private getRouteDescription(routeId: number) {
+    private getRouteDescription(routeId: number): void {
         this.routeService.getSingle(routeId).subscribe(result => {
             this.routeDescription = result.description
         })
     }
 
-    private loadRecords() {
+    private loadRecords(): void {
         const pickupPointListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (pickupPointListResolved.error === null) {
             this.records = pickupPointListResolved.list
@@ -144,22 +157,22 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private subscribeToInteractionService() {
+    private subscribeToInteractionService(): void {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
         })
     }
 
-    private updateLocalStorageWithFilter() {
+    private updateLocalStorageWithFilter(): void {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
 

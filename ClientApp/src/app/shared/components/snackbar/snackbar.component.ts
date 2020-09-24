@@ -10,6 +10,6 @@ import { MessageSnackbarService } from '../../services/messages-snackbar.service
 
 export class SnackbarComponent {
 
-    constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any, public snackBar: MatSnackBar, public messageSnackbarService: MessageSnackbarService) { }
+    constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any, public messageSnackbarService: MessageSnackbarService, public snackBar: MatSnackBar) { }
 
 }

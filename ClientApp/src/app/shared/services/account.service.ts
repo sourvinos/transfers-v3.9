@@ -9,48 +9,27 @@ import { map } from 'rxjs/operators'
 
 export class AccountService {
 
+    //#region variables
+
     private urlRegister = '/api/account/register'
     private urlForgotPassword = '/api/account/forgotPassword'
     private urlResetPassword = '/api/account/resetPassword'
     private urlToken = '/api/auth/auth'
-    private urlChangePassword = '/api/account/changePassword'
-
     private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus())
     private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
 
+    //#endregion
+
     constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
 
-    forgotPassword(email: string) {
+    //#region public methods
+
+    public forgotPassword(email: string): Observable<any> {
         return this.httpClient.post<any>(this.urlForgotPassword, { email })
     }
 
-    login(userName: string, password: string) {
-        const grantType = 'password'
-        const language = localStorage.getItem('language') || 'en'
-        return this.httpClient.post<any>(this.urlToken, { language, userName, password, grantType }).pipe(map(response => {
-            this.setLoginStatus(true)
-            this.setLocalStorage(response)
-            this.setUserData()
-        }))
-    }
-
-    logout() {
-        this.setLoginStatus(false)
-        this.clearLocalStorage()
-        this.resetTimer()
-        this.navigateToLogin()
-    }
-
-    register(formData: any) {
-        return this.httpClient.post<any>(this.urlRegister, formData)
-    }
-
-    resetPassword(email: string, password: string, confirmPassword: string, token: string) {
-        return this.httpClient.post<any>(this.urlResetPassword, { email, password, confirmPassword, token })
-    }
-
-    getNewRefreshToken(): Observable<any> {
+    public getNewRefreshToken(): Observable<any> {
         const userId = localStorage.getItem('userId')
         const refreshToken = localStorage.getItem('refreshToken')
         const grantType = 'refresh_token'
@@ -66,6 +45,35 @@ export class AccountService {
         )
     }
 
+    public login(userName: string, password: string): Observable<void> {
+        const grantType = 'password'
+        const language = localStorage.getItem('language') || 'en'
+        return this.httpClient.post<any>(this.urlToken, { language, userName, password, grantType }).pipe(map(response => {
+            this.setLoginStatus(true)
+            this.setLocalStorage(response)
+            this.setUserData()
+        }))
+    }
+
+    public logout(): void {
+        this.setLoginStatus(false)
+        this.clearLocalStorage()
+        this.resetTimer()
+        this.navigateToLogin()
+    }
+
+    public register(formData: any): Observable<any> {
+        return this.httpClient.post<any>(this.urlRegister, formData)
+    }
+
+    public resetPassword(email: string, password: string, confirmPassword: string, token: string): Observable<any> {
+        return this.httpClient.post<any>(this.urlResetPassword, { email, password, confirmPassword, token })
+    }
+
+    //#endregion
+
+    //#region private methods
+
     private checkLoginStatus(): boolean {
         const loginCookie = localStorage.getItem('loginStatus')
         if (loginCookie === '1') {
@@ -76,7 +84,7 @@ export class AccountService {
         return false
     }
 
-    private clearLocalStorage() {
+    private clearLocalStorage(): void {
         localStorage.removeItem('displayName')
         localStorage.removeItem('expiration')
         localStorage.removeItem('jwt')
@@ -86,20 +94,16 @@ export class AccountService {
         localStorage.removeItem('userId')
     }
 
-    private navigateToLogin() {
+    private navigateToLogin(): void {
         this.router.navigate(['/login'])
     }
 
-    private resetTimer() {
+    private resetTimer(): void {
         this.userIdleService.stopWatching()
         this.userIdleService.resetTimer()
     }
 
-    private setLoginStatus(status: boolean) {
-        this.loginStatus.next(status)
-    }
-
-    private setLocalStorage(response: any) {
+    private setLocalStorage(response: any): void {
         localStorage.setItem('displayName', response.response.displayName)
         localStorage.setItem('expiration', response.response.expiration)
         localStorage.setItem('jwt', response.response.token)
@@ -109,12 +113,18 @@ export class AccountService {
         localStorage.setItem('userId', response.response.userId)
     }
 
-    private setUserData() {
+    private setLoginStatus(status: boolean): void {
+        this.loginStatus.next(status)
+    }
+
+    private setUserData(): void {
         this.displayName.next(localStorage.getItem('displayName'))
         this.userRole.next(localStorage.getItem('userRole'))
     }
 
-    //#region Getters
+    //#endregion
+
+    //#region getters
 
     get currentDisplayName(): Observable<string> {
         return this.displayName.asObservable()

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 import { UserIdleService } from 'angular-user-idle'
@@ -47,45 +47,45 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         private buttonClickService: ButtonClickService,
         private formBuilder: FormBuilder,
         private helperService: HelperService,
-        private messageHintService: MessageHintService,
         private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
         private messageLabelService: MessageLabelService,
-        private router: Router,
         private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
         private snackbarService: SnackbarService,
         private titleService: Title,
         private userIdleService: UserIdleService
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.focus('username')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
     }
 
-    public onForgotPassword() {
+    public onForgotPassword(): void {
         this.router.navigate(['/forgotPassword'])
     }
 
-    public onGetHint(id: string, minmax = 0) {
+    public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onLogin() {
+    public onLogin(): void {
         const form = this.form.value
         this.accountService.login(form.username, form.password).subscribe(() => {
             this.goHome()
@@ -95,7 +95,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Alt.F': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'forgotPassword')
@@ -109,15 +109,15 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private focus(field: string) {
+    private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
-    private goHome() {
+    private goHome(): void {
         this.router.navigate([this.url])
     }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             username: [environment.login.username, Validators.required],
             password: [environment.login.password, Validators.required],
@@ -125,11 +125,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         })
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showError(error: any) {
+    private showError(error: any): void {
         switch (error.status) {
             case 400:
                 this.showSnackbar(this.messageSnackbarService.accountNotConfirmed(), 'error')
@@ -140,11 +140,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-    private showSnackbar(message: string | string[], type: string) {
+    private showSnackbar(message: string | string[], type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private startTimer() {
+    private startTimer(): void {
         this.userIdleService.startWatching()
         this.userIdleService.onTimerStart().subscribe()
         this.userIdleService.onTimeout().subscribe(() => {
@@ -156,11 +156,11 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region Getters
 
-    get username() {
+    get username(): AbstractControl {
         return this.form.get('username')
     }
 
-    get password() {
+    get password(): AbstractControl {
         return this.form.get('password')
     }
 

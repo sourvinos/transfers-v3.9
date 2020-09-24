@@ -49,10 +49,21 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private helperService: HelperService,
+        private interactionService: InteractionService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title
+    ) { }
 
     //#region lifecycle hooks
-    ngOnInit() {
+    ngOnInit(): void {
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -62,7 +73,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         this.focus('searchTerm')
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.updateLocalStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
@@ -73,12 +84,12 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#region public methods
 
-    public onFilter(query: string) {
+    public onFilter(query: string): void {
         this.searchTerm = query
         this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
-    public onGetLabel(id: string) {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
@@ -86,7 +97,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#region private methods
 
-    private addShortcuts() {
+    private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
             'Escape': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'goBack')
@@ -103,20 +114,20 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         })
     }
 
-    private editRecord(id: number) {
+    private editRecord(id: number): void {
         this.router.navigate([this.baseUrl, id])
     }
 
-    private focus(element: string) {
+    private focus(element: string): void {
         event.preventDefault()
         this.helperService.setFocus(element)
     }
 
-    private getFilterFromLocalStorage() {
+    private getFilterFromLocalStorage(): void {
         this.searchTerm = localStorage.getItem(this.localStorageSearchTerm) != null ? localStorage.getItem(this.localStorageSearchTerm) : ''
     }
 
-    private loadRecords() {
+    private loadRecords(): void {
         const destinationListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (destinationListResolved.error === null) {
             this.records = destinationListResolved.list
@@ -126,22 +137,22 @@ export class DestinationListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setWindowTitle() {
+    private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string) {
+    private showSnackbar(message: string, type: string): void {
         this.snackbarService.open(message, type)
     }
 
-    private subscribeToInteractionService() {
+    private subscribeToInteractionService(): void {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
             this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
         })
     }
 
-    private updateLocalStorageWithFilter() {
+    private updateLocalStorageWithFilter(): void {
         localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
     }
 
