@@ -1,3 +1,4 @@
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service';
 import { Component, OnInit, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
@@ -11,14 +12,19 @@ export class ThemeBarComponent implements OnInit {
 
     theme = 'light'
     checked: boolean
+    feature = 'themeColor'
 
-    constructor(@Inject(DOCUMENT) private document: Document) { }
+    constructor(@Inject(DOCUMENT) private document: Document, private messageLabelService: MessageLabelService) { }
 
     ngOnInit() {
         this.applyTheme()
     }
 
-    onToggleTheme() {
+    public onGetLabel(id: string) {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public onToggleTheme() {
         this.changeTheme()
         this.attachStylesheetToHead()
         this.updateLocalStorage()

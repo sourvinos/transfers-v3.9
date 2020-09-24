@@ -1,11 +1,11 @@
-import { MessageTableService } from './../../services/messages-table.service';
 import { Component } from '@angular/core'
-import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
-import { MessageLabelService } from '../../services/messages-label.service'
+import { MatIconRegistry } from '@angular/material/icon'
 import { MessageHintService } from '../../services/messages-hint.service'
+import { MessageLabelService } from '../../services/messages-label.service'
 import { MessageMenuService } from '../../services/messages-menu.service'
 import { MessageSnackbarService } from '../../services/messages-snackbar.service'
+import { MessageTableService } from './../../services/messages-table.service'
 
 @Component({
     selector: 'language-bar',

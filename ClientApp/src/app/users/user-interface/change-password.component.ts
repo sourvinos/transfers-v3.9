@@ -85,7 +85,7 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()

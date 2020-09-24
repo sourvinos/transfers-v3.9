@@ -1,7 +1,7 @@
 @media only screen and (min-width: 1367px) {
     * {
         /* Font sizes */
-        --font-size-button: 1.1rem;
+        --font-size-button: 1.25rem;
         --font-size-checkbox: 1.3rem;
         --font-size-copyright: 0.6rem;
         --font-size-dialog-content: 1.5rem;

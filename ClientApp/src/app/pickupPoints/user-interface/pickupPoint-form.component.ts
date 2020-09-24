@@ -81,7 +81,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
 
     canDeactivate() {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -98,7 +98,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
     //#region public methods
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
+        this.dialogService.open('warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.pickupPointService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()

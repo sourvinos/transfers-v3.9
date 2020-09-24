@@ -11,12 +11,11 @@ export class DialogService {
 
     constructor(public dialog: MatDialog) { }
 
-    public open(title: string, titleColor: string, message: string, actions: string[]): Observable<boolean> {
+    public open(titleColor: string, message: string, actions: string[]): Observable<boolean> {
         this.response = this.dialog.open(DialogAlertComponent, {
             height: '300px',
             width: '550px',
             data: {
-                title: title,
                 titleColor: titleColor,
                 message: message,
                 actions: actions

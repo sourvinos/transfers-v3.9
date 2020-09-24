@@ -8,5 +8,6 @@
 }
 
 .mat-slide-toggle-label .mat-slide-toggle-content {
+    font-variant-caps: petite-caps;
     font-weight: 600 !important;
 }

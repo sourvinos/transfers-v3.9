@@ -63,7 +63,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -88,7 +88,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['ok', 'abort']).subscribe(response => {
+        this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['ok', 'abort']).subscribe(response => {
             if (response) {
                 this.userService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
@@ -121,7 +121,7 @@ export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
         }, errorCode => {
             this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
         })
-}
+    }
 
     //#endregion
 

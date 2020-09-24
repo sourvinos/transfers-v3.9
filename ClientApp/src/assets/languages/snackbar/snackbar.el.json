@@ -14,7 +14,7 @@
         },
         {
             "id": "askConfirmationToAbortEditing",
-            "message": "Αν συνεχίσετε, όλες οι αλλαγές θα χαθούν."
+            "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν."
         },
         {
             "id": "askConfirmationToDelete",

@@ -78,7 +78,7 @@ export class CustomerFormComponent {
 
     canDeactivate() {
         if (this.form.dirty) {
-            this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -97,7 +97,7 @@ export class CustomerFormComponent {
     //#region public methods
 
     public onDelete() {
-        this.dialogService.open('Warning', 'warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
+        this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.customerService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
