@@ -77,5 +77,6 @@
     --color-tooltip-background:#355070;
     --color-tooltip:#fffff4;
     --color-transfer-form-modal: #eaeaea;
-    --color-user-greeting: #426186;
+    --color-user-greeting-icon: #5f5f5f;
+    --color-user-greeting: #5f5f5f;
 }

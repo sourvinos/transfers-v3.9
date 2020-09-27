@@ -74,8 +74,9 @@
     --color-table-row: #b7b7b8;
     --color-table-rows-background-hover: #1d2733;
     --color-table-rows-hover: #fe9f36;
-    --color-tooltip-background:#ffc88a;
-    --color-tooltip:#1d2733;
+    --color-tooltip-background: #ffc88a;
+    --color-tooltip: #1d2733;
     --color-transfer-form-modal: #696d71;
+    --color-user-greeting-icon: #ffe6ca;
     --color-user-greeting: #b7b7b8;
 }

@@ -1,3 +1,4 @@
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { Component, OnInit } from '@angular/core'
 import { AccountService } from '../../services/account.service'
 import { Observable } from 'rxjs'
@@ -17,7 +18,7 @@ export class UserGreetingComponent implements OnInit {
 
     //#endregion
 
-    constructor(private accountService: AccountService) { }
+    constructor(private accountService: AccountService, private messageLabelService: MessageLabelService) { }
 
     //#region lifecycle hooks
 

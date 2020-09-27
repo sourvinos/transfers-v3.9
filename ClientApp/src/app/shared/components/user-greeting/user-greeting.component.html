@@ -1,5 +1,4 @@
-<div class="userGreeting" id="wide">
-    <div *ngIf="(loginStatus | async)">
-        <div>Hello, {{ displayName | async }}</div>
-    </div>
+<div id="userGreeting" *ngIf="(loginStatus | async)">
+    <mat-icon>sentiment_satisfied_alt</mat-icon>
+    <div id="displayName">{{ displayName | async }}</div>
 </div>

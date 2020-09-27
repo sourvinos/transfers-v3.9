@@ -1,9 +1,21 @@
-.userGreeting {
+#userGreeting {
+    align-items: center;
+    color: var(--color-user-greeting);
+    display: flex;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+#userGreeting .mat-icon {
+    color: var(--color-user-greeting-icon);
+}
+
+#displayName {
     color: var(--color-user-greeting);
     font-family: var(--font-family-user-greeting);
     font-size: var(--font-size-user-greeting);
+    font-variant-caps: petite-caps;
     font-weight: var(--font-weight-user-greeting);
-    margin-right: 1rem;
-    margin-top: -1px;
-    text-align: center;
+    margin-left: 0.2rem;
+    margin-top: 0.0625 rem;
 }
