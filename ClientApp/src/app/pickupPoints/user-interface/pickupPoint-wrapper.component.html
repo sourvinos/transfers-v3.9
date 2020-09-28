@@ -10,8 +10,8 @@
     <div id="search-box">
         <mat-form-field class="no-bottom-margin">
             <mat-label>{{ onGetLabel('searchLabel') }}</mat-label>
-            <mat-select [(value)]="id" (selectionChange)="onLoadPickupPoints()">
-                <mat-option *ngFor="let route of routes" [value]="route.id">
+            <mat-select data-cy="routeSelect" [(value)]="id" (selectionChange)="onLoadPickupPoints()">
+                <mat-option data-cy="routeElement" *ngFor="let route of routes" [value]="route.id">
                     {{ route.description }}
                 </mat-option>
             </mat-select>

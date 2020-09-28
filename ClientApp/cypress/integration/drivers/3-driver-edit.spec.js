@@ -11,11 +11,11 @@ context('Edit', () => {
     })
 
     it('Go to the list from the home page', () => {
-        cy.gotoDestinationListFromHomePage()
+        cy.gotoDriverListFromHomePage()
     })
 
     it('Successful attempt to seek a record', () => {
-        cy.seekDestination()
+        cy.seekDriver()
     })
 
     it('Buttons must exist', () => {
@@ -28,7 +28,7 @@ context('Edit', () => {
         cy.server()
         cy.route({
             method: 'PUT',
-            url: 'https://localhost:5002/api/destinations/16',
+            url: 'https://localhost:5002/api/drivers/1',
             status: 400,
             response: { error: 'Dummy response' },
             delay: 500
@@ -39,9 +39,9 @@ context('Edit', () => {
 
     it('Update and display a snackbar', () => {
         cy.server()
-        cy.route('PUT', 'https://localhost:5002/api/destinations/16', 'fixture:destination.json').as('saveDestination')
+        cy.route('PUT', 'https://localhost:5002/api/drivers/1', 'fixture:driver.json').as('saveDriver')
         cy.get('[data-cy=save]').click()
-        cy.wait('@saveDestination').its('status').should('eq', 200)
+        cy.wait('@saveDriver').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
     })
 

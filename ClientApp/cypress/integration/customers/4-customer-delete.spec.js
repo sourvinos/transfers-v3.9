@@ -18,7 +18,7 @@ context('Delete', () => {
         cy.seekCustomer()
     })
 
-    it('Elements must exist', () => {
+    it('Buttons must exist', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=delete]')
         cy.get('[data-cy=save]')

@@ -19,7 +19,12 @@ context('New', () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
 
-    it('Elements must exist', () => {
+    it('Fields must exist', () => {
+        cy.get('[data-cy=form]').find('.mat-form-field').should('have.length', 6)
+        cy.get('[data-cy=form]').find('.mat-slide-toggle').should('have.length', 1)
+    })
+
+    it('Buttons must exist', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=save]')
     })

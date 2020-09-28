@@ -30,7 +30,7 @@ context('List', () => {
         cy.gotoCustomerListFromHomePage()
     })
 
-    it('Elements must exist', () => {
+    it('Buttons must exist', () => {
         cy.get('[data-cy=goBack]')
         cy.get('[data-cy=searchTerm]')
         cy.get('[data-cy=content]')

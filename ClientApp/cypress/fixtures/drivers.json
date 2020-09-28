@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "description": "STAMATIS",
+        "description": "ALEX",
         "phones": "",
-        "isDefault": false,
+        "isDefault": true,
         "isActive": true,
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
@@ -40,15 +40,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 6,
-        "description": "-",
-        "phones": "-",
-        "isDefault": true,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 8,
+        "id": 7,
         "description": "SCHERIA ALEKOS",
         "phones": "",
         "isDefault": false,
@@ -56,7 +48,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 9,
+        "id": 8,
         "description": "SELLAS NORTH",
         "phones": "",
         "isDefault": false,
@@ -64,7 +56,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 10,
+        "id": 9,
         "description": "SELLAS KYRIAKOS",
         "phones": "",
         "isDefault": false,
@@ -72,7 +64,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 11,
+        "id": 10,
         "description": "TAXI VASILIS",
         "phones": "",
         "isDefault": false,
@@ -80,7 +72,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 12,
+        "id": 11,
         "description": "SELLAS NORTH2",
         "phones": "",
         "isDefault": false,
@@ -88,7 +80,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 13,
+        "id": 12,
         "description": "SCHERIA SPIROS",
         "phones": "",
         "isDefault": false,
@@ -96,7 +88,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 14,
+        "id": 13,
         "description": "SCHERIAS TSAGKARIS",
         "phones": "SCHERIAS TSAGKARIS",
         "isDefault": false,
@@ -104,7 +96,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 15,
+        "id": 14,
         "description": "SELLAS NORTH 3",
         "phones": "",
         "isDefault": false,
@@ -112,7 +104,7 @@
         "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
     },
     {
-        "id": 16,
+        "id": 15,
         "description": "SCHERIA AIMILIOS",
         "phones": "",
         "isDefault": false,
@@ -120,7 +112,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 17,
+        "id": 16,
         "description": "SCHERIA KOTINAS",
         "phones": "SCHERIA KOTINAS",
         "isDefault": false,
@@ -128,7 +120,7 @@
         "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
     },
     {
-        "id": 18,
+        "id": 17,
         "description": "SELLAS GIORGOS",
         "phones": "SELLAS GIORGOS",
         "isDefault": false,
@@ -136,7 +128,7 @@
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
     },
     {
-        "id": 19,
+        "id": 18,
         "description": "VASILIS NORTH",
         "phones": "",
         "isDefault": false,
