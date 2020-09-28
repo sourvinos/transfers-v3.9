@@ -11,11 +11,11 @@ context('Delete', () => {
     })
 
     it('Go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+        cy.gotoDestinationListFromHomePage()
     })
 
     it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
+        cy.seekDestination()
     })
 
     it('Elements must exist', () => {
@@ -28,14 +28,14 @@ context('Delete', () => {
         cy.get('[data-cy=delete]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=abort]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers/155')
+        cy.url().should('eq', Cypress.config().baseUrl + '/destinations/16')
     })
 
     it('Unable to delete and display a snackbar', () => {
         cy.server()
         cy.route({
             method: 'DELETE',
-            url: 'https://localhost:5002/api/customers/155',
+            url: 'https://localhost:5002/api/destinations/16',
             status: 400,
             response: { error: 'Dummy response' },
             delay: 500
@@ -46,11 +46,11 @@ context('Delete', () => {
 
     it('Ask to delete, accept and display a snackbar', () => {
         cy.server()
-        cy.route('DELETE', 'https://localhost:5002/api/customers/155', 'fixture:customer.json').as('deleteCustomer')
+        cy.route('DELETE', 'https://localhost:5002/api/destinations/16', 'fixture:destination.json').as('deleteDestination')
         cy.get('[data-cy=delete]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()
-        cy.wait('@deleteCustomer').its('status').should('eq', 200)
+        cy.wait('@deleteDestination').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
     })
 

@@ -11,11 +11,11 @@ context('Edit', () => {
     })
 
     it('Go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+        cy.gotoDestinationListFromHomePage()
     })
 
     it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
+        cy.seekDestination()
     })
 
     it('Elements must exist', () => {
@@ -28,7 +28,7 @@ context('Edit', () => {
         cy.server()
         cy.route({
             method: 'PUT',
-            url: 'https://localhost:5002/api/customers/155',
+            url: 'https://localhost:5002/api/destinations/16',
             status: 400,
             response: { error: 'Dummy response' },
             delay: 500
@@ -39,9 +39,9 @@ context('Edit', () => {
 
     it('Update and display a snackbar', () => {
         cy.server()
-        cy.route('PUT', 'https://localhost:5002/api/customers/155', 'fixture:customer.json').as('saveCustomer')
+        cy.route('PUT', 'https://localhost:5002/api/destinations/16', 'fixture:destination.json').as('saveDestination')
         cy.get('[data-cy=save]').click()
-        cy.wait('@saveCustomer').its('status').should('eq', 200)
+        cy.wait('@saveDestination').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
     })
 

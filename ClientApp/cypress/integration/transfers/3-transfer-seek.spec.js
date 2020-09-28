@@ -24,7 +24,7 @@ context('Seek', () => {
         cy.server()
         cy.route({
             method: 'GET',
-            url: 'https://localhost:5001/api/transfers/1',
+            url: 'https://localhost:5002/api/transfers/1',
             status: 404,
             response: { error: 'ERROR!' }
         }).as('getTransfer')

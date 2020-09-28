@@ -18,11 +18,11 @@
         },
         {
             "id": "passwordsNoMatch",
-            "description": "Password and confirm password do not match!"
+            "description": "Password and confirm password do not match"
         },
         {
             "id": "noSpaces",
-            "description": "Spaces are not allowed!"
+            "description": "Spaces are not allowed"
         },
         {
             "id": "otherErrors",

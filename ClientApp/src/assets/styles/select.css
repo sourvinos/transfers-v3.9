@@ -19,8 +19,13 @@
 }
 
 .mat-option {
+    background-color: var(--color-select-background-color) !important;
     color: var(--color-select-option-color) !important;
     height: 2em !important;
+}
+
+.mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled) {
+    background-color: var(--color-select-items-hover-background) !important;
 }
 
 .mat-select-trigger {

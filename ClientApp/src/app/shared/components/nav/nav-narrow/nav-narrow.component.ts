@@ -23,7 +23,7 @@ export class NavNarrowComponent {
         subHeader: environment.appName.subHeader
     }
     imagePathName = '/assets/images/navigation/'
-    theme = ''
+    theme = 'light'
     isScreenNarrow: boolean
     feature = 'menu'
 

@@ -11,11 +11,11 @@ context('Seek', () => {
     })
 
     it('Go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+        cy.gotoDestinationListFromHomePage()
     })
 
     it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
+        cy.seekDestination()
     })
 
     afterEach(() => {

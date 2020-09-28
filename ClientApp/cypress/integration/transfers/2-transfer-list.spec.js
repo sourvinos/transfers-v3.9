@@ -18,7 +18,7 @@ context('List', () => {
         cy.server()
         cy.route({
             method: 'GET',
-            url: 'https://localhost:5001/api/transfers/date/2020-01-01',
+            url: 'https://localhost:5002/api/transfers/date/2020-01-01',
             status: 404,
             response: { error: 'ERROR!' }
         }).as('getTransfers')

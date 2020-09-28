@@ -33,7 +33,7 @@ context('Edit', () => {
 
     it('Update and display a snackbar', () => {
         cy.server()
-        cy.route('PUT', 'https://localhost:5001/api/transfers/1', 'fixture:transfer.json').as('saveTransfer')
+        cy.route('PUT', 'https://localhost:5002/api/transfers/1', 'fixture:transfer.json').as('saveTransfer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveTransfer').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')

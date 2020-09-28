@@ -11,12 +11,22 @@ context('Form validation', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+        cy.gotoDestinationListFromHomePage()
     })
 
     it('Go to an empty form', () => {
         cy.get('[data-cy=new]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
+        cy.url().should('eq', Cypress.config().baseUrl + '/destinations/new')
+    })
+
+    it('Abbreviation is not valid when blank', () => {
+        cy.typeGibberish('abbreviation', 0)
+            .elementShouldBeInvalid('abbreviation')
+    })
+
+    it('Abbreviation is not valid when too long', () => {
+        cy.typeGibberish('abbreviation', 6)
+            .elementShouldBeInvalid('abbreviation')
     })
 
     it('Description is not valid when blank', () => {
@@ -29,41 +39,11 @@ context('Form validation', () => {
             .elementShouldBeInvalid('description')
     })
 
-    it('Profession is not valid when too long', () => {
-        cy.typeGibberish('profession', 129)
-            .elementShouldBeInvalid('profession')
-    })
-
-    it('Address is not valid when too long', () => {
-        cy.typeGibberish('address', 129)
-            .elementShouldBeInvalid('address')
-    })
-
-    it('Phones is not valid when too long', () => {
-        cy.typeGibberish('phones', 129)
-            .elementShouldBeInvalid('phones')
-    })
-
-    it('Person in charge is not valid when too long', () => {
-        cy.typeGibberish('personInCharge', 129)
-            .elementShouldBeInvalid('personInCharge')
-    })
-
-    it('Email is not valid', () => {
-        cy.typeGibberish('email', 12)
-            .elementShouldBeInvalid('email')
-    })
-
-    it('Email is not valid when too long', () => {
-        cy.typeGibberish('email', 129)
-            .elementShouldBeInvalid('email')
-    })
-
     it('Mark record as not active', () => {
         cy.get('[data-cy=isActive]').click()
     })
 
-    it('Form should be invalid, save button should be disabled', () => {
+    it('Form should be invalid, save button should be disabled',()=>{
         cy.elementShouldBeInvalid('form')
         cy.buttonShouldBeDisabled('save')
     })
