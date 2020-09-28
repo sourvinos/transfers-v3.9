@@ -44,19 +44,7 @@ export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDest
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService,
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService
-    ) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
