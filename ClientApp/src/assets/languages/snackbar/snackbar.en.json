@@ -24,7 +24,11 @@
             },
             {
                 "id": "noRecordsSelected",
-                "message": "You have not selected any records to assign."
+                "message": "You have not selected any records."
+            },
+            {
+                "id": "selectedRecordsHaveBeenProcessed",
+                "message": "All selected records have been updated."
             },
             {
                 "id": "noDefaultDriverFound",

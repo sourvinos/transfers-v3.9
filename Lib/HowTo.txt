@@ -1,0 +1,19 @@
+In Access
+----------
+Rename columns, update fields
+Export as csv 
+	Code Page = UTF-8 
+	Include field names on first row
+	
+For Transfers include: 
+	Format date as YMD
+	Leading zeros in dates
+	Date delimiter = - (Minus)
+
+In SQLite:
+----------
+Import
+
+For Transfers before import: 
+	Remove the time part of DateIn field
+

@@ -4,91 +4,95 @@
         "labels": [
             {
                 "id": "recordCreated",
-                "message": "(D) A record was created."
+                "message": "(DE) A record was created."
             },
             {
                 "id": "recordUpdated",
-                "message": "(D) This record was updated."
+                "message": "(DE) This record was updated."
             },
             {
                 "id": "recordDeleted",
-                "message": "(D) This record was deleted."
+                "message": "(DE) This record was deleted."
             },
             {
                 "id": "askConfirmationToAbortEditing",
-                "message": "(D) If you continue, all changes will be lost."
+                "message": "(DE) If you continue, all changes will be lost."
             },
             {
                 "id": "askConfirmationToDelete",
-                "message": "(D) If you continue, this record will be lost for ever."
+                "message": "(DE) If you continue, this record will be lost for ever."
             },
             {
                 "id": "noRecordsSelected",
-                "message": "(D) You have not selected any records for update."
+                "message": "(DE) You have not selected any records."
+            },
+            {
+                "id": "selectedRecordsHaveBeenProcessed",
+                "message": "(DE) All selected records have been updated."
             },
             {
                 "id": "noDefaultDriverFound",
-                "message": "(D) A default driver was not found."
+                "message": "(DE) A default driver was not found."
             },
             {
                 "id": "noContactWithServer",
-                "message": "(D) There is no contact with the server."
+                "message": "(DE) There is no contact with the server."
             },
             {
                 "id": "wrongCurrentPassword",
-                "message": "(D) The current password is wrong."
+                "message": "(DE) The current password is wrong."
             },
             {
                 "id": "veryBad",
-                "message": "(D) Something went very wrong."
+                "message": "(DE) Something went very wrong."
             },
             {
                 "id": "unableToRegisterUser",
-                "message": "(D) A user with these details can not be created."
+                "message": "(DE) A user with these details can not be created."
             },
             {
                 "id": "accountNotConfirmed",
-                "message": "(D) This account is pending email confirmation."
+                "message": "(DE) This account is pending email confirmation."
             },
             {
                 "id": "unableToResetPassword",
-                "message": "(D) The password can not be reset."
+                "message": "(DE) The password can not be reset."
             },
             {
                 "id": "formIsDirty",
-                "message": "(D) Before you continue, all changes must be saved."
+                "message": "(DE) Before you continue, all changes must be saved."
             },
             {
                 "id": "unableToSaveRecord",
-                "message": "(D) This record could not be saved."
+                "message": "(DE) This record could not be saved."
             },
             {
                 "id": "emailSent",
-                "message": "(D) An email was sent with instructions."
+                "message": "(DE) An email was sent with instructions."
             },
             {
                 "id": "passwordChanged",
-                "message": "(D) The password was changed, you must login again."
+                "message": "(DE) The password was changed, you must login again."
             },
             {
                 "error": 400,
                 "id": "recordIsInUse",
-                "message": "(D) This record is in use and can not be deleted."
+                "message": "(DE) This record is in use and can not be deleted."
             },
             {
                 "error": 401,
                 "id": "authenticationFailed",
-                "message": "(D) Authentication failed."
+                "message": "(DE) Authentication failed."
             },
             {
                 "error": 404,
                 "id": "recordNotFound",
-                "message": "(D) This record can not be found."
+                "message": "(DE) This record can not be found."
             },
             {
                 "error": 409,
                 "id": "defaultDriverExists",
-                "message": "(D) There is already a default driver."
+                "message": "(DE) There is already a default driver."
             }
         ]
     }

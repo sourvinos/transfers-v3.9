@@ -69,7 +69,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region table
 
-    headers = ['S', 'Id', 'Destination', 'Destination abbreviation', 'Route', 'Customer', 'Pickup point', 'Time', 'A', 'K', 'F', 'T', 'Driver', 'Port', '']
+    headers = ['S', 'Id', this.onGetLabel('headerDestination'), this.onGetLabel('headerDestinationAbbreviation'), this.onGetLabel('headerRoute'), this.onGetLabel('headerCustomer'), this.onGetLabel('headerPickupPoint'), this.onGetLabel('headerTime'), this.onGetLabel('headerAdults'), this.onGetLabel('headerKids'), this.onGetLabel('headerFree'), this.onGetLabel('headerTime'), this.onGetLabel('headerDriver'), this.onGetLabel('headerPort'), '']
     widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
     visibility = ['', 'none', '', 'none']
     justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
@@ -78,23 +78,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private driverService: DriverService,
-        private helperService: HelperService,
-        private interactionService: InteractionService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private location: Location,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private pdfService: TransferPdfService,
-        private router: Router,
-        private service: TransferService,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        private transferService: TransferService,
-        public dialog: MatDialog
-    ) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private driverService: DriverService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pdfService: TransferPdfService, private router: Router, private service: TransferService, private snackbarService: SnackbarService, private titleService: Title, private transferService: TransferService, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe((params: Params) => this.dateIn = params['dateIn'])
         this.router.events.subscribe((navigation) => {
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {

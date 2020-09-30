@@ -10,7 +10,7 @@ context('Seek', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
+    it('Goto the list from the home page', () => {
         cy.gotoCustomerListFromHomePage()
     })
 

@@ -1,6 +1,8 @@
-[{
+[
+    {
         "feature": "loginForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Login"
             },
@@ -28,7 +30,8 @@
     },
     {
         "feature": "customerList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Customers"
             },
@@ -60,7 +63,8 @@
     },
     {
         "feature": "customerForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Customer"
             },
@@ -104,7 +108,8 @@
     },
     {
         "feature": "destinationList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Destinations"
             },
@@ -132,7 +137,8 @@
     },
     {
         "feature": "destinationForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Destination"
             },
@@ -160,7 +166,8 @@
     },
     {
         "feature": "driverList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Drivers"
             },
@@ -188,7 +195,8 @@
     },
     {
         "feature": "driverForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Driver"
             },
@@ -220,7 +228,8 @@
     },
     {
         "feature": "pickupPointWrapper",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup points"
             },
@@ -236,7 +245,8 @@
     },
     {
         "feature": "pickupPointList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup points for route: "
             },
@@ -251,12 +261,25 @@
             {
                 "id": "newButton",
                 "description": "New"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
+            },
+            {
+                "id": "headerExactPoint",
+                "description": "Exact point"
+            },
+            {
+                "id": "headerTime",
+                "description": "Time"
             }
         ]
     },
     {
         "feature": "pickupPointForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Pickup point"
             },
@@ -292,7 +315,8 @@
     },
     {
         "feature": "portList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Ports"
             },
@@ -307,12 +331,17 @@
             {
                 "id": "newButton",
                 "description": "New"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
             }
         ]
     },
     {
         "feature": "portForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Port"
             },
@@ -336,7 +365,8 @@
     },
     {
         "feature": "routeList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Routes"
             },
@@ -351,12 +381,21 @@
             {
                 "id": "newButton",
                 "description": "New"
+            },
+            {
+                "id": "headerDescription",
+                "description": "Description"
+            },
+            {
+                "id": "headerFullDescription",
+                "description": "Full Description"
             }
         ]
     },
     {
         "feature": "routeForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Route"
             },
@@ -388,7 +427,8 @@
     },
     {
         "feature": "transferWrapper",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Transfers"
             },
@@ -408,7 +448,8 @@
     },
     {
         "feature": "userList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Users"
             },
@@ -423,12 +464,25 @@
             {
                 "id": "newButton",
                 "description": "New"
+            },
+            {
+                "id": "headerUsername",
+                "description": "Username"
+            },
+            {
+                "id": "headerDisplayname",
+                "description": "Display name"
+            },
+            {
+                "id": "headerEmail",
+                "description": "Email"
             }
         ]
     },
     {
         "feature": "editUserForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "User"
             },
@@ -460,7 +514,8 @@
     },
     {
         "feature": "registerUserForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "User"
             },
@@ -492,7 +547,8 @@
     },
     {
         "feature": "changePasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Change password"
             },
@@ -516,7 +572,8 @@
     },
     {
         "feature": "transferList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "summaryTab",
                 "description": "Summary"
             },
@@ -567,12 +624,57 @@
             {
                 "id": "selected",
                 "description": "Selected"
+            },
+            {
+                "id": "headerDestination",
+                "description": "Destination"
+            },
+            {
+                "id": "headerRoute",
+                "description": "Route"
+            },
+            {
+                "id": "headerCustomer",
+                "description": "Customer"
+            },
+            {
+                "id": "headerPickupPoint",
+                "description": "Pickup point"
+            },
+            {
+                "id": "headerTime",
+                "description": "Time"
+            },
+            {
+                "id": "headerAdults",
+                "description": "A"
+            },
+            {
+                "id": "headerKids",
+                "description": "K"
+            },
+            {
+                "id": "headerFree",
+                "description": "F"
+            },
+            {
+                "id": "headerTotal",
+                "description": "T"
+            },
+            {
+                "id": "headerDriver",
+                "description": "Driver"
+            },
+            {
+                "id": "headerPort",
+                "description": "Port"
             }
         ]
     },
     {
         "feature": "transferForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "destination",
                 "description": "Destination"
             },
@@ -628,7 +730,8 @@
     },
     {
         "feature": "forgotPasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Forgot password"
             },
@@ -644,7 +747,8 @@
     },
     {
         "feature": "resetPasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Reset password"
             },
@@ -664,7 +768,8 @@
     },
     {
         "feature": "dialog",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Warning!"
             },
@@ -680,9 +785,11 @@
     },
     {
         "feature": "themeColor",
-        "labels": [{
-            "id": "dark",
-            "description": "Dark"
-        }]
+        "labels": [
+            {
+                "id": "dark",
+                "description": "Dark"
+            }
+        ]
     }
 ]

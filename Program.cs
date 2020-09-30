@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +13,6 @@ namespace Transfers {
         public static IWebHost BuildWebHost(string[] args) {
             return WebHost.CreateDefaultBuilder()
                 .UseKestrel(options => {
-                    options.ListenLocalhost(5001);
                     options.ListenLocalhost(5002, listenOptions => {
                         listenOptions.UseHttps("localhost.pfx", "74656");
                     });

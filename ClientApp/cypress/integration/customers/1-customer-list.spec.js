@@ -6,28 +6,11 @@ context('List', () => {
     })
 
     beforeEach(() => {
-        cy.wait(1500)
         cy.restoreLocalStorage()
     })
 
-    it('Unsuccessful attempt to go to the list from the home page', () => {
-        cy.server()
-        cy.route({
-            method: 'GET',
-            url: 'https://localhost:5002/api/customers',
-            status: 404,
-            response: { error: 'ERROR!' }
-        }).as('getCustomers')
-        cy.get('[data-cy=customers]').click()
-        cy.wait('@getCustomers').its('status').should('eq', 404)
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
-        cy.get('[data-cy=customSnackbar]')
-        cy.get('[data-cy=goBack').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/')
-    })
-
-    it('Successful attempt to go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+    it('Goto the list from the home page', () => {
+        cy.visit('customers')
     })
 
     it('Buttons must exist', () => {
@@ -39,16 +22,16 @@ context('List', () => {
 
     it('Filter the list by typing in the search box', () => {
         cy.get('[data-cy=searchTerm]').type('travel')
-        cy.get('[data-cy=row]').should(($tr) => {
-            expect($tr).to.have.length(24)
+        cy.get('[data-cy=row]').should((rows) => {
+            expect(rows).to.have.length(24)
         })
     })
 
     it('Clear the filter when the "X" is clicked', () => {
         cy.get('[data-cy=clearFilter').click()
         cy.get('[data-cy=searchTerm]').should('have.text', '')
-        cy.get('[data-cy=row]').should(($tr) => {
-            expect($tr).to.have.length(94)
+        cy.get('[data-cy=row]').should((rows) => {
+            expect(rows).to.have.length(94)
         })
     })
 

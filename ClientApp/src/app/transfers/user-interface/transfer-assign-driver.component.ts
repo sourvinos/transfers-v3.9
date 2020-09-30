@@ -17,10 +17,7 @@ export class TransferAssignDriverComponent implements OnInit {
 
     //#endregion
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) public data: any,
-        private dialogRef: MatDialogRef<TransferAssignDriverComponent>,
-    ) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<TransferAssignDriverComponent>) { }
 
     ngOnInit(): void {
         this.populateDropDowns()
