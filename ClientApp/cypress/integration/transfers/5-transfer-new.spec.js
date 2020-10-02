@@ -9,7 +9,7 @@ context('New', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
+    it('Goto the list from the home page', () => {
         cy.get('[data-cy=transfers]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
     })
@@ -23,7 +23,7 @@ context('New', () => {
         cy.get('[data-cy=search]').click()
     })
 
-    it('Go to an empty form', () => {
+    it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/new')
     })
@@ -73,7 +73,7 @@ context('New', () => {
 
     it('Save and display a snackbar', () => {
         cy.server()
-        cy.route('POST', 'https://localhost:5002/api/transfers', 'fixture:transfer.json').as('saveTransfer')
+        cy.route('POST', 'https://localhost:5001/api/transfers', 'fixture:transfer.json').as('saveTransfer')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveTransfer').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')

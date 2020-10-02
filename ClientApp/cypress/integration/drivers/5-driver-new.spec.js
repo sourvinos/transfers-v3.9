@@ -14,7 +14,7 @@ context('New', () => {
         cy.gotoDriverListFromHomePage()
     })
 
-    it('Go to an empty form', () => {
+    it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/drivers/new')
     })
@@ -47,7 +47,7 @@ context('New', () => {
         cy.server()
         cy.route({
             method: 'POST',
-            url: 'https://localhost:5002/api/drivers'
+            url: 'https://localhost:5001/api/drivers'
         })
         cy.get('[data-cy=save]').click()
         cy.get('[data-cy=customSnackbar]')
@@ -55,7 +55,7 @@ context('New', () => {
 
     it('Save and display a snackbar', () => {
         cy.server()
-        cy.route('POST', 'https://localhost:5002/api/drivers', 'fixture:driver.json').as('saveDriver')
+        cy.route('POST', 'https://localhost:5001/api/drivers', 'fixture:driver.json').as('saveDriver')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveDriver').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
@@ -63,10 +63,10 @@ context('New', () => {
 
     it('Goto the list', () => {
         cy.server()
-        cy.route('GET', 'https://localhost:5002/api/drivers', 'fixture:drivers.json').as('getDrivers')
+        cy.route('GET', 'https://localhost:5001/api/drivers', 'fixture:drivers.json').as('getDrivers')
         cy.get('[data-cy=goBack]').click()
         cy.wait('@getDrivers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'drivers')
+        cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
     })
 
 })

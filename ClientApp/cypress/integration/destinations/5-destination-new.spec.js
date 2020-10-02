@@ -14,7 +14,7 @@ context('New', () => {
         cy.gotoDestinationListFromHomePage()
     })
 
-    it('Go to an empty form', () => {
+    it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/destinations/new')
     })
@@ -47,7 +47,7 @@ context('New', () => {
         cy.server()
         cy.route({
             method: 'POST',
-            url: 'https://localhost:5002/api/destinations'
+            url: 'https://localhost:5001/api/destinations'
         })
         cy.get('[data-cy=save]').click()
         cy.get('[data-cy=customSnackbar]')
@@ -55,7 +55,7 @@ context('New', () => {
 
     it('Save and display a snackbar', () => {
         cy.server()
-        cy.route('POST', 'https://localhost:5002/api/destinations', 'fixture:destination.json').as('saveDestination')
+        cy.route('POST', 'https://localhost:5001/api/destinations', 'fixture:destination.json').as('saveDestination')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveDestination').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
@@ -63,10 +63,10 @@ context('New', () => {
 
     it('Goto the list', () => {
         cy.server()
-        cy.route('GET', 'https://localhost:5002/api/destinations', 'fixture:destinations.json').as('getDestinations')
+        cy.route('GET', 'https://localhost:5001/api/destinations', 'fixture:destinations.json').as('getDestinations')
         cy.get('[data-cy=goBack]').click()
         cy.wait('@getDestinations').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'destinations')
+        cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
     })
 
 })

@@ -10,7 +10,7 @@ context('Edit', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
+    it('Goto the list from the home page', () => {
         cy.gotoDestinationListFromHomePage()
     })
 
@@ -28,7 +28,7 @@ context('Edit', () => {
         cy.server()
         cy.route({
             method: 'PUT',
-            url: 'https://localhost:5002/api/destinations/16',
+            url: 'https://localhost:5001/api/destinations/16',
             status: 400,
             response: { error: 'Dummy response' },
             delay: 500
@@ -39,7 +39,7 @@ context('Edit', () => {
 
     it('Update and display a snackbar', () => {
         cy.server()
-        cy.route('PUT', 'https://localhost:5002/api/destinations/16', 'fixture:destination.json').as('saveDestination')
+        cy.route('PUT', 'https://localhost:5001/api/destinations/16', 'fixture:destination.json').as('saveDestination')
         cy.get('[data-cy=save]').click()
         cy.wait('@saveDestination').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')

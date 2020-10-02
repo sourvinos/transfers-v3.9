@@ -1,4 +1,4 @@
-context('Seek', () => {
+context('Customers', () => {
 
     before(() => {
         cy.login()
@@ -6,16 +6,23 @@ context('Seek', () => {
     })
 
     beforeEach(() => {
-        cy.wait(1500)
         cy.restoreLocalStorage()
     })
 
-    it('Goto the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
-    })
+    describe('Seek a record', () => {
 
-    it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
+        it('Goto the list from the home page', () => {
+            cy.server()
+            cy.route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            cy.get('[data-cy=customers]').click()
+            cy.wait('@getCustomers').its('status').should('eq', 200)
+            cy.url().should('eq', Cypress.config().baseUrl + '/customers')
+        })
+
+        it('Successful attempt to seek a record', () => {
+            cy.seekCustomer()
+        })
+
     })
 
     afterEach(() => {

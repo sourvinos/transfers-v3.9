@@ -1,4 +1,4 @@
-context('Delete', () => {
+context('Customers', () => {
 
     before(() => {
         cy.login()
@@ -6,52 +6,41 @@ context('Delete', () => {
     })
 
     beforeEach(() => {
-        cy.wait(1500)
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
-    })
+    describe('Seek and delete a record', () => {
 
-    it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
-    })
-
-    it('Buttons must exist', () => {
-        cy.get('[data-cy=goBack]')
-        cy.get('[data-cy=delete]')
-        cy.get('[data-cy=save]')
-    })
-
-    it('Ask to delete and abort', () => {
-        cy.get('[data-cy=delete]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=abort]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers/155')
-    })
-
-    it('Unable to delete and display a snackbar', () => {
-        cy.server()
-        cy.route({
-            method: 'DELETE',
-            url: 'https://localhost:5002/api/customers/155',
-            status: 400,
-            response: { error: 'Dummy response' },
-            delay: 500
+        it('Goto the list from the home page', () => {
+            cy.server()
+            cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
+            cy.get('[data-cy=customers]').click()
+            cy.wait('@getCustomers').its('status').should('eq', 200)
+            cy.url().should('eq', Cypress.config().baseUrl + '/customers')
         })
-        cy.get('[data-cy=save]').click()
-        cy.get('[data-cy=customSnackbar]')
-    })
 
-    it('Ask to delete, accept and display a snackbar', () => {
-        cy.server()
-        cy.route('DELETE', 'https://localhost:5002/api/customers/155', 'fixture:customer.json').as('deleteCustomer')
-        cy.get('[data-cy=delete]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=ok]').click()
-        cy.wait('@deleteCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]')
+        it('Successful attempt to seek a record', () => {
+            cy.seekCustomer()
+        })
+
+        it('Ask to delete and abort', () => {
+            cy.get('[data-cy=delete]').click()
+            cy.get('.mat-dialog-container')
+            cy.get('[data-cy=abort]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/customers/8')
+        })
+
+        it('Ask to delete, accept, display a snackbar and go back to the list', () => {
+            cy.server()
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/customers/8', 'fixture:customer.json').as('deleteCustomer')
+            cy.get('[data-cy=delete]').click()
+            cy.get('.mat-dialog-container')
+            cy.get('[data-cy=ok]').click()
+            cy.wait('@deleteCustomer').its('status').should('eq', 200)
+            cy.get('[data-cy=customSnackbar]')
+            cy.url().should('eq', Cypress.config().baseUrl + '/customers')
+        })
+
     })
 
     afterEach(() => {

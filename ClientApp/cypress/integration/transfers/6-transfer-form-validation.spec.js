@@ -10,7 +10,7 @@ context('Form validation', () => {
             cy.login()
         })
 
-        it('Go to the list from the home page', () => {
+        it('Goto the list from the home page', () => {
             cy.get('[data-cy=transfers]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
         })
@@ -24,7 +24,7 @@ context('Form validation', () => {
             cy.get('[data-cy=search]').click()
         })
 
-        it('Go to an empty form', () => {
+        it('Goto an empty form', () => {
             cy.get('[data-cy=new]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/new')
         })

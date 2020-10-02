@@ -10,7 +10,7 @@ context('Delete', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
+    it('Goto the list from the home page', () => {
         cy.gotoDestinationListFromHomePage()
     })
 
@@ -35,7 +35,7 @@ context('Delete', () => {
         cy.server()
         cy.route({
             method: 'DELETE',
-            url: 'https://localhost:5002/api/destinations/16',
+            url: 'https://localhost:5001/api/destinations/16',
             status: 400,
             response: { error: 'Dummy response' },
             delay: 500
@@ -46,7 +46,7 @@ context('Delete', () => {
 
     it('Ask to delete, accept and display a snackbar', () => {
         cy.server()
-        cy.route('DELETE', 'https://localhost:5002/api/destinations/16', 'fixture:destination.json').as('deleteDestination')
+        cy.route('DELETE', 'https://localhost:5001/api/destinations/16', 'fixture:destination.json').as('deleteDestination')
         cy.get('[data-cy=delete]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()

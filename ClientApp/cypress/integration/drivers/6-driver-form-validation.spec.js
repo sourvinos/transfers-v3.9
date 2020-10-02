@@ -14,7 +14,7 @@ context('Form validation', () => {
         cy.gotoDriverListFromHomePage()
     })
 
-    it('Go to an empty form', () => {
+    it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/drivers/new')
     })
@@ -52,12 +52,12 @@ context('Form validation', () => {
 
     it('Choose to abort when the back icon is clicked', () => {
         cy.server()
-        cy.route('GET', 'https://localhost:5002/api/drivers', 'fixture:drivers.json').as('getDrivers')
+        cy.route('GET', 'https://localhost:5001/api/drivers', 'fixture:drivers.json').as('getDrivers')
         cy.get('[data-cy=goBack]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()
         cy.wait('@getDrivers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'drivers')
+        cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
     })
 
 })

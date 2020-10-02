@@ -1,4 +1,4 @@
-context('Edit', () => {
+context('Customers', () => {
 
     before(() => {
         cy.login()
@@ -6,43 +6,31 @@ context('Edit', () => {
     })
 
     beforeEach(() => {
-        cy.wait(1500)
         cy.restoreLocalStorage()
     })
 
-    it('Go to the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
-    })
+    describe('Seek and update a record', () => {
 
-    it('Successful attempt to seek a record', () => {
-        cy.seekCustomer()
-    })
-
-    it('Buttons must exist', () => {
-        cy.get('[data-cy=goBack]')
-        cy.get('[data-cy=delete]')
-        cy.get('[data-cy=save]')
-    })
-
-    it('Unable to update and display a snackbar', () => {
-        cy.server()
-        cy.route({
-            method: 'PUT',
-            url: 'https://localhost:5002/api/customers/155',
-            status: 400,
-            response: { error: 'Dummy response' },
-            delay: 500
+        it('Goto the list from the home page', () => {
+            cy.server()
+            cy.route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+            cy.get('[data-cy=customers]').click()
+            cy.wait('@getCustomers').its('status').should('eq', 200)
+            cy.url().should('eq', Cypress.config().baseUrl + '/customers')
         })
-        cy.get('[data-cy=save]').click()
-        cy.get('[data-cy=customSnackbar]')
-    })
 
-    it('Update and display a snackbar', () => {
-        cy.server()
-        cy.route('PUT', 'https://localhost:5002/api/customers/155', 'fixture:customer.json').as('saveCustomer')
-        cy.get('[data-cy=save]').click()
-        cy.wait('@saveCustomer').its('status').should('eq', 200)
-        cy.get('[data-cy=customSnackbar]')
+        it('Successful attempt to seek a record', () => {
+            cy.seekCustomer()
+        })
+
+        it('Update and display a snackbar', () => {
+            cy.server()
+            cy.route('PUT', 'https://localhost:5001/api/customers/8', 'fixture:customer.json').as('saveCustomer')
+            cy.get('[data-cy=save]').click()
+            cy.wait('@saveCustomer').its('status').should('eq', 200)
+            cy.get('[data-cy=customSnackbar]')
+        })
+
     })
 
     afterEach(() => {

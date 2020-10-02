@@ -7,8 +7,8 @@
     <div id="dialog-content">
         <mat-form-field>
             <mat-label>Driver</mat-label>
-            <mat-select [(value)]="id">
-                <mat-option *ngFor="let driver of drivers" [value]="driver.id">
+            <mat-select data-cy="driverSelect" [(value)]="id">
+                <mat-option data-cy="driverElement" *ngFor="let driver of drivers" [value]="driver.id">
                     {{ driver.description }}
                 </mat-option>
             </mat-select>
@@ -19,7 +19,7 @@
     <div id="dialog-footer">
         <mat-dialog-actions>
             <button mat-flat-button class="secondary" id="abort" tabindex="-1" (click)="onClose()">Abort</button>
-            <button mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">OK</button>
+            <button data-cy="ok" mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">OK</button>
         </mat-dialog-actions>
     </div>
 

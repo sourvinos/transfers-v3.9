@@ -1,8 +1,8 @@
 <div id="wrapper">
 
     <div id="panelButtons">
-        <button mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusSummaryPanel()">{{ onGetLabel('summaryTab') }}</button>
-        <button mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusListPanel()">{{ onGetLabel('listTab') }}</button>
+        <button data-cy="summaryTab" mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusSummaryPanel()">{{ onGetLabel('summaryTab') }}</button>
+        <button data-cy="listTab" mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusListPanel()">{{ onGetLabel('listTab') }}</button>
         <div [class.hidden]="activePanel=='list'" class="selection">
             <div class="label">{{ totals[0].description }}</div>
             <div class="sum">{{ totals[0].sum }}</div>
@@ -11,7 +11,7 @@
             <div *ngFor="let item of totals">
                 <div class="selection">
                     <div class="label">{{ item.description }}</div>
-                    <div data-cy="sum" class="sum">{{ item.sum }}</div>
+                    <div data-cy="totalsSum" class="sum">{{ item.sum }}</div>
                 </div>
             </div>
         </div>

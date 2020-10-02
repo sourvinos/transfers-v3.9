@@ -13,7 +13,7 @@ namespace Transfers {
         public static IWebHost BuildWebHost(string[] args) {
             return WebHost.CreateDefaultBuilder()
                 .UseKestrel(options => {
-                    options.ListenLocalhost(5002, listenOptions => {
+                    options.ListenLocalhost(5001, listenOptions => {
                         listenOptions.UseHttps("localhost.pfx", "74656");
                     });
                 })

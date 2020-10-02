@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "description": "STAMATIS!",
+        "phones": "6972 771 185",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 8,
+        "description": "-",
+        "phones": "",
+        "isDefault": true,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 9,
+        "description": "MED BLUE  VASILIS",
+        "phones": "6948 590 575",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 13,
+        "description": "TAXI VASILIS",
+        "phones": "26620 22214",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 14,
+        "description": "SELLAS NORTH2 ",
+        "phones": "6944 721 735",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 19,
+        "description": "SCHERIA KOTINAS",
+        "phones": "",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+    },
+    {
+        "id": 20,
+        "description": "SELLAS GIORGOS",
+        "phones": "694 87 50 672",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    },
+    {
+        "id": 21,
+        "description": "VASILIS NORTH",
+        "phones": "6938878924",
+        "isDefault": false,
+        "isActive": true,
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+    }
+]

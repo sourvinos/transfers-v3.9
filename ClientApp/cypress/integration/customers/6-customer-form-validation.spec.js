@@ -14,7 +14,7 @@ context('Form validation', () => {
         cy.gotoCustomerListFromHomePage()
     })
 
-    it('Go to an empty form', () => {
+    it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
@@ -77,12 +77,12 @@ context('Form validation', () => {
 
     it('Choose to abort when the back icon is clicked', () => {
         cy.server()
-        cy.route('GET', 'https://localhost:5002/api/customers', 'fixture:customers.json').as('getCustomers')
+        cy.route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
         cy.get('[data-cy=goBack]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()
         cy.wait('@getCustomers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/' + 'customers')
+        cy.url().should('eq', Cypress.config().baseUrl + '/customers')
     })
 
 })

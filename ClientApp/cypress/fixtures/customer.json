@@ -1,11 +1,11 @@
 {
-    "id": 155,
-    "description": "AKVILA TRAVEL",
+    "id": 8,
+    "description": "M.T.S. INCOMING S.A.",
     "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
-    "address": "ΑΓ. ΓΕΩΡΓΙΟΣ ΑΡΓΥΡΑΔΩΝ - ΚΕΡΚΥΡΑ ",
-    "phones": "2662051679",
-    "personInCharge": "ΚΑΒΒΑΔΙΑΣ ΚΩΝ. ΠΡΟΚΟΠΙΟΣ",
+    "address": "ΕΘΝΙΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΗΣ 58-ΚΕΡΚΥΡΑ",
+    "phones": "0661.24586",
+    "personInCharge": "FAGOGENIS NIKOS",
     "email": "",
-    "isActive": false,
-    "userId": "25439d25-4e36-409d-b9d3-9fb41c289541"
+    "isActive": true,
+    "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
 }
