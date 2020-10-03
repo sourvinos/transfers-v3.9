@@ -1,5 +1,7 @@
 context('Destinations', () => {
 
+    // Last revision: Sat 3/10/2020 13:00
+
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -17,19 +19,9 @@ context('Destinations', () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
     })
 
-    it('Critical elements should exist', () => {
-        cy.get('[data-cy=goBack]')
-        cy.get('[data-cy=searchTerm]')
-        cy.get('[data-cy=content]')
-        cy.get('[data-cy=new]')
-    })
-
-    it('The table should have an exact number of rows', () => {
+    it('The table should have an exact number of rows and columns', () => {
         cy.get('[data-cy=row]').should('have.length', 30)
-    })
-
-    it('The table should have an exact number of columns', () => {
-        cy.get('[data-cy=header]').should('have.length', 5)
+        cy.get('[data-cy=column]').should('have.length', 5)
     })
 
     it('Filter the table by typing in the search box', () => {

@@ -3,7 +3,7 @@
 <table id="custom-table-{{ randomTableId }}" (domChange)="onDomChange()">
     <thead>
         <tr>
-            <th data-cy="header" *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>
+            <th data-cy="column" *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>
         </tr>
     </thead>
     <tbody>

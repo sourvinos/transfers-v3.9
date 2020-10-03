@@ -19,7 +19,7 @@
     <div id="dialog-footer">
         <mat-dialog-actions>
             <button mat-flat-button class="secondary" id="abort" tabindex="-1" (click)="onClose()">{{ onGetLabel('noButton') }}</button>
-            <button data-cy="ok" mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">{{ onGetLabel('okButton') }}</button>
+            <button data-cy="continue" mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">{{ onGetLabel('okButton') }}</button>
         </mat-dialog-actions>
     </div>
 

@@ -1,5 +1,7 @@
 context('Transfers', () => {
 
+    // Last revision: Sat 3/10/2020 13:00
+
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -31,18 +33,18 @@ context('Transfers', () => {
         cy.get(':nth-child(3) > .selection > [data-cy=totalsSum]').should('have.text', '0')
     })
 
-    it('Critical elements should exist in the summary tab', () => {
+    it('There should be five summary boxes', () => {
         cy.get('[data-cy=summaryBlock]').should('have.length', 5)
     })
 
     it('The table should have the correct number of rows and columns', () => {
         cy.get('[data-cy=listTab]').click()
         cy.get('[data-cy=row]').should('have.length', 17)
-        cy.get('[data-cy=header]').should('have.length', 15)
+        cy.get('[data-cy=column]').should('have.length', 15)
     })
 
     it('Select all rows by clicking on the "S" column header', () => {
-        cy.get('table').within(() => { cy.get('[data-cy=header]:nth-child(1)').click() })
+        cy.get('table').within(() => { cy.get('[data-cy=column]:nth-child(1)').click() })
         cy.get(':nth-child(3) > .selection > [data-cy=totalsSum]').should('have.text', '72')
     })
 
