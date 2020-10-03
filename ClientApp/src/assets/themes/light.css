@@ -1,4 +1,5 @@
 :root {
+    --color-datepicker-toggler: #57617b;
     --color-background: #fffff4;
     --color-button-abort: #c1c1c1;
     --color-button-delete: #d67474;
@@ -18,6 +19,14 @@
     --color-company-logo-first-child: #355070;
     --color-company-logo-second-child: #b56576;
     --color-copyright: #b56576;
+    --color-datepicker-arrow: #57617b;
+    --color-datepicker-background: #eaeaea;
+    --color-datepicker-day-selected-background: #57617b;
+    --color-datepicker-day-selected: #fffff4;
+    --color-datepicker-days: #57617b;
+    --color-datepicker-header-month: #57617b;
+    --color-datepicker-table-header: #57617b;
+    --color-datepicker-today-border: #57617b;
     --color-dialog-background: #fffff4;
     --color-dialog-content: #426186;
     --color-headers: #426186;
@@ -74,8 +83,8 @@
     --color-table-row: #2e5266;
     --color-table-rows-background-hover: #e0e3e6;
     --color-table-rows-hover: #b56576;
-    --color-tooltip-background:#355070;
-    --color-tooltip:#fffff4;
+    --color-tooltip-background: #355070;
+    --color-tooltip: #fffff4;
     --color-transfer-form-modal: #eaeaea;
     --color-user-greeting-icon: #5f5f5f;
     --color-user-greeting: #5f5f5f;

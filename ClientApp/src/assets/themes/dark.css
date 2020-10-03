@@ -18,6 +18,15 @@
     --color-company-logo-first-child: #fe9f36;
     --color-company-logo-second-child: #ffe85c;
     --color-copyright: #fe9f36;
+    --color-datepicker-arrow: #fffddd;
+    --color-datepicker-background: #666d73;
+    --color-datepicker-day-selected-background: #fffddd;
+    --color-datepicker-day-selected: #666d73;
+    --color-datepicker-days: #fffddd;
+    --color-datepicker-header-month: #fffddd;
+    --color-datepicker-table-header: #dddddd;
+    --color-datepicker-today-border: #fffddd;
+    --color-datepicker-toggler: #fffddd;
     --color-dialog-background: #373f46;
     --color-dialog-content: #b7b7b8;
     --color-headers: #b7b7b8;

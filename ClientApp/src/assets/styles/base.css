@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "buttons.css";
 @import "checkbox.css";
+@import "datepicker.css";
 @import "dialogs.css";
 @import "headers.css";
 @import "inputs.css";
@@ -10,9 +11,9 @@
 @import "loader.css";
 @import "scrollable.css";
 @import "select.css";
-@import "variables.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
+@import "variables.css";
 * {
     box-sizing: border-box !important;
 }

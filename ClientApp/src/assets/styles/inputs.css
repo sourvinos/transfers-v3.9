@@ -3,7 +3,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 input.center {
-    text-align: center;
+    text-align: center !important;
 }
 
 input::selection {
@@ -54,14 +54,14 @@ input[type=number] {
 }
 
 .mat-hint {
-    color: var(--color-input-not-focus) !important;
     font-size: var(--font-size-input-hint) !important;
     font-variant-caps: petite-caps !important;
     margin-top: 0.1875rem !important;
 }
 
 .mat-error {
-    font-variant-caps: all-petite-caps !important;
+    font-variant-caps: petite-caps !important;
+    margin-top: 0.1875rem !important;
 }
 
 .mat-icon {
@@ -143,6 +143,10 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 
 .no-bottom-margin>.mat-form-field-wrapper {
     margin-bottom: 0 !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-subscript-wrapper .mat-form-field-hint-wrapper .mat-hint {
+    color: var(--color-input-text-error) !important;
 }
 
 @media only screen and (max-width: 1366px) {

@@ -791,5 +791,14 @@
                 "description": "Dark"
             }
         ]
+    },
+    {
+        "feature": "assignDriver",
+        "labels": [
+            {
+                "id": "searchHint",
+                "description": "Select from the list"
+           }
+        ]
     }
 ]

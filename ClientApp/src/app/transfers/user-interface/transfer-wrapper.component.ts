@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import moment from 'moment'
@@ -9,6 +9,7 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -17,7 +18,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class TransferWrapperComponent implements OnInit, OnDestroy {
+export class TransferWrapperComponent {
 
     //#region variables
 
@@ -32,26 +33,23 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     dateIn = ''
     dateInISO = ''
+    form: FormGroup
     records: string[] = []
     transfersFlat: TransferFlat[] = []
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageLabelService: MessageLabelService,
-        private router: Router,
-        private titleService: Title
-    ) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.setWindowTitle()
+        this.initForm()
         this.addShortcuts()
+    }
+
+    ngAfterViewInit(): void {
         this.focus('dateIn')
     }
 
@@ -68,7 +66,7 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     public onCheckValidDate(): boolean {
         const date = (<HTMLInputElement>document.getElementById('dateIn')).value
-        if (date.length === 10) {
+        if (moment(moment(date, 'DD/MM/YYYY')).isValid()) {
             this.dateInISO = moment(date, 'DD/MM/YYYY').toISOString(true)
             this.dateInISO = moment(this.dateInISO).format('YYYY-MM-DD')
             return true
@@ -120,6 +118,12 @@ export class TransferWrapperComponent implements OnInit, OnDestroy {
 
     private focus(field: string): void {
         this.helperService.setFocus(field)
+    }
+
+    private initForm(): void {
+        this.form = this.formBuilder.group({
+            dateIn: ['', [Validators.required]]
+        })
     }
 
     private navigateToList(): void {

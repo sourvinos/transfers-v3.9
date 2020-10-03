@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Driver } from 'src/app/drivers/classes/driver'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
     selector: 'transfer-assign-driver',
@@ -14,10 +15,15 @@ export class TransferAssignDriverComponent implements OnInit {
 
     drivers: Driver[] = []
     id = ''
+    feature = 'assignDriver'
 
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<TransferAssignDriverComponent>) { }
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private dialogRef: MatDialogRef<TransferAssignDriverComponent>,
+        private messageLabelService: MessageLabelService,
+    ) { }
 
     ngOnInit(): void {
         this.populateDropDowns()
@@ -25,6 +31,10 @@ export class TransferAssignDriverComponent implements OnInit {
 
     public onClose(): void {
         this.dialogRef.close()
+    }
+
+    public onGetLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     private populateDropDowns(): void {

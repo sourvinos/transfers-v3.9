@@ -38,6 +38,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
     //#endregion
 
     //#region 
+
     hidePassword = true
 
     //#endregion

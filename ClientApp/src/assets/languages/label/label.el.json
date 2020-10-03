@@ -791,5 +791,14 @@
                 "description": "Σκουρο"
             }
         ]
+    },
+    {
+        "feature": "assignDriver",
+        "labels": [
+            {
+                "id": "searchHint",
+                "description": "Επιλεξτε απο τη λιστα"
+            }
+        ]
     }
 ]
