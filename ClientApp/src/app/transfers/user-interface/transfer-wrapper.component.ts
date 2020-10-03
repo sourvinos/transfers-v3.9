@@ -10,6 +10,7 @@ import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { DateAdapter } from '@angular/material/core'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -39,7 +40,7 @@ export class TransferWrapperComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -47,6 +48,7 @@ export class TransferWrapperComponent {
         this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
+        this.getLocale()
     }
 
     ngAfterViewInit(): void {
@@ -118,6 +120,10 @@ export class TransferWrapperComponent {
 
     private focus(field: string): void {
         this.helperService.setFocus(field)
+    }
+
+    private getLocale(): void {
+        this.dateAdapter.setLocale(localStorage.getItem("language"))
     }
 
     private initForm(): void {

@@ -6,6 +6,7 @@ import { MessageLabelService } from '../../services/messages-label.service'
 import { MessageMenuService } from '../../services/messages-menu.service'
 import { MessageSnackbarService } from '../../services/messages-snackbar.service'
 import { MessageTableService } from './../../services/messages-table.service'
+import { DateAdapter } from '@angular/material/core'
 
 @Component({
     selector: 'language-bar',
@@ -15,7 +16,7 @@ import { MessageTableService } from './../../services/messages-table.service'
 
 export class LanguageBarComponent {
 
-    constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService) {
+    constructor(private dateAdapter: DateAdapter<any>, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) {
         this.matIconRegistry
             .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
             .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
@@ -36,6 +37,7 @@ export class LanguageBarComponent {
         this.messageSnackbarService.getMessages()
         this.messageTableService.getMessages()
         this.messagelabelService.getMessages()
+        this.dateAdapter.setLocale(localStorage.getItem("language"))
         return language
     }
 
