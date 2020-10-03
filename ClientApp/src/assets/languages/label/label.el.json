@@ -798,6 +798,22 @@
             {
                 "id": "searchHint",
                 "description": "Επιλεξτε απο τη λιστα"
+            },
+            {
+                "id": "header",
+                "description": "Ανάθεση σε οδηγό"
+            },
+            {
+                "id": "driver",
+                "description": "Οδηγος"
+            },
+            {
+                "id": "okButton",
+                "description": "Συνεχεια"
+            },
+            {
+                "id": "noButton",
+                "description": "Ακυρο"
             }
         ]
     }

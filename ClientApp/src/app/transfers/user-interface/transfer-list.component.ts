@@ -135,7 +135,6 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
                 height: '350px',
                 width: '550px',
                 data: {
-                    title: 'Assign driver',
                     drivers: this.driverService.getAllActive(),
                     actions: ['abort', 'ok']
                 },

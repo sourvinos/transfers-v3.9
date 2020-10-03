@@ -791,5 +791,30 @@
                 "description": "(DE) Dark"
             }
         ]
+    },
+    {
+        "feature": "assignDriver",
+        "labels": [
+            {
+                "id": "searchHint",
+                "description": "(DE) Select from the list"
+            },
+            {
+                "id": "header",
+                "description": "(DE) Assign to driver"
+            },
+            {
+                "id": "driver",
+                "description": "(DE) Driver"
+            },
+            {
+                "id": "okButton",
+                "description": "(DE) OK"
+            },
+            {
+                "id": "noButton",
+                "description": "(DE) Abort"
+            }
+        ]
     }
-]
+] 
