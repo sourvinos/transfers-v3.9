@@ -97,6 +97,7 @@
 
 .summaryHeader {
     align-items: center;
+    cursor: pointer;
     display: flex;
     padding: 0.5rem;
 }
@@ -106,12 +107,12 @@
     padding: 0 1.5rem;
 }
 
-.summaryBlock header {
-    color: var(--color-summary-block-headers);
-    font-family: var(--font-family-summary-header);
-    font-size: var(--font-size-summary-block-header);
-    font-variant-caps: petite-caps;
-    font-weight: var(--font-weight-summary-header);
+.mat-checkbox {
+    color: var(--color-summary-block-headers) !important;
+    font-family: var(--font-family-summary-header) !important;
+    font-size: var(--font-size-summary-block-header) !important;
+    font-variant-caps: petite-caps !important;
+    font-weight: var(--font-weight-summary-header) !important;
 }
 
 .summaryBlock .item {
@@ -183,7 +184,7 @@
 }
 
 .scrollable::-webkit-scrollbar-track {
-    margin-top: 3rem;
+    margin-top: 0;
 }
 
 

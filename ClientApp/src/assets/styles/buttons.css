@@ -62,7 +62,7 @@ button.tab:first-child {
 
 button.tab:hover:not(:disabled) {
     border-bottom: 4px solid var(--color-button-tab-border-hover);
-    transition-duration: 200ms;
+    transition: border-bottom 400ms;
 }
 
 button.tab.active {

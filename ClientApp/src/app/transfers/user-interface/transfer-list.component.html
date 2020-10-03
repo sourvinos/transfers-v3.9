@@ -20,8 +20,9 @@
     <div id="summary" [class.hidden]="activePanel=='list'" class="scrollable">
         <div data-cy="summaryBlock" class="summaryBlock">
             <div class="summaryHeader">
-                <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" [(indeterminate)]="indeterminateDestinations" (click)="onToggleParentCheckbox('destination', this.selectedDestinations, this.checkedDestinations)"></mat-checkbox>
-                <header>{{ onGetLabel('summaryHeaderDestinations') }}</header>
+                <mat-checkbox data-cy="destinationsCheckbox" class="checkbox destination" [(ngModel)]="checkedDestinations" [(indeterminate)]="indeterminateDestinations" (click)="onToggleParentCheckbox('destination', this.selectedDestinations, this.checkedDestinations)">
+                    {{ onGetLabel('summaryHeaderDestinations') }}
+                </mat-checkbox>
             </div>
             <div class="summaryContent scrollable">
                 <div *ngFor="let item of queryResult.personsPerDestination" (click)="onToggleItem(item, this.selectedDestinations, 'checkedDestinations', 'indeterminateDestinations', 'destination')" class="item destination" [class.active]="item.isSelected" [id]="item.description">
@@ -32,8 +33,9 @@
         </div>
         <div data-cy="summaryBlock" class="summaryBlock">
             <div class="summaryHeader">
-                <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" [(indeterminate)]="indeterminateCustomers" (click)="onToggleParentCheckbox('customer', this.selectedCustomers, this.checkedCustomers)"></mat-checkbox>
-                <header>{{ onGetLabel('summaryHeaderCustomers') }}</header>
+                <mat-checkbox data-cy="customersCheckbox" class="checkbox customer" [(ngModel)]="checkedCustomers" [(indeterminate)]="indeterminateCustomers" (click)="onToggleParentCheckbox('customer', this.selectedCustomers, this.checkedCustomers)">
+                    {{ onGetLabel('summaryHeaderCustomers') }}
+                </mat-checkbox>
             </div>
             <div class="summaryContent scrollable">
                 <div *ngFor="let item of queryResult.personsPerCustomer" (click)="onToggleItem(item, this.selectedCustomers, 'checkedCustomers', 'indeterminateCustomers', 'customer')" class="item customer" [class.active]="item.isSelected" [id]="item.description">
@@ -44,8 +46,9 @@
         </div>
         <div data-cy="summaryBlock" class="summaryBlock">
             <div class="summaryHeader">
-                <mat-checkbox data-cy="routesCheckbox" class="checkbox route" [(ngModel)]="checkedRoutes" [(indeterminate)]="indeterminateRoutes" (click)="onToggleParentCheckbox('route', this.selectedRoutes, this.checkedRoutes)"></mat-checkbox>
-                <header>{{ onGetLabel('summaryHeaderRoutes') }}</header>
+                <mat-checkbox data-cy="routesCheckbox" class="checkbox route" [(ngModel)]="checkedRoutes" [(indeterminate)]="indeterminateRoutes" (click)="onToggleParentCheckbox('route', this.selectedRoutes, this.checkedRoutes)">
+                    {{ onGetLabel('summaryHeaderRoutes') }}
+                </mat-checkbox>
             </div>
             <div class="summaryContent scrollable">
                 <div *ngFor="let item of queryResult.personsPerRoute" (click)="onToggleItem(item, this.selectedRoutes, 'checkedRoutes', 'indeterminateRoutes', 'route')" class="item route" [class.activeItem]="item.isSelected" [id]="item.description">
@@ -56,8 +59,9 @@
         </div>
         <div data-cy="summaryBlock" class="summaryBlock">
             <div class="summaryHeader">
-                <mat-checkbox data-cy="driversCheckbox" class="checkbox driver" [(ngModel)]="checkedDrivers" [(indeterminate)]="indeterminateDrivers" (click)="onToggleParentCheckbox('driver', this.selectedDrivers, this.checkedDrivers)"></mat-checkbox>
-                <header>{{ onGetLabel('summaryHeaderDrivers') }}</header>
+                <mat-checkbox data-cy="driversCheckbox" class="checkbox driver" [(ngModel)]="checkedDrivers" [(indeterminate)]="indeterminateDrivers" (click)="onToggleParentCheckbox('driver', this.selectedDrivers, this.checkedDrivers)">
+                    {{ onGetLabel('summaryHeaderDrivers') }}
+                </mat-checkbox>
             </div>
             <div class="summaryContent scrollable">
                 <div *ngFor="let item of queryResult.personsPerDriver" (click)="onToggleItem(item, this.selectedDrivers, 'checkedDrivers', 'indeterminateDrivers', 'driver')" class="item driver" [class.active]="item.isSelected" [id]="item.description">
@@ -68,8 +72,9 @@
         </div>
         <div data-cy="summaryBlock" class="summaryBlock">
             <div class="summaryHeader">
-                <mat-checkbox data-cy="portsCheckbox" class="checkbox port" [(ngModel)]="checkedPorts" [(indeterminate)]="indeterminatePorts" (click)="onToggleParentCheckbox('port', this.selectedPorts, this.checkedPorts)"></mat-checkbox>
-                <header>{{ onGetLabel('summaryHeaderPorts') }}</header>
+                <mat-checkbox data-cy="portsCheckbox" class="checkbox port" [(ngModel)]="checkedPorts" [(indeterminate)]="indeterminatePorts" (click)="onToggleParentCheckbox('port', this.selectedPorts, this.checkedPorts)">
+                    {{ onGetLabel('summaryHeaderPorts') }}
+                </mat-checkbox>
             </div>
             <div class="summaryContent scrollable">
                 <div data-cy="port" *ngFor="let item of queryResult.personsPerPort" (click)="onToggleItem(item, this.selectedPorts, 'checkedPorts', 'indeterminatePorts', 'port')" class="item port" [class.active]="item.isSelected" [id]="item.description">
