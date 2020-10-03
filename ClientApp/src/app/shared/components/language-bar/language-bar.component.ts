@@ -27,7 +27,7 @@ export class LanguageBarComponent {
     //#region public methods
 
     public onGetLanguage(): string {
-        return localStorage.getItem("language") == null ? this.onSaveLanguage('en') : localStorage.getItem("language")
+        return localStorage.getItem("language") == null ? this.onSaveLanguage('en-GB') : localStorage.getItem("language")
     }
 
     public onSaveLanguage(language: string): string {

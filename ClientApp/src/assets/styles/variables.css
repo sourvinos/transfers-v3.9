@@ -13,7 +13,8 @@
     --font-family-snackbar: "PF Handbook Pro";
     --font-family-summary-block: "Noto Sans";
     --font-family-summary-header: "PF Handbook Pro";
-    --font-family-table: 'Noto Sans';
+    --font-family-table-header: "PF Handbook Pro";
+    --font-family-table-body: "Ubuntu";
     --font-family-totals: "PF Handbook Pro";
     --font-family-user-greeting: "Ubuntu";
     /* Font weights */
@@ -26,7 +27,7 @@
     --font-weight-menu-list-item: 300;
     --font-weight-snackbar: 300;
     --font-weight-sum-persons: 300;
-    --font-weight-summary-header:300;
+    --font-weight-summary-header: 300;
     --font-weight-table-header: 300 !important;
     --font-weight-user-greeting: 300;
 }
