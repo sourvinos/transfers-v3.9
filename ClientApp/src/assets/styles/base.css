@@ -68,6 +68,10 @@ p.instructions {
     font-variant-caps: petite-caps;
 }
 
+.mat-checkbox-label {
+    margin-left: 0.5rem !important;
+}
+
 .error {
     background-color: var(--color-snackbar-background-error) !important;
 }

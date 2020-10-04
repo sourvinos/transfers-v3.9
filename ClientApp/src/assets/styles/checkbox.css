@@ -3,6 +3,10 @@
     flex: 0 0 auto !important;
 }
 
+.mat-checkbox-inner-container {
+    margin-left: 0 !important;
+}
+
 .mat-checkbox-inner-container-no-side-margin {
     width: 1rem !important;
     height: 1rem !important;

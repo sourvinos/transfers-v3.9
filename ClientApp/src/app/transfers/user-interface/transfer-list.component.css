@@ -109,10 +109,12 @@
 
 .mat-checkbox {
     color: var(--color-summary-block-headers) !important;
+    display: flex;
     font-family: var(--font-family-summary-header) !important;
     font-size: var(--font-size-summary-block-header) !important;
     font-variant-caps: petite-caps !important;
     font-weight: var(--font-weight-summary-header) !important;
+    width: 100%;
 }
 
 .summaryBlock .item {

@@ -13,7 +13,6 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'customer-list',

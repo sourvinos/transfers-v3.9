@@ -1,6 +1,6 @@
 <input data-cy="custom-table-input" type="text" id="custom-table-input-{{ randomTableId }}" (keydown)="onCheckKeyboard($event)" autocomplete="off">
 
-<table id="custom-table-{{ randomTableId }}" (domChange)="onDomChange()">
+<table id="custom-table-{{ randomTableId }}">
     <thead>
         <tr>
             <th data-cy="column" *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>

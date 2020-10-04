@@ -1,8 +1,8 @@
+import { MessageLabelService } from './../../services/messages-label.service'
 import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiffer, IterableDiffers, OnInit } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { slideToLeft } from 'src/app/shared/animations/animations'
-import { Subject } from 'rxjs'
 import { MessageTableService } from '../../services/messages-table.service'
 
 @Component({
@@ -26,7 +26,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     currentRow = 0
     tableContainer: any
     table: any
-    tableInput: any
     rowHeight = 0
     rowCount = 0
     checked = false
@@ -36,12 +35,18 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     differences: IterableDiffer<any>;
     randomTableId = Math.floor(Math.random() * 1000) + 1
     tableAnimations: true
-    ngUnsubscribe = new Subject<void>()
     feature = 'table'
 
     //#endregion
 
-    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageTableService: MessageTableService) { }
+    constructor(
+        private indexInteractionService: IndexInteractionService,
+        private interactionService: InteractionService,
+        private iterableDiffers: IterableDiffers,
+        private messageLabelService: MessageLabelService,
+        private messageTableService: MessageTableService,
+
+    ) { }
 
     //#region lifecycle hooks
 

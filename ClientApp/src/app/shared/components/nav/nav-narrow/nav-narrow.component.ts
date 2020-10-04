@@ -26,6 +26,7 @@ export class NavNarrowComponent {
     theme = 'light'
     isScreenNarrow: boolean
     feature = 'menu'
+    menuItems: string[] = []
 
     //#endregion
 
@@ -42,6 +43,7 @@ export class NavNarrowComponent {
     ngOnInit(): void {
         this.theme = this.getTheme()
         this.loginStatus = this.accountService.isLoggedIn
+        this.updateNavigation()
     }
 
     ngAfterViewInit(): void {
@@ -82,6 +84,14 @@ export class NavNarrowComponent {
 
     private getTheme(): string {
         return localStorage.getItem('theme')
+    }
+
+    private updateNavigation(): void {
+        this.messageMenuService.getMessages().then((res: any[]) => {
+            res.forEach(element => {
+                this.menuItems.push(element.message)
+            })
+        })
     }
 
     //#endregion

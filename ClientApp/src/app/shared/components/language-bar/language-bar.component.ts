@@ -18,10 +18,10 @@ export class LanguageBarComponent {
 
     constructor(private dateAdapter: DateAdapter<any>, private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) {
         this.matIconRegistry
-            .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en.svg'))
-            .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de.svg'))
-            .addSvgIcon('el', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/el.svg'))
-            .addSvgIcon('cz', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cz.svg'))
+            .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en-GB.svg'))
+            .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de-DE.svg'))
+            .addSvgIcon('el', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/el-GR.svg'))
+            .addSvgIcon('cs', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cs-CZ.svg'))
     }
 
     //#region public methods
