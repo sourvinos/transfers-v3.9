@@ -16,6 +16,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
 
     //#region variables
 
+    @Input() feature: string
     @Input() records: any[]
     @Input() headers: any
     @Input() widths: any
@@ -34,19 +35,10 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     sortOrder = 'desc'
     differences: IterableDiffer<any>;
     randomTableId = Math.floor(Math.random() * 1000) + 1
-    tableAnimations: true
-    feature = 'table'
 
     //#endregion
 
-    constructor(
-        private indexInteractionService: IndexInteractionService,
-        private interactionService: InteractionService,
-        private iterableDiffers: IterableDiffers,
-        private messageLabelService: MessageLabelService,
-        private messageTableService: MessageTableService,
-
-    ) { }
+    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
 
     //#region lifecycle hooks
 
@@ -84,7 +76,11 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
     }
 
     public onGetLabel(id: string): string {
-        return this.messageTableService.getDescription(this.feature, id)
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public onGetRowMenu(id: string): string {
+        return this.messageTableService.getDescription('table', id)
     }
 
     public onHeaderClick(columnName: string, sortOrder: string, column: any): void {

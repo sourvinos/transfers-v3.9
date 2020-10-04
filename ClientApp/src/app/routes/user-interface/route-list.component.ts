@@ -41,7 +41,7 @@ export class RouteListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', this.onGetLabel('headerDescription'), this.onGetLabel('headerFullDescription'), '']
+    headers = ['S', 'Id', 'headerDescription', 'headerFullDescription', '']
     widths = ['40px', '0px', '150px', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']

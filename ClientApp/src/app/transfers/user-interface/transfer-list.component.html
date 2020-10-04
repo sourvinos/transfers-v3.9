@@ -4,13 +4,13 @@
         <button data-cy="summaryTab" mat-flat-button class="tab" id="summaryTab" [disabled]="activePanel=='summary'" (click)="onFocusSummaryPanel()">{{ onGetLabel('summaryTab') }}</button>
         <button data-cy="listTab" mat-flat-button class="tab" id="listTab" [disabled]="activePanel=='list'" (click)="onFocusListPanel()">{{ onGetLabel('listTab') }}</button>
         <div [class.hidden]="activePanel=='list'" class="selection">
-            <div class="label">{{ totals[0].description }}</div>
+            <div class="label">{{ onGetLabel(totals[0].description) }}</div>
             <div class="sum">{{ totals[0].sum }}</div>
         </div>
         <div [class.hidden]="activePanel=='summary'" id="totals">
             <div *ngFor="let item of totals">
                 <div class="selection">
-                    <div class="label">{{ item.description }}</div>
+                    <div class="label">{{ onGetLabel(item.description) }}</div>
                     <div data-cy="totalsSum" class="sum">{{ item.sum }}</div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
     <div id="listFormCombo" [class.hidden]="activePanel=='summary'">
         <div id="transferList">
             <div class="scrollable" id="table">
-                <custom-table [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                <custom-table [feature]="feature" [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
             </div>
         </div>
         <div id="transferFormModal">

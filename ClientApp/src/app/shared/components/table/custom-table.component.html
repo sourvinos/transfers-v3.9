@@ -3,7 +3,7 @@
 <table id="custom-table-{{ randomTableId }}">
     <thead>
         <tr>
-            <th data-cy="column" *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ header }}</th>
+            <th data-cy="column" *ngFor="let header of headers, index as i" [style.width]="widths[i]" [style.display]="visibility[i]" (click)="onHeaderClick(fields[i], sortOrder, $event)">{{ onGetLabel(header) }}</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
                     </button>
                     <mat-menu #menu="matMenu">
                         <button data-cy="editButton" mat-menu-item (click)="sendRowToService()">
-                            <span>{{ onGetLabel('edit') }}</span>
+                            <span>{{ onGetRowMenu('edit') }}</span>
                         </button>
                     </mat-menu>
                 </div>

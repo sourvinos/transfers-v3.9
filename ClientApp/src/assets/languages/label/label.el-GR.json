@@ -253,16 +253,16 @@
                 "description": "Νεο"
             },
             {
-                "id": "",
-                "description": ""
+                "id": "headerDescription",
+                "description": "Περιγραφη"
             },
             {
                 "id": "headerExactPoint",
-                "description": ""
+                "description": "Ακριβες σημειο"
             },
             {
                 "id": "headerTime",
-                "description": ""
+                "description": "Ωρα"
             }
         ]
     },

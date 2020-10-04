@@ -17,6 +17,7 @@ th {
     color: var(--color-table-header);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
+    font-variant-caps: petite-caps;
     font-weight: var(--font-weight-table-header);
     padding: 0.8rem 0.5rem;
     position: sticky;

@@ -41,7 +41,7 @@ export class PortListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', this.onGetLabel('headerDescription'), '']
+    headers = ['S', 'Id', 'headerDescription', '']
     widths = ['40px', '0', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'center']

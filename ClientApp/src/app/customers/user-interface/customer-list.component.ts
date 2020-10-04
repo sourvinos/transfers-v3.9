@@ -41,7 +41,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', this.onGetLabel('headerDescription'), this.onGetLabel('headerPhones'), this.onGetLabel('headerEmail'), '']
+    headers = ['S', 'Id', 'headerDescription', 'headerPhones', 'headerEmail', '']
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']

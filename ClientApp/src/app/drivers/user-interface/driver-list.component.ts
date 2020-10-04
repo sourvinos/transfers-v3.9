@@ -41,7 +41,7 @@ export class DriverListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', this.onGetLabel('headerName'), this.onGetLabel('headerPhones'), '']
+    headers = ['S', 'Id', 'headerName', 'headerPhones', '']
     widths = ['40px', '0px', '50%', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center']

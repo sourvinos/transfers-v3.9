@@ -69,7 +69,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region table
 
-    headers = ['S', 'Id', this.onGetLabel('headerDestination'), this.onGetLabel('headerDestinationAbbreviation'), this.onGetLabel('headerRoute'), this.onGetLabel('headerCustomer'), this.onGetLabel('headerPickupPoint'), this.onGetLabel('headerTime'), this.onGetLabel('headerAdults'), this.onGetLabel('headerKids'), this.onGetLabel('headerFree'), this.onGetLabel('headerTime'), this.onGetLabel('headerDriver'), this.onGetLabel('headerPort'), '']
+    headers = ['S', 'Id', 'headerDestination', 'headerDestinationAbbreviation', 'headerRoute', 'headerCustomer', 'headerPickupPoint', 'headerTime', 'headerAdults', 'headerKids', 'headerFree', 'headerTotal', 'headerDriver', 'headerPort', '']
     widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
     visibility = ['', 'none', '', 'none']
     justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
@@ -84,6 +84,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
             if (navigation instanceof NavigationEnd && this.dateIn !== '' && this.router.url.split('/').length === 4) {
                 this.mustRefresh = true
                 this.loadRecords()
+                this.onFocusSummaryPanel()
             }
         })
     }
@@ -297,9 +298,9 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     private initPersonsSumArray(): void {
         this.totals.push(
-            { description: this.onGetLabel('total'), sum: 0 },
-            { description: this.onGetLabel('displayed'), sum: 0 },
-            { description: this.onGetLabel('selected'), sum: 0 }
+            { description: 'total', sum: 0 },
+            { description: 'displayed', sum: 0 },
+            { description: 'selected', sum: 0 }
         )
     }
 
