@@ -1,11 +1,12 @@
 {
-    "id": 8,
-    "description": "M.T.S. INCOMING S.A.",
-    "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
-    "address": "ΕΘΝΙΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΗΣ 58-ΚΕΡΚΥΡΑ",
-    "phones": "0661.24586",
-    "personInCharge": "FAGOGENIS NIKOS",
+    "id": 222,
+    "description": "ASK 2 TRAVEL",
+    "profession": "ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ ΤΑΞΙΔΙΩΤΙΚΩΝ ΠΡΑΚΤΟΡΕΙΩΝ",
+    "address": "ΛΕΩΦ. ΣΥΓΓΡΟΥ 188, 17671 ΚΑΛΛΙΘΕΑ-ΑΘΗΝΑ",
+    "phones": "",
+    "personInCharge": "",
     "email": "",
     "isActive": true,
     "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+
 }

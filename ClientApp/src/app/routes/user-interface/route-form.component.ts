@@ -225,8 +225,8 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
-            description: ['', [Validators.required, Validators.maxLength(10)]],
-            fullDescription: ['', [Validators.required, Validators.maxLength(128)]],
+            abbreviation: ['', [Validators.required, Validators.maxLength(10)]],
+            description: ['', [Validators.required, Validators.maxLength(128)]],
             portId: ['', Validators.required], portDescription: ['', Validators.required],
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
@@ -265,8 +265,8 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private populateFields(result: Route): void {
         this.form.setValue({
             id: result.id,
+            abbreviation: result.abbreviation,
             description: result.description,
-            fullDescription: result.fullDescription,
             portId: result.port.id, portDescription: result.port.description,
             isActive: result.isActive,
             userId: this.helperService.getUserIdFromLocalStorage()
@@ -328,12 +328,12 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region getters
 
-    get description(): AbstractControl {
-        return this.form.get('description')
+    get abbreviation(): AbstractControl {
+        return this.form.get('abbreviation')
     }
 
-    get fullDescription(): AbstractControl {
-        return this.form.get('fullDescription')
+    get description(): AbstractControl {
+        return this.form.get('description')
     }
     get portId(): AbstractControl {
         return this.form.get('portId')

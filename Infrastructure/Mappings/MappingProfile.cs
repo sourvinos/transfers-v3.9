@@ -17,8 +17,8 @@ namespace Transfers {
                         Time = v.PickupPoint.Time,
                         Route = new RouteResource {
                             Id = v.PickupPoint.Route.Id,
+                                Abbreviation = v.PickupPoint.Route.Abbreviation,
                                 Description = v.PickupPoint.Route.Description,
-                                FullDescription = v.PickupPoint.Route.FullDescription,
                                 Port = new PortResource {
                                     Id = v.PickupPoint.Route.PortId,
                                         Description = v.PickupPoint.Route.Port.Description

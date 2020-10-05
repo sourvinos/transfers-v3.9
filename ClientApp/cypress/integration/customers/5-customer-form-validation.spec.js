@@ -1,4 +1,6 @@
-context('Form validation', () => {
+context('Customers - Form validation', () => {
+
+
 
     before(() => {
         cy.login()
@@ -6,12 +8,11 @@ context('Form validation', () => {
     })
 
     beforeEach(() => {
-        cy.wait(1500)
         cy.restoreLocalStorage()
     })
 
-    it('Goto the list from the home page', () => {
-        cy.gotoCustomerListFromHomePage()
+    it('Goto the list', () => {
+        cy.gotoList()
     })
 
     it('Goto an empty form', () => {
@@ -77,7 +78,7 @@ context('Form validation', () => {
 
     it('Choose to abort when the back icon is clicked', () => {
         cy.server()
-        cy.route('GET', 'https://localhost:5001/api/customers', 'fixture:customers.json').as('getCustomers')
+        cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
         cy.get('[data-cy=goBack]').click()
         cy.get('.mat-dialog-container')
         cy.get('[data-cy=ok]').click()

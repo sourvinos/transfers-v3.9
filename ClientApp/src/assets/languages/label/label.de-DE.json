@@ -127,7 +127,7 @@
             },
             {
                 "id": "headerAbbreviation",
-                "description": "(DE) Abbreviation"
+                "description": "(DE) Abbr"
             },
             {
                 "id": "headerDescription",
@@ -144,7 +144,7 @@
             },
             {
                 "id": "abbreviation",
-                "description": "(DE) Abbreviation"
+                "description": "(DE) Abbr"
             },
             {
                 "id": "description",
@@ -383,12 +383,12 @@
                 "description": "(DE) New"
             },
             {
-                "id": "headerDescription",
-                "description": "(DE) Description"
+                "id": "headerAbbreviation",
+                "description": "(DE) Abbr."
             },
             {
-                "id": "headerFullDescription",
-                "description": "(DE) Full Description"
+                "id": "headerDescription",
+                "description": "(DE) Description"
             }
         ]
     },
@@ -400,12 +400,12 @@
                 "description": "(DE) Route"
             },
             {
-                "id": "description",
-                "description": "(DE) Description"
+                "id": "abbreviation",
+                "description": "(DE) Abbr."
             },
             {
-                "id": "fullDescription",
-                "description": "(DE) Full description"
+                "id": "description",
+                "description": "(DE) description"
             },
             {
                 "id": "port",
@@ -817,4 +817,4 @@
             }
         ]
     }
-] 
+]
