@@ -1,6 +1,6 @@
-context('Customers - New', () => {
+context('Customers - Create', () => {
 
-
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -12,22 +12,12 @@ context('Customers - New', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoList()
+        cy.gotoCustomerListWithSuccess()
     })
 
     it('Goto an empty form', () => {
         cy.get('[data-cy=new]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
-    })
-
-    it('Fields must exist', () => {
-        cy.get('[data-cy=form]').find('.mat-form-field').should('have.length', 6)
-        cy.get('[data-cy=form]').find('.mat-slide-toggle').should('have.length', 1)
-    })
-
-    it('Buttons must exist', () => {
-        cy.get('[data-cy=goBack]')
-        cy.get('[data-cy=save]')
     })
 
     it('Description is valid', () => {

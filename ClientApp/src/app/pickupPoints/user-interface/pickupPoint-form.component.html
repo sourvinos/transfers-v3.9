@@ -12,34 +12,34 @@
     </div>
 
     <div id="content">
-        <form [formGroup]="form" autocomplete="off">
+        <form data-cy="form" [formGroup]="form" autocomplete="off">
             <mat-form-field>
-                <input type="text" matInput [placeholder]="onGetLabel('route')" formControlName="routeDescription" id="routeDescription">
+                <input data-cy="routeDescription" type="text" matInput [placeholder]="onGetLabel('route')" formControlName="routeDescription" id="routeDescription">
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="1" id="description" [inputTabStop]="input">
+                <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="1" id="description" [inputTabStop]="input">
                 <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="description.errors?.maxlength">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="onGetLabel('exactPoint')" formControlName="exactPoint" data-tabindex="2" id="exactPoint" [inputTabStop]="input">
+                <input data-cy="exactPoint" type="text" matInput [placeholder]="onGetLabel('exactPoint')" formControlName="exactPoint" data-tabindex="2" id="exactPoint" [inputTabStop]="input">
                 <mat-error *ngIf="exactPoint.hasError('required')">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="exactPoint.errors?.maxlength">{{ onGetHint('maxLength', exactPoint.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="text" matInput [placeholder]="onGetLabel('time')" formControlName="time" data-tabindex="3" id="time" [inputTabStop]="input">
+                <input data-cy="time" type="text" matInput [placeholder]="onGetLabel('time')" formControlName="time" data-tabindex="3" id="time" [inputTabStop]="input">
                 <mat-error *ngIf="time.hasError('required')">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="time.hasError('pattern')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
-            <mat-slide-toggle formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
+            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 
     <div @slideFromRight id="footer">
         <div id="buttons">
-            <button mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
-            <button mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ onGetLabel('saveButton') }}</button>
+            <button data-cy="delete" mat-flat-button class="delete" *ngIf="form.value.id !== 0" id="delete" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
+            <button data-cy="save" mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ onGetLabel('saveButton') }}</button>
         </div>
     </div>
 

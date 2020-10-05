@@ -1,6 +1,6 @@
-context('Customers - Edit', () => {
+context('Destination - Update', () => {
 
-
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -11,12 +11,8 @@ context('Customers - Edit', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Goto the list with failure', () => {
-        cy.gotoListWithFailure()
-    })
-
-    it.only('Goto the list', () => {
-        cy.gotoList()
+    it('Goto the list', () => {
+        cy.gotoDestinationListWithSuccess()
     })
 
     it('Read record', () => {
@@ -32,3 +28,4 @@ context('Customers - Edit', () => {
     })
 
 })
+

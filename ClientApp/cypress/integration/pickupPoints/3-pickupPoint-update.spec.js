@@ -1,6 +1,4 @@
-context('Pickup points', () => {
-
-    // Last revision: Sat 3/10/2020 13:00
+context('Pickup points - update', () => {
 
     before(() => {
         cy.login()
@@ -24,24 +22,21 @@ context('Pickup points', () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19')
     })
 
-    it('The table should have an exact number of rows and columns', () => {
-        cy.get('[data-cy=row]').should('have.length', 10)
-        cy.get('[data-cy=column]').should('have.length', 6)
+    it('Read record', () => {
+        cy.server()
+        cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoint.json').as('getPickupPoint')
+        cy.get('[data-cy=row]').contains('KAMINAKI').dblclick({ force: true })
+        cy.wait('@getPickupPoint').its('status').should('eq', 200)
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19/pickupPoint/1700')
     })
 
-    it('Filter the table by typing in the search box', () => {
-        cy.get('[data-cy=searchTerm]').type('mare')
-        cy.get('[data-cy=row]').should(rows => {
-            expect(rows).to.have.length(1)
-        })
-    })
-
-    it('Clear the filter when the "X" is clicked and the table should have the initial number of rows', () => {
-        cy.get('[data-cy=clearFilter').click()
-        cy.get('[data-cy=searchTerm]').should('have.text', '')
-        cy.get('[data-cy=row]').should((rows) => {
-            expect(rows).to.have.length(10)
-        })
+    it('Update record', () => {
+        cy.server()
+        cy.route('PUT', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoint.json').as('savePickupPoint')
+        cy.get('[data-cy=save]').click()
+        cy.wait('@savePickupPoint').its('status').should('eq', 200)
+        cy.get('[data-cy=customSnackbar]')
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19')
     })
 
     afterEach(() => {

@@ -1,6 +1,6 @@
-context('Destinations', () => {
+context('Destinations - List', () => {
 
-    // Last revision: Sat 3/10/2020 13:00
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -12,11 +12,7 @@ context('Destinations', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
-        cy.get('[data-cy=destinations]').click()
-        cy.wait('@getDestinations').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
+        cy.gotoDestinationListWithSuccess()
     })
 
     it('The table should have an exact number of rows and columns', () => {

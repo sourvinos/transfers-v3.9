@@ -1,4 +1,4 @@
-context('Drivers', () => {
+context('Drivers - List', () => {
 
     // Last revision: Sat 3/10/2020 13:00
 
@@ -12,11 +12,7 @@ context('Drivers', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
-        cy.get('[data-cy=drivers]').click()
-        cy.wait('@getDrivers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
+        cy.gotoDriverListWithSuccess()
     })
 
     it('The table should have an exact number of rows and columns', () => {

@@ -1,6 +1,6 @@
 context('Customers - Delete', () => {
 
-
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -12,11 +12,11 @@ context('Customers - Delete', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoList()
+        cy.gotoCustomerListWithSuccess()
     })
 
-    it('Seek record', () => {
-        cy.seekRecord()
+    it('Read record', () => {
+        cy.readRecord()
     })
 
     it('Ask to delete and abort', () => {

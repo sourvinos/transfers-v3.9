@@ -1,6 +1,6 @@
-context('Routes', () => {
+context('Routes - List', () => {
 
-    // Last revision: Sat 3/10/2020 13:00
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -12,20 +12,16 @@ context('Routes', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
-        cy.get('[data-cy=routes]').click()
-        cy.wait('@getRoutes').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/routes')
+        cy.gotoRouteListWithSuccess()
     })
 
     it('The table should have an exact number of rows and columns', () => {
-        cy.get('[data-cy=row]').should('have.length', 7)
+        cy.get('[data-cy=row]').should('have.length', 2)
         cy.get('[data-cy=column]').should('have.length', 5)
     })
 
     it('Filter the table by typing in the search box', () => {
-        cy.get('[data-cy=searchTerm]').type('kavos')
+        cy.get('[data-cy=searchTerm]').type('nisaki')
         cy.get('[data-cy=row]').should(rows => {
             expect(rows).to.have.length(1)
         })
@@ -35,7 +31,7 @@ context('Routes', () => {
         cy.get('[data-cy=clearFilter').click()
         cy.get('[data-cy=searchTerm]').should('have.text', '')
         cy.get('[data-cy=row]').should((rows) => {
-            expect(rows).to.have.length(7)
+            expect(rows).to.have.length(2)
         })
     })
 

@@ -9,7 +9,7 @@ Cypress.Commands.add('gotoListWithFailure', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('gotoList', () => {
+Cypress.Commands.add('gotoCustomerListWithSuccess', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
     cy.get('[data-cy=customers]').click()

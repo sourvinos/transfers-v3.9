@@ -1,23 +1,23 @@
 {
-    "id": 1,
-    "description": "RESTIA SUITES",
-    "exactPoint": "MAI ROAD",
+    "id": 1700,
+    "description": "KAMINAKI",
+    "exactPoint": "MAIN ROAD",
     "time": "06:55",
     "isActive": true,
-    "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
-    "routeId": 28,
+    "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+    "routeId": 19,
     "route": {
-        "id": 28,
-        "description": "ACH-SID",
-        "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
+        "id": 19,
+        "description": "NISAKI",
+        "fullDescription": "NISAKI - CORFU PORT",
         "isActive": true,
-        "userId": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
+        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
         "portId": 1,
         "port": {
             "id": 1,
             "description": "CORFU PORT",
             "isActive": true,
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
         }
     }
 }

@@ -1,6 +1,6 @@
-context('Customers', () => {
+context('Customers - List', () => {
 
-    // Last revision: Sat 3/10/2020 13:00
+    // Last revision: Mon 5/10/2020 09:00
 
     before(() => {
         cy.login()
@@ -12,11 +12,7 @@ context('Customers', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
-        cy.get('[data-cy=customers]').click()
-        cy.wait('@getCustomers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/customers')
+        cy.gotoCustomerListWithSuccess()
     })
 
     it('The table should have an exact number of rows and columns', () => {

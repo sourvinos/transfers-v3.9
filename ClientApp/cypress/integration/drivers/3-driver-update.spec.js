@@ -1,4 +1,4 @@
-context('Drivers - Delete', () => {
+context('Drivers - Update', () => {
 
 
 
@@ -19,15 +19,8 @@ context('Drivers - Delete', () => {
         cy.readRecord()
     })
 
-    it('Ask to delete and abort', () => {
-        cy.get('[data-cy=delete]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=abort]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/drivers/1')
-    })
-
-    it('Ask to delete and continue', () => {
-        cy.deleteRecord()
+    it('Update record', () => {
+        cy.updateRecord()
     })
 
     afterEach(() => {
