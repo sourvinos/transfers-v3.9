@@ -97,8 +97,8 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
         }
     }
 
-    public getHint(id: string): string {
-        return this.messageHintService.getDescription(id)
+    public onGetHint(id: string, minmax = 0): string {
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string): string {
@@ -202,23 +202,23 @@ export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDes
 
     //#region Getters
 
-    get CurrentPassword(): AbstractControl {
+    get currentPassword(): AbstractControl {
         return this.form.get('currentPassword')
     }
 
-    get Passwords(): AbstractControl {
+    get passwords(): AbstractControl {
         return this.form.get('passwords')
     }
 
-    get Password(): AbstractControl {
+    get password(): AbstractControl {
         return this.form.get('passwords.password')
     }
 
-    get ConfirmPassword(): AbstractControl {
+    get confirmPassword(): AbstractControl {
         return this.form.get('passwords.confirmPassword')
     }
 
-    get MatchingPasswords(): boolean {
+    get matchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 

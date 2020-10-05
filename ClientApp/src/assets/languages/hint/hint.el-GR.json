@@ -1,6 +1,5 @@
 {
-    "labels": [
-        {
+    "labels": [{
             "id": "required",
             "description": "Το πεδιο ειναι υποχρεωτικο"
         },
@@ -21,7 +20,7 @@
             "description": "Ο κωδικος και η επιβεβαιωση κωδικου πρεπει να συμφωνουν"
         },
         {
-            "id": "noSpaces",
+            "id": "spacesNotAllowed",
             "description": "Τα κενα απαγορευονται"
         },
         {

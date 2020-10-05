@@ -9,13 +9,19 @@ export class ValidationService {
         return isValid ? null : { childrenNotEqual: true }
     }
 
-    static containsSpace(control: AbstractControl): boolean | null {
-        if (control.value && (control.value as string).indexOf(' ') !== -1) {
-            return true
-        }
-        return null
+    static containsSpace(control: AbstractControl): { [key: string]: any } {
+        return control.value && (control.value as string).indexOf(' ') !== -1 ? { containsSpace: true } : null
     }
 
+    static isTime(control: AbstractControl): { [key: string]: any } {
+        if (control.value) {
+            const time = control.value
+            if (time.length == 5 && time.indexOf(':') == 2) {
+                return null
+            }
+            return { isTime: false }
+        }
+    }
 }
 
 export class ConfirmValidParentMatcher implements ErrorStateMatcher {

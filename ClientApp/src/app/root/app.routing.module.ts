@@ -72,7 +72,7 @@ const appRoutes: Routes = [
                 ], runGuardsAndResolvers: 'always'
             }]
     },
-    { path: 'users', component: UserListComponent, canActivate: [AuthGuardService], resolve: { userList: UserListResolver } }, { path: 'users/new', component: RegisterUserFormComponent, canDeactivate: [CanDeactivateGuard] }, { path: 'users/changePassword/:id', component: ChangePasswordFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] }, { path: 'users/:id', component: EditUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard], resolve: { userForm: UserFormResolver } },
+    { path: 'users', component: UserListComponent, canActivate: [AuthGuardService], resolve: { userList: UserListResolver } }, { path: 'users/new', component: RegisterUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] }, { path: 'users/changePassword/:id', component: ChangePasswordFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] }, { path: 'users/:id', component: EditUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard], resolve: { userForm: UserFormResolver } },
     { path: 'forgotPassword', component: ForgotPasswordFormComponent },
     { path: 'resetPassword', component: ResetPasswordFormComponent },
     { path: '**', component: EmptyPageComponent }

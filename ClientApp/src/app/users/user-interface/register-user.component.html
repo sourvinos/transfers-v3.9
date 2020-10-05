@@ -17,6 +17,7 @@
                 <input type="text" matInput [placeholder]="onGetLabel('userName')" formControlName="userName" data-tabindex="1" id="userName" [inputTabStop]="input">
                 <mat-error *ngIf="userName.hasError('required')">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="userName.errors?.maxlength">{{ onGetHint('maxLength', userName.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="userName.errors?.containsSpace">{{ onGetHint('spacesNotAllowed') }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input type="text" matInput [placeholder]="onGetLabel('displayName')" formControlName="displayName" data-tabindex="2" id="displayName" [inputTabStop]="input">
@@ -35,7 +36,7 @@
                         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
                     <mat-error *ngIf="password.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                    <mat-error *ngIf="password.hasError('containsSpace')">{{ onGetHint('noSpaces') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('containsSpace')">{{ onGetHint('spacesNotAllowed') }}</mat-error>
                     <mat-error *ngIf="password.hasError('minlength') && !password.hasError('containsSpace')">{{ onGetHint('minLength') }}</mat-error>
                     <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('containsSpace')">{{ onGetHint('maxLength') }}</mat-error>
                 </mat-form-field>

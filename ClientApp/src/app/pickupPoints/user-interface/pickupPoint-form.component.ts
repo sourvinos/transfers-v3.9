@@ -1,3 +1,4 @@
+import { ValidationService } from './../../shared/services/validation.service'
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
@@ -234,7 +235,7 @@ export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestro
             routeId: [0, Validators.required], routeDescription: [{ value: '', disabled: true }, Validators.required],
             description: ['', [Validators.required, Validators.maxLength(128)]],
             exactPoint: ['', [Validators.required, Validators.maxLength(128)]],
-            time: ['', [Validators.required, Validators.pattern('[0-9][0-9]:[0-9][0-9]')]],
+            time: ['', [Validators.required, ValidationService.isTime]],
             isActive: true,
             userId: this.helperService.getUserIdFromLocalStorage()
         })

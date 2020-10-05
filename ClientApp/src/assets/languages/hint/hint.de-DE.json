@@ -1,6 +1,5 @@
 {
-    "labels": [
-        {
+    "labels": [{
             "id": "required",
             "description": "(DE) This field is required"
         },
@@ -21,7 +20,7 @@
             "description": "(DE) Password and confirm password do not match"
         },
         {
-            "id": "noSpaces",
+            "id": "spacesNotAllowed",
             "description": "(DE) Spaces are not allowed"
         },
         {
