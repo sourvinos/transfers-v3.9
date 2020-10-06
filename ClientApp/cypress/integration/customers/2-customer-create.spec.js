@@ -1,7 +1,5 @@
 context('Customers - Create', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -20,8 +18,8 @@ context('Customers - Create', () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
     })
 
-    it('Description is valid', () => {
-        cy.typeGibberish('description', 12).elementShouldBeValid('description')
+    it('Name is valid', () => {
+        cy.typeGibberish('name', 12).elementShouldBeValid('name')
     })
 
     it('Form is valid', () => {
@@ -29,7 +27,7 @@ context('Customers - Create', () => {
     })
 
     it('Create and display a snackbar', () => {
-        cy.createRecord()
+        cy.createCustomerRecord()
     })
 
 })

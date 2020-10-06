@@ -1,7 +1,5 @@
 context('Customers - Form validation', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -25,14 +23,14 @@ context('Customers - Form validation', () => {
         cy.get('[data-cy=form]').find('.mat-slide-toggle').should('have.length', 1)
     })
 
-    it('Description is not valid when blank', () => {
-        cy.typeGibberish('description', 0)
-            .elementShouldBeInvalid('description')
+    it('Name is not valid when blank', () => {
+        cy.typeGibberish('name', 0)
+            .elementShouldBeInvalid('name')
     })
 
     it('Description is not valid when too long', () => {
-        cy.typeGibberish('description', 129)
-            .elementShouldBeInvalid('description')
+        cy.typeGibberish('name', 129)
+            .elementShouldBeInvalid('name')
     })
 
     it('Profession is not valid when too long', () => {

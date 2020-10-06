@@ -1,7 +1,7 @@
 [
     {
         "id": 5,
-        "description": "PACHIS TRAVEL",
+        "name": "PACHIS TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΓΚΙΛΦΟΡΔ 7-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -12,7 +12,7 @@
     },
     {
         "id": 8,
-        "description": "M.T.S. INCOMING S.A.",
+        "name": "M.T.S. INCOMING S.A.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΗΣ 58-ΚΕΡΚΥΡΑ",
         "phones": "0661.24586",
@@ -23,7 +23,7 @@
     },
     {
         "id": 9,
-        "description": "FLORIDA HOLIDAYS",
+        "name": "FLORIDA HOLIDAYS",
         "profession": "-",
         "address": "-",
         "phones": "0662.61117",
@@ -34,7 +34,7 @@
     },
     {
         "id": 10,
-        "description": "ISLAND HOLIDAYS",
+        "name": "ISLAND HOLIDAYS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΒΟΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -45,7 +45,7 @@
     },
     {
         "id": 12,
-        "description": "ASPROKAVOS",
+        "name": "ASPROKAVOS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗ",
         "phones": "0662.61281",
@@ -56,7 +56,7 @@
     },
     {
         "id": 13,
-        "description": "NAOS",
+        "name": "NAOS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΒΟΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -67,7 +67,7 @@
     },
     {
         "id": 19,
-        "description": "ΚΑΡΑΤΖΕΝΗΣ ΕΥΑΓΓΕΛΟΣ",
+        "name": "ΚΑΡΑΤΖΕΝΗΣ ΕΥΑΓΓΕΛΟΣ",
         "profession": "ΕΚΔΟΤΗΡΙΟ ΕΙΣΙΤΗΡΙΩΝ",
         "address": "ΜΩΡΑΙΤΙΚΑ ΚΕΡΚΥΡΑ",
         "phones": "2661076768",
@@ -78,7 +78,7 @@
     },
     {
         "id": 22,
-        "description": "LORD TRAVEL",
+        "name": "LORD TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΛΕΥΚΙΜΜΗΣ 38 - ΚΕΡΚΥΡΑ",
         "phones": "0661.91617",
@@ -89,7 +89,7 @@
     },
     {
         "id": 24,
-        "description": "ΒΛΑΧΟΣ ΓΕΩΡΓΙΟΣ G+S",
+        "name": "ΒΛΑΧΟΣ ΓΕΩΡΓΙΟΣ G+S",
         "profession": "-",
         "address": "-",
         "phones": "0661.75723",
@@ -100,7 +100,7 @@
     },
     {
         "id": 25,
-        "description": "STAR TRAVEL",
+        "name": "STAR TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -111,7 +111,7 @@
     },
     {
         "id": 30,
-        "description": "TRAVELWORLD",
+        "name": "TRAVELWORLD",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 25",
         "phones": "",
@@ -122,7 +122,7 @@
     },
     {
         "id": 34,
-        "description": "C.T.S",
+        "name": "C.T.S",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝ. ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ - ΑΛΥΚΕΣ ΠΟΤΑΜΟΥ",
         "phones": "0661.48994",
@@ -133,7 +133,7 @@
     },
     {
         "id": 35,
-        "description": "TUI HELLAS",
+        "name": "TUI HELLAS",
         "profession": "ΤΑΞΕΙΔΙΩΤΙΚΗ ΤΟΥΡΙΣΤΙΚΗ",
         "address": "Λ.ΑΜΑΡΟΥΣΙΟΥ ΧΑΛΑΝΔΡΙΟΥ 80, 151 25 ΠΑΡ. ΑΜΑΡΟΥΣΙΟΥ",
         "phones": "",
@@ -144,7 +144,7 @@
     },
     {
         "id": 38,
-        "description": "KYANEA",
+        "name": "KYANEA",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -155,7 +155,7 @@
     },
     {
         "id": 42,
-        "description": "BENITSES TRV",
+        "name": "BENITSES TRV",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -166,7 +166,7 @@
     },
     {
         "id": 45,
-        "description": "HELLENIC ISLAND SERVISES",
+        "name": "HELLENIC ISLAND SERVISES",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΟΝΟΠΡΟΣΩΠΗ Ι.Κ.Ε",
         "phones": "",
@@ -177,7 +177,7 @@
     },
     {
         "id": 48,
-        "description": "HELLAS TOURIST SERVICES S.A.",
+        "name": "HELLAS TOURIST SERVICES S.A.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 58Α",
         "phones": "2661034495",
@@ -188,7 +188,7 @@
     },
     {
         "id": 49,
-        "description": "IONIAN TRAVEL",
+        "name": "IONIAN TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -199,7 +199,7 @@
     },
     {
         "id": 54,
-        "description": "COSMOS CORFU A.E",
+        "name": "COSMOS CORFU A.E",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -210,7 +210,7 @@
     },
     {
         "id": 58,
-        "description": "ΠΑΠΑΔΑΤΟΥ ΧΡΙΣΤΙΑΝΝΑ",
+        "name": "ΠΑΠΑΔΑΤΟΥ ΧΡΙΣΤΙΑΝΝΑ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΓ. ΓΟΡΔΙΟΣ - ΣΥΝ/ΔΕΣ",
         "phones": "",
@@ -221,7 +221,7 @@
     },
     {
         "id": 59,
-        "description": "TRUST TRV",
+        "name": "TRUST TRV",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΓΟΥΒΙΑ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -232,7 +232,7 @@
     },
     {
         "id": 60,
-        "description": "STATUS",
+        "name": "STATUS",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -243,7 +243,7 @@
     },
     {
         "id": 62,
-        "description": "CORFIOT HOLIDAYS",
+        "name": "CORFIOT HOLIDAYS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΠΕΡΟΥΛΑΔΕΣ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -254,7 +254,7 @@
     },
     {
         "id": 67,
-        "description": "FOUXIA",
+        "name": "FOUXIA",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -265,7 +265,7 @@
     },
     {
         "id": 70,
-        "description": "MAIANΔΡΟΣ",
+        "name": "MAIANΔΡΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΑΝΤΙΣΤΑΣΕΩΣ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -276,7 +276,7 @@
     },
     {
         "id": 72,
-        "description": "SUNSPOTS",
+        "name": "SUNSPOTS",
         "profession": "ΤΟΥΡΙΣΤΙΚΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ",
         "address": "ΕΘΝ. ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 24",
         "phones": "2661039707",
@@ -287,7 +287,7 @@
     },
     {
         "id": 73,
-        "description": "PANDIS TRAVEL KAVOS",
+        "name": "PANDIS TRAVEL KAVOS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗΣ",
         "phones": "",
@@ -298,7 +298,7 @@
     },
     {
         "id": 77,
-        "description": "NEXT HOLIDAYS",
+        "name": "NEXT HOLIDAYS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΕΣΣΟΓΓΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -309,7 +309,7 @@
     },
     {
         "id": 78,
-        "description": "KARDAKARIS NIKOLAOS",
+        "name": "KARDAKARIS NIKOLAOS",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -320,7 +320,7 @@
     },
     {
         "id": 89,
-        "description": "DAFNIS FIRST TRAVEL Α.Ε.",
+        "name": "DAFNIS FIRST TRAVEL Α.Ε.",
         "profession": "ΤΟΥΡΙΣΤΙΚΗ & ΞΕΝΟΔΟΧΕΙΑΚΗ ΕΤΑΙΡΙΑ",
         "address": "2ο ΧΛΜ ΕΘΝ. ΠΕΛΕΚΑ - ΑΛΕΠΟΥ, ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -331,7 +331,7 @@
     },
     {
         "id": 92,
-        "description": "TSOKAS",
+        "name": "TSOKAS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ 12 - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -342,7 +342,7 @@
     },
     {
         "id": 93,
-        "description": "HELLENIC CORFU SERVICES",
+        "name": "HELLENIC CORFU SERVICES",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 24",
         "phones": "",
@@ -353,7 +353,7 @@
     },
     {
         "id": 96,
-        "description": "GRECO SERVICES",
+        "name": "GRECO SERVICES",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -364,7 +364,7 @@
     },
     {
         "id": 99,
-        "description": "ΒΑΣΙΛΑΚΗΣ ΑΝΤ. ΦΙΛΙΠΠΟΣ",
+        "name": "ΒΑΣΙΛΑΚΗΣ ΑΝΤ. ΦΙΛΙΠΠΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝ. ΤΟΥΡΙΣΜΟΥ-ΕΝΟΙΚ/ΣΕΙΣ ΑΥΤ.",
         "address": "ΡΟΔΑ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -375,7 +375,7 @@
     },
     {
         "id": 103,
-        "description": "CORFU TOURIST SERVICES",
+        "name": "CORFU TOURIST SERVICES",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΝΑΥΣΙΚΑΣ 30-ΚΑΝΟΝΙ",
         "phones": "",
@@ -386,7 +386,7 @@
     },
     {
         "id": 105,
-        "description": "CORFU PARADISE",
+        "name": "CORFU PARADISE",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -397,7 +397,7 @@
     },
     {
         "id": 109,
-        "description": "METAXA AIKATERINH",
+        "name": "METAXA AIKATERINH",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -408,7 +408,7 @@
     },
     {
         "id": 114,
-        "description": "CORFU SEA TRAVEL",
+        "name": "CORFU SEA TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -419,7 +419,7 @@
     },
     {
         "id": 116,
-        "description": "KOKKINOS TRAVEL",
+        "name": "KOKKINOS TRAVEL",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΜΑΚΕΔΟΝΙΑΣ 3, 153 41-ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ",
         "phones": "",
@@ -430,7 +430,7 @@
     },
     {
         "id": 117,
-        "description": "EURO VOYAGES TRAVEL",
+        "name": "EURO VOYAGES TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -441,7 +441,7 @@
     },
     {
         "id": 120,
-        "description": "ΒΛΑΣΕΡΟΣ ΚΩΝ/ΝΟΣ-ΚΑPPA VITA",
+        "name": "ΒΛΑΣΕΡΟΣ ΚΩΝ/ΝΟΣ-ΚΑPPA VITA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΛ.ΒΕΝΙΖΕΛΟΥ 32 Α-ΚΕΡΚΥΡΑ (ΥΠΟΚΑΤΑΣΤΗΜΑ)",
         "phones": "",
@@ -452,7 +452,7 @@
     },
     {
         "id": 121,
-        "description": "VRADI SOFIA",
+        "name": "VRADI SOFIA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΝΤΑΡΑΤΣΟΥ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -463,7 +463,7 @@
     },
     {
         "id": 123,
-        "description": "GIANOYLIS TRAVEL",
+        "name": "GIANOYLIS TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -474,7 +474,7 @@
     },
     {
         "id": 124,
-        "description": "PIPILAS TRAVEL",
+        "name": "PIPILAS TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -485,7 +485,7 @@
     },
     {
         "id": 125,
-        "description": "KRASAKIS",
+        "name": "KRASAKIS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΧΑΡΑΒΗ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -496,7 +496,7 @@
     },
     {
         "id": 127,
-        "description": "KANOYLAS",
+        "name": "KANOYLAS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 13-14",
         "phones": "",
@@ -507,7 +507,7 @@
     },
     {
         "id": 128,
-        "description": "PATROS TRAVEL",
+        "name": "PATROS TRAVEL",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -518,7 +518,7 @@
     },
     {
         "id": 129,
-        "description": "XELGKA MPOYTEP",
+        "name": "XELGKA MPOYTEP",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΔΑΣΙΑ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -529,7 +529,7 @@
     },
     {
         "id": 130,
-        "description": "OPTIMUM INTERNATIONAL A.E.",
+        "name": "OPTIMUM INTERNATIONAL A.E.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΓ. ΙΩΑΝΝΗΣ - ΠΕΡΙΣΤΕΡΩΝ",
         "phones": "",
@@ -540,7 +540,7 @@
     },
     {
         "id": 132,
-        "description": "ZORPIDIS",
+        "name": "ZORPIDIS",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -551,7 +551,7 @@
     },
     {
         "id": 133,
-        "description": "MEETING POINT HELLAS AE",
+        "name": "MEETING POINT HELLAS AE",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΔΗΜΗΤΡΙΟΥ ΚΑΣΑΠΑΚΗ 7",
         "phones": "",
@@ -562,7 +562,7 @@
     },
     {
         "id": 134,
-        "description": "KARDAKARI PANAGIOTA",
+        "name": "KARDAKARI PANAGIOTA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "RODA - KERKYRA",
         "phones": "",
@@ -573,7 +573,7 @@
     },
     {
         "id": 135,
-        "description": "MOYZENIDIS TRAVEL",
+        "name": "MOYZENIDIS TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΤΑΞΙΔΙΩΝ",
         "address": "ΚΑΡΑΤΑΣΟΥ 7-ΘΕΣΣΑΛΟΝΙΚΗ",
         "phones": "",
@@ -584,7 +584,7 @@
     },
     {
         "id": 136,
-        "description": "FOULVIA",
+        "name": "FOULVIA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΣΣΙΩΠΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -595,7 +595,7 @@
     },
     {
         "id": 137,
-        "description": "IBIS EL GRECO",
+        "name": "IBIS EL GRECO",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΕΤΕΩΡΩΝ 10",
         "phones": "",
@@ -606,7 +606,7 @@
     },
     {
         "id": 138,
-        "description": "ΔΑΡΑΜΟΥΣΚΑΣ ΑΝΑΣΤΑΣΙΟΣ",
+        "name": "ΔΑΡΑΜΟΥΣΚΑΣ ΑΝΑΣΤΑΣΙΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΣΙΔΑΡΙ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -617,7 +617,7 @@
     },
     {
         "id": 139,
-        "description": "SKORDILIS PANAGIWTHS",
+        "name": "SKORDILIS PANAGIWTHS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΕΣΟΓΓΗ-ΠΟΤΑΜΙ",
         "phones": "",
@@ -628,7 +628,7 @@
     },
     {
         "id": 140,
-        "description": "CAPO DI CORFU",
+        "name": "CAPO DI CORFU",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -639,7 +639,7 @@
     },
     {
         "id": 141,
-        "description": "CORFU CRUISES",
+        "name": "CORFU CRUISES",
         "profession": "-",
         "address": "-",
         "phones": "",
@@ -650,7 +650,7 @@
     },
     {
         "id": 142,
-        "description": "ΚΑΝΟΥΛΑΣ Ι.Κ.Ε",
+        "name": "ΚΑΝΟΥΛΑΣ Ι.Κ.Ε",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗ ΠΑΛ/ΤΣΑΣ 11-13",
         "phones": "",
@@ -661,7 +661,7 @@
     },
     {
         "id": 143,
-        "description": "ΒΛΑΣΕΡΟΣ ΦΙΛΙΠΠΟΣ",
+        "name": "ΒΛΑΣΕΡΟΣ ΦΙΛΙΠΠΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΣΙΔΑΡΙ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -672,7 +672,7 @@
     },
     {
         "id": 144,
-        "description": "ΜΠΟΤΣΗΣ ΤΑΣΣΟΣ",
+        "name": "ΜΠΟΤΣΗΣ ΤΑΣΣΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΕΣΟΓΓΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -683,7 +683,7 @@
     },
     {
         "id": 145,
-        "description": "PATRAS TRAVEL CORFU",
+        "name": "PATRAS TRAVEL CORFU",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΕΩΣ 4-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -694,7 +694,7 @@
     },
     {
         "id": 147,
-        "description": "GREEN VIEW TRAVEL",
+        "name": "GREEN VIEW TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "2ο ΧΛΜ ΕΘΝΙΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ",
         "phones": "",
@@ -705,7 +705,7 @@
     },
     {
         "id": 148,
-        "description": "CORFU GOLDEN TRAVEL",
+        "name": "CORFU GOLDEN TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "IPSOS, 49083 KERKYRA",
         "phones": "2661093622",
@@ -716,7 +716,7 @@
     },
     {
         "id": 149,
-        "description": "STORK TOURS",
+        "name": "STORK TOURS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΓ.ΓΕΩΡΓΙΟΣ ΑΡΓΥΡΑΔΩΝ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -727,7 +727,7 @@
     },
     {
         "id": 150,
-        "description": "ΓΡΑΜΜΕΝΟΣ ΣΤΕΦΑΝΟΣ",
+        "name": "ΓΡΑΜΜΕΝΟΣ ΣΤΕΦΑΝΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑΣ",
         "phones": "",
@@ -738,7 +738,7 @@
     },
     {
         "id": 151,
-        "description": "ΠΛΩΤΙΝ ΚΕΡΚΥΡΑΣ ΕΠΕ",
+        "name": "ΠΛΩΤΙΝ ΚΕΡΚΥΡΑΣ ΕΠΕ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝ.ΠΕΛΕΚΑ ΑΛΕΠΟΥ, ΚΕΡΚΥΡΑ",
         "phones": "2661022000",
@@ -749,7 +749,7 @@
     },
     {
         "id": 152,
-        "description": "ARONDA",
+        "name": "ARONDA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΔΑΣΣΙΑ",
         "phones": "",
@@ -760,7 +760,7 @@
     },
     {
         "id": 153,
-        "description": "ANTHIS TRAVEL",
+        "name": "ANTHIS TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΟΝΤΟΚΑΛΙ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -771,7 +771,7 @@
     },
     {
         "id": 154,
-        "description": "LEOPARD TRAVEL",
+        "name": "LEOPARD TRAVEL",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΡΟΔΑ-ΣΦΑΚΕΡΑ",
         "phones": "",
@@ -782,7 +782,7 @@
     },
     {
         "id": 155,
-        "description": "AKVILA TRAVEL",
+        "name": "AKVILA TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΓ. ΓΕΩΡΓΙΟΣ ΑΡΓΥΡΑΔΩΝ - ΚΕΡΚΥΡΑ",
         "phones": "2662051679",
@@ -793,7 +793,7 @@
     },
     {
         "id": 156,
-        "description": "ΚΑΨΟΚΑΒΑΔΗΣ & ΣΙΑ Ο.Ε",
+        "name": "ΚΑΨΟΚΑΒΑΔΗΣ & ΣΙΑ Ο.Ε",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑΣ",
         "phones": "",
@@ -804,7 +804,7 @@
     },
     {
         "id": 157,
-        "description": "CORFU 4 ALL",
+        "name": "CORFU 4 ALL",
         "profession": "I.K.E",
         "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗ",
         "phones": "",
@@ -815,7 +815,7 @@
     },
     {
         "id": 158,
-        "description": "ΚΕΡΚΥΡΑΙΚΕΣ ΚΡΟΥΑΖΙΕΡΕΣ Ν.Ε.",
+        "name": "ΚΕΡΚΥΡΑΙΚΕΣ ΚΡΟΥΑΖΙΕΡΕΣ Ν.Ε.",
         "profession": "ΝΑΥΤΙΚΗ ΕΤΑΙΡΙΑ",
         "address": "ΚΑΒΟΣ ΛΕΥΚΙΜΜΗΣ",
         "phones": "-",
@@ -826,7 +826,7 @@
     },
     {
         "id": 159,
-        "description": "OSCAR CORFU TRAVEL",
+        "name": "OSCAR CORFU TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -837,7 +837,7 @@
     },
     {
         "id": 160,
-        "description": "D.T.S.",
+        "name": "D.T.S.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΖΑΝΤΖΙΔΗ & ΒΟΣΠΟΡΟΥ 13-ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ",
         "phones": "",
@@ -848,7 +848,7 @@
     },
     {
         "id": 161,
-        "description": "ΚΑΛΟΥΔΗΣ Ν. ΒΑΣΙΛΕΟΣ",
+        "name": "ΚΑΛΟΥΔΗΣ Ν. ΒΑΣΙΛΕΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΥΠΟΚΑΤΑΣΤΗΜΑ ΑΓΙΟΥ ΓΕΩΡΓΙΟΥ-ΑΡΓΥΡΑΔΕΣ",
         "phones": "",
@@ -859,7 +859,7 @@
     },
     {
         "id": 162,
-        "description": "EASY BOOK-ΚΑΒΒΑΔΙΑΣ",
+        "name": "EASY BOOK-ΚΑΒΒΑΔΙΑΣ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΑΓ.ΓΕΩΡΓΙΟΣ-ΑΡΓΥΡΑΔΕΣ",
         "phones": "",
@@ -870,7 +870,7 @@
     },
     {
         "id": 163,
-        "description": "DESTINATION SERVISES",
+        "name": "DESTINATION SERVISES",
         "profession": "TOYΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΑΚΤΗ ΚΟΝΔΥΛΗ 4,ΤΚ-18545",
         "phones": "",
@@ -881,7 +881,7 @@
     },
     {
         "id": 164,
-        "description": "TRAVEL 4 ALL",
+        "name": "TRAVEL 4 ALL",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΑΧΑΡΑΒΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -892,7 +892,7 @@
     },
     {
         "id": 165,
-        "description": "ΒΛΑΣΕΡΟΣ ΚΩΝ/ΝΟΣ-SIDARI TRV",
+        "name": "ΒΛΑΣΕΡΟΣ ΚΩΝ/ΝΟΣ-SIDARI TRV",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΣΙΔΑΡΙ-ΚΕΡΚΥΡΑ (ΚΕΝΤΡΙΚΟ ΚΑΤ/ΜΑ)",
         "phones": "",
@@ -903,7 +903,7 @@
     },
     {
         "id": 166,
-        "description": "PANDIS TRAVEL MORAITIKA",
+        "name": "PANDIS TRAVEL MORAITIKA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΩΡΑΙΤΙΚΑ-ΚΕΡΚΥΡΑ-ΥΠΟΚ/ΜΑ",
         "phones": "",
@@ -914,7 +914,7 @@
     },
     {
         "id": 167,
-        "description": "PAPANAGIOTOU TRAVEL",
+        "name": "PAPANAGIOTOU TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΠΕΛΕΚΑΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -925,7 +925,7 @@
     },
     {
         "id": 168,
-        "description": "HN TRAVEL-ΠΑΡΓΙΝΟΣ Δ ΧΑΡΙΔΗΜΟΣ",
+        "name": "HN TRAVEL-ΠΑΡΓΙΝΟΣ Δ ΧΑΡΙΔΗΜΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΠΕΡΙΘΕΙΑ-ΚΕΡΚΥΡΑ ΚΕΝΤΡΙΚΟ ΚΑΤ/ΜΑ",
         "phones": "",
@@ -936,7 +936,7 @@
     },
     {
         "id": 170,
-        "description": "TP TRAVEL-ΠΑΝΔΗΣ ΑΝΤΩΝΗΣ",
+        "name": "TP TRAVEL-ΠΑΝΔΗΣ ΑΝΤΩΝΗΣ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΠΕΡΑΜΑ-ΚΕΡΚΥΡΑΣ",
         "phones": "",
@@ -947,7 +947,7 @@
     },
     {
         "id": 171,
-        "description": "PANDIS TRAVEL ΜΠΕΝ.(ΥΠΟΚ/ΜΑ 2)",
+        "name": "PANDIS TRAVEL ΜΠΕΝ.(ΥΠΟΚ/ΜΑ 2)",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -958,7 +958,7 @@
     },
     {
         "id": 172,
-        "description": "PANDIS TRAVEL ΜΠΕΝΙΤΣΕΣ",
+        "name": "PANDIS TRAVEL ΜΠΕΝΙΤΣΕΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -969,7 +969,7 @@
     },
     {
         "id": 173,
-        "description": "ΛΕΙΤΟΥΡΓΗΣ ΓΕΩΡΓ. ΝΙΚΟΛΑΟΣ",
+        "name": "ΛΕΙΤΟΥΡΓΗΣ ΓΕΩΡΓ. ΝΙΚΟΛΑΟΣ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΑΥΛΙΩΤΕΣ-ΚΕΡΚΥΡΑ (ΚΕΝΤΡΙΚΟ)",
         "phones": "",
@@ -980,7 +980,7 @@
     },
     {
         "id": 174,
-        "description": "JUST IN TRAVEL",
+        "name": "JUST IN TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "Μ.ΜΕΘΟΔΙΟΥ 10-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -991,7 +991,7 @@
     },
     {
         "id": 175,
-        "description": "MED.BLUE-ΜΙΑΡΗΣ ΒΑΣΙΛΗΣ",
+        "name": "MED.BLUE-ΜΙΑΡΗΣ ΒΑΣΙΛΗΣ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ-ΥΠΗΡ.ΛΕΩΦ.",
         "address": "ΚΑΒΟΣ ΚΕΡΚΥΡΑΣ",
         "phones": "",
@@ -1002,7 +1002,7 @@
     },
     {
         "id": 176,
-        "description": "TRAVEL-CO",
+        "name": "TRAVEL-CO",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝ. ΤΟΥΡΙΣΜΟΥ",
         "address": "ΣΠΥΡΟΥ ΠΕΡΟΥΛΑΚΗ-ΠΟΤΑΜΟΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1013,7 +1013,7 @@
     },
     {
         "id": 177,
-        "description": "PANDIS TRAVEL-GOUVIA",
+        "name": "PANDIS TRAVEL-GOUVIA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΓΟΥΒΙΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1024,7 +1024,7 @@
     },
     {
         "id": 178,
-        "description": "LEANDROS TRAVEL",
+        "name": "LEANDROS TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΧΑΡΑΒΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1035,7 +1035,7 @@
     },
     {
         "id": 179,
-        "description": "MADALENA GOUVIA TOURS",
+        "name": "MADALENA GOUVIA TOURS",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΓΟΥΒΙΑ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1046,7 +1046,7 @@
     },
     {
         "id": 180,
-        "description": "VALUE PLUS TRAVEL-ΒΛΑΣΕΡΟΥ ΣΟΦΙΑ",
+        "name": "VALUE PLUS TRAVEL-ΒΛΑΣΕΡΟΥ ΣΟΦΙΑ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΣΙΔΑΡΙ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1057,7 +1057,7 @@
     },
     {
         "id": 181,
-        "description": "OLYMPUS CORFU TRAVEL",
+        "name": "OLYMPUS CORFU TRAVEL",
         "profession": "ΤΟΥΡΙΣΤΙΚΕΣ ΕΠΙΧΕΙΡΙΣΕΙΣ",
         "address": "ΓΟΥΒΙΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1068,7 +1068,7 @@
     },
     {
         "id": 182,
-        "description": "THE TRAVEL CORNER",
+        "name": "THE TRAVEL CORNER",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΣΣΙΟΠΗ-ΚΕΡΚΥΡΑΣ",
         "phones": "",
@@ -1079,7 +1079,7 @@
     },
     {
         "id": 183,
-        "description": "BANDOS TRAVEL",
+        "name": "BANDOS TRAVEL",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΠΕΡΑΜΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1090,7 +1090,7 @@
     },
     {
         "id": 184,
-        "description": "EXECUTIVE SOLUTIONS",
+        "name": "EXECUTIVE SOLUTIONS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΙΩΑΝ.ΓΑΡΔΙΚΙΩΤΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1101,7 +1101,7 @@
     },
     {
         "id": 185,
-        "description": "ΧΡΥΣΙΚΟΠΟΥΛΟΣ ΧΑΡΑΛΑΜΠΟΣ",
+        "name": "ΧΡΥΣΙΚΟΠΟΥΛΟΣ ΧΑΡΑΛΑΜΠΟΣ",
         "profession": "ΕΚΜ. ΤΟΥΡ. ΣΚΑΦΟΥΣ",
         "address": "ΚΑΒΟΣ ΛΕΥΚΙΜΜΗΣ",
         "phones": "",
@@ -1112,7 +1112,7 @@
     },
     {
         "id": 186,
-        "description": "ΚΟΡΦΟΥ ΣΙΤΥ ΤΟΥΡΣ-ΤΟΥΡ. ΜΟΝΟΠΡΟΣΩΠΗ ΕΠΕ",
+        "name": "ΚΟΡΦΟΥ ΣΙΤΥ ΤΟΥΡΣ-ΤΟΥΡ. ΜΟΝΟΠΡΟΣΩΠΗ ΕΠΕ",
         "profession": "ΥΠΗΡΕΣΙΕΣ ΓΡΑΦΕΙΩΝ ΟΡΓΑΝΩΜΕΝΩΝ ΤΑΞΙΔΙΩΝ",
         "address": "ΑΝΑΛΗΨΗ ΚΑΤΩ ΚΟΡΑΚΙΑΝΑΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1123,7 +1123,7 @@
     },
     {
         "id": 187,
-        "description": "TRADE GLOBAL",
+        "name": "TRADE GLOBAL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "2nd HIGH STREET-BRISTOL",
         "phones": "",
@@ -1134,7 +1134,7 @@
     },
     {
         "id": 188,
-        "description": "CORFU PRIVATE TRAVEL",
+        "name": "CORFU PRIVATE TRAVEL",
         "profession": "TOΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΑΧΑΡΑΒΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1145,7 +1145,7 @@
     },
     {
         "id": 189,
-        "description": "PANDIS TRAVEL (ΥΠΟΚ.7- ΠΟΛΗΣ )",
+        "name": "PANDIS TRAVEL (ΥΠΟΚ.7- ΠΟΛΗΣ )",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "Ι.ΘΕΟΤΟΚΗ 128-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1156,7 +1156,7 @@
     },
     {
         "id": 190,
-        "description": "ΒΛΑΧΟΠΟΥΛΟΣ ΠΑΥΛΟΣ",
+        "name": "ΒΛΑΧΟΠΟΥΛΟΣ ΠΑΥΛΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝ. ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΩΡΑΪΤΙΚΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1167,7 +1167,7 @@
     },
     {
         "id": 191,
-        "description": "MARINE TRAVEL",
+        "name": "MARINE TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "Ι.ΘΕΟΤΟΚΗ 132",
         "phones": "",
@@ -1178,7 +1178,7 @@
     },
     {
         "id": 192,
-        "description": "ΣΥΡΙΩΤΗΣ ΣΠΥΡΙΔΩΝ",
+        "name": "ΣΥΡΙΩΤΗΣ ΣΠΥΡΙΔΩΝ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝ. ΤΟΥΡΙΣΜΟΥ-ΕΝΟΙΚ.ΑΥΤ/ΤΩΝ",
         "address": "ΑΧΑΡΑΒΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1189,7 +1189,7 @@
     },
     {
         "id": 193,
-        "description": "CORFU EXPRESS",
+        "name": "CORFU EXPRESS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΒΙΤΑΛΑΔΕΣ-ΓΑΡΔΕΝΟΣ",
         "phones": "",
@@ -1200,7 +1200,7 @@
     },
     {
         "id": 194,
-        "description": "DESTINY CORFU",
+        "name": "DESTINY CORFU",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΔΟΝΑΤΟΥ ΔΗΜΟΥΛΙΤΣΑ 82-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1211,7 +1211,7 @@
     },
     {
         "id": 195,
-        "description": "AUGUSTA TRAVEL-ΛΙΝΟΣΠΟΡΗΣ ΧΑΡΙΛΑΟΣ",
+        "name": "AUGUSTA TRAVEL-ΛΙΝΟΣΠΟΡΗΣ ΧΑΡΙΛΑΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΛ. ΒΕΝΙΖΕΛΟΥ 1-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1222,7 +1222,7 @@
     },
     {
         "id": 197,
-        "description": "ΙΔΙΩΤΗΣ",
+        "name": "ΙΔΙΩΤΗΣ",
         "profession": "ΙΔΙΩΤΗΣ",
         "address": "-",
         "phones": "-",
@@ -1233,7 +1233,7 @@
     },
     {
         "id": 199,
-        "description": "TC in-Destination Tourism Hellas ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ",
+        "name": "TC in-Destination Tourism Hellas ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΜΗΤΡΟΠΟΛΕΩΣ 26-28, 10563 ΑΘΗΝΑ",
         "phones": "",
@@ -1244,7 +1244,7 @@
     },
     {
         "id": 200,
-        "description": "LET'S BOOK TRAVEL",
+        "name": "LET'S BOOK TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΒΕΪΚΟΥ27, ΚΟΥΚΑΚΙ,ΑΘΗΝΑ",
         "phones": "",
@@ -1255,7 +1255,7 @@
     },
     {
         "id": 201,
-        "description": "LUXURY TRAVEL DMC Ε.Π.Ε.",
+        "name": "LUXURY TRAVEL DMC Ε.Π.Ε.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΔΑΝΑΙΔΩΝ 9, ΘΕΣ/ΝΙΚΗ",
         "phones": "2310528922",
@@ -1266,7 +1266,7 @@
     },
     {
         "id": 202,
-        "description": "CORFU SUN TRAVEL",
+        "name": "CORFU SUN TRAVEL",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΤΑΡΤΑΓΙΑ-ΔΑΣΙΑΣ-ΚΑΤΩ ΚΟΡΑΚΙΑΝΑ",
         "phones": "",
@@ -1277,7 +1277,7 @@
     },
     {
         "id": 203,
-        "description": "ΤΖΟΙ ΚΡΟΥΙΖΙΣ ΝΕ",
+        "name": "ΤΖΟΙ ΚΡΟΥΙΖΙΣ ΝΕ",
         "profession": "ΝΑΥΤΙΚΗ ΕΤΑΙΡΕΙΑ",
         "address": "ΝΕΟ ΛΙΜΑΝΙ ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1288,7 +1288,7 @@
     },
     {
         "id": 204,
-        "description": "ΚΑΠΑ ΚΟΡΦΟΥ - ΣΙΔΑΡΙ ΤΡΑΒΕΛ Α.Ε",
+        "name": "ΚΑΠΑ ΚΟΡΦΟΥ - ΣΙΔΑΡΙ ΤΡΑΒΕΛ Α.Ε",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "Κ ΓΕΩΡΓΑΚΗ 31",
         "phones": "2661034019",
@@ -1299,7 +1299,7 @@
     },
     {
         "id": 205,
-        "description": "ΚΑΠΑ ΚΟΡΦΟΥ - ΣΙΔΑΡΙ ΤΡΑΒΕΛ Α.Ε - ΥΠ/ΜΑ",
+        "name": "ΚΑΠΑ ΚΟΡΦΟΥ - ΣΙΔΑΡΙ ΤΡΑΒΕΛ Α.Ε - ΥΠ/ΜΑ",
         "profession": "ΓΡΕΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΥΠΟΚ/ΜΑ ΕΛ. ΒΕΝΙΖΕΛΟΥ 32Α, ΚΕΡΚΥΡΑ",
         "phones": "2661034400, 2661024127",
@@ -1310,7 +1310,7 @@
     },
     {
         "id": 206,
-        "description": "KARDAKARI - CORFU COMPASS ΥΠ/ΜΑ 4",
+        "name": "KARDAKARI - CORFU COMPASS ΥΠ/ΜΑ 4",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΑΓ. ΓΟΡΔΙΟΣ - ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1321,7 +1321,7 @@
     },
     {
         "id": 209,
-        "description": "KORINA TRAVEL-TΣΟΥΚΙΑ ΚΩΝ/ΝΑ",
+        "name": "KORINA TRAVEL-TΣΟΥΚΙΑ ΚΩΝ/ΝΑ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗ",
         "phones": "",
@@ -1332,7 +1332,7 @@
     },
     {
         "id": 210,
-        "description": "TRIDENT-ΠΑΝΔΗΣ ΣΠΥΡΟΣ",
+        "name": "TRIDENT-ΠΑΝΔΗΣ ΣΠΥΡΟΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΚΑΒΟΣ-ΛΕΥΚΙΜΜΗ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1343,7 +1343,7 @@
     },
     {
         "id": 211,
-        "description": "ΠΑΝΔΗΣ ΧΑΡΑΛ. ΘΕΟΔΩΡΟΣ",
+        "name": "ΠΑΝΔΗΣ ΧΑΡΑΛ. ΘΕΟΔΩΡΟΣ",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΚΑΒΟΣ - ΚΕΡΚΥΡΑ",
         "phones": "2662061037",
@@ -1354,7 +1354,7 @@
     },
     {
         "id": 217,
-        "description": "DAYTRIP4U",
+        "name": "DAYTRIP4U",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "NICOSIA-CYPRUS",
         "phones": "",
@@ -1365,7 +1365,7 @@
     },
     {
         "id": 218,
-        "description": "CHARITOS TRAVEL",
+        "name": "CHARITOS TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝ. ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 66",
         "phones": "",
@@ -1376,7 +1376,7 @@
     },
     {
         "id": 219,
-        "description": "SANDY TRAVEL-ΣΤΟΥΠΑΣ ΣΟΦΟΚΛΗΣ",
+        "name": "SANDY TRAVEL-ΣΤΟΥΠΑΣ ΣΟΦΟΚΛΗΣ",
         "profession": "ΤΟΥΡΙΣΤΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΚΑΒΟΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1387,7 +1387,7 @@
     },
     {
         "id": 220,
-        "description": "PYRGI TRAVEL-ΤΡΙΒΙΖΑΣ",
+        "name": "PYRGI TRAVEL-ΤΡΙΒΙΖΑΣ",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΓΟΥΒΙΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1398,7 +1398,7 @@
     },
     {
         "id": 221,
-        "description": "BIG TRAVEL-BIBLO GLOBUS",
+        "name": "BIG TRAVEL-BIBLO GLOBUS",
         "profession": "ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ ΓΡΑΦΕΙΩΝ ΓΕΝ. ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΘΝ/ΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΑΣ 7-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1409,7 +1409,7 @@
     },
     {
         "id": 222,
-        "description": "ASK 2 TRAVEL",
+        "name": "ASK 2 TRAVEL",
         "profession": "ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ ΤΑΞΙΔΙΩΤΙΚΩΝ ΠΡΑΚΤΟΡΕΙΩΝ",
         "address": "ΛΕΩΦ. ΣΥΓΓΡΟΥ 188, 17671 ΚΑΛΛΙΘΕΑ-ΑΘΗΝΑ",
         "phones": "",
@@ -1420,7 +1420,7 @@
     },
     {
         "id": 223,
-        "description": "GRECIAN TRAVEL TOURIST ENTERPRISES A.E.",
+        "name": "GRECIAN TRAVEL TOURIST ENTERPRISES A.E.",
         "profession": "ΤΟΥΡΙΣΤΙΚΕΣ-ΞΕΝ/ΚΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ",
         "address": "ΑΠΟΛΛΩΝΟΣ 34-ΑΘΗΝΑ ΤΚ 10556",
         "phones": "",
@@ -1431,7 +1431,7 @@
     },
     {
         "id": 224,
-        "description": "TOURIST CLUB ΜΟΝΟΠΡΟΣΩΠΗ Ε.Π.Ε.",
+        "name": "TOURIST CLUB ΜΟΝΟΠΡΟΣΩΠΗ Ε.Π.Ε.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΟΜΗΡΟΥ 52- ΑΘΗΝΑ Τ.Κ. 10672",
         "phones": "",
@@ -1442,7 +1442,7 @@
     },
     {
         "id": 226,
-        "description": "DANAOS BLUE TRAVEL SERVISES S.A.",
+        "name": "DANAOS BLUE TRAVEL SERVISES S.A.",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "2ΧΛΜ Ε.Ο. ΠΕΛΕΚΑΣ-ΑΛΕΠΟΥ ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1453,7 +1453,7 @@
     },
     {
         "id": 227,
-        "description": "SPIN TOURS",
+        "name": "SPIN TOURS",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΠΕΡΑΜΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1464,7 +1464,7 @@
     },
     {
         "id": 228,
-        "description": "OLYMPUS CORFU TRAVEL",
+        "name": "OLYMPUS CORFU TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΓΟΥΒΙΑ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1475,7 +1475,7 @@
     },
     {
         "id": 229,
-        "description": "TRAVEL POINT CORFU",
+        "name": "TRAVEL POINT CORFU",
         "profession": "ΥΠΗΡΕΣΙΕΣ ΤΟΥΡΙΣΤΙΚΟΥ ΓΡΑΦΕΙΟΥ",
         "address": "ΜΠΕΝΙΤΣΕΣ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1486,7 +1486,7 @@
     },
     {
         "id": 230,
-        "description": "MARIA'S TOURIST SERVICES",
+        "name": "MARIA'S TOURIST SERVICES",
         "profession": "ΕΝΟΙΚΙΑΣΕΙΣ ΑΥΤΟΚΙΝΗΤΩΝ-ΜΟΤΟΣΥΚΛΕΤΩΝ",
         "address": "ΑΓΙΟΣ ΓΕΩΡΓΙΟΣ ΠΑΓΩΝ-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1497,7 +1497,7 @@
     },
     {
         "id": 231,
-        "description": "MANO GRAIKIJA",
+        "name": "MANO GRAIKIJA",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "GAISU G. 3A-3, ANTEZERIAI, VILNIAUS DSTR.",
         "phones": "",
@@ -1508,7 +1508,7 @@
     },
     {
         "id": 232,
-        "description": "CHRISTIAN TOUR-AMAZE HOLIDAYS",
+        "name": "CHRISTIAN TOUR-AMAZE HOLIDAYS",
         "profession": "TOYΡΙΣΤΙΚΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ",
         "address": "ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ 18-ΚΕΡΚΥΡΑ",
         "phones": "",
@@ -1519,7 +1519,7 @@
     },
     {
         "id": 233,
-        "description": "GRECA TRAVEL",
+        "name": "GRECA TRAVEL",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "ΕΛΕΥΘΕΡΙΟΥ ΒΕΝΙΖΕΛΟΥ 212, ΚΑΛΛΙΘΕΑ",
         "phones": "",
@@ -1530,7 +1530,7 @@
     },
     {
         "id": 234,
-        "description": "DISCOVERY TRAVEL LTD",
+        "name": "DISCOVERY TRAVEL LTD",
         "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
         "address": "Liulin 8, str 328 No 10",
         "phones": "",
@@ -1541,7 +1541,7 @@
     },
     {
         "id": 235,
-        "description": "AROUND CORFU-YEVGENIA RIGANA",
+        "name": "AROUND CORFU-YEVGENIA RIGANA",
         "profession": "ΤΟΥΡΙΣΤΙΚΟ ΓΡΑΦΕΙΟ",
         "address": "ΚΑΠΟΔΙΣΤΡΙΟΥ 106-ΚΕΡΚΥΡΑ",
         "phones": "",

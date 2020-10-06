@@ -41,15 +41,15 @@
             },
             {
                 "id": "searchHint",
-                "description": "Search by description"
+                "description": "Search by name"
             },
             {
                 "id": "newButton",
                 "description": "New"
             },
             {
-                "id": "headerDescription",
-                "description": "Description"
+                "id": "headerName",
+                "description": "Name"
             },
             {
                 "id": "headerPhones",
@@ -69,7 +69,7 @@
                 "description": "Customer"
             },
             {
-                "id": "description",
+                "id": "name",
                 "description": "Name"
             },
             {
@@ -814,6 +814,71 @@
             {
                 "id": "noButton",
                 "description": "Abort"
+            }
+        ]
+    },
+    {
+        "feature": "index",
+        "labels": [
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "portId",
+                "description": "Id"
+            },
+            {
+                "id": "portDescription",
+                "description": "Description"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "destinationId",
+                "description": "Id"
+            },
+            {
+                "id": "destinationDescription",
+                "description": "Description"
+            },
+            {
+                "id": "customers",
+                "description": "Customers"
+            },
+            {
+                "id": "customerId",
+                "description": "Id"
+            },
+            {
+                "id": "customerDescription",
+                "description": "Name"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Pickup points"
+            },
+            {
+                "id": "pickupPointId",
+                "description": "Id"
+            },
+            {
+                "id": "pickupPointDescription",
+                "description": "Description"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Exact point"
+            },
+            {
+                "id": "time",
+                "description": "Time"
+            },
+            {
+                "id":"selectButton",
+                "description":"Select"
             }
         ]
     }

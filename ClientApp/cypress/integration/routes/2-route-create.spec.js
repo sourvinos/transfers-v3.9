@@ -1,4 +1,4 @@
-context('Ports - Create', () => {
+context('Routes - Create', () => {
 
     // Last revision: Mon 5/10/2020 09:00
 
@@ -12,11 +12,18 @@ context('Ports - Create', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoRouteListWithSuccess()
+        cy.server()
+        cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
+        cy.get('[data-cy=routes]').click()
+        cy.wait('@getRoutes').its('status').should('eq', 200)
+        cy.url().should('eq', Cypress.config().baseUrl + '/routes')
     })
 
     it('Goto an empty form', () => {
+        cy.server()
+        cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports.json').as('getPorts')
         cy.get('[data-cy=new]').click()
+        cy.wait('@getPorts').its('status').should('eq', 200)
         cy.url().should('eq', Cypress.config().baseUrl + '/routes/new')
     })
 
@@ -29,10 +36,7 @@ context('Ports - Create', () => {
     })
 
     it('Port is valid', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports.json').as('getPorts')
         cy.typeNotGibberish('portDescription', 'corfu').then(() => {
-            cy.wait('@getPorts').its('status').should('eq', 200)
             cy.get('#dialog').within(() => {
                 cy.get('input[type=text]')
                     .type('{enter}', { force: true })
@@ -40,11 +44,11 @@ context('Ports - Create', () => {
         })
     })
 
-    it.skip('Form is valid', () => {
+    it('Form is valid', () => {
         cy.buttonShouldBeEnabled('save')
     })
 
-    it.skip('Create and display a snackbar', () => {
+    it('Create and display a snackbar', () => {
         cy.createRecord()
     })
 

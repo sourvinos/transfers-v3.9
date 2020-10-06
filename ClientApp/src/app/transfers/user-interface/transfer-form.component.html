@@ -2,15 +2,15 @@
 
     <form data-cy="form"[formGroup]="form" autocomplete="off">
         <mat-form-field>
-            <input data-cy="destination" type="text" matInput [placeholder]="onGetLabel('destination')" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'Destinations', ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['Id', 'Description', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
+            <input data-cy="destination" type="text" matInput [placeholder]="onGetLabel('destination')" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'destinations', ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
             <mat-error *ngIf="destinationDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input data-cy="customer" type="text" matInput [placeholder]="onGetLabel('customer')" formControlName="customerDescription" data-tabindex="2" id="customerDescription" [inputTabStop]="input" (change)="onLookupIndex(customers, 'Customers', ['customerId', 'customerDescription', ''], ['customerId', 'customerDescription', ''], ['Id', 'Description', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
+            <input data-cy="customer" type="text" matInput [placeholder]="onGetLabel('customer')" formControlName="customerDescription" data-tabindex="2" id="customerDescription" [inputTabStop]="input" (change)="onLookupIndex(customers, 'customers', ['customerId', 'customerDescription', ''], ['customerId', 'customerDescription', ''], ['customerId', 'customerDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
             <mat-error *ngIf="customerDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input data-cy="pickupPoint" type="text" matInput [placeholder]="onGetLabel('pickupPoint')" formControlName="pickupPointDescription" data-tabindex="3" id="pickupPointDescription" [inputTabStop]="input" (change)="onLookupIndex(pickupPointsFlat, 'Pickup points', ['pickuPointId', 'pickupPointDescription', ''], ['pickuPointId', 'pickupPointDescription', 'exactPoint', 'time', ''], ['Id', 'Description', 'Exact point', 'Time', ''], ['1px', '440px', '440px', '100px', '56px'], ['none'], ['center', 'left', 'left', 'center', 'center'], $event)">
+            <input data-cy="pickupPoint" type="text" matInput [placeholder]="onGetLabel('pickupPoint')" formControlName="pickupPointDescription" data-tabindex="3" id="pickupPointDescription" [inputTabStop]="input" (change)="onLookupIndex(pickupPointsFlat, 'pickupPoints', ['pickuPointId', 'pickupPointDescription', ''], ['pickuPointId', 'pickupPointDescription', 'exactPoint', 'time', ''], ['pickuPointId', 'pickupPointDescription', 'exactPoint', 'time', ''], ['1px', '440px', '440px', '100px', '56px'], ['none'], ['center', 'left', 'left', 'center', 'center'], $event)">
             <mat-error *ngIf="pickupPointDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
         </mat-form-field>
         <div id="group-field">

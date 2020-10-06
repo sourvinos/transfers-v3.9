@@ -1,7 +1,5 @@
 context('Customers - Delete', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -16,7 +14,7 @@ context('Customers - Delete', () => {
     })
 
     it('Read record', () => {
-        cy.readRecord()
+        cy.readCustomerRecord()
     })
 
     it('Ask to delete and abort', () => {
@@ -27,7 +25,7 @@ context('Customers - Delete', () => {
     })
 
     it('Ask to delete and continue', () => {
-        cy.deleteRecord()
+        cy.deleteCustomerRecord()
     })
 
     afterEach(() => {
@@ -35,4 +33,3 @@ context('Customers - Delete', () => {
     })
 
 })
-

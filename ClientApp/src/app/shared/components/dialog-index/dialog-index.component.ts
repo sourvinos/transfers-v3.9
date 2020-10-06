@@ -1,3 +1,4 @@
+import { MessageLabelService } from './../../services/messages-label.service'
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Subject } from 'rxjs'
@@ -23,10 +24,12 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
     records: any[]
     selectedRecord: any
     ngUnsubscribe = new Subject<void>();
+    feature = 'index'
 
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private indexInteractionService: IndexInteractionService, public dialogRef: MatDialogRef<DialogIndexComponent>) {
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any, private indexInteractionService: IndexInteractionService, private messageLabelService: MessageLabelService, public dialogRef: MatDialogRef<DialogIndexComponent>) {
         this.title = data.title
         this.fields = data.fields
         this.headers = data.headers
@@ -50,6 +53,10 @@ export class DialogIndexComponent implements OnInit, OnDestroy {
     //#endregion
 
     //#region private methods
+
+    onGetLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
 
     private subscribeToIndexinteractionService(): void {
         this.indexInteractionService.data.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {

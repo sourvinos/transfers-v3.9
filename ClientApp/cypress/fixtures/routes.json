@@ -1,8 +1,8 @@
 [
     {
         "id": 19,
-        "description": "NISAKI",
-        "fullDescription": "NISAKI - CORFU PORT",
+        "abbreviation": "NISAKI",
+        "description": "NISAKI - CORFU PORT",
         "isActive": true,
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
         "portId": 1,
@@ -15,8 +15,8 @@
     },
     {
         "id": 20,
-        "description": "SOUTH",
-        "fullDescription": "TOWN - LEFKIMMI",
+        "abbreviation": "SOUTH",
+        "description": "TOWN - LEFKIMMI",
         "isActive": true,
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
         "portId": 2,

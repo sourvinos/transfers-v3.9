@@ -69,7 +69,7 @@
                 "description": "Πελάτης"
             },
             {
-                "id": "description",
+                "id": "name",
                 "description": "Επωνυμια"
             },
             {
@@ -814,6 +814,71 @@
             {
                 "id": "noButton",
                 "description": "Ακυρο"
+            }
+        ]
+    },
+    {
+        "feature": "index",
+        "labels": [
+            {
+                "id": "ports",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "portId",
+                "description": "Id"
+            },
+            {
+                "id": "portDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "destinationId",
+                "description": "Id"
+            },
+            {
+                "id": "destinationDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "customers",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "customerId",
+                "description": "Id"
+            },
+            {
+                "id": "customerDescription",
+                "description": "Επωνυμια"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Σημεία παραλαβής"
+            },
+            {
+                "id": "pickupPointId",
+                "description": "Id"
+            },
+            {
+                "id": "pickupPointDescription",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "exactPoint",
+                "description": "Ακριβες σημειο"
+            },
+            {
+                "id": "time",
+                "description": "Ωρα"
+            },
+            {
+                "id": "selectButton",
+                "description": "Επιλογη"
             }
         ]
     }

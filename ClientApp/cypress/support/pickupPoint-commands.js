@@ -9,7 +9,7 @@ Cypress.Commands.add('gotoPickupPointListWithSuccess', () => {
 
 Cypress.Commands.add('getRoutes', () => {
     cy.server()
-    cy.route('GET', 'https://localhost:5001/api/routes', 'fixture:routes.json').as('getRoutes')
+    cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
 })
 
 Cypress.Commands.add('readRecord', () => {

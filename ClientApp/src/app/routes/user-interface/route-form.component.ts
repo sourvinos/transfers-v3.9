@@ -80,7 +80,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
-        this.focus('description')
+        this.focus('abbreviation')
     }
 
     ngOnDestroy(): void {
@@ -152,7 +152,7 @@ export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
-                this.focus('description')
+                this.focus('abbreviation')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {

@@ -8,7 +8,7 @@ namespace Transfers {
             // Read
             CreateMap<Transfer, TransferResource>()
                 .ForMember(tr => tr.Destination, opt => opt.MapFrom(v => new DestinationResource { Id = v.Destination.Id, Abbreviation = v.Destination.Abbreviation, Description = v.Destination.Description }))
-                .ForMember(tr => tr.Customer, opt => opt.MapFrom(v => new CustomerResource { Id = v.Customer.Id, Description = v.Customer.Description }))
+                .ForMember(tr => tr.Customer, opt => opt.MapFrom(v => new CustomerResource { Id = v.Customer.Id, Name = v.Customer.Name }))
                 .ForMember(tr => tr.Driver, opt => opt.MapFrom(v => new DriverResource { Id = v.Driver.Id, Description = v.Driver.Description }))
                 .ForMember(tr => tr.PickupPoint, opt => opt.MapFrom(v => new PickupPointResource {
                     Id = v.PickupPoint.Id,

@@ -12,7 +12,11 @@ context('Pickup points', () => {
     })
 
     it('Goto the list from the home page and load the routes into the select', () => {
-        cy.gotoPickupPointListWithSuccess()
+        cy.server()
+        cy.route('GET', Cypress.config().baseUrl + '/api/routes/getActive', 'fixture:routes.json').as('getRoutes')
+        cy.get('[data-cy=pickupPoints]').click()
+        cy.wait('@getRoutes').its('status').should('eq', 200)
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints')
     })
 
     it('Select a route from the dropdown, find its pickup points and populate the table', () => {

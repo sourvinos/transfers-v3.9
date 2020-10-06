@@ -17,7 +17,7 @@ Cypress.Commands.add('gotoCustomerListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/customers')
 })
 
-Cypress.Commands.add('createRecord', () => {
+Cypress.Commands.add('createCustomerRecord', () => {
     cy.server()
     cy.route('POST', Cypress.config().baseUrl + '/api/customers', 'fixture:customer.json').as('saveCustomer')
     cy.get('[data-cy=save]').click()
@@ -25,7 +25,7 @@ Cypress.Commands.add('createRecord', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('readRecord', () => {
+Cypress.Commands.add('readCustomerRecord', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('getCustomer')
     cy.get('[data-cy=row]').contains('ASK 2 TRAVEL').dblclick({ force: true })
@@ -33,7 +33,7 @@ Cypress.Commands.add('readRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/customers/222')
 })
 
-Cypress.Commands.add('updateRecord', () => {
+Cypress.Commands.add('updateCustomerRecord', () => {
     cy.server()
     cy.route('PUT', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('saveCustomer')
     cy.get('[data-cy=save]').click()
@@ -42,7 +42,7 @@ Cypress.Commands.add('updateRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/customers')
 })
 
-Cypress.Commands.add('deleteRecord', () => {
+Cypress.Commands.add('deleteCustomerRecord', () => {
     cy.server()
     cy.route('DELETE', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('deleteCustomer')
     cy.get('[data-cy=delete]').click()

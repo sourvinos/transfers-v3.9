@@ -6,9 +6,9 @@ namespace Transfers {
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Description is required")]
-        [MaxLength(128, ErrorMessage = "Description can not be longer than 128 characters")]
-        public string Description { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        [MaxLength(128, ErrorMessage = "Name can not be longer than 128 characters")]
+        public string Name { get; set; }
 
         [MaxLength(128, ErrorMessage = "Profession can not be longer than 128 characters")]
         public string Profession { get; set; }
