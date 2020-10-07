@@ -1,6 +1,4 @@
-context('Transfers', () => {
-
-    // Last revision: Sat 3/10/2020 13:00
+context('Transfers - List', () => {
 
     before(() => {
         cy.login()
@@ -12,19 +10,11 @@ context('Transfers', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.get('[data-cy=transfers]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
+        cy.gotoTransfersWrapper()
     })
 
     it('Search by a given date', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-01-01', 'fixture:transfers.json').as('getTransfers')
-        cy.get('[data-cy=dateIn]')
-            .clear()
-            .type('1/1/2020{enter}')
-        cy.get('[data-cy=search]').click()
-        cy.wait('@getTransfers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01')
+        cy.searchByDateWithSuccess()
     })
 
     it('Totals should have the correct values', () => {

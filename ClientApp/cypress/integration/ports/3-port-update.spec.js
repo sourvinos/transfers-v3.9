@@ -1,7 +1,5 @@
 context('Ports - Update', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -16,11 +14,11 @@ context('Ports - Update', () => {
     })
 
     it('Read record', () => {
-        cy.readRecord()
+        cy.readPortRecord()
     })
 
     it('Update record', () => {
-        cy.updateRecord()
+        cy.updatePortRecord()
     })
 
     afterEach(() => {

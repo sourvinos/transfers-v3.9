@@ -17,7 +17,7 @@ Cypress.Commands.add('gotoDriverListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
 })
 
-Cypress.Commands.add('createRecord', () => {
+Cypress.Commands.add('createDriverRecord', () => {
     cy.server()
     cy.route('POST', Cypress.config().baseUrl + '/api/drivers', 'fixture:driver.json').as('saveDriver')
     cy.get('[data-cy=save]').click()
@@ -25,7 +25,7 @@ Cypress.Commands.add('createRecord', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('readRecord', () => {
+Cypress.Commands.add('readDriverRecord', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('getDriver')
     cy.get('[data-cy=row]').contains('STAMATIS').dblclick({ force: true })
@@ -33,7 +33,7 @@ Cypress.Commands.add('readRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/drivers/1')
 })
 
-Cypress.Commands.add('updateRecord', () => {
+Cypress.Commands.add('updateDriverRecord', () => {
     cy.server()
     cy.route('PUT', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('saveDriver')
     cy.get('[data-cy=save]').click()
@@ -42,7 +42,7 @@ Cypress.Commands.add('updateRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
 })
 
-Cypress.Commands.add('deleteRecord', () => {
+Cypress.Commands.add('deleteDriverRecord', () => {
     cy.server()
     cy.route('DELETE', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('deleteDriver')
     cy.get('[data-cy=delete]').click()

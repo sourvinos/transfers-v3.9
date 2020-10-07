@@ -41,11 +41,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', 'headerName', 'headerPhones', 'headerEmail', '']
+    headers = ['', 'Id', 'headerName', 'headerPhones', 'headerEmail', '']
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
-    fields = ['', 'id', 'name', 'phones', 'email', '']
+    fields = ['', 'id', 'description', 'phones', 'email', '']
 
     //#endregion
 
@@ -87,7 +87,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
     public onFilter(query: string): void {
         this.searchTerm = query
-        this.filteredRecords = query ? this.records.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : this.records
+        this.filteredRecords = query ? this.records.filter(p => p.description.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGetLabel(id: string): string {
@@ -132,7 +132,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
         const customerListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (customerListResolved.error === null) {
             this.records = customerListResolved.list
-            this.filteredRecords = this.records.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
             this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error') // Tested
         }

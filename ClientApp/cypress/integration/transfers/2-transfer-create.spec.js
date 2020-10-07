@@ -1,4 +1,4 @@
-context('New', () => {
+context('Transfers - Create', () => {
 
     before(() => {
         cy.login()
@@ -17,15 +17,22 @@ context('New', () => {
     it('Valid date', () => {
         cy.get('[data-cy=dateIn]')
             .clear()
-            .type('1/1/2020{enter}')
-            .should('be', '01/01/2020')
+            .type('1/8{enter}')
+            .should('be', '01/08/2020')
         cy.buttonShouldBeEnabled('search')
         cy.get('[data-cy=search]').click()
     })
 
     it('Goto an empty form', () => {
+        cy.server()
+        cy.route('GET', Cypress.config().baseUrl + '/api/destinations/getActive', 'fixture:destinations.json').as('getDestinations')
+        cy.route('GET', Cypress.config().baseUrl + '/api/customers/getActive', 'fixture:customers.json').as('getCustomers')
+        cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/getActive', 'fixture:pickupPoints.json').as('getPickupPoints')
         cy.get('[data-cy=new]').click()
-        cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/new')
+        cy.wait('@getDestinations').its('status').should('eq', 200)
+        cy.wait('@getCustomers').its('status').should('eq', 200)
+        cy.wait('@getPickupPoints').its('status').should('eq', 200)
+        cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01/transfer/new')
     })
 
     it('Destination is valid', () => {
@@ -45,7 +52,7 @@ context('New', () => {
     })
 
     it('Pickup point is valid', () => {
-        cy.typeNotGibberish('pickupPoint', 'kiosk')
+        cy.typeNotGibberish('pickupPoint', 'ant')
         cy.get('#dialog').within(() => {
             cy.get('input[type=text]')
                 .type('{downarrow}{downarrow}{enter}', { force: true })

@@ -1,4 +1,4 @@
-context('Seek', () => {
+context('Edit', () => {
 
     before(() => {
         cy.login()
@@ -20,18 +20,17 @@ context('Seek', () => {
         cy.searchTransfersWithSuccess()
     })
 
-    it('Unsuccessful attempt to edit the second row', () => {
-        cy.server()
-        cy.route({
-            method: 'GET',
-            url: 'https://localhost:5001/api/transfers/1',
-            status: 404,
-            response: { error: 'ERROR!' }
-        }).as('getTransfer')
+    it('Successful attempt to seek the first row', () => {
         cy.get('#listTab').click()
-        cy.get('[data-cy=row]:nth-child(1)').dblclick()
-        cy.wait('@getTransfer').its('status').should('eq', 404)
-        cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01')
+        cy.seekTransferWithSuccess()
+    })
+
+    it('Update and display a snackbar', () => {
+        cy.server()
+        cy.route('PUT', 'https://localhost:5001/api/transfers/587', 'fixture:transfer.json').as('saveTransfer')
+        cy.get('[data-cy=save]').click()
+        cy.wait('@saveTransfer').its('status').should('eq', 200)
+        cy.get('[data-cy=customSnackbar]')
     })
 
     afterEach(() => {

@@ -1,4 +1,4 @@
-context('Ports - Delete', () => {
+context('Users - Delete', () => {
 
     before(() => {
         cy.login()
@@ -10,20 +10,20 @@ context('Ports - Delete', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoPortListWithSuccess()
+        cy.gotoUserListWithSuccess()
     })
 
     it('Read record', () => {
-        cy.readPortRecord()
+        cy.readUserRecord()
     })
 
     it('Ask to delete and abort', () => {
         cy.clickOnDeleteAndAbort()
-        cy.url().should('eq', Cypress.config().baseUrl + '/ports/1')
+        cy.url().should('eq', Cypress.config().baseUrl + '/users/7bf9acf1-74c2-459c-8366-82f05bfa3e28')
     })
 
-    it('Ask to delete and continue', () => {
-        cy.deletePortRecord()
+    it('Delete record', () => {
+        cy.deleteUserRecord()
     })
 
     afterEach(() => {
@@ -31,4 +31,3 @@ context('Ports - Delete', () => {
     })
 
 })
-

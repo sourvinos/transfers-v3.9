@@ -41,7 +41,7 @@ export class DestinationListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', 'headerAbbreviation', 'headerDescription', '']
+    headers = ['', 'Id', 'headerAbbreviation', 'headerDescription', '']
     widths = ['40px', '0px', '150px', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']

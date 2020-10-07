@@ -1,5 +1,4 @@
 context('Customers - List', () => {
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -33,13 +32,13 @@ context('Customers - List', () => {
         })
     })
 
-    afterEach(() => {
-        cy.saveLocalStorage()
-    })
-
-    after(() => {
+    it('Goto the home page', () => {
         cy.get('[data-cy=goBack]').click()
         cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
     })
 
 })

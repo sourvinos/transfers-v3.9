@@ -1,6 +1,4 @@
-context('Users', () => {
-
-    // Last revision: Sat 3/10/2020 13:00
+context('Users - List', () => {
 
     before(() => {
         cy.login()
@@ -12,11 +10,7 @@ context('Users', () => {
     })
 
     it('Goto the list from the home page', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/users', 'fixture:users.json').as('getUsers')
-        cy.get('[data-cy=users]').click()
-        cy.wait('@getUsers').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/users')
+        cy.gotoUserListWithSuccess()
     })
 
     it('The table should have an exact number of rows and columns', () => {

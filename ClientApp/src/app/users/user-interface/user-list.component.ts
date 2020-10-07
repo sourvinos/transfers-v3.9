@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', 'headerDisplayname', 'headerUsername', 'headerEmail', '']
+    headers = ['', 'Id', 'headerDisplayname', 'headerUsername', 'headerEmail', '']
     widths = ['40px', '', '30%', '30%', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'left', 'left', 'left', 'left', 'center']

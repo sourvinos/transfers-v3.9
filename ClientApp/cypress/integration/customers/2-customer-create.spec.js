@@ -30,5 +30,19 @@ context('Customers - Create', () => {
         cy.createCustomerRecord()
     })
 
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/customers')
+    })
+
+    it('Goto the home page', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
+    })
+
 })
 

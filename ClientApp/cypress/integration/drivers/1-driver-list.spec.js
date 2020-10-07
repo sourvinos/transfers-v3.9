@@ -1,7 +1,5 @@
 context('Drivers - List', () => {
 
-    // Last revision: Sat 3/10/2020 13:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()

@@ -69,7 +69,7 @@ export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, On
 
     //#region table
 
-    headers = ['S', 'Id', 'headerDestination', 'headerDestinationAbbreviation', 'headerRoute', 'headerCustomer', 'headerPickupPoint', 'headerTime', 'headerAdults', 'headerKids', 'headerFree', 'headerTotal', 'headerDriver', 'headerPort', '']
+    headers = ['', 'Id', 'headerDestination', 'headerDestinationAbbreviation', 'headerRoute', 'headerCustomer', 'headerPickupPoint', 'headerTime', 'headerAdults', 'headerKids', 'headerFree', 'headerTotal', 'headerDriver', 'headerPort', '']
     widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
     visibility = ['', 'none', '', 'none']
     justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left', 'center']

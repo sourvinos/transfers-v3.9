@@ -1,7 +1,7 @@
 import { KeyValuePair } from 'src/app/shared/classes/keyValuePair'
 
 export class Customer extends KeyValuePair {
-    name: string
+    description: string
     profession: string
     address: string
     phones: string

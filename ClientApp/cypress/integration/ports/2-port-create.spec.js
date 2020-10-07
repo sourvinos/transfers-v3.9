@@ -1,7 +1,5 @@
 context('Ports - Create', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -29,8 +27,21 @@ context('Ports - Create', () => {
     })
 
     it('Create and display a snackbar', () => {
-        cy.createRecord()
+        cy.createPortRecord()
+    })
+
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/ports')
+    })
+
+    it('Goto the home page', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
     })
 
 })
-

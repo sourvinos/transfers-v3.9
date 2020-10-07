@@ -1,7 +1,5 @@
 context('Drivers - Delete', () => {
 
-
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -16,18 +14,16 @@ context('Drivers - Delete', () => {
     })
 
     it('Read record', () => {
-        cy.readRecord()
+        cy.readDriverRecord()
     })
 
     it('Ask to delete and abort', () => {
-        cy.get('[data-cy=delete]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=abort]').click()
+        cy.clickOnDeleteAndAbort()
         cy.url().should('eq', Cypress.config().baseUrl + '/drivers/1')
     })
 
     it('Ask to delete and continue', () => {
-        cy.deleteRecord()
+        cy.deleteDriverRecord()
     })
 
     afterEach(() => {

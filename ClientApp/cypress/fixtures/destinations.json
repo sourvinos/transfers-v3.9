@@ -1,8 +1,8 @@
 [
     {
         "id": 2,
-        "abbreviation": "PA",
-        "description": "PAXOS - ANTIPAXOS",
+        "abbreviation": "PA...",
+        "description": "PAXOS - ANTIPAXOS!",
         "isActive": true,
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
     },
@@ -192,13 +192,6 @@
         "id": 43,
         "abbreviation": "",
         "description": "SUNSET BLUE LAGOON",
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
-    },
-    {
-        "id": 44,
-        "abbreviation": "PAC",
-        "description": "PAXOS - ANTIPAXOS - SPACE SAFE",
         "isActive": true,
         "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
     },

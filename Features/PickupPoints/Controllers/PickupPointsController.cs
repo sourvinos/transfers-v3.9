@@ -23,8 +23,8 @@ namespace Transfers {
         }
 
         [HttpGet("[action]")]
-        public async Task<IEnumerable<PickupPoint>> GetAllActive() {
-            return await repo.GetAllActive();
+        public async Task<IEnumerable<PickupPoint>> GetActive() {
+            return await repo.GetActive();
         }
 
         [HttpGet("routeId/{routeId}")]

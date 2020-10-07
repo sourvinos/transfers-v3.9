@@ -17,7 +17,7 @@ Cypress.Commands.add('gotoPortListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/ports')
 })
 
-Cypress.Commands.add('createRecord', () => {
+Cypress.Commands.add('createPortRecord', () => {
     cy.server()
     cy.route('POST', Cypress.config().baseUrl + '/api/ports', 'fixture:port.json').as('savePort')
     cy.get('[data-cy=save]').click()
@@ -25,7 +25,7 @@ Cypress.Commands.add('createRecord', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('readRecord', () => {
+Cypress.Commands.add('readPortRecord', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('getPort')
     cy.get('[data-cy=row]').contains('CORFU PORT').dblclick({ force: true })
@@ -33,7 +33,7 @@ Cypress.Commands.add('readRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/ports/1')
 })
 
-Cypress.Commands.add('updateRecord', () => {
+Cypress.Commands.add('updatePortRecord', () => {
     cy.server()
     cy.route('PUT', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('savePort')
     cy.get('[data-cy=save]').click()
@@ -42,7 +42,7 @@ Cypress.Commands.add('updateRecord', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/ports')
 })
 
-Cypress.Commands.add('deleteRecord', () => {
+Cypress.Commands.add('deletePortRecord', () => {
     cy.server()
     cy.route('DELETE', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('deletePort')
     cy.get('[data-cy=delete]').click()

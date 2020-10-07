@@ -1,4 +1,4 @@
-context('Ports - Delete', () => {
+context('Routes - Delete', () => {
 
     before(() => {
         cy.login()
@@ -10,20 +10,20 @@ context('Ports - Delete', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoPortListWithSuccess()
+        cy.gotoRouteListWithSuccess()
     })
 
     it('Read record', () => {
-        cy.readPortRecord()
+        cy.readRouteRecord()
     })
 
     it('Ask to delete and abort', () => {
         cy.clickOnDeleteAndAbort()
-        cy.url().should('eq', Cypress.config().baseUrl + '/ports/1')
+        cy.url().should('eq', Cypress.config().baseUrl + '/routes/19')
     })
 
     it('Ask to delete and continue', () => {
-        cy.deletePortRecord()
+        cy.deleteRouteRecord()
     })
 
     afterEach(() => {

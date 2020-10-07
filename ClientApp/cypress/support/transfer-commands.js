@@ -1,21 +1,26 @@
 import 'cypress-localstorage-commands'
 
+Cypress.Commands.add('gotoTransfersWrapper', () => {
+    cy.get('[data-cy=transfers]').click()
+    cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
+})
+
 Cypress.Commands.add('searchTransfersWithSuccess', () => {
     cy.server()
-    cy.route('GET', 'https://localhost:5001/api/transfers/date/2020-01-01', 'fixture:transfers.json').as('getTransfers')
+    cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-08-01', 'fixture:transfers.json').as('getTransfers')
     cy.get('[data-cy=dateIn]')
         .clear()
-        .type('1/1/2020{enter}')
-        .should('be', '01/01/2020')
+        .type('1/8/2020{enter}')
+        .should('be', '01/08/2020')
     cy.get('[data-cy=search]').click()
     cy.wait('@getTransfers').its('status').should('eq', 200)
-    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01')
+    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01')
 })
 
 Cypress.Commands.add('seekTransferWithSuccess', () => {
     cy.server()
-    cy.route('GET', 'https://localhost:5001/api/transfers/1', 'fixture:transfer.json').as('getTransfer')
+    cy.route('GET', 'https://localhost:5001/api/transfers/587', 'fixture:transfer.json').as('getTransfer')
     cy.get('[data-cy=row]:nth-child(1)').dblclick()
     cy.wait('@getTransfer').its('status').should('eq', 200)
-    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-01-01/transfer/1')
+    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01/transfer/587')
 })

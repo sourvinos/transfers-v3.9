@@ -208,7 +208,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
             if (direction === 'down') { ++this.currentRow }
         }
         document.getElementById('custom-table-input-' + this.randomTableId).focus()
-        if (this.rowHeight !== 0) {
+        if (this.table.rows.length > 1) {
             table.rows[this.currentRow].classList.add('selected')
         }
     }

@@ -207,7 +207,7 @@ export class CustomerFormComponent {
     private populateFields(result: Customer): void {
         this.form.setValue({
             id: result.id,
-            name: result.name,
+            name: result.description,
             profession: result.profession,
             address: result.address,
             phones: result.phones,

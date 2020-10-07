@@ -1,7 +1,5 @@
 context('Destinations - Create', () => {
 
-    // Last revision: Mon 5/10/2020 09:00
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -11,7 +9,7 @@ context('Destinations - Create', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Goto the list from the home page', () => {
+    it('Goto the list', () => {
         cy.gotoDestinationListWithSuccess()
     })
 
@@ -33,8 +31,21 @@ context('Destinations - Create', () => {
     })
 
     it('Create and display a snackbar', () => {
-        cy.createRecord()
+        cy.createDestinationRecord()
+    })
+
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
+    })
+
+    it('Goto the home page', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
     })
 
 })
-

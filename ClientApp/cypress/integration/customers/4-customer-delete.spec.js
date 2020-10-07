@@ -18,9 +18,7 @@ context('Customers - Delete', () => {
     })
 
     it('Ask to delete and abort', () => {
-        cy.get('[data-cy=delete]').click()
-        cy.get('.mat-dialog-container')
-        cy.get('[data-cy=abort]').click()
+        cy.clickOnDeleteAndAbort()
         cy.url().should('eq', Cypress.config().baseUrl + '/customers/222')
     })
 

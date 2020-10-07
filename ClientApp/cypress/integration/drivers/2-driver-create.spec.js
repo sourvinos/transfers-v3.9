@@ -1,7 +1,5 @@
 context('Drivers - Create', () => {
 
-
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -11,7 +9,7 @@ context('Drivers - Create', () => {
         cy.restoreLocalStorage()
     })
 
-    it('Goto the list from the home page', () => {
+    it('Goto the list', () => {
         cy.gotoDriverListWithSuccess()
     })
 
@@ -33,7 +31,21 @@ context('Drivers - Create', () => {
     })
 
     it('Create and display a snackbar', () => {
-        cy.createRecord()
+        cy.createDriverRecord()
+    })
+
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
+    })
+
+    it('Goto the home page', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
     })
 
 })

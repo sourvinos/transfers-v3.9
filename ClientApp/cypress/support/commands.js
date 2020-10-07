@@ -37,6 +37,12 @@ Cypress.Commands.add('buttonShouldBeEnabled', (button) => {
         .should('not.have.attr', 'disabled')
 })
 
+Cypress.Commands.add('clickOnDeleteAndAbort',()=>{
+    cy.get('[data-cy=delete]').click()
+    cy.get('.mat-dialog-container')
+    cy.get('[data-cy=abort]').click()
+})
+
 function createRandomLetters(length) {
     let field = ''
     for (let index = 1; index <= length; index++) {

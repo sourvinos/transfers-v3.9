@@ -1,7 +1,5 @@
 context('Pickup points - Create', () => {
 
-
-
     before(() => {
         cy.login()
         cy.saveLocalStorage()
@@ -55,6 +53,25 @@ context('Pickup points - Create', () => {
         cy.get('[data-cy=save]').click()
         cy.wait('@savePickupPoint').its('status').should('eq', 200)
         cy.get('[data-cy=customSnackbar]')
+    })
+
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19')
+    })
+
+    it('Goto the list', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints')
+    })
+
+    it('Goto the home page', () => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
+    })
+
+    afterEach(() => {
+        cy.saveLocalStorage()
     })
 
 })

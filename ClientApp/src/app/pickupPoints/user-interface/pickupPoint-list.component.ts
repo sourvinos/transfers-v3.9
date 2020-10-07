@@ -49,7 +49,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region table
 
-    headers = ['S', 'Id', 'headerDescription', 'headerExactPoint', 'headerTime', '']
+    headers = ['', 'Id', 'headerDescription', 'headerExactPoint', 'headerTime', '']
     widths = ['40px', '0', '45%', '', '100px', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center', 'center']

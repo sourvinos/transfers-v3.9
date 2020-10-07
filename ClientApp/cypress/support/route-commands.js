@@ -17,7 +17,7 @@ Cypress.Commands.add('gotoRouteListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/routes')
 })
 
-Cypress.Commands.add('createRecord', () => {
+Cypress.Commands.add('createRouteRecord', () => {
     cy.server()
     cy.route('POST', Cypress.config().baseUrl + '/api/routes', 'fixture:route.json').as('saveRoute')
     cy.get('[data-cy=save]').click()
@@ -25,26 +25,28 @@ Cypress.Commands.add('createRecord', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('readRecord', () => {
+Cypress.Commands.add('readRouteRecord', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/routes/1', 'fixture:route.json').as('getRoute')
-    cy.get('[data-cy=row]').contains('CORFU PORT').dblclick({ force: true })
+    cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports.json').as('getPorts')
+    cy.route('GET', Cypress.config().baseUrl + '/api/routes/19', 'fixture:route.json').as('getRoute')
+    cy.get('[data-cy=row]').contains('NISAKI').dblclick({ force: true })
+    cy.wait('@getPorts').its('status').should('eq', 200)
     cy.wait('@getRoute').its('status').should('eq', 200)
-    cy.url().should('eq', Cypress.config().baseUrl + '/routes/1')
+    cy.url().should('eq', Cypress.config().baseUrl + '/routes/19')
 })
 
-Cypress.Commands.add('updateRecord', () => {
+Cypress.Commands.add('updateRouteRecord', () => {
     cy.server()
-    cy.route('PUT', Cypress.config().baseUrl + '/api/routes/1', 'fixture:route.json').as('saveRoute')
+    cy.route('PUT', Cypress.config().baseUrl + '/api/routes/19', 'fixture:route.json').as('saveRoute')
     cy.get('[data-cy=save]').click()
     cy.wait('@saveRoute').its('status').should('eq', 200)
     cy.get('[data-cy=customSnackbar]')
     cy.url().should('eq', Cypress.config().baseUrl + '/routes')
 })
 
-Cypress.Commands.add('deleteRecord', () => {
+Cypress.Commands.add('deleteRouteRecord', () => {
     cy.server()
-    cy.route('DELETE', Cypress.config().baseUrl + '/api/routes/1', 'fixture:route.json').as('deleteRoute')
+    cy.route('DELETE', Cypress.config().baseUrl + '/api/routes/19', 'fixture:route.json').as('deleteRoute')
     cy.get('[data-cy=delete]').click()
     cy.get('.mat-dialog-container')
     cy.get('[data-cy=ok]').click()

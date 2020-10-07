@@ -1,6 +1,4 @@
-context('Pickup points', () => {
-
-    // Last revision: Sat 3/10/2020 13:00
+context('Pickup points - List', () => {
 
     before(() => {
         cy.login()
@@ -12,20 +10,11 @@ context('Pickup points', () => {
     })
 
     it('Goto the list from the home page and load the routes into the select', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/routes/getActive', 'fixture:routes.json').as('getRoutes')
-        cy.get('[data-cy=pickupPoints]').click()
-        cy.wait('@getRoutes').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints')
+        cy.gotoPickupPointListWithSuccess()
     })
 
     it('Select a route from the dropdown, find its pickup points and populate the table', () => {
-        cy.server()
-        cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints.json').as('getPickupPoints')
-        cy.get('[data-cy=routeSelect]').click()
-        cy.get('[data-cy=routeElement]').contains('NISAKI').click();
-        cy.wait('@getPickupPoints').its('status').should('eq', 200)
-        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19')
+        cy.getPickupPointsForSelectedRoute()
     })
 
     it('The table should have an exact number of rows and columns', () => {
@@ -50,6 +39,13 @@ context('Pickup points', () => {
 
     afterEach(() => {
         cy.saveLocalStorage()
+    })
+
+    after(() => {
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints')
+        cy.get('[data-cy=goBack]').click()
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
 
 })

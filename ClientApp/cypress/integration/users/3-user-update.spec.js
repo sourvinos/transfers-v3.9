@@ -1,4 +1,4 @@
-context('Drivers - Update', () => {
+context('Users - Update', () => {
 
     before(() => {
         cy.login()
@@ -10,15 +10,15 @@ context('Drivers - Update', () => {
     })
 
     it('Goto the list', () => {
-        cy.gotoDriverListWithSuccess()
+        cy.gotoUserListWithSuccess()
     })
 
     it('Read record', () => {
-        cy.readDriverRecord()
+        cy.readUserRecord()
     })
 
     it('Update record', () => {
-        cy.updateDriverRecord()
+        cy.updateUserRecord()
     })
 
     afterEach(() => {
@@ -26,4 +26,3 @@ context('Drivers - Update', () => {
     })
 
 })
-

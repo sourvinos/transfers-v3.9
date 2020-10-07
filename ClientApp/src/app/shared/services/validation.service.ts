@@ -1,5 +1,4 @@
 import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms'
-import { ErrorStateMatcher } from '@angular/material/core'
 
 export class ValidationService {
 
@@ -15,16 +14,13 @@ export class ValidationService {
 
     static isTime(control: AbstractControl): { [key: string]: any } {
         if (control.value) {
-            const time = control.value
-            if (time.length == 5 && time.indexOf(':') == 2) {
-                return null
-            }
-            return { isTime: false }
+            const pattern = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/g
+            return pattern.test(control.value) ? null : { isTime: false }
         }
     }
 }
 
-export class ConfirmValidParentMatcher implements ErrorStateMatcher {
+export class ConfirmValidParentMatcher {
 
     isErrorState(control: FormControl | null): boolean {
         return control.parent.invalid && control.touched
