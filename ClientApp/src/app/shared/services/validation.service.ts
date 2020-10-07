@@ -14,10 +14,11 @@ export class ValidationService {
 
     static isTime(control: AbstractControl): { [key: string]: any } {
         if (control.value) {
-            const pattern = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/g
+            const pattern = /\b([01][0-9]|2[0-3]):([0-5][0-9])\b/g
             return pattern.test(control.value) ? null : { isTime: false }
         }
     }
+
 }
 
 export class ConfirmValidParentMatcher {

@@ -29,7 +29,7 @@
             <mat-form-field>
                 <input data-cy="time" type="text" matInput [placeholder]="onGetLabel('time')" formControlName="time" data-tabindex="3" id="time" [inputTabStop]="input">
                 <mat-error *ngIf="time.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="time.hasError('isTime')">{{ onGetHint('invalid') }}</mat-error>
+                <mat-error *ngIf="!time.hasError('required') && !time.hasError('isTime')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
