@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -23,7 +23,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class PickupPointListComponent implements OnInit, OnDestroy {
+export class PickupPointListComponent {
 
     //#region variables
 
@@ -43,7 +43,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     //#region particular variables
 
-    routeDescription: string
+    routeAbbreviation: string
 
     //#endregion
 
@@ -143,7 +143,7 @@ export class PickupPointListComponent implements OnInit, OnDestroy {
 
     private getRouteDescription(routeId: number): void {
         this.routeService.getSingle(routeId).subscribe(result => {
-            this.routeDescription = result.description
+            this.routeAbbreviation = result.abbreviation
         })
     }
 

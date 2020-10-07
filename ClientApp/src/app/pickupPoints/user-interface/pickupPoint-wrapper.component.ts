@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -17,7 +17,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class PickupPointWrapperComponent implements OnInit, OnDestroy {
+export class PickupPointWrapperComponent  {
 
     //#region 
 

@@ -1,5 +1,5 @@
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { AccountService } from '../../services/account.service'
 import { Observable } from 'rxjs'
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs'
     styleUrls: ['./user-greeting.component.css']
 })
 
-export class UserGreetingComponent implements OnInit {
+export class UserGreetingComponent  {
 
     //#region variables
 

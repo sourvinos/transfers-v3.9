@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { Resolve } from '@angular/router'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { ListResolved } from 'src/app/shared/classes/list-resolved'
@@ -7,7 +6,7 @@ import { RouteService } from './route.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class RouteListResolver implements Resolve<ListResolved> {
+export class RouteListResolver  {
 
     constructor(private routeService: RouteService) { }
 

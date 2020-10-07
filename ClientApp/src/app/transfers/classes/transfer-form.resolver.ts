@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { ActivatedRouteSnapshot } from '@angular/router'
 import { throwError } from 'rxjs'
-import { Transfer } from './transfer'
 import { TransferService } from './transfer.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class TransferFormResolver implements Resolve<Transfer> {
+export class TransferFormResolver {
 
     constructor(private transferService: TransferService) { }
 

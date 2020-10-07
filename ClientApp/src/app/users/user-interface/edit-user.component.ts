@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -22,7 +22,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class EditUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class EditUserFormComponent {
 
     //#region variables
 

@@ -1,5 +1,5 @@
 import { ValidationService } from './../../shared/services/validation.service'
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -28,7 +28,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class PickupPointFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PickupPointFormComponent {
 
     //#region variables
 

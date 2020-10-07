@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -27,7 +27,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class RouteFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class RouteFormComponent {
 
     //#region variables
 

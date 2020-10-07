@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -23,7 +23,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     styleUrls: ['../../../assets/styles/forms.css', './change-password.component.css']
 })
 
-export class ChangePasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ChangePasswordFormComponent {
 
     //#region
 

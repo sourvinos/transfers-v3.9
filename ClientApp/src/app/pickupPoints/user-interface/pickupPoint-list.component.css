@@ -9,7 +9,7 @@
     margin: 0 0 0 1rem;
 }
 
-span#routeDescription {
+span#routeAbbreviation {
     color: var(--color-route-description);
     font-family: var(--font-family-header);
     font-size: 2.1rem;

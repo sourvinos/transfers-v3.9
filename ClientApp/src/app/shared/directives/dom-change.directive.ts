@@ -1,8 +1,8 @@
-import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core'
+import { Directive, ElementRef, EventEmitter,  Output } from '@angular/core'
 
 @Directive({ selector: '[domChange]' })
 
-export class DomChangeDirective implements OnDestroy {
+export class DomChangeDirective  {
 
     private changes: MutationObserver
 

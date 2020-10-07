@@ -1,5 +1,5 @@
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -23,7 +23,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class PortFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PortFormComponent {
 
     //#region variables
 

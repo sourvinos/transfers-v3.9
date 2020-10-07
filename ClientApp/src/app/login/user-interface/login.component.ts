@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -23,7 +23,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
     animations: [fade, slideFromLeft, slideFromRight]
 })
 
-export class LoginFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LoginFormComponent {
 
     //#region 
 

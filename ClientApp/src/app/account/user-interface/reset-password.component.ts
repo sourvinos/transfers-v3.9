@@ -1,5 +1,5 @@
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -21,7 +21,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class ResetPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ResetPasswordFormComponent {
 
     //#region variables
 

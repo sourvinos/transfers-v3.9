@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { ActivatedRouteSnapshot } from '@angular/router'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { TransferListResolved } from './transfer-list-resolved'
@@ -7,7 +7,7 @@ import { TransferService } from './transfer.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class TransferListResolver implements Resolve<TransferListResolved> {
+export class TransferListResolver  {
 
     dateIn: string
 

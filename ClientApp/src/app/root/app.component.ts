@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener } from '@angular/core'
+import {  Component, HostListener } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
 
@@ -8,7 +8,7 @@ import { AccountService } from '../shared/services/account.service'
     styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent  {
 
     showLoadingIndication = true
 

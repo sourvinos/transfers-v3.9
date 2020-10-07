@@ -1,12 +1,11 @@
 import { Observable } from 'rxjs'
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
-import { PickupPoint } from './pickupPoint'
+import { ActivatedRouteSnapshot } from '@angular/router'
 import { PickupPointService } from './pickupPoint.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class PickupPointFormResolver implements Resolve<PickupPoint> {
+export class PickupPointFormResolver {
 
     constructor(private pickupPointService: PickupPointService) { }
 

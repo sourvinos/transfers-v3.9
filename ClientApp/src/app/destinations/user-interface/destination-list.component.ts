@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -21,7 +21,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class DestinationListComponent implements OnInit, OnDestroy {
+export class DestinationListComponent  {
 
     //#region variables
 

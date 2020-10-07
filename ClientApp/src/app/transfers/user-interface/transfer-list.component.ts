@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
@@ -27,7 +27,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class TransferListComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
+export class TransferListComponent {
 
     //#region variables
 

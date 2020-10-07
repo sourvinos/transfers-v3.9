@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http'
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable, throwError } from 'rxjs'
 import { catchError, filter, finalize, switchMap, take, tap } from 'rxjs/operators'
@@ -6,7 +6,7 @@ import { AccountService } from './account.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class JwtInterceptor implements HttpInterceptor {
+export class JwtInterceptor {
 
     //#region variables
 

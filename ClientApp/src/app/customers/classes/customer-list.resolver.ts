@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { Resolve } from '@angular/router'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 import { ListResolved } from '../../shared/classes/list-resolved'
@@ -7,7 +6,7 @@ import { CustomerService } from './customer.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class CustomerListResolver implements Resolve<ListResolved> {
+export class CustomerListResolver {
 
     constructor(private customerService: CustomerService) { }
 

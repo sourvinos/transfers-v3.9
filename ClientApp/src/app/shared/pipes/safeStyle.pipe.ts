@@ -1,9 +1,9 @@
-import { Pipe, PipeTransform } from '@angular/core'
+import { Pipe } from '@angular/core'
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
 
 @Pipe({ name: 'safeStyle' })
 
-export class SafeStylePipe implements PipeTransform {
+export class SafeStylePipe {
 
     constructor(private sanitizer: DomSanitizer) { }
 

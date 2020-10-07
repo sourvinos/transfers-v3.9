@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { ActivatedRouteSnapshot } from '@angular/router'
 import { Observable } from 'rxjs'
 import { Route } from './route'
 import { RouteService } from './route.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class RouteFormResolver implements Resolve<Route> {
+export class RouteFormResolver {
 
     constructor(private routeService: RouteService) { }
 

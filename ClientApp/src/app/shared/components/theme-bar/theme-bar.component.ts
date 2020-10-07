@@ -1,5 +1,5 @@
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
 @Component({
@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common'
     styleUrls: ['./theme-bar.component.css']
 })
 
-export class ThemeBarComponent implements OnInit {
+export class ThemeBarComponent  {
 
     //#region variables
 

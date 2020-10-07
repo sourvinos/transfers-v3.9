@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
+import {  Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -21,7 +21,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class ForgotPasswordFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ForgotPasswordFormComponent {
 
     //#region variables
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Driver } from 'src/app/drivers/classes/driver'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
@@ -9,7 +9,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     styleUrls: ['../../../assets/styles/dialogs.css', './transfer-assign-driver.component.css']
 })
 
-export class TransferAssignDriverComponent implements OnInit {
+export class TransferAssignDriverComponent  {
 
     //#region
 

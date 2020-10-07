@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { HelperService } from '../shared/services/helper.service'
 import { environment } from 'src/environments/environment'
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment'
     styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
 
     windowTitle = 'Home'
 

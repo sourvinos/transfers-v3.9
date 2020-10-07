@@ -1,5 +1,5 @@
 import { MessageLabelService } from './../../services/messages-label.service'
-import { AfterViewInit, Component, DoCheck, Input, IterableChanges, IterableDiffer, IterableDiffers, OnInit } from '@angular/core'
+import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { slideToLeft } from 'src/app/shared/animations/animations'
@@ -12,7 +12,7 @@ import { MessageTableService } from '../../services/messages-table.service'
     animations: [slideToLeft]
 })
 
-export class CustomTableComponent implements OnInit, AfterViewInit, DoCheck {
+export class CustomTableComponent {
 
     //#region variables
 

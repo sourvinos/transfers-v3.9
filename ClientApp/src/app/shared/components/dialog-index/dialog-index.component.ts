@@ -1,5 +1,5 @@
 import { MessageLabelService } from './../../services/messages-label.service'
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core'
+import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
@@ -11,7 +11,7 @@ import { IndexInteractionService } from '../../services/index-interaction.servic
     styleUrls: ['../../../../assets/styles/dialogs.css']
 })
 
-export class DialogIndexComponent implements OnInit, OnDestroy {
+export class DialogIndexComponent  {
 
     //#region variables
 

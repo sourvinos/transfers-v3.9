@@ -12,7 +12,7 @@
             <mat-label>{{ onGetLabel('searchLabel') }}</mat-label>
             <mat-select data-cy="routeSelect" [(value)]="id" (selectionChange)="onLoadPickupPoints()">
                 <mat-option data-cy="routeElement" *ngFor="let route of routes" [value]="route.id">
-                    {{ route.description }}
+                    {{ route.abbreviation }}
                 </mat-option>
             </mat-select>
             <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
