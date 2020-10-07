@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -28,14 +28,14 @@ export class DriverFormComponent {
 
     //#region variables 
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/drivers'
-    windowTitle = 'Driver'
-    environment: boolean = environment.production
-    feature = 'driverForm'
+    private feature = 'driverForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/drivers'
+    private windowTitle = 'Driver'
+    public environment = environment.production
+    public input: InputTabStopDirective
 
     //#endregion
 

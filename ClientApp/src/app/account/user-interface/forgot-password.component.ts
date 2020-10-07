@@ -25,13 +25,13 @@ export class ForgotPasswordFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/login'
-    windowTitle = 'Forgot password'
-    feature = 'forgotPasswordForm'
+    private feature = 'forgotPasswordForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/login'
+    private windowTitle = 'Forgot password'
+    public input: InputTabStopDirective
 
     //#endregion
 

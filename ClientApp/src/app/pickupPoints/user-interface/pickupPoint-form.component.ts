@@ -32,14 +32,14 @@ export class PickupPointFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '../../'
-    windowTitle = 'Pickup point'
-    environment: boolean = environment.production
-    feature = 'pickupPointForm'
+    private feature = 'pickupPointForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '../../'
+    private windowTitle = 'Pickup point'
+    public environment = environment.production
+    public input: InputTabStopDirective
 
     //#endregion
 

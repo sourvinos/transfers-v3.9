@@ -28,14 +28,14 @@ export class DestinationFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/destinations'
-    windowTitle = 'Destination'
-    environment: boolean = environment.production
-    feature = 'destinationForm'
+    private feature = 'destinationForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/destinations'
+    private windowTitle = 'Destination'
+    public environment = environment.production
+    public input: InputTabStopDirective
 
     //#endregion
 

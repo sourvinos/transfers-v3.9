@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -31,14 +31,14 @@ export class RouteFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/routes'
-    windowTitle = 'Route'
-    environment: boolean = environment.production
-    feature = 'routeForm'
+    private feature = 'routeForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/routes'
+    private windowTitle = 'Route'
+    public environment = environment.production
+    public input: InputTabStopDirective
 
     //#endregion
 

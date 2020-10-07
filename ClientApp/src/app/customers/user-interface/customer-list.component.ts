@@ -21,21 +21,21 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class CustomerListComponent  {
+export class CustomerListComponent {
 
     //#region variables
 
-    filteredRecords: Customer[] = []
-    ngUnsubscribe = new Subject<void>()
-    records: Customer[] = []
-    resolver = 'customerList'
-    searchTerm = ''
-    unlisten: Unlisten
-    baseUrl = '/customers'
-    newUrl = this.baseUrl + '/new'
-    windowTitle = 'Customers'
-    localStorageSearchTerm = 'searchTermCustomer'
-    feature = 'customerList'
+    private baseUrl = '/customers'
+    private feature = 'customerList'
+    private localStorageSearchTerm = 'searchTermCustomer'
+    private ngUnsubscribe = new Subject<void>()
+    private records: Customer[] = []
+    private resolver = 'customerList'
+    private searchTerm = ''
+    private unlisten: Unlisten
+    private windowTitle = 'Customers'
+    public filteredRecords: Customer[] = []
+    public newUrl = this.baseUrl + '/new'
 
     //#endregion
 

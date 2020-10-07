@@ -1,5 +1,5 @@
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -25,13 +25,13 @@ export class ResetPasswordFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/'
-    windowTitle = 'Reset password'
-    feature = 'resetPasswordForm'
+    private feature = 'resetPasswordForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/'
+    private windowTitle = 'Reset password'
+    public input: InputTabStopDirective
 
     //#endregion
 

@@ -27,17 +27,17 @@ export class PickupPointListComponent {
 
     //#region variables
 
-    filteredRecords: PickupPoint[] = []
-    ngUnsubscribe = new Subject<void>()
-    records: PickupPoint[] = []
-    resolver = 'pickupPointList'
-    searchTerm = ''
-    unlisten: Unlisten
-    baseUrl = this.location.path()
-    newUrl = this.baseUrl + '/pickupPoint/new'
-    windowTitle = 'Pickup points'
-    localStorageSearchTerm = 'searchTermPickupPoint'
-    feature = 'pickupPointList'
+    private baseUrl = this.location.path()
+    private feature = 'pickupPointList'
+    private localStorageSearchTerm = 'searchTermPickupPoint'
+    private ngUnsubscribe = new Subject<void>()
+    private records: PickupPoint[] = []
+    private resolver = 'pickupPointList'
+    private searchTerm = ''
+    private unlisten: Unlisten
+    private windowTitle = 'Pickup points'
+    public filteredRecords: PickupPoint[] = []
+    public newUrl = this.baseUrl + '/pickupPoint/new'
 
     //#endregion
 

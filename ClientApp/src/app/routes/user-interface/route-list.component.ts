@@ -25,17 +25,17 @@ export class RouteListComponent  {
 
     //#region variables
 
-    filteredRecords: Route[] = []
-    ngUnsubscribe = new Subject<void>()
-    records: Route[] = []
-    resolver = 'routeList'
-    searchTerm = ''
-    unlisten: Unlisten
-    baseUrl = '/routes'
-    newUrl = this.baseUrl + '/new'
-    windowTitle = 'Routes'
-    localStorageSearchTerm = 'searchTermRoute'
-    feature = 'routeList'
+    private baseUrl = '/routes'
+    private feature = 'routeList'
+    private localStorageSearchTerm = 'searchTermRoute'
+    private ngUnsubscribe = new Subject<void>()
+    private records: Route[] = []
+    private resolver = 'routeList'
+    private searchTerm = ''
+    private unlisten: Unlisten
+    private windowTitle = 'Routes'
+    public filteredRecords: Route[] = []
+    public newUrl = this.baseUrl + '/new'
 
     //#endregion
 

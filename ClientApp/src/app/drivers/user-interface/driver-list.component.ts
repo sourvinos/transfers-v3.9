@@ -25,17 +25,17 @@ export class DriverListComponent  {
 
     //#region variables
 
-    filteredRecords: Driver[] = []
-    ngUnsubscribe = new Subject<void>()
-    records: Driver[] = []
-    resolver = 'driverList'
-    searchTerm = ''
-    unlisten: Unlisten
-    baseUrl = '/drivers'
-    newUrl = this.baseUrl + '/new'
-    windowTitle = 'Drivers'
-    localStorageSearchTerm = 'searchTermDriver'
-    feature = 'driverList'
+    private baseUrl = '/drivers'
+    private feature = 'driverList'
+    private localStorageSearchTerm = 'searchTermDriver'
+    private ngUnsubscribe = new Subject<void>()
+    private records: Driver[] = []
+    private resolver = 'driverList'
+    private searchTerm = ''
+    private unlisten: Unlisten
+    private windowTitle = 'Drivers'
+    public filteredRecords: Driver[] = []
+    public newUrl = this.baseUrl + '/new'
 
     //#endregion
 

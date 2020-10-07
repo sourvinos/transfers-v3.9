@@ -28,13 +28,13 @@ export class RegisterUserFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/users'
-    windowTitle = 'User'
-    feature = 'registerUserForm'
+    private feature = 'registerUserForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/users'
+    private windowTitle = 'User'
+    public input: InputTabStopDirective
 
     //#endregion
 

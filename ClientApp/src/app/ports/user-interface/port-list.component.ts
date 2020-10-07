@@ -25,17 +25,17 @@ export class PortListComponent  {
 
     //#region variables
 
-    filteredRecords: Port[] = []
-    ngUnsubscribe = new Subject<void>()
-    records: Port[] = []
-    resolver = 'portList'
-    searchTerm = ''
-    unlisten: Unlisten
-    baseUrl = '/ports'
-    newUrl = this.baseUrl + '/new'
-    windowTitle = 'Ports'
-    localStorageSearchTerm = 'searchTermPort'
-    feature = 'portList'
+    private baseUrl = '/ports'
+    private feature = 'portList'
+    private localStorageSearchTerm = 'searchTermPort'
+    private ngUnsubscribe = new Subject<void>()
+    private records: Port[] = []
+    private resolver = 'portList'
+    private searchTerm = ''
+    private unlisten: Unlisten
+    private windowTitle = 'Ports'
+    public filteredRecords: Port[] = []
+    public newUrl = this.baseUrl + '/new'
 
     //#endregion
 

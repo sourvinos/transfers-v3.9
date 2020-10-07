@@ -27,14 +27,14 @@ export class PortFormComponent {
 
     //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/ports'
-    windowTitle = 'Port'
-    environment: boolean = environment.production
-    feature = 'portForm'
+    private feature = 'portForm'
+    private form: FormGroup
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/ports'
+    private windowTitle = 'Port'
+    public environment = environment.production
+    public input: InputTabStopDirective
 
     //#endregion
 
