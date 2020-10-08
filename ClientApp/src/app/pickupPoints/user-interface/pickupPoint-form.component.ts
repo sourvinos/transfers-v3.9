@@ -1,5 +1,5 @@
 import { ValidationService } from './../../shared/services/validation.service'
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -50,23 +50,7 @@ export class PickupPointFormComponent {
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageService: MessageSnackbarService,
-        private pickupPointService: PickupPointService,
-        private routeService: RouteService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        public dialog: MatDialog
-    ) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)

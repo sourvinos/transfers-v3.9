@@ -16,8 +16,8 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 
 @Component({
     selector: 'reset-password-form',
-    templateUrl: './reset-password.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './reset-password.component.css'],
+    templateUrl: './reset-password-form.component.html',
+    styleUrls: ['../../../assets/styles/forms.css', './reset-password-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
@@ -70,7 +70,7 @@ export class ResetPasswordFormComponent {
 
     //#endregion
 
-    //#region global methods
+    //#region public methods
 
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)

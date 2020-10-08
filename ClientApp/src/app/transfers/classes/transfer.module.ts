@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { TransferAssignDriverComponent } from '../user-interface/transfer-assign-driver.component'
+import { TransferAssignDriverComponent } from '../user-interface/assign-driver-form.component'
 import { TransferFormComponent } from '../user-interface/transfer-form.component'
 import { TransferListComponent } from '../user-interface/transfer-list.component'
 import { TransferWrapperComponent } from '../user-interface/transfer-wrapper.component'

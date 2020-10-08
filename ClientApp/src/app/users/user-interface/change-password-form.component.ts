@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject } from 'rxjs'
@@ -8,56 +8,51 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { DialogService } from 'src/app/shared/services/dialog.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { ConfirmValidParentMatcher, ValidationService } from 'src/app/shared/services/validation.service'
 import { KeyboardShortcuts, Unlisten } from '../../shared/services/keyboard-shortcuts.service'
 import { UserService } from '../classes/user.service'
-import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { ChangePassword } from '../classes/change-password'
+import { AccountService } from 'src/app/shared/services/account.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 
 @Component({
-    selector: 'edit-user-form',
-    templateUrl: './edit-user.component.html',
-    styleUrls: ['../../../assets/styles/forms.css'],
-    animations: [slideFromLeft, slideFromRight]
+    selector: 'change-password-form',
+    templateUrl: './change-password-form.component.html',
+    styleUrls: ['../../../assets/styles/forms.css', './change-password-form.component.css']
 })
 
-export class EditUserFormComponent {
+export class ChangePasswordFormComponent {
 
     //#region variables
 
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/users'
-    private windowTitle = 'User'
-    public feature = 'editUserForm'
+    private windowTitle = 'Change password'
+    public feature = 'changePasswordForm'
     public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        private userService: UserService
-    ) {
+    //#region particular variables
+
+    confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    flatForm: ChangePassword
+    hidePassword = true
+
+    //#endregion
+
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
+
     }
 
     //#region lifecycle hooks
-
     ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
@@ -65,7 +60,7 @@ export class EditUserFormComponent {
     }
 
     ngAfterViewInit(): void {
-        this.focus('userName')
+        this.focus('currentPassword')
     }
 
     ngOnDestroy(): void {
@@ -91,29 +86,6 @@ export class EditUserFormComponent {
     //#endregion
 
     //#region public methods
-
-    public onChangePassword(): void {
-        if (this.form.dirty) {
-            this.showSnackbar(this.messageSnackbarService.formIsDirty(), 'error')
-        } else {
-            this.router.navigate(['/users/changePassword/' + this.form.value.id])
-        }
-    }
-
-    public onDelete(): void {
-        this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['ok', 'abort']).subscribe(response => {
-            if (response) {
-                this.userService.delete(this.form.value.id).subscribe(() => {
-                    this.resetForm()
-                    this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
-                    this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
-                })
-            }
-        })
-    }
-
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -127,14 +99,16 @@ export class EditUserFormComponent {
     }
 
     public onSave(): void {
-        this.userService.update(this.form.value.id, this.form.value).subscribe(() => {
+        this.flattenFormFields()
+        this.userService.updatePassword(this.flatForm).subscribe(() => {
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.resetForm()
-            this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
-            this.onGoBack()
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            this.accountService.logout()
+        }, () => {
+            this.showSnackbar(this.messageSnackbarService.wrongCurrentPassword(), 'error')
         })
     }
+
 
     //#endregion
 
@@ -147,19 +121,14 @@ export class EditUserFormComponent {
                     this.buttonClickService.clickOnButton(event, 'goBack')
                 }
             },
-            'Alt.C': (event: KeyboardEvent) => {
-                if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
-                    this.buttonClickService.clickOnButton(event, 'abort')
-                } else {
-                    this.buttonClickService.clickOnButton(event, 'changePassword')
-                }
-            },
-            'Alt.D': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'delete')
-            },
             'Alt.S': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
                     this.buttonClickService.clickOnButton(event, 'save')
+                }
+            },
+            'Alt.C': (event: KeyboardEvent) => {
+                if (document.getElementsByClassName('cdk-overlay-pane').length !== 0) {
+                    this.buttonClickService.clickOnButton(event, 'abort')
                 }
             },
             'Alt.O': (event: KeyboardEvent) => {
@@ -171,6 +140,15 @@ export class EditUserFormComponent {
             priority: 1,
             inputs: true
         })
+    }
+
+    private flattenFormFields(): void {
+        this.flatForm = {
+            userId: this.form.value.userId,
+            currentPassword: this.form.value.currentPassword,
+            password: this.form.value.passwords.password,
+            confirmPassword: this.form.value.passwords.confirmPassword
+        }
     }
 
     private focus(field: string): void {
@@ -188,19 +166,19 @@ export class EditUserFormComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            id: '',
-            userName: ['', [Validators.required, Validators.maxLength(32)]],
-            displayName: ['', [Validators.required, Validators.maxLength(32)]],
-            email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
+            userId: '',
+            currentPassword: ['', [Validators.required]],
+            passwords: this.formBuilder.group({
+                password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
+                confirmPassword: ['', [Validators.required]]
+            }, { validator: ValidationService.childrenEqual })
         })
+
     }
 
-    private populateFields(result: { id: number; username: string; displayname: string; email: string }): void {
-        this.form.setValue({
-            id: result.id,
-            userName: result.username,
-            displayName: result.displayname,
-            email: result.email
+    private populateFields(result: { id: any }): void {
+        this.form.patchValue({
+            userId: result.id
         })
     }
 
@@ -219,16 +197,25 @@ export class EditUserFormComponent {
     //#endregion
 
     //#region getters
-    get username(): AbstractControl {
-        return this.form.get('userName')
+
+    get currentPassword(): AbstractControl {
+        return this.form.get('currentPassword')
     }
 
-    get displayname(): AbstractControl {
-        return this.form.get('displayName')
+    get passwords(): AbstractControl {
+        return this.form.get('passwords')
     }
 
-    get email(): AbstractControl {
-        return this.form.get('email')
+    get password(): AbstractControl {
+        return this.form.get('passwords.password')
+    }
+
+    get confirmPassword(): AbstractControl {
+        return this.form.get('passwords.confirmPassword')
+    }
+
+    get matchingPasswords(): boolean {
+        return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
     }
 
     //#endregion

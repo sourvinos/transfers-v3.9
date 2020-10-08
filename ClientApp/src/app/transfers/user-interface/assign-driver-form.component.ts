@@ -5,29 +5,31 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 
 @Component({
     selector: 'transfer-assign-driver',
-    templateUrl: './transfer-assign-driver.component.html',
-    styleUrls: ['../../../assets/styles/dialogs.css', './transfer-assign-driver.component.css']
+    templateUrl: './assign-driver-form.component.html',
+    styleUrls: ['../../../assets/styles/dialogs.css', './assign-driver-form.component.css']
 })
 
-export class TransferAssignDriverComponent  {
+export class TransferAssignDriverComponent {
 
-    //#region
+    //#region variables
 
-    drivers: Driver[] = []
-    id = ''
-    feature = 'assignDriver'
+    private feature = 'assignDriver'
+    public drivers: Driver[] = []
+    public id = ''
 
     //#endregion
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) public data: any,
-        private dialogRef: MatDialogRef<TransferAssignDriverComponent>,
-        private messageLabelService: MessageLabelService,
-    ) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<TransferAssignDriverComponent>, private messageLabelService: MessageLabelService) { }
+
+    //#region lifecycle hooks
 
     ngOnInit(): void {
         this.populateDropDowns()
     }
+
+    //#endregion
+
+    //#region public methods
 
     public onClose(): void {
         this.dialogRef.close()
@@ -37,10 +39,16 @@ export class TransferAssignDriverComponent  {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
+    //#endregion
+
+    //#region private methods
+
     private populateDropDowns(): void {
         this.data.drivers.subscribe((result: any) => {
             this.drivers = result.sort((a: { description: number; }, b: { description: number; }) => (a.description > b.description) ? 1 : -1)
         })
     }
+
+    //#endregion
 
 }

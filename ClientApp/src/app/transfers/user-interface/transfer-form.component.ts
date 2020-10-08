@@ -34,7 +34,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class TransferFormComponent  {
+export class TransferFormComponent {
 
     //#region variables
 
@@ -50,38 +50,17 @@ export class TransferFormComponent  {
 
     //#region particular variables
 
-    defaultDriver: any
     customers: any
     destinations: any
     drivers: any
     pickupPoints: any
-    pickupPointsFlat: PickupPointFlat[]
     ports: any
+    defaultDriver: any
+    pickupPointsFlat: PickupPointFlat[]
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private customerService: CustomerService,
-        private destinationService: DestinationService,
-        private dialogService: DialogService,
-        private driverService: DriverService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private interactionService: InteractionService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private pickupPointService: PickupPointService,
-        private portService: PortService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        private transferService: TransferService,
-        public dialog: MatDialog
-    ) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private customerService: CustomerService, private destinationService: DestinationService, private dialogService: DialogService, private driverService: DriverService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private portService: PortService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private transferService: TransferService, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)

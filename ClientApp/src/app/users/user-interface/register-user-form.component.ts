@@ -19,8 +19,8 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
 
 @Component({
     selector: 'register-user-form',
-    templateUrl: './register-user.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './register-user.component.css'],
+    templateUrl: './register-user-form.component.html',
+    styleUrls: ['../../../assets/styles/forms.css', './register-user-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
@@ -40,26 +40,13 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#region particular variables
 
-    flatForm: RegisterUser
-    hidePassword = true
-    confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    private flatForm: RegisterUser
+    public confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    public hidePassword = true
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService,
-        private buttonClickService: ButtonClickService,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title
-    ) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
 

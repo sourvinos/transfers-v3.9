@@ -16,7 +16,7 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
 
 @Component({
     selector: 'forgot-password-form',
-    templateUrl: './forgot-password.component.html',
+    templateUrl: './forgot-password-form.component.html',
     styleUrls: ['../../../assets/styles/forms.css'],
     animations: [slideFromLeft, slideFromRight]
 })
@@ -35,19 +35,7 @@ export class ForgotPasswordFormComponent {
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService,
-        private buttonClickService: ButtonClickService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title
-    ) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
 

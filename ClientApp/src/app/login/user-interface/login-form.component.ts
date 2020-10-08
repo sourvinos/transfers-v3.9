@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -18,46 +18,34 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 
 @Component({
     selector: 'login-form',
-    templateUrl: './login.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './login.component.css'],
+    templateUrl: './login-form.component.html',
+    styleUrls: ['../../../assets/styles/forms.css', './login-form.component.css'],
     animations: [fade, slideFromLeft, slideFromRight]
 })
 
 export class LoginFormComponent {
 
-    //#region 
+    //#region variables
 
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/'
-    windowTitle = 'Login'
-    feature = 'loginForm'
+    private feature = 'loginForm'
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/'
+    private windowTitle = 'Login'
+    public form: FormGroup
+    public input: InputTabStopDirective
 
     //#endregion
 
-    //#region 
+    //#region particular variables
 
     hidePassword = true
 
     //#endregion
 
-    constructor(
-        private accountService: AccountService,
-        private buttonClickService: ButtonClickService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        private userIdleService: UserIdleService
-    ) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
+    //#region lifecycle hooks
     ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
@@ -74,6 +62,9 @@ export class LoginFormComponent {
         this.unlisten()
     }
 
+    //#endregion
+
+    //#region public methods
     public onForgotPassword(): void {
         this.router.navigate(['/forgotPassword'])
     }
@@ -95,6 +86,10 @@ export class LoginFormComponent {
             this.showError(error)
         })
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -155,7 +150,9 @@ export class LoginFormComponent {
         })
     }
 
-    //#region Getters
+    //#endregion
+
+    //#region getters
 
     get username(): AbstractControl {
         return this.form.get('username')
