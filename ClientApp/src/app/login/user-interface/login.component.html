@@ -26,7 +26,7 @@
 
     <div @slideFromRight id="footer">
         <div id="buttons">
-            <button mat-flat-button class="transparent" id="forgotPassword" (click)="onForgotPassword()">{{ onGetLabel('forgotPasswordButton') }}</button>
+            <button data-cy="forgotPassword" mat-flat-button class=" transparent" id="forgotPassword" (click)="onForgotPassword()">{{ onGetLabel('forgotPasswordButton') }}</button>
             <button data-cy="login" mat-flat-button class="primary" id="login" [disabled]="!form.valid" (click)="onLogin()">{{ onGetLabel('loginButton') }}</button>
         </div>
     </div>

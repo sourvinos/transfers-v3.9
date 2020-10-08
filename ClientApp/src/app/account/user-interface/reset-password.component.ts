@@ -25,12 +25,12 @@ export class ResetPasswordFormComponent {
 
     //#region variables
 
-    private feature = 'resetPasswordForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/'
     private windowTitle = 'Reset password'
+    public feature = 'resetPasswordForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion

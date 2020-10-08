@@ -27,7 +27,8 @@
             <mat-form-field>
                 <input data-cy="email" type="email" matInput [placeholder]="onGetLabel('email')" formControlName="email" data-tabindex="3" id="email" [inputTabStop]="input">
                 <mat-error *ngIf="email.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="email.hasError('email')">{{ onGetHint('invalid') }}</mat-error>
+                <mat-error *ngIf="email.hasError('maxlength')">{{ onGetHint('maxLength', email.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="!email.hasError('required') && !email.hasError('maxlength') && email.hasError('email')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <div formGroupName="passwords" id="passwords">
                 <mat-form-field>
@@ -37,8 +38,8 @@
                     </button>
                     <mat-error *ngIf="password.hasError('required')">{{ onGetHint('required') }}</mat-error>
                     <mat-error *ngIf="password.hasError('containsSpace')">{{ onGetHint('spacesNotAllowed') }}</mat-error>
-                    <mat-error *ngIf="password.hasError('minlength') && !password.hasError('containsSpace')">{{ onGetHint('minLength') }}</mat-error>
-                    <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('containsSpace')">{{ onGetHint('maxLength') }}</mat-error>
+                    <mat-error *ngIf="password.hasError('minlength') && !password.hasError('containsSpace')">{{ onGetHint('minLength', password.errors.minlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="password.hasError('maxlength') && !password.hasError('containsSpace')">{{ onGetHint('maxLength', password.errors.maxlength.requiredLength) }}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <input data-cy="confirmPassword" [type]="hidePassword ? 'password' : 'text'" matInput [placeholder]="onGetLabel('confirmPassword')" formControlName="confirmPassword" data-tabindex="5" id="confirmPassword" [inputTabStop]="input" [errorStateMatcher]="confirmValidParentMatcher">

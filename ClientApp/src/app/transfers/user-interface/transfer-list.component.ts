@@ -31,12 +31,12 @@ export class TransferListComponent {
 
     //#region variables
 
-    private feature = 'transferList'
     private ngUnsubscribe = new Subject<void>()
     private records: string[] = []
     private resolver = 'transferList'
     private unlisten: Unlisten
     private windowTitle = 'Transfers'
+    public feature = 'transferList'
 
     //#endregion
 

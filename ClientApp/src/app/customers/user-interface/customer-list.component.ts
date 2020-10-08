@@ -26,16 +26,16 @@ export class CustomerListComponent {
     //#region variables
 
     private baseUrl = '/customers'
-    private feature = 'customerList'
     private localStorageSearchTerm = 'searchTermCustomer'
     private ngUnsubscribe = new Subject<void>()
     private records: Customer[] = []
     private resolver = 'customerList'
-    private searchTerm = ''
     private unlisten: Unlisten
     private windowTitle = 'Customers'
+    public feature = 'customerList'
     public filteredRecords: Customer[] = []
     public newUrl = this.baseUrl + '/new'
+    public searchTerm = ''
 
     //#endregion
 

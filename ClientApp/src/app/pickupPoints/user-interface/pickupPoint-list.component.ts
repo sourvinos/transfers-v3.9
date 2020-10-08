@@ -28,16 +28,16 @@ export class PickupPointListComponent {
     //#region variables
 
     private baseUrl = this.location.path()
-    private feature = 'pickupPointList'
     private localStorageSearchTerm = 'searchTermPickupPoint'
     private ngUnsubscribe = new Subject<void>()
     private records: PickupPoint[] = []
     private resolver = 'pickupPointList'
-    private searchTerm = ''
     private unlisten: Unlisten
     private windowTitle = 'Pickup points'
+    public feature = 'pickupPointList'
     public filteredRecords: PickupPoint[] = []
     public newUrl = this.baseUrl + '/pickupPoint/new'
+    public searchTerm = ''
 
     //#endregion
 

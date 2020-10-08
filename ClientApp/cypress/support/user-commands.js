@@ -26,7 +26,7 @@ Cypress.Commands.add('readUserRecord', () => {
 
 Cypress.Commands.add('updateUserRecord', () => {
     cy.server()
-    cy.route('PUT', Cypress.config().baseUrl + '/api/users/222', 'fixture:user.json').as('saveUser')
+    cy.route('PUT', Cypress.config().baseUrl + '/api/users/7bf9acf1-74c2-459c-8366-82f05bfa3e28', 'fixture:user.json').as('saveUser')
     cy.get('[data-cy=save]').click()
     cy.wait('@saveUser').its('status').should('eq', 200)
     cy.get('[data-cy=customSnackbar]')

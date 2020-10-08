@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core'
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -24,17 +24,17 @@ import { MessageSnackbarService } from 'src/app/shared/services/messages-snackba
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class RegisterUserFormComponent {
+export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //#region variables
 
-    private feature = 'registerUserForm'
-    private form: FormGroup
-    private ngUnsubscribe = new Subject<void>()
-    private unlisten: Unlisten
-    private url = '/users'
-    private windowTitle = 'User'
-    public input: InputTabStopDirective
+    feature = 'registerUserForm'
+    form: FormGroup
+    input: InputTabStopDirective
+    ngUnsubscribe = new Subject<void>()
+    unlisten: Unlisten
+    url = '/users'
+    windowTitle = 'User'
 
     //#endregion
 
@@ -170,7 +170,7 @@ export class RegisterUserFormComponent {
         this.form = this.formBuilder.group({
             userName: ['', [Validators.required, Validators.maxLength(32), ValidationService.containsSpace]],
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
-            email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
+            email: ['', [Validators.required, Validators.maxLength(128), Validators.email]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
                 confirmPassword: ['', [Validators.required, ValidationService.containsSpace]]

@@ -21,10 +21,10 @@ export class PickupPointWrapperComponent  {
 
     //#region 
 
-    private feature = 'pickupPointWrapper'
     private ngUnsubscribe = new Subject<void>();
     private unlisten: Unlisten
     private windowTitle = 'Pickup points'
+    public feature = 'pickupPointWrapper'
 
     //#endregion
 

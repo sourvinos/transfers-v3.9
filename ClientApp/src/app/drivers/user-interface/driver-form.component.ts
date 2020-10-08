@@ -28,13 +28,13 @@ export class DriverFormComponent {
 
     //#region variables 
 
-    private feature = 'driverForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/drivers'
     private windowTitle = 'Driver'
     public environment = environment.production
+    public feature = 'driverForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion

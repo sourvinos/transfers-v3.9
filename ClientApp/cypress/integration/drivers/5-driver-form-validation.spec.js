@@ -46,7 +46,7 @@ context('Drivers - Form validation', () => {
     })
 
     it('Form should be invalid, save button should be disabled', () => {
-        cy.elementShouldBeInvalid('form')
+        cy.formShouldBeInvalid('form')
         cy.buttonShouldBeDisabled('save')
     })
 

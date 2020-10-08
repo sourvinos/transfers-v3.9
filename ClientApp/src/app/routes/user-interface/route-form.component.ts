@@ -31,13 +31,13 @@ export class RouteFormComponent {
 
     //#region variables
 
-    private feature = 'routeForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/routes'
     private windowTitle = 'Route'
     public environment = environment.production
+    public feature = 'routeForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion

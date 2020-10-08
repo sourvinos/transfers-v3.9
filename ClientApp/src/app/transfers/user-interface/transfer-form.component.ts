@@ -38,12 +38,12 @@ export class TransferFormComponent  {
 
     //#region variables
 
-    private feature = 'transferForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfer'
     public environment = environment.production
+    public feature = 'transferForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion

@@ -37,9 +37,9 @@ Cypress.Commands.add('updateCustomerRecord', () => {
     cy.server()
     cy.route('PUT', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('saveCustomer')
     cy.get('[data-cy=save]').click()
-    cy.wait('@saveCustomer').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
-    cy.url().should('eq', Cypress.config().baseUrl + '/customers')
+    cy.wait('@saveCustomer').its('status').should('eq', 200).then(() => {
+        cy.get('[data-cy=customSnackbar]')
+    })
 })
 
 Cypress.Commands.add('deleteCustomerRecord', () => {
@@ -50,6 +50,5 @@ Cypress.Commands.add('deleteCustomerRecord', () => {
     cy.get('[data-cy=ok]').click()
     cy.wait('@deleteCustomer').its('status').should('eq', 200)
     cy.get('[data-cy=customSnackbar]')
-    cy.url().should('eq', Cypress.config().baseUrl + '/customers')
 })
 

@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
@@ -25,12 +25,12 @@ export class ForgotPasswordFormComponent {
 
     //#region variables
 
-    private feature = 'forgotPasswordForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/login'
     private windowTitle = 'Forgot password'
+    public feature = 'forgotPasswordForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion
@@ -57,11 +57,11 @@ export class ForgotPasswordFormComponent {
         this.addShortcuts()
     }
 
-    ngAfterViewInit() : void{
+    ngAfterViewInit(): void {
         this.focus('email')
     }
 
-    ngOnDestroy() : void{
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()

@@ -23,10 +23,10 @@ export class TransferWrapperComponent {
 
     //#region variables
 
-    private feature = 'transferWrapper'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfers'
+    public feature = 'transferWrapper'
 
     //#endregion
 

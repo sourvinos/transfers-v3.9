@@ -26,16 +26,16 @@ export class PortListComponent  {
     //#region variables
 
     private baseUrl = '/ports'
-    private feature = 'portList'
     private localStorageSearchTerm = 'searchTermPort'
     private ngUnsubscribe = new Subject<void>()
     private records: Port[] = []
     private resolver = 'portList'
-    private searchTerm = ''
     private unlisten: Unlisten
     private windowTitle = 'Ports'
+    public feature = 'portList'
     public filteredRecords: Port[] = []
     public newUrl = this.baseUrl + '/new'
+    public searchTerm = ''
 
     //#endregion
 

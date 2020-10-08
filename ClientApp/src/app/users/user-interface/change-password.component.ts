@@ -27,12 +27,12 @@ export class ChangePasswordFormComponent {
 
     //#region
 
-    private feature = 'changePasswordForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/users'
     private windowTitle = 'Change password'
+    public feature = 'changePasswordForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion

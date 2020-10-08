@@ -26,12 +26,12 @@ export class EditUserFormComponent {
 
     //#region variables
 
-    private feature = 'editUserForm'
-    private form: FormGroup
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/users'
     private windowTitle = 'User'
+    public feature = 'editUserForm'
+    public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion
