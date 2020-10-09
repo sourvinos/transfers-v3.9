@@ -38,11 +38,12 @@ export class TransferFormComponent {
 
     //#region variables
 
+    private feature = 'transferForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
+    private url = '../../'
     private windowTitle = 'Transfer'
     public environment = environment.production
-    public feature = 'transferForm'
     public form: FormGroup
     public input: InputTabStopDirective
 
@@ -50,13 +51,13 @@ export class TransferFormComponent {
 
     //#region particular variables
 
-    customers: any
-    destinations: any
-    drivers: any
-    pickupPoints: any
-    ports: any
-    defaultDriver: any
-    pickupPointsFlat: PickupPointFlat[]
+    private defaultDriver: any
+    private drivers: any
+    private pickupPoints: any
+    public customers: any
+    public destinations: any
+    public pickupPointsFlat: PickupPointFlat[]
+    public ports: any
 
     //#endregion
 
@@ -140,7 +141,7 @@ export class TransferFormComponent {
     }
 
     public onGoBack(): void {
-        this.router.navigate(['../../'], { relativeTo: this.activatedRoute })
+        this.router.navigate([this.url], { relativeTo: this.activatedRoute })
     }
 
     public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {

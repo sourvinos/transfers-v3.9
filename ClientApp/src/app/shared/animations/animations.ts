@@ -20,9 +20,3 @@ export const slideFromRight = trigger('slideFromRight', [
         animate('0.5s ease-out')
     ])
 ])
-
-export const slideToLeft = trigger('slideToLeft', [
-    transition(':leave', [
-        animate('0.8s', style({ transform: 'translateX(-100%)' }))
-    ])
-])

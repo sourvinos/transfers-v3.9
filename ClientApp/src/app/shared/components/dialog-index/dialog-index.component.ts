@@ -11,32 +11,31 @@ import { IndexInteractionService } from '../../services/index-interaction.servic
     styleUrls: ['../../../../assets/styles/dialogs.css']
 })
 
-export class DialogIndexComponent  {
+export class DialogIndexComponent {
 
     //#region variables
 
-    title: string
-    fields: any[]
-    headers: any[]
-    justify: any[]
-    visibility: any[]
-    widths: any[]
-    records: any[]
-    selectedRecord: any
-    ngUnsubscribe = new Subject<void>();
-    feature = 'index'
+    private ngUnsubscribe = new Subject<void>();
+    public feature = 'index'
+    public fields: any[]
+    public headers: any[]
+    public justify: any[]
+    public records: any[]
+    public selectedRecord: any
+    public title: string
+    public visibility: any[]
+    public widths: any[]
 
     //#endregion
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) public data: any, private indexInteractionService: IndexInteractionService, private messageLabelService: MessageLabelService, public dialogRef: MatDialogRef<DialogIndexComponent>) {
-        this.title = data.title
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private indexInteractionService: IndexInteractionService, private messageLabelService: MessageLabelService, public dialogRef: MatDialogRef<DialogIndexComponent>) {
         this.fields = data.fields
         this.headers = data.headers
         this.justify = data.justify
+        this.records = data.records
+        this.title = data.title
         this.visibility = data.visibility
         this.widths = data.widths
-        this.records = data.records
     }
 
     //#region lifecycle hooks
@@ -52,11 +51,15 @@ export class DialogIndexComponent  {
 
     //#endregion
 
-    //#region private methods
+    //#region public methods
 
-    onGetLabel(id: string): string {
+    public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
+
+    //#endregion
+
+    //#region private methods
 
     private subscribeToIndexinteractionService(): void {
         this.indexInteractionService.data.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {

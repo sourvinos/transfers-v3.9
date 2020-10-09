@@ -12,10 +12,6 @@ export class TransferService extends DataService {
         super(http, '/api/transfers')
     }
 
-    getTransfers(date: string): Observable<TransferViewModel> {
-        return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
-    }
-
     assignDriver(driverId: string, ids: string[]): Observable<any> {
         let params = new HttpParams().set('driverId', driverId).set('id', ids[0])
         ids.forEach((element, index) => {
@@ -24,6 +20,10 @@ export class TransferService extends DataService {
             }
         })
         return this.http.patch(this.url + '/assignDriver?', null, { params: params })
+    }
+
+    getTransfers(date: string): Observable<TransferViewModel> {
+        return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
     }
 
 }

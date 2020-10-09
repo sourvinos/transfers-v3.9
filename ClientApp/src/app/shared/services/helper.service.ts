@@ -7,7 +7,7 @@ export class HelperService {
 
     //#region variables
 
-    appName = {
+    private appName = {
         header: environment.appName.header,
         subHeader: environment.appName.subHeader
     }

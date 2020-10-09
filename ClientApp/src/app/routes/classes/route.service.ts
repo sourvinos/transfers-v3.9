@@ -12,8 +12,12 @@ export class RouteService extends DataService {
         super(httpClient, '/api/routes')
     }
 
-    getAllActive(): Observable<Route[]> {
+    //#region public methods
+
+    public getAllActive(): Observable<Route[]> {
         return this.http.get<Route[]>('/api/routes/getActive')
     }
+
+    //#endregion
 
 }

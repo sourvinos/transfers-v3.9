@@ -31,12 +31,12 @@ export class RouteFormComponent {
 
     //#region variables
 
+    private feature = 'routeForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/routes'
     private windowTitle = 'Route'
     public environment = environment.production
-    public feature = 'routeForm'
     public form: FormGroup
     public input: InputTabStopDirective
 
@@ -44,7 +44,7 @@ export class RouteFormComponent {
 
     //#region particular variables
 
-    ports: any
+    public ports: any
 
     //#endregion
 

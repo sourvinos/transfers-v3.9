@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { HelperService } from '../shared/services/helper.service'
-import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'app-home',
@@ -9,26 +8,36 @@ import { environment } from 'src/environments/environment'
     styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent  {
+export class HomeComponent {
 
-    windowTitle = 'Home'
+    //#region variables
 
-    appName = {
-        header: environment.appName.header,
-        subHeader: environment.appName.subHeader
-    }
+    private windowTitle = 'Home'
+    public appName: string
 
-    constructor(
-        private helperService: HelperService,
-        private titleService: Title
-    ) { }
+    //#endregion
+
+    constructor(private helperService: HelperService, private titleService: Title) { }
+
+    //#region lifecyle hooks
 
     ngOnInit(): void {
+        this.getAppName()
         this.setWindowTitle()
     }
+
+    //#endregion
+
+    //#region private methods
 
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
+
+    private getAppName(): void {
+        this.appName = this.helperService.getApplicationTitle()
+    }
+
+    //#endregion
 
 }

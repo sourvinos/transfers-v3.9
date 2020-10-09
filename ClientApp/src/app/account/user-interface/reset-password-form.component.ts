@@ -13,6 +13,8 @@ import { ConfirmValidParentMatcher, ValidationService } from '../../shared/servi
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { environment } from 'src/environments/environment'
+import { Title } from '@angular/platform-browser'
 
 @Component({
     selector: 'reset-password-form',
@@ -25,11 +27,12 @@ export class ResetPasswordFormComponent {
 
     //#region variables
 
+    private feature = 'resetPasswordForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/'
     private windowTitle = 'Reset password'
-    public feature = 'resetPasswordForm'
+    public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
 
@@ -37,14 +40,14 @@ export class ResetPasswordFormComponent {
 
     //#region particular variables
 
-    email: string
-    token: string
-    confirmValidParentMatcher = new ConfirmValidParentMatcher()
-    hidePassword = true
+    private email: string
+    private token: string
+    public confirmValidParentMatcher = new ConfirmValidParentMatcher()
+    public hidePassword = true
 
     //#endregion
 
-    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService) {
+    constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.queryParams.subscribe((p) => {
             this.email = p['email']
             this.token = p['token']
@@ -54,6 +57,7 @@ export class ResetPasswordFormComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
+        this.setWindowTitle()
         this.initForm()
         this.addShortcuts()
     }
@@ -119,6 +123,10 @@ export class ResetPasswordFormComponent {
                 confirmPassword: ['', [Validators.required]]
             }, { validator: ValidationService.childrenEqual })
         })
+    }
+
+    private setWindowTitle(): void {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     private showSnackbar(message: string, type: string): void {

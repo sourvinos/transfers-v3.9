@@ -16,22 +16,26 @@ import { AccountService } from 'src/app/shared/services/account.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'change-password-form',
     templateUrl: './change-password-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './change-password-form.component.css']
+    styleUrls: ['../../../assets/styles/forms.css', './change-password-form.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class ChangePasswordFormComponent {
 
     //#region variables
 
+    private feature = 'changePasswordForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/users'
     private windowTitle = 'Change password'
-    public feature = 'changePasswordForm'
+    public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
 
@@ -39,9 +43,9 @@ export class ChangePasswordFormComponent {
 
     //#region particular variables
 
-    confirmValidParentMatcher = new ConfirmValidParentMatcher();
-    flatForm: ChangePassword
-    hidePassword = true
+    private flatForm: ChangePassword
+    public confirmValidParentMatcher = new ConfirmValidParentMatcher();
+    public hidePassword = true
 
     //#endregion
 
@@ -53,6 +57,7 @@ export class ChangePasswordFormComponent {
     }
 
     //#region lifecycle hooks
+
     ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
@@ -86,6 +91,7 @@ export class ChangePasswordFormComponent {
     //#endregion
 
     //#region public methods
+
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -108,7 +114,6 @@ export class ChangePasswordFormComponent {
             this.showSnackbar(this.messageSnackbarService.wrongCurrentPassword(), 'error')
         })
     }
-
 
     //#endregion
 

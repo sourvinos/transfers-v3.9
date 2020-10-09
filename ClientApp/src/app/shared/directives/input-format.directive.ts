@@ -30,6 +30,8 @@ export class InputFormatDirective {
         }
     }
 
+    //#region private methods
+
     private formatDate(value: string): string {
         let day: number
         let month: number
@@ -67,5 +69,7 @@ export class InputFormatDirective {
         }
         return ''
     }
+
+    //#endregion
 
 }

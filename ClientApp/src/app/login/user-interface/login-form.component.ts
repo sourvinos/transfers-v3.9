@@ -32,6 +32,7 @@ export class LoginFormComponent {
     private unlisten: Unlisten
     private url = '/'
     private windowTitle = 'Login'
+    public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
 
@@ -39,7 +40,7 @@ export class LoginFormComponent {
 
     //#region particular variables
 
-    hidePassword = true
+    public hidePassword = true
 
     //#endregion
 

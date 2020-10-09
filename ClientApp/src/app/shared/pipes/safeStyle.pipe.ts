@@ -7,8 +7,12 @@ export class SafeStylePipe {
 
     constructor(private sanitizer: DomSanitizer) { }
 
-    transform(value: string): SafeStyle {
+    //#region public methods
+
+    public transform(value: string): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(value)
     }
+
+    //#endregion
 
 }

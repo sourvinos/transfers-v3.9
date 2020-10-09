@@ -9,7 +9,9 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export class TransferPdfService {
 
-    createReport(transfers: any[], drivers: any[], date: string): void {
+    //#region public methods
+
+    public createReport(transfers: any[], drivers: any[], date: string): void {
         const array = this.sort(transfers)
         drivers.forEach(driver => {
             const filteredArray = array.filter(x => x.driver === driver)
@@ -24,6 +26,10 @@ export class TransferPdfService {
             this.createPdf(dd, driver)
         })
     }
+
+    //#endregion
+
+    //#region private methods
 
     private table(data: any[], columns: any[], align: any[], driver: string): any {
         return {
@@ -216,6 +222,8 @@ export class TransferPdfService {
     private createPdf(document: any, driver: string): void {
         pdfMake.createPdf(document).download(driver + '.pdf')
     }
+
+    //#endregion
 
 }
 

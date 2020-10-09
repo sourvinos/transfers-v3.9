@@ -12,12 +12,12 @@ export class PickupPointService extends DataService {
         super(http, '/api/pickupPoints')
     }
 
-    getAllForRoute(routeId: string): Observable<PickupPoint[]> {
-        return this.http.get<PickupPoint[]>('/api/pickupPoints/routeId/' + routeId)
-    }
-
     getAllActive(): Observable<PickupPoint[]> {
         return this.http.get<PickupPoint[]>('/api/pickupPoints/getActive')
+    }
+
+    getAllForRoute(routeId: string): Observable<PickupPoint[]> {
+        return this.http.get<PickupPoint[]>('/api/pickupPoints/routeId/' + routeId)
     }
 
 }

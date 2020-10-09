@@ -32,11 +32,11 @@ export class TransferWrapperComponent {
 
     //#region particular variables
 
-    dateIn = ''
-    dateInISO = ''
-    form: FormGroup
-    records: string[] = []
-    transfersFlat: TransferFlat[] = []
+    private dateInISO = ''
+    public dateIn = ''
+    public form: FormGroup
+    public records: string[] = []
+    public transfersFlat: TransferFlat[] = []
 
     //#endregion
 

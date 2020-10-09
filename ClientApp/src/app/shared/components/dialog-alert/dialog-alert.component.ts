@@ -12,8 +12,8 @@ export class DialogAlertComponent {
 
     //#region variables
 
-    titleColor = ''
-    feature = 'dialog'
+    private feature = 'dialog'
+    public titleColor = ''
 
     //#endregion
 

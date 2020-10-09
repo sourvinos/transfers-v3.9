@@ -42,28 +42,28 @@ export class TransferListComponent {
 
     //#region particular variables
 
-    dateIn: string
-    queryResult = new TransferViewModel()
-    queryResultClone = new TransferViewModel()
-    totals: any[] = []
-    selectedDestinations: string[] = []
-    selectedCustomers: string[] = []
-    selectedRoutes: string[] = []
-    selectedDrivers: string[] = []
-    selectedPorts: string[] = []
-    transfersFlat: TransferFlat[] = []
-    checkedDestinations = true
-    checkedCustomers = true
-    checkedRoutes = true
-    checkedDrivers = true
-    checkedPorts = true
-    mustRefresh = true
-    indeterminateDestinations: boolean
-    indeterminateCustomers: boolean
-    indeterminateRoutes: boolean
-    indeterminateDrivers: boolean
-    indeterminatePorts: boolean
-    activePanel: string
+    private dateIn: string
+    private mustRefresh = true
+    private queryResultClone = new TransferViewModel()
+    public activePanel: string
+    public checkedCustomers = true
+    public checkedDestinations = true
+    public checkedDrivers = true
+    public checkedPorts = true
+    public checkedRoutes = true
+    public indeterminateCustomers: boolean
+    public indeterminateDestinations: boolean
+    public indeterminateDrivers: boolean
+    public indeterminatePorts: boolean
+    public indeterminateRoutes: boolean
+    public queryResult = new TransferViewModel()
+    public selectedCustomers: string[] = []
+    public selectedDestinations: string[] = []
+    public selectedDrivers: string[] = []
+    public selectedPorts: string[] = []
+    public selectedRoutes: string[] = []
+    public totals: any[] = []
+    public transfersFlat: TransferFlat[] = []
 
     //#endregion
 

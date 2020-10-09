@@ -85,7 +85,7 @@ button:not(:disabled) {
 }
 
 .mat-mini-fab .mat-button-wrapper {
-    padding: 0.375rem 0 !important;
+    padding-top: 0.3125rem !important;
 }
 
 .mat-button-toggle-label-content {

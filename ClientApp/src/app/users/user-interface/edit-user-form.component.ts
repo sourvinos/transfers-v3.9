@@ -14,6 +14,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'edit-user-form',
@@ -26,11 +27,12 @@ export class EditUserFormComponent {
 
     //#region variables
 
+    private feature = 'editUserForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/users'
     private windowTitle = 'User'
-    public feature = 'editUserForm'
+    public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
 

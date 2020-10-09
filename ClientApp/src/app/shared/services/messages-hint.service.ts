@@ -7,7 +7,7 @@ export class MessageHintService {
 
     //#region variables
 
-    messages: any = []
+    private messages: any = []
 
     //#endregion
 

@@ -16,6 +16,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'register-user-form',
@@ -28,13 +29,14 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     //#region variables
 
-    feature = 'registerUserForm'
-    form: FormGroup
-    input: InputTabStopDirective
-    ngUnsubscribe = new Subject<void>()
-    unlisten: Unlisten
-    url = '/users'
-    windowTitle = 'User'
+    private feature = 'registerUserForm'
+    private ngUnsubscribe = new Subject<void>()
+    private unlisten: Unlisten
+    private url = '/users'
+    private windowTitle = 'User'
+    public environment = environment.production
+    public form: FormGroup
+    public input: InputTabStopDirective
 
     //#endregion
 

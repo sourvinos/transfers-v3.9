@@ -7,15 +7,15 @@ export class InteractionService {
 
     //#region variables
 
-    _record = new Subject<string[]>()
-    _checked = new Subject<number>()
-    _refreshList = new Subject<any>()
-    _tableRow = new Subject()
+    private _record = new Subject<string[]>()
+    private _checked = new Subject<number>()
+    private _refreshList = new Subject<any>()
+    private _tableRow = new Subject()
 
-    record = this._record.asObservable()
-    checked = this._checked.asObservable()
-    refreshList = this._refreshList.asObservable()
-    tableRow = this._tableRow.asObservable()
+    public record = this._record.asObservable()
+    public checked = this._checked.asObservable()
+    public refreshList = this._refreshList.asObservable()
+    public tableRow = this._tableRow.asObservable()
 
     //#endregion
 

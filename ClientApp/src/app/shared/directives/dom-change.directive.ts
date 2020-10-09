@@ -1,10 +1,14 @@
-import { Directive, ElementRef, EventEmitter,  Output } from '@angular/core'
+import { Directive, ElementRef, EventEmitter, Output } from '@angular/core'
 
 @Directive({ selector: '[domChange]' })
 
-export class DomChangeDirective  {
+export class DomChangeDirective {
+
+    //#region variables
 
     private changes: MutationObserver
+
+    //#endregion
 
     @Output() public domChange = new EventEmitter()
 
@@ -23,7 +27,12 @@ export class DomChangeDirective  {
         })
     }
 
+    //#region lifecycle hooks
+
     ngOnDestroy(): void {
         this.changes.disconnect()
     }
+
+    //#endregion
+
 }

@@ -1,12 +1,14 @@
 import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Driver } from 'src/app/drivers/classes/driver'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
     selector: 'transfer-assign-driver',
     templateUrl: './assign-driver-form.component.html',
-    styleUrls: ['../../../assets/styles/dialogs.css', './assign-driver-form.component.css']
+    styleUrls: ['../../../assets/styles/dialogs.css', './assign-driver-form.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class TransferAssignDriverComponent {
@@ -14,6 +16,11 @@ export class TransferAssignDriverComponent {
     //#region variables
 
     private feature = 'assignDriver'
+
+    //#endregion
+
+    //#region particular variables
+
     public drivers: Driver[] = []
     public id = ''
 

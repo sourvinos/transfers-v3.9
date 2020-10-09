@@ -1,9 +1,8 @@
 import { Component, HostListener } from '@angular/core'
-import { Observable, Subject } from 'rxjs'
-import { environment } from 'src/environments/environment'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { fade } from 'src/app/shared/animations/animations'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
+import { HelperService } from 'src/app/shared/services/helper.service'
 
 @Component({
     selector: 'nav-wide',
@@ -16,21 +15,16 @@ export class NavWideComponent {
 
     //#region variables
 
-    isNotLoaded = true
-    loginStatus: Observable<boolean>
-    appName = {
-        header: environment.appName.header,
-        subHeader: environment.appName.subHeader
-    }
-    menuItems: string[] = []
-    language = ''
-    ngUnsubscribe = new Subject<void>()
-    isScreenWide: boolean
-    feature = 'menu'
+    private feature = 'menu'
+    private menuItems: string[] = []
+    public imagePathName = '/assets/images/navigation/'
+    public isScreenWide: boolean
+    public theme = 'light'
+    public appName: string
 
     //#endregion
 
-    constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
+    constructor(private accountService: AccountService, private helperService: HelperService, private messageMenuService: MessageMenuService) {
         this.isScreenWide = this.getScreenWidth()
     }
 
@@ -41,32 +35,47 @@ export class NavWideComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.getLoginStatus()
+        this.getAppName()
+        this.updateTheme()
         this.updateNavigation()
+    }
+
+    ngDoCheck(): void {
+        this.compareCurrentThemeWithLocalStorage()
     }
 
     //#endregion
 
     //#region public methods
 
-    public onLogout(): void {
-        this.accountService.logout()
-    }
-
     public onGetLabel(id: string): string {
         return this.messageMenuService.getDescription(this.feature, id)
+    }
+
+    public onLogout(): void {
+        this.accountService.logout()
     }
 
     //#endregion
 
     //#region private methods
 
-    private getLoginStatus(): void {
-        this.loginStatus = this.accountService.isLoggedIn
+    private compareCurrentThemeWithLocalStorage(): void {
+        if (localStorage.getItem('theme') != this.theme) {
+            this.theme = localStorage.getItem('theme')
+        }
     }
 
     private getScreenWidth(): boolean {
         return document.getElementById("wrapper").clientWidth > 1366
+    }
+
+    private getAppName(): void {
+        this.appName = this.helperService.getApplicationTitle()
+    }
+
+    private getTheme(): string {
+        return localStorage.getItem('theme')
     }
 
     private updateNavigation(): void {
@@ -75,6 +84,10 @@ export class NavWideComponent {
                 this.menuItems.push(element.message)
             })
         })
+    }
+
+    private updateTheme(): void {
+        this.theme = this.getTheme()
     }
 
     //#endregion

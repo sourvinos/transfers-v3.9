@@ -10,8 +10,8 @@ export class IndexInteractionService {
     private _data = new Subject<unknown>()
     private _dialogMustClose = new Subject<boolean>()
 
-    data = this._data.asObservable()
-    dialogMustClose = this._dialogMustClose.asObservable()
+    public data = this._data.asObservable()
+    public dialogMustClose = this._dialogMustClose.asObservable()
 
     //#endregion
 

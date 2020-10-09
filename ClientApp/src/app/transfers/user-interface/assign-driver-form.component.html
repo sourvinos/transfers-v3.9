@@ -1,6 +1,6 @@
 <div id="dialog">
 
-    <div id="dialog-header">
+    <div @slideFromLeft id="dialog-header">
         <h1 mat-dialog-title>{{ onGetLabel('header') }}</h1>
     </div>
 
@@ -16,7 +16,7 @@
         </mat-form-field>
     </div>
 
-    <div id="dialog-footer">
+    <div @slideFromRight id="dialog-footer">
         <mat-dialog-actions>
             <button mat-flat-button class="secondary" id="abort" tabindex="-1" (click)="onClose()">{{ onGetLabel('noButton') }}</button>
             <button data-cy="continue" mat-flat-button class="primary" id="ok" tabindex="-1" [disabled]="!id" [mat-dialog-close]="id">{{ onGetLabel('okButton') }}</button>

@@ -43,7 +43,7 @@ export class PickupPointListComponent {
 
     //#region particular variables
 
-    routeAbbreviation: string
+    public routeAbbreviation: string
 
     //#endregion
 

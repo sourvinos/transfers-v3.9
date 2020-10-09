@@ -7,7 +7,7 @@ export class MessageMenuService {
 
     //#region variables
 
-    messages: any = []
+    private messages: any = []
 
     //#endregion
 

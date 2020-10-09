@@ -12,8 +12,12 @@ export class DestinationService extends DataService {
         super(httpClient, '/api/destinations')
     }
 
-    getAllActive(): Observable<Destination[]> {
+    //#region public methods
+
+    public getAllActive(): Observable<Destination[]> {
         return this.http.get<Destination[]>('/api/destinations/getActive')
     }
+
+    //#endregion
 
 }

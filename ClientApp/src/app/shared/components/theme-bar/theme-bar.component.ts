@@ -12,9 +12,9 @@ export class ThemeBarComponent  {
 
     //#region variables
 
-    theme = 'light'
-    checked: boolean
-    feature = 'themeColor'
+    private feature = 'themeColor'
+    private theme = 'light'
+    public checked: boolean
 
     //#endregion
 

@@ -2,14 +2,12 @@ import { MessageLabelService } from './../../services/messages-label.service'
 import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { slideToLeft } from 'src/app/shared/animations/animations'
 import { MessageTableService } from '../../services/messages-table.service'
 
 @Component({
     selector: 'custom-table',
     templateUrl: './custom-table.component.html',
-    styleUrls: ['./custom-table.component.css'],
-    animations: [slideToLeft]
+    styleUrls: ['./custom-table.component.css']
 })
 
 export class CustomTableComponent {

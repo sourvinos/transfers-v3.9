@@ -7,8 +7,8 @@ export class MessageSnackbarService {
 
     //#region variables
 
-    messages: any = []
-    feature = 'snackbarMessages'
+    private messages: any = []
+    private feature = 'snackbarMessages'
 
     //#endregion
 

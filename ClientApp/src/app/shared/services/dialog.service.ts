@@ -9,7 +9,7 @@ export class DialogService {
 
     //#region variables
 
-    response: any
+    private response: any
 
     //#endregion
 

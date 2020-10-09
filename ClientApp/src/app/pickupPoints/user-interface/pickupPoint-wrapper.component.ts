@@ -17,34 +17,27 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class PickupPointWrapperComponent  {
+export class PickupPointWrapperComponent {
 
-    //#region 
+    //#region variables
 
-    private ngUnsubscribe = new Subject<void>();
+    private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Pickup points'
     public feature = 'pickupPointWrapper'
 
     //#endregion
 
-    //#region
+    //#region particular variables
 
-    id = ''
-    routes: Route[] = []
+    public id = ''
+    public routes: Route[] = []
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageLabelService: MessageLabelService,
-        private routeService: RouteService,
-        private router: Router,
-        private titleService: Title
-    ) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private routeService: RouteService, private router: Router, private titleService: Title) { }
+
+    //#region lifecycle hooks
 
     ngOnInit(): void {
         this.setWindowTitle()
@@ -58,6 +51,10 @@ export class PickupPointWrapperComponent  {
         this.unlisten()
     }
 
+    //#endregion
+
+    //#region public methods
+
     public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
@@ -65,6 +62,10 @@ export class PickupPointWrapperComponent  {
     public onLoadPickupPoints(): void {
         this.navigateToList()
     }
+
+    //#endregion
+
+    //#region private methods
 
     private addShortcuts(): void {
         this.unlisten = this.keyboardShortcutsService.listen({
@@ -92,5 +93,7 @@ export class PickupPointWrapperComponent  {
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
+
+    //#endregion
 
 }

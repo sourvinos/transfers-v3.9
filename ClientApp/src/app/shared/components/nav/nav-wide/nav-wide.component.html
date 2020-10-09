@@ -1,7 +1,7 @@
 <div *ngIf="isScreenWide" id="sidebar-wide">
     <div class="companyLogo" id="wide" [routerLink]="['/']">
-        <p>{{ appName.header }}</p>
-        <p>{{ appName.subHeader }}</p>
+        <p>{{ appName.substring(0,5) }}</p>
+        <p>{{ appName.substring(7,13) }}</p>
     </div>
     <div id="double-ring" [routerLink]="['/']">
         <double-ring></double-ring>

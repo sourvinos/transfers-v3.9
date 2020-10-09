@@ -1,7 +1,6 @@
+import { HelperService } from 'src/app/shared/services/helper.service'
 import { Component, HostListener } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { Observable } from 'rxjs'
-import { environment } from 'src/environments/environment'
 import { fade } from 'src/app/shared/animations/animations'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
 
@@ -16,21 +15,16 @@ export class NavNarrowComponent {
 
     //#region variables
 
-    isNotLoaded = true
-    loginStatus: Observable<boolean>
-    appName = {
-        header: environment.appName.header,
-        subHeader: environment.appName.subHeader
-    }
-    imagePathName = '/assets/images/navigation/'
-    theme = 'light'
-    isScreenNarrow: boolean
-    feature = 'menu'
-    menuItems: string[] = []
+    private feature = 'menu'
+    private menuItems: string[] = []
+    public imagePathName = '/assets/images/navigation/'
+    public isScreenNarrow: boolean
+    public theme = 'light'
+    public appName: string
 
     //#endregion
 
-    constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) {
+    constructor(private accountService: AccountService, private helperService: HelperService, private messageMenuService: MessageMenuService) {
         this.isScreenNarrow = this.getScreenWidth()
     }
 
@@ -41,15 +35,9 @@ export class NavNarrowComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.theme = this.getTheme()
-        this.loginStatus = this.accountService.isLoggedIn
+        this.getAppName()
+        this.updateTheme()
         this.updateNavigation()
-    }
-
-    ngAfterViewInit(): void {
-        setTimeout(() => {
-            this.isNotLoaded = false
-        }, 1000)
     }
 
     ngDoCheck(): void {
@@ -86,12 +74,20 @@ export class NavNarrowComponent {
         return localStorage.getItem('theme')
     }
 
+    private getAppName(): void {
+        this.appName = this.helperService.getApplicationTitle()
+    }
+
     private updateNavigation(): void {
         this.messageMenuService.getMessages().then((res: any[]) => {
             res.forEach(element => {
                 this.menuItems.push(element.message)
             })
         })
+    }
+
+    private updateTheme(): void {
+        this.theme = this.getTheme()
     }
 
     //#endregion

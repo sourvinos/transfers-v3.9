@@ -12,12 +12,12 @@ export class DriverService extends DataService {
         super(http, '/api/drivers')
     }
 
-    getDefaultDriver(): Observable<Driver> {
-        return this.http.get<Driver>('/api/drivers/defaultDriver')
-    }
-
     getAllActive(): Observable<Driver[]> {
         return this.http.get<Driver[]>('/api/drivers/getActive')
+    }
+
+    getDefaultDriver(): Observable<Driver> {
+        return this.http.get<Driver>('/api/drivers/defaultDriver')
     }
 
 }

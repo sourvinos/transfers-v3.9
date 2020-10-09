@@ -9,6 +9,7 @@ table {
     -webkit-border-horizontal-spacing: 0.125rem;
     -webkit-border-vertical-spacing: 0;
     transition: background-color 0.7s;
+    width: 100%;
 }
 
 th {

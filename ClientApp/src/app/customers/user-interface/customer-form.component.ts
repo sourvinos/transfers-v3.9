@@ -28,12 +28,12 @@ export class CustomerFormComponent {
 
     //#region variables
 
+    private feature = 'customerForm'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private url = '/customers'
     private windowTitle = 'Customer'
     public environment = environment.production
-    public feature = 'customerForm'
     public form: FormGroup
     public input: InputTabStopDirective
 

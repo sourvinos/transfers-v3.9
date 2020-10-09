@@ -12,12 +12,18 @@ export class PortService extends DataService {
         super(httpClient, '/api/ports')
     }
 
-    getAllActive(): Observable<Port[]> {
+    //#region public methods
+
+    public getAllActive(): Observable<Port[]> {
         return this.http.get<Port[]>('/api/ports/getActive')
     }
-    createPDF(): Observable<HttpResponse<Blob>> {
+
+    public createPDF(): Observable<HttpResponse<Blob>> {
         return this.http.get('pdf/create', { responseType: 'blob', observe: 'response' })
     }
+
+    //#endregion
+
 }
 
 

@@ -12,8 +12,12 @@ export class CustomerService extends DataService {
         super(httpClient, '/api/customers')
     }
 
-    getAllActive(): Observable<Customer[]> {
+    //#region public methods
+
+    public getAllActive(): Observable<Customer[]> {
         return this.http.get<Customer[]>('/api/customers/getActive')
     }
+
+    //#endregion
 
 }

@@ -1,4 +1,4 @@
-import {  Component, HostListener } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
 
@@ -8,14 +8,15 @@ import { AccountService } from '../shared/services/account.service'
     styleUrls: ['./app.component.css']
 })
 
-export class AppComponent  {
+export class AppComponent {
 
-    showLoadingIndication = true
+    //#region variables
 
-    constructor(
-        private accountService: AccountService,
-        private router: Router
-    ) {
+    public showLoadingIndication = true
+
+    //#endregion
+
+    constructor(private accountService: AccountService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -34,13 +35,20 @@ export class AppComponent  {
         this.accountService.logout()
     }
 
-    ngAfterViewInit():void {
+    //#region lifecycle hooks
+
+    ngAfterViewInit(): void {
         this.positionLoader()
     }
 
-    private positionLoader() :void{
+    //#endregion
+
+    //#region private methods
+    private positionLoader(): void {
         document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementsByTagName('nav')[0].clientWidth + 'px'
         document.getElementById('spinner').style.top = (document.getElementById('main').clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'
     }
+
+    //#endregion
 
 }
