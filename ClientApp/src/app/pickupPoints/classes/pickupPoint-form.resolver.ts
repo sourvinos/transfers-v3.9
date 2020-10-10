@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs'
+import { throwError } from 'rxjs'
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { PickupPointService } from './pickupPoint.service'
@@ -9,8 +9,13 @@ export class PickupPointFormResolver {
 
     constructor(private pickupPointService: PickupPointService) { }
 
-    resolve(route: ActivatedRouteSnapshot):Observable<any> {
-        return this.pickupPointService.getSingle(route.params.pickupPointId)
+    resolve(route: ActivatedRouteSnapshot): any {
+        const response = this.pickupPointService.getSingle(route.params.id)
+        response.subscribe(() => {
+            return response
+        }, () => {
+            return throwError(404)
+        })
     }
 
 }

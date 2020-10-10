@@ -26,11 +26,11 @@ context('Drivers - Form validation', () => {
     })
 
     it('Name is not valid when blank', () => {
-        cy.typeGibberish('name', 0).elementShouldBeInvalid('name')
+        cy.typeGibberish('description', 0).elementShouldBeInvalid('description')
     })
 
     it('Name is not valid when too long', () => {
-        cy.typeGibberish('name', 129).elementShouldBeInvalid('name')
+        cy.typeGibberish('description', 129).elementShouldBeInvalid('description')
     })
 
     it('Phones is not valid when too long', () => {

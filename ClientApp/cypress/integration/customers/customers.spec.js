@@ -50,7 +50,7 @@ context('Customers', () => {
         })
 
         it('Name is valid', () => {
-            cy.typeGibberish('name', 12).elementShouldBeValid('name')
+            cy.typeGibberish('description', 12).elementShouldBeValid('nadescriptionme')
         })
 
         it('Form is valid', () => {
@@ -141,11 +141,11 @@ context('Customers', () => {
         })
 
         it('Name is not valid when blank', () => {
-            cy.typeGibberish('name', 0).elementShouldBeInvalid('name')
+            cy.typeGibberish('description', 0).elementShouldBeInvalid('description')
         })
 
         it('Description is not valid when too long', () => {
-            cy.typeGibberish('name', 129).elementShouldBeInvalid('name')
+            cy.typeGibberish('description', 129).elementShouldBeInvalid('description')
         })
 
         it('Profession is not valid when too long', () => {

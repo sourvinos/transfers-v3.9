@@ -179,7 +179,7 @@ export class CustomerFormComponent {
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: 0,
-            name: ['', [Validators.required, Validators.maxLength(128)]],
+            description: ['', [Validators.required, Validators.maxLength(128)]],
             profession: ['', [Validators.maxLength(128)]],
             address: ['', [Validators.maxLength(128)]],
             phones: ['', [Validators.maxLength(128)]],
@@ -193,7 +193,7 @@ export class CustomerFormComponent {
     private populateFields(result: Customer): void {
         this.form.setValue({
             id: result.id,
-            name: result.description,
+            description: result.description,
             profession: result.profession,
             address: result.address,
             phones: result.phones,
@@ -225,8 +225,8 @@ export class CustomerFormComponent {
 
     //#region getters
 
-    get name(): AbstractControl {
-        return this.form.get('name')
+    get description(): AbstractControl {
+        return this.form.get('description')
     }
 
     get profession(): AbstractControl {

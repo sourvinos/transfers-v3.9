@@ -19,7 +19,7 @@ context('Drivers - Create', () => {
     })
 
     it('Name is valid', () => {
-        cy.typeGibberish('name', 5).elementShouldBeValid('name')
+        cy.typeGibberish('description', 5).elementShouldBeValid('description')
     })
 
     it('Phones is valid', () => {

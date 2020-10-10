@@ -65,7 +65,7 @@
                 "description": "Πελάτης"
             },
             {
-                "id": "name",
+                "id": "description",
                 "description": "Επωνυμια"
             },
             {
@@ -193,7 +193,7 @@
                 "description": "Οδηγός"
             },
             {
-                "id": "name",
+                "id": "description",
                 "description": "Ονομα"
             },
             {

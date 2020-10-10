@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { Observable } from 'rxjs'
-import { User } from 'src/app/account/classes/user'
+import { throwError } from 'rxjs'
 import { UserService } from './user.service'
 
 @Injectable({ providedIn: 'root' })
 
-export class UserFormResolver  {
+export class UserFormResolver {
 
     constructor(private userService: UserService) { }
 
-    resolve(route: ActivatedRouteSnapshot): Observable<User> {
-        return this.userService.getSingle(route.params.id)
+    resolve(route: ActivatedRouteSnapshot): any {
+        const response = this.userService.getSingle(route.params.id)
+        response.subscribe(() => {
+            return response
+        }, () => {
+            return throwError(404)
+        })
     }
 
 }

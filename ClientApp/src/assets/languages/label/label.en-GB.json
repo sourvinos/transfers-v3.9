@@ -65,7 +65,7 @@
                 "description": "Customer"
             },
             {
-                "id": "name",
+                "id": "description",
                 "description": "Name"
             },
             {
@@ -193,7 +193,7 @@
                 "description": "Driver"
             },
             {
-                "id": "name",
+                "id": "description",
                 "description": "Name"
             },
             {
