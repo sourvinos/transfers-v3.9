@@ -1,7 +1,14 @@
 <div data-cy="dialog" id="dialog">
 
     <div id="dialog-header">
-        <h1 mat-dialog-title>{{ onGetLabel(title) }}</h1>
+        <div id="navigation">
+            <button data-cy="closeDialog" id="closeDialog" mat-mini-fab (click)="onCloseDialog()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div id="title">
+            <h1 mat-dialog-title>{{ onGetLabel(title) }}</h1>
+        </div>
     </div>
 
     <div id="dialog-content" class="scrollable">

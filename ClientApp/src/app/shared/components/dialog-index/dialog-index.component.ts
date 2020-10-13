@@ -53,6 +53,10 @@ export class DialogIndexComponent {
 
     //#region public methods
 
+    public onCloseDialog(): void {
+        this.dialogRef.close()
+    }
+
     public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }

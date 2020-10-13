@@ -36,13 +36,12 @@ export class CustomTableComponent {
 
     //#endregion
 
-    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) {    }
+    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.differences = this.iterableDiffers.find(this.records).create()
-        console.log(this.widths)
     }
 
     ngAfterViewInit(): void {
@@ -206,7 +205,9 @@ export class CustomTableComponent {
             if (direction === 'up') { this.currentRow-- }
             if (direction === 'down') { ++this.currentRow }
         }
-        document.getElementById('custom-table-input-' + this.randomTableId).focus()
+        setTimeout(() => {
+            document.getElementById('custom-table-input-' + this.randomTableId).focus()
+        }, 500)
         if (this.table.rows.length > 1) {
             table.rows[this.currentRow].classList.add('selected')
         }
