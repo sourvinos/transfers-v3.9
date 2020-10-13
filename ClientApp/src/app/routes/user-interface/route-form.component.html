@@ -1,12 +1,12 @@
 <div id="form">
 
-    <div @slideFromLeft id="header">
+    <div id="header">
         <div id="navigation">
             <button data-cy="goBack" id="goBack" [routerLink]="['/routes']" mat-mini-fab>
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </div>
-        <div id="title">
+        <div @slideFromLeft id="title">
             <h1>{{ onGetLabel('header') }}</h1>
         </div>
     </div>

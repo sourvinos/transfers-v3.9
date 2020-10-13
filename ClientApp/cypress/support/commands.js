@@ -10,13 +10,13 @@ Cypress.Commands.add('logout', () => {
     cy.get('[data-cy=logout]').click()
 })
 
-Cypress.Commands.add('typeGibberish', (fieldName, length) => {
+Cypress.Commands.add('typeRandomChars', (fieldName, length) => {
     cy.get('[data-cy=' + fieldName + ']')
         .clear()
         .type(createRandomLetters(length) + '{enter}')
 })
 
-Cypress.Commands.add('typeNotGibberish', (fieldName, fieldContent) => {
+Cypress.Commands.add('typeNotRandomChars', (fieldName, fieldContent) => {
     cy.get('[data-cy=' + fieldName + ']')
         .clear()
         .type(fieldContent + '{enter}')
@@ -55,7 +55,7 @@ Cypress.Commands.add('buttonShouldBeEnabled', (button) => {
 Cypress.Commands.add('clickOnDeleteAndAbort', () => {
     cy.get('[data-cy=delete]').click()
     cy.get('.mat-dialog-container')
-    cy.get('[data-cy=abort]').click()
+    cy.get('[data-cy=dialog-abort]').click()
 })
 
 function createRandomLetters(length) {

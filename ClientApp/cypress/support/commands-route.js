@@ -9,7 +9,7 @@ Cypress.Commands.add('gotoListWithFailure', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('gotoRouteListWithSuccess', () => {
+Cypress.Commands.add('gotoRouteList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
     cy.get('[data-cy=routes]').click()
@@ -17,12 +17,12 @@ Cypress.Commands.add('gotoRouteListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/routes')
 })
 
-Cypress.Commands.add('createRouteRecord', () => {
+Cypress.Commands.add('gotoEmptyRouteForm', () => {
     cy.server()
-    cy.route('POST', Cypress.config().baseUrl + '/api/routes', 'fixture:route.json').as('saveRoute')
-    cy.get('[data-cy=save]').click()
-    cy.wait('@saveRoute').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
+    cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports.json').as('getPorts')
+    cy.get('[data-cy=new]').click()
+    cy.wait('@getPorts').its('status').should('eq', 200)
+    cy.url().should('eq', Cypress.config().baseUrl + '/routes/new')
 })
 
 Cypress.Commands.add('readRouteRecord', () => {
@@ -34,24 +34,3 @@ Cypress.Commands.add('readRouteRecord', () => {
     cy.wait('@getRoute').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/routes/19')
 })
-
-Cypress.Commands.add('updateRouteRecord', () => {
-    cy.server()
-    cy.route('PUT', Cypress.config().baseUrl + '/api/routes/19', 'fixture:route.json').as('saveRoute')
-    cy.get('[data-cy=save]').click()
-    cy.wait('@saveRoute').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
-    cy.url().should('eq', Cypress.config().baseUrl + '/routes')
-})
-
-Cypress.Commands.add('deleteRouteRecord', () => {
-    cy.server()
-    cy.route('DELETE', Cypress.config().baseUrl + '/api/routes/19', 'fixture:route.json').as('deleteRoute')
-    cy.get('[data-cy=delete]').click()
-    cy.get('.mat-dialog-container')
-    cy.get('[data-cy=ok]').click()
-    cy.wait('@deleteRoute').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
-    cy.url().should('eq', Cypress.config().baseUrl + '/routes')
-})
-

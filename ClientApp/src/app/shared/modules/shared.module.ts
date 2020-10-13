@@ -15,11 +15,11 @@ import { MaterialModule } from './material.module'
         declarations: [
                 CustomTableComponent,
                 DialogAlertComponent,
-                SnackbarComponent,
                 DialogIndexComponent,
+                SnackbarComponent,
                 InputFormatDirective,
                 InputTabStopDirective,
-                SafeStylePipe
+                SafeStylePipe,
         ],
         imports: [
                 CommonModule,

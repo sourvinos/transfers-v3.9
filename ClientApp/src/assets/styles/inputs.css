@@ -1,5 +1,4 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     display: none;
 }
 
@@ -11,8 +10,7 @@ input::selection {
     background-color: var(--color-input-text-selected);
 }
 
-input[type=text],
-input[type=email] {
+input[type=text], input[type=email] {
     caret-color: var(--color-input-text-caret);
     color: var(--color-input-not-focus);
     cursor: text !important;
@@ -73,10 +71,7 @@ input[type=number] {
     flex: auto;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active,
-input:-webkit-autofill:hover {
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
     font-size: var(--font-size-input) !important;
 }
 
@@ -116,6 +111,7 @@ input:-webkit-autofill:hover {
 .mat-form-field.mat-focused .mat-input-element {
     font-size: var(--font-size-input) !important;
     transition: background-color 5000s;
+    -moz-text-fill-color: var(--color-input-focus) !important;
     -webkit-text-fill-color: var(--color-input-focus) !important;
 }
 

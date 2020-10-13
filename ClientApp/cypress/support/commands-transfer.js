@@ -5,7 +5,7 @@ Cypress.Commands.add('gotoTransfersWrapper', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
 })
 
-Cypress.Commands.add('searchTransfersWithSuccess', () => {
+Cypress.Commands.add('searchTransfers', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-08-01', 'fixture:transfers.json').as('getTransfers')
     cy.get('[data-cy=dateIn]')
@@ -17,7 +17,7 @@ Cypress.Commands.add('searchTransfersWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01')
 })
 
-Cypress.Commands.add('seekTransferWithSuccess', () => {
+Cypress.Commands.add('seekTransfer', () => {
     cy.server()
     cy.route('GET', 'https://localhost:5001/api/transfers/587', 'fixture:transfer.json').as('getTransfer')
     cy.get('[data-cy=row]:nth-child(1)').dblclick()

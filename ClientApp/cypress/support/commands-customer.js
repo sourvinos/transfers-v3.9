@@ -9,7 +9,7 @@ Cypress.Commands.add('gotoListWithFailure', () => {
     cy.get('[data-cy=customSnackbar]')
 })
 
-Cypress.Commands.add('gotoCustomerListWithSuccess', () => {
+Cypress.Commands.add('gotoCustomerList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
     cy.get('[data-cy=customers]').click()
@@ -17,12 +17,9 @@ Cypress.Commands.add('gotoCustomerListWithSuccess', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/customers')
 })
 
-Cypress.Commands.add('createCustomerRecord', () => {
-    cy.server()
-    cy.route('POST', Cypress.config().baseUrl + '/api/customers', 'fixture:customer.json').as('saveCustomer')
-    cy.get('[data-cy=save]').click()
-    cy.wait('@saveCustomer').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
+Cypress.Commands.add('gotoEmptyCustomerForm', () => {
+    cy.get('[data-cy=new]').click()
+    cy.url().should('eq', Cypress.config().baseUrl + '/customers/new')
 })
 
 Cypress.Commands.add('readCustomerRecord', () => {
@@ -32,23 +29,3 @@ Cypress.Commands.add('readCustomerRecord', () => {
     cy.wait('@getCustomer').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/customers/222')
 })
-
-Cypress.Commands.add('updateCustomerRecord', () => {
-    cy.server()
-    cy.route('PUT', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('saveCustomer')
-    cy.get('[data-cy=save]').click()
-    cy.wait('@saveCustomer').its('status').should('eq', 200).then(() => {
-        cy.get('[data-cy=customSnackbar]')
-    })
-})
-
-Cypress.Commands.add('deleteCustomerRecord', () => {
-    cy.server()
-    cy.route('DELETE', Cypress.config().baseUrl + '/api/customers/222', 'fixture:customer.json').as('deleteCustomer')
-    cy.get('[data-cy=delete]').click()
-    cy.get('.mat-dialog-container')
-    cy.get('[data-cy=ok]').click()
-    cy.wait('@deleteCustomer').its('status').should('eq', 200)
-    cy.get('[data-cy=customSnackbar]')
-})
-

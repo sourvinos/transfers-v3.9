@@ -11,7 +11,7 @@ import { SharedModule } from './../../shared/modules/shared.module'
         TransferWrapperComponent,
         TransferListComponent,
         TransferFormComponent,
-        TransferAssignDriverComponent
+        TransferAssignDriverComponent,
     ],
     imports: [
         SharedModule,
