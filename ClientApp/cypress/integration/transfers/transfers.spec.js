@@ -236,7 +236,7 @@ context('Transfers', () => {
         it('Close the form', () => {
             cy.server()
             cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-08-01', 'fixture:transfers.json').as('getTransfers')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=goBackToSummary]').click()
             cy.wait('@getTransfers').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01')
         })
@@ -395,7 +395,7 @@ context('Transfers', () => {
         })
 
         it('Choose not to abort when the abort button is clicked', () => {
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=goBackToSummary]').click()
             cy.get('#dialog').within(() => {
                 cy.get('[data-cy=dialog-abort]').click()
             })
@@ -404,7 +404,7 @@ context('Transfers', () => {
         it('Choose to abort when the abort button is clicked', () => {
             cy.server()
             cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-08-01', 'fixture:transfers.json').as('getTransfers')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=goBackToSummary]').click()
             cy.get('#dialog').within(() => {
                 cy.get('[data-cy=dialog-ok]').click()
             })

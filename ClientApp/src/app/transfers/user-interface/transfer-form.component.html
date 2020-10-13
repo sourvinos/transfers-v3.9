@@ -1,6 +1,17 @@
 <div id="form">
 
-    <form data-cy="form"[formGroup]="form" autocomplete="off">
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBackToSummary" id="goBack" mat-mini-fab (click)="onGoBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div @slideFromLeft id="title">
+            <h1>{{ onGetLabel('header') }}</h1>
+        </div>
+    </div>
+
+    <form data-cy="form" [formGroup]="form" autocomplete="off">
         <mat-form-field>
             <input data-cy="destination" type="text" matInput [placeholder]="onGetLabel('destination')" formControlName="destinationDescription" data-tabindex="1" id="destinationDescription" [inputTabStop]="input" (change)="onLookupIndex(destinations, 'destinations', ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['destinationId', 'destinationDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
             <mat-error *ngIf="destinationDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
@@ -30,7 +41,7 @@
                 <mat-error *ngIf="!free.hasError('required') && free.errors?.min || free.errors?.max">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input data-cy="totalPersons" type="number" matInput [placeholder]="onGetLabel('totalPersons')" id="totalPersons" formControlName="totalPersons">
+                <input data-cy="totalPersons" type="number" matInput disabled [placeholder]="onGetLabel('totalPersons')" id="totalPersons" formControlName="totalPersons">
             </mat-form-field>
         </div>
         <div id="group-field">
@@ -49,9 +60,8 @@
 
     <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
 
-    <div id="footer">
+    <div @slideFromRight id="footer">
         <div id="buttons">
-            <button data-cy="abort" mat-flat-button class="abort" (click)="onGoBack()">{{ onGetLabel('abortButton') }}</button>
             <button data-cy="delete" mat-flat-button class="delete" *ngIf="form.value.id !== 0" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
             <button data-cy="save" mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ onGetLabel('saveButton') }}</button>
         </div>

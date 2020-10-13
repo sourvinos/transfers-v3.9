@@ -1,6 +1,8 @@
-[{
+[
+    {
         "feature": "loginForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Σύνδεση"
             },
@@ -28,7 +30,8 @@
     },
     {
         "feature": "customerList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Πελάτες"
             },
@@ -60,7 +63,8 @@
     },
     {
         "feature": "customerForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Πελάτης"
             },
@@ -104,7 +108,8 @@
     },
     {
         "feature": "destinationList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Προορισμοί"
             },
@@ -132,7 +137,8 @@
     },
     {
         "feature": "destinationForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Προορισμός"
             },
@@ -160,7 +166,8 @@
     },
     {
         "feature": "driverList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Οδηγοί"
             },
@@ -188,7 +195,8 @@
     },
     {
         "feature": "driverForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Οδηγός"
             },
@@ -220,7 +228,8 @@
     },
     {
         "feature": "pickupPointWrapper",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Σημεία παραλαβής"
             },
@@ -236,7 +245,8 @@
     },
     {
         "feature": "pickupPointList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Σημεία παραλαβής διαδρομής: "
             },
@@ -268,7 +278,8 @@
     },
     {
         "feature": "pickupPointForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Σημείο παραλαβής"
             },
@@ -304,7 +315,8 @@
     },
     {
         "feature": "portList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Λιμάνια"
             },
@@ -328,7 +340,8 @@
     },
     {
         "feature": "portForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Λιμάνι"
             },
@@ -352,7 +365,8 @@
     },
     {
         "feature": "routeList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Διαδρομές"
             },
@@ -380,7 +394,8 @@
     },
     {
         "feature": "routeForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Διαδρομή"
             },
@@ -412,7 +427,8 @@
     },
     {
         "feature": "transferWrapper",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Μεταφορές"
             },
@@ -432,7 +448,8 @@
     },
     {
         "feature": "userList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Χρήστες"
             },
@@ -464,7 +481,8 @@
     },
     {
         "feature": "editUserForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Χρήστης"
             },
@@ -496,7 +514,8 @@
     },
     {
         "feature": "registerUserForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Χρήστης"
             },
@@ -528,7 +547,8 @@
     },
     {
         "feature": "changePasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Αλλαγή κωδικού"
             },
@@ -552,7 +572,8 @@
     },
     {
         "feature": "transferList",
-        "labels": [{
+        "labels": [
+            {
                 "id": "summaryTab",
                 "description": "Συνοψη"
             },
@@ -652,7 +673,12 @@
     },
     {
         "feature": "transferForm",
-        "labels": [{
+        "labels": [
+            {
+                "id": "header",
+                "description": "Μεταφορά"
+            },
+            {
                 "id": "destination",
                 "description": "Προορισμος"
             },
@@ -708,7 +734,8 @@
     },
     {
         "feature": "forgotPasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Απώλεια κωδικού"
             },
@@ -724,7 +751,8 @@
     },
     {
         "feature": "resetPasswordForm",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Επαναφορά κωδικού"
             },
@@ -744,7 +772,8 @@
     },
     {
         "feature": "dialog",
-        "labels": [{
+        "labels": [
+            {
                 "id": "header",
                 "description": "Προσοχή!"
             },
@@ -760,14 +789,17 @@
     },
     {
         "feature": "themeColor",
-        "labels": [{
-            "id": "dark",
-            "description": "Σκουρο"
-        }]
+        "labels": [
+            {
+                "id": "dark",
+                "description": "Σκουρο"
+            }
+        ]
     },
     {
         "feature": "assignDriver",
-        "labels": [{
+        "labels": [
+            {
                 "id": "searchHint",
                 "description": "Επιλεξτε απο τη λιστα"
             },
@@ -791,7 +823,8 @@
     },
     {
         "feature": "index",
-        "labels": [{
+        "labels": [
+            {
                 "id": "ports",
                 "description": "Λιμάνια"
             },

@@ -4,8 +4,16 @@
     display: grid;
     grid-template-columns: minmax(400px, 1fr);
     padding: 2rem;
-    width: 500px;
+    width: 600px;
     z-index: 1;
+}
+
+#header {
+    margin: 0 1.5rem 1.5rem 0;
+}
+
+#goBack {
+    background-color: var(--color-transfer-form-modal) !important;
 }
 
 #group-field {
@@ -27,8 +35,4 @@
     display: flex;
     justify-content: flex-end;
     margin: 0 1rem;
-}
-
-#footer #buttons> :first-child {
-    margin: 0 auto 0 0 !important;
 }

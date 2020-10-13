@@ -30,7 +30,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 @Component({
     selector: 'transfer-form',
     templateUrl: './transfer-form.component.html',
-    styleUrls: ['./transfer-form.component.css'],
+    styleUrls: ['../../../assets/styles/forms.css', './transfer-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
@@ -279,7 +279,7 @@ export class TransferFormComponent {
             adults: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             kids: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             free: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
-            totalPersons: [0, { disabled: true }],
+            totalPersons: [{ value: 0, disabled: true }],
             driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
             portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }],
             remarks: ['', Validators.maxLength(128)],

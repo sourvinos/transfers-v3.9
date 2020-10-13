@@ -36,12 +36,13 @@ export class CustomTableComponent {
 
     //#endregion
 
-    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
+    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) {    }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.differences = this.iterableDiffers.find(this.records).create()
+        console.log(this.widths)
     }
 
     ngAfterViewInit(): void {

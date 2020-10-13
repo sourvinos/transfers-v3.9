@@ -13,7 +13,7 @@
         },
         {
             "id": "invalid",
-            "description": "This field seems to be invalid"
+            "description": "This field is invalid"
         },
         {
             "id": "passwordsNoMatch",

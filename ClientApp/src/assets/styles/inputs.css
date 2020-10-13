@@ -17,14 +17,14 @@ input[type=text], input[type=email] {
     font-size: var(--font-size-input) !important;
 }
 
-input[type=text]:disabled {
+input[type=number] {
+    text-align: right;
+}
+
+input:disabled {
     cursor: not-allowed !important;
     opacity: 1 !important;
     pointer-events: all !important;
-}
-
-input[type=number] {
-    text-align: right;
 }
 
 .mat-form-field {
