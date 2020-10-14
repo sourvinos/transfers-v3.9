@@ -1,8 +1,8 @@
-<button id="selector" mat-icon-button [matMenuTriggerFor]="menu">
+<button id="selector" mat-icon-button [matMenuTriggerFor]="languageMenu">
     <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
 </button>
 
-<mat-menu #menu="matMenu">
+<mat-menu #languageMenu="matMenu">
     <button mat-menu-item (click)="onSaveLanguage('el-GR')">
         <mat-icon svgIcon="el"></mat-icon>
         <span class="option">Ελληνικα</span>

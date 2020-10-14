@@ -18,6 +18,7 @@ export class AccountService {
     private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus())
     private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
+    private userId = new BehaviorSubject<string>(localStorage.getItem('userId'))
 
     //#endregion
 
@@ -120,6 +121,7 @@ export class AccountService {
     private setUserData(): void {
         this.displayName.next(localStorage.getItem('displayName'))
         this.userRole.next(localStorage.getItem('userRole'))
+        this.userId.next(localStorage.getItem('userId'))
     }
 
     //#endregion
@@ -132,6 +134,10 @@ export class AccountService {
 
     get isLoggedIn(): Observable<boolean> {
         return this.loginStatus.asObservable()
+    }
+
+    get currentUserId(): any {
+        return this.userId.asObservable()
     }
 
     //#endregion

@@ -1,4 +1,13 @@
-<div id="userGreeting" *ngIf="(loginStatus | async)">
+<div *ngIf="(loginStatus | async)" id="userGreeting" [matMenuTriggerFor]="userMenu">
     <mat-icon>account_circle</mat-icon>
     <div id="displayName">{{ displayName | async }}</div>
 </div>
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="users/{{editUserLink | async}}">
+        <span class="option">My account</span>
+    </button>
+    <button mat-menu-item>
+        <span class="option">Logout</span>
+    </button>
+</mat-menu>

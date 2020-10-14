@@ -1,6 +1,7 @@
 #userGreeting {
     align-items: center;
     color: var(--color-user-greeting);
+    cursor: pointer;
     display: flex;
     margin-right: 1rem;
     text-align: center;
@@ -18,4 +19,17 @@
     font-weight: var(--font-weight-user-greeting);
     margin-left: 0.2rem;
     margin-top: 0.0625 rem;
+}
+
+.option {
+    color: var(--color-select-items);
+    font-family: "PF Handbook Pro";
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-start;
 }

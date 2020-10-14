@@ -14,6 +14,7 @@ export class UserGreetingComponent {
 
     public displayName: Observable<string>
     public loginStatus: Observable<boolean>
+    public editUserLink: Observable<string>
 
     //#endregion
 
@@ -24,6 +25,7 @@ export class UserGreetingComponent {
     ngOnInit(): void {
         this.loginStatus = this.accountService.isLoggedIn
         this.displayName = this.accountService.currentDisplayName
+        this.editUserLink = this.accountService.currentUserId
     }
 
     //#endregion
