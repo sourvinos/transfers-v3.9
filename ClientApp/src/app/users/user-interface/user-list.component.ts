@@ -21,7 +21,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     animations: [slideFromLeft, slideFromRight]
 })
 
-export class UserListComponent  {
+export class UserListComponent {
 
     //#region variables
 
@@ -49,18 +49,7 @@ export class UserListComponent  {
 
     //#endregion
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private helperService: HelperService,
-        private interactionService: InteractionService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title
-    ) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -70,6 +59,7 @@ export class UserListComponent  {
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
+        this.updateLocalStorageWithCallerForm()
         this.onFilter(this.searchTerm)
         this.focus('searchTerm')
     }
@@ -151,6 +141,10 @@ export class UserListComponent  {
             this.updateLocalStorageWithFilter()
             this.editRecord(response['id'])
         })
+    }
+
+    private updateLocalStorageWithCallerForm(): void {
+        localStorage.setItem('editUserCaller', 'list')
     }
 
     private updateLocalStorageWithFilter(): void {

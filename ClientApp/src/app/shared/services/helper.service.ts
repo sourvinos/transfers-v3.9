@@ -28,6 +28,10 @@ export class HelperService {
         return localStorage.getItem('userId')
     }
 
+    public getEditUserCaller(): string {
+        return localStorage.getItem('editUserCaller')
+    }
+
     public setFocus(element: string): void {
         setTimeout(() => {
             const input = <HTMLInputElement>document.getElementById(element)

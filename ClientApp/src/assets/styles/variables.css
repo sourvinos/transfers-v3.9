@@ -1,7 +1,7 @@
 * {
     /* Font names */
     --font-family-button: "Ubuntu Condensed";
-    --font-family-checkbox: "Ubuntu";
+    --font-family-checkbox: "Ubuntu Condensed";
     --font-family-copyright: "Noto Sans";
     --font-family-dialog-content: "PF Handbook Pro";
     --font-family-dialog-header: "PF Handbook Pro";
@@ -16,7 +16,7 @@
     --font-family-table-header: "Noto Sans";
     --font-family-table-body: "Noto Sans";
     --font-family-totals: "PF Handbook Pro";
-    --font-family-user-greeting: "Ubuntu";
+    --font-family-user-greeting: "Ubuntu Condensed";
     /* Font weights */
     --font-weight-button: 100 !important;
     --font-weight-checkbox: 400 !important;
