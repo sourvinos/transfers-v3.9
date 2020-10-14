@@ -157,7 +157,7 @@ context('Pickup points', () => {
             cy.route('DELETE', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoint.json').as('deletePickupPoint')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@deletePickupPoint').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
@@ -217,7 +217,7 @@ context('Pickup points', () => {
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=dialog-abort]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19/pickupPoint/new')
         })
 
@@ -226,7 +226,7 @@ context('Pickup points', () => {
             cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints.json').as('getPickupPoints')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@getPickupPoints').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints/routeId/19')
         })

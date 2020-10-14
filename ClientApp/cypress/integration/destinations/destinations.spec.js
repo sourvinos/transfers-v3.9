@@ -131,7 +131,7 @@ context('Destinations', () => {
             cy.route('DELETE', Cypress.config().baseUrl + '/api/destinations/2', 'fixture:destination.json').as('deleteDestination')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@deleteDestination').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
@@ -182,7 +182,7 @@ context('Destinations', () => {
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=dialog-abort]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/destinations/new')
         })
 
@@ -191,7 +191,7 @@ context('Destinations', () => {
             cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@getDestinations').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
         })

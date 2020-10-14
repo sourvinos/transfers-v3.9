@@ -2,7 +2,7 @@
 
     <div id="dialog-header">
         <div id="navigation">
-            <button data-cy="closeDialog" id="closeDialog" mat-mini-fab (click)="onCloseDialog()">
+            <button data-cy="closeDialog" mat-mini-fab (click)="onCloseDialog()">
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </div>
@@ -16,7 +16,7 @@
     </div>
 
     <div id="dialog-footer">
-        <button id="close" mat-flat-button class="primary" [mat-dialog-close]="selectedRecord">{{ onGetLabel('selectButton') }}</button>
+        <button mat-flat-button class="primary" [mat-dialog-close]="selectedRecord">{{ onGetLabel('selectButton') }}</button>
     </div>
 
 </div>

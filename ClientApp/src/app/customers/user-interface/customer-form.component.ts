@@ -113,14 +113,14 @@ export class CustomerFormComponent {
             this.customerService.add(this.form.value).subscribe(() => {
                 this.initForm()
                 this.focus('description')
-                this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info') // Tested
+                this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
                 this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.resetForm()
-                this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info') // Tested
+                this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.onGoBack()
             }, errorCode => {
                 this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')

@@ -127,7 +127,7 @@ context('Ports', () => {
             cy.route('DELETE', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('deletePort')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@deletePort').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
@@ -171,7 +171,7 @@ context('Ports', () => {
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=dialog-abort]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/ports/new')
         })
 
@@ -180,7 +180,7 @@ context('Ports', () => {
             cy.route('GET', Cypress.config().baseUrl + '/api/ports', 'fixture:ports.json').as('getPorts')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@getPorts').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/ports')
         })

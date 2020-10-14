@@ -127,7 +127,7 @@ context('Drivers', () => {
             cy.route('DELETE', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('deleteDriver')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@deleteDriver').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
@@ -175,7 +175,7 @@ context('Drivers', () => {
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=dialog-abort]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/drivers/new')
         })
 
@@ -184,7 +184,7 @@ context('Drivers', () => {
             cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@getDrivers').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
         })

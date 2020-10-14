@@ -134,7 +134,7 @@ export class CustomerListComponent {
             this.records = customerListResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error') // Tested
+            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
         }
     }
 
