@@ -114,7 +114,7 @@ export class PortListComponent {
     }
 
     private getFilterFromLocalStorage(): void {
-        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm) != null ? localStorage.getItem(this.localStorageSearchTerm) : ''
+        this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
     private loadRecords(): void {
@@ -143,7 +143,7 @@ export class PortListComponent {
     }
 
     private updateLocalStorageWithFilter(): void {
-        localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
+        this.helperService.saveItem(this.localStorageSearchTerm, this.searchTerm)        
     }
 
     //#endregion

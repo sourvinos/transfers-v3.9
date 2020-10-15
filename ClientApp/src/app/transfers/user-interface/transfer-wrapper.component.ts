@@ -123,7 +123,7 @@ export class TransferWrapperComponent {
     }
 
     private getLocale(): void {
-        this.dateAdapter.setLocale(localStorage.getItem("language"))
+        this.dateAdapter.setLocale(this.helperService.readItem("language"))
     }
 
     private initForm(): void {
@@ -145,7 +145,7 @@ export class TransferWrapperComponent {
     }
 
     private updateLocalStorageWithDate(): void {
-        localStorage.setItem('date', this.dateInISO)
+        this.helperService.saveItem('date', this.dateInISO)
     }
 
     //#endregion

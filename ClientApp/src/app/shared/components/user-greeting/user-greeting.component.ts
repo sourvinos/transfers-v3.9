@@ -3,6 +3,7 @@ import { AccountService } from '../../services/account.service'
 import { Observable } from 'rxjs'
 import { Router } from '@angular/router'
 import { MessageLabelService } from '../../services/messages-label.service'
+import { HelperService } from '../../services/helper.service'
 
 @Component({
     selector: 'user-greeting',
@@ -22,7 +23,7 @@ export class UserGreetingComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private messageLabelService: MessageLabelService, private router: Router) { }
+    constructor(private accountService: AccountService, private helperService: HelperService, private messageLabelService: MessageLabelService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -46,7 +47,7 @@ export class UserGreetingComponent {
             console.log('ID', result)
             a = result
         })
-        localStorage.setItem('editUserCaller', 'userGreeting')
+        this.helperService.saveItem('editUserCaller', 'userGreeting')
         this.router.navigate([this.baseUrl, a])
     }
 

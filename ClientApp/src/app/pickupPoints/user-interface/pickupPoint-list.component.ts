@@ -125,7 +125,7 @@ export class PickupPointListComponent {
     }
 
     private getFilterFromLocalStorage(): void {
-        this.searchTerm = localStorage.getItem(this.localStorageSearchTerm) != null ? localStorage.getItem(this.localStorageSearchTerm) : ''
+        this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
     private getRouteDescription(routeId: number): void {
@@ -160,7 +160,7 @@ export class PickupPointListComponent {
     }
 
     private updateLocalStorageWithFilter(): void {
-        localStorage.setItem(this.localStorageSearchTerm, this.searchTerm)
+        this.helperService.saveItem(this.localStorageSearchTerm, this.searchTerm)
     }
 
     //#endregion

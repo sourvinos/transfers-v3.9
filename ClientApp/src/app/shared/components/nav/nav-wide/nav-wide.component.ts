@@ -61,8 +61,8 @@ export class NavWideComponent {
     //#region private methods
 
     private compareCurrentThemeWithLocalStorage(): void {
-        if (localStorage.getItem('theme') != this.theme) {
-            this.theme = localStorage.getItem('theme')
+        if (this.helperService.readItem('theme') != this.theme) {
+            this.theme = this.helperService.readItem('theme')
         }
     }
 
@@ -75,7 +75,7 @@ export class NavWideComponent {
     }
 
     private getTheme(): string {
-        return localStorage.getItem('theme')
+        return this.helperService.readItem('theme')
     }
 
     private updateNavigation(): void {

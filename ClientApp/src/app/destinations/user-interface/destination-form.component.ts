@@ -182,7 +182,7 @@ export class DestinationFormComponent {
             abbreviation: ['', [Validators.required, Validators.maxLength(5)]],
             description: ['', [Validators.required, Validators.maxLength(128)]],
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -198,7 +198,7 @@ export class DestinationFormComponent {
             abbreviation: result.abbreviation,
             description: result.description,
             isActive: result.isActive,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

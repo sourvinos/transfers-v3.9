@@ -186,7 +186,7 @@ export class CustomerFormComponent {
             personInCharge: ['', [Validators.maxLength(128)]],
             email: ['', [Validators.email, Validators.maxLength(128)]],
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -200,7 +200,7 @@ export class CustomerFormComponent {
             personInCharge: result.personInCharge,
             email: result.email,
             isActive: result.isActive,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

@@ -287,7 +287,7 @@ export class TransferListComponent {
     }
 
     private getDriversFromLocalStorage(): any {
-        const localStorageData = JSON.parse(localStorage.getItem('transfers'))
+        const localStorageData = JSON.parse(this.helperService.readItem('transfers'))
         return JSON.parse(localStorageData.drivers)
     }
 
@@ -304,7 +304,7 @@ export class TransferListComponent {
     }
 
     private isDataInLocalStorage(): string {
-        return localStorage.getItem('transfers')
+        return this.helperService.readItem('transfers')
     }
 
     private isAnyRowSelected(): boolean {
@@ -312,7 +312,7 @@ export class TransferListComponent {
             this.showSnackbar(this.messageSnackbarService.noRecordsSelected(), 'error')
             return false
         }
-        this.records = JSON.parse(localStorage.getItem('selectedIds'))
+        this.records = JSON.parse(this.helperService.readItem('selectedIds'))
         return true
     }
 
@@ -326,7 +326,7 @@ export class TransferListComponent {
     }
 
     private navigateToList(): void {
-        this.router.navigate(['transfers/date/', this.helperService.getDateFromLocalStorage()])
+        this.router.navigate(['transfers/date/', this.helperService.readItem('date')])
     }
 
     private removeSelectedIdsFromLocalStorage(): void {
@@ -341,7 +341,7 @@ export class TransferListComponent {
             'drivers': JSON.stringify(this.selectedDrivers),
             'ports': JSON.stringify(this.selectedPorts),
         }
-        localStorage.setItem('transfers', JSON.stringify(summaryItems))
+        this.helperService.saveItem('transfers', JSON.stringify(summaryItems))
         localStorage.removeItem('selectedIds')
     }
 
@@ -409,7 +409,7 @@ export class TransferListComponent {
     }
 
     private updateSelectedArraysFromLocalStorage(): void {
-        const localStorageData = JSON.parse(localStorage.getItem('transfers'))
+        const localStorageData = JSON.parse(this.helperService.readItem('transfers'))
         this.selectedDestinations = JSON.parse(localStorageData.destinations)
         this.selectedCustomers = JSON.parse(localStorageData.customers)
         this.selectedRoutes = JSON.parse(localStorageData.routes)

@@ -283,7 +283,7 @@ export class TransferFormComponent {
             driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
             portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }],
             remarks: ['', Validators.maxLength(128)],
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -332,14 +332,14 @@ export class TransferFormComponent {
             free: result.free,
             totalPersons: result.totalPersons,
             remarks: result.remarks,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
     private populateFormWithDefaultValues(driver: Driver): void {
         this.form.patchValue({
             id: 0,
-            dateIn: this.helperService.getDateFromLocalStorage(),
+            dateIn: this.helperService.readItem('date'),
             destinationId: 0, destinationDescription: '',
             customerId: 0, customerDescription: '',
             pickupPointId: 0, pickupPointDescription: '',
@@ -350,7 +350,7 @@ export class TransferFormComponent {
             driverId: driver.id, driverDescription: driver.description,
             portId: 0, portDescription: '',
             remarks: '',
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

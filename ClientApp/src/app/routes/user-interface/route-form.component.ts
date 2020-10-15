@@ -213,7 +213,7 @@ export class RouteFormComponent {
             description: ['', [Validators.required, Validators.maxLength(128)]],
             portId: ['', Validators.required], portDescription: ['', Validators.required],
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -253,7 +253,7 @@ export class RouteFormComponent {
             description: result.description,
             portId: result.port.id, portDescription: result.port.description,
             isActive: result.isActive,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

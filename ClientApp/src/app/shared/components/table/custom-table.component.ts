@@ -3,6 +3,7 @@ import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers } fr
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { MessageTableService } from '../../services/messages-table.service'
+import { HelperService } from '../../services/helper.service'
 
 @Component({
     selector: 'custom-table',
@@ -36,7 +37,7 @@ export class CustomTableComponent {
 
     //#endregion
 
-    constructor(private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
+    constructor(private helperService: HelperService, private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
 
     //#region lifecycle hooks
 
@@ -95,7 +96,7 @@ export class CustomTableComponent {
                     element.classList.remove('checked')
                 }
             })
-            localStorage.setItem('selectedIds', JSON.stringify(this.checkedIds))
+            this.helperService.saveItem('selectedIds', JSON.stringify(this.checkedIds))
             this.interactionService.setCheckedTotalPersons(this.totalPersons)
         } else {
             this.records.sort(this.compareValues(columnName, sortOrder))
@@ -141,7 +142,7 @@ export class CustomTableComponent {
             this.checkedIds.push(element.childNodes[1].innerText)
             this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
         })
-        localStorage.setItem('selectedIds', JSON.stringify(this.checkedIds))
+        this.helperService.saveItem('selectedIds',  JSON.stringify(this.checkedIds))
         this.interactionService.setCheckedTotalPersons(this.totalPersons)
     }
 

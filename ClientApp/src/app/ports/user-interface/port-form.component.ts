@@ -178,7 +178,7 @@ export class PortFormComponent {
             id: 0,
             description: ['', [Validators.required, Validators.maxLength(128)]],
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -193,7 +193,7 @@ export class PortFormComponent {
             id: result.id,
             description: result.description,
             isActive: result.isActive,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

@@ -111,7 +111,7 @@ export class EditUserFormComponent {
     }
 
     public onGoBack(): void {
-        this.router.navigate(this.helperService.getEditUserCaller() == 'list' ? [this.url] : ['/'])
+        this.router.navigate(this.helperService.readItem('editUserCaller') == 'list' ? [this.url] : ['/'])
     }
 
     public onSave(): void {

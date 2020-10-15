@@ -1,6 +1,7 @@
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { Component, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
+import { HelperService } from '../../services/helper.service'
 
 @Component({
     selector: 'theme-bar',
@@ -8,7 +9,7 @@ import { DOCUMENT } from '@angular/common'
     styleUrls: ['./theme-bar.component.css']
 })
 
-export class ThemeBarComponent  {
+export class ThemeBarComponent {
 
     //#region variables
 
@@ -18,7 +19,7 @@ export class ThemeBarComponent  {
 
     //#endregion
 
-    constructor(@Inject(DOCUMENT) private document: Document, private messageLabelService: MessageLabelService) { }
+    constructor(@Inject(DOCUMENT) private document: Document, private helperService: HelperService, private messageLabelService: MessageLabelService) { }
 
     //#region lifecycle hooks
 
@@ -63,11 +64,11 @@ export class ThemeBarComponent  {
     }
 
     private updateLocalStorage(): void {
-        localStorage.setItem('theme', this.theme)
+        this.helperService.saveItem('theme', this.theme)
     }
 
     private updateVariables(): void {
-        this.theme = localStorage.getItem('theme') || 'light'
+        this.theme = this.helperService.readItem('theme') || 'light'
         this.checked = this.theme == 'light' ? false : true
     }
 

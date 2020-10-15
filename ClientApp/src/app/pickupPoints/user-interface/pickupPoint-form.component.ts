@@ -221,7 +221,7 @@ export class PickupPointFormComponent {
             exactPoint: ['', [Validators.required, Validators.maxLength(128)]],
             time: ['', [Validators.required, ValidationService.isTime]],
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -272,7 +272,7 @@ export class PickupPointFormComponent {
             exactPoint: result.exactPoint,
             time: result.time,
             isActive: result.isActive,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 

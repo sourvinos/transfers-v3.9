@@ -191,7 +191,7 @@ export class DriverFormComponent {
             phones: ['', [Validators.maxLength(128)]],
             isDefault: false,
             isActive: true,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
@@ -208,7 +208,7 @@ export class DriverFormComponent {
             phones: result.phones,
             isActive: result.isActive,
             isDefault: result.isDefault,
-            userId: this.helperService.getUserIdFromLocalStorage()
+            userId: this.helperService.readItem('userId')
         })
     }
 
