@@ -36,7 +36,7 @@
 .mat-button-toggle {
     border: 0 !important;
     background-color: var(--color-sidebar);
-    padding: 0.5rem;
+    padding: 0.3125rem;
 }
 
 .mat-button-toggle:last-child {

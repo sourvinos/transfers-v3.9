@@ -885,5 +885,18 @@
                 "description": "(DE) Select"
             }
         ]
+    },
+    {
+        "feature": "userMenu",
+        "labels": [
+            {
+                "id": "myAccount",
+                "description": "(DE) My account"
+            },
+            {
+                "id": "logout",
+                "description": "(DE) Logout"
+            }
+        ]
     }
 ]

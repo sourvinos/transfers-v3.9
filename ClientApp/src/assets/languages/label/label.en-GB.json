@@ -885,5 +885,18 @@
                 "description": "Select"
             }
         ]
+    },
+    {
+        "feature": "userMenu",
+        "labels": [
+            {
+                "id": "myAccount",
+                "description": "My account"
+            },
+            {
+                "id": "logout",
+                "description": "Logout"
+            }
+        ]
     }
 ]

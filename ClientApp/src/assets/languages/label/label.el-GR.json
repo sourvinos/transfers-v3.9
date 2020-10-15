@@ -885,5 +885,18 @@
                 "description": "Επιλογη"
             }
         ]
+    },
+    {
+        "feature": "userMenu",
+        "labels": [
+            {
+                "id": "myAccount",
+                "description": "Ο λογαριασμος μου"
+            },
+            {
+                "id": "logout",
+                "description": "Εξοδος"
+            }
+        ]
     }
 ]

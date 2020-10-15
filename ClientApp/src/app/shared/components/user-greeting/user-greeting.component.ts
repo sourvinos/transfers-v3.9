@@ -2,8 +2,7 @@ import { Component } from '@angular/core'
 import { AccountService } from '../../services/account.service'
 import { Observable } from 'rxjs'
 import { Router } from '@angular/router'
-import { MatIconRegistry } from '@angular/material/icon'
-import { DomSanitizer } from '@angular/platform-browser'
+import { MessageLabelService } from '../../services/messages-label.service'
 
 @Component({
     selector: 'user-greeting',
@@ -15,6 +14,7 @@ export class UserGreetingComponent {
 
     //#region variables
 
+    private feature = 'userMenu'
     private baseUrl = '/users'
     public displayName: Observable<string>
     public editUserLink: Observable<string>
@@ -22,10 +22,7 @@ export class UserGreetingComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private router: Router, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-        this.matIconRegistry
-            .addSvgIcon('logout', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/navigation/logout.svg'))
-    }
+    constructor(private accountService: AccountService, private messageLabelService: MessageLabelService, private router: Router) { }
 
     //#region lifecycle hooks
 
@@ -39,7 +36,11 @@ export class UserGreetingComponent {
 
     //#region public methods
 
-    public onGotoEditUser(): void {
+    public onGetLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public onEditUser(): void {
         let a = ''
         this.accountService.currentUserId.subscribe((result: any) => {
             console.log('ID', result)

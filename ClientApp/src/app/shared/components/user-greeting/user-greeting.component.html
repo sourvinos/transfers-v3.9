@@ -4,10 +4,10 @@
 </div>
 
 <mat-menu #userMenu="matMenu">
-    <button mat-menu-item (click)="onGotoEditUser()">
-        <span class="option">My account</span>
+    <button mat-menu-item (click)="onEditUser()">
+        <span class="option">{{ onGetLabel('myAccount') }}</span>
     </button>
     <button mat-menu-item (click)="onLogout()">
-        <span class="option">Logout</span>
+        <span class="option">{{ onGetLabel('logout') }}</span>
     </button>
 </mat-menu>

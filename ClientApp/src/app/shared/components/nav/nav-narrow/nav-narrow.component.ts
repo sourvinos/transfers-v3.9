@@ -17,10 +17,10 @@ export class NavNarrowComponent {
 
     private feature = 'menu'
     private menuItems: string[] = []
+    public appName: string
     public imagePathName = '/assets/images/navigation/'
     public isScreenNarrow: boolean
     public theme = 'light'
-    public appName: string
 
     //#endregion
 
