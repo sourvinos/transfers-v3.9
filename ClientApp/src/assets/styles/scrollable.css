@@ -19,5 +19,5 @@
 
 .scrollable::-webkit-scrollbar-thumb {
     background-color: var(--color-scrollbar);
-    min-height: 6.25rem;
+    min-height: 6rem;
 }

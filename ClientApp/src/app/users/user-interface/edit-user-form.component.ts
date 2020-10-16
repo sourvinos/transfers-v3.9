@@ -15,6 +15,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { environment } from 'src/environments/environment'
+import { User } from 'src/app/account/classes/user'
 
 @Component({
     selector: 'edit-user-form',
@@ -180,15 +181,18 @@ export class EditUserFormComponent {
             userName: ['', [Validators.required, Validators.maxLength(32)]],
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
             email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
+            isAdmin: false
         })
     }
 
-    private populateFields(result: { id: number; username: string; displayname: string; email: string }): void {
+    private populateFields(result: User): void {
+        console.log(result)
         this.form.setValue({
             id: result.id,
             userName: result.username,
-            displayName: result.displayname,
-            email: result.email
+            displayName: result.displayName,
+            email: result.email,
+            isAdmin: result.isAdmin
         })
     }
 
@@ -207,6 +211,7 @@ export class EditUserFormComponent {
     //#endregion
 
     //#region getters
+
     get username(): AbstractControl {
         return this.form.get('userName')
     }
@@ -217,6 +222,10 @@ export class EditUserFormComponent {
 
     get email(): AbstractControl {
         return this.form.get('email')
+    }
+
+    get isAdmin(): AbstractControl {
+        return this.form.get('isAdmin')
     }
 
     //#endregion

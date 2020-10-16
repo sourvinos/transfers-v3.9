@@ -6,6 +6,7 @@ namespace Transfers {
         public string Username { get; set; }
         public string Displayname { get; set; }
         public string Email { get; set; }
+        public bool IsAdmin { get; set; }
 
     }
 

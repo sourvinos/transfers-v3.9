@@ -1,7 +1,7 @@
 @media only screen and (max-width: 1366px) {
     * {
         /* Font sizes */
-        --font-size-button: 1.25rem;
+        --font-size-button: 1.1rem;
         --font-size-checkbox: 1rem;
         --font-size-copyright: 0.5rem;
         --font-size-datepicker-header-month: 2rem;
@@ -23,7 +23,7 @@
         --font-size-sum: 1.5rem;
         --font-size-summary-block-header: 1.4rem;
         --font-size-summary-block-item: 0.85rem;
-        --font-size-table-header: 1.2rem;
+        --font-size-table-header: 1.1rem;
         --font-size-table-row: 0.85rem;
         --font-size-user-greeting: 0.9rem;
     }
