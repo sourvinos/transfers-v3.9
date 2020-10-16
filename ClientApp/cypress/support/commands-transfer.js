@@ -14,7 +14,9 @@ Cypress.Commands.add('searchTransfers', () => {
         .should('be', '01/08/2020')
     cy.get('[data-cy=search]').click()
     cy.wait('@getTransfers').its('status').should('eq', 200)
-    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01')
+    cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01').then(() => {
+        cy.expect(localStorage.getItem('date')).to.eq('2020-08-01')
+    })
 })
 
 Cypress.Commands.add('seekTransfer', () => {

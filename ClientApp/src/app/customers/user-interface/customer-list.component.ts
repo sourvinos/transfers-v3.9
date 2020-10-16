@@ -54,7 +54,6 @@ export class CustomerListComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        document.body.style.cursor = "wait"
         this.setWindowTitle()
         this.getFilterFromLocalStorage()
         this.loadRecords()
@@ -69,10 +68,6 @@ export class CustomerListComponent {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
-    }
-
-    ngAfterViewInit(): void {
-        document.body.style.cursor = "initial"
     }
 
     //#endregion

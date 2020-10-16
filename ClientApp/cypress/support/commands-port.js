@@ -1,14 +1,5 @@
 import 'cypress-localstorage-commands'
 
-Cypress.Commands.add('gotoListWithFailure', () => {
-    cy.server()
-    cy.route({ method: 'GET', url: Cypress.config().baseUrl + '/api/ports', status: 404, response: { error: 'ERROR!' } }).as('getPorts')
-    cy.get('[data-cy=ports]').click()
-    cy.wait('@getPorts').its('status').should('eq', 404)
-    cy.url().should('eq', Cypress.config().baseUrl + '/' + 'ports')
-    cy.get('[data-cy=customSnackbar]')
-})
-
 Cypress.Commands.add('gotoPortList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/ports', 'fixture:ports.json').as('getPorts')
@@ -25,7 +16,14 @@ Cypress.Commands.add('gotoEmptyPortForm', () => {
 Cypress.Commands.add('readPortRecord', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('getPort')
-    cy.get('[data-cy=row]').contains('CORFU PORT').dblclick({ force: true })
+    cy.wait(500)
+    cy.get('[data-cy=searchTerm]').clear().type('corfu').should('have.value', 'corfu')
+    cy.get('.button-row-menu').eq(0).click({ force: true })
+    cy.get('[data-cy=editButton]').first().click()
     cy.wait('@getPort').its('status').should('eq', 200)
-    cy.url().should('eq', Cypress.config().baseUrl + '/ports/1')
+    cy.url().should('eq', Cypress.config().baseUrl + '/ports/1').then(() => {
+        cy.expect(localStorage.getItem('searchTermPort')).to.eq('corfu')
+        cy.clearLocalStorage('searchTermPort')
+    })
+
 })

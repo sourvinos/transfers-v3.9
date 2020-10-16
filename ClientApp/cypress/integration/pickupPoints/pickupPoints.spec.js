@@ -35,6 +35,7 @@ context('Pickup points', () => {
         })
 
         it('Filter the table by typing in the search box', () => {
+            cy.wait(500)
             cy.get('[data-cy=searchTerm]').type('mare')
             cy.get('[data-cy=row]').should(rows => {
                 expect(rows).to.have.length(1)

@@ -18,6 +18,7 @@ context('Users', () => {
         })
 
         it('Filter the table by typing in the search box', () => {
+            cy.wait(500)
             cy.get('[data-cy=searchTerm]').type('js')
             cy.get('[data-cy=row]').should(rows => {
                 expect(rows).to.have.length(1)
@@ -139,7 +140,7 @@ context('Users', () => {
             cy.route('DELETE', Cypress.config().baseUrl + '/api/users/7bf9acf1-74c2-459c-8366-82f05bfa3e28', 'fixture:user.json').as('deleteRoute')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@deleteRoute').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
@@ -227,7 +228,7 @@ context('Users', () => {
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=abort]').click()
+            cy.get('[data-cy=dialog-abort]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/users/new')
         })
 
@@ -236,7 +237,7 @@ context('Users', () => {
             cy.route('GET', Cypress.config().baseUrl + '/api/users', 'fixture:users.json').as('getUsers')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
-            cy.get('[data-cy=ok]').click()
+            cy.get('[data-cy=dialog-ok]').click()
             cy.wait('@getUsers').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/users')
         })

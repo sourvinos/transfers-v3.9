@@ -18,6 +18,7 @@ context('Ports', () => {
         })
 
         it('Filter the table by typing in the search box', () => {
+            cy.wait(500)
             cy.get('[data-cy=searchTerm]').type('corfu')
             cy.get('[data-cy=row]').should(rows => {
                 expect(rows).to.have.length(1)

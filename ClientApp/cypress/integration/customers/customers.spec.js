@@ -6,7 +6,7 @@ context('Customers', () => {
         cy.gotoCustomerList()
     })
 
-    describe.skip('List', () => {
+    describe('List', () => {
 
         beforeEach(() => {
             cy.restoreLocalStorage()
@@ -18,7 +18,8 @@ context('Customers', () => {
         })
 
         it('Filter the table by typing in the search box', () => {
-            cy.get('[data-cy=searchTerm]').type('travel')
+            cy.wait(500)
+            cy.get('[data-cy=searchTerm]').type('travel').should('have.value', 'travel')
             cy.get('[data-cy=row]').should(rows => {
                 expect(rows).to.have.length(55)
             })
@@ -38,7 +39,7 @@ context('Customers', () => {
 
     })
 
-    describe.skip('Create', () => {
+    describe('Create', () => {
 
         beforeEach(() => {
             cy.restoreLocalStorage()
@@ -78,7 +79,7 @@ context('Customers', () => {
 
     })
 
-    describe.skip('Update', () => {
+    describe('Update', () => {
 
         beforeEach(() => {
             cy.restoreLocalStorage()
@@ -106,7 +107,7 @@ context('Customers', () => {
 
     })
 
-    describe.skip('Delete', () => {
+    describe('Delete', () => {
 
         beforeEach(() => {
             cy.restoreLocalStorage()
@@ -140,7 +141,7 @@ context('Customers', () => {
 
     })
 
-    describe.skip('Validate form', () => {
+    describe('Validate form', () => {
 
         it('Goto an empty form', () => {
             cy.gotoEmptyCustomerForm()
