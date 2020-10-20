@@ -161,6 +161,7 @@ context('Users', () => {
 
         it('Correct number of fields', () => {
             cy.get('[data-cy=form]').find('.mat-form-field').should('have.length', 5)
+            cy.get('[data-cy=form]').find('.mat-slide-toggle').should('have.length', 1)
         })
 
         it('Username is blank', () => {
@@ -224,6 +225,10 @@ context('Users', () => {
             cy.typeNotRandomChars('password', 'abc').elementShouldBeInvalid('password')
             cy.typeNotRandomChars('confirmPassword', 'abc').elementShouldBeInvalid('confirmPassword')
         })
+
+        it('Mark user as admin', () => {
+            cy.get('[data-cy=isAdmin]').click()
+          })
 
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()

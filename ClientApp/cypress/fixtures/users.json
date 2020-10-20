@@ -3,30 +3,35 @@
         "id": "7bf9acf1-74c2-459c-8366-82f05bfa3e28",
         "username": "george",
         "displayname": "George",
-        "email": "george@outlook.com"
+        "email": "george@outlook.com",
+        "isAdmin": true
     },
     {
         "id": "554e48ac-c333-4665-9f2e-a7858ea884d2",
         "username": "js",
         "displayname": "John",
-        "email": "john-sourvinos@hotmail.com"
+        "email": "john-sourvinos@hotmail.com",
+        "isAdmin": true
     },
     {
         "id": "25439d25-4e36-409d-b9d3-9fb41c289541",
         "username": "maria",
         "displayname": "Maria",
-        "email": "maria@hotmail.com"
+        "email": "maria@hotmail.com",
+        "isAdmin": true
     },
     {
         "id": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207",
         "username": "sourvinos",
         "displayname": "John",
-        "email": "johnsourvinos@hotmail.com"
+        "email": "johnsourvinos@hotmail.com",
+        "isAdmin": true
     },
     {
         "id": "99112a38-36e5-4237-89f1-d7e9267b86ff",
         "username": "sourvinos1",
         "displayname": "John",
-        "email": "johnsourvinos1@hotmail.coms"
+        "email": "johnsourvinos1@hotmail.coms",
+        "isAdmin": true
     }
 ]
