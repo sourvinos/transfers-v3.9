@@ -1,14 +1,13 @@
 #userGreeting {
     align-items: center;
-    color: var(--color-user-greeting);
     cursor: pointer;
     display: flex;
     margin-right: 1rem;
     text-align: center;
 }
 
-#userGreeting .mat-icon {
-    color: var(--color-user-greeting-icon);
+#userGreeting .material-icons {
+    color: var(--color-select-dropdown-icon);
 }
 
 #displayName {

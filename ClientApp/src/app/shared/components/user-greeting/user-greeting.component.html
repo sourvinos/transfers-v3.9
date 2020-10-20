@@ -1,6 +1,7 @@
 <div *ngIf="(loginStatus | async)" id="userGreeting" [matMenuTriggerFor]="userMenu">
     <mat-icon>account_circle</mat-icon>
     <div id="displayName">{{ displayName | async }}</div>
+    <span class="material-icons">arrow_drop_down</span>
 </div>
 
 <mat-menu #userMenu="matMenu">

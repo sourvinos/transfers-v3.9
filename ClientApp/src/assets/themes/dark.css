@@ -50,6 +50,7 @@
     --color-scrollbar: #fe9f36;
     --color-select-background-color: #1d2733;
     --color-select-border: #fe9f36;
+    --color-select-dropdown-icon: #ffe6ca;
     --color-select-items-hover-background: #9c938980;
     --color-select-items: #b7b7b7;
     --color-select-option-color: #b7b7b7;
@@ -86,7 +87,6 @@
     --color-table-rows-hover: #fe9f36;
     --color-tooltip-background: #ffc88a;
     --color-tooltip: #1d2733;
-    --color-transfer-form-modal: #696d71;
-    --color-user-greeting-icon: #ffe6ca;
+    --color-transfer-form-modal: #696d71;    
     --color-user-greeting: #b7b7b8;
 }

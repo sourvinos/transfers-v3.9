@@ -1,5 +1,4 @@
 :root {
-    --color-datepicker-toggler: #57617b;
     --color-background: #fffff4;
     --color-button-abort: #c1c1c1;
     --color-button-delete: #d67474;
@@ -27,6 +26,7 @@
     --color-datepicker-header-month: #57617b;
     --color-datepicker-table-header: #57617b;
     --color-datepicker-today-border: #57617b;
+    --color-datepicker-toggler: #57617b;
     --color-dialog-background: #fffff4;
     --color-dialog-content: #426186;
     --color-headers: #426186;
@@ -50,6 +50,7 @@
     --color-scrollbar: #b56576;
     --color-select-background-color: #ffffff;
     --color-select-border: #355070;
+    --color-select-dropdown-icon: #5f5f5f;
     --color-select-items-hover-background: #d3d3d3;
     --color-select-items: #2e5266;
     --color-select-option-color: #2e5266;
@@ -87,6 +88,5 @@
     --color-tooltip-background: #355070;
     --color-tooltip: #fffff4;
     --color-transfer-form-modal: #eaeaea;
-    --color-user-greeting-icon: #5f5f5f;
     --color-user-greeting: #5f5f5f;
 }

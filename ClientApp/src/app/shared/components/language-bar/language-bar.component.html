@@ -1,6 +1,7 @@
-<button id="selector" mat-icon-button [matMenuTriggerFor]="languageMenu">
+<div id="languageMenu" [matMenuTriggerFor]="languageMenu">
     <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
-</button>
+    <span class="material-icons">arrow_drop_down</span>
+</div>
 
 <mat-menu #languageMenu="matMenu">
     <button mat-menu-item (click)="onSaveLanguage('el-GR')">
