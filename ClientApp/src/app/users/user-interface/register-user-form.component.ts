@@ -147,7 +147,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             displayName: this.form.value.displayName,
             email: this.form.value.email,
             password: this.form.value.passwords.password,
-            confirmPassword: this.form.value.passwords.confirmPassword
+            confirmPassword: this.form.value.passwords.confirmPassword,
+            isAdmin: this.form.value.isAdmin
         }
     }
 
@@ -163,7 +164,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
                 confirmPassword: ['', [Validators.required, ValidationService.containsSpace]]
-            }, { validator: ValidationService.childrenEqual })
+            }, { validator: ValidationService.childrenEqual }),
+            isAdmin: false
         })
     }
 
@@ -209,6 +211,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     get matchingPasswords(): boolean {
         return this.form.get('passwords.password').value === this.form.get('passwords.confirmPassword').value
+    }
+
+    get isAdmin(): AbstractControl {
+        return this.form.get('isAdmin')
     }
 
     //#endregion

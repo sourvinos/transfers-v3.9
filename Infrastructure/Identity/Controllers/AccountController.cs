@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.WebUtilities;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize(Roles = "Admin")]
+
     public class AccountController : Controller {
 
         private readonly IEmailSender emailSender;
@@ -28,12 +29,13 @@ namespace Transfers {
                     Email = formData.Email,
                     DisplayName = formData.Displayname,
                     UserName = formData.Username,
+                    IsAdmin = formData.IsAdmin,
                     EmailConfirmed = true,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
                 var result = await userManager.CreateAsync(user, formData.Password);
                 if (result.Succeeded) {
-                    await userManager.AddToRoleAsync(user, "Admin");
+                    await userManager.AddToRoleAsync(user, user.IsAdmin? "Admin": "User");
                     string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token }, protocol : HttpContext.Request.Scheme);
                     emailSender.SendRegistrationEmail(user.Email, user.DisplayName, callbackUrl);

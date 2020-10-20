@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize]
+
     public class DestinationsController : ControllerBase {
 
         private readonly IDestinationRepository repo;
@@ -18,14 +19,17 @@ namespace Transfers {
             (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Destination>> Get() =>
             await repo.Get();
 
         [HttpGet("[action]")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Destination>> GetActive() =>
             await repo.GetActive(x => x.IsActive);
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDestination(int id) {
             Destination Destination = await repo.GetById(id);
             if (Destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
@@ -33,6 +37,7 @@ namespace Transfers {
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult PostDestination([FromBody] Destination Destination) {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             repo.Create(Destination);
@@ -40,6 +45,7 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination Destination) {
             if (id != Destination.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
@@ -52,6 +58,7 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDestination([FromRoute] int id) {
             Destination destination = await repo.GetById(id);
             if (destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });

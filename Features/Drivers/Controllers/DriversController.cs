@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize]
+
     public class DriversController : ControllerBase {
 
         private readonly IDriverRepository repo;
@@ -18,14 +19,17 @@ namespace Transfers {
             (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Driver>> Get() =>
             await repo.Get();
 
         [HttpGet("[action]")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Driver>> GetActive() =>
             await repo.GetActive(x => x.IsActive);
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDriver(int id) {
             Driver driver = await repo.GetById(id);
             if (driver == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
@@ -33,6 +37,7 @@ namespace Transfers {
         }
 
         [HttpGet("defaultDriver")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetDefaultDriver() {
             Driver driver = await repo.GetDefaultDriver();
             if (driver == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
@@ -40,6 +45,7 @@ namespace Transfers {
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostDriver([FromBody] Driver Driver) {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             var defaultDriver = await repo.CheckDefaultDriverExists(null, Driver);
@@ -49,6 +55,7 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutDriver([FromRoute] int id, [FromBody] Driver Driver) {
             if (id != Driver.Id) return  BadRequest(new { response = messageService.GetMessage("InvalidId") });
             var defaultDriver = await repo.CheckDefaultDriverExists(id, Driver);
@@ -63,6 +70,7 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDriver([FromRoute] int id) {
             Driver Driver = await repo.GetById(id);
             if (Driver == null) return  NotFound(new { response = messageService.GetMessage("RecordNotFound") });

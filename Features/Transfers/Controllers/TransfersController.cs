@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize(Roles = "User, Admin")]
+
     public class TransfersController : ControllerBase {
 
         private readonly IMapper mapper;
@@ -25,7 +26,7 @@ namespace Transfers {
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransfer(int id) {
             var transfer = await repo.GetById(id);
-            if (transfer == null) return  NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            if (transfer == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             return Ok(transfer);
         }
 
@@ -39,7 +40,7 @@ namespace Transfers {
 
         [HttpPut("{id}")]
         public IActionResult PutTransfer([FromRoute] int id, [FromBody] SaveTransferResource saveTransferResource) {
-            if (id != saveTransferResource.Id) return  BadRequest(new { response = messageService.GetMessage("InvalidId") });
+            if (id != saveTransferResource.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(saveTransferResource);

@@ -116,13 +116,18 @@ export class DestinationListComponent {
         this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
+    private onGoBack(): void {
+        this.router.navigate(['/'])
+    }
+
     private loadRecords(): void {
-        const destinationListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
-        if (destinationListResolved.error === null) {
-            this.records = destinationListResolved.list
+        const listResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (listResolved.error === null) {
+            this.records = listResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
+            this.onGoBack()
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
         }
     }
 

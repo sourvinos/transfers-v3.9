@@ -317,11 +317,12 @@ export class TransferListComponent {
     }
 
     private loadRecords(): void {
-        const transferListResolved = this.activatedRoute.snapshot.data[this.resolver]
-        if (transferListResolved.error === null) {
-            this.queryResult = transferListResolved.result
+        const listResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (listResolved.error === null) {
+            this.queryResult = listResolved.result
         } else {
-            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
+            this.onGoBack()
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
         }
     }
 

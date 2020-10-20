@@ -32,6 +32,8 @@ export class JwtInterceptor {
                                     return throwError(400)
                                 case 401:
                                     return this.handleHttpErrorResponse(request, next)
+                                case 403:
+                                    return throwError(403)
                                 case 404:
                                     return throwError(404)
                                 case 409:

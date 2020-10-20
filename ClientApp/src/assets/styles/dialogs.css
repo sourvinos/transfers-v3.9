@@ -21,6 +21,10 @@
     padding-bottom: 2rem;
 }
 
+#dialog-header #navigation {
+    margin: 0 1rem 0 1rem;
+}
+
 #dialog-header h1 {
     font-family: var(--font-family-dialog-header) !important;
     font-size: var(--font-size-dialog-header) !important;

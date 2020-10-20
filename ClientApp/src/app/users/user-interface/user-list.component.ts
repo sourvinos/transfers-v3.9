@@ -118,13 +118,18 @@ export class UserListComponent {
         this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
+    public onGoBack(): void {
+        this.router.navigate(['/'])
+    }
+
     private loadRecords(): void {
-        const userListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
-        if (userListResolved.error === null) {
-            this.records = userListResolved.list
+        const listResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (listResolved.error === null) {
+            this.records = listResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
         } else {
-            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
+            this.onGoBack()
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
         }
     }
 

@@ -85,6 +85,11 @@
                 "message": "Authentication failed."
             },
             {
+                "error": 403,
+                "id": "authorizationFailed",
+                "message": "This action requires higher authorization level."
+            },
+            {
                 "error": 404,
                 "id": "recordNotFound",
                 "message": "This record can not be found."

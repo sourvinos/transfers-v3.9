@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Transfers {
 
     [Route("api/[controller]")]
-    [Authorize(Policy = "RequireLoggedIn")]
+    [Authorize]
+
     public class RoutesController : ControllerBase {
 
         private readonly IRouteRepository repo;
@@ -18,14 +19,17 @@ namespace Transfers {
             (this.repo, this.messageService) = (repo, messageService);
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Route>> Get() =>
             await repo.Get();
 
         [HttpGet("[action]")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Route>> GetActive() =>
             await repo.GetActive(x => x.IsActive);
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetRoute(int id) {
             Route route = await repo.GetById(id);
             if (route == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
@@ -33,6 +37,7 @@ namespace Transfers {
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult PostRoute([FromBody] Route route) {
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             repo.Create(route);
@@ -40,6 +45,7 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult PutRoute([FromRoute] int id, [FromBody] Route route) {
             if (id != route.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
@@ -52,6 +58,7 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRoute([FromRoute] int id) {
             Route route = await repo.GetById(id);
             if (route == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });

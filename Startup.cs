@@ -23,7 +23,6 @@ namespace Transfers {
             // Static
             Extensions.AddIdentity(services);
             Extensions.AddAuthentication(Configuration, services);
-            Extensions.AddAuthorization(services);
             Extensions.AddCors(services);
             Extensions.AddInterfaces(services);
             // Base

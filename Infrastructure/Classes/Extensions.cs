@@ -61,13 +61,7 @@ namespace Transfers {
                     configuration.Bind("CookieSettings", options));
         }
 
-        public static void AddAuthorization(IServiceCollection services) =>
-            services.AddAuthorization(options => {
-                options.AddPolicy("RequireLoggedIn", policy => policy.RequireRole("User").RequireAuthenticatedUser());
-                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Admin").RequireAuthenticatedUser());
-            });
-
-        public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
+         public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {

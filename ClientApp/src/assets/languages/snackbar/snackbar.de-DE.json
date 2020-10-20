@@ -85,6 +85,11 @@
                 "message": "(DE) Authentication failed."
             },
             {
+                "error": 403,
+                "id": "authorizationFailed",
+                "message": "(DE) This action requires higher authorization level."
+            },
+           {
                 "error": 404,
                 "id": "recordNotFound",
                 "message": "(DE) This record can not be found."

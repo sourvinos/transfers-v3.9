@@ -117,13 +117,18 @@ export class RouteListComponent {
         this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
+    private onGoBack(): void {
+        this.router.navigate(['/'])
+    }
+
     private loadRecords(): void {
-        const routeListResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
-        if (routeListResolved.error === null) {
-            this.records = routeListResolved.list
+        const listResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
+        if (listResolved.error === null) {
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
+            this.records = listResolved.list
         } else {
-            this.showSnackbar(this.messageSnackbarService.noContactWithServer(), 'error')
+            this.onGoBack()
+            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
         }
     }
 

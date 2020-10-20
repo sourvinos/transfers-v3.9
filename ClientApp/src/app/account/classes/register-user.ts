@@ -4,4 +4,5 @@ export class RegisterUser {
     password: string
     confirmPassword: string
     email: string
+    isAdmin: boolean
 }
