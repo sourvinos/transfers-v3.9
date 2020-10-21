@@ -39,7 +39,7 @@ namespace Transfers {
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult PostCustomer([FromBody] Customer customer) {
-            if (!ModelState.IsValid) return StatusCode(490, new { response = messageService.GetMessage("unableToSaveRecord") });
+            if (!ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Create(customer);
                 return StatusCode(200, new { response = ApiMessages.RecordCreated() });
@@ -51,7 +51,7 @@ namespace Transfers {
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public IActionResult PutCustomer([FromRoute] int id, [FromBody] Customer customer) {
-            if (id != customer.Id || !ModelState.IsValid) return StatusCode(490, new { response = messageService.GetMessage("unableToSaveRecord") });
+            if (id != customer.Id || !ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
                 repo.Update(customer);
                 return StatusCode(200, new { response = ApiMessages.RecordUpdated() });

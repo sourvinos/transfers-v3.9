@@ -125,8 +125,8 @@ export class TransferFormComponent {
                     this.onGoBack()
                     this.interactionService.removeTableRow(this.getRowIndex(this.form.value.id))
                     this.resetForm()
-                }, () => {
-                    this.showSnackbar(this.messageSnackbarService.recordNotFound(), 'error')
+                }, errorFromInterceptor => {
+                    this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
                 })
             }
         })

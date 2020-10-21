@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Transfers {
 
@@ -31,42 +31,45 @@ namespace Transfers {
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDestination(int id) {
-            Destination Destination = await repo.GetById(id);
-            if (Destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
-            return Ok(Destination);
+            Destination destination = await repo.GetById(id);
+            if (destination == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
+            return StatusCode(200, destination);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult PostDestination([FromBody] Destination Destination) {
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
-            repo.Create(Destination);
-            return Ok(new { response = ApiMessages.RecordCreated() });
+        public IActionResult PostDestination([FromBody] Destination destination) {
+            if (!ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            try {
+                repo.Create(destination);
+                return StatusCode(200, new { response = ApiMessages.RecordCreated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
+            }
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination Destination) {
-            if (id != Destination.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+        public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination destination) {
+            if (id != destination.Id || !ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
-                repo.Update(Destination);
-            } catch (System.Exception) {
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+                repo.Update(destination);
+                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
             }
-            return Ok(new { response = ApiMessages.RecordUpdated() });
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDestination([FromRoute] int id) {
             Destination destination = await repo.GetById(id);
-            if (destination == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            if (destination == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
             try {
                 repo.Delete(destination);
-                return Ok(new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
-                return BadRequest(new { response = messageService.GetMessage("RecordInUse") });
+                return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
+            } catch (Exception) {
+                return StatusCode(491, new { response = messageService.GetMessage("RecordInUse") });
             }
         }
 

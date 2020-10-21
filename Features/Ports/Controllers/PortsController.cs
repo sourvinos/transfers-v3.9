@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Transfers {
 
@@ -31,42 +31,45 @@ namespace Transfers {
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPort(int id) {
-            Port Port = await repo.GetById(id);
-            if (Port == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
-            return Ok(Port);
+            Port port = await repo.GetById(id);
+            if (port == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
+            return StatusCode(200, port);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult PostPort([FromBody] Port Port) {
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
-            repo.Create(Port);
-            return Ok(new { response = ApiMessages.RecordCreated() });
+        public IActionResult PostPort([FromBody] Port port) {
+            if (!ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            try {
+                repo.Create(port);
+                return StatusCode(200, new { response = ApiMessages.RecordCreated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
+            }
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public IActionResult PutPort([FromRoute] int id, [FromBody] Port Port) {
-            if (id != Port.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+        public IActionResult PutPort([FromRoute] int id, [FromBody] Port port) {
+            if (id != port.Id || !ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
             try {
-                repo.Update(Port);
-            } catch (System.Exception) {
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+                repo.Update(port);
+                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
             }
-            return Ok(new { response = ApiMessages.RecordUpdated() });
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePort([FromRoute] int id) {
-            Port Port = await repo.GetById(id);
-            if (Port == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            Port port = await repo.GetById(id);
+            if (port == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
             try {
-                repo.Delete(Port);
-                return Ok(new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
-                return BadRequest(new { response = messageService.GetMessage("RecordInUse") });
+                repo.Delete(port);
+                return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
+            } catch (Exception) {
+                return StatusCode(491, new { response = messageService.GetMessage("RecordInUse") });
             }
         }
 

@@ -41,9 +41,9 @@ namespace Transfers {
                 vm.DisplayName = user.DisplayName;
                 vm.Email = user.Email;
                 vm.IsAdmin = user.IsAdmin;
-                return Ok(vm);
+                return StatusCode(200, vm);
             }
-            return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
         }
 
         [HttpPut("{id}")]
@@ -54,9 +54,9 @@ namespace Transfers {
                 if (user != null) {
                     await UpdateUser(user, vm);
                     await UpdateRole(user);
-                    return Ok(new { response = ApiMessages.RecordUpdated() });
+                    return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
                 }
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+                return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
             }
             return StatusCode(419, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
@@ -67,10 +67,10 @@ namespace Transfers {
             if (user != null) {
                 IdentityResult result = await userManager.DeleteAsync(user);
                 if (result.Succeeded) {
-                    return Ok(new { response = ApiMessages.RecordDeleted() });
+                    return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
                 }
             }
-            return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
         }
 
         private async Task<IdentityResult> UpdateUser(AppUser user, UserViewModel vm) {

@@ -110,8 +110,8 @@ export class ChangePasswordFormComponent {
             this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.resetForm()
             this.accountService.logout()
-        }, () => {
-            this.showSnackbar(this.messageSnackbarService.wrongCurrentPassword(), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
         })
     }
 

@@ -97,8 +97,8 @@ export class RouteFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, () => {
-                    this.showSnackbar(this.messageSnackbarService.recordInUse(), 'error')
+                }, errorFromInterceptor => {
+                    this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
                 })
             }
         })

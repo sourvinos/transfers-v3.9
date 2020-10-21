@@ -28,15 +28,12 @@ export class JwtInterceptor {
                     if (this.isUserLoggedIn()) {
                         if (err instanceof HttpErrorResponse) {
                             switch ((<HttpErrorResponse>err).status) {
-                                case 400:
-                                    console.log('Interceptor: 400')
-                                    return throwError(400)
                                 case 401:
                                     return this.handleHttpErrorResponse(request, next)
                                 case 403:
                                     return throwError(403)
                                 case 404:
-                                    console.log('Interceptor: 404')
+                                    console.log('Interceptor: 404') // Not found
                                     return throwError(404)
                                 case 409:
                                     console.log('Interceptor: 409')
@@ -56,6 +53,9 @@ export class JwtInterceptor {
                                 case 494:
                                     console.log('Interceptor: 494')
                                     return throwError(494) // Unable to change password
+                                case 495:
+                                    console.log('Interceptor: 495')
+                                    return throwError(495) // Account not confirmed
                                 case 500:
                                     console.log('Interceptor: 500') // Very bad
                                     return throwError(500)

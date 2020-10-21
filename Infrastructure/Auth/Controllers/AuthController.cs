@@ -30,7 +30,7 @@ namespace Transfers {
                 case "refresh_token":
                     return await RefreshToken(model);
                 default:
-                    return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
+                    return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
             }
         }
 
@@ -38,7 +38,7 @@ namespace Transfers {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
-                    return BadRequest(new { response = messageService.GetMessage("AccountNotConfirmed") });
+                    return StatusCode(495, new { response = messageService.GetMessage("AccountNotConfirmed") });
                 }
                 var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
@@ -50,9 +50,9 @@ namespace Transfers {
                 db.Tokens.Add(newRefreshToken);
                 await db.SaveChangesAsync();
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
-                return Ok(new { response = accessToken });
+                return StatusCode(200, new { response = accessToken });
             }
-            return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
+            return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
         }
 
         private Token CreateRefreshToken(string clientId, string userId) {
@@ -107,9 +107,9 @@ namespace Transfers {
                 db.Tokens.Add(rtNew);
                 db.SaveChanges();
                 var token = await CreateAccessToken(user, rtNew.Value);
-                return Ok(new { response = token });
+                return StatusCode(200, new { response = token });
             } catch {
-                return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
+                return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
             }
         }
 

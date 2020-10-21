@@ -89,8 +89,8 @@ export class ResetPasswordFormComponent {
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.router.navigate([this.url])
-        }, () => {
-            this.showSnackbar(this.messageSnackbarService.unableToResetPassword(), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
         })
     }
 
