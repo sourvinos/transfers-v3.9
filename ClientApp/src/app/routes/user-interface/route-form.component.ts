@@ -97,8 +97,8 @@ export class RouteFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordInUse(), 'error')
                 })
             }
         })
@@ -140,7 +140,7 @@ export class RouteFormComponent {
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         } else {
             this.routeService.update(this.form.value.id, this.form.value).subscribe(() => {
@@ -148,7 +148,7 @@ export class RouteFormComponent {
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         }
     }
@@ -197,11 +197,11 @@ export class RouteFormComponent {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number): void {
+    private getRecord(id: number): void {
         this.routeService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

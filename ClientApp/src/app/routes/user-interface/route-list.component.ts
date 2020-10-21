@@ -128,7 +128,7 @@ export class RouteListComponent {
             this.records = listResolved.list
         } else {
             this.onGoBack()
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
     }
 

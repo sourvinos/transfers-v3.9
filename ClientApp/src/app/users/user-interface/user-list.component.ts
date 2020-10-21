@@ -129,7 +129,7 @@ export class UserListComponent {
             this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
         } else {
             this.onGoBack()
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
     }
 

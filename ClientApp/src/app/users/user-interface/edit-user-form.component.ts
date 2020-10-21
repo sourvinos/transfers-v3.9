@@ -96,8 +96,8 @@ export class EditUserFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordNotFound(), 'error')
                 })
             }
         })
@@ -121,7 +121,7 @@ export class EditUserFormComponent {
             this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
             this.onGoBack()
         }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
         })
     }
 
@@ -169,8 +169,8 @@ export class EditUserFormComponent {
     private getRecord(id: string): void {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

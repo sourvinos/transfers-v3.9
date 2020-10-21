@@ -29,15 +29,36 @@ export class JwtInterceptor {
                         if (err instanceof HttpErrorResponse) {
                             switch ((<HttpErrorResponse>err).status) {
                                 case 400:
+                                    console.log('Interceptor: 400')
                                     return throwError(400)
                                 case 401:
                                     return this.handleHttpErrorResponse(request, next)
                                 case 403:
                                     return throwError(403)
                                 case 404:
+                                    console.log('Interceptor: 404')
                                     return throwError(404)
                                 case 409:
-                                    return throwError(409)
+                                    console.log('Interceptor: 409')
+                                    return throwError(409) // Conflict
+                                case 490:
+                                    console.log('Interceptor: 490')
+                                    return throwError(490) // Unable to save
+                                case 491:
+                                    console.log('Interceptor: 491')
+                                    return throwError(491) // Unable to delete because the record is in use
+                                case 492:
+                                    console.log('Interceptor: 492')
+                                    return throwError(492) // Unable to register user
+                                case 493:
+                                    console.log('Interceptor: 493')
+                                    return throwError(493) // Unable to reset password
+                                case 494:
+                                    console.log('Interceptor: 494')
+                                    return throwError(494) // Unable to change password
+                                case 500:
+                                    console.log('Interceptor: 500') // Very bad
+                                    return throwError(500)
                             }
                         } else {
                             return throwError(this.handleError)

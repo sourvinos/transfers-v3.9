@@ -89,8 +89,8 @@ export class DestinationFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordInUse(), 'error')
                 })
             }
         })
@@ -115,7 +115,7 @@ export class DestinationFormComponent {
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         } else {
             this.destinationService.update(this.form.value.id, this.form.value).subscribe(() => {
@@ -123,7 +123,7 @@ export class DestinationFormComponent {
                 this.resetForm()
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         }
     }
@@ -167,11 +167,11 @@ export class DestinationFormComponent {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number): void {
+    private getRecord(id: number): void {
         this.destinationService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

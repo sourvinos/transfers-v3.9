@@ -2,103 +2,29 @@
     {
         "feature": "snackbarMessages",
         "labels": [
-            {
-                "id": "recordCreated",
-                "message": "Η εγγραφή δημιουργήθηκε."
-            },
-            {
-                "id": "recordUpdated",
-                "message": "Η εγγραφή ενημερώθηκε."
-            },
-            {
-                "id": "recordDeleted",
-                "message": "Η εγγραφή διαγράφηκε."
-            },
-            {
-                "id": "askConfirmationToAbortEditing",
-                "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν."
-            },
-            {
-                "id": "askConfirmationToDelete",
-                "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα."
-            },
-            {
-                "id": "noRecordsSelected",
-                "message": "Δεν έχετε επιλέξει εγγραφές."
-            },
-            {
-                "id": "selectedRecordsHaveBeenProcessed",
-                "message": "Ολες οι επιλεγμένες εγγραφές ενημερώθηκαν."
-            },
-            {
-                "id": "noDefaultDriverFound",
-                "message": "Δεν βρέθηκε κάποιος προεπιλεγμένος οδηγός."
-            },
-            {
-                "id": "noContactWithServer",
-                "message": "Δεν υπάρχει επικοινωνία με τη βάση δεδομένων."
-            },
-            {
-                "id": "wrongCurrentPassword",
-                "message": "Ο τρέχων κωδικός είναι λάθος."
-            },
-            {
-                "id": "veryBad",
-                "message": "Κάτι πήγε πολύ στραβά."
-            },
-            {
-                "id": "unableToRegisterUser",
-                "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί."
-            },
-            {
-                "id": "accountNotConfirmed",
-                "message": "Η εγγραφή αυτού του χρήστη δεν έχει ακόμη επιβεβαιωθεί."
-            },
-            {
-                "id": "unableToResetPassword",
-                "message": "Δεν μπορεί να γίνει επαναφορά κωδικού."
-            },
-            {
-                "id": "formIsDirty",
-                "message": "Πριν συνεχίσετε, οι αλλαγές πρέπει να αποθηκευτούν."
-            },
-            {
-                "id": "unableToSaveRecord",
-                "message": "Η εγγραφή δεν αποθηκεύτηκε."
-            },
-            {
-                "id": "emailSent",
-                "message": "Στάλθηκε ένα email με οδηγίες."
-            },
-            {
-                "id": "passwordChanged",
-                "message": "Ο κωδικός άλλαξε, πρέπει να συνδεθείτε ξανά."
-            },
-            {
-                "error": 400,
-                "id": "recordIsInUse",
-                "message": "Η εγγραφή χρησιμοποιείται και δεν μπορεί να διαγραφεί."
-            },
-            {
-                "error": 401,
-                "id": "authenticationFailed",
-                "message": "Ο συνδυασμός χρήστη και κωδικού είναι λάθος."
-            },
-            {
-                "error": 403,
-                "id": "authorizationFailed",
-                "message": "Αυτή η επιλογή απαιτεί εξουσιοδότηση υψηλότερου επιπέδου."
-            },
-            {
-                "error": 404,
-                "id": "recordNotFound",
-                "message": "Η εγγραφή δεν βρέθηκε."
-            },
-            {
-                "error": 409,
-                "id": "defaultDriverExists",
-                "message": "Υπάρχει ήδη ένας προεπιλεγμένος οδηγός."
-            }
+            { "error": 401, "id": "authenticationFailed", "message": "Ο συνδυασμός χρήστης / κωδικός είναι λάθος." },
+            { "error": 403, "id": "authorizationFailed", "message": "Αυτή η επιλογή απαιτεί εξουσιοδότηση υψηλότερου επιπέδου." },
+            { "error": 404, "id": "recordNotFound", "message": "Η εγγραφή δεν βρέθηκε." },
+            { "error": 409, "id": "defaultDriverExists", "message": "Υπάρχει ήδη ένας προεπιλεγμένος οδηγός." },
+            { "error": 490, "id": "unableToSaveRecord", "message": "Η εγγραφή δεν αποθηκεύτηκε." },
+            { "error": 491, "id": "recordInUse", "message": "Η εγγραφή χρησιμοποιείται και δεν μπορεί να διαγραφεί." },
+            { "error": 500, "id": "veryBad", "message": "Κάτι δεν πήγε και πολύ καλά." },
+            { "id": "accountNotConfirmed", "message": "Η εγγραφή αυτού του χρήστη δεν έχει ακόμη επιβεβαιωθεί." },
+            { "id": "askConfirmationToAbortEditing", "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν." },
+            { "id": "askConfirmationToDelete", "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα." },
+            { "id": "emailSent", "message": "Στάλθηκε ένα email με οδηγίες." },
+            { "id": "formIsDirty", "message": "Πριν συνεχίσετε, οι αλλαγές πρέπει να αποθηκευτούν." },
+            { "id": "noContactWithServer", "message": "Δεν υπάρχει επικοινωνία με τη βάση δεδομένων." },
+            { "id": "noDefaultDriverFound", "message": "Δεν βρέθηκε κάποιος προεπιλεγμένος οδηγός." },
+            { "id": "noRecordsSelected", "message": "Δεν έχετε επιλέξει εγγραφές." },
+            { "id": "passwordChanged", "message": "Ο κωδικός άλλαξε, πρέπει να συνδεθείτε ξανά." },
+            { "id": "recordCreated", "message": "Η εγγραφή δημιουργήθηκε." },
+            { "id": "recordDeleted", "message": "Η εγγραφή διαγράφηκε." },
+            { "id": "recordUpdated", "message": "Η εγγραφή ενημερώθηκε." },
+            { "id": "selectedRecordsHaveBeenProcessed", "message": "Ολες οι επιλεγμένες εγγραφές ενημερώθηκαν." },
+            { "id": "unableToRegisterUser", "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί." },
+            { "id": "unableToResetPassword", "message": "Δεν μπορεί να γίνει επαναφορά κωδικού." },
+            { "id": "wrongCurrentPassword", "message": "Ο τρέχων κωδικός είναι λάθος." }
         ]
     }
 ]

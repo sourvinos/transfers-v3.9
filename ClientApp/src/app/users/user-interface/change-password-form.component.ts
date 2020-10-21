@@ -163,8 +163,8 @@ export class ChangePasswordFormComponent {
     private getRecord(id: string): void {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

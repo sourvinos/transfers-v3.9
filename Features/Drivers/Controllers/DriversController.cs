@@ -57,7 +57,7 @@ namespace Transfers {
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutDriver([FromRoute] int id, [FromBody] Driver Driver) {
-            if (id != Driver.Id) return  BadRequest(new { response = messageService.GetMessage("InvalidId") });
+            if (id != Driver.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
             var defaultDriver = await repo.CheckDefaultDriverExists(id, Driver);
             if (defaultDriver != null) { return Conflict(new { response = messageService.GetMessage("DefaultDriverAlreadyExists") }); };
             if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
@@ -73,12 +73,12 @@ namespace Transfers {
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDriver([FromRoute] int id) {
             Driver Driver = await repo.GetById(id);
-            if (Driver == null) return  NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            if (Driver == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             try {
                 repo.Delete(Driver);
                 return Ok(new { response = ApiMessages.RecordDeleted() });
             } catch (DbUpdateException) {
-                return BadRequest(new {response = messageService.GetMessage("RecordInUse") });
+                return BadRequest(new { response = messageService.GetMessage("RecordInUse") });
             }
         }
 

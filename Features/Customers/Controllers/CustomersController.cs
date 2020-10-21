@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Transfers {
 
@@ -32,41 +32,44 @@ namespace Transfers {
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetCustomer(int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
-            return Ok(customer);
+            if (customer == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
+            return StatusCode(200, customer);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public IActionResult PostCustomer([FromBody] Customer customer) {
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
-            repo.Create(customer);
-            return Ok(new { response = ApiMessages.RecordCreated() });
+            if (!ModelState.IsValid) return StatusCode(490, new { response = messageService.GetMessage("unableToSaveRecord") });
+            try {
+                repo.Create(customer);
+                return StatusCode(200, new { response = ApiMessages.RecordCreated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
+            }
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public IActionResult PutCustomer([FromRoute] int id, [FromBody] Customer customer) {
-            if (id != customer.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
-            if (!ModelState.IsValid) return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            if (id != customer.Id || !ModelState.IsValid) return StatusCode(490, new { response = messageService.GetMessage("unableToSaveRecord") });
             try {
                 repo.Update(customer);
-            } catch (System.Exception) {
-                return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            } catch (Exception) {
+                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
             }
-            return Ok(new { response = ApiMessages.RecordUpdated() });
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCustomer([FromRoute] int id) {
             Customer customer = await repo.GetById(id);
-            if (customer == null) return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+            if (customer == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
             try {
                 repo.Delete(customer);
-                return Ok(new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
-                return BadRequest(new { response = messageService.GetMessage("RecordInUse") });
+                return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
+            } catch (Exception) {
+                return StatusCode(491, new { response = messageService.GetMessage("RecordInUse") });
             }
         }
 

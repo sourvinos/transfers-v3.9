@@ -50,7 +50,7 @@ export class PickupPointFormComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
@@ -81,7 +81,7 @@ export class PickupPointFormComponent {
 
     canDeactivate(): boolean {
         if (this.form.dirty) {
-            this.dialogService.open('warningColor', this.messageService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
+            this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToAbortEditing(), ['abort', 'ok']).subscribe(response => {
                 if (response) {
                     this.resetForm()
                     this.onGoBack()
@@ -98,14 +98,14 @@ export class PickupPointFormComponent {
     //#region public methods
 
     public onDelete(): void {
-        this.dialogService.open('warningColor', this.messageService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
+        this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
                 this.pickupPointService.delete(this.form.value.id).subscribe(() => {
                     this.resetForm()
-                    this.showSnackbar(this.messageService.recordDeleted(), 'info')
+                    this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordInUse(), 'error')
                 })
             }
         })
@@ -145,17 +145,17 @@ export class PickupPointFormComponent {
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.focus('description')
                 this.initFormAfterDelay()
-                this.showSnackbar(this.messageService.recordCreated(), 'info')
+                this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         } else {
             this.pickupPointService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.showSnackbar(this.messageService.recordUpdated(), 'info')
+                this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         }
     }
@@ -207,8 +207,8 @@ export class PickupPointFormComponent {
     private getRecord(id: number): void {
         this.pickupPointService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

@@ -48,6 +48,8 @@ export class MessageSnackbarService {
     public recordDeleted(): string { return this.getDescription(this.feature, "recordDeleted") }
     public askConfirmationToAbortEditing(): string { return this.getDescription(this.feature, "askConfirmationToAbortEditing") }
     public askConfirmationToDelete(): string { return this.getDescription(this.feature, "askConfirmationToDelete") }
+    public recordInUse(): string { return this.getDescription(this.feature, "recordInUse") }
+    public recordNotFound(): string { return this.getDescription(this.feature, "recordNotFound") }
     public noRecordsSelected(): string { return this.getDescription(this.feature, "noRecordsSelected") }
     public selectedRecordsHaveBeenProcessed(): string { return this.getDescription(this.feature, "selectedRecordsHaveBeenProcessed") }
     public noDefaultDriverFound(): string { return this.getDescription(this.feature, "noDefaultDriverFound") }
@@ -59,8 +61,9 @@ export class MessageSnackbarService {
     public unableToResetPassword(): string { return this.getDescription(this.feature, "unableToResetPassword") }
     public passwordChanged(): string { return this.getDescription(this.feature, "passwordChanged") }
     public formIsDirty(): string { return this.getDescription(this.feature, "formIsDirty") }
+    public unableToRegisterUser(): string { return this.getDescription(this.feature, "unableToRegisterUser") }
 
-    public getHttpErrorMessage(errorCode: number, feature = 'snackbarMessages'): string {
+    public filterError(errorCode: number, feature = 'snackbarMessages'): string {
         let returnValue = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {

@@ -89,8 +89,8 @@ export class CustomerFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, errorFromInterceptor => {
+                    this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
                 })
             }
         })
@@ -114,16 +114,16 @@ export class CustomerFormComponent {
                 this.initForm()
                 this.focus('description')
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
-            }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            }, errorFromInterceptor => {
+                this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.resetForm()
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.onGoBack()
-            }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            }, errorFromInterceptor => {
+                this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             })
         }
     }
@@ -167,11 +167,11 @@ export class CustomerFormComponent {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number): void {
+    private getRecord(id: number): void {
         this.customerService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }

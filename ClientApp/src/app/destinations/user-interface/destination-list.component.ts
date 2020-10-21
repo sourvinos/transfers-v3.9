@@ -127,7 +127,7 @@ export class DestinationListComponent {
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
             this.onGoBack()
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
     }
 

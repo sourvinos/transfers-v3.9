@@ -1,4 +1,3 @@
-import { throwError } from 'rxjs'
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { PickupPointService } from './pickupPoint.service'
@@ -13,8 +12,6 @@ export class PickupPointFormResolver {
         const response = this.pickupPointService.getSingle(route.params.id)
         response.subscribe(() => {
             return response
-        }, () => {
-            return throwError(404)
         })
     }
 

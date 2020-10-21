@@ -125,8 +125,8 @@ export class TransferFormComponent {
                     this.onGoBack()
                     this.interactionService.removeTableRow(this.getRowIndex(this.form.value.id))
                     this.resetForm()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordNotFound(), 'error')
                 })
             }
         })
@@ -173,7 +173,7 @@ export class TransferFormComponent {
                 this.focus('destinationDescription')
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         } else {
             this.transferService.update(this.form.value.id, this.form.value).subscribe(() => {
@@ -181,7 +181,7 @@ export class TransferFormComponent {
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.onGoBack()
             }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         }
     }
@@ -251,7 +251,7 @@ export class TransferFormComponent {
             this.populateFields(result)
             this.focus('destinationDescription')
         }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             this.onGoBack()
         })
     }

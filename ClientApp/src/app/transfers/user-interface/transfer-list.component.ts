@@ -322,7 +322,7 @@ export class TransferListComponent {
             this.queryResult = listResolved.result
         } else {
             this.onGoBack()
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(listResolved.error), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
     }
 

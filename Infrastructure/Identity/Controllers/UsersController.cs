@@ -52,22 +52,13 @@ namespace Transfers {
                 if (id != vm.Id) return BadRequest(new { response = messageService.GetMessage("InvalidId") });
                 AppUser user = await userManager.FindByIdAsync(id);
                 if (user != null) {
-                    user.UserName = vm.Username;
-                    user.DisplayName = vm.DisplayName;
-                    user.Email = vm.Email;
-                    user.IsAdmin = vm.IsAdmin;
-                    IdentityResult result = await userManager.UpdateAsync(user);
-                    if (result.Succeeded) {
-                        var roles = await userManager.GetRolesAsync(user);
-                        await userManager.RemoveFromRolesAsync(user, roles);
-                        await userManager.AddToRoleAsync(user, user.IsAdmin? "Admin": "User");
-                        return Ok(new { response = ApiMessages.RecordUpdated() });
-                    }
-                    return BadRequest(new { response = result.Errors.Select(x => x.Description) });
+                    await UpdateUser(user, vm);
+                    await UpdateRole(user);
+                    return Ok(new { response = ApiMessages.RecordUpdated() });
                 }
                 return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
             }
-            return BadRequest(new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            return StatusCode(419, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
 
         [HttpDelete("{id}")]
@@ -80,6 +71,21 @@ namespace Transfers {
                 }
             }
             return NotFound(new { response = messageService.GetMessage("RecordNotFound") });
+        }
+
+        private async Task<IdentityResult> UpdateUser(AppUser user, UserViewModel vm) {
+            user.UserName = vm.Username;
+            user.DisplayName = vm.DisplayName;
+            user.Email = vm.Email;
+            user.IsAdmin = vm.IsAdmin;
+            return await userManager.UpdateAsync(user);
+        }
+
+        private async Task<bool> UpdateRole(AppUser user) {
+            var roles = await userManager.GetRolesAsync(user);
+            await userManager.RemoveFromRolesAsync(user, roles);
+            await userManager.AddToRoleAsync(user, user.IsAdmin? "Admin": "User");
+            return true;
         }
 
     }

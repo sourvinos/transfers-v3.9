@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { throwError } from 'rxjs'
 import { UserService } from './user.service'
 
 @Injectable({ providedIn: 'root' })
@@ -13,8 +12,6 @@ export class UserFormResolver {
         const response = this.userService.getSingle(route.params.id)
         response.subscribe(() => {
             return response
-        }, () => {
-            return throwError(404)
         })
     }
 

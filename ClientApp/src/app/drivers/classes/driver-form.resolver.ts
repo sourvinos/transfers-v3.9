@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { throwError } from 'rxjs'
 import { DriverService } from './driver.service'
 
 @Injectable({ providedIn: 'root' })
@@ -13,8 +12,6 @@ export class DriverFormResolver {
         const response = this.driverService.getSingle(route.params.id)
         response.subscribe(() => {
             return response
-        }, () => {
-            return throwError(404)
         })
     }
 

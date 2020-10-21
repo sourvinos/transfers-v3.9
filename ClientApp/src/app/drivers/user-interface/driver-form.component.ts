@@ -81,7 +81,7 @@ export class DriverFormComponent {
     //#endregion
 
     //#region public methods
-    
+
     public onDelete(): void {
         this.dialogService.open('warningColor', this.messageSnackbarService.askConfirmationToDelete(), ['abort', 'ok']).subscribe(response => {
             if (response) {
@@ -89,8 +89,8 @@ export class DriverFormComponent {
                     this.resetForm()
                     this.showSnackbar(this.messageSnackbarService.recordDeleted(), 'info')
                     this.onGoBack()
-                }, errorCode => {
-                    this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+                }, () => {
+                    this.showSnackbar(this.messageSnackbarService.recordInUse(), 'error')
                 })
             }
         })
@@ -114,16 +114,16 @@ export class DriverFormComponent {
                 this.focus('description')
                 this.initFormAfterDelay()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
-            }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            }, errorFromInterceptor => {
+                this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             })
         } else {
             this.driverService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.resetForm()
                 this.onGoBack()
-            }, errorCode => {
-                this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+            }, errorFromInterceptor => {
+                this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             })
         }
     }
@@ -175,11 +175,11 @@ export class DriverFormComponent {
         this.helperService.setFocus(field)
     }
 
-    private getRecord(id: string | number): void {
+    private getRecord(id: number): void {
         this.driverService.getSingle(id).subscribe(result => {
             this.populateFields(result)
-        }, errorCode => {
-            this.showSnackbar(this.messageSnackbarService.getHttpErrorMessage(errorCode), 'error')
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }
