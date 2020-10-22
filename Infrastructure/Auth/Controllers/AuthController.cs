@@ -38,7 +38,7 @@ namespace Transfers {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
-                    return StatusCode(495, new { response = messageService.GetMessage("AccountNotConfirmed") });
+                    return StatusCode(495, new { response = messageService.GetMessage("AccountNotConfirmed") }); // Tested
                 }
                 var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
@@ -50,9 +50,9 @@ namespace Transfers {
                 db.Tokens.Add(newRefreshToken);
                 await db.SaveChangesAsync();
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
-                return StatusCode(200, new { response = accessToken });
+                return StatusCode(200, new { response = accessToken }); // Tested
             }
-            return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
+            return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") }); // Tested
         }
 
         private Token CreateRefreshToken(string clientId, string userId) {
@@ -98,10 +98,10 @@ namespace Transfers {
         private async Task<IActionResult> RefreshToken(TokenRequest model) {
             try {
                 var rt = db.Tokens.FirstOrDefault(t => t.ClientId == settings.ClientId && t.Value == model.RefreshToken.ToString());
-                if (rt == null) return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
-                if (rt.ExpiryTime < DateTime.UtcNow) return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
+                if (rt == null) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
+                if (rt.ExpiryTime < DateTime.UtcNow) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
                 var user = await userManager.FindByIdAsync(rt.UserId);
-                if (user == null) return Unauthorized(new { response = messageService.GetMessage("AuthenticationFailed") });
+                if (user == null) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
                 var rtNew = CreateRefreshToken(rt.ClientId, rt.UserId);
                 db.Tokens.Remove(rt);
                 db.Tokens.Add(rtNew);

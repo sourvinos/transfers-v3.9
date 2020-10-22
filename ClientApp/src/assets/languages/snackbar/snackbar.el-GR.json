@@ -8,9 +8,8 @@
         { "error": 490, "id": "unableToSaveRecord", "message": "Η εγγραφή δεν αποθηκεύτηκε." },
         { "error": 491, "id": "recordInUse", "message": "Η εγγραφή χρησιμοποιείται και δεν μπορεί να διαγραφεί." },
         { "error": 492, "id": "unableToRegisterUser", "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί." },
-        { "error": 493, "id": "unableToResetPassword", "message": "Δεν μπορεί να γίνει επαναφορά κωδικού." },
-        { "error": 494, "id": "unableToChangePassword", "message": "Ο κωδικός δεν μπορεί να αλλάξει" },
-        { "error": 495, "id": "accountNotConfirmed", "message": "Η εγγραφή αυτού του χρήστη δεν έχει ακόμη επιβεβαιωθεί." },
+        { "error": 494, "id": "unableToChangePassword", "message": "Ο κωδικός δεν μπορεί να αλλάξει." },
+        { "error": 495, "id": "accountNotConfirmed", "message": "Η εγγραφή του χρήστη δεν έχει ακόμη επιβεβαιωθεί." },
         { "error": 500, "id": "veryBad", "message": "Κάτι δεν πήγε και πολύ καλά." },
         { "id": "askConfirmationToAbortEditing", "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν." },
         { "id": "askConfirmationToDelete", "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα." },
@@ -23,5 +22,6 @@
         { "id": "recordDeleted", "message": "Η εγγραφή διαγράφηκε." },
         { "id": "recordUpdated", "message": "Η εγγραφή ενημερώθηκε." },
         { "id": "selectedRecordsHaveBeenProcessed", "message": "Ολες οι επιλεγμένες εγγραφές ενημερώθηκαν." },
+        { "id": "unableToResetPassword", "message": "Δεν μπορεί να γίνει επαναφορά κωδικού." }
     ]
 }]

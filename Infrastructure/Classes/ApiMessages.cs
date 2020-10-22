@@ -11,6 +11,7 @@ namespace Transfers {
         public static string EmailInstructions() { return "An email was sent with instructions."; }
         public static string PasswordReset() { return "Password was reset successfully."; }
         public static string PasswordChanged() { return "Password was changed successfully."; }
+        public static string UserNotFound() { return "User not found."; }
 
     }
 

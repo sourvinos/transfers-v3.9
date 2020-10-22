@@ -78,6 +78,8 @@ export class ForgotPasswordFormComponent {
         this.accountService.forgotPassword(form.email).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
             this.onGoBack()
+        }, () => {
+            this.showSnackbar(this.messageSnackbarService.veryBad(), 'error') // Tested
         })
     }
 

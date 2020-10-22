@@ -8,7 +8,6 @@
         { "error": 490, "id": "unableToSaveRecord", "message": "(DE) This record could not be saved." },
         { "error": 491, "id": "recordInUse", "message": "(DE) This record is in use and can not be deleted." },
         { "error": 492, "id": "unableToRegisterUser", "message": "(DE) A user with these details can not be created." },
-        { "error": 493, "id": "unableToResetPassword", "message": "(DE) The password can not be reset." },
         { "error": 494, "id": "unableToChangePassword", "message": "(DE) The password can not be changed." },
         { "error": 495, "id": "accountNotConfirmed", "message": "(DE) This account is pending email confirmation." },
         { "error": 500, "id": "veryBad", "message": "(DE) Something went very wrong." },
@@ -23,5 +22,6 @@
         { "id": "recordDeleted", "message": "(DE) This record was deleted." },
         { "id": "recordUpdated", "message": "(DE) This record was updated." },
         { "id": "selectedRecordsHaveBeenProcessed", "message": "(DE) All selected records have been updated." },
+        { "id": "unableToResetPassword", "message": "(DE) The password can not be reset." }
     ]
 }]

@@ -186,7 +186,6 @@ export class EditUserFormComponent {
     }
 
     private populateFields(result: User): void {
-        console.log(result)
         this.form.setValue({
             id: result.id,
             userName: result.username,

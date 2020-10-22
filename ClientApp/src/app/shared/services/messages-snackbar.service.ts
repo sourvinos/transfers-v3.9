@@ -56,7 +56,9 @@ export class MessageSnackbarService {
     public recordDeleted(): string { return this.getDescription(this.feature, "recordDeleted") }
     public recordUpdated(): string { return this.getDescription(this.feature, "recordUpdated") }
     public selectedRecordsHaveBeenProcessed(): string { return this.getDescription(this.feature, "selectedRecordsHaveBeenProcessed") }
-    
+    public unableToResetPassword(): string { return this.getDescription(this.feature, "unableToResetPassword") }
+    public veryBad(): string { return this.getDescription(this.feature, "veryBad") }
+
     public filterError(errorCode: number, feature = 'snackbarMessages'): string {
         let returnValue = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {

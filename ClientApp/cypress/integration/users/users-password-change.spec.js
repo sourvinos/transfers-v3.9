@@ -19,24 +19,24 @@ context('Users - Password change', () => {
             cy.readUserRecord()
         })
 
-        it('Goto the change password form', () => {
+        it.skip('Goto the change password form', () => {
             cy.get('[data-cy=changePassword]').click()
             cy.url().should('eq', Cypress.config().baseUrl + '/users/changePassword/7bf9acf1-74c2-459c-8366-82f05bfa3e28')
         })
 
-        it('Current password', () => {
+        it.skip('Current password', () => {
             cy.typeRandomChars('currentPassword', 12).elementShouldBeValid('currentPassword')
         })
 
-        it('New password', () => {
+        it.skip('New password', () => {
             cy.typeNotRandomChars('password', 'abcde123456').elementShouldBeValid('password')
         })
 
-        it('Confirm password', () => {
+        it.skip('Confirm password', () => {
             cy.typeNotRandomChars('confirmPassword', 'abcde123456').elementShouldBeValid('confirmPassword')
         })
 
-        it('Update', () => {
+        it.skip('Update', () => {
             cy.server()
             cy.route('POST', Cypress.config().baseUrl + '/api/account/changePassword/', 'fixture:user-change-password.json').as('changePassword')
             cy.get('[data-cy=save]').click()
@@ -50,7 +50,7 @@ context('Users - Password change', () => {
 
     })
 
-    describe('Validate form', () => {
+    describe.skip('Validate form', () => {
 
         it('Login', () => {
             cy.login()

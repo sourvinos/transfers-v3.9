@@ -87,10 +87,10 @@ export class ResetPasswordFormComponent {
     public onSave(): void {
         const form = this.form.value
         this.accountService.resetPassword(form.email, form.passwords.password, form.passwords.confirmPassword, form.token).subscribe(() => {
-            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info') // Tested
             this.router.navigate([this.url])
-        }, errorFromInterceptor => {
-            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
+        }, () => {
+            this.showSnackbar(this.messageSnackbarService.unableToResetPassword(), 'error') // Tested
         })
     }
 

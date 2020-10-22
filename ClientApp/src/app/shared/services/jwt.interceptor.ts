@@ -33,32 +33,19 @@ export class JwtInterceptor {
                                 case 403:
                                     return throwError(403)
                                 case 404:
-                                    console.log('Interceptor: 404') // Not found
                                     return throwError(404)
                                 case 409:
-                                    console.log('Interceptor: 409')
-                                    return throwError(409) // Conflict
+                                    return throwError(409) // 
                                 case 490:
-                                    console.log('Interceptor: 490')
-                                    return throwError(490) // Unable to save
+                                    return throwError(490) // 
                                 case 491:
-                                    console.log('Interceptor: 491')
-                                    return throwError(491) // Unable to delete because the record is in use
+                                    return throwError(491) // 
                                 case 492:
-                                    console.log('Interceptor: 492')
-                                    return throwError(492) // Unable to register user
-                                case 493:
-                                    console.log('Interceptor: 493')
-                                    return throwError(493) // Unable to reset password
+                                    return throwError(492) // 
                                 case 494:
-                                    console.log('Interceptor: 494')
-                                    return throwError(494) // Unable to change password
-                                case 495:
-                                    console.log('Interceptor: 495')
-                                    return throwError(495) // Account not confirmed
+                                    return throwError(494) // unableToChangePassword
                                 case 500:
-                                    console.log('Interceptor: 500') // Very bad
-                                    return throwError(500)
+                                    return throwError(500) // veryBad
                             }
                         } else {
                             return throwError(this.handleError)

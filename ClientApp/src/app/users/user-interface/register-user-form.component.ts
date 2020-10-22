@@ -105,7 +105,6 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             this.focus('userName')
             this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
         }, errorFromInterceptor => {
-            console.log('From interceptor', errorFromInterceptor)
             this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })

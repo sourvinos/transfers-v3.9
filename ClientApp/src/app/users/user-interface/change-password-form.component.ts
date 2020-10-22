@@ -107,11 +107,11 @@ export class ChangePasswordFormComponent {
     public onSave(): void {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe(() => {
-            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info') // Tested
             this.resetForm()
             this.accountService.logout()
         }, errorFromInterceptor => {
-            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')  // Tested
         })
     }
 

@@ -42,13 +42,12 @@ export class UserGreetingComponent {
     }
 
     public onEditUser(): void {
-        let a = ''
+        let userId = ''
         this.accountService.currentUserId.subscribe((result: any) => {
-            console.log('ID', result)
-            a = result
+            userId = result
         })
         this.helperService.saveItem('editUserCaller', 'userGreeting')
-        this.router.navigate([this.baseUrl, a])
+        this.router.navigate([this.baseUrl, userId])
     }
 
     public onLogout(): void {

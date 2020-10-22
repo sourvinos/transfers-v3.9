@@ -84,7 +84,7 @@ export class LoginFormComponent {
             this.goHome()
             this.startTimer()
         }, error => {
-            this.showError(error)
+            this.showError(error) // Tested
         })
     }
 
@@ -128,11 +128,11 @@ export class LoginFormComponent {
 
     private showError(error: any): void {
         switch (error.status) {
-            case 400:
-                this.showSnackbar(this.messageSnackbarService.accountNotConfirmed(), 'error')
-                break
             case 401:
-                this.showSnackbar(this.messageSnackbarService.authenticationFailed(), 'error')
+                this.showSnackbar(this.messageSnackbarService.authenticationFailed(), 'error') // Tested
+                break
+            case 495:
+                this.showSnackbar(this.messageSnackbarService.accountNotConfirmed(), 'error') // Tested
                 break
         }
     }
