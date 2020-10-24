@@ -42,7 +42,7 @@
     --color-navigation-button-form-modal: #696d71;
     --color-navigation-button: #373f46;
     --color-navigation-icon: #b7b7b7;
-    --color-paragraph:#dddddd;
+    --color-paragraph: #dddddd;
     --color-ring-inner: #ffe85c;
     --color-ring-outer: #ffc788;
     --color-route-description: #ffc788;
@@ -83,10 +83,9 @@
     --color-table-row-odd: #363d44;
     --color-table-row-selected: #394d59;
     --color-table-row: #b7b7b8;
-    --color-table-rows-background-hover: #1d2733;
     --color-table-rows-hover: #fe9f36;
     --color-tooltip-background: #ffc88a;
     --color-tooltip: #1d2733;
-    --color-transfer-form-modal: #696d71;    
+    --color-transfer-form-modal: #696d71;
     --color-user-greeting: #b7b7b8;
 }

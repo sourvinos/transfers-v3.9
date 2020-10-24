@@ -172,7 +172,7 @@ export class CustomTableComponent {
     private initVariables(): void {
         this.table = document.getElementById('custom-table-' + this.randomTableId)
         this.tableContainer = this.table.parentNode.parentNode
-        this.rowHeight = 46
+        this.rowHeight = 41
         this.rowCount = this.table.rows.length - 1
         document.getElementById('custom-table-input-' + this.randomTableId).style.zIndex = '-1'
         document.getElementById('custom-table-input-' + this.randomTableId).style.position = 'absolute'

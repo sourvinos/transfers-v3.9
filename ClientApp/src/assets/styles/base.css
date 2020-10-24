@@ -76,6 +76,12 @@ p.instructions {
     background-color: var(--color-snackbar-background-error) !important;
 }
 
+.mat-button-wrapper {
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
 .info {
     background-color: var(--color-snackbar-background-info) !important;
 }

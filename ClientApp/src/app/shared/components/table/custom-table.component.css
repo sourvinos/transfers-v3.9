@@ -19,7 +19,7 @@ th {
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-table-header);
-    padding: 0.5rem;
+    padding: 6px 5px 6px 5px;
     position: sticky;
     text-align: center;
     top: 0;
@@ -54,17 +54,14 @@ td {
     font-size: var(--font-size-table-row);
     max-width: 0;
     overflow: hidden;
-    padding: 0.5rem 0.5rem;
+    padding: 5px 8px 4px 8px;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-tr:hover td {
-    background-color: var(--color-table-rows-background-hover);
+tr:hover {
     color: var(--color-table-rows-hover);
-    cursor: pointer;
-    transition: background-color;
-    transition-duration: 400ms;
+    font-weight: var(--font-weight-table-row-hover);
 }
 
 tr:hover td:last-child>div>.button-row-menu {
