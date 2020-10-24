@@ -105,8 +105,10 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             this.focus('userName')
             this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
         }, errorFromInterceptor => {
+            // 200 = Ok
+            // 492 = Unable to register user (username and/or email already exist)
+            // 500 = Invalid model
             this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
-            this.onGoBack()
         })
 }
 

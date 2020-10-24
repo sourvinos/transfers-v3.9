@@ -17,10 +17,9 @@ namespace Transfers {
         private readonly UserManager<AppUser> userManager;
         private readonly TokenSettings settings;
         private readonly AppDbContext db;
-        private readonly MessageService messageService;
 
-        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db, MessageService messageService) =>
-            (this.userManager, this.settings, this.db, this.messageService) = (userManager, settings.Value, db, messageService);
+        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) =>
+            (this.userManager, this.settings, this.db) = (userManager, settings.Value, db);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Auth([FromBody] TokenRequest model) {
@@ -30,7 +29,7 @@ namespace Transfers {
                 case "refresh_token":
                     return await RefreshToken(model);
                 default:
-                    return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
+                    return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
             }
         }
 
@@ -38,7 +37,7 @@ namespace Transfers {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
-                    return StatusCode(495, new { response = messageService.GetMessage("AccountNotConfirmed") }); // Tested
+                    return StatusCode(495, new { response = ApiMessages.AccountNotConfirmed() }); // Tested
                 }
                 var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
@@ -52,7 +51,7 @@ namespace Transfers {
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
                 return StatusCode(200, new { response = accessToken }); // Tested
             }
-            return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") }); // Tested
+            return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() }); // Tested
         }
 
         private Token CreateRefreshToken(string clientId, string userId) {
@@ -97,19 +96,19 @@ namespace Transfers {
 
         private async Task<IActionResult> RefreshToken(TokenRequest model) {
             try {
-                var rt = db.Tokens.FirstOrDefault(t => t.ClientId == settings.ClientId && t.Value == model.RefreshToken.ToString());
-                if (rt == null) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
-                if (rt.ExpiryTime < DateTime.UtcNow) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
-                var user = await userManager.FindByIdAsync(rt.UserId);
-                if (user == null) return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
-                var rtNew = CreateRefreshToken(rt.ClientId, rt.UserId);
-                db.Tokens.Remove(rt);
+                var refreshToken = db.Tokens.FirstOrDefault(t => t.ClientId == settings.ClientId && t.Value == model.RefreshToken.ToString());
+                if (refreshToken == null) return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
+                if (refreshToken.ExpiryTime < DateTime.UtcNow) return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
+                var user = await userManager.FindByIdAsync(refreshToken.UserId);
+                if (user == null) return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
+                var rtNew = CreateRefreshToken(refreshToken.ClientId, refreshToken.UserId);
+                db.Tokens.Remove(refreshToken);
                 db.Tokens.Add(rtNew);
                 db.SaveChanges();
                 var token = await CreateAccessToken(user, rtNew.Value);
                 return StatusCode(200, new { response = token });
             } catch {
-                return StatusCode(401, new { response = messageService.GetMessage("AuthenticationFailed") });
+                return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
             }
         }
 

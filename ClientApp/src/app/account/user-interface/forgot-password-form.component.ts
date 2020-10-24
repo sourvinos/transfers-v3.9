@@ -79,7 +79,7 @@ export class ForgotPasswordFormComponent {
             this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
             this.onGoBack()
         }, () => {
-            this.showSnackbar(this.messageSnackbarService.veryBad(), 'error') // Tested
+            this.showSnackbar(this.messageSnackbarService.invalidModel(), 'error') // Tested
         })
     }
 

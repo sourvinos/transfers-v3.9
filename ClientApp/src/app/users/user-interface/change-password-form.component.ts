@@ -111,6 +111,10 @@ export class ChangePasswordFormComponent {
             this.resetForm()
             this.accountService.logout()
         }, errorFromInterceptor => {
+            // 200 = Ok
+            // 404 = User not found
+            // 494 = Unable to change password
+            // 500 = Invalid model
             this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')  // Tested
         })
     }

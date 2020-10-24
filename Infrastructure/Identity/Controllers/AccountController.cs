@@ -17,10 +17,9 @@ namespace Transfers {
         private readonly IEmailSender emailSender;
         private readonly SignInManager<AppUser> signInManager;
         private readonly UserManager<AppUser> userManager;
-        private readonly MessageService messageService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender, MessageService messageService) =>
-            (this.userManager, this.signInManager, this.emailSender, this.messageService) = (userManager, signInManager, emailSender, messageService);
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender) =>
+            (this.userManager, this.signInManager, this.emailSender) = (userManager, signInManager, emailSender);
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel formData) {
@@ -39,12 +38,12 @@ namespace Transfers {
                     string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token }, protocol : HttpContext.Request.Scheme);
                     emailSender.SendRegistrationEmail(user.Email, user.DisplayName, callbackUrl);
-                    return StatusCode(200, new { response = ApiMessages.RecordCreated() });
+                    return StatusCode(200, new { response = ApiMessages.RecordCreated() }); // Ok
                 } else {
-                    return StatusCode(492, new { response = result.Errors.Select(x => x.Description) });
+                    return StatusCode(492, new { response = result.Errors.Select(x => x.Description) }); // unableToRegisterUser
                 }
             }
-            return StatusCode(492, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+            return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // invalidModel
         }
 
         [AllowAnonymous]
@@ -52,7 +51,6 @@ namespace Transfers {
         public async Task<IActionResult> ConfirmEmail(string userId, string token) {
             var user = await userManager.FindByIdAsync(userId);
             if (user == null) { return RedirectToAction("ActivationError", "Notifications"); }
-            if (user.EmailConfirmed) { return Redirect("/login"); }
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded) {
                 return RedirectToAction("ActivationSuccess", "Notifications", new { userId, token });
@@ -71,11 +69,11 @@ namespace Transfers {
                     string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
                     string passwordResetLink = Url.Content($"{baseUrl}/resetPassword?email={model.Email}&token={tokenEncoded}");
                     emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
-                    return StatusCode(200, new { response = ApiMessages.EmailInstructions() }); // Tested
+                    return StatusCode(200, new { response = ApiMessages.EmailInstructions() }); // Ok
                 }
-                return StatusCode(200, new { response = ApiMessages.EmailInstructions() }); // Tested
+                return StatusCode(200, new { response = ApiMessages.EmailInstructions() }); // Ok
             }
-            return StatusCode(500, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // Tested
+            return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // invalidModel
         }
 
         [AllowAnonymous]
@@ -85,7 +83,7 @@ namespace Transfers {
                 Email = email,
                 Token = tokenEncoded
             };
-            return StatusCode(200, new { response = model });
+            return StatusCode(200, new { response = model }); // Ok
         }
 
         [AllowAnonymous]
@@ -96,27 +94,30 @@ namespace Transfers {
                 if (user != null) {
                     var result = await userManager.ResetPasswordAsync(user, Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token)), model.Password);
                     if (result.Succeeded) {
-                        return StatusCode(200, new { response = ApiMessages.PasswordReset() }); // Tested
+                        return StatusCode(200, new { response = ApiMessages.PasswordReset() }); // Ok
                     }
-                    return StatusCode(493, new { response = result.Errors.Select(x => x.Description) }); // Tested
+                    return StatusCode(494, new { response = result.Errors.Select(x => x.Description) }); // unableToChangePassword
                 }
-                return StatusCode(404, new { response = ApiMessages.UserNotFound() }); // Tested
+                return StatusCode(404, new { response = ApiMessages.RecordNotFound() }); // recordNotFound
             }
-            return StatusCode(500, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // Tested
+            return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // invalidModel
         }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
-                var user = await userManager.FindByIdAsync(vm.UserId); // Tested, returns 500 on error
-                var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password); // Tested, returns 494 on error
-                if (result.Succeeded) {
-                    await signInManager.RefreshSignInAsync(user);
-                    return StatusCode(200, new { response = ApiMessages.PasswordChanged() }); // Tested
+                var user = await userManager.FindByIdAsync(vm.UserId);
+                if (user != null) {
+                    var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password);
+                    if (result.Succeeded) {
+                        await signInManager.RefreshSignInAsync(user);
+                        return StatusCode(200, new { response = ApiMessages.PasswordChanged() }); // Ok
+                    }
+                    return StatusCode(494, new { response = result.Errors.Select(x => x.Description) }); // unableToChangePassword
                 }
-                return StatusCode(494, new { response = result.Errors.Select(x => x.Description) }); // Tested
+                return StatusCode(404, new { response = ApiMessages.RecordNotFound() }); // recordNotFound
             }
-            return StatusCode(500, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // Tested
+            return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) }); // invalidModel
         }
 
     }

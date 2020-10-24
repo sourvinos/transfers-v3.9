@@ -1,6 +1,7 @@
 [{
     "feature": "snackbarMessages",
     "labels": [
+        { "error": 400, "id": "invalidModel", "message": "Κάτι δεν πήγε και πολύ καλά." },
         { "error": 401, "id": "authenticationFailed", "message": "Ο συνδυασμός χρήστης / κωδικός είναι λάθος." },
         { "error": 403, "id": "authorizationFailed", "message": "Αυτή η επιλογή απαιτεί εξουσιοδότηση υψηλότερου επιπέδου." },
         { "error": 404, "id": "recordNotFound", "message": "Η εγγραφή δεν βρέθηκε." },
@@ -10,7 +11,6 @@
         { "error": 492, "id": "unableToRegisterUser", "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί." },
         { "error": 494, "id": "unableToChangePassword", "message": "Ο κωδικός δεν μπορεί να αλλάξει." },
         { "error": 495, "id": "accountNotConfirmed", "message": "Η εγγραφή του χρήστη δεν έχει ακόμη επιβεβαιωθεί." },
-        { "error": 500, "id": "veryBad", "message": "Κάτι δεν πήγε και πολύ καλά." },
         { "id": "askConfirmationToAbortEditing", "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν." },
         { "id": "askConfirmationToDelete", "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα." },
         { "id": "emailSent", "message": "Στάλθηκε ένα email με οδηγίες." },

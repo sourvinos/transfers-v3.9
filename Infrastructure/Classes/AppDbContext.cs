@@ -16,8 +16,7 @@ namespace Transfers {
         public DbSet<Route> Routes { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<Token> Tokens { get; set; }
-        public DbSet<Message> Messages { get; set; }
-
+ 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "Admin".ToUpper() });

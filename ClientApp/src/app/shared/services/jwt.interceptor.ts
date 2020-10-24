@@ -28,6 +28,8 @@ export class JwtInterceptor {
                     if (this.isUserLoggedIn()) {
                         if (err instanceof HttpErrorResponse) {
                             switch ((<HttpErrorResponse>err).status) {
+                                case 400:
+                                    return throwError(400) // invalidModel
                                 case 401:
                                     return this.handleHttpErrorResponse(request, next)
                                 case 403:
@@ -37,15 +39,13 @@ export class JwtInterceptor {
                                 case 409:
                                     return throwError(409) // 
                                 case 490:
-                                    return throwError(490) // 
+                                    return throwError(490) // unableToSaveRecord
                                 case 491:
-                                    return throwError(491) // 
+                                    return throwError(491) // recordInUse
                                 case 492:
-                                    return throwError(492) // 
+                                    return throwError(492) // unableToRegisterUser
                                 case 494:
                                     return throwError(494) // unableToChangePassword
-                                case 500:
-                                    return throwError(500) // veryBad
                             }
                         } else {
                             return throwError(this.handleError)

@@ -1,22 +1,21 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Transfers {
 
-    [Route("api/[controller]")]
     [Authorize]
+    [Route("api/[controller]")]
 
     public class DestinationsController : ControllerBase {
 
         private readonly IDestinationRepository repo;
-        private readonly MessageService messageService;
 
-        public DestinationsController(IDestinationRepository repo, MessageService messageService) =>
-            (this.repo, this.messageService) = (repo, messageService);
+        public DestinationsController(IDestinationRepository repo) =>
+            (this.repo) = (repo);
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -31,45 +30,49 @@ namespace Transfers {
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDestination(int id) {
-            Destination destination = await repo.GetById(id);
-            if (destination == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
-            return StatusCode(200, destination);
+            Destination record = await repo.GetById(id);
+            if (record == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
+            return StatusCode(200, record);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult PostDestination([FromBody] Destination destination) {
-            if (!ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
-            try {
-                repo.Create(destination);
-                return StatusCode(200, new { response = ApiMessages.RecordCreated() });
-            } catch (Exception) {
-                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
+        public IActionResult PostDestination([FromBody] Destination record) {
+            if (ModelState.IsValid) {
+                try {
+                    repo.Create(record);
+                    return StatusCode(200, new { response = ApiMessages.RecordCreated() });
+                } catch (DbUpdateException exception) {
+                    return StatusCode(490, new { response = Extensions.DBUpdateError(MethodBase.GetCurrentMethod(), record, exception) });
+                }
             }
+            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination destination) {
-            if (id != destination.Id || !ModelState.IsValid) return StatusCode(490, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
-            try {
-                repo.Update(destination);
-                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
-            } catch (Exception) {
-                return StatusCode(500, new { response = messageService.GetMessage("VeryBad") });
+        public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination record) {
+            if (id == record.Id && ModelState.IsValid) {
+                try {
+                    repo.Update(record);
+                    return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+                } catch (DbUpdateException exception) {
+                    return StatusCode(490, new { response = Extensions.DBUpdateError(MethodBase.GetCurrentMethod(), record, exception) });
+                }
             }
+            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDestination([FromRoute] int id) {
-            Destination destination = await repo.GetById(id);
-            if (destination == null) return StatusCode(404, new { response = messageService.GetMessage("RecordNotFound") });
+            Destination record = await repo.GetById(id);
+            if (record == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
             try {
-                repo.Delete(destination);
+                repo.Delete(record);
                 return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
-            } catch (Exception) {
-                return StatusCode(491, new { response = messageService.GetMessage("RecordInUse") });
+            } catch (DbUpdateException) {
+                return StatusCode(491, new { response = ApiMessages.RecordInUse() });
             }
         }
 

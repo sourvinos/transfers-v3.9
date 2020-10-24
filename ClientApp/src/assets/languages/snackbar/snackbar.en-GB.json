@@ -1,6 +1,7 @@
 [{
     "feature": "snackbarMessages",
     "labels": [
+        { "error": 400, "id": "invalidModel", "message": "Something went very wrong." },
         { "error": 401, "id": "authenticationFailed", "message": "Authentication failed." },
         { "error": 403, "id": "authorizationFailed", "message": "This action requires higher authorization level." },
         { "error": 404, "id": "recordNotFound", "message": "This record can not be found." },
@@ -10,14 +11,13 @@
         { "error": 492, "id": "unableToRegisterUser", "message": "A user with these details can not be created." },
         { "error": 494, "id": "unableToChangePassword", "message": "The password can not be changed." },
         { "error": 495, "id": "accountNotConfirmed", "message": "This account is pending email confirmation." },
-        { "error": 500, "id": "veryBad", "message": "Something went very wrong." },
         { "id": "askConfirmationToAbortEditing", "message": "If you continue, all changes will be lost." },
         { "id": "askConfirmationToDelete", "message": "If you continue, this record will be lost for ever." },
         { "id": "emailSent", "message": "An email was sent with instructions." },
         { "id": "formIsDirty", "message": "Before you continue, all changes must be saved." },
         { "id": "noDefaultDriverFound", "message": "A default driver was not found." },
         { "id": "noRecordsSelected", "message": "You have not selected any records." },
-        { "id": "passwordChanged", "message": "The password was changed, you must login again..." }, 
+        { "id": "passwordChanged", "message": "The password was changed, you must login again." }, 
         { "id": "recordCreated", "message": "A record was created." },
         { "id": "recordDeleted", "message": "This record was deleted." },
         { "id": "recordUpdated", "message": "This record was updated." },

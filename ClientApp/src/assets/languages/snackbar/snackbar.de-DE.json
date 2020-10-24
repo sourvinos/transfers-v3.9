@@ -1,6 +1,7 @@
 [{
     "feature": "snackbarMessages",
     "labels": [
+        { "error": 400, "id": "invalidModel", "message": "(DE) Something went very wrong." },
         { "error": 401, "id": "authenticationFailed", "message": "(DE) Authentication failed." },
         { "error": 403, "id": "authorizationFailed", "message": "(DE) This action requires higher authorization level." },
         { "error": 404, "id": "recordNotFound", "message": "(DE) This record can not be found." },
@@ -10,7 +11,6 @@
         { "error": 492, "id": "unableToRegisterUser", "message": "(DE) A user with these details can not be created." },
         { "error": 494, "id": "unableToChangePassword", "message": "(DE) The password can not be changed." },
         { "error": 495, "id": "accountNotConfirmed", "message": "(DE) This account is pending email confirmation." },
-        { "error": 500, "id": "veryBad", "message": "(DE) Something went very wrong." },
         { "id": "askConfirmationToAbortEditing", "message": "(DE) If you continue, all changes will be lost." },
         { "id": "askConfirmationToDelete", "message": "(DE) If you continue, this record will be lost for ever." },
         { "id": "emailSent", "message": "(DE) An email was sent with instructions." },

@@ -1,10 +1,13 @@
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -61,7 +64,7 @@ namespace Transfers {
                     configuration.Bind("CookieSettings", options));
         }
 
-         public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
+        public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
@@ -78,8 +81,24 @@ namespace Transfers {
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
-            services.AddTransient<IMessageRepository, MessageRepository>();
-            services.AddScoped<MessageService>();
+        }
+
+        public static Object NotValidModel(MethodBase method, Object record, ModelStateDictionary modelState) {
+            return new {
+                Controller = method.ReflectedType.Name,
+                    Method = method.Name,
+                    Record = record,
+                    Error = modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)
+            };
+        }
+
+        public static Object DBUpdateError(MethodBase method, Object record, Exception ex) {
+            return new {
+                Controller = method.ReflectedType.Name,
+                    Method = method.Name,
+                    Record = record,
+                    Error = ex.InnerException.Message
+            };
         }
 
     }
