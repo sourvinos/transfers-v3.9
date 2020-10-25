@@ -31,11 +31,6 @@ th:hover {
     cursor: pointer;
 }
 
-tr {
-    transition: background-color;
-    transition: background-color 0.7s;
-}
-
 tbody tr:nth-child(odd) {
     background-color: var(--color-table-row-odd);
 }
@@ -46,6 +41,14 @@ tbody tr:nth-child(even) {
 
 tr.selected {
     background-color: var(--color-table-row-selected) !important;
+}
+
+tr:hover {
+    background-color: var(--color-table-row-selected) !important;
+}
+
+tr:hover td:last-child>div>.button-row-menu {
+    visibility: visible;
 }
 
 td {
@@ -59,13 +62,9 @@ td {
     white-space: nowrap;
 }
 
-tr:hover {
+td:hover {
     color: var(--color-table-rows-hover);
-    font-weight: var(--font-weight-table-row-hover);
-}
-
-tr:hover td:last-child>div>.button-row-menu {
-    visibility: visible;
+    cursor: default;
 }
 
 .mat-checkbox {

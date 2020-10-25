@@ -108,7 +108,7 @@ export class CustomTableComponent {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
-
+    
     public onGotoRow(key: any): void {
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {
@@ -142,7 +142,7 @@ export class CustomTableComponent {
             this.checkedIds.push(element.childNodes[1].innerText)
             this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
         })
-        this.helperService.saveItem('selectedIds',  JSON.stringify(this.checkedIds))
+        this.helperService.saveItem('selectedIds', JSON.stringify(this.checkedIds))
         this.interactionService.setCheckedTotalPersons(this.totalPersons)
     }
 

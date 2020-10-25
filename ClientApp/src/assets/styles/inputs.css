@@ -19,6 +19,7 @@ input[type=text], input[type=email] {
 
 input[type=number] {
     text-align: right;
+    -moz-appearance: textfield;
 }
 
 input:disabled {
@@ -128,7 +129,6 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-label {
     color: var(--color-input-text-error) !important;
-    font-weight: bold !important;
 }
 
 .mat-form-field.mat-form-field-invalid .mat-input-element {

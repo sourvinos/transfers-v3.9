@@ -2,7 +2,7 @@
 
     <div id="header">
         <div id="navigation">
-            <button data-cy="goBackToSummary" class="goBack" mat-mini-fab (click)="onGoBack()">
+            <button data-cy="goBackToSummary" class="goBack" id="goBack" mat-mini-fab (click)="onGoBack()">
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </div>
@@ -41,7 +41,7 @@
                 <mat-error *ngIf="!free.hasError('required') && free.errors?.min || free.errors?.max">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input data-cy="totalPersons" type="number" matInput disabled [placeholder]="onGetLabel('totalPersons')" id="totalPersons" formControlName="totalPersons">
+                <input data-cy="totalPersons" type="number" matInput [placeholder]="onGetLabel('totalPersons')" id="totalPersons" formControlName="totalPersons">
             </mat-form-field>
         </div>
         <div id="group-field">

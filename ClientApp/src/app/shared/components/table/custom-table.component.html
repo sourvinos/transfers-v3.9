@@ -17,8 +17,8 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button data-cy="editButton" mat-menu-item (click)="sendRowToService()">
-                            <span>{{ onGetRowMenu('edit') }}</span>
+                        <button data-cy="editButton" mat-menu-item>
+                            <span (click)="sendRowToService()">{{ onGetRowMenu('edit') }}</span>
                         </button>
                     </mat-menu>
                 </div>

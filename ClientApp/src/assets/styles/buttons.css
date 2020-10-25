@@ -97,6 +97,13 @@ button:not(:disabled) {
     padding-bottom: 0.1875rem !important;
 }
 
+.mat-menu-item {
+    display: flex !important;
+    padding: 0 !important;
+}
+
 .mat-menu-item span {
     color: var(--color-table-row-menu-item);
+    padding-left: 1rem;
+    width: 100%;
 }

@@ -48,7 +48,7 @@ namespace Transfers {
                     repo.Create(record);
                     return StatusCode(200, new { response = ApiMessages.RecordCreated() });
                 } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateError(MethodBase.GetCurrentMethod(), record, exception) });
+                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
                 }
             }
             return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
@@ -62,7 +62,7 @@ namespace Transfers {
                     repo.Update(record);
                     return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
                 } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateError(MethodBase.GetCurrentMethod(), record, exception) });
+                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
                 }
             }
             return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });

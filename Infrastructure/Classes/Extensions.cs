@@ -92,7 +92,7 @@ namespace Transfers {
             };
         }
 
-        public static Object DBUpdateError(MethodBase method, Object record, Exception ex) {
+        public static Object DBUpdateException(MethodBase method, Object record, Exception ex) {
             return new {
                 Controller = method.ReflectedType.Name,
                     Method = method.Name,
