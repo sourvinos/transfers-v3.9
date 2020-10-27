@@ -1,21 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
 
     public class CustomersController : ControllerBase {
 
         private readonly ICustomerRepository repo;
+        private readonly ILogger<CustomersController> logger;
 
-        public CustomersController(ICustomerRepository repo) =>
-            (this.repo) = (repo);
+        public CustomersController(ICustomerRepository repo, ILogger<CustomersController> logger) =>
+            (this.repo, this.logger) = (repo, logger);
+
+        [HttpGet("[action]")]
+        public void Hello() {
+            logger.LogInformation(">>> HELLO <<<");
+            try {
+                throw new Exception("Demo exception");
+            } catch (System.Exception) {
+                logger.LogError(">>> EXCEPTION CAUGHT <<<");
+            } finally {
+                logger.LogInformation(">>> CLEANING UP <<<");
+            }
+        }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]

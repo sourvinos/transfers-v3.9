@@ -1,3 +1,4 @@
+using System.IO;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog;
 
 namespace Transfers {
 
@@ -16,8 +18,10 @@ namespace Transfers {
 
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration) =>
+        public Startup(IConfiguration configuration) {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
+        }
 
         public void ConfigureServices(IServiceCollection services) {
             // Static
@@ -29,6 +33,7 @@ namespace Transfers {
             services.Configure<RazorViewEngineOptions>(option => option.ViewLocationExpanders.Add(new FeatureViewLocationExpander()));
             services.AddAntiforgery(options => { options.Cookie.Name = "_af"; options.Cookie.HttpOnly = true; options.Cookie.SecurePolicy = CookieSecurePolicy.Always; options.HeaderName = "X-XSRF-TOKEN"; });
             services.AddAutoMapper();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration["ConnectionStrings:SqliteConnection"]));
             services.AddEmailSenders();
@@ -39,7 +44,7 @@ namespace Transfers {
             services.Configure<TokenSettings>(options => Configuration.GetSection("TokenSettings").Bind(options));
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, ILoggerManager logger) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
@@ -50,6 +55,7 @@ namespace Transfers {
             if (!env.IsDevelopment()) {
                 app.UseSpaStaticFiles();
             }
+            app.ConfigureExceptionHandler(logger);
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
