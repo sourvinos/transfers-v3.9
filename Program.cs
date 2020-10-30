@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +16,11 @@ namespace Transfers {
                 .UseKestrel(options => {
                     options.ListenLocalhost(5001, listenOptions => {
                         listenOptions.UseHttps("localhost.pfx", "74656");
+                    });
+                })
+                .ConfigureLogging((context, logging) => {
+                    logging.FileLogger(options => {
+                        context.Configuration.GetSection("Logging").GetSection("File").GetSection("Options").Bind(options);
                     });
                 })
                 .UseStartup<Startup>()

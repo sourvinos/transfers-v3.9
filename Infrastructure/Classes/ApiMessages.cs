@@ -16,6 +16,7 @@ namespace Transfers {
         public static string RecordInUse() { return "This record is in use and can not be deleted."; }
         public static string RecordNotFound() { return "Record not found."; }
         public static string RecordUpdated() { return "Record updated."; }
+        public static string RecordNotSaved() { return "Record not saved."; }
 
     }
 

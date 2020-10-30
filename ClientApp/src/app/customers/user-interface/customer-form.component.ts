@@ -111,16 +111,16 @@ export class CustomerFormComponent {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.customerService.add(this.form.value).subscribe(() => {
-                this.initForm()
                 this.focus('description')
+                this.initFormAfterDelay()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorFromInterceptor => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             })
         } else {
             this.customerService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.resetForm()
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
+                this.resetForm()
                 this.onGoBack()
             }, errorFromInterceptor => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
@@ -169,10 +169,12 @@ export class CustomerFormComponent {
 
     private getRecord(id: number): void {
         this.customerService.getSingle(id).subscribe(result => {
-            this.populateFields(result)
-        }, errorFromInterceptor => {
-            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
-            this.onGoBack()
+            if (result.code == 200) {
+                this.populateFields(result.message)
+            } else {
+                this.showSnackbar(this.messageSnackbarService.filterError(result.code), 'error')
+                this.onGoBack()
+            }
         })
     }
 
@@ -188,6 +190,12 @@ export class CustomerFormComponent {
             isActive: true,
             userId: this.helperService.readItem('userId')
         })
+    }
+
+    private initFormAfterDelay(): void {
+        setTimeout(() => {
+            this.initForm()
+        }, 200)
     }
 
     private populateFields(result: Customer): void {

@@ -1,16 +1,14 @@
 using System;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -97,34 +95,12 @@ namespace Transfers {
             };
         }
 
-        public static Object DBUpdateException(MethodBase method, Object record, Exception ex) {
+        public static Object DBUpdateException(MethodBase method, Object record, DbUpdateException ex) {
             return new {
-                Controller = method.ReflectedType.Name,
-                    Method = method.Name,
+                Method = method.Name,
                     Record = record,
                     Error = ex.InnerException.Message
             };
-        }
-
-        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILoggerManager logger) {
-            app.UseExceptionHandler(appError => {
-                appError.Run(async context => {
-                    context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-                    context.Response.ContentType = "application/json";
-                    var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
-                    if (contextFeature != null) {
-                        logger.LogError($"Something went wrong: {contextFeature.Error}");
-                        await context.Response.WriteAsync(new ErrorDetails() {
-                            StatusCode = context.Response.StatusCode,
-                                Message = "Internal Server Error."
-                        }.ToString());
-                    }
-                });
-            });
-        }
-
-        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app) {
-            app.UseMiddleware<ExceptionMiddleware>();
         }
 
     }
