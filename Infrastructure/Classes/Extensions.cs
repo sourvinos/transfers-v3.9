@@ -1,22 +1,24 @@
 using System;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Transfers {
 
-    public static class Extensions {
+    public static class Extensions  {
 
         public static void AddCors(IServiceCollection services) {
             services.AddCors(options =>
@@ -55,24 +57,16 @@ namespace Transfers {
                 })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => {
                     options.TokenValidationParameters = new TokenValidationParameters {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = appSettings.Site,
-                    ValidAudience = appSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ClockSkew = TimeSpan.Zero
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidIssuer = appSettings.Site,
+                        ValidAudience = appSettings.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ClockSkew = TimeSpan.Zero
                     };
                 }).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
                     configuration.Bind("CookieSettings", options));
-        }
-
-        public static void ErrorPages(IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment()) {
-                app.UseDeveloperExceptionPage();
-            } else {
-                app.UseExceptionHandler("/Error");
-            }
         }
 
         public static void AddInterfaces(IServiceCollection services) {
@@ -89,17 +83,17 @@ namespace Transfers {
         public static Object NotValidModel(MethodBase method, Object record, ModelStateDictionary modelState) {
             return new {
                 Controller = method.ReflectedType.Name,
-                    Method = method.Name,
-                    Record = record,
-                    Error = modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)
+                Method = method.Name,
+                Record = record,
+                Error = modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)
             };
         }
 
         public static Object DBUpdateException(MethodBase method, Object record, DbUpdateException ex) {
             return new {
                 Method = method.Name,
-                    Record = record,
-                    Error = ex.InnerException.Message
+                Record = record,
+                Error = ex.InnerException.Message
             };
         }
 
