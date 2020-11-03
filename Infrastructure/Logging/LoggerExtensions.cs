@@ -18,24 +18,34 @@ namespace Transfers {
             return builder;
         }
 
-        public static void LogDatabaseError(ILogger logger, ControllerContext context, DbUpdateException exception, Object record) {
-            logger.LogError("{caller} {error} {record}",
-                GetControllerAndActionName(context),
-                GetDatabaseError(exception),
-                GetObjectProperties(record));
+        public static void LogException(int id, ILogger logger, ControllerContext context, Object record, Exception exception) {
+            if (record == null) {
+                LogRecordNotFound(id, logger, context);
+                return;
+            }
+            if (exception == null) {
+                LogInvalidModel(record, logger, context);
+                return;
+            }
+            if (exception is DbUpdateException) {
+                LogDatabaseError(record, logger, context, exception);
+                return;
+            }
         }
 
-        public static void LogInvalidModel(ILogger logger, ControllerContext context, Object record) {
-            logger.LogError("{caller} {error} {record}",
-                GetControllerAndActionName(context),
-                GetSimpleDescription(ApiMessages.InvalidModel()),
-                GetObjectProperties(record));
-        }
-
-        public static void LogRecordNotFound(ILogger logger, ControllerContext context, int id) {
-            logger.LogError("{caller} {error}",
-                GetControllerAndActionName(context),
-                GetSimpleDescription($"Id {id} not found"));
+        public static void LogException(string id, ILogger logger, ControllerContext context, Object record, Exception exception) {
+            if (record == null) {
+                LogRecordNotFound(id, logger, context);
+                return;
+            }
+            if (exception == null) {
+                LogInvalidModel(record, logger, context);
+                return;
+            }
+            if (exception is DbUpdateException) {
+                LogDatabaseError(record, logger, context, exception);
+                return;
+            }
         }
 
         #endregion
@@ -64,7 +74,7 @@ namespace Transfers {
             return sb.ToString();
         }
 
-        private static String GetDatabaseError(DbUpdateException exception) {
+        private static String GetDatabaseError(Exception exception) {
             var sb = new StringBuilder();
             sb.AppendLine();
             sb.Append("\t");
@@ -78,6 +88,28 @@ namespace Transfers {
             sb.Append("\t");
             sb.Append("Error: " + description);
             return sb.ToString();
+        }
+
+        private static void LogDatabaseError(Object record, ILogger logger, ControllerContext context, Exception exception) {
+            logger.LogError("{caller} {error} {record}",
+                GetControllerAndActionName(context),
+                GetDatabaseError(exception),
+                GetObjectProperties(record));
+        }
+
+        private static void LogInvalidModel(Object record, ILogger logger, ControllerContext context) {
+            logger.LogError("{caller} {error} {record}",
+                GetControllerAndActionName(context),
+                GetSimpleDescription(ApiMessages.InvalidModel()),
+                GetObjectProperties(record));
+        }
+
+        private static void LogRecordNotFound(string id, ILogger logger, ControllerContext context) {
+            logger.LogError("{caller} {error}", GetControllerAndActionName(context), GetSimpleDescription($"Id {id} not found"));
+        }
+
+        private static void LogRecordNotFound(int id, ILogger logger, ControllerContext context) {
+            logger.LogError("{caller} {error}", GetControllerAndActionName(context), GetSimpleDescription($"Id {id} not found"));
         }
 
         #endregion

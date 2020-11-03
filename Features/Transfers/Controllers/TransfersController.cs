@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
@@ -14,18 +15,28 @@ namespace Transfers {
 
         private readonly IMapper mapper;
         private readonly ITransferRepository repo;
+        private readonly ILogger<TransfersController> logger;
 
-        public TransfersController(ITransferRepository repo, IMapper mapper) =>
-            (this.repo, this.mapper) = (repo, mapper);
+        public TransfersController(ITransferRepository repo, IMapper mapper, ILogger<TransfersController> logger) {
+            this.repo = repo;
+            this.mapper = mapper;
+            this.logger = logger;
+        }
 
         [HttpGet("date/{dateIn}")]
-        public TransferGroupResultResource<TransferResource> Get(string dateIn) =>
-            this.repo.Get(dateIn);
+        public TransferGroupResultResource<TransferResource> Get(string dateIn) {
+            return this.repo.Get(dateIn);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransfer(int id) {
             var transfer = await repo.GetById(id);
-            if (transfer == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
+            if (transfer == null) {
+                LoggerExtensions.LogException(id, logger, ControllerContext, null, null);
+                return StatusCode(404, new {
+                    response = ApiMessages.RecordNotFound()
+                });
+            };
             return StatusCode(200, transfer);
         }
 
@@ -34,12 +45,20 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(mapper.Map<SaveTransferResource, Transfer>(record));
-                    return StatusCode(200, new { response = ApiMessages.RecordCreated() });
-                } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
+                    return StatusCode(200, new {
+                        response = ApiMessages.RecordCreated()
+                    });
+                } catch (Exception exception) {
+                    LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                    return StatusCode(490, new {
+                        response = ApiMessages.RecordNotSaved()
+                    });
                 }
             }
-            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
+            LoggerExtensions.LogException(0, logger, ControllerContext, record, null);
+            return StatusCode(400, new {
+                response = ApiMessages.InvalidModel()
+            });
         }
 
         [HttpPut("{id}")]
@@ -47,30 +66,55 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+                    return StatusCode(200, new {
+                        response = ApiMessages.RecordUpdated()
+                    });
                 } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
+                    LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                    return StatusCode(490, new {
+                        response = ApiMessages.RecordNotSaved()
+                    });
                 }
             }
-            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
+            LoggerExtensions.LogException(0, logger, ControllerContext, record, null);
+            return StatusCode(400, new {
+                response = ApiMessages.InvalidModel()
+            });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransfer([FromRoute] int id) {
-            var record = await repo.GetByIdToDelete(id);
-            if (record == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
+            Transfer record = await repo.GetByIdToDelete(id);
+            if (record == null) {
+                LoggerExtensions.LogException(id, logger, ControllerContext, null, null);
+                return StatusCode(404, new {
+                    response = ApiMessages.RecordNotFound()
+                });
+            }
             try {
                 repo.Delete(record);
-                return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
-                return StatusCode(491, new { response = ApiMessages.RecordInUse() });
+                return StatusCode(200, new {
+                    response = ApiMessages.RecordDeleted()
+                });
+            } catch (DbUpdateException exception) {
+                LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                return StatusCode(491, new {
+                    response = ApiMessages.RecordInUse()
+                });
             }
         }
 
         [HttpPatch("assignDriver")]
         public IActionResult AssignDriver(int driverId, [FromQuery(Name = "id")] int[] ids) {
-            repo.AssignDriver(driverId, ids);
-            return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            try {
+                repo.AssignDriver(driverId, ids);
+                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            } catch (DbUpdateException exception) {
+                LoggerExtensions.LogException(driverId, logger, ControllerContext, null, exception);
+                return StatusCode(490, new {
+                    response = ApiMessages.RecordNotSaved()
+                });
+            }
         }
 
     }

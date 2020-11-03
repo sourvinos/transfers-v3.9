@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
@@ -13,26 +14,36 @@ namespace Transfers {
     public class PortsController : ControllerBase {
 
         private readonly IPortRepository repo;
+        private readonly ILogger<PortsController> logger;
 
-        public PortsController(IPortRepository repo) =>
-            (this.repo) = (repo);
+        public PortsController(IPortRepository repo, ILogger<PortsController> logger) {
+            this.repo = repo;
+            this.logger = logger;
+        }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IEnumerable<Port>> Get() =>
-            await repo.Get();
+        public async Task<IEnumerable<Port>> Get() {
+            return await repo.Get();
+        }
 
         [HttpGet("[action]")]
         [Authorize(Roles = "User, Admin")]
-        public async Task<IEnumerable<Port>> GetActive() =>
-            await repo.GetActive(x => x.IsActive);
+        public async Task<IEnumerable<Port>> GetActive() {
+            return await repo.GetActive(x => x.IsActive);
+        }
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPort(int id) {
-            Port port = await repo.GetById(id);
-            if (port == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
-            return StatusCode(200, port);
+            Port record = await repo.GetById(id);
+            if (record == null) {
+                LoggerExtensions.LogException(id, logger, ControllerContext, null, null);
+                return StatusCode(404, new {
+                    response = ApiMessages.RecordNotFound()
+                });
+            }
+            return StatusCode(200, record);
         }
 
         [HttpPost]
@@ -41,12 +52,20 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(record);
-                    return StatusCode(200, new { response = ApiMessages.RecordCreated() });
-                } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
+                    return StatusCode(200, new {
+                        response = ApiMessages.RecordCreated()
+                    });
+                } catch (Exception exception) {
+                    LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                    return StatusCode(490, new {
+                        response = ApiMessages.RecordNotSaved()
+                    });
                 }
             }
-            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
+            LoggerExtensions.LogException(0, logger, ControllerContext, record, null);
+            return StatusCode(400, new {
+                response = ApiMessages.InvalidModel()
+            });
         }
 
         [HttpPut("{id}")]
@@ -55,24 +74,42 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+                    return StatusCode(200, new {
+                        response = ApiMessages.RecordUpdated()
+                    });
                 } catch (DbUpdateException exception) {
-                    return StatusCode(490, new { response = Extensions.DBUpdateException(MethodBase.GetCurrentMethod(), record, exception) });
+                    LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                    return StatusCode(490, new {
+                        response = ApiMessages.RecordNotSaved()
+                    });
                 }
             }
-            return StatusCode(400, new { response = Extensions.NotValidModel(MethodBase.GetCurrentMethod(), record, ModelState) });
+            LoggerExtensions.LogException(0, logger, ControllerContext, record, null);
+            return StatusCode(400, new {
+                response = ApiMessages.InvalidModel()
+            });
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePort([FromRoute] int id) {
             Port record = await repo.GetById(id);
-            if (record == null) return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
+            if (record == null) {
+                LoggerExtensions.LogException(id, logger, ControllerContext, null, null);
+                return StatusCode(404, new {
+                    response = ApiMessages.RecordNotFound()
+                });
+            }
             try {
                 repo.Delete(record);
-                return StatusCode(200, new { response = ApiMessages.RecordDeleted() });
-            } catch (DbUpdateException) {
-                return StatusCode(491, new { response = ApiMessages.RecordInUse() });
+                return StatusCode(200, new {
+                    response = ApiMessages.RecordDeleted()
+                });
+            } catch (DbUpdateException exception) {
+                LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
+                return StatusCode(491, new {
+                    response = ApiMessages.RecordInUse()
+                });
             }
         }
 

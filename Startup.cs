@@ -44,14 +44,12 @@ namespace Transfers {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
+                app.UseSpaStaticFiles();
                 app.UseExceptionHandler("/Error");
-                app.UseStatusCodePagesWithReExecute("/Error/{0}");
                 app.UseHsts();
             }
+            // app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseStaticFiles();
-            if (!env.IsDevelopment()) {
-                app.UseSpaStaticFiles();
-            }
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
