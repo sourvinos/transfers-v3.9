@@ -2,7 +2,8 @@
     align-items: center;
     cursor: pointer;
     display: flex;
-    margin-right: 1rem;
+    margin-right: 2rem;
+    padding: 6px 0 7px 0;
     text-align: center;
 }
 
@@ -16,9 +17,16 @@
     margin-top: 0.0625 rem;
 }
 
+.option {
+    color: var(--color-select-items);
+    font-family: "PF Handbook Pro";
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+}
+
 .mat-menu-item {
-    color: var(--color-menu-list-items) !important;
-    font-variant-caps: petite-caps !important;
-    justify-content: start !important;
-    padding: 1rem !important;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 1rem !important;
 }

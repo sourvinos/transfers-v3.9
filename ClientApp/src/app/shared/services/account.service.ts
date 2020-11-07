@@ -136,6 +136,10 @@ export class AccountService {
         return this.loginStatus.asObservable()
     }
 
+    get currentUserRole(): Observable<string> {
+        return this.userRole.asObservable()
+    }
+
     get currentUserId(): any {
         return this.userId.asObservable()
     }

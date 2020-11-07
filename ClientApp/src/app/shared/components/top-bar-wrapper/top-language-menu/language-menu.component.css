@@ -1,11 +1,8 @@
 #languageMenu {
     cursor: pointer;
     display: flex;
-    margin-right: 1rem;
-}
-
-#languageMenu .material-icons {
-    color: var(--color-select-dropdown-icon);
+    margin-right: 2rem;
+    padding: 9px 0 9px 0;
 }
 
 .option {
@@ -20,8 +17,4 @@
     display: flex;
     justify-content: flex-start;
     padding: 0 1rem !important;
-}
-
-.mat-menu-item .mat-icon {
-    margin: 0 !important;
 }

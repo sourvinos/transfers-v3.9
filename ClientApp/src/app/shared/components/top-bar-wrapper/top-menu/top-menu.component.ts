@@ -15,12 +15,14 @@ export class TopMenuComponent {
     //#region variables
 
     private feature = 'menu'
+    public userRole: string
     public loginStatus: Observable<boolean>
     public theme = 'light'
 
     //#endregion
 
     constructor(private accountService: AccountService, private helperService: HelperService, private messageMenuService: MessageMenuService) { }
+
     //#region lifecycle hooks
 
     ngOnInit(): void {
@@ -60,6 +62,9 @@ export class TopMenuComponent {
 
     private updateVariables(): void {
         this.loginStatus = this.accountService.isLoggedIn
+        this.accountService.currentUserRole.subscribe(result => {
+            this.userRole = result
+        })
     }
 
     //#endregion

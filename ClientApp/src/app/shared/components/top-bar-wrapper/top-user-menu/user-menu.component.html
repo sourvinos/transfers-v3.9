@@ -5,6 +5,12 @@
 </div>
 
 <mat-menu #userMenu="matMenu">
-    <button mat-menu-item (click)="onEditUser()">{{ onGetLabel('myAccount') }}</button>
-    <button mat-menu-item (click)="onLogout()">{{ onGetLabel('logout') }}</button>
+    <button mat-menu-item (click)="onEditUser()">
+        <img src="/assets/images/navigation/myAccount-{{ theme }}.svg">
+        <span class="option">{{ onGetLabel('myAccount') }}</span>
+    </button>
+    <button mat-menu-item (click)="onLogout()">
+        <img src="/assets/images/navigation/logout-{{ theme }}.svg">
+        <span class="option">{{ onGetLabel('logout') }}</span>
+    </button>
 </mat-menu>

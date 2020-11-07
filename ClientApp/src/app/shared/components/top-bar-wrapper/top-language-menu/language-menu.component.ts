@@ -1,6 +1,4 @@
 import { Component } from '@angular/core'
-import { DomSanitizer } from '@angular/platform-browser'
-import { MatIconRegistry } from '@angular/material/icon'
 import { DateAdapter } from '@angular/material/core'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageTableService } from 'src/app/shared/services/messages-table.service'
@@ -23,13 +21,7 @@ export class LanguageMenuComponent {
 
     //#endregion
 
-    constructor(private dateAdapter: DateAdapter<any>, private domSanitizer: DomSanitizer, private helperService: HelperService, private matIconRegistry: MatIconRegistry, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) {
-        this.matIconRegistry
-            .addSvgIcon('en', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/en-GB.svg'))
-            .addSvgIcon('de', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/de-DE.svg'))
-            .addSvgIcon('el', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/el-GR.svg'))
-            .addSvgIcon('cs', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/flags/cs-CZ.svg'))
-    }
+    constructor(private dateAdapter: DateAdapter<any>, private helperService: HelperService, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) { }
 
     //#region lifecycle hooks
 
