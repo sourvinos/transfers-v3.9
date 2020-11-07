@@ -28,7 +28,7 @@ export class AppComponent {
     }
 
     @HostListener('window:resize', ['$event']) onResize(): any {
-        this.positionLoader()
+        this.positionSpinner()
     }
 
     @HostListener('window:beforeunload', ['$event']) beforeUnloadHander(): any {
@@ -38,14 +38,14 @@ export class AppComponent {
     //#region lifecycle hooks
 
     ngAfterViewInit(): void {
-        this.positionLoader()
+        this.positionSpinner()
     }
 
     //#endregion
 
     //#region private methods
-    private positionLoader(): void {
-        document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementsByTagName('nav')[0].clientWidth + 'px'
+    private positionSpinner(): void {
+        document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementById('side-bar').clientWidth + 'px'
         document.getElementById('spinner').style.top = (document.getElementById('main').clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'
     }
 

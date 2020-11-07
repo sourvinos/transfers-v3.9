@@ -1,0 +1,14 @@
+#side-bar {
+    align-items: center;
+    background-color: var(--color-sidebar);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 17rem !important;
+}
+
+@media only screen and (max-width:1366px) {
+    #side-bar {
+        display: none;
+    }
+}

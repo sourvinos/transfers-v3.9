@@ -1,0 +1,10 @@
+<div id="userGreeting" *ngIf="(loginStatus | async)" [matMenuTriggerFor]="userMenu">
+    <mat-icon>account_circle</mat-icon>
+    <div id="displayName">{{ displayName | async }}</div>
+    <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow-{{ theme }}.svg">
+</div>
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="onEditUser()">{{ onGetLabel('myAccount') }}</button>
+    <button mat-menu-item (click)="onLogout()">{{ onGetLabel('logout') }}</button>
+</mat-menu>

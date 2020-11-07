@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 
+import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatCheckboxModule } from '@angular/material/checkbox'
@@ -17,7 +18,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip'
-import { MAT_DATE_LOCALE } from '@angular/material/core'
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     showDelay: 0,

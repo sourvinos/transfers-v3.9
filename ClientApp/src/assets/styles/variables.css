@@ -2,19 +2,19 @@
     /* Font names */
     --font-family-button: "Ubuntu Condensed";
     --font-family-checkbox: "Ubuntu Condensed";
+    --font-family-company-logo: "Yanone Kaffeesatz";
     --font-family-copyright: "Noto Sans";
     --font-family-dialog-content: "PF Handbook Pro";
     --font-family-dialog-header: "PF Handbook Pro";
     --font-family-header: "PF Handbook Pro";
     --font-family-label: "Ubuntu";
-    --font-family-logo: "Anton";
     --font-family-menu-list-item: "PF Handbook Pro";
     --font-family-paragraph: "Ubuntu";
     --font-family-snackbar: "PF Handbook Pro";
     --font-family-summary-block: "Noto Sans";
     --font-family-summary-header: "PF Handbook Pro";
-    --font-family-table-header: "Noto Sans";
     --font-family-table-body: "Noto Sans";
+    --font-family-table-header: "Noto Sans";
     --font-family-totals: "PF Handbook Pro";
     --font-family-user-greeting: "Ubuntu Condensed";
     /* Font weights */

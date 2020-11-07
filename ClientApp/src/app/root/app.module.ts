@@ -23,17 +23,19 @@ import { UserModule } from '../users/classes/user.module'
 
 // Components
 import { AppComponent } from './app.component'
-import { DoubleRingComponent } from './../shared/components/double-ring/double-ring.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
-import { LanguageBarComponent } from '../shared/components/language-bar/language-bar.component'
+import { LanguageMenuComponent } from '../shared/components/top-bar-wrapper/top-language-menu/language-menu.component'
 import { MainComponent } from './../shared/components/main/main.component'
-import { NavNarrowComponent } from '../shared/components/nav/nav-narrow/nav-narrow.component'
-import { NavWideComponent } from '../shared/components/nav/nav-wide/nav-wide.component'
-import { NavWrapperComponent } from '../shared/components/nav/nav-wrapper/nav-wrapper.component'
-import { ThemeBarComponent } from './../shared/components/theme-bar/theme-bar.component'
-import { TopBarComponent } from '../shared/components/top-bar/top-bar.component'
-import { UserGreetingComponent } from '../shared/components/user-greeting/user-greeting.component'
+import { SideBarComponent } from '../shared/components/side-bar-wrapper/side-bar/side-bar.component'
+import { SideFooterComponent } from './../shared/components/side-bar-wrapper/side-footer/side-footer.component'
+import { SideImageComponent } from '../shared/components/side-bar-wrapper/side-image/side-image.component'
+import { SideLogoComponent } from './../shared/components/side-bar-wrapper/side-logo/side-logo.component'
+import { ThemeTogglerComponent } from '../shared/components/top-bar-wrapper/top-theme-toggler/theme-toggler.component'
+import { TopBarComponent } from '../shared/components/top-bar-wrapper/top-bar/top-bar.component'
+import { TopLogoComponent } from '../shared/components/top-bar-wrapper/top-logo/top-logo.component'
+import { TopMenuComponent } from '../shared/components/top-bar-wrapper/top-menu/top-menu.component'
+import { UserMenuComponent } from '../shared/components/top-bar-wrapper/top-user-menu/user-menu.component'
 
 // Utils
 import { JwtInterceptor } from '../shared/services/jwt.interceptor'
@@ -43,20 +45,19 @@ import { DomChangeDirective } from '../shared/directives/dom-change.directive'
     declarations: [
         AppComponent,
         DomChangeDirective,
-        DoubleRingComponent,
         EmptyPageComponent,
         HomeComponent,
-        LanguageBarComponent,
+        LanguageMenuComponent,
         MainComponent,
-        NavNarrowComponent,
-        NavNarrowComponent,
-        NavWideComponent,
-        NavWideComponent,
-        NavWrapperComponent,
-        NavWrapperComponent,
-        ThemeBarComponent,
+        SideBarComponent,
+        SideFooterComponent,
+        SideImageComponent,
+        SideLogoComponent,
+        ThemeTogglerComponent,
         TopBarComponent,
-        UserGreetingComponent,
+        TopLogoComponent,
+        TopMenuComponent,
+        UserMenuComponent,
     ],
     imports: [
         AccountModule,

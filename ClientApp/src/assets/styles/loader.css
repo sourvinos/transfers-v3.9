@@ -8,17 +8,17 @@
     width: 100vw;
 }
 
-#logo-header {
+#loader p:nth-child(1) {
     color: #355070 !important;
-    font-family: var(--font-family-logo);
-    font-size: var(--font-size-logo-first-child) !important;
+    font-family: var(--font-family-company-logo);
+    font-size: var(--font-size-company-logo-side-bar-first-child) !important;
     margin: 0;
 }
 
-#logo-subHeader {
+#loader p:nth-child(2) {
     color: #b56576 !important;
-    font-family: var(--font-family-logo);
-    font-size: var(--font-size-logo-second-child) !important;
+    font-family: var(--font-family-company-logo);
+    font-size: var(--font-size-company-logo-side-bar-second-child) !important;
     font-weight: normal !important;
     margin: -1rem 0 0 0 !important;
 }

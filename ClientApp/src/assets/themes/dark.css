@@ -8,8 +8,7 @@
     --color-button-tab-border-hover: #fffddd;
     --color-button-tab-border: #fe9f36;
     --color-button-tab: #fffddd;
-    --color-button-text-all: #fffddd;
-    --color-button-text-secondary: #fffddd;
+    --color-button-text: #fffddd;
     --color-button-transparent-background-hover: #5a5a5a;
     --color-button-transparent-text: #fffddd;
     --color-checkbox-checked: #fe9f36;
@@ -35,7 +34,7 @@
     --color-input-text-caret: #b7b7b9;
     --color-input-text-error: #ff8981;
     --color-input-text-selected: #fe9f364f;
-    --color-label: #b7b7b9;
+    --color-label: #fffddd;
     --color-language-menu: #1d2733;
     --color-menu-active-item: #fe9f36;
     --color-menu-list-items: #b7b7b7;
@@ -87,5 +86,5 @@
     --color-tooltip-background: #ffc88a;
     --color-tooltip: #1d2733;
     --color-transfer-form-modal: #696d71;
-    --color-user-greeting: #b7b7b8;
+    --color-user-greeting: #fffddd;
 }

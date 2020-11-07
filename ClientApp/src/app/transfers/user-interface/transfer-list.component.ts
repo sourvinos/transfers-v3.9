@@ -70,9 +70,9 @@ export class TransferListComponent {
     //#region table
 
     headers = ['', 'Id', 'headerDestination', 'headerDestinationAbbreviation', 'headerRoute', 'headerCustomer', 'headerPickupPoint', 'headerTime', 'headerAdults', 'headerKids', 'headerFree', 'headerTotal', 'headerDriver', 'headerPort', '']
-    widths = ['40px', '100px', '200px', '0px', '100px', '200px', '200px', '40px', '40px', '40px', '40px', '40px', '200px', '100px', '56px']
+    widths = ['40px', '100px', '180px', '0px', '120px', '180px', '180px', '50px', '40px', '40px', '40px', '40px', '150px', '100px', '45px']
     visibility = ['', 'none', '', 'none']
-    justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
+    justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'center', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
     fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port', '']
 
     //#endregion

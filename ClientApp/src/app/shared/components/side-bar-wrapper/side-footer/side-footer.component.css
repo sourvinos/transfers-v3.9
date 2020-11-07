@@ -1,0 +1,17 @@
+:host {
+    margin-top: auto;
+}
+
+#side-footer {
+    color: var(--color-copyright);
+    font-family: var(--font-family-copyright);
+    font-size: var(--font-size-copyright);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@media only screen and (max-height:865px) {
+    #side-image {
+        display: none;
+    }
+}

@@ -1,12 +1,8 @@
 using System;
-using System.Linq;
-using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -73,23 +69,6 @@ namespace Transfers {
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
-        }
-
-        public static Object NotValidModel(MethodBase method, Object record, ModelStateDictionary modelState) {
-            return new {
-                Controller = method.ReflectedType.Name,
-                Method = method.Name,
-                Record = record,
-                Error = modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)
-            };
-        }
-
-        public static Object DBUpdateException(MethodBase method, Object record, DbUpdateException ex) {
-            return new {
-                Method = method.Name,
-                Record = record,
-                Error = ex.InnerException.Message
-            };
         }
 
     }

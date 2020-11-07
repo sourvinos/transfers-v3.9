@@ -7,17 +7,14 @@ export class HelperService {
 
     //#region variables
 
-    private appName = {
-        header: environment.appName.header,
-        subHeader: environment.appName.subHeader
-    }
+    private appName = environment.appName
 
     //#endregion
 
     //#region public methods
 
-    public getApplicationTitle(): string {
-        return this.appName.header + ' ' + this.appName.subHeader
+    public getApplicationTitle(): any {
+        return this.appName
     }
 
     public setFocus(element: string): void {

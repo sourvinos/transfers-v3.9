@@ -1,8 +1,0 @@
-#top-bar {
-    align-items: center;
-    background-color: var(--color-sidebar);
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.3rem 2.4rem;    
-    transition: background-color 0.7s;
-}

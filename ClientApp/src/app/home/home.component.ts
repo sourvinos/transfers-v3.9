@@ -13,7 +13,7 @@ export class HomeComponent {
     //#region variables
 
     private windowTitle = 'Home'
-    public appName: string
+    public companyLogo: any
 
     //#endregion
 
@@ -30,12 +30,13 @@ export class HomeComponent {
 
     //#region private methods
 
-    private setWindowTitle(): void {
-        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    private getAppName(): void {
+        this.companyLogo = this.helperService.getApplicationTitle().split(' ')
     }
 
-    private getAppName(): void {
-        this.appName = this.helperService.getApplicationTitle()
+
+    private setWindowTitle(): void {
+        this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
     //#endregion

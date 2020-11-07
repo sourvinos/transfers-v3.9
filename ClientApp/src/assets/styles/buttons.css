@@ -1,6 +1,6 @@
 button {
     align-items: center;
-    color: var(--color-button-text-all) !important;
+    color: var(--color-button-text) !important;
     cursor: default !important;
     display: flex;
     font-family: var(--font-family-button) !important;
@@ -21,7 +21,7 @@ button.primary {
 
 button.secondary {
     background-color: var(--color-button-secondary) !important;
-    color: var(--color-button-text-secondary) !important;
+    color: var(--color-button-text) !important;
     font-variant-caps: petite-caps;
     margin: 0 0 0 0.5rem !important;
 }
@@ -106,4 +106,9 @@ button:not(:disabled) {
     color: var(--color-table-row-menu-item);
     padding-left: 1rem;
     width: 100%;
+}
+
+.dropdown-arrow {
+    margin-left: 0.5rem;
+    width: 0.7rem;
 }

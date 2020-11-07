@@ -1,0 +1,15 @@
+<div id="top-menu" *ngIf="(loginStatus | async)">
+
+    <button mat-flat-button class="transparent">Cruises</button>
+    <button mat-flat-button class="transparent" [routerLink]="['/transfers']" routerLinkActive="active">{{ onGetLabel('transfers') }}</button>
+    <button mat-flat-button class="transparent" [matMenuTriggerFor]="topMenu">Tables<img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow-{{ theme }}.svg"></button>
+    <mat-menu #topMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/customers']">{{ onGetLabel('customers') }}</button>
+        <button mat-menu-item [routerLink]="['/destinations']">{{ onGetLabel('destinations') }}</button>
+        <button mat-menu-item [routerLink]="['/drivers']">{{ onGetLabel('drivers') }}</button>
+        <button mat-menu-item [routerLink]="['/pickupPoints']">{{ onGetLabel('pickupPoints') }}</button>
+        <button mat-menu-item [routerLink]="['/ports']">{{ onGetLabel('ports') }}</button>
+        <button mat-menu-item [routerLink]="['/routes']">{{ onGetLabel('routes') }}</button>
+    </mat-menu>
+    <button mat-flat-button class="transparent" [routerLink]="['/users']">{{ onGetLabel('users') }}</button>
+</div>

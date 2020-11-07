@@ -48,7 +48,6 @@ namespace Transfers {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-            // app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();

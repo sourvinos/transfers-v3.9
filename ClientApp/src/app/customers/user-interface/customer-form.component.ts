@@ -169,12 +169,10 @@ export class CustomerFormComponent {
 
     private getRecord(id: number): void {
         this.customerService.getSingle(id).subscribe(result => {
-            if (result.code == 200) {
-                this.populateFields(result.message)
-            } else {
-                this.showSnackbar(this.messageSnackbarService.filterError(result.code), 'error')
-                this.onGoBack()
-            }
+            this.populateFields(result)
+        }, errorFromInterceptor => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
+            this.onGoBack()
         })
     }
 
