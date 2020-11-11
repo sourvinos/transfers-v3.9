@@ -1,4 +1,6 @@
 #list {
+    background-color: var(--color-background);
+    border-radius: 20px 0 0 20px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -8,6 +10,14 @@
 #header {
     align-items: center;
     display: flex;
+}
+
+#header #navigation {
+    margin-left: 1rem;
+}
+
+#header #navigation .mat-icon {
+    color: var(--color-background) !important;
 }
 
 #header #title {

@@ -799,8 +799,8 @@
         "feature": "themeColor",
         "labels": [
             {
-                "id": "dark",
-                "description": "Dark"
+                "id": "red",
+                "description": "Red"
             }
         ]
     },
@@ -904,6 +904,23 @@
             {
                 "id": "logout",
                 "description": "Logout"
+            }
+        ]
+    },
+    {
+        "feature": "theme",
+        "labels": [
+            {
+                "id": "blue",
+                "description": "Blue"
+            },
+            {
+                "id": "green",
+                "description": "Green"
+            },
+            {
+                "id": "red",
+                "description": "Red"
             }
         ]
     }

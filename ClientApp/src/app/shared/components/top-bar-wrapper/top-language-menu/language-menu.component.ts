@@ -17,23 +17,11 @@ export class LanguageMenuComponent {
 
     //#region variables
 
-    public theme = 'light'
+    public color = 'yellow'
 
     //#endregion
 
     constructor(private dateAdapter: DateAdapter<any>, private helperService: HelperService, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) { }
-
-    //#region lifecycle hooks
-
-    ngOnInit(): void {
-        this.updateTheme()
-    }
-
-    ngDoCheck(): void {
-        this.compareCurrentThemeWithStored()
-    }
-
-    //#endregion
 
     //#region public methods
 
@@ -50,24 +38,6 @@ export class LanguageMenuComponent {
         this.messagelabelService.getMessages()
         this.dateAdapter.setLocale(this.helperService.readItem("language"))
         return language
-    }
-
-    //#endregion
-
-    //#region private methods
-
-    private compareCurrentThemeWithStored(): void {
-        if (this.helperService.readItem('theme') != this.theme) {
-            this.theme = this.helperService.readItem('theme')
-        }
-    }
-
-    private getTheme(): string {
-        return this.helperService.readItem('theme')
-    }
-
-    private updateTheme(): void {
-        this.theme = this.getTheme()
     }
 
     //#endregion

@@ -9,8 +9,9 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { TransferFlat } from 'src/app/transfers/classes/transfer-flat'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms'
 import { DateAdapter } from '@angular/material/core'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 
 @Component({
     selector: 'transfer-wrapper',
@@ -40,7 +41,7 @@ export class TransferWrapperComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -76,6 +77,10 @@ export class TransferWrapperComponent {
             this.dateInISO = ''
             return false
         }
+    }
+
+    public onGetHint(id: string, minmax = 0): string {
+        return this.messageHintService.getDescription(id, minmax)
     }
 
     public onGetLabel(id: string): string {
@@ -150,4 +155,11 @@ export class TransferWrapperComponent {
 
     //#endregion
 
+    //#region getters
+
+    get date(): AbstractControl {
+        return this.form.get('dateIn')
+    }
+
+    //#endregion    
 }

@@ -53,13 +53,18 @@
                             "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/assets/styles/base.css",
                             {
-                                "input": "src/assets/themes/light.css",
-                                "bundleName": "light",
+                                "input": "src/assets/themes/blue.css",
+                                "bundleName": "blue",
                                 "inject": false
                             },
                             {
-                                "input": "src/assets/themes/dark.css",
-                                "bundleName": "dark",
+                                "input": "src/assets/themes/green.css",
+                                "bundleName": "green",
+                                "inject": false
+                            },
+                            {
+                                "input": "src/assets/themes/red.css",
+                                "bundleName": "red",
                                 "inject": false
                             }
                         ],
@@ -67,10 +72,12 @@
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
@@ -79,7 +86,8 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "4mb",
                                     "maximumError": "5mb"

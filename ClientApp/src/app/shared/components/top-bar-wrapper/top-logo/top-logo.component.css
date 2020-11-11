@@ -1,22 +1,22 @@
 #top-logo {
     cursor: pointer;
-    font-family: var(--font-family-company-logo);
+    font-family: var(--font-family-logo);
     outline: 0;
     padding-top: 7px;
 }
 
 span:nth-child(1) {
-    color: var(--color-company-logo-first-child) !important;
+    color: var(--color-logo-primary) !important;
     font-size: 1.875rem !important;
     font-weight: bold;
 }
 
 span:nth-child(2) {
-    color: var(--color-sidebar) !important;
+    color: var(--color-primary) !important;
 }
 
 span:nth-child(3) {
-    color: var(--color-company-logo-second-child) !important;
+    color: var(--color-logo-secondary) !important;
     font-size: 1.875rem !important;
     font-weight: bold;
 }

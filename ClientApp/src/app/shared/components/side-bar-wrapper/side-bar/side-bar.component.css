@@ -1,14 +1,15 @@
 #side-bar {
     align-items: center;
-    background-color: var(--color-sidebar);
+    background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: background-color 0.7s;
     width: 17rem !important;
 }
 
 @media only screen and (max-width:1366px) {
     #side-bar {
-        display: none;
+        width: 0.5rem !important;
     }
 }

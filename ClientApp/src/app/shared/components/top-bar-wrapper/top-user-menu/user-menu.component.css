@@ -1,14 +1,12 @@
-#userGreeting {
-    align-items: center;
+#userMenu {
     cursor: pointer;
     display: flex;
     margin-right: 2rem;
-    padding: 6px 0 7px 0;
-    text-align: center;
+    padding: 9px 0 9px 0;
 }
 
 #displayName {
-    color: var(--color-user-greeting);
+    color: var(--color-text);
     font-family: var(--font-family-user-greeting);
     font-size: var(--font-size-user-greeting);
     font-variant-caps: petite-caps;
@@ -18,15 +16,10 @@
 }
 
 .option {
-    color: var(--color-select-items);
-    font-family: "PF Handbook Pro";
-    font-size: 19px;
+    color: var(--color-text);
+    font-family: var(--font-family-button) !important;
+    font-size: var(--font-size-button);
     font-variant-caps: small-caps;
     font-weight: 500;
-}
-
-.mat-menu-item {
-    display: flex;
-    justify-content: flex-start;
-    padding: 0 1rem !important;
+    padding-left: 1rem;
 }

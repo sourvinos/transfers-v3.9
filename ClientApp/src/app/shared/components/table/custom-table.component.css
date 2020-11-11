@@ -12,9 +12,8 @@ table {
 }
 
 th {
-    background-color: var(--color-table-background);
-    border: 0.0625rem dotted var(--color-table-header-border);
-    color: var(--color-table-header);
+    background-color: var(--color-background);
+    border: 0.0625rem dotted var(--color-primary);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
@@ -28,31 +27,35 @@ th {
 }
 
 th:hover {
+    background-color: var(--color-background);
     cursor: pointer;
 }
 
-tbody tr:nth-child(odd) {
-    background-color: var(--color-table-row-odd);
-}
-
-tbody tr:nth-child(even) {
-    background-color: var(--color-table-row-even);
-}
-
-tr.selected {
-    background-color: var(--color-table-row-selected) !important;
-}
-
 tr:hover {
-    background-color: var(--color-table-row-selected) !important;
+    background-color: var(--color-secondary) !important;
+    cursor: default;
+    opacity: 0.4;
+}
+
+tr:hover td {
+    color: var(--color-text) !important;
 }
 
 tr:hover td:last-child>div>.button-row-menu {
     visibility: visible;
 }
 
+tr.selected {
+    background-color: var(--color-secondary) !important;
+    opacity: 0.4;
+}
+
+tr.selected td {
+    color: var(--color-text) !important;
+}
+
 td {
-    color: var(--color-table-row);
+    color: var(--color-primary);
     font-family: var(--font-family-table-body);
     font-size: var(--font-size-table-row);
     max-width: 0;
@@ -62,11 +65,6 @@ td {
     white-space: nowrap;
 }
 
-td:hover {
-    color: var(--color-table-rows-hover);
-    cursor: default;
-}
-
 .mat-checkbox {
     padding: 0;
 }
@@ -74,6 +72,7 @@ td:hover {
 .button-row-menu {
     height: 30px;
     line-height: 30px;
+    margin-left: 0 !important;
     visibility: hidden;
     width: 30px;
 }

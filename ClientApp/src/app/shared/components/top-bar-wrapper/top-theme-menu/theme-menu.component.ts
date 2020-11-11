@@ -1,21 +1,20 @@
-import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { Component, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { HelperService } from 'src/app/shared/services/helper.service'
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
-    selector: 'theme-toggler',
-    templateUrl: './theme-toggler.component.html',
-    styleUrls: ['./theme-toggler.component.css']
+    selector: 'theme-menu',
+    templateUrl: './theme-menu.component.html',
+    styleUrls: ['./theme-menu.component.css']
 })
 
 export class ThemeTogglerComponent {
 
     //#region variables
 
-    private feature = 'themeColor'
-    private theme = 'light'
-    public checked: boolean
+    private feature = 'theme'
+    private theme = 'red'
 
     //#endregion
 
@@ -35,8 +34,12 @@ export class ThemeTogglerComponent {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
-    public onToggleTheme(): void {
-        this.changeTheme()
+    public onGetTheme(): string {
+        return this.helperService.readItem("theme") == '' ? this.onSaveTheme('red') : this.helperService.readItem("theme")
+    }
+
+    public onChangeTheme(theme: string): void {
+        this.changeTheme(theme)
         this.attachStylesheetToHead()
         this.updateLocalStorage()
     }
@@ -59,8 +62,8 @@ export class ThemeTogglerComponent {
         headElement.appendChild(newLinkElement)
     }
 
-    private changeTheme(): void {
-        this.theme = this.theme == 'light' ? 'dark' : 'light'
+    private changeTheme(theme: string): void {
+        this.theme = theme
     }
 
     private updateLocalStorage(): void {
@@ -68,9 +71,14 @@ export class ThemeTogglerComponent {
     }
 
     private updateVariables(): void {
-        this.theme = this.helperService.readItem('theme') || 'light'
-        this.checked = this.theme == 'light' ? false : true
+        this.theme = this.helperService.readItem('theme') || 'red'
     }
+
+    public onSaveTheme(theme: string): string {
+        this.helperService.saveItem('theme', theme)
+        return theme
+    }
+
 
     //#endregion
 

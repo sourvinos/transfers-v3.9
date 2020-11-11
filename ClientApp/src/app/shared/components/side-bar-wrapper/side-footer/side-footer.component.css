@@ -3,7 +3,7 @@
 }
 
 #side-footer {
-    color: var(--color-copyright);
+    color: var(--color-logo-primary);
     font-family: var(--font-family-copyright);
     font-size: var(--font-size-copyright);
     margin-bottom: 2rem;
@@ -12,6 +12,12 @@
 
 @media only screen and (max-height:865px) {
     #side-image {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:1366px) {
+    #side-footer {
         display: none;
     }
 }

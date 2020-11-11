@@ -1,5 +1,5 @@
 #form {
-    background-color: var(--color-transfer-form-modal);
+    background-color: var(--color-background);
     border-radius: 20px;
     display: grid;
     grid-template-columns: minmax(400px, 1fr);
@@ -13,7 +13,7 @@
 }
 
 #goBack {
-    background-color: var(--color-transfer-form-modal) !important;
+    background-color: var(--color-primary) !important;
 }
 
 #group-field {

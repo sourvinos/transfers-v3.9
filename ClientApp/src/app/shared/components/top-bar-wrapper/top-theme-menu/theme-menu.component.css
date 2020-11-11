@@ -1,7 +1,6 @@
-#languageMenu {
+#themeMenu {
     cursor: pointer;
     display: flex;
-    margin-right: 2rem;
     padding: 9px 0 9px 0;
 }
 

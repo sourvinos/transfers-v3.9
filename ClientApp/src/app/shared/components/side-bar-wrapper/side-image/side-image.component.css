@@ -24,7 +24,7 @@
     height: 150px;
     border-radius: 50%;
     border: 0.125rem solid;
-    border-color: var(--color-ring-outer) transparent var(--color-ring-outer) transparent;
+    border-color: var(--color-logo-secondary) transparent var(--color-logo-secondary) transparent;
     animation: double-ring-outer 120s linear infinite;
 }
 
@@ -48,7 +48,7 @@
     height: 140px;
     border-radius: 50%;
     border: 0.1875rem solid;
-    border-color: var(--color-ring-inner) transparent var(--color-ring-inner) transparent;
+    border-color: var(--color-logo-secondary) transparent var(--color-logo-secondary) transparent;
     animation: double-ring-inner 120s linear infinite;
 }
 

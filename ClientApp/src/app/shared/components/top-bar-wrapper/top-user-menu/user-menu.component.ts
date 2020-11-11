@@ -19,7 +19,7 @@ export class UserMenuComponent {
     private feature = 'userMenu'
     public displayName: Observable<string>
     public loginStatus: Observable<boolean>
-    public theme = 'light'
+    public theme = 'red'
 
     //#endregion
 

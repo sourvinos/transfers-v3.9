@@ -14,7 +14,6 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
-
 * {
     box-sizing: border-box !important;
 }
@@ -35,7 +34,7 @@ body, h1, h2, h3, p {
 }
 
 p.instructions {
-    color: var(--color-paragraph);
+    color: var(--color-text);
     font-family: var(--font-family-paragraph);
     font-size: var(--font-size-paragraph);
     overflow: hidden;
@@ -43,38 +42,45 @@ p.instructions {
 }
 
 .mat-icon, .item {
-    color: var(--color-navigation-icon);
     outline: 0 !important;
 }
 
-.mat-menu-item:hover {
-    background-color: var(--color-select-items-hover-background) !important;
+.mat-menu-panel, .mat-menu-content {
+    align-items: flex-start;
+    background-color: var(--color-primary) !important;
+    border-radius: 4px !important;
+    display: flex;
+    flex-direction: column;
+    min-height: auto !important;
+    overflow: hidden;
+    padding: 0 !important;
+    width: 100%;
 }
 
-.mat-menu-panel, .mat-menu-content {
-    background-color: var(--color-language-menu) !important;
-    border-radius: 4px !important;
-    min-height: auto !important;
-    padding: 0 !important;
+.mat-menu-item {
+    color: var(--color-text) !important;
+    display: flex !important;
+    font-variant-caps: petite-caps !important;
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+    padding: 0 1rem !important;
+}
+
+.mat-menu-item:hover {
+    background-color: var(--color-secondary) !important;
 }
 
 .mat-snack-bar-container {
     min-width: 30rem !important;
 }
 
-.mat-tooltip {
-    background-color: var(--color-tooltip-background);
-    color: var(--color-tooltip) !important;
-    font-size: 0.7rem;
-    font-variant-caps: petite-caps;
-}
-
 .mat-checkbox-label {
+    color: var(--color-primary) !important;
     margin-left: 0 !important;
 }
 
 .error {
-    background-color: var(--color-snackbar-background-error) !important;
+    background-color: var(--color-error) !important;
 }
 
 .mat-button-wrapper {
@@ -84,5 +90,5 @@ p.instructions {
 }
 
 .info {
-    background-color: var(--color-snackbar-background-info) !important;
+    background-color: var(--color-info) !important;
 }

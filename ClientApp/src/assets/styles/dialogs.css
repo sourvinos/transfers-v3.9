@@ -3,12 +3,12 @@
 }
 
 .mat-dialog-container {
-    background-color: var(--color-table-background) !important;
+    background-color: var(--color-background) !important;
     padding: 2rem !important;
 }
 
 #dialog {
-    background-color: var(--color-dialog-background) !important;
+    background-color: var(--color-background) !important;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -33,7 +33,7 @@
 }
 
 #dialog-content {
-    color: var(--color-dialog-content);
+    color: var(--color-text);
     flex: 1;
     font-family: var(--font-family-dialog-content) !important;
     font-size: var(--font-size-dialog-content) !important;

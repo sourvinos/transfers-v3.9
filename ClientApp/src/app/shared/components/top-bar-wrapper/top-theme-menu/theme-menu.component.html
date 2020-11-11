@@ -1,0 +1,19 @@
+<div id="themeMenu" [matMenuTriggerFor]="themeMenu">
+    <img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="25px">
+    <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+</div>
+
+<mat-menu #themeMenu="matMenu">
+    <button mat-menu-item (click)="onChangeTheme('blue')">
+        <img src="/assets/images/themes/blue.svg">
+        <span class="option">{{ onGetLabel('blue') }}</span>
+    </button>
+    <button mat-menu-item (click)="onChangeTheme('red')">
+        <img src="/assets/images/themes/red.svg">
+        <span class="option">{{ onGetLabel('red') }}</span>
+    </button>
+    <button mat-menu-item (click)="onChangeTheme('green')">
+        <img src="/assets/images/themes/green.svg">
+        <span class="option">{{ onGetLabel('green') }}</span>
+    </button>
+</mat-menu>

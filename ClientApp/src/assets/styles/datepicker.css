@@ -1,42 +1,42 @@
 .mat-datepicker-toggle .mat-icon-button {
-    color: var(--color-datepicker-toggler) !important;
+    color: var(--color-primary) !important;
 }
 
 .mat-datepicker-content {
-    background-color: var(--color-datepicker-background);
+    background-color: var(--color-primary);
 }
 
 .mat-calendar-table-header {
-    color: var(--color-datepicker-table-header);
+    color: var(--color-text);
 }
 
 .mat-calendar-controls .mat-button .mat-button-wrapper {
-    color: var(--color-datepicker-header-month);
+    color: var(--color-text);
     font-family: var(--font-family-header);
     font-size: var(--font-size-datepicker-header-month);
 }
 
 .mat-calendar-arrow {
-    border-top-color: var(--color-datepicker-arrow);
+    border-top-color: var(--color-text);
 }
 
 .mat-calendar-previous-button, .mat-calendar-next-button {
-    color: var(--color-datepicker-arrow) !important
+    color: var(--color-text) !important
 }
 
 .mat-calendar-body-label {
-    color: var(--color-datepicker-background);
+    color: var(--color-text);
 }
 
 .mat-calendar-body-cell-content {
-    color: var(--color-datepicker-days);
+    color: var(--color-text);
 }
 
 .mat-calendar-body-today {
-    border-color: var(--color-datepicker-today-border) !important;
+    border-color: var(--color-text) !important;
 }
 
 .mat-calendar-body-selected {
-    background-color: var(--color-datepicker-day-selected-background);
-    color: var(--color-datepicker-day-selected);
+    background-color: var(--color-secondary);
+    color: var(--color-text);
 }

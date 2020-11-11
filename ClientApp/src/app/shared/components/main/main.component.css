@@ -1,6 +1,0 @@
-#main {
-    background-color: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}

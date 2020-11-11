@@ -5,7 +5,7 @@
     overflow-x: hidden;
     overflow-y: auto !important;
     scroll-behavior: smooth;
-    scrollbar-color: var(--color-scrollbar) var(--color-scrollbar-background);
+    scrollbar-color: var(--color-secondary) var(--color-background);
     scrollbar-width: thin;
 }
 
@@ -14,10 +14,10 @@
 }
 
 .scrollable::-webkit-scrollbar-track {
-    background-color: var(--color-scrollbar-background);
+    background-color: var(--color-background);
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-    background-color: var(--color-scrollbar);
+    background-color: var(--color-secondary);
     min-height: 6rem;
 }

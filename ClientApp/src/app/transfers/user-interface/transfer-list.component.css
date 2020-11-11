@@ -62,6 +62,7 @@
 
 #panelButtons button {
     border-radius: 0;
+    color: var(--color-primary) !important;
     font-size: var(--font-size-panel-buttons) !important;
     font-variant-caps: petite-caps;
 }
@@ -81,8 +82,8 @@
 }
 
 .summaryBlock {
-    background-color: var(--color-summary-block-background) !important;
-    border: 0.0625rem dotted var(--color-summary-block-border) !important;
+    background-color: var(--color-background) !important;
+    border: 0.0625rem dotted var(--color-primary) !important;
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -108,7 +109,7 @@
 }
 
 .mat-checkbox {
-    color: var(--color-summary-block-headers) !important;
+    color: var(--color-text) !important;
     display: flex;
     font-family: var(--font-family-summary-header) !important;
     font-size: var(--font-size-summary-block-header) !important;
@@ -118,8 +119,8 @@
 }
 
 .summaryBlock .item {
-    border-left: 0.3rem solid var(--color-summary-block-item-border-inactive);
-    color: var(--color-summary-block-item);
+    box-shadow: -5px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    color: var(--color-primary);
     display: flex;
     font-family: var(--font-family-summary-block);
     font-size: var(--font-size-summary-block-item);
@@ -130,8 +131,8 @@
 }
 
 .summaryBlock .item:hover {
-    background-color: var(--color-summary-block-item-hover-background);
-    color: var(--color-summary-block-item-hover-color);
+    background-color: var(--color-background);
+    color: var(--color-primary);
     cursor: pointer;
 }
 
@@ -150,7 +151,7 @@
 }
 
 .activeItem {
-    border-left-color: var(--color-summary-block-item-border-active) !important;
+    box-shadow: -5px 0px 0px 0px var(--color-secondary) !important;
 }
 
 #totals {
@@ -172,7 +173,7 @@
 }
 
 .selection .label {
-    color: var(--color-sum-persons-labels);
+    color: var(--color-primary);
     font-size: var(--font-size-sum-persons);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-sum-persons);
@@ -180,7 +181,7 @@
 }
 
 .selection .sum {
-    color: var(--color-sum-persons-numbers);
+    color: var(--color-secondary);
     font-size: var(--font-size-sum);
     font-weight: var(--font-weight-sum-persons);
 }

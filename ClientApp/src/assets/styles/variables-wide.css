@@ -3,8 +3,8 @@
         /* Font sizes */
         --font-size-button: 1.25rem;
         --font-size-checkbox: 1.2rem;
-        --font-size-company-logo-side-bar-first-child: 6rem;
-        --font-size-company-logo-side-bar-second-child: 3.5rem;
+        --font-size-logo-side-bar-first-child: 6rem;
+        --font-size-logo-side-bar-second-child: 3.5rem;
         --font-size-copyright: 0.6rem;
         --font-size-datepicker-header-month: 2rem;
         --font-size-dialog-content: 1.5rem;
@@ -12,10 +12,10 @@
         --font-size-header: 2.5rem;
         --font-size-input-height: 1.5rem;
         --font-size-input-hint: 0.85rem;
-        --font-size-input: 1rem;
+        --font-size-input: 1.1rem;
         --font-size-label: 1.8rem;
-        --font-size-company-logo-home-page-first-child: 25rem;
-        --font-size-company-logo-home-page-second-child: 10rem;
+        --font-size-logo-home-page-first-child: 25rem;
+        --font-size-logo-home-page-second-child: 10rem;
         --font-size-mat-error: 0.75rem;
         --font-size-menu-list-item: 1.8rem;
         --font-size-panel-buttons: 1.375rem;
@@ -27,6 +27,6 @@
         --font-size-summary-block-item: 0.95rem;
         --font-size-table-header: 1.25rem;
         --font-size-table-row: 0.85rem;
-        --font-size-user-greeting: 1.2rem;
+        --font-size-user-greeting: 1.25rem;
     }
 }

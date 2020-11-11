@@ -17,7 +17,8 @@ export class TopMenuComponent {
     private feature = 'menu'
     public userRole: string
     public loginStatus: Observable<boolean>
-    public theme = 'light'
+    public theme = 'red'
+    public color = 'yellow'
 
     //#endregion
 

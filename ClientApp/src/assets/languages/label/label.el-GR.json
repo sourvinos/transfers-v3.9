@@ -799,8 +799,8 @@
         "feature": "themeColor",
         "labels": [
             {
-                "id": "dark",
-                "description": "Σκουρο"
+                "id": "red",
+                "description": "Κοκκινο"
             }
         ]
     },
@@ -904,6 +904,23 @@
             {
                 "id": "logout",
                 "description": "Εξοδος"
+            }
+        ]
+    },
+    {
+        "feature": "theme",
+        "labels": [
+            {
+                "id": "blue",
+                "description": "Μπλε"
+            },
+            {
+                "id": "green",
+                "description": "Πρασινο"
+            },
+            {
+                "id": "red",
+                "description": "Κοκκινο"
             }
         ]
     }
