@@ -203,6 +203,7 @@ export class TransferFormComponent {
             },
             'Alt.S': (event: KeyboardEvent) => {
                 if (document.getElementsByClassName('cdk-overlay-pane').length === 0) {
+                    this.onCalculateTotalPersons()
                     this.buttonClickService.clickOnButton(event, 'save')
                 }
             },
