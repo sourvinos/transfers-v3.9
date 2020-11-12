@@ -1,6 +1,8 @@
-<div id="languageMenu" [matMenuTriggerFor]="languageMenu">
-    <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
-    <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+<div id="languageMenu">
+    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="languageMenu">
+        <img src="/assets/images/flags/{{ onGetLanguage() }}.svg" width="25px">
+        <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+    </button>
 </div>
 
 <mat-menu #languageMenu="matMenu">

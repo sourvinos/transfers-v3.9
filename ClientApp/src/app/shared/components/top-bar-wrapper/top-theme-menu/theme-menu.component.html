@@ -1,6 +1,8 @@
-<div id="themeMenu" [matMenuTriggerFor]="themeMenu">
-    <img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="25px">
-    <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+<div id="themeMenu">
+    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="themeMenu">
+        <img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="22px">
+        <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+    </button>
 </div>
 
 <mat-menu #themeMenu="matMenu">

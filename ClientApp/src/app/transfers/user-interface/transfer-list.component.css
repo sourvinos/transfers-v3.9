@@ -119,7 +119,7 @@
 }
 
 .summaryBlock .item {
-    box-shadow: -5px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: -5px 0px 0px 0px rgba(0, 0, 0, 0.05);
     color: var(--color-primary);
     display: flex;
     font-family: var(--font-family-summary-block);
@@ -151,7 +151,7 @@
 }
 
 .activeItem {
-    box-shadow: -5px 0px 0px 0px var(--color-secondary) !important;
+    box-shadow: -5px 0px 0px 0px var(--color-primary) !important;
 }
 
 #totals {

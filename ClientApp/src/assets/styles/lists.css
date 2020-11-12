@@ -68,7 +68,7 @@
 
 @media only screen and (max-width: 1366px) {
     #header {
-        margin: 1.5rem;
+        margin: 1.5rem 1.5rem 1rem 1.5rem;
     }
     #content {
         margin: 0 1.5rem;

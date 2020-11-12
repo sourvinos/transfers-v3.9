@@ -48,6 +48,10 @@ namespace Transfers {
             }
         }
 
+        public static void LogInfo(ILogger logger, ControllerContext context, Object record) {
+            LogRecordSaved(record, logger, context);
+        }
+
         #endregion
 
         #region Private methods
@@ -110,6 +114,12 @@ namespace Transfers {
 
         private static void LogRecordNotFound(int id, ILogger logger, ControllerContext context) {
             logger.LogError("{caller} {error}", GetControllerAndActionName(context), GetSimpleDescription($"Id {id} not found"));
+        }
+
+        private static void LogRecordSaved(Object record, ILogger logger, ControllerContext context) {
+            logger.LogInformation("{caller} {record}",
+                GetControllerAndActionName(context),
+                GetObjectProperties(record));
         }
 
         #endregion

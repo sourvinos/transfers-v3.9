@@ -66,6 +66,7 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
+                    LoggerExtensions.LogInfo(logger, ControllerContext, record);
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });

@@ -1,14 +1,14 @@
 #themeMenu {
     cursor: pointer;
     display: flex;
-    padding: 9px 0 9px 0;
+    margin: 0;
+    padding: 0;
+}
+
+#themeMenu button img:nth-child(1) {
+    margin: 8px 0 7px 0;
 }
 
 .option {
-    color: var(--color-text);
-    font-family: var(--font-family-button) !important;
-    font-size: var(--font-size-button);
-    font-variant-caps: small-caps;
-    font-weight: 500;
     padding-left: 1rem;
 }

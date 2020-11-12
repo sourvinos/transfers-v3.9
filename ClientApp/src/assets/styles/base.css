@@ -9,11 +9,13 @@
 @import "inputs.css";
 @import "labels.css";
 @import "loader.css";
+@import "slider.css";
 @import "scrollable.css";
 @import "select.css";
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
+
 * {
     box-sizing: border-box !important;
 }

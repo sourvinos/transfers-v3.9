@@ -90,7 +90,6 @@ export class ResetPasswordFormComponent {
             this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info') // Tested
             this.router.navigate([this.url])
         }, () => {
-            console.log('ERROR')
             this.showSnackbar(this.messageSnackbarService.unableToResetPassword(), 'error') // Tested
         })
     }

@@ -18,14 +18,16 @@
                 <mat-error *ngIf="description.errors?.required">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="description.errors?.maxlength">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
-            <mat-form-field>
-                <input data-cy="profession" type="text" matInput [placeholder]="onGetLabel('profession')" formControlName="profession" data-tabindex="2" id="profession" [inputTabStop]="input">
-                <mat-error *ngIf="profession.errors?.maxlength">{{ onGetHint('maxLength', profession.errors.maxlength.requiredLength) }}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input data-cy="address" type="text" matInput [placeholder]="onGetLabel('address')" formControlName="address" data-tabindex="3" id="address" [inputTabStop]="input">
-                <mat-error *ngIf="address.errors?.maxlength">{{ onGetHint('maxLength', address.errors.maxlength.requiredLength) }}</mat-error>
-            </mat-form-field>
+            <div id="group-field">
+                <mat-form-field>
+                    <input data-cy="profession" type="text" matInput [placeholder]="onGetLabel('profession')" formControlName="profession" data-tabindex="2" id="profession" [inputTabStop]="input">
+                    <mat-error *ngIf="profession.errors?.maxlength">{{ onGetHint('maxLength', profession.errors.maxlength.requiredLength) }}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input data-cy="address" type="text" matInput [placeholder]="onGetLabel('address')" formControlName="address" data-tabindex="3" id="address" [inputTabStop]="input">
+                    <mat-error *ngIf="address.errors?.maxlength">{{ onGetHint('maxLength', address.errors.maxlength.requiredLength) }}</mat-error>
+                </mat-form-field>
+            </div>
             <div id="group-field">
                 <mat-form-field>
                     <input data-cy="phones" type="text" matInput [placeholder]="onGetLabel('phones')" formControlName="phones" data-tabindex="4" id="phones" [inputTabStop]="input">
