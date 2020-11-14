@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
-import { Observable } from 'rxjs'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
+import { Observable } from 'rxjs'
 
 @Component({
     selector: 'top-menu',
@@ -15,7 +15,7 @@ export class TopMenuComponent {
     //#region variables
 
     private feature = 'menu'
-    public userRole: string
+    public userRole: Observable<string>
     public loginStatus: Observable<boolean>
     public theme = 'red'
     public color = 'yellow'
@@ -63,11 +63,17 @@ export class TopMenuComponent {
 
     private updateVariables(): void {
         this.loginStatus = this.accountService.isLoggedIn
-        this.accountService.currentUserRole.subscribe(result => {
-            this.userRole = result
-        })
+        this.userRole = this.accountService.currentUserRole
     }
 
     //#endregion
+
+    get isConnectedUserAdmin(): boolean {
+        let isAdmin = false
+        this.userRole.subscribe(result => {
+            isAdmin = result == 'Admin' ? true : false
+        })
+        return isAdmin
+    }
 
 }

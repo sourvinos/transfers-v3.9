@@ -33,7 +33,7 @@
 }
 
 #dialog-content {
-    color: var(--color-text);
+    color: var(--color-primary);
     flex: 1;
     font-family: var(--font-family-dialog-content) !important;
     font-size: var(--font-size-dialog-content) !important;

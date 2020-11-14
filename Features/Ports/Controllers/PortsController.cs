@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class PortsController : ControllerBase {
@@ -22,19 +22,16 @@ namespace Transfers {
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Port>> Get() {
             return await repo.Get();
         }
 
         [HttpGet("[action]")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Port>> GetActive() {
             return await repo.GetActive(x => x.IsActive);
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPort(int id) {
             Port record = await repo.GetById(id);
             if (record == null) {
@@ -47,7 +44,6 @@ namespace Transfers {
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public IActionResult PostPort([FromBody] Port record) {
             if (ModelState.IsValid) {
                 try {
@@ -69,7 +65,6 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public IActionResult PutPort([FromRoute] int id, [FromBody] Port record) {
             if (id == record.Id && ModelState.IsValid) {
                 try {
@@ -91,7 +86,6 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePort([FromRoute] int id) {
             Port record = await repo.GetById(id);
             if (record == null) {

@@ -93,6 +93,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
     color: var(--color-focus);
+    font-weight: bold;
 }
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input {
@@ -105,6 +106,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-subscript-wrapper div .mat-hint {
     color: var(--color-focus);
+    font-weight: bold;
 }
 
 

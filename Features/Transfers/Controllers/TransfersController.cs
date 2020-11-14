@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize(Roles = "User, Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class TransfersController : ControllerBase {
@@ -66,7 +66,6 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    LoggerExtensions.LogInfo(logger, ControllerContext, record);
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });

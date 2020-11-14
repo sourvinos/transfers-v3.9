@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class RoutesController : ControllerBase {
@@ -22,19 +22,16 @@ namespace Transfers {
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Route>> Get() {
             return await repo.Get();
         }
 
         [HttpGet("[action]")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Route>> GetActive() {
             return await repo.GetActive(x => x.IsActive);
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetRoute(int id) {
             Route record = await repo.GetById(id);
             if (record == null) {
@@ -47,7 +44,6 @@ namespace Transfers {
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public IActionResult PostRoute([FromBody] Route record) {
             if (ModelState.IsValid) {
                 try {
@@ -69,7 +65,6 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public IActionResult PutRoute([FromRoute] int id, [FromBody] Route record) {
             if (id == record.Id && ModelState.IsValid) {
                 try {
@@ -91,7 +86,6 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRoute([FromRoute] int id) {
             Route record = await repo.GetById(id);
             if (record == null) {

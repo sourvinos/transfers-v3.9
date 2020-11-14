@@ -37,7 +37,7 @@ export class JwtInterceptor {
                                 case 404:
                                     return throwError(404)
                                 case 409:
-                                    return throwError(409) // 
+                                    return throwError(409)
                                 case 490:
                                     return throwError(490) // unableToSaveRecord
                                 case 491:

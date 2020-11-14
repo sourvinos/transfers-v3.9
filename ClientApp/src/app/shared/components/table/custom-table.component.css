@@ -28,17 +28,19 @@ th {
 
 th:hover {
     background-color: var(--color-background);
+    color: var(--color-text);
     cursor: pointer;
 }
 
 tr:hover {
-    background-color: var(--color-secondary) !important;
-    cursor: default;
-    opacity: 0.4;
+    background-color: var(--color-table-row-highlight);
 }
 
 tr:hover td {
-    color: var(--color-text) !important;
+    background-color: var(--color-table-row-highlight);
+    color: var(--color-text);
+    cursor: default;
+    font-weight: bold;
 }
 
 tr:hover td:last-child>div>.button-row-menu {
@@ -46,12 +48,12 @@ tr:hover td:last-child>div>.button-row-menu {
 }
 
 tr.selected {
-    background-color: var(--color-secondary) !important;
-    opacity: 0.4;
+    background-color: var(--color-table-row-highlight) !important;
 }
 
 tr.selected td {
-    color: var(--color-text) !important;
+    color: var(--color-text);
+    font-weight: bold;
 }
 
 td {
@@ -75,6 +77,10 @@ td {
     margin-left: 0 !important;
     visibility: hidden;
     width: 30px;
+}
+
+.button-row-menu .mat-icon {
+    color: var(--color-text) !important;
 }
 
 span {

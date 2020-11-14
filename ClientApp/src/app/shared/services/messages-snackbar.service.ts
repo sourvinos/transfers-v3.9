@@ -63,16 +63,14 @@ export class MessageSnackbarService {
         let returnValue = ''
         this.messages.filter((f: { feature: string; labels: any[] }) => {
             if (f.feature === feature) {
-                f.labels.filter(l => {
-                    if (l.error == errorCode) {
-                        returnValue = l.message
-                    }
-                })
+                if (typeof errorCode == 'number') {
+                    f.labels.filter(l => { if (l.error == errorCode) { returnValue = l.message } })
+                } else {
+                    f.labels.filter(l => { if (l.error == 499) { returnValue = l.message } })
+                }
             }
         })
         return returnValue
     }
-
-    //#endregion
 
 }

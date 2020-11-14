@@ -921,6 +921,10 @@
             {
                 "id": "red",
                 "description": "Red"
+            },
+            {
+                "id": "peach",
+                "description": "Peach"
             }
         ]
     }

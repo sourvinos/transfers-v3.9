@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class DriversController : ControllerBase {
@@ -22,19 +22,16 @@ namespace Transfers {
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Driver>> Get() {
             return await repo.Get();
         }
 
         [HttpGet("[action]")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<Driver>> GetActive() {
             return await repo.GetActive(x => x.IsActive);
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDriver(int id) {
             Driver record = await repo.GetById(id);
             if (record == null) {
@@ -47,7 +44,6 @@ namespace Transfers {
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostDriver([FromBody] Driver record) {
             if (await repo.CheckDefaultDriverExists(null, record) != null) {
                 return StatusCode(409, new {
@@ -74,7 +70,6 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutDriver([FromRoute] int id, [FromBody] Driver record) {
             if (await repo.CheckDefaultDriverExists(id, record) != null) {
                 return StatusCode(409, new {
@@ -101,7 +96,6 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDriver([FromRoute] int id) {
             Driver record = await repo.GetById(id);
             if (record == null) {

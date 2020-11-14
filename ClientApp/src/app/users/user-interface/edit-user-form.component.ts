@@ -36,12 +36,15 @@ export class EditUserFormComponent {
     public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
+    private isAdmin: boolean
 
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService) {
         this.activatedRoute.params.subscribe(p => {
-            if (p.id) { this.getRecord(p.id) }
+            if (p.id) {
+                this.getRecord(p.id)
+            }
         })
     }
 
@@ -175,6 +178,13 @@ export class EditUserFormComponent {
         })
     }
 
+    private async getRoleForConnectedUser(): Promise<void> {
+        if (this.isAdmin == null) {
+            const result = await this.userService.getSingle(localStorage.getItem('userId')).toPromise()
+            this.isAdmin = result.isAdmin
+        }
+    }
+
     private initForm(): void {
         this.form = this.formBuilder.group({
             id: '',
@@ -223,8 +233,9 @@ export class EditUserFormComponent {
         return this.form.get('email')
     }
 
-    get isAdmin(): AbstractControl {
-        return this.form.get('isAdmin')
+    get isConnectedUserAdmin(): boolean {
+        this.getRoleForConnectedUser()
+        return this.isAdmin
     }
 
     //#endregion

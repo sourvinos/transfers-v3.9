@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [Route("api/[controller]")]
 
     public class UsersController : ControllerBase {
@@ -26,6 +25,7 @@ namespace Transfers {
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<UserListViewModel>> Get() {
             return await userManager.Users.Select(u => new UserListViewModel {
                 Id = u.Id,
@@ -37,6 +37,7 @@ namespace Transfers {
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetUser(string id) {
 
             AppUser record = await userManager.FindByIdAsync(id);
@@ -57,6 +58,7 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> PutUser([FromRoute] string id, [FromBody] UserViewModel vm) {
             if (id == vm.Id && ModelState.IsValid) {
                 AppUser record = await userManager.FindByIdAsync(id);
@@ -78,6 +80,7 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string id) {
             AppUser record = await userManager.FindByIdAsync(id);
             if (record == null) {

@@ -921,6 +921,10 @@
             {
                 "id": "red",
                 "description": "Rot"
+            },
+            {
+                "id": "peach",
+                "description": "Pfirsich"
             }
         ]
     }

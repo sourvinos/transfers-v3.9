@@ -11,14 +11,14 @@ export class AccountService {
 
     //#region variables
 
-    private urlRegister = '/api/account/register'
+    private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
+    private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus())
     private urlForgotPassword = '/api/account/forgotPassword'
+    private urlRegister = '/api/account/register'
     private urlResetPassword = '/api/account/resetPassword'
     private urlToken = '/api/auth/auth'
-    private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus())
-    private displayName = new BehaviorSubject<string>(localStorage.getItem('displayName'))
-    private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
     private userId = new BehaviorSubject<string>(localStorage.getItem('userId'))
+    private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
 
     //#endregion
 
@@ -86,13 +86,30 @@ export class AccountService {
     }
 
     private clearLocalStorage(): void {
-        localStorage.removeItem('displayName')
-        localStorage.removeItem('expiration')
-        localStorage.removeItem('jwt')
-        localStorage.removeItem('loginStatus')
-        localStorage.removeItem('refreshToken')
-        localStorage.removeItem('userRole')
-        localStorage.removeItem('userId')
+        this.clearLocalStorageItems([
+            'date',
+            'displayName',
+            'editUserCaller',
+            'expiration',
+            'jwt',
+            'loginStatus',
+            'refreshToken',
+            'searchTermCustomer',
+            'searchTermDestination',
+            'searchTermDriver',
+            'searchTermPickupPoint',
+            'searchTermPort',
+            'searchTermRoute',
+            'searchTermUser',
+            'userId',
+            'userRole',
+        ])
+    }
+
+    private clearLocalStorageItems(items: string[]): void {
+        items.forEach(element => {
+            localStorage.removeItem(element)
+        })
     }
 
     private navigateToLogin(): void {

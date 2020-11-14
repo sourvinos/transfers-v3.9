@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Transfers {
 
+    [Authorize]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
 
     public class AccountController : Controller {
 
@@ -18,10 +18,14 @@ namespace Transfers {
         private readonly SignInManager<AppUser> signInManager;
         private readonly UserManager<AppUser> userManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender) =>
-            (this.userManager, this.signInManager, this.emailSender) = (userManager, signInManager, emailSender);
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailSender emailSender) {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.emailSender = emailSender;
+        }
 
         [HttpPost("[action]")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel formData) {
             if (ModelState.IsValid) {
                 var user = new AppUser {
@@ -34,9 +38,9 @@ namespace Transfers {
                 };
                 var result = await userManager.CreateAsync(user, formData.Password);
                 if (result.Succeeded) {
-                    await userManager.AddToRoleAsync(user, user.IsAdmin? "Admin": "User");
+                    await userManager.AddToRoleAsync(user, user.IsAdmin ? "Admin" : "User");
                     string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token }, protocol : HttpContext.Request.Scheme);
+                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token }, protocol: HttpContext.Request.Scheme);
                     emailSender.SendRegistrationEmail(user.Email, user.DisplayName, callbackUrl);
                     return StatusCode(200, new { response = ApiMessages.RecordCreated() }); // Ok
                 } else {
@@ -104,6 +108,7 @@ namespace Transfers {
         }
 
         [HttpPost("[action]")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByIdAsync(vm.UserId);

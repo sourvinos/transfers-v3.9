@@ -921,6 +921,10 @@
             {
                 "id": "red",
                 "description": "Κοκκινο"
+            },
+            {
+                "id": "peach",
+                "description": "Ροδακινι"
             }
         ]
     }
