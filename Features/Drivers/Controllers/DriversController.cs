@@ -43,6 +43,18 @@ namespace Transfers {
             return StatusCode(200, record);
         }
 
+        [HttpGet("getDefaultDriver")]
+        public async Task<IActionResult> GetDefaultDriver() {
+            Driver record = await repo.GetDefaultDriver();
+            if (record == null) {
+                LoggerExtensions.LogException(0, logger, ControllerContext, null, null);
+                return StatusCode(404, new {
+                    response = ApiMessages.DefaultDriverNotFound()
+                });
+            }
+            return StatusCode(200, record);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostDriver([FromBody] Driver record) {
             if (await repo.CheckDefaultDriverExists(null, record) != null) {
