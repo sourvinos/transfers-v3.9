@@ -88,7 +88,7 @@
     <div id="listFormCombo" [class.hidden]="activePanel=='summary'">
         <div id="transferList">
             <div class="scrollable" id="table">
-                <custom-table [feature]="feature" [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                <custom-table [highlightFirstRow]="highlightFirstRow" [feature]="feature" [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
             </div>
         </div>
         <div id="transferFormModal">

@@ -34,6 +34,7 @@ export class DriverListComponent {
     private windowTitle = 'Drivers'
     public feature = 'driverList'
     public filteredRecords: Driver[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 

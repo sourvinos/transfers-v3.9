@@ -34,6 +34,7 @@ export class CustomerListComponent {
     private windowTitle = 'Customers'
     public feature = 'customerList'
     public filteredRecords: Customer[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 

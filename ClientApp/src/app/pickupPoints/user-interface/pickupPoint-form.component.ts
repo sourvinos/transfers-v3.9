@@ -123,23 +123,6 @@ export class PickupPointFormComponent {
         this.router.navigate([this.url], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
-        const filteredArray = []
-        lookupArray.filter(x => {
-            const key = fields[1]
-            if (x[key].toUpperCase().includes(value.target.value.toUpperCase())) {
-                filteredArray.push(x)
-            }
-        })
-        if (filteredArray.length > 0) {
-            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify)
-        }
-        if (filteredArray.length === 0) {
-            this.clearFields(null, formFields[0], formFields[1])
-            this.focus(formFields[1])
-        }
-    }
-
     public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.pickupPointService.add(this.form.value).subscribe(() => {

@@ -34,6 +34,7 @@ export class RouteListComponent {
     private windowTitle = 'Routes'
     public feature = 'routeList'
     public filteredRecords: Route[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 

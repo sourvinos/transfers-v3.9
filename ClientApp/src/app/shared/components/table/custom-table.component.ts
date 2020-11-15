@@ -22,6 +22,7 @@ export class CustomTableComponent {
     @Input() visibility: any
     @Input() justify: any
     @Input() fields: any
+    @Input() highlightFirstRow: boolean
 
     currentRow = 0
     tableContainer: any
@@ -47,6 +48,8 @@ export class CustomTableComponent {
 
     ngAfterViewInit(): void {
         this.initVariables()
+        if (this.highlightFirstRow)
+            this.onGotoRow(1)
     }
 
     ngDoCheck(): void {
@@ -168,6 +171,12 @@ export class CustomTableComponent {
         }
     }
 
+    private focusOnHiddenInput(): void {
+        setTimeout(() => {
+            document.getElementById('custom-table-input-' + this.randomTableId).focus()
+        }, 300)
+    }
+
     private initVariables(): void {
         this.table = document.getElementById('custom-table-' + this.randomTableId)
         this.tableContainer = this.table.parentNode.parentNode
@@ -205,12 +214,9 @@ export class CustomTableComponent {
             if (direction === 'up') { this.currentRow-- }
             if (direction === 'down') { ++this.currentRow }
         }
-        setTimeout(() => {
-            document.getElementById('custom-table-input-' + this.randomTableId).focus()
-        }, 500)
-        if (this.table.rows.length > 1) {
+        this.focusOnHiddenInput()
+        if (this.table.rows.length > 1)
             table.rows[this.currentRow].classList.add('selected')
-        }
     }
 
     private sendRowToIndexService(): void {

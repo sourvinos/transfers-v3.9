@@ -36,6 +36,7 @@ export class PickupPointListComponent {
     private windowTitle = 'Pickup points'
     public feature = 'pickupPointList'
     public filteredRecords: PickupPoint[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/pickupPoint/new'
     public searchTerm = ''
 

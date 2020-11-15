@@ -37,6 +37,7 @@ export class TransferListComponent {
     private unlisten: Unlisten
     private windowTitle = 'Transfers'
     public feature = 'transferList'
+    public highlightFirstRow = false
 
     //#endregion
 

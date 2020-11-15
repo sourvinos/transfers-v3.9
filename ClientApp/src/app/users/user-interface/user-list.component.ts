@@ -34,6 +34,7 @@ export class UserListComponent {
     private windowTitle = 'Users'
     public feature = 'userList'
     public filteredRecords: User[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 

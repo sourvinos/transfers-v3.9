@@ -25,6 +25,7 @@ export class DialogIndexComponent {
     public title: string
     public visibility: any[]
     public widths: any[]
+    public highlightFirstRow: boolean
 
     //#endregion
 
@@ -36,6 +37,7 @@ export class DialogIndexComponent {
         this.title = data.title
         this.visibility = data.visibility
         this.widths = data.widths
+        this.highlightFirstRow = data.highlightFirstRow
     }
 
     //#region lifecycle hooks

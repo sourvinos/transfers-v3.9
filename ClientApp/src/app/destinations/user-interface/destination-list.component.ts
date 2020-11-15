@@ -34,6 +34,7 @@ export class DestinationListComponent {
     private windowTitle = 'Destinations'
     public feature = 'destinationList'
     public filteredRecords: Destination[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 

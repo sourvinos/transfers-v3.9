@@ -46,6 +46,7 @@ export class TransferFormComponent {
     public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
+    public highlightFirstRow = false
 
     //#endregion
 
@@ -69,8 +70,9 @@ export class TransferFormComponent {
                 this.driverService.getDefaultDriver().subscribe(result => {
                     this.defaultDriver = result
                     this.populateFormWithDefaultValues(this.defaultDriver)
-                    this.showModalForm()
-                    this.focus('destinationDescription')
+                    this.showModalForm().then(() => {
+                        this.focus('destinationDescription')
+                    })
                 }, () => {
                     this.showSnackbar(this.messageSnackbarService.noDefaultDriverFound(), 'error')
                 })
@@ -401,7 +403,7 @@ export class TransferFormComponent {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showModalForm(): void {
+    private async showModalForm(): Promise<void> {
         document.getElementById('transferFormModal').style.visibility = "visible"
     }
 
@@ -415,7 +417,8 @@ export class TransferFormComponent {
                 headers: headers,
                 widths: widths,
                 visibility: visibility,
-                justify: justify
+                justify: justify,
+                highlightFirstRow: true
             }
         })
         dialog.afterClosed().subscribe((result) => {

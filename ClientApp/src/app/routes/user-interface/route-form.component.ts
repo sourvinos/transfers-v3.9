@@ -291,7 +291,8 @@ export class RouteFormComponent {
                 headers: headers,
                 widths: widths,
                 visibility: visibility,
-                justify: justify
+                justify: justify,
+                highlightFirstRow: true
             }
         })
         dialog.afterClosed().subscribe((result) => {

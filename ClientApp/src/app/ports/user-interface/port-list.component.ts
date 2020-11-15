@@ -34,6 +34,7 @@ export class PortListComponent {
     private windowTitle = 'Ports'
     public feature = 'portList'
     public filteredRecords: Port[] = []
+    public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
 
