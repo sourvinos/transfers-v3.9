@@ -3,6 +3,22 @@
         "feature": "menu",
         "labels": [
             {
+                "id": "cruises",
+                "description": "Cruises"
+            },
+            {
+                "id": "transfers",
+                "description": "Transfers"
+            },
+            {
+                "id": "tables",
+                "description": "Tables"
+            },
+            {
+                "id": "users",
+                "description": "Users"
+            },
+            {
                 "id": "customers",
                 "description": "Customers"
             },
@@ -25,14 +41,6 @@
             {
                 "id": "routes",
                 "description": "Routes"
-            },
-            {
-                "id": "transfers",
-                "description": "Transfers"
-            },
-            {
-                "id": "users",
-                "description": "Users"
             },
             {
                 "id": "logout",

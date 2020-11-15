@@ -3,6 +3,22 @@
         "feature": "menu",
         "labels": [
             {
+                "id": "cruises",
+                "description": "Εκδρομες"
+            },
+            {
+                "id": "transfers",
+                "description": "Μεταφορες"
+            },
+            {
+                "id": "tables",
+                "description": "Πινακες"
+            },
+            {
+                "id": "users",
+                "description": "Χρηστες"
+            },
+            {
                 "id": "customers",
                 "description": "Πελατες"
             },
@@ -25,14 +41,6 @@
             {
                 "id": "routes",
                 "description": "Διαδρομες"
-            },
-            {
-                "id": "transfers",
-                "description": "Μεταφορες"
-            },
-            {
-                "id": "users",
-                "description": "Χρηστες"
             },
             {
                 "id": "logout",

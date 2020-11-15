@@ -3,6 +3,22 @@
         "feature": "menu",
         "labels": [
             {
+                "id": "cruises",
+                "description": "Seereisen"
+            },
+            {
+                "id": "transfers",
+                "description": "Transfers"
+            },
+            {
+                "id": "tables",
+                "description": "Tabellen"
+            },
+            {
+                "id": "users",
+                "description": "Benutzer"
+            },
+            {
                 "id": "customers",
                 "description": "Kunden"
             },
@@ -25,14 +41,6 @@
             {
                 "id": "routes",
                 "description": "Routen"
-            },
-            {
-                "id": "transfers",
-                "description": "Transfers"
-            },
-            {
-                "id": "users",
-                "description": "User"
             },
             {
                 "id": "logout",
