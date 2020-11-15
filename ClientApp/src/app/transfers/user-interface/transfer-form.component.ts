@@ -280,7 +280,7 @@ export class TransferFormComponent {
             adults: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             kids: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             free: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
-            totalPersons: [0, Validators.required],
+            totalPersons: [{ value: 0, disabled: true }, Validators.required],
             driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
             portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }],
             remarks: ['', Validators.maxLength(128)],
