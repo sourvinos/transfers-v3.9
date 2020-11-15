@@ -28,8 +28,9 @@ th {
 
 th:hover {
     background-color: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-primary);
     cursor: pointer;
+    font-weight: bold;
 }
 
 tr:hover {
@@ -38,7 +39,7 @@ tr:hover {
 
 tr:hover td {
     background-color: var(--color-table-row-highlight);
-    color: var(--color-text);
+    color: var(--color-primary);
     cursor: default;
     font-weight: bold;
 }
@@ -52,7 +53,7 @@ tr.selected {
 }
 
 tr.selected td {
-    color: var(--color-text);
+    color: var(--color-primary);
     font-weight: bold;
 }
 

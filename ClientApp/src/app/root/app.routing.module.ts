@@ -29,7 +29,7 @@ import { TransferListComponent } from '../transfers/user-interface/transfer-list
 import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper.component'
 import { UserListComponent } from '../users/user-interface/user-list.component'
 
-// List resolvers
+// Resolvers
 import { CustomerFormResolver } from '../customers/classes/customer-form.resolver'
 import { CustomerListResolver } from '../customers/classes/customer-list.resolver'
 import { DestinationFormResolver } from '../destinations/classes/destination-form.resolver'

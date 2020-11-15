@@ -12,7 +12,7 @@
         <div id="search-box">
             <mat-form-field class="no-bottom-margin">
                 <input data-cy="searchTerm" type="text" matInput [placeholder]="onGetLabel('searchLabel')" [(ngModel)]="searchTerm" id="searchTerm" #query (keyup)="onFilter(query.value)" autocomplete="off">
-                <button data-cy="clearFilter" mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
+                <button data-cy="clearFilter" id="clearInput" mat-button *ngIf="searchTerm" matSuffix mat-icon-button (click)="onFilter('')">
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>

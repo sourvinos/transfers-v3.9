@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
-import { HelperService } from 'src/app/shared/services/helper.service'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
 import { Observable } from 'rxjs'
 
@@ -15,24 +14,17 @@ export class TopMenuComponent {
     //#region variables
 
     private feature = 'menu'
-    public userRole: Observable<string>
     public loginStatus: Observable<boolean>
-    public theme = 'red'
-    public color = 'yellow'
+    public userRole: Observable<string>
 
     //#endregion
 
-    constructor(private accountService: AccountService, private helperService: HelperService, private messageMenuService: MessageMenuService) { }
+    constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.updateVariables()
-        this.updateTheme()
-    }
-
-    ngDoCheck(): void {
-        this.compareCurrentThemeWithStored()
     }
 
     //#endregion
@@ -47,26 +39,14 @@ export class TopMenuComponent {
 
     //#region private methods
 
-    private compareCurrentThemeWithStored(): void {
-        if (this.helperService.readItem('theme') != this.theme) {
-            this.theme = this.helperService.readItem('theme')
-        }
-    }
-
-    private getTheme(): string {
-        return this.helperService.readItem('theme')
-    }
-
-    private updateTheme(): void {
-        this.theme = this.getTheme()
-    }
-
     private updateVariables(): void {
         this.loginStatus = this.accountService.isLoggedIn
         this.userRole = this.accountService.currentUserRole
     }
 
     //#endregion
+
+    //#region getters
 
     get isConnectedUserAdmin(): boolean {
         let isAdmin = false
@@ -75,5 +55,7 @@ export class TopMenuComponent {
         })
         return isAdmin
     }
+
+    //#endregion
 
 }

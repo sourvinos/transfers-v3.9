@@ -13,8 +13,8 @@ export class ThemeTogglerComponent {
 
     //#region variables
 
+    private defaultTheme = 'blue'
     private feature = 'theme'
-    private theme = 'red'
 
     //#endregion
 
@@ -35,7 +35,7 @@ export class ThemeTogglerComponent {
     }
 
     public onGetTheme(): string {
-        return this.helperService.readItem("theme") == '' ? this.onSaveTheme('red') : this.helperService.readItem("theme")
+        return this.helperService.readItem("theme") == '' ? this.onSaveTheme(this.defaultTheme) : this.helperService.readItem("theme")
     }
 
     public onChangeTheme(theme: string): void {
@@ -58,20 +58,20 @@ export class ThemeTogglerComponent {
         const headElement = this.document.getElementsByTagName('head')[0]
         const newLinkElement = this.document.createElement('link')
         newLinkElement.rel = 'stylesheet'
-        newLinkElement.href = this.theme + '.css'
+        newLinkElement.href = this.defaultTheme + '.css'
         headElement.appendChild(newLinkElement)
     }
 
     private changeTheme(theme: string): void {
-        this.theme = theme
+        this.defaultTheme = theme
     }
 
     private updateLocalStorage(): void {
-        this.helperService.saveItem('theme', this.theme)
+        this.helperService.saveItem('theme', this.defaultTheme)
     }
 
     private updateVariables(): void {
-        this.theme = this.helperService.readItem('theme') || 'red'
+        this.defaultTheme = this.helperService.readItem('theme') || this.defaultTheme
     }
 
     public onSaveTheme(theme: string): string {

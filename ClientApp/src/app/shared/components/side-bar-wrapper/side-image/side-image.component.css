@@ -24,7 +24,7 @@
     height: 150px;
     border-radius: 50%;
     border: 0.125rem solid;
-    border-color: var(--color-logo-secondary) transparent var(--color-logo-secondary) transparent;
+    border-color: var(--color-logo-primary) transparent var(--color-logo-primary) transparent;
     animation: double-ring-outer 120s linear infinite;
 }
 

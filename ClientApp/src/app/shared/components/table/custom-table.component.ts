@@ -47,7 +47,6 @@ export class CustomTableComponent {
 
     ngAfterViewInit(): void {
         this.initVariables()
-        this.onGotoRow(1)
     }
 
     ngDoCheck(): void {
@@ -108,7 +107,7 @@ export class CustomTableComponent {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
-    
+
     public onGotoRow(key: any): void {
         if (!isNaN(key)) {
             this.unselectAllRows().then(() => {

@@ -44,6 +44,7 @@ export class AppComponent {
     //#endregion
 
     //#region private methods
+
     private positionSpinner(): void {
         document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementById('side-bar').clientWidth + 'px'
         document.getElementById('spinner').style.top = (document.getElementById('main').clientHeight / 2) - (document.getElementById('spinner').clientHeight / 2) + 'px'

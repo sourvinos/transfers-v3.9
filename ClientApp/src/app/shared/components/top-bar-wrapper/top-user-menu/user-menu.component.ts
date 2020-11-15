@@ -19,7 +19,6 @@ export class UserMenuComponent {
     private feature = 'userMenu'
     public displayName: Observable<string>
     public loginStatus: Observable<boolean>
-    public theme = 'red'
 
     //#endregion
 
@@ -29,11 +28,6 @@ export class UserMenuComponent {
 
     ngOnInit(): void {
         this.updateVariables()
-        this.updateTheme()
-    }
-
-    ngDoCheck(): void {
-        this.compareCurrentThemeWithStored()
     }
 
     //#endregion
@@ -60,20 +54,6 @@ export class UserMenuComponent {
     //#endregion
 
     //#region private methods
-
-    private compareCurrentThemeWithStored(): void {
-        if (this.helperService.readItem('theme') != this.theme) {
-            this.theme = this.helperService.readItem('theme')
-        }
-    }
-
-    private getTheme(): string {
-        return this.helperService.readItem('theme')
-    }
-
-    private updateTheme(): void {
-        this.theme = this.getTheme()
-    }
 
     private updateVariables(): void {
         this.displayName = this.accountService.currentDisplayName

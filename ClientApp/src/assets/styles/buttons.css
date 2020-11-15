@@ -90,6 +90,10 @@ button:not(:disabled) {
     cursor: pointer !important;
 }
 
+button#clearInput span mat-icon {
+    color: var(--color-primary) !important;
+}
+
 .mat-mini-fab .mat-button-wrapper {
     padding-top: 0.3125rem !important;
 }
