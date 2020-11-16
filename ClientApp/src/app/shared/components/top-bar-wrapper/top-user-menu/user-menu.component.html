@@ -1,5 +1,9 @@
 <div id="userMenu" *ngIf="loginStatus | async">
-    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="userMenu">{{ displayName | async }}<img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
+    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="userMenu">
+        <img src="/assets/images/navigation/user.svg" width="22px">
+        <span>{{ displayName | async }}</span>
+        <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
+    </button>
 </div>
 
 <mat-menu #userMenu="matMenu">

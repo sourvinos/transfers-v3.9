@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+#themeMenu button {
+    margin-left: 0 !important;
+}
+
 #themeMenu button img:nth-child(1) {
     margin: 8px 9px 7px 0;
 }

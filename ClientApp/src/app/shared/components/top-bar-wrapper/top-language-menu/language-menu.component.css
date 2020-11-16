@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+#languageMenu button {
+    margin-left: 0 !important;
+}
+
 #languageMenu button img:nth-child(1) {
     margin: 9px 0;
 }
