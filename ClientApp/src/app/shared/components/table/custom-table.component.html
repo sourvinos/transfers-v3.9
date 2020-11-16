@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr data-cy="row" *ngFor="let record of records, index as rowIndex" (click)="onGotoRow(rowIndex + 1)" id="{{ randomTableId }}-{{ rowIndex + 1 }}">
+        <tr data-cy="row" *ngFor="let record of records, index as rowIndex" (click)="onGotoRow(rowIndex + 1)" id="{{ randomTableId }}-{{ rowIndex + 1 }}" (contextmenu)="onGotoRow(rowIndex + 1); onOpenContextMenu($event, record); $event. preventDefault()">
             <td *ngFor="let field of fields, index as i" [style.text-align]="justify[i]" [style.display]="visibility[i]">
                 <div *ngIf="i == 0">
                     <mat-checkbox (click)="onToggleCheckBox(rowIndex + 1)" [checked]="checked"></mat-checkbox>
@@ -17,9 +17,7 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button data-cy="editButton" mat-menu-item class="primary" (click)="sendRowToService()">
-                            <span>{{ onGetRowMenu('edit') }}</span>
-                        </button>
+                        <ng-container *ngTemplateOutlet="contextMenu"></ng-container>
                     </mat-menu>
                 </div>
                 <ng-template #elseBlock>{{ record[field] }}</ng-template>
@@ -27,3 +25,9 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #contextMenu>
+    <button data-cy="editButton" mat-menu-item class="primary" (click)="sendRowToService()">
+        <span>{{ onGetRowMenu('edit') }}</span>
+    </button>
+</ng-template>

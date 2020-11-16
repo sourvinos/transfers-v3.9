@@ -1,9 +1,13 @@
+import { fromEvent, Subscription } from 'rxjs'
 import { MessageLabelService } from './../../services/messages-label.service'
-import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers } from '@angular/core'
+import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { MessageTableService } from '../../services/messages-table.service'
 import { HelperService } from '../../services/helper.service'
+import { Overlay, OverlayRef } from '@angular/cdk/overlay'
+import { TemplatePortal } from '@angular/cdk/portal'
+import { filter, take } from 'rxjs/operators'
 
 @Component({
     selector: 'custom-table',
@@ -16,29 +20,33 @@ export class CustomTableComponent {
     //#region variables
 
     @Input() feature: string
-    @Input() records: any[]
-    @Input() headers: any
-    @Input() widths: any
-    @Input() visibility: any
-    @Input() justify: any
     @Input() fields: any
+    @Input() headers: any
+    @Input() justify: any
+    @Input() records: any[]
+    @Input() visibility: any
+    @Input() widths: any
     @Input() highlightFirstRow: boolean
 
-    currentRow = 0
-    tableContainer: any
-    table: any
-    rowHeight = 0
-    rowCount = 0
+    @ViewChild('contextMenu') contextMenu: TemplateRef<any>
+
     checked = false
     checkedIds: string[] = []
-    totalPersons = 0
-    sortOrder = 'desc'
+    currentRow = 0
     differences: IterableDiffer<any>;
+    overlayRef: OverlayRef | null
     randomTableId = Math.floor(Math.random() * 1000) + 1
+    rowCount = 0
+    rowHeight = 0
+    sortOrder = 'desc'
+    subscription: Subscription
+    table: any
+    tableContainer: any
+    totalPersons = 0
 
     //#endregion
 
-    constructor(private helperService: HelperService, private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService) { }
+    constructor(private helperService: HelperService, private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService, private overlay: Overlay, public viewContainerRef: ViewContainerRef) { }
 
     //#region lifecycle hooks
 
@@ -106,6 +114,26 @@ export class CustomTableComponent {
         }
     }
 
+    public onOpenContextMenu({ x, y }: MouseEvent, record: any): void {
+        this.closeContextMenu()
+        const positionStrategy = this.overlay.position()
+            .flexibleConnectedTo({ x, y })
+            .withPositions([{ originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top', offsetX: 1 }])
+        this.overlayRef = this.overlay.create({
+            positionStrategy,
+            scrollStrategy: this.overlay.scrollStrategies.close()
+        })
+        this.overlayRef.attach(new TemplatePortal(this.contextMenu, this.viewContainerRef, {
+            $implicit: record
+        }))
+        this.subscription = fromEvent<MouseEvent>(document, 'click').pipe(filter(event => {
+            const clickTarget = event.target as HTMLElement
+            return !!this.overlayRef && !this.overlayRef.overlayElement.contains(clickTarget)
+        }), take(1)).subscribe(() => {
+            this.closeContextMenu()
+        })
+    }
+
     public onSortMe(columnName: string, sortOrder: string): void {
         this.records.sort(this.compareValues(columnName, sortOrder))
         this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
@@ -149,6 +177,7 @@ export class CustomTableComponent {
     }
 
     public sendRowToService(): void {
+        this.closeContextMenu()
         if (document.getElementsByClassName('mat-dialog-container').length === 0) {
             this.interactionService.sendObject(this.records[this.currentRow - 1])
         } else {
@@ -159,6 +188,14 @@ export class CustomTableComponent {
     //#endregion
 
     //#region private methods
+
+    private closeContextMenu(): void {
+        this.subscription && this.subscription.unsubscribe()
+        if (this.overlayRef) {
+            this.overlayRef.dispose()
+            this.overlayRef = null
+        }
+    }
 
     private compareValues(key: string, order = 'asc'): any {
         return function innerSort(a: { [x: string]: any; hasOwnProperty: (arg0: string) => any }, b: { [x: string]: any; hasOwnProperty: (arg0: string) => any }): number {
