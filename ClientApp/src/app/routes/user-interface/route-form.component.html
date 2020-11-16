@@ -16,12 +16,12 @@
             <mat-form-field>
                 <input data-cy="abbreviation" type="text" matInput [placeholder]="onGetLabel('abbreviation')" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
                 <mat-error *ngIf="abbreviation.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="abbreviation.errors?.maxlength">{{ onGetHint('maxLength', abbreviation.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="abbreviation.hasError('maxlength')">{{ onGetHint('maxLength', abbreviation.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">
                 <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="description.errors?.maxlength">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="description.hasError('maxlength')">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input data-cy="portDescription" type="text" matInput [placeholder]="onGetLabel('port')" formControlName="portDescription" data-tabindex="3" id="portDescription" [inputTabStop]="input" (change)="onLookupIndex(ports, 'ports', ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">

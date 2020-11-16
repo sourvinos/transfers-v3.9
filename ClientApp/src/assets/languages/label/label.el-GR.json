@@ -754,6 +754,10 @@
             {
                 "id": "submitButton",
                 "description": "Υποβολη"
+            },
+            {
+                "id": "weNeedYourEmail",
+                "description": "Δωστε μας το email σας και θα σας στειλουμε οδηγιες για να δημιουργησετε νεο κωδικο"
             }
         ]
     },

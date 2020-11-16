@@ -101,6 +101,8 @@ export class AccountService {
             'searchTermPort',
             'searchTermRoute',
             'searchTermUser',
+            'selectedIds',
+            'transfers',
             'userId',
             'userRole',
         ])

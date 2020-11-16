@@ -15,33 +15,33 @@
         <form data-cy="form" [formGroup]="form" autocomplete="off">
             <mat-form-field>
                 <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="1" id="description" [inputTabStop]="input">
-                <mat-error *ngIf="description.errors?.required">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="description.errors?.maxlength">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                <mat-error *ngIf="description.hasError('maxlength')">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <div id="group-field">
                 <mat-form-field>
                     <input data-cy="profession" type="text" matInput [placeholder]="onGetLabel('profession')" formControlName="profession" data-tabindex="2" id="profession" [inputTabStop]="input">
-                    <mat-error *ngIf="profession.errors?.maxlength">{{ onGetHint('maxLength', profession.errors.maxlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="profession.hasError('maxlength')">{{ onGetHint('maxLength', profession.errors.maxlength.requiredLength) }}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <input data-cy="address" type="text" matInput [placeholder]="onGetLabel('address')" formControlName="address" data-tabindex="3" id="address" [inputTabStop]="input">
-                    <mat-error *ngIf="address.errors?.maxlength">{{ onGetHint('maxLength', address.errors.maxlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="address.hasError('maxlength')">{{ onGetHint('maxLength', address.errors.maxlength.requiredLength) }}</mat-error>
                 </mat-form-field>
             </div>
             <div id="group-field">
                 <mat-form-field>
                     <input data-cy="phones" type="text" matInput [placeholder]="onGetLabel('phones')" formControlName="phones" data-tabindex="4" id="phones" [inputTabStop]="input">
-                    <mat-error *ngIf="phones.errors?.maxlength">{{ onGetHint('maxLength', phones.errors.maxlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="phones.hasError('maxlength')">{{ onGetHint('maxLength', phones.errors.maxlength.requiredLength) }}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <input data-cy="personInCharge" type="text" matInput [placeholder]="onGetLabel('personInCharge')" formControlName="personInCharge" data-tabindex="5" id="personInCharge" [inputTabStop]="input">
-                    <mat-error *ngIf="personInCharge.errors?.maxlength">{{ onGetHint('maxLength', personInCharge.errors.maxlength.requiredLength) }}</mat-error>
+                    <mat-error *ngIf="personInCharge.hasError('maxlength')">{{ onGetHint('maxLength', personInCharge.errors.maxlength.requiredLength) }}</mat-error>
                 </mat-form-field>
             </div>
             <mat-form-field>
                 <input data-cy="email" type="text" matInput [placeholder]="onGetLabel('email')" formControlName="email" data-tabindex="6" id="email" [inputTabStop]="input">
-                <mat-error *ngIf="email.errors?.email && !email.errors?.maxlength">{{ onGetHint('invalid') }}</mat-error>
-                <mat-error *ngIf="email.errors?.maxlength">{{ onGetHint('maxLength', email.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="email.hasError('maxlength')">{{ onGetHint('maxLength', email.errors.maxlength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="!email.hasError('maxlength') && email.hasError('email')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
             <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>

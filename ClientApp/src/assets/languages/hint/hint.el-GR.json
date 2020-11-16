@@ -1,5 +1,6 @@
 {
-    "labels": [{
+    "labels": [
+        {
             "id": "required",
             "description": "Το πεδιο ειναι υποχρεωτικο"
         },

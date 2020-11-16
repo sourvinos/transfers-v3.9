@@ -15,7 +15,7 @@
                     <input data-cy="dateIn" type="text" matInput class="center" id="dateIn" [matDatepicker]="picker" [placeholder]="onGetLabel('searchLabel')" formControlName="dateIn" [inputFormat]="'date'" autocomplete="off">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="date.errors?.required">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="date.hasError('required')">{{ onGetHint('required') }}</mat-error>
                     <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
                 </mat-form-field>
             </form>

@@ -754,6 +754,10 @@
             {
                 "id": "submitButton",
                 "description": "(DE) Submit"
+            },
+            {
+                "id": "weNeedYourEmail",
+                "description": "(DE) Give us your email and we'll send you instructions on how to reset your password"
             }
         ]
     },

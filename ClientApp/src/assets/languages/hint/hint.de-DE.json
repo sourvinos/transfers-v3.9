@@ -1,5 +1,6 @@
 {
-    "labels": [{
+    "labels": [
+        {
             "id": "required",
             "description": "(DE) This field is required"
         },
