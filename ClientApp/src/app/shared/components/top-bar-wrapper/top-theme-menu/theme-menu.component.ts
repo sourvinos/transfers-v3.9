@@ -13,8 +13,8 @@ export class ThemeTogglerComponent {
 
     //#region variables
 
-    private defaultTheme = 'blue'
     private feature = 'theme'
+    public defaultTheme = 'blue'
 
     //#endregion
 
