@@ -929,6 +929,10 @@
             {
                 "id": "peach",
                 "description": "Pfirsich"
+            },
+            {
+                "id": "ebony",
+                "description": "Ebenholz"
             }
         ]
     }

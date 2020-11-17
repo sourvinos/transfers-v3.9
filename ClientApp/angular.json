@@ -71,6 +71,11 @@
                                 "input": "src/assets/themes/peach.css",
                                 "bundleName": "peach",
                                 "inject": false
+                            },
+                            {
+                                "input": "src/assets/themes/ebony.css",
+                                "bundleName": "ebony",
+                                "inject": false
                             }
                         ],
                         "scripts": []
