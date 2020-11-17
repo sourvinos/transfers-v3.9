@@ -3,7 +3,8 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('gotoCustomerList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
-    cy.get('[data-cy=customers]').click()
+    cy.get('[data-cy=tablesMenu]').click()
+    cy.get('[data-cy=customersMenu]').click()
     cy.wait('@getCustomers').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/customers')
 })

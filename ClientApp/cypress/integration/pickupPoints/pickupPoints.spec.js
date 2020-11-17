@@ -14,7 +14,8 @@ context('Pickup points', () => {
         it('Populate the select', () => {
             cy.server()
             cy.route('GET', Cypress.config().baseUrl + '/api/routes/getActive', 'fixture:routes.json').as('getRoutes')
-            cy.get('[data-cy=pickupPoints]').click()
+            cy.get('[data-cy=tablesMenu]').click()
+            cy.get('[data-cy=pickupPointsMenu]').click()
             cy.wait('@getRoutes').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/pickupPoints')
         })

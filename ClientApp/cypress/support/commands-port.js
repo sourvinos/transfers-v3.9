@@ -3,7 +3,8 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('gotoPortList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/ports', 'fixture:ports.json').as('getPorts')
-    cy.get('[data-cy=ports]').click()
+    cy.get('[data-cy=tablesMenu]').click()
+    cy.get('[data-cy=portsMenu]').click()
     cy.wait('@getPorts').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/ports')
 })

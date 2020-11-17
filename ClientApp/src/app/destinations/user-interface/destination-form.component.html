@@ -16,8 +16,7 @@
             <mat-form-field>
                 <input data-cy="abbreviation" type="text" matInput [placeholder]="onGetLabel('abbreviation')" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
                 <mat-error *ngIf="abbreviation.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="abbreviation.hasError('maxlength')">{{ onGetHint('maxLength', abbreviation.errors.maxLength.requiredLength) }}</mat-error>
+                <mat-error *ngIf="abbreviation.hasError('maxlength')">{{ onGetHint('maxLength', abbreviation.errors.maxlength.requiredLength) }}</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">

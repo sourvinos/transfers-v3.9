@@ -3,7 +3,8 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('gotoDestinationList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
-    cy.get('[data-cy=destinations]').click()
+    cy.get('[data-cy=tablesMenu]').click()
+    cy.get('[data-cy=destinationsMenu]').click()
     cy.wait('@getDestinations').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/destinations')
 })

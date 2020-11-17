@@ -3,7 +3,8 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('gotoRouteList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
-    cy.get('[data-cy=routes]').click()
+    cy.get('[data-cy=tablesMenu]').click()
+    cy.get('[data-cy=routesMenu]').click()
     cy.wait('@getRoutes').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/routes')
 })

@@ -79,7 +79,7 @@ context('Customers', () => {
 
     })
 
-    describe.only('Update', () => {
+    describe('Update', () => {
 
         beforeEach(() => {
             cy.restoreLocalStorage()

@@ -1,7 +1,7 @@
 import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('gotoTransfersWrapper', () => {
-    cy.get('[data-cy=transfers]').click()
+    cy.get('[data-cy=transfersMenu]').click()
     cy.url().should('eq', Cypress.config().baseUrl + '/transfers')
 })
 
@@ -22,7 +22,8 @@ Cypress.Commands.add('searchTransfers', () => {
 Cypress.Commands.add('seekTransfer', () => {
     cy.server()
     cy.route('GET', 'https://localhost:5001/api/transfers/587', 'fixture:transfer.json').as('getTransfer')
-    cy.get('[data-cy=row]:nth-child(1)').dblclick()
+    cy.get('.button-row-menu').eq(0).click({ force: true })
+    cy.get('[data-cy=editButton]').first().click()
     cy.wait('@getTransfer').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-08-01/transfer/587')
 })

@@ -7,6 +7,7 @@ Cypress.Commands.add('login', () => {
 })
 
 Cypress.Commands.add('logout', () => {
+    cy.get('[data-cy=userMenu]').click()
     cy.get('[data-cy=logout]').click()
 })
 

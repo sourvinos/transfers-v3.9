@@ -1,5 +1,5 @@
 <div id="userMenu" *ngIf="loginStatus | async">
-    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="userMenu">
+    <button data-cy="userMenu" mat-flat-button class="transparent inverted" [matMenuTriggerFor]="userMenu">
         <img src="/assets/images/navigation/user.svg" width="22px">
         <span>{{ displayName | async }}</span>
         <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
@@ -11,7 +11,7 @@
         <img src="/assets/images/navigation/settings.svg">
         <span class="option">{{ onGetLabel('myAccount') }}</span>
     </button>
-    <button mat-menu-item (click)="onLogout()">
+    <button data-cy="logout" mat-menu-item (click)="onLogout()">
         <img src="/assets/images/navigation/logout.svg">
         <span class="option">{{ onGetLabel('logout') }}</span>
     </button>

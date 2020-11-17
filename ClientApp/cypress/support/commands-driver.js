@@ -3,7 +3,8 @@ import 'cypress-localstorage-commands'
 Cypress.Commands.add('gotoDriverList', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
-    cy.get('[data-cy=drivers]').click()
+    cy.get('[data-cy=tablesMenu]').click()
+    cy.get('[data-cy=driversMenu]').click()
     cy.wait('@getDrivers').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/drivers')
 })

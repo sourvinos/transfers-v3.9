@@ -13,13 +13,13 @@ context('Users', () => {
         })
 
         it('The table should have an exact number of rows and columns', () => {
-            cy.get('[data-cy=row]').should('have.length', 5)
+            cy.get('[data-cy=row]').should('have.length', 2)
             cy.get('[data-cy=column]').should('have.length', 6)
         })
 
         it('Filter the table by typing in the search box', () => {
             cy.wait(500)
-            cy.get('[data-cy=searchTerm]').type('js')
+            cy.get('[data-cy=searchTerm]').type('sourvinos')
             cy.get('[data-cy=row]').should(rows => {
                 expect(rows).to.have.length(1)
             })
@@ -29,7 +29,7 @@ context('Users', () => {
             cy.get('[data-cy=clearFilter').click()
             cy.get('[data-cy=searchTerm]').should('have.text', '')
             cy.get('[data-cy=row]').should((rows) => {
-                expect(rows).to.have.length(5)
+                expect(rows).to.have.length(2)
             })
         })
 
@@ -131,17 +131,17 @@ context('Users', () => {
 
         it('Ask to delete and abort', () => {
             cy.clickOnDeleteAndAbort()
-            cy.url().should('eq', Cypress.config().baseUrl + '/users/7bf9acf1-74c2-459c-8366-82f05bfa3e28')
+            cy.url().should('eq', Cypress.config().baseUrl + '/users/8d204972-9982-491e-aeec-7ce2dcbd56c5')
         })
 
         it('Ask to delete and continue', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/users', 'fixture:users.json').as('getRoutes')
-            cy.route('DELETE', Cypress.config().baseUrl + '/api/users/7bf9acf1-74c2-459c-8366-82f05bfa3e28', 'fixture:user.json').as('deleteRoute')
+            cy.route('GET', Cypress.config().baseUrl + '/api/users', 'fixture:users.json').as('getUsers')
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/users/8d204972-9982-491e-aeec-7ce2dcbd56c5', 'fixture:user.json').as('deleteUser')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()
-            cy.wait('@deleteRoute').its('status').should('eq', 200).then(() => {
+            cy.wait('@deleteUser').its('status').should('eq', 200).then(() => {
                 cy.get('[data-cy=customSnackbar]')
             })
             cy.url().should('eq', Cypress.config().baseUrl + '/users')
@@ -153,7 +153,7 @@ context('Users', () => {
 
     })
 
-    describe('Validate form', () => {
+    describe.only('Validate form', () => {
 
         it('Goto an empty form', () => {
             cy.gotoEmptyUserForm()
@@ -228,7 +228,7 @@ context('Users', () => {
 
         it('Mark user as admin', () => {
             cy.get('[data-cy=isAdmin]').click()
-          })
+        })
 
         it('Choose not to abort when the back icon is clicked', () => {
             cy.get('[data-cy=goBack]').click()
