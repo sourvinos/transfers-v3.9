@@ -39,7 +39,6 @@ namespace Transfers {
         [HttpGet("{id}")]
         [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetUser(string id) {
-
             AppUser record = await userManager.FindByIdAsync(id);
             if (record == null) {
                 LoggerExtensions.LogException(id, logger, ControllerContext, null, null);
