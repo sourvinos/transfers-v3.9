@@ -10,13 +10,7 @@
     text-align: center;
 }
 
-@media only screen and (max-height:865px) {
-    #side-image {
-        display: none;
-    }
-}
-
-@media only screen and (max-width:1366px) {
+@media only screen and (max-width:1152px) {
     #side-footer {
         display: none;
     }

@@ -8,7 +8,7 @@
     width: 17rem !important;
 }
 
-@media only screen and (max-width:1366px) {
+@media only screen and (max-width:1152px) {
     #side-bar {
         width: 0.5rem !important;
     }

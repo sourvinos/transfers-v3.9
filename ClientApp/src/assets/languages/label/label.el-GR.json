@@ -583,11 +583,11 @@
         "labels": [
             {
                 "id": "summaryTab",
-                "description": "Συνοψη"
+                "description": "Συνοπτικα"
             },
             {
                 "id": "listTab",
-                "description": "Κατασταση"
+                "description": "Εγγραφες"
             },
             {
                 "id": "summaryHeaderDestinations",

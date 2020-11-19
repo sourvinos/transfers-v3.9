@@ -52,17 +52,23 @@
     animation: double-ring-inner 120s linear infinite;
 }
 
+@media only screen and (max-width:1152px) {
+    #side-image {
+        display: none;
+    }
+}
+
+@media only screen and (max-height:768px) {
+    #side-image {
+        display: none;
+    }
+}
+
 @keyframes double-ring-inner {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(-360deg);
-    }
-}
-
-@media only screen and (max-height:865px) {
-    #side-image {
-        display: none;
     }
 }
