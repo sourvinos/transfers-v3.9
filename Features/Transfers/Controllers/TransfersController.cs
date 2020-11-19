@@ -23,9 +23,14 @@ namespace Transfers {
             this.logger = logger;
         }
 
-        [HttpGet("date/{dateIn}")]
-        public TransferGroupResultResource<TransferResource> Get(string dateIn) {
-            return this.repo.Get(dateIn);
+        [HttpGet("date/{date}")]
+        public TransferGroupResultResource<TransferResource> Get(string date) {
+            return this.repo.Get(date);
+        }
+
+        [HttpGet("fromDate/{fromDate}/toDate/{toDate}")]
+        public TransferSummary Get(string fromDate, string toDate) {
+            return this.repo.Get(fromDate, toDate);
         }
 
         [HttpGet("{id}")]

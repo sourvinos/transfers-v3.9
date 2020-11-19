@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { DataService } from 'src/app/shared/services/data.service'
+import { TransferOverviewViewModel } from './transferOverviewViewModel'
 import { TransferViewModel } from './transferViewModel'
 
 @Injectable({ providedIn: 'root' })
@@ -24,6 +25,10 @@ export class TransferService extends DataService {
 
     getTransfers(date: string): Observable<TransferViewModel> {
         return this.http.get<TransferViewModel>('/api/transfers/date/' + date)
+    }
+
+    getTransfersOverview(fromDate: string, toDate: string): Observable<TransferOverviewViewModel> {
+        return this.http.get<TransferOverviewViewModel>('/api/transfers/fromDate/' + fromDate + '/toDate/' + toDate)
     }
 
 }

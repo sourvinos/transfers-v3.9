@@ -935,5 +935,26 @@
                 "description": "Εβενος"
             }
         ]
+    },
+    {
+        "feature": "transferOverviewWrapper",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Συνοπτική Εικόνα Περιόδου"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Αναζητηση"
+            },
+            {
+                "id": "searchHint",
+                "description": "Με βαση την ημερομηνια"
+            },
+            {
+                "id": "searchButton",
+                "description": "Αναζητηση"
+            }
+        ]
     }
 ]

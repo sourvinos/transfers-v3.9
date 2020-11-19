@@ -9,8 +9,6 @@ import { TransferService } from './transfer.service'
 
 export class TransferListResolver  {
 
-    dateIn: string
-
     constructor(private transferService: TransferService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<TransferListResolved> {

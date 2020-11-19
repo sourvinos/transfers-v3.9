@@ -45,6 +45,14 @@
             {
                 "id": "logout",
                 "description": "Logout"
+            },
+            {
+                "id": "dailyMenu",
+                "description": "Daily"
+            },
+            {
+                "id": "overviewMenu",
+                "description": "Period Overview"
             }
         ]
     }

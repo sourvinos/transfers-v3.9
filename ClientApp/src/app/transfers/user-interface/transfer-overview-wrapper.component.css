@@ -1,0 +1,33 @@
+#header #search-box {
+    margin-right: 1rem;
+    width: auto;
+}
+
+#header #search-box .mat-form-field {
+    width: 12rem !important;
+}
+
+#content {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* Wide */
+
+@media only screen and (min-width: 1367px) {
+    #content {
+        margin: 0 2rem 2rem;
+    }
+}
+
+
+/* Narrow */
+
+@media only screen and (max-width: 1366px) {
+    #content {
+        margin: 0 1.5rem 1.5rem;
+    }
+}

@@ -32,7 +32,7 @@
             },
             {
                 "id": "pickupPoints",
-                "description": "Σημεια παραλαβης"
+                "description": "Σημεια Παραλαβης"
             },
             {
                 "id": "ports",
@@ -45,6 +45,14 @@
             {
                 "id": "logout",
                 "description": "Εξοδος"
+            },
+            {
+                "id": "dailyMenu",
+                "description": "Ημερησια Κινηση"
+            },
+            {
+                "id": "overviewMenu",
+                "description": "Συνοπτικη Εικονα Περιοδου"
             }
         ]
     }

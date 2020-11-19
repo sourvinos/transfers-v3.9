@@ -935,5 +935,26 @@
                 "description": "Ebenholz"
             }
         ]
+    },
+    {
+        "feature": "transferOverviewWrapper",
+        "labels": [
+            {
+                "id": "header",
+                "description": "(DE) Transfers Overview"
+            },
+            {
+                "id": "searchLabel",
+                "description": "(DE) Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "(DE) Search by date"
+            },
+            {
+                "id": "searchButton",
+                "description": "(DE) Search"
+            }
+        ]
     }
 ]

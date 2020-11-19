@@ -935,5 +935,26 @@
                 "description": "Ebony"
             }
         ]
+    },
+    {
+        "feature": "transferOverviewWrapper",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Transfers Period Overview"
+            },
+            {
+                "id": "searchLabel",
+                "description": "Search"
+            },
+            {
+                "id": "searchHint",
+                "description": "Search by date"
+            },
+            {
+                "id": "searchButton",
+                "description": "Search"
+            }
+        ]
     }
 ]
