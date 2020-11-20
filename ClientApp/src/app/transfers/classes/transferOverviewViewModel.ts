@@ -6,9 +6,10 @@ export class TransferOverviewViewModel {
     kids: number
     free: number
 
-    adultsPercent: number
-    kidsPercent: number
-    freePercent: number
+    percent: string
+    adultsPercent: string
+    kidsPercent: string
+    freePercent: string
 
     personsPerDestination: any[]
     personsPerCustomer: any[]

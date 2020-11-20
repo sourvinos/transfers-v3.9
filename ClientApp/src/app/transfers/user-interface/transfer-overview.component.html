@@ -1,11 +1,76 @@
 <div id="wrapper">
-     <h1>Total persons: {{ b.totalPersons }}</h1>
-     <h1>{{ b.totalPersonsPerCustomer.length }}</h1>
-     <h1> {{ b.totalPersonsPerCustomer[0].description }}</h1>
 
-    <!-- <h1>Persons per customer {{ a.totalPersonsPerCustomer[0].description }}</h1>
-    <h1>Persons per customer {{ a.totalPersonsPerCustomer[1].description }}</h1>
+    <div id="first">
 
-    a.totalPersonsPerCustomer  -->
+        <div class="box">
+            <h2>Total</h2>
+            <h1>{{ queryResult.persons }}</h1>
+            <h3>{{ queryResult.percent }}%</h3>
+        </div>
+
+        <div class="box">
+            <h2>Adults</h2>
+            <h1>{{ queryResult.adults }}</h1>
+            <h3>{{ queryResult.adultsPercent }}%</h3>
+        </div>
+
+        <div class="box">
+            <h2>Kids</h2>
+            <h1>{{ queryResult.kids }}</h1>
+            <h3>{{ queryResult.kidsPercent }}%</h3>
+        </div>
+
+        <div class="box">
+            <h2>Free</h2>
+            <h1>{{ queryResult.free }}</h1>
+            <h3>{{ queryResult.freePercent }}%</h3>
+        </div>
+
+    </div>
+
+    <div id="second">
+
+        <div class="box" (click)="onShowDetails('Customers', queryResult.personsPerCustomer)">
+            <img src="/assets/images/navigation/customers.svg">
+            <h1>Customers</h1>
+        </div>
+
+        <!-- <div class="details" id="personsPerCustomer" [class.hidden]="!isVisible">
+            <div class="content scrollable">
+                <ul *ngFor="let record of queryResult.personsPerCustomer">
+                    <li>{{ record.description }} {{ record.persons }}</li>
+                </ul>
+            </div>
+        </div> -->
+
+        <div class="box">
+            <img src="/assets/images/navigation/destinations.svg">
+            <h1>Destinations</h1>
+        </div>
+        <!-- <h2 *ngFor="let record of queryResult.personsPerDestination">
+            {{ record.description }} {{ record.persons }}
+        </h2> -->
+        <div class="box">
+            <img src="/assets/images/navigation/drivers.svg">
+            <h1>Drivers</h1>
+        </div>
+        <!-- <h2 *ngFor="let record of queryResult.personsPerDriver">
+            {{ record.description }} {{ record.persons }}
+        </h2> -->
+        <div class="box">
+            <img src="/assets/images/navigation/ports.svg">
+            <h1>Ports</h1>
+        </div>
+        <!-- <h2 *ngFor="let record of queryResult.personsPerPort">
+            {{ record.description }} {{ record.persons }}
+        </h2> -->
+        <div class="box">
+            <img src="/assets/images/navigation/routes.svg">
+            <h1>Routes</h1>
+        </div>
+        <!-- <h2 *ngFor="let record of queryResult.personsPerRoute">
+            {{ record.description }} {{ record.persons }}
+        </h2> -->
+    </div>
 
 </div>

@@ -125,7 +125,7 @@ export class TransferOverviewWrapperComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            fromDate: ['', [Validators.required]]
+            fromDate: ['01/07/2015', [Validators.required]]
         })
     }
 

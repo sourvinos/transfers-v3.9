@@ -1,0 +1,28 @@
+td {
+    font-family: var(--font-family-table-body);
+    font-size: var(--font-size-table-row);
+    padding: 0.5rem;
+}
+
+td.right {
+    text-align: right;
+}
+
+td:nth-child(1) {
+    width: 400px;
+}
+
+td:nth-child(2) {
+    width: 100px;
+}
+
+tr:hover {
+    background-color: var(--color-table-row-highlight);
+}
+
+tr:hover td {
+    background-color: var(--color-table-row-highlight);
+    color: var(--color-primary);
+    cursor: default;
+    font-weight: bold;
+}

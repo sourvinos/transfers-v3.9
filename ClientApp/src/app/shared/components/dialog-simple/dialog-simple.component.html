@@ -1,0 +1,22 @@
+<div data-cy="dialog" id="dialog">
+
+    <div id="dialog-header">
+        <div id="title">
+            <h1 mat-dialog-title>{{ header }}</h1>
+        </div>
+    </div>
+
+    <div class="scrollable">
+        <table>
+            <tr *ngFor="let record of fields">
+                <td>{{ record.description }}</td>
+                <td class="right">{{ record.persons }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="dialog-footer">
+        <button mat-flat-button class="primary" (click)="onCloseDialog()">Close</button>
+    </div>
+
+</div>

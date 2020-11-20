@@ -1,3 +1,4 @@
+import { TransferOverviewComponent } from './../user-interface/transfer-overview.component'
 import { NgModule } from '@angular/core'
 import { TransferAssignDriverComponent } from '../user-interface/assign-driver-form.component'
 import { TransferFormComponent } from '../user-interface/transfer-form.component'
@@ -13,7 +14,8 @@ import { SharedModule } from './../../shared/modules/shared.module'
         TransferListComponent,
         TransferFormComponent,
         TransferAssignDriverComponent,
-        TransferOverviewWrapperComponent
+        TransferOverviewWrapperComponent,
+        TransferOverviewComponent
     ],
     imports: [
         SharedModule,

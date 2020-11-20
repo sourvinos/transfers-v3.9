@@ -6,6 +6,7 @@ import { InputFormatDirective } from 'src/app/shared/directives/input-format.dir
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
 import { DialogIndexComponent } from '../components/dialog-index/dialog-index.component'
+import { DialogSimpleComponent } from '../components/dialog-simple/dialog-simple.component'
 import { SnackbarComponent } from '../components/snackbar/snackbar.component'
 import { CustomTableComponent } from '../components/table/custom-table.component'
 import { SafeStylePipe } from '../pipes/safeStyle.pipe'
@@ -16,6 +17,7 @@ import { MaterialModule } from './material.module'
                 CustomTableComponent,
                 DialogAlertComponent,
                 DialogIndexComponent,
+                DialogSimpleComponent,
                 SnackbarComponent,
                 InputFormatDirective,
                 InputTabStopDirective,
@@ -38,6 +40,7 @@ import { MaterialModule } from './material.module'
         entryComponents: [
                 DialogAlertComponent,
                 DialogIndexComponent,
+                DialogSimpleComponent,
                 SnackbarComponent
         ]
 })
