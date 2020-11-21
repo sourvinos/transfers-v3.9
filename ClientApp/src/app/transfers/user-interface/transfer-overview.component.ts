@@ -84,7 +84,7 @@ export class TransferOverviewComponent {
 
     public onShowDetails(header: string, data: any): void {
         this.dialog.open(DialogSimpleComponent, {
-            height: '685px',
+            height: '600px',
             data: {
                 header: header,
                 records: data

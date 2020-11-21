@@ -11,23 +11,6 @@
     display: flex;
     flex: 1;
     height: 100%;
+    margin: 0 2rem 2rem;
     overflow: hidden;
-}
-
-
-/* Wide */
-
-@media only screen and (min-width: 1367px) {
-    #content {
-        margin: 0 2rem 2rem;
-    }
-}
-
-
-/* Narrow */
-
-@media only screen and (max-width: 1366px) {
-    #content {
-        margin: 0 1.5rem 1.5rem;
-    }
 }

@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-#first {
+#person-totals {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -24,7 +24,7 @@
     width: 250px;
 }
 
-#first .box {
+#person-totals div {
     align-items: center;
     background-color: var(--color-primary-transparent);
     border-radius: 10px;
@@ -32,20 +32,21 @@
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    padding: 1rem;
 }
 
-#first .box h1 {
+#person-totals div h1 {
     font-size: 60px !important;
     line-height: 70px;
 }
 
-.box h2 {
+#person-totals div h2 {
     color: var(--color-primary) !important;
     font-size: 32px;
     line-height: 16px;
 }
 
-.box h3 {
+#person-totals div h3 {
     font-size: 20px;
     line-height: 10px;
 }
@@ -70,6 +71,10 @@
     padding-left: 2rem;
 }
 
+#second .box:hover {
+    cursor: pointer;
+}
+
 #second .box h1 {
     color: var(--color-primary) !important;
     margin-left: 1rem !important;
@@ -80,10 +85,19 @@ img {
 }
 
 .details {
+    background-color: rosybrown;
+    left: 50%;
+    overflow: hidden;
     position: absolute;
     top: 0;
-    left: 50%;
-    background-color: rosybrown;
-    overflow: hidden;
 }
 
+@media (max-width:1599px) {
+    #person-totals div {
+        padding: 0.5rem;
+    }
+    #person-totals div h1 {
+        font-size: 40px !important;
+        line-height: 50px;
+    }
+}

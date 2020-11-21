@@ -52,13 +52,7 @@
     animation: double-ring-inner 120s linear infinite;
 }
 
-@media only screen and (max-width:1152px) {
-    #side-image {
-        display: none;
-    }
-}
-
-@media only screen and (max-height:768px) {
+@media (max-height:768px) {
     #side-image {
         display: none;
     }

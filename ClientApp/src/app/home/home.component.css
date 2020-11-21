@@ -30,11 +30,6 @@
 
 #home-page-logo span:nth-child(3) {
     font-size: var(--font-size-logo-home-page-second-child) !important;
-    margin-top: -4.5rem;
+    margin-top: -3.5rem;
 }
 
-@media only screen and (max-width:1366px) {
-    #home-page-logo span:nth-child(3) {
-        margin-top: -2.5rem;
-    }
-}

@@ -45,6 +45,10 @@
     transition: background-color 0.7s;
 }
 
+#footer {
+    margin-top: 2rem;
+}
+
 #footer #buttons {
     align-items: flex-end;
     display: flex;
@@ -188,22 +192,4 @@
 
 .scrollable::-webkit-scrollbar-track {
     margin-top: 0;
-}
-
-
-/* Wide */
-
-@media only screen and (min-width: 1367px) {
-    #footer {
-        margin-top: 2rem;
-    }
-}
-
-
-/* Narrow */
-
-@media only screen and (max-width: 1366px) {
-    #footer {
-        margin-top: 1.5rem;
-    }
 }

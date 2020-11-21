@@ -4,12 +4,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-left: 0.5rem;
     transition: background-color 0.7s;
-    width: 17rem !important;
-}
-
-@media only screen and (max-width:1152px) {
-    #side-bar {
-        width: 0.5rem !important;
-    }
+    width: 14.5rem !important;
 }

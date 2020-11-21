@@ -8,10 +8,18 @@
 
     <div class="scrollable">
         <table>
-            <tr *ngFor="let record of fields">
-                <td>{{ record.description }}</td>
-                <td class="right">{{ record.persons }}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th (click)="onHeaderClick('description', sortOrder, $event)">Description</th>
+                    <th (click)="onHeaderClick('persons', sortOrder, $event)">Persons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let record of records">
+                    <td>{{ record.description }}</td>
+                    <td class="right">{{ record.persons }}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 

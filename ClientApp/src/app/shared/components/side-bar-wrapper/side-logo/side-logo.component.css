@@ -22,9 +22,3 @@
     font-size: var(--font-size-logo-side-bar-second-child) !important;
     margin-top: -1rem;
 }
-
-@media only screen and (max-width:1152px) {
-    #side-logo {
-        display: none;
-    }
-}

@@ -97,6 +97,8 @@ export class TransferListComponent {
         this.initPersonsSumArray()
         this.subscribeToInteractionService()
         this.onFocusSummaryPanel()
+        this.setSidebarVisibility('hidden')
+        this.setTopLogoVisibility('visible')
     }
 
     ngAfterViewInit(): void {
@@ -123,6 +125,8 @@ export class TransferListComponent {
     ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
+        this.setSidebarVisibility()
+        this.setTopLogoVisibility()
         this.unlisten()
     }
 
@@ -357,6 +361,22 @@ export class TransferListComponent {
             } else {
                 element.classList.remove('activeItem')
             }
+        }
+    }
+
+    private setSidebarVisibility(visibility?: string): void {
+        if (screen.width < 1599 && visibility) {
+            document.getElementById('side-bar').style.display = 'none'
+        } else {
+            document.getElementById('side-bar').style.display = 'flex'
+        }
+    }
+
+    private setTopLogoVisibility(visibility?: string): void {
+        if (screen.width < 1599 && visibility) {
+            document.getElementById('top-logo').style.display = 'flex'
+        } else {
+            document.getElementById('top-logo').style.display = 'none'
         }
     }
 

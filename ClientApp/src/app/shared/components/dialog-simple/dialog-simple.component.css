@@ -1,19 +1,43 @@
-td {
-    font-family: var(--font-family-table-body);
-    font-size: var(--font-size-table-row);
+table {
+    border-spacing: 0;
+    flex: 1;
+    transition: background-color 0.7s;
+    width: 100%;
+}
+
+th {
+    background-color: var(--color-background);
+    border-bottom: 0.0625rem dotted var(--color-primary);
+    color: var(--color-primary);
+    font-family: var(--font-family-table-header);
+    font-size: var(--font-size-table-header);
+    font-variant-caps: petite-caps;
+    font-weight: var(--font-weight-table-header);
     padding: 0.5rem;
+    position: sticky;
+    text-align: center;
+    top: 0;
+    transition: background-color 0.7s;
+    z-index: 1;
 }
 
-td.right {
-    text-align: right;
+th:not(:last-child) {
+    border-right: 0.0625rem dotted var(--color-primary);
 }
 
-td:nth-child(1) {
+th:nth-child(1) {
     width: 400px;
 }
 
-td:nth-child(2) {
+th:nth-child(2) {
     width: 100px;
+}
+
+th:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 tr:hover {
@@ -25,4 +49,31 @@ tr:hover td {
     color: var(--color-primary);
     cursor: default;
     font-weight: bold;
+}
+
+tr:hover td:last-child>div>.button-row-menu {
+    visibility: visible;
+}
+
+td {
+    color: var(--color-primary);
+    font-family: var(--font-family-table-body);
+    font-size: var(--font-size-table-row);
+    max-width: 0;
+    overflow: hidden;
+    padding: 0.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td.right {
+    text-align: right;
+}
+
+.scrollable {
+    border: 0.0625rem dotted var(--color-primary);
+}
+
+.scrollable::-webkit-scrollbar-track {
+    border-left: 0.0625rem dotted var(--color-primary);
 }

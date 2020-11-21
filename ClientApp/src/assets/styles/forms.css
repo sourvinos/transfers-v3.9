@@ -9,6 +9,13 @@
 
 #header {
     display: flex;
+    margin: 2rem;
+}
+
+#header #navigation {
+    align-items: center;
+    display: flex;
+    margin-right: 1rem;
 }
 
 #header #navigation .mat-icon {
@@ -18,13 +25,6 @@
 #header #title {
     align-items: center;
     display: flex;
-    margin-left: 1rem;
-}
-
-#header #navigation {
-    align-items: center;
-    display: flex;
-    margin-left: 1rem;
 }
 
 #content {
@@ -46,11 +46,14 @@
     margin-top: auto;
 }
 
+#footer {
+    margin: 2rem;
+}
+
 #footer #buttons {
     align-items: flex-end;
     display: flex;
     justify-content: flex-end;
-    margin-right: 1rem;
 }
 
 #group-field {
@@ -59,28 +62,4 @@
 
 #group-field .mat-form-field:first-child {
     margin-right: 1rem;
-}
-
-
-/* Wide */
-
-@media only screen and (min-width: 1367px) {
-    #header {
-        margin: 2rem;
-    }
-    #footer {
-        margin: 2rem;
-    }
-}
-
-
-/* Narrow */
-
-@media only screen and (max-width: 1366px) {
-    #header {
-        margin: 1.5rem;
-    }
-    #footer {
-        margin: 1.5rem;
-    }
 }

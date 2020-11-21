@@ -48,11 +48,11 @@
             },
             {
                 "id": "dailyMenu",
-                "description": "Daily"
+                "description": "Τägliche Transaktionen"
             },
             {
                 "id": "overviewMenu",
-                "description": "Overview"
+                "description": "Periodenübersicht"
             }
         ]
     }
