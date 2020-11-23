@@ -933,6 +933,10 @@
             {
                 "id": "ebony",
                 "description": "Ebony"
+            },
+            {
+                "id": "dark",
+                "description": "Dark gray"
             }
         ]
     },
@@ -941,7 +945,7 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Transfers Period Overview"
+                "description": "Period Overview"
             },
             {
                 "id": "searchLabel",
@@ -954,6 +958,60 @@
             {
                 "id": "searchButton",
                 "description": "Search"
+            }
+        ]
+    },
+    {
+        "feature": "transferOverview",
+        "labels": [
+            {
+                "id": "total",
+                "description": "Total"
+            },
+            {
+                "id": "adults",
+                "description": "Adults"
+            },
+            {
+                "id": "kids",
+                "description": "Kids"
+            },
+            {
+                "id": "free",
+                "description": "Free"
+            },
+            {
+                "id": "customers",
+                "description": "Customers"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "drivers",
+                "description": "Drivers"
+            },
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "routes",
+                "description": "Routes"
+            }
+        ]
+    },
+    {
+        "feature": "dialogSimple",
+        "labels": [
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "persons",
+                "description": "Persons"
             }
         ]
     }

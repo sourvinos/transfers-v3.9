@@ -1,5 +1,5 @@
 #wrapper {
-    background-color: var(--color-background);
+    background-color: var(--color-a);
     display: flex;
     height: 100vh;
     transition: background-color 0.7s;
@@ -7,7 +7,7 @@
 }
 
 #main {
-    background-color: var(--color-background);
+    background-color: var(--color-a);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -15,7 +15,7 @@
 }
 
 #content {
-    background-color: var(--color-primary);
+    background-color: var(--color-g);
     flex: 1;
     justify-content: center;
     overflow-y: hidden;
@@ -24,14 +24,14 @@
 }
 
 #bottom {
-    background-color: var(--color-primary);
+    background-color: var(--color-g);
     height: 0.5rem;
     transition: background-color 0.7s;
 }
 
 #spinner {
-    border: 0.1875rem solid var(--color-logo-secondary);
-    border-top: 0.1875rem solid var(--color-logo-primary);
+    border: 0.1875rem solid var(--color-f);
+    border-top: 0.1875rem solid var(--color-e);
     border-radius: 50%;
     width: 5rem;
     height: 5rem;

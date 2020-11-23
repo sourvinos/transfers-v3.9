@@ -1,4 +1,4 @@
-Id,Description,FullDescription,PortId,IsActive,UserId
+Id,Abbreviation,Description,PortId,IsActive,UserId
 19,NISAKI,NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT,1,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210
 20,SOUTH,TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ,2,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210
 22,WEST,PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT,1,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210

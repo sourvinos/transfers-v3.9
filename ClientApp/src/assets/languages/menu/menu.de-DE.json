@@ -55,5 +55,18 @@
                 "description": "Periodenübersicht"
             }
         ]
+    },
+    {
+        "feature": "dialogSimple",
+        "labels": [
+            {
+                "id": "description",
+                "description": "(DE) Description"
+            },
+            {
+                "id": "persons",
+                "description": "(DE) Persons"
+            }
+        ]
     }
 ]

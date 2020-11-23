@@ -13,15 +13,6 @@
     margin: 8px 9px 7px 0;
 }
 
-#themeMenu button span {
-    font-variant-caps: petite-caps !important;
-    margin-top: -3px;
-}
-
-#themeMenu button span::first-letter {
-    font-size: 28px !important;
-}
-
 .option {
     padding-left: 1rem;
 }

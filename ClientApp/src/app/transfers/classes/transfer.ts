@@ -11,6 +11,7 @@ export class Transfer {
         time: string,
         route: {
             id: number
+            abbreviation: string,
             description: string,
             port: {
                 id: number,

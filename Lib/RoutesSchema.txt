@@ -1,0 +1,11 @@
+CREATE TABLE `routes` (
+  `Id` int NOT NULL,
+  `Abbreviation` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Description` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `PortId` int NOT NULL,
+  `IsActive` tinyint NOT NULL,
+  `UserId` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  CONSTRAINT `FK_PickupPoints_RouteId` FOREIGN KEY (`Id`) REFERENCES `routes` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

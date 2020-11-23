@@ -933,6 +933,10 @@
             {
                 "id": "ebony",
                 "description": "Εβενος"
+            },
+            {
+                "id": "dark",
+                "description": "Σκουρο γκρι"
             }
         ]
     },
@@ -941,7 +945,7 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Συνοπτική Εικόνα Περιόδου"
+                "description": "Συνοπτική εικόνα"
             },
             {
                 "id": "searchLabel",
@@ -954,6 +958,60 @@
             {
                 "id": "searchButton",
                 "description": "Αναζητηση"
+            }
+        ]
+    },
+    {
+        "feature": "transferOverview",
+        "labels": [
+            {
+                "id": "total",
+                "description": "Σύνολο"
+            },
+            {
+                "id": "adults",
+                "description": "Ενήλικες"
+            },
+            {
+                "id": "kids",
+                "description": "Παιδιά"
+            },
+            {
+                "id": "free",
+                "description": "Δωρεάν"
+            },
+            {
+                "id": "customers",
+                "description": "Πελάτες"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοί"
+            },
+            {
+                "id": "drivers",
+                "description": "Οδηγοί"
+            },
+            {
+                "id": "ports",
+                "description": "Λιμάνια"
+            },
+            {
+                "id": "routes",
+                "description": "Διαδρομές"
+            }
+        ]
+    },
+    {
+        "feature": "dialogSimple",
+        "labels": [
+            {
+                "id": "description",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "persons",
+                "description": "Ατομα"
             }
         ]
     }

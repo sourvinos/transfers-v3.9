@@ -66,7 +66,7 @@
 
 #panelButtons button {
     border-radius: 0;
-    color: var(--color-primary) !important;
+    color: var(--color-n) !important;
     font-size: var(--font-size-panel-buttons) !important;
     font-variant-caps: petite-caps;
 }
@@ -86,8 +86,8 @@
 }
 
 .summaryBlock {
-    background-color: var(--color-background) !important;
-    border: 0.0625rem dotted var(--color-primary) !important;
+    background-color: var(--color-j) !important;
+    border-radius: 0 20px 20px 0px;
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
 
 .summaryContent {
     margin-bottom: 1.8rem;
-    padding: 0 1.5rem;
+    padding: 2px 1rem 2px 1.8rem;
 }
 
 .mat-checkbox {
@@ -123,20 +123,19 @@
 }
 
 .summaryBlock .item {
-    box-shadow: -5px 0px 0px 0px rgba(0, 0, 0, 0.05);
-    color: var(--color-primary);
+    box-shadow: -5px 0px 0px 0px rgba(85, 130, 139, 0.3);
+    color: var(--color-n);
     display: flex;
     font-family: var(--font-family-summary-block);
     font-size: var(--font-size-summary-block-item);
     justify-content: space-between;
     line-height: 1.8rem;
     margin-bottom: 0.2rem;
-    padding-left: 0.5rem;
+    padding: 0.125rem 0.5rem 0.125rem 0.5rem;
 }
 
 .summaryBlock .item:hover {
-    background-color: var(--color-background);
-    color: var(--color-primary);
+    color: var(--color-k);
     cursor: pointer;
 }
 
@@ -148,6 +147,7 @@
 
 .summaryBlock .item .total {
     align-items: flex-end;
+    color: var(--color-o);
     display: flex;
     font-family: var(--font-family-summary-block);
     font-size: var(--font-size-summary-block-item);
@@ -155,7 +155,7 @@
 }
 
 .activeItem {
-    box-shadow: -5px 0px 0px 0px var(--color-primary) !important;
+    box-shadow: -5px 0px 0px 0px var(--color-c) !important;
 }
 
 #totals {
@@ -177,7 +177,7 @@
 }
 
 .selection .label {
-    color: var(--color-primary);
+    color: var(--color-n);
     font-size: var(--font-size-sum-persons);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-sum-persons);
@@ -185,7 +185,7 @@
 }
 
 .selection .sum {
-    color: var(--color-secondary);
+    color: var(--color-o);
     font-size: var(--font-size-sum);
     font-weight: var(--font-weight-sum-persons);
 }

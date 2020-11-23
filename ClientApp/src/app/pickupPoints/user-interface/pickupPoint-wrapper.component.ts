@@ -60,7 +60,7 @@ export class PickupPointWrapperComponent {
     }
 
     public onLoadPickupPoints(): void {
-        this.navigateToList()
+        // this.navigateToList()
     }
 
     //#endregion

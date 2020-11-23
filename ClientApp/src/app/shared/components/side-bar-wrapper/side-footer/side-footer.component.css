@@ -3,9 +3,10 @@
 }
 
 #side-footer {
-    color: var(--color-logo-primary);
+    color: var(--color-e);
     font-family: var(--font-family-copyright);
     font-size: var(--font-size-copyright);
     margin-bottom: 2rem;
     text-align: center;
+    transition: opacity 0.5s;
 }

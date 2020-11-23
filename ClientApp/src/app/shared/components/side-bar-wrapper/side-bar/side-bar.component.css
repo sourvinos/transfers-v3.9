@@ -1,10 +1,10 @@
 #side-bar {
     align-items: center;
-    background-color: var(--color-primary);
+    background-color: var(--color-g);
     display: flex;
     flex-direction: column;
     height: 100%;
     padding-left: 0.5rem;
-    transition: background-color 0.7s;
-    width: 14.5rem !important;
+    width: 16.5rem;
+    transition: width 0.7s, background-color 0.7s;
 }

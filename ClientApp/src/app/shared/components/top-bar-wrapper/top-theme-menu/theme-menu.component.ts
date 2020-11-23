@@ -14,7 +14,7 @@ export class ThemeTogglerComponent {
     //#region variables
 
     private feature = 'theme'
-    public defaultTheme = 'blue'
+    public defaultTheme = 'dark'
 
     //#endregion
 

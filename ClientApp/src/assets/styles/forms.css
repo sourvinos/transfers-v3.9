@@ -1,5 +1,5 @@
 #form {
-    background-color: var(--color-background);
+    background-color: var(--color-a);
     border-radius: 20px 0 0 20px;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
 }
 
 #header #navigation .mat-icon {
-    color: var(--color-background) !important;
+    color: var(--color-n) !important;
 }
 
 #header #title {

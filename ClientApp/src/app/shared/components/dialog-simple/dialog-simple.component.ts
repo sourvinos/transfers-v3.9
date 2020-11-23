@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Subject } from 'rxjs'
+import { MessageLabelService } from '../../services/messages-label.service';
 
 @Component({
     selector: 'dialog-simple',
@@ -13,15 +14,21 @@ export class DialogSimpleComponent {
     //#region variables
 
     private ngUnsubscribe = new Subject<void>();
+    public feature = 'dialogSimple'
     public header: string
     public records: any[]
-    sortOrder = 'desc'
+    public sortOrder = 'desc'
+
     //#endregion
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<DialogSimpleComponent>) {
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+         public dialogRef: MatDialogRef<DialogSimpleComponent>,
+         private messageLabelService: MessageLabelService,
+         
+         ) {
         this.header = data.header
         this.records = data.records
-        console.log(this.records)
     }
 
     //#region lifecycle hooks
@@ -37,6 +44,10 @@ export class DialogSimpleComponent {
 
     public onCloseDialog(): void {
         this.dialogRef.close()
+    }
+
+    public onGetLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onHeaderClick(columnName: string, sortOrder: string): void {

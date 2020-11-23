@@ -66,6 +66,7 @@ export class LoginFormComponent {
     //#endregion
 
     //#region public methods
+
     public onForgotPassword(): void {
         this.router.navigate(['/forgotPassword'])
     }

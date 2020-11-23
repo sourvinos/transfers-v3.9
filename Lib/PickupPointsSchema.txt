@@ -1,0 +1,12 @@
+CREATE TABLE `pickuppoints` (
+  `Id` int NOT NULL,
+  `RouteId` int NOT NULL,
+  `Description` varchar(128) NOT NULL,
+  `ExactPoint` varchar(128) DEFAULT NULL,
+  `Time` varchar(5) NOT NULL,
+  `IsActive` tinyint NOT NULL,
+  `UserId` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  CONSTRAINT `FK_Transfers_PickupPointId` FOREIGN KEY (`Id`) REFERENCES `pickuppoints` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

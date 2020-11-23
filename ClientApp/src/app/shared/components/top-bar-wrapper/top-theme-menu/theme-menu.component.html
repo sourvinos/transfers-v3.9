@@ -1,15 +1,15 @@
 <div id="themeMenu">
     <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="themeMenu">
         <img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="22px">
-        <span>{{ defaultTheme }}</span>
+        <span>{{ onGetLabel(defaultTheme) }}</span>
         <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
     </button>
 </div>
 
 <mat-menu #themeMenu="matMenu">
-    <button mat-menu-item (click)="onChangeTheme('blue')">
-        <img src="/assets/images/themes/blue.svg">
-        <span class="option">{{ onGetLabel('blue') }}</span>
+    <button mat-menu-item (click)="onChangeTheme('dark')">
+        <img src="/assets/images/themes/dark.svg">
+        <span class="option">{{ onGetLabel('dark') }}</span>
     </button>
     <button mat-menu-item (click)="onChangeTheme('ebony')">
         <img src="/assets/images/themes/ebony.svg">

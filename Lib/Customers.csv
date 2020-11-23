@@ -1,4 +1,4 @@
-ID,Description,Profession,Address,Phones,PersonInCharge,Email,Active,UserId
+ID,Description,Profession,Address,Phones,PersonInCharge,Email,IsActive,UserId
 5,PACHIS TRAVEL,ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ,ΓΚΙΛΦΟΡΔ 7-ΚΕΡΚΥΡΑ,,,,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210
 8,M.T.S. INCOMING S.A.,ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ,ΕΘΝΙΚΗΣ ΠΑΛΑΙΟΚΑΣΤΡΙΤΣΗΣ 58-ΚΕΡΚΥΡΑ,0661.24586,FAGOGENIS NIKOS,,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210
 9,FLORIDA HOLIDAYS,-,-,0662.61117,,,1,b6401c3e-7683-49bc-bb7f-8be3b2fd2210

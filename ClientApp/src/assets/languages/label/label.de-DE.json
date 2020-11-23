@@ -933,6 +933,10 @@
             {
                 "id": "ebony",
                 "description": "Ebenholz"
+            },
+            {
+                "id": "dark",
+                "description": "Dunkelgrau"
             }
         ]
     },
@@ -941,7 +945,7 @@
         "labels": [
             {
                 "id": "header",
-                "description": "(DE) Transfers Overview"
+                "description": "(DE) Period Overview"
             },
             {
                 "id": "searchLabel",
@@ -954,6 +958,60 @@
             {
                 "id": "searchButton",
                 "description": "(DE) Search"
+            }
+        ]
+    },
+    {
+        "feature": "transferOverview",
+        "labels": [
+            {
+                "id": "total",
+                "description": "(DE) Total"
+            },
+            {
+                "id": "adults",
+                "description": "(DE) Adults"
+            },
+            {
+                "id": "kids",
+                "description": "(DE) Kids"
+            },
+            {
+                "id": "free",
+                "description": "(DE) Free"
+            },
+            {
+                "id": "customers",
+                "description": "Kunden"
+            },
+            {
+                "id": "destinations",
+                "description": "Reiseziele"
+            },
+            {
+                "id": "drivers",
+                "description": "Fahrer"
+            },
+            {
+                "id": "ports",
+                "description": "Häfen"
+            },
+            {
+                "id": "routes",
+                "description": "Routen"
+            }
+        ]
+    },
+    {
+        "feature": "dialogSimple",
+        "labels": [
+            {
+                "id": "description",
+                "description": "Description"
+            },
+            {
+                "id": "persons",
+                "description": "Persons"
             }
         ]
     }

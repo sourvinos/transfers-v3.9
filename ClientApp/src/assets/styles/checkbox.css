@@ -22,26 +22,26 @@
 }
 
 .mat-checkbox-frame {
-    border-color: var(--color-primary) !important;
+    border-color: var(--color-c) !important;
 }
 
 
 /* Checkbox checked background */
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: var(--color-primary) !important;
+    background-color: var(--color-c) !important;
 }
 
 
 /* Checkbox indeterminate background */
 
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: var(--color-secondary) !important;
+    background-color: var(--color-d) !important;
 }
 
 
 /* Ripple */
 
 .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
-    background-color: var(--color-primary) !important;
+    background-color: var(--color-c) !important;
 }

@@ -1,6 +1,6 @@
 #wrapper {
     align-items: center;
-    background-color: var(--color-background);
+    background-color: var(--color-a);
     border-radius: 20px 0 0 20px;
     display: flex;
     height: 100%;
@@ -9,6 +9,7 @@
 }
 
 #home-page-logo {
+    color: var(--color-n);
     cursor: default;
     display: flex;
     flex-direction: column;
@@ -24,7 +25,7 @@
 }
 
 #home-page-logo span:nth-child(2) {
-    color: var(--color-background) !important;
+    color: var(--color-a) !important;
     display: none;
 }
 

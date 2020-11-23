@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router'
@@ -87,6 +87,11 @@ export class TransferListComponent {
                 this.onFocusSummaryPanel()
             }
         })
+    }
+
+    @HostListener('window:resize', ['$event']) onResize(): any {
+        this.setSidebarVisibility('hidden')
+        this.setTopLogoVisibility('visible')
     }
 
     //#region lifecycle hooks
@@ -254,7 +259,7 @@ export class TransferListComponent {
         this.queryResultClone.transfers = this.queryResult.transfers
             .filter((destination: { destination: { description: string } }) => this.selectedDestinations.indexOf(destination.destination.description) !== -1)
             .filter((customer: { customer: { description: string } }) => this.selectedCustomers.indexOf(customer.customer.description) !== -1)
-            .filter((route: { pickupPoint: { route: { description: string } } }) => this.selectedRoutes.indexOf(route.pickupPoint.route.description) !== -1)
+            .filter((route: { pickupPoint: { route: { abbreviation: string } } }) => this.selectedRoutes.indexOf(route.pickupPoint.route.abbreviation) !== -1)
             .filter((driver: { driver: { description: string } }) => this.selectedDrivers.indexOf(driver.driver.description) !== -1)
             .filter((port: { pickupPoint: { route: { port: { description: string } } } }) => this.selectedPorts.indexOf(port.pickupPoint.route.port.description) !== -1)
     }
@@ -269,7 +274,7 @@ export class TransferListComponent {
             kids: f,
             free: g,
             totalPersons: h,
-            pickupPoint: { description: i, time: j, route: { description: k, port: { description: l } } },
+            pickupPoint: { description: i, time: j, route: { abbreviation: k, port: { description: l } } },
             driver: { description: m },
             dateIn: n,
             remarks: o
@@ -366,9 +371,15 @@ export class TransferListComponent {
 
     private setSidebarVisibility(visibility?: string): void {
         if (screen.width < 1599 && visibility) {
-            document.getElementById('side-bar').style.display = 'none'
+            document.getElementById('side-logo').style.opacity = '0'
+            document.getElementById('side-image').style.opacity = '0'
+            document.getElementById('side-footer').style.opacity = '0'
+            document.getElementById('side-bar').style.width = '0'
         } else {
-            document.getElementById('side-bar').style.display = 'flex'
+            document.getElementById('side-logo').style.opacity = '1'
+            document.getElementById('side-image').style.opacity = '1'
+            document.getElementById('side-footer').style.opacity = '1'
+            document.getElementById('side-bar').style.width = '16.5rem'
         }
     }
 

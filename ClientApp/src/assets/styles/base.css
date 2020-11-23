@@ -15,7 +15,6 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
-
 * {
     box-sizing: border-box !important;
 }
@@ -36,7 +35,7 @@ body, h1, h2, h3, p {
 }
 
 p.instructions {
-    color: var(--color-text);
+    color: var(--color-n);
     font-family: var(--font-family-paragraph);
     font-size: var(--font-size-paragraph);
     overflow: hidden;
@@ -49,7 +48,7 @@ p.instructions {
 
 .mat-menu-panel, .mat-menu-content {
     align-items: flex-start;
-    background-color: var(--color-primary) !important;
+    background-color: var(--color-g) !important;
     border-radius: 0 !important;
     display: flex;
     flex-direction: column;
@@ -60,7 +59,7 @@ p.instructions {
 }
 
 .mat-menu-item {
-    color: var(--color-text) !important;
+    color: var(--color-n) !important;
     display: flex !important;
     font-variant-caps: petite-caps !important;
     justify-content: flex-start !important;
@@ -69,7 +68,7 @@ p.instructions {
 }
 
 .mat-menu-item:hover {
-    background-color: var(--color-secondary) !important;
+    background-color: var(--color-c) !important;
 }
 
 .mat-snack-bar-container {
@@ -77,20 +76,20 @@ p.instructions {
 }
 
 .mat-checkbox-label {
-    color: var(--color-primary) !important;
-    margin-left: 0 !important;
+    color: var(--color-n) !important;
+    margin-left: 0.5rem !important;
 }
 
 .error {
-    background-color: var(--color-error) !important;
+    background-color: var(--color-h) !important;
+}
+
+.info {
+    background-color: var(--color-i) !important;
 }
 
 .mat-button-wrapper {
     align-items: center !important;
     display: flex !important;
     justify-content: center !important;
-}
-
-.info {
-    background-color: var(--color-info) !important;
 }

@@ -10,8 +10,8 @@
         <table>
             <thead>
                 <tr>
-                    <th (click)="onHeaderClick('description', sortOrder, $event)">Description</th>
-                    <th (click)="onHeaderClick('persons', sortOrder, $event)">Persons</th>
+                    <th (click)="onHeaderClick('description', sortOrder)">{{ onGetLabel('description') }}</th>
+                    <th (click)="onHeaderClick('persons', sortOrder)">{{ onGetLabel('persons') }}</th>
                 </tr>
             </thead>
             <tbody>
