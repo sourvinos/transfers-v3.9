@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
-import moment from 'moment'
 import { Subject } from 'rxjs'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
@@ -12,6 +11,8 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms'
 import { DateAdapter } from '@angular/material/core'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
+import moment from 'moment'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 
 @Component({
     selector: 'transfer-overview-wrapper',
@@ -24,17 +25,14 @@ export class TransferOverviewWrapperComponent {
 
     //#region variables
 
+    private dateEnd = ''
+    private dateStart = ''
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'
     public feature = 'transferOverviewWrapper'
-
-    //#endregion
-
-    //#region particular variables
-
-    private fromDateISO = ''
     public form: FormGroup
+    public input: InputTabStopDirective
     public records: string[] = []
     public transfersFlat: TransferFlat[] = []
 
@@ -52,7 +50,7 @@ export class TransferOverviewWrapperComponent {
     }
 
     ngAfterViewInit(): void {
-        this.focus('fromDate')
+        this.focus('startDate')
     }
 
     ngOnDestroy(): void {
@@ -65,16 +63,9 @@ export class TransferOverviewWrapperComponent {
 
     //#region public methods
 
-    public onCheckValidDate(): boolean {
-        const date = (<HTMLInputElement>document.getElementById('fromDate')).value
-        if (moment(moment(date, 'DD/MM/YYYY')).isValid()) {
-            this.fromDateISO = moment(date, 'DD/MM/YYYY').toISOString(true)
-            this.fromDateISO = moment(this.fromDateISO).format('YYYY-MM-DD')
-            return true
-        } else {
-            this.fromDateISO = ''
-            return false
-        }
+    public onDoJobs(): void {
+        this.formatDates()
+        this.navigateToList()
     }
 
     public onGetHint(id: string, minmax = 0): string {
@@ -87,12 +78,6 @@ export class TransferOverviewWrapperComponent {
 
     public onGoBack(): void {
         this.router.navigate(['/'])
-    }
-
-    public onLoadTransfers(): void {
-        if (this.onCheckValidDate()) {
-            this.navigateToList()
-        }
     }
 
     //#endregion
@@ -119,18 +104,30 @@ export class TransferOverviewWrapperComponent {
         this.helperService.setFocus(field)
     }
 
+    private formatDate(date: moment.MomentInput): string {
+        let myDate = moment(date, 'DD/MM/YYYY').toISOString(true)
+        myDate = moment(date).format('YYYY-MM-DD')
+        return myDate
+    }
+
+    private formatDates(): void {
+        this.dateStart = this.formatDate(this.startDate.value)
+        this.dateEnd = this.formatDate(this.endDate.value)
+    }
+
     private getLocale(): void {
         this.dateAdapter.setLocale(this.helperService.readItem("language"))
     }
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            fromDate: ['', [Validators.required]]
+            startDate: ['', [Validators.required]],
+            endDate: ['', [Validators.required]]
         })
     }
 
     private navigateToList(): void {
-        const route = 'fromDate/' + this.fromDateISO + '/toDate/' + this.fromDateISO
+        const route = 'fromDate/' + this.dateStart + '/toDate/' + this.dateEnd
         this.router.navigate([route], { relativeTo: this.activatedRoute })
     }
 
@@ -142,8 +139,12 @@ export class TransferOverviewWrapperComponent {
 
     //#region getters
 
-    get fromDate(): AbstractControl {
-        return this.form.get('fromDate')
+    get startDate(): AbstractControl {
+        return this.form.get('startDate')
+    }
+
+    get endDate(): AbstractControl {
+        return this.form.get('endDate')
     }
 
     //#endregion    

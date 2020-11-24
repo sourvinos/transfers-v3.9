@@ -94,3 +94,7 @@ p.instructions {
     display: flex !important;
     justify-content: center !important;
 }
+
+.mat-date-range-input-start-wrapper {
+    width: 100% !important;
+}

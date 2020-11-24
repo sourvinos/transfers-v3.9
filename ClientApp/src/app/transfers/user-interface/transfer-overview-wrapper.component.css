@@ -4,7 +4,7 @@
 }
 
 #header #search-box .mat-form-field {
-    width: 12rem !important;
+    width: 16rem !important;
 }
 
 #content {
@@ -14,3 +14,4 @@
     margin: 0 2rem 2rem;
     overflow: hidden;
 }
+

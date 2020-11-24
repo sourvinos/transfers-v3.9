@@ -27,10 +27,6 @@ th {
     z-index: 1;
 }
 
-th:not(:last-child) {
-    border-right: 0.0625rem dotted var(--color-j);
-}
-
 th:nth-child(1) {
     width: 400px;
 }
@@ -74,8 +70,4 @@ td {
 
 td.right {
     text-align: right;
-}
-
-.scrollable::-webkit-scrollbar-track {
-    border-left: 0.0625rem dotted var(--color-n);
 }
