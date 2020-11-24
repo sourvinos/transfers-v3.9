@@ -89,6 +89,10 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     color: var(--color-n);
 }
 
+.mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
+    color: var(--color-n) !important;
+}
+
 
 /* Focused not error */
 
@@ -110,6 +114,10 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
     font-weight: bold;
 }
 
+.mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
+    color: var(--color-o) !important;
+}
+
 
 /* Error */
 
@@ -129,6 +137,10 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-subscript-wrapper div .mat-error {
     color: var(--color-b);
     font-weight: bold;
+}
+
+.mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
+    color: var(--color-b) !important;
 }
 
 @media only screen and (max-width: 1366px) {

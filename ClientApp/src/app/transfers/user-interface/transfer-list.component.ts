@@ -287,6 +287,7 @@ export class TransferListComponent {
         this.activePanel = 'list'
         document.getElementById('summaryTab').classList.remove('active')
         document.getElementById('listTab').classList.add('active')
+        document.getElementById('table-wrapper').style.display = 'block'
         this.flattenResults()
     }
 
@@ -294,6 +295,7 @@ export class TransferListComponent {
         this.activePanel = 'summary'
         document.getElementById('summaryTab').classList.add('active')
         document.getElementById('listTab').classList.remove('active')
+        document.getElementById('table-wrapper').style.display = 'none'
     }
 
     private getDriversFromLocalStorage(): any {

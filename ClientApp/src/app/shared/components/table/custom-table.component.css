@@ -13,7 +13,7 @@ table {
 
 th {
     background-color: var(--color-a);
-    border: 0.0625rem dotted var(--color-n);
+    border-right: 0.125rem solid var(--color-j);
     color: var(--color-n);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
@@ -28,8 +28,8 @@ th {
 }
 
 th:hover {
-    background-color: var(--color-a);
-    color: var(--color-n);
+    background-color: var(--color-l);
+    color: var(--color-a);
     cursor: pointer;
     font-weight: bold;
 }

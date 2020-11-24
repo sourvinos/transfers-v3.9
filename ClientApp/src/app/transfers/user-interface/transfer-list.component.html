@@ -85,14 +85,16 @@
         </div>
     </div>
 
-    <div id="listFormCombo" [class.hidden]="activePanel=='summary'">
-        <div id="transferList">
-            <div class="scrollable" id="table">
-                <custom-table [highlightFirstRow]="highlightFirstRow" [feature]="feature" [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+    <div id="table-wrapper">
+        <div id="listFormCombo" [class.hidden]="activePanel=='summary'">
+            <div id="transferList">
+                <div class="scrollable" id="table">
+                    <custom-table [highlightFirstRow]="highlightFirstRow" [feature]="feature" [records]="transfersFlat" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                </div>
             </div>
-        </div>
-        <div id="transferFormModal">
-            <router-outlet></router-outlet>
+            <div id="transferFormModal">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 

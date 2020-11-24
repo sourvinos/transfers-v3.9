@@ -29,29 +29,17 @@ export class TransferOverviewComponent {
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'
     public feature = 'transferOverview'
-    public isVisible = false
 
     //#endregion
 
     //#region particular variables
 
-    public queryResult = new TransferOverviewViewModel()
     public listResolved: any
+    public queryResult = new TransferOverviewViewModel()
 
     //#endregion
 
-    constructor(
-        public dialog: MatDialog,
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title
-    ) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
         this.router.events.subscribe(() => {
             this.loadRecords()
         })
@@ -153,10 +141,10 @@ export class TransferOverviewComponent {
     }
 
     private populatePercents(result: { totalAdults: number; totalPersons: number; totalKids: number; totalFree: number }): void {
-        this.queryResult.percent = (100 * result.totalPersons / result.totalPersons).toFixed(2)
-        this.queryResult.adultsPercent = (100 * result.totalAdults / result.totalPersons).toFixed(2)
-        this.queryResult.kidsPercent = (100 * result.totalKids / result.totalPersons).toFixed(2)
-        this.queryResult.freePercent = (100 * result.totalFree / result.totalPersons).toFixed(2)
+        this.queryResult.percent = (100 * result.totalPersons / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
+        this.queryResult.adultsPercent = (100 * result.totalAdults / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
+        this.queryResult.kidsPercent = (100 * result.totalKids / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
+        this.queryResult.freePercent = (100 * result.totalFree / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
     }
 
     private populatePersonsPerCustomer(result: { totalPersonsPerCustomer: any[] }): void {
@@ -167,16 +155,16 @@ export class TransferOverviewComponent {
         this.queryResult.personsPerDestination = result.totalPersonsPerDestination
     }
 
-    private populatePersonsPerRoute(result: { totalPersonsPerRoute: any[] }): void {
-        this.queryResult.personsPerRoute = result.totalPersonsPerRoute
-    }
-
     private populatePersonsPerDriver(result: { totalPersonsPerDriver: any[] }): void {
         this.queryResult.personsPerDriver = result.totalPersonsPerDriver
     }
 
     private populatePersonsPerPort(result: { totalPersonsPerPort: any[] }): void {
         this.queryResult.personsPerPort = result.totalPersonsPerPort
+    }
+
+    private populatePersonsPerRoute(result: { totalPersonsPerRoute: any[] }): void {
+        this.queryResult.personsPerRoute = result.totalPersonsPerRoute
     }
 
     //#endregion

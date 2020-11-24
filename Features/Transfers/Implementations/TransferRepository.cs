@@ -75,9 +75,9 @@ namespace Transfers {
             float kids = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Kids);
             float free = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Free);
 
-            float adultsPercent = adults * 100 / totalPersons;
-            float kidsPercent = kids * 100 / totalPersons;
-            float freePercent = free * 100 / totalPersons;
+            float adultsPercent = adults * 100 / totalPersons > 0 ? totalPersons : 1;
+            float kidsPercent = kids * 100 / totalPersons > 0 ? totalPersons : 1;
+            float freePercent = free * 100 / totalPersons > 0 ? totalPersons : 1;
 
             var totalPersonsPerCustomer = appDbContext.Transfers.Include(x => x.Customer).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Customer.Description }).Select(x => new TotalPersonsPerCustomer { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
             var totalPersonsPerDestination = appDbContext.Transfers.Include(x => x.Destination).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Destination.Description }).Select(x => new TotalPersonsPerDestination { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });

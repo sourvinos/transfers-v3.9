@@ -15,6 +15,7 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
+
 * {
     box-sizing: border-box !important;
 }

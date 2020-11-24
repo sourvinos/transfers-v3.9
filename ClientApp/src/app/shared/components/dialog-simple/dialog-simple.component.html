@@ -6,21 +6,23 @@
         </div>
     </div>
 
-    <div class="scrollable">
-        <table>
-            <thead>
-                <tr>
-                    <th (click)="onHeaderClick('description', sortOrder)">{{ onGetLabel('description') }}</th>
-                    <th (click)="onHeaderClick('persons', sortOrder)">{{ onGetLabel('persons') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let record of records">
-                    <td>{{ record.description }}</td>
-                    <td class="right">{{ record.persons }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="table-wrapper">
+        <div class="scrollable">
+            <table>
+                <thead>
+                    <tr>
+                        <th (click)="onHeaderClick('description', sortOrder)">{{ onGetLabel('description') }}</th>
+                        <th (click)="onHeaderClick('persons', sortOrder)">{{ onGetLabel('persons') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let record of records">
+                        <td>{{ record.description }}</td>
+                        <td class="right">{{ record.persons }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div id="dialog-footer">

@@ -1,3 +1,10 @@
+#table-wrapper {
+    background-color: var(--color-j);
+    height: 100%;
+    overflow: hidden;
+    padding: 1rem;
+}
+
 table {
     border-spacing: 0;
     flex: 1;
@@ -7,7 +14,6 @@ table {
 
 th {
     background-color: var(--color-a);
-    border-bottom: 0.0625rem dotted var(--color-n);
     color: var(--color-n);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
@@ -22,7 +28,7 @@ th {
 }
 
 th:not(:last-child) {
-    border-right: 0.0625rem dotted var(--color-n);
+    border-right: 0.0625rem dotted var(--color-j);
 }
 
 th:nth-child(1) {
@@ -35,7 +41,7 @@ th:nth-child(2) {
 
 th:hover {
     background-color: var(--color-l);
-    color: var(--color-n);
+    color: var(--color-a);
     cursor: pointer;
     font-weight: bold;
 }
@@ -68,10 +74,6 @@ td {
 
 td.right {
     text-align: right;
-}
-
-.scrollable {
-    border: 0.0625rem dotted var(--color-n);
 }
 
 .scrollable::-webkit-scrollbar-track {

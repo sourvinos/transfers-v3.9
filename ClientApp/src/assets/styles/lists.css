@@ -37,10 +37,17 @@
 
 #content {
     flex: 1;
-    margin: 0 2rem;
     overflow-x: hidden;
     overflow-y: auto;
     width: auto;
+}
+
+#table-wrapper{
+    background-color: var(--color-j);
+    height: 100%;
+    margin: 0 2rem;
+    overflow: hidden;
+    padding: 1rem;
 }
 
 #footer {
