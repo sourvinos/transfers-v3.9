@@ -1,17 +1,14 @@
 :root {
-    --color-a: #22333B;
-    --color-b: #F28482;
-    --color-c: #55828b;
-    --color-d: #87BBA2;
-    --color-e: #FE9F36;
-    --color-f: #FFE85C;
-    --color-g: #001214;
-    --color-h: #920402;
-    --color-i: #007b40;
-    --color-j: #324148;
-    --color-k: #55828b;
-    --color-l: #C8D9C9;
-    --color-n: #EFEFEF;
-    --color-o: #F2D492;
-    --color-p: #49565d;
+    --color-background-primary: #001214;
+    --color-background-secondary: #49565d;
+    --color-background-table: #324148;
+    --color-button-delete: #F28482;
+    --color-button-primary: #55828b;
+    --color-button-secondary: #87BBA2;
+    --color-logo-primary: #FE9F36;
+    --color-logo-secondary: #FFE85C;
+    --color-snackbar-error: #920402;
+    --color-snackbar-info: #007b40;
+    --color-text-primary: #EFEFEF;
+    --color-text-secondary: #F2D492;
 }

@@ -1,6 +1,6 @@
 #wrapper {
     align-items: center;
-    background-color: var(--color-a);
+    background-color: var(--color-background-secondary);
     border-radius: 20px 0 0 20px;
     display: flex;
     height: 100%;
@@ -9,7 +9,7 @@
 }
 
 #home-page-logo {
-    color: var(--color-n);
+    color: var(--color-text-primary);
     cursor: default;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 #home-page-logo span:nth-child(2) {
-    color: var(--color-a) !important;
+    color: var(--color-background-secondary) !important;
     display: none;
 }
 
@@ -33,4 +33,3 @@
     font-size: var(--font-size-logo-home-page-second-child) !important;
     margin-top: -3.5rem;
 }
-

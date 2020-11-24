@@ -15,18 +15,22 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
-
 * {
     box-sizing: border-box !important;
 }
 
-html, body {
+html,
+body {
     background-color: #000000;
     display: flex;
     height: 100vh;
 }
 
-body, h1, h2, h3, p {
+body,
+h1,
+h2,
+h3,
+p {
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -36,20 +40,22 @@ body, h1, h2, h3, p {
 }
 
 p.instructions {
-    color: var(--color-n);
+    color: var(--color-text-primary);
     font-family: var(--font-family-paragraph);
     font-size: var(--font-size-paragraph);
     overflow: hidden;
     width: 800px;
 }
 
-.mat-icon, .item {
+.mat-icon,
+.item {
     outline: 0 !important;
 }
 
-.mat-menu-panel, .mat-menu-content {
+.mat-menu-panel,
+.mat-menu-content {
     align-items: flex-start;
-    background-color: var(--color-g) !important;
+    background-color: var(--color-background-primary) !important;
     border-radius: 0 !important;
     display: flex;
     flex-direction: column;
@@ -60,7 +66,7 @@ p.instructions {
 }
 
 .mat-menu-item {
-    color: var(--color-n) !important;
+    color: var(--color-text-primary) !important;
     display: flex !important;
     font-variant-caps: petite-caps !important;
     justify-content: flex-start !important;
@@ -69,7 +75,7 @@ p.instructions {
 }
 
 .mat-menu-item:hover {
-    background-color: var(--color-c) !important;
+    background-color: var(--color-button-primary) !important;
 }
 
 .mat-snack-bar-container {
@@ -77,16 +83,16 @@ p.instructions {
 }
 
 .mat-checkbox-label {
-    color: var(--color-n) !important;
+    color: var(--color-text-primary) !important;
     margin-left: 0.5rem !important;
 }
 
 .error {
-    background-color: var(--color-h) !important;
+    background-color: var(--color-snackbar-error) !important;
 }
 
 .info {
-    background-color: var(--color-i) !important;
+    background-color: var(--color-snackbar-info) !important;
 }
 
 .mat-button-wrapper {

@@ -1,0 +1,22 @@
+#languageMenu {
+    cursor: pointer;
+    display: flex;
+    margin-right: 1rem;
+}
+
+#languageMenu .material-icons {
+    color: var(--color-select-dropdown-icon);
+}
+
+.option {
+    color: var(--color-select-items);
+    font-family: "PF Handbook Pro";
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-start;
+}

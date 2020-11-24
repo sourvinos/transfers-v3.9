@@ -14,37 +14,37 @@ button {
 }
 
 button.primary {
-    background-color: var(--color-c) !important;
-    color: var(--color-n) !important;
+    background-color: var(--color-button-primary) !important;
+    color: var(--color-text-primary) !important;
     font-variant-caps: petite-caps;
 }
 
 button.secondary {
-    color: var(--color-n) !important;
-    background-color: var(--color-d) !important;
+    color: var(--color-text-primary) !important;
+    background-color: var(--color-button-secondary) !important;
     font-variant-caps: petite-caps;
 }
 
 button.transparent {
     background-color: rgba(0, 0, 0, 0.001) !important;
-    color: var(--color-n) !important;
+    color: var(--color-text-primary) !important;
     font-variant-caps: petite-caps;
 }
 
 button.transparent:hover {
-    background-color: var(--color-c) !important;
+    background-color: var(--color-button-primary) !important;
     transition-duration: 500ms;
 }
 
 button.delete {
-    background-color: var(--color-b) !important;
-    color: var(--color-n) !important;
+    background-color: var(--color-button-delete) !important;
+    color: var(--color-text-primary) !important;
     font-variant-caps: petite-caps;
 }
 
 button.tab {
-    background-color: var(--color-a) !important;
-    border-bottom: 4px solid var(--color-a);
+    background-color: var(--color-background-secondary) !important;
+    border-bottom: 4px solid var(--color-background-secondary);
 }
 
 button.tab:first-child {
@@ -52,20 +52,20 @@ button.tab:first-child {
 }
 
 button.tab:hover:not(:disabled) {
-    border-bottom: 4px solid var(--color-d);
+    border-bottom: 4px solid var(--color-button-secondary);
     transition: border-bottom 400ms;
 }
 
 button.tab.active {
-    border-bottom: 4px solid var(--color-c);
+    border-bottom: 4px solid var(--color-button-primary);
 }
 
 button.goBack {
-    background-color: var(--color-c) !important;
+    background-color: var(--color-button-primary) !important;
 }
 
 button.mat-mini-fab {
-    background-color: var(--color-c) !important;
+    background-color: var(--color-button-primary) !important;
     margin: 0 !important;
     outline: 0 !important;
 }
@@ -80,7 +80,7 @@ button:not(:disabled) {
 }
 
 button#clearInput span mat-icon {
-    color: var(--color-c) !important;
+    color: var(--color-button-primary) !important;
 }
 
 .mat-mini-fab .mat-button-wrapper {

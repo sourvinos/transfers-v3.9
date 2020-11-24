@@ -1,0 +1,18 @@
+<div id="top-menu">
+
+    <button mat-flat-button class="transparent">Cruises</button>
+    <button mat-flat-button class="transparent">Transfers</button>
+    <button mat-flat-button class="transparent" [matMenuTriggerFor]="menu">Tables</button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Customers</button>
+        <button mat-menu-item>Destinations</button>
+        <button mat-menu-item>Drivers</button>
+        <button mat-menu-item>Pickup points</button>
+        <button mat-menu-item>Routes</button>
+        <button mat-menu-item>Ports</button>
+    </mat-menu>
+
+    <button mat-flat-button class="transparent">Users</button>
+
+</div>

@@ -1,8 +1,6 @@
-[
-    {
+[{
         "feature": "loginForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Login"
             },
@@ -30,8 +28,7 @@
     },
     {
         "feature": "customerList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Customers"
             },
@@ -63,8 +60,7 @@
     },
     {
         "feature": "customerForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Customer"
             },
@@ -108,8 +104,7 @@
     },
     {
         "feature": "destinationList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Destinations"
             },
@@ -137,8 +132,7 @@
     },
     {
         "feature": "destinationForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Destination"
             },
@@ -166,8 +160,7 @@
     },
     {
         "feature": "driverList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Drivers"
             },
@@ -195,8 +188,7 @@
     },
     {
         "feature": "driverForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Driver"
             },
@@ -228,8 +220,7 @@
     },
     {
         "feature": "pickupPointWrapper",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Pickup points"
             },
@@ -245,8 +236,7 @@
     },
     {
         "feature": "pickupPointList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Pickup points for route: "
             },
@@ -278,8 +268,7 @@
     },
     {
         "feature": "pickupPointForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Pickup point"
             },
@@ -315,8 +304,7 @@
     },
     {
         "feature": "portList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Ports"
             },
@@ -340,8 +328,7 @@
     },
     {
         "feature": "portForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Port"
             },
@@ -365,8 +352,7 @@
     },
     {
         "feature": "routeList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Routes"
             },
@@ -394,8 +380,7 @@
     },
     {
         "feature": "routeForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Route"
             },
@@ -427,8 +412,7 @@
     },
     {
         "feature": "transferWrapper",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Transfers"
             },
@@ -448,8 +432,7 @@
     },
     {
         "feature": "userList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Users"
             },
@@ -481,8 +464,7 @@
     },
     {
         "feature": "editUserForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) User"
             },
@@ -518,8 +500,7 @@
     },
     {
         "feature": "registerUserForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) User"
             },
@@ -555,8 +536,7 @@
     },
     {
         "feature": "changePasswordForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Change password"
             },
@@ -580,8 +560,7 @@
     },
     {
         "feature": "transferList",
-        "labels": [
-            {
+        "labels": [{
                 "id": "summaryTab",
                 "description": "(DE) Summary"
             },
@@ -681,8 +660,7 @@
     },
     {
         "feature": "transferForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Transfers"
             },
@@ -742,8 +720,7 @@
     },
     {
         "feature": "forgotPasswordForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Forgot password"
             },
@@ -763,8 +740,7 @@
     },
     {
         "feature": "resetPasswordForm",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Reset password"
             },
@@ -784,8 +760,7 @@
     },
     {
         "feature": "dialog",
-        "labels": [
-            {
+        "labels": [{
                 "id": "header",
                 "description": "(DE) Warning!"
             },
@@ -801,17 +776,14 @@
     },
     {
         "feature": "themeColor",
-        "labels": [
-            {
-                "id": "red",
-                "description": "(DE) Red"
-            }
-        ]
+        "labels": [{
+            "id": "red",
+            "description": "(DE) Red"
+        }]
     },
     {
         "feature": "assignDriver",
-        "labels": [
-            {
+        "labels": [{
                 "id": "searchHint",
                 "description": "(DE) Select from the list"
             },
@@ -835,8 +807,7 @@
     },
     {
         "feature": "index",
-        "labels": [
-            {
+        "labels": [{
                 "id": "ports",
                 "description": "(DE) Ports"
             },
@@ -900,8 +871,7 @@
     },
     {
         "feature": "userMenu",
-        "labels": [
-            {
+        "labels": [{
                 "id": "myAccount",
                 "description": "(DE) My account"
             },
@@ -913,8 +883,7 @@
     },
     {
         "feature": "theme",
-        "labels": [
-            {
+        "labels": [{
                 "id": "blue",
                 "description": "Blau"
             },
@@ -942,7 +911,10 @@
     },
     {
         "feature": "transferOverviewWrapper",
-        "labels": [
+        "labels": [{
+                "id": "dateRange",
+                "description": "(DE) Select or enter period"
+            },
             {
                 "id": "header",
                 "description": "(DE) Period Overview"
@@ -962,9 +934,20 @@
         ]
     },
     {
-        "feature": "transferOverview",
-        "labels": [
+        "feature": "dialogSimple",
+        "labels": [{
+                "id": "description",
+                "description": "Description"
+            },
             {
+                "id": "persons",
+                "description": "Persons"
+            }
+        ]
+    },
+    {
+        "feature": "transferOverview",
+        "labels": [{
                 "id": "total",
                 "description": "(DE) Total"
             },
@@ -999,19 +982,6 @@
             {
                 "id": "routes",
                 "description": "Routen"
-            }
-        ]
-    },
-    {
-        "feature": "dialogSimple",
-        "labels": [
-            {
-                "id": "description",
-                "description": "Description"
-            },
-            {
-                "id": "persons",
-                "description": "Persons"
             }
         ]
     }

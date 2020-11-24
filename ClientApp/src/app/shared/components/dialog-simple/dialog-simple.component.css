@@ -1,5 +1,5 @@
 #table-wrapper {
-    background-color: var(--color-j);
+    background-color: var(--color-background-table);
     height: 100%;
     overflow: hidden;
     padding: 1rem;
@@ -13,8 +13,8 @@ table {
 }
 
 th {
-    background-color: var(--color-a);
-    color: var(--color-n);
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
@@ -36,19 +36,15 @@ th:nth-child(2) {
 }
 
 th:hover {
-    background-color: var(--color-l);
-    color: var(--color-a);
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
     cursor: pointer;
     font-weight: bold;
 }
 
-tr:hover {
-    background-color: var(--color-l);
-}
-
 tr:hover td {
-    background-color: var(--color-l);
-    color: var(--color-a);
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
     cursor: default;
     font-weight: bold;
 }
@@ -58,7 +54,7 @@ tr:hover td:last-child>div>.button-row-menu {
 }
 
 td {
-    color: var(--color-n);
+    color: var(--color-text-primary);
     font-family: var(--font-family-table-body);
     font-size: var(--font-size-table-row);
     max-width: 0;

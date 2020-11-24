@@ -1,4 +1,5 @@
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     display: none;
 }
 
@@ -10,8 +11,11 @@ input::selection {
     background-color: rgba(250, 250, 250, 0.4);
 }
 
-input[type=text], input[type=email], input[type=number], input[type=password] {
-    caret-color: var(--color-o);
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password] {
+    caret-color: var(--color-text-secondary);
     cursor: text !important;
     font-size: var(--font-size-input) !important;
 }
@@ -52,21 +56,25 @@ input:disabled {
     font-size: var(--font-size-label) !important;
 }
 
-.mat-hint, .mat-error {
+.mat-hint,
+.mat-error {
     font-size: var(--font-size-input-hint) !important;
     font-variant-caps: petite-caps !important;
     margin-top: 0.1875rem !important;
 }
 
 .mat-icon {
-    color: var(--color-a) !important;
+    color: var(--color-background-secondary) !important;
 }
 
 #search-box .mat-form-field {
     flex: auto;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill:hover {
     font-size: var(--font-size-input) !important;
 }
 
@@ -74,78 +82,78 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 /* Not focused - Not error */
 
 .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
-    color: var(--color-n);
+    color: var(--color-text-primary);
 }
 
 .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input {
-    color: var(--color-n);
+    color: var(--color-text-primary);
 }
 
 .mat-form-field-wrapper .mat-form-field-underline {
-    background-color: var(--color-n) !important;
+    background-color: var(--color-text-primary) !important;
 }
 
 .mat-form-field-wrapper .mat-form-field-subscript-wrapper div .mat-hint {
-    color: var(--color-n);
+    color: var(--color-text-primary);
 }
 
 .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
-    color: var(--color-n) !important;
+    color: var(--color-text-primary) !important;
 }
 
 
 /* Focused not error */
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
-    color: var(--color-o);
+    color: var(--color-text-secondary);
     font-weight: bold;
 }
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input {
-    color: var(--color-o);
+    color: var(--color-text-secondary);
 }
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-underline .mat-form-field-ripple {
-    background-color: var(--color-o) !important;
+    background-color: var(--color-text-secondary) !important;
 }
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-subscript-wrapper div .mat-hint {
-    color: var(--color-o);
+    color: var(--color-text-secondary);
     font-weight: bold;
 }
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
-    color: var(--color-o) !important;
+    color: var(--color-text-secondary) !important;
 }
 
 
 /* Error */
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label {
-    color: var(--color-b) !important;
+    color: var(--color-button-delete) !important;
     font-weight: bold;
 }
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
-    color: var(--color-b);
+    color: var(--color-button-delete);
     font-weight: bold;
 }
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input {
-    color: var(--color-b);
+    color: var(--color-button-delete);
 }
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-underline .mat-form-field-ripple {
-    background-color: var(--color-b) !important;
+    background-color: var(--color-button-delete) !important;
 }
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-subscript-wrapper div .mat-error {
-    color: var(--color-b);
+    color: var(--color-button-delete);
     font-weight: bold;
 }
 
 .mat-form-field-invalid .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
-    color: var(--color-b) !important;
+    color: var(--color-button-delete) !important;
 }
 
 @media only screen and (max-width: 1366px) {

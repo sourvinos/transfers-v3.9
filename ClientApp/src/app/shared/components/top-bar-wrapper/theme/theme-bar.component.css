@@ -1,0 +1,13 @@
+#theme-bar {
+    margin-right: 6px;
+    text-align: end;
+}
+
+.mat-slide-toggle {
+    margin: 0;
+}
+
+.mat-slide-toggle-label .mat-slide-toggle-content {
+    font-variant-caps: petite-caps;
+    font-weight: 600 !important;
+}

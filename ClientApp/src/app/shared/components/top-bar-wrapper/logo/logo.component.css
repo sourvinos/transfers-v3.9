@@ -1,0 +1,17 @@
+.companyLogo {
+    cursor: pointer;
+    display: flex;
+    font-family: var(--font-family-logo);
+    outline: 0;
+    text-align: center;
+}
+
+.companyLogo#narrow :nth-child(1) {
+    color: var(--color-button-primaryompany-logo-first-child) !important;
+    font-size: 1.5625rem !important;
+}
+
+.companyLogo#narrow :nth-child(2) {
+    color: var(--color-button-primaryompany-logo-second-child) !important;
+    font-size: 1.5625rem !important;
+}

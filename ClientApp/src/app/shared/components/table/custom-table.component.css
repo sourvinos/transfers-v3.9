@@ -12,9 +12,9 @@ table {
 }
 
 th {
-    background-color: var(--color-a);
-    border-right: 0.125rem solid var(--color-j);
-    color: var(--color-n);
+    background-color: var(--color-background-secondary);
+    border-right: 0.125rem solid var(--color-background-table);
+    color: var(--color-text-primary);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
@@ -28,19 +28,17 @@ th {
 }
 
 th:hover {
-    background-color: var(--color-l);
-    color: var(--color-a);
+    background-color: var(--color-background-secondary);
     cursor: pointer;
     font-weight: bold;
 }
 
 tr:hover {
-    background-color: var(--color-l);
+    background-color: var(--color-background-secondary);
 }
 
 tr:hover td {
-    background-color: var(--color-l);
-    color: var(--color-a);
+    background-color: var(--color-background-secondary);
     cursor: default;
     font-weight: bold;
 }
@@ -50,16 +48,16 @@ tr:hover td:last-child>div>.button-row-menu {
 }
 
 tr.selected {
-    background-color: var(--color-l) !important;
+    background-color: var(--color-background-secondary) !important;
 }
 
 tr.selected td {
-    color: var(--color-a);
+    color: var(--color-text-primary);
     font-weight: bold;
 }
 
 td {
-    color: var(--color-n);
+    color: var(--color-text-primary);
     font-family: var(--font-family-table-body);
     font-size: var(--font-size-table-row);
     max-width: 0;
@@ -82,7 +80,7 @@ td {
 }
 
 .button-row-menu .mat-icon {
-    color: var(--color-a) !important;
+    color: var(--color-background-secondary) !important;
 }
 
 span {
