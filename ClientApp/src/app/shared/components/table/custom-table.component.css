@@ -8,7 +8,7 @@ table {
     flex: 1;
     table-layout: fixed;
     transition: background-color 0.7s;
-    width: 100%;
+    /* width: 100%; */
 }
 
 th {

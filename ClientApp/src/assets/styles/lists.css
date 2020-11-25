@@ -5,12 +5,13 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+    padding: 2rem;
 }
 
 #header {
     align-items: center;
     display: flex;
-    margin: 2rem 2rem 1rem 2rem;
+    margin: 0 1rem 2rem 1rem;
 }
 
 #header #navigation {
@@ -46,16 +47,8 @@
     border-top: 34px solid var(--color-background-secondary) !important;
 }
 
-#table-wrapper {
-    background-color: var(--color-background-table);
-    height: 100%;
-    margin: 0 2rem;
-    overflow: hidden;
-    padding: 1rem;
-}
-
 #footer {
-    margin: 2rem;
+    margin: 2rem 1rem 0 1rem;
 }
 
 #footer #buttons {

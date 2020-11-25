@@ -35,13 +35,6 @@
     transition: background-color 0.7s;
 }
 
-#table-wrapper {
-    background-color: var(--color-background-table);
-    height: 100%;
-    overflow: hidden;
-    padding: 1rem;
-}
-
 #listFormCombo {
     align-items: flex-start;
     display: flex;

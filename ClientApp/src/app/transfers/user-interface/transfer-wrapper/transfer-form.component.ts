@@ -18,9 +18,9 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
-import { Transfer } from '../classes/transfer'
-import { TransferService } from '../classes/transfer.service'
-import { PickupPointFlat } from '../../pickupPoints/classes/pickupPoint-flat'
+import { Transfer } from '../../classes/transfer'
+import { TransferService } from '../../classes/transfer.service'
+import { PickupPointFlat } from '../../../pickupPoints/classes/pickupPoint-flat'
 import { environment } from 'src/environments/environment'
 import { slideFromRight, slideFromLeft } from 'src/app/shared/animations/animations'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
@@ -30,7 +30,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 @Component({
     selector: 'transfer-form',
     templateUrl: './transfer-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css', './transfer-form.component.css'],
+    styleUrls: ['../../../../assets/styles/forms.css', './transfer-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 

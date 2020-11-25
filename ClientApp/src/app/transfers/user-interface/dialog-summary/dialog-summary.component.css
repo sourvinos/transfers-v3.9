@@ -1,10 +1,3 @@
-#table-wrapper {
-    background-color: var(--color-background-table);
-    height: 100%;
-    overflow: hidden;
-    padding: 1rem;
-}
-
 table {
     border-spacing: 0;
     flex: 1;
@@ -67,4 +60,8 @@ td {
 
 td.right {
     text-align: right;
+}
+
+#table-wrapper .scrollable::-webkit-scrollbar-thumb {
+    border-top: 34px solid var(--color-background-secondary) !important;
 }

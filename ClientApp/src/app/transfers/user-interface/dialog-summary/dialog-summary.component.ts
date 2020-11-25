@@ -1,15 +1,15 @@
 import { Component, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Subject } from 'rxjs'
-import { MessageLabelService } from '../../services/messages-label.service';
+import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 
 @Component({
-    selector: 'dialog-simple',
-    templateUrl: './dialog-simple.component.html',
-    styleUrls: ['../../../../assets/styles/dialogs.css', './dialog-simple.component.css']
+    selector: 'dialog-summary',
+    templateUrl: './dialog-summary.component.html',
+    styleUrls: ['../../../../assets/styles/dialogs.css', './dialog-summary.component.css']
 })
 
-export class DialogSimpleComponent {
+export class DialogSummaryComponent {
 
     //#region variables
 
@@ -23,7 +23,7 @@ export class DialogSimpleComponent {
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
-         public dialogRef: MatDialogRef<DialogSimpleComponent>,
+         public dialogRef: MatDialogRef<DialogSummaryComponent>,
          private messageLabelService: MessageLabelService,
          
          ) {

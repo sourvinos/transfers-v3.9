@@ -16,7 +16,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 @Component({
     selector: 'transfer-wrapper',
     templateUrl: './transfer-wrapper.component.html',
-    styleUrls: ['../../../assets/styles/lists.css', './transfer-wrapper.component.css'],
+    styleUrls: ['../../../../assets/styles/lists.css', './transfer-wrapper.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 

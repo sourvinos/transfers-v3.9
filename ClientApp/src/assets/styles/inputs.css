@@ -170,9 +170,13 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:act
 }
 
 .mat-date-range-input {
-    margin-top: 21px !important;
+    margin-top: 20px !important;
 }
 
 .mat-form-field-type-mat-date-range-input .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
     font-size: unset !important;
+}
+
+.no-bottom-margin div {
+    margin-bottom: 0 !important;
 }

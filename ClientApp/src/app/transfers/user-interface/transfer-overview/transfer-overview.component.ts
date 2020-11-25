@@ -9,9 +9,9 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { TransferOverviewViewModel } from '../classes/transferOverviewViewModel'
+import { TransferOverviewViewModel } from '../../classes/transferOverviewViewModel'
 import { MatDialog } from '@angular/material/dialog'
-import { DialogSimpleComponent } from 'src/app/shared/components/dialog-simple/dialog-simple.component'
+import { DialogSummaryComponent } from './../dialog-summary/dialog-summary.component'
 
 @Component({
     selector: 'transfer-overview',
@@ -71,7 +71,7 @@ export class TransferOverviewComponent {
     }
 
     public onShowDetails(header: string, data: any): void {
-        this.dialog.open(DialogSimpleComponent, {
+        this.dialog.open(DialogSummaryComponent, {
             height: '600px',
             data: {
                 header: header,

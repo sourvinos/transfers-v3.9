@@ -7,7 +7,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 @Component({
     selector: 'transfer-assign-driver',
     templateUrl: './assign-driver-form.component.html',
-    styleUrls: ['../../../assets/styles/dialogs.css', './assign-driver-form.component.css'],
+    styleUrls: ['../../../../assets/styles/dialogs.css', './assign-driver-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 

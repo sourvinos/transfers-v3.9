@@ -24,11 +24,11 @@ import { RegisterUserFormComponent } from '../users/user-interface/register-user
 import { ResetPasswordFormComponent } from '../account/user-interface/reset-password-form.component'
 import { RouteFormComponent } from '../routes/user-interface/route-form.component'
 import { RouteListComponent } from '../routes/user-interface/route-list.component'
-import { TransferFormComponent } from '../transfers/user-interface/transfer-form.component'
-import { TransferListComponent } from '../transfers/user-interface/transfer-list.component'
-import { TransferOverviewComponent } from '../transfers/user-interface/transfer-overview.component'
-import { TransferOverviewWrapperComponent } from '../transfers/user-interface/transfer-overview-wrapper.component'
-import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper.component'
+import { TransferFormComponent } from '../transfers/user-interface/transfer-wrapper/transfer-form.component'
+import { TransferListComponent } from '../transfers/user-interface/transfer-wrapper/transfer-list.component'
+import { TransferOverviewComponent } from '../transfers/user-interface/transfer-overview/transfer-overview.component'
+import { TransferOverviewWrapperComponent } from '../transfers/user-interface/transfer-overview/transfer-overview-wrapper.component'
+import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper/transfer-wrapper.component'
 import { UserListComponent } from '../users/user-interface/user-list.component'
 
 // Resolvers

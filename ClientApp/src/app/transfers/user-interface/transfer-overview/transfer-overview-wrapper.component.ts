@@ -17,7 +17,7 @@ import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.d
 @Component({
     selector: 'transfer-overview-wrapper',
     templateUrl: './transfer-overview-wrapper.component.html',
-    styleUrls: ['../../../assets/styles/lists.css', './transfer-overview-wrapper.component.css'],
+    styleUrls: ['../../../../assets/styles/lists.css', './transfer-overview-wrapper.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
