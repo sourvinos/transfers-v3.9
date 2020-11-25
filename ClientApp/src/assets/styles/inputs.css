@@ -1,5 +1,4 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     display: none;
 }
 
@@ -11,10 +10,7 @@ input::selection {
     background-color: rgba(250, 250, 250, 0.4);
 }
 
-input[type=text],
-input[type=email],
-input[type=number],
-input[type=password] {
+input[type=text], input[type=email], input[type=number], input[type=password] {
     caret-color: var(--color-text-secondary);
     cursor: text !important;
     font-size: var(--font-size-input) !important;
@@ -56,8 +52,7 @@ input:disabled {
     font-size: var(--font-size-label) !important;
 }
 
-.mat-hint,
-.mat-error {
+.mat-hint, .mat-error {
     font-size: var(--font-size-input-hint) !important;
     font-variant-caps: petite-caps !important;
     margin-top: 0.1875rem !important;
@@ -71,15 +66,20 @@ input:disabled {
     flex: auto;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active,
-input:-webkit-autofill:hover {
+.mat-date-range-input-separator {
+    color: var(--color-text-primary) !important;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
     font-size: var(--font-size-input) !important;
 }
 
 
 /* Not focused - Not error */
+
+.mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
+    color: var(--color-text-primary);
+}
 
 .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
     color: var(--color-text-primary);
@@ -103,6 +103,10 @@ input:-webkit-autofill:hover {
 
 
 /* Focused not error */
+
+.mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix button .mat-button-wrapper .mat-icon {
+    color: var(--color-button-clear-input);
+}
 
 .mat-focused .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label span {
     color: var(--color-text-secondary);

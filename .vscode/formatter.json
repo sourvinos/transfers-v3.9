@@ -24,7 +24,7 @@
         "indent_size": 4,
         "indentCharacter": " ",
         "indent_char": " ",
-        "selector_separator_newline": true,
+        "selector_separator_newline": false,
         "end_with_newline": false,
         "newline_between_rules": true,
         "eol": "\n"

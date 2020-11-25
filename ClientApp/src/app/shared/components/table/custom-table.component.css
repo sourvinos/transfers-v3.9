@@ -19,7 +19,7 @@ th {
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-table-header);
-    padding: 6px 5px 6px 5px;
+    padding: 0.4rem;
     position: sticky;
     text-align: center;
     top: 0;
@@ -80,7 +80,7 @@ td {
 }
 
 .button-row-menu .mat-icon {
-    color: var(--color-background-secondary) !important;
+    color: var(--color-text-primary) !important;
 }
 
 span {

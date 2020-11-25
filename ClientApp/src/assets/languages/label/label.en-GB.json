@@ -362,7 +362,7 @@
             },
             {
                 "id": "searchHint",
-                "description": "Search by full description"
+                "description": "Search by description"
             },
             {
                 "id": "newButton",
@@ -418,11 +418,11 @@
             },
             {
                 "id": "searchLabel",
-                "description": "Search"
+                "description": "Date"
             },
             {
                 "id": "searchHint",
-                "description": "Search by date"
+                "description": "Select or enter date"
             },
             {
                 "id": "searchButton",
@@ -912,20 +912,16 @@
     {
         "feature": "transferOverviewWrapper",
         "labels": [{
-                "id": "dateRange",
-                "description": "Period"
-            },
-            {
                 "id": "header",
                 "description": "Period Overview"
             },
             {
-                "id": "searchLabel",
-                "description": "Search"
+                "id": "dateRange",
+                "description": "Period"
             },
             {
                 "id": "searchHint",
-                "description": "Select or enter dates"
+                "description": "Select or enter period"
             },
             {
                 "id": "searchButton",

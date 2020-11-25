@@ -14,12 +14,13 @@ table {
 
 th {
     background-color: var(--color-background-secondary);
+    border-right: 0.125rem solid var(--color-background-table);
     color: var(--color-text-primary);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-table-header);
-    padding: 0.5rem;
+    padding: 0.4rem;
     position: sticky;
     text-align: center;
     top: 0;

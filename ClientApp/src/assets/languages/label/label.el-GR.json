@@ -418,11 +418,11 @@
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "Ημερομηνια"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την ημερομηνια"
+                "description": "Επιλεξτε ή δωστε ημερομηνια"
             },
             {
                 "id": "searchButton",
@@ -912,20 +912,16 @@
     {
         "feature": "transferOverviewWrapper",
         "labels": [{
-                "id": "dateRange",
-                "description": "Διαστημα"
-            },
-            {
                 "id": "header",
                 "description": "Συνοπτική εικόνα"
             },
             {
-                "id": "searchLabel",
-                "description": "Αναζητηση"
+                "id": "dateRange",
+                "description": "Διαστημα"
             },
             {
                 "id": "searchHint",
-                "description": "Επιλεξτε ή δωστε ημερομηνιες"
+                "description": "Επιλεξτε ή δωστε διαστημα"
             },
             {
                 "id": "searchButton",

@@ -71,6 +71,10 @@
     transition: background-color 1.7s;
 }
 
+#transferList .scrollable::-webkit-scrollbar-thumb {
+    border-top: 34px solid var(--color-background-secondary) !important;
+}
+
 #panelButtons button {
     border-radius: 0;
     color: var(--color-text-primary) !important;
@@ -100,8 +104,6 @@
     flex-direction: column;
     flex: 1;
     height: auto;
-    margin-right: 0.125rem;
-    margin-top: 0.0625rem;
     overflow-y: auto;
     padding: 0;
     transition: background-color 0.7s;
@@ -115,8 +117,12 @@
 }
 
 .summaryContent {
-    margin-bottom: 1.8rem;
-    padding: 2px 1rem 2px 1.8rem;
+    margin: 0 1.3rem 1.8rem 0;
+    padding: 0 0.5rem 2px 1.8rem;
+}
+
+.summaryContent .scrollable::-webkit-scrollbar-thumb {
+    border-top: 0 solid var(--color-background-secondary) !important;
 }
 
 .mat-checkbox {
@@ -195,8 +201,4 @@
     color: var(--color-text-secondary);
     font-size: var(--font-size-sum);
     font-weight: var(--font-weight-sum-persons);
-}
-
-.scrollable::-webkit-scrollbar-track {
-    margin-top: 41px;
 }

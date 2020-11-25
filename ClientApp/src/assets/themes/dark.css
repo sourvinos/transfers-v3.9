@@ -1,12 +1,15 @@
 :root {
     --color-background-primary: #001214;
-    --color-background-secondary: #49565d;
-    --color-background-table: #324148;
+    --color-background-secondary: #3c4448;
+    --color-background-table: #22333B;
+    --color-button-clear-input: #F2D492;
     --color-button-delete: #F28482;
     --color-button-primary: #55828b;
     --color-button-secondary: #87BBA2;
     --color-logo-primary: #FE9F36;
     --color-logo-secondary: #FFE85C;
+    --color-slider-bar-active: #7C9BA1;
+    --color-slider-bar-inactive: #AED3C2;
     --color-snackbar-error: #920402;
     --color-snackbar-info: #007b40;
     --color-text-primary: #EFEFEF;

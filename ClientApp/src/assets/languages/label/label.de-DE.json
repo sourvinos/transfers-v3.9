@@ -418,11 +418,11 @@
             },
             {
                 "id": "searchLabel",
-                "description": "(DE) Search"
+                "description": "(DE) Date"
             },
             {
                 "id": "searchHint",
-                "description": "(DE) Search by date"
+                "description": "(DE) Select or enter date"
             },
             {
                 "id": "searchButton",
@@ -912,20 +912,16 @@
     {
         "feature": "transferOverviewWrapper",
         "labels": [{
-                "id": "dateRange",
-                "description": "(DE) Select or enter period"
-            },
-            {
                 "id": "header",
                 "description": "(DE) Period Overview"
             },
             {
-                "id": "searchLabel",
-                "description": "(DE) Search"
+                "id": "dateRange",
+                "description": "(DE) Period"
             },
             {
                 "id": "searchHint",
-                "description": "(DE) Search by date"
+                "description": "(DE) Select or enter period"
             },
             {
                 "id": "searchButton",
