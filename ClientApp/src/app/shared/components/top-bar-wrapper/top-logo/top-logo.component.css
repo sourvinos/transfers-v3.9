@@ -3,7 +3,7 @@
     display: none;
     font-family: var(--font-family-logo);
     outline: 0;
-    padding: 0.4375rem 1.0375rem 0 2.6875rem;
+    padding-top: 0.25rem;
 }
 
 span:nth-child(1) {

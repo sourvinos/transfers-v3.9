@@ -8,11 +8,13 @@ import { HelperService } from '../../services/helper.service'
 import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { TemplatePortal } from '@angular/cdk/portal'
 import { filter, take } from 'rxjs/operators'
+import { listAnimation } from '../../animations/animations'
 
 @Component({
     selector: 'custom-table',
     templateUrl: './custom-table.component.html',
-    styleUrls: ['./custom-table.component.css']
+    styleUrls: ['./custom-table.component.css'],
+    animations: [listAnimation]
 })
 
 export class CustomTableComponent {

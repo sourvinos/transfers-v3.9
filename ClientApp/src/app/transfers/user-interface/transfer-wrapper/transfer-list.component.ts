@@ -377,6 +377,7 @@ export class TransferListComponent {
             document.getElementById('side-image').style.opacity = '0'
             document.getElementById('side-footer').style.opacity = '0'
             document.getElementById('side-bar').style.width = '0'
+            document.getElementById('side-bar').style.overflow = 'hidden'
         } else {
             document.getElementById('side-logo').style.opacity = '1'
             document.getElementById('side-image').style.opacity = '1'

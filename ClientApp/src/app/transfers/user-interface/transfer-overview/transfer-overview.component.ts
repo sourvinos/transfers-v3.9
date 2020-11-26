@@ -6,7 +6,6 @@ import { ButtonClickService } from 'src/app/shared/services/button-click.service
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
 import { SnackbarService } from 'src/app/shared/services/snackbar.service'
-import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { TransferOverviewViewModel } from '../../classes/transferOverviewViewModel'
@@ -16,8 +15,7 @@ import { DialogSummaryComponent } from './../dialog-summary/dialog-summary.compo
 @Component({
     selector: 'transfer-overview',
     templateUrl: './transfer-overview.component.html',
-    styleUrls: ['./transfer-overview.component.css'],
-    animations: [slideFromLeft, slideFromRight]
+    styleUrls: ['./transfer-overview.component.css']
 })
 
 export class TransferOverviewComponent {
