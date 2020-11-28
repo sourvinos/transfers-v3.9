@@ -2,17 +2,7 @@ using System.Collections.Generic;
 
 namespace Transfers {
 
-    public class TransferSummary {
-
-        public int TotalPersons { get; set; }
-
-        public float TotalAdults { get; set; }
-        public float TotalKids { get; set; }
-        public float TotalFree { get; set; }
-
-        public float AdultsPercent { get; set; }
-        public float KidsPercent { get; set; }
-        public float FreePercent { get; set; }
+    public class TransferSummaryDetails {
 
         public IEnumerable<TotalPersonsPerCustomer> TotalPersonsPerCustomer { get; set; }
         public IEnumerable<TotalPersonsPerDestination> TotalPersonsPerDestination { get; set; }

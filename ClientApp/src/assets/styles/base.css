@@ -60,7 +60,7 @@ p.instructions {
 }
 
 .mat-menu-item {
-    color: var(--color-text-primary) !important;
+    color: var(--color-text-button) !important;
     display: flex !important;
     font-variant-caps: petite-caps !important;
     justify-content: flex-start !important;
@@ -69,7 +69,7 @@ p.instructions {
 }
 
 .mat-menu-item:hover {
-    background-color: var(--color-button-primary) !important;
+    background-color: var(--color-button-secondary) !important;
 }
 
 .mat-snack-bar-container {

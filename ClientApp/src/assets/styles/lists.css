@@ -19,7 +19,7 @@
 }
 
 #header #navigation .mat-icon {
-    color: var(--color-text-primary) !important;
+    color: var(--color-text-button) !important;
 }
 
 #header #title {

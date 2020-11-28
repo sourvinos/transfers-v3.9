@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class TransfersController : ControllerBase {
@@ -28,9 +28,14 @@ namespace Transfers {
             return this.repo.Get(date);
         }
 
-        [HttpGet("fromDate/{fromDate}/toDate/{toDate}")]
-        public TransferSummary Get(string fromDate, string toDate) {
-            return this.repo.Get(fromDate, toDate);
+        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
+        public TransferSummary GetSummary(string fromDate, string toDate) {
+            return this.repo.GetSummary(fromDate, toDate);
+        }
+
+        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
+        public TransferSummaryDetails GetSummaryDetails(string fromDate, string toDate) {
+            return this.repo.GetSummaryDetails(fromDate, toDate);
         }
 
         [HttpGet("{id}")]

@@ -129,7 +129,7 @@
 }
 
 .summaryBlock .item {
-    box-shadow: -5px 0px 0px 0px rgba(85, 130, 139, 0.3);
+    box-shadow: -5px 0px 0px 0px var(--color-background-secondary);
     color: var(--color-text-primary);
     display: flex;
     font-family: var(--font-family-summary-block);

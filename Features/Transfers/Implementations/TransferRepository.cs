@@ -65,7 +65,7 @@ namespace Transfers {
             appDbContext.SaveChanges();
         }
 
-        public TransferSummary Get(string fromDate, string toDate) {
+        public TransferSummary GetSummary(string fromDate, string toDate) {
 
             DateTime _fromDate = Convert.ToDateTime(fromDate);
             DateTime _toDate = Convert.ToDateTime(toDate);
@@ -75,9 +75,21 @@ namespace Transfers {
             float kids = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Kids);
             float free = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Free);
 
-            float adultsPercent = adults * 100 / totalPersons > 0 ? totalPersons : 1;
-            float kidsPercent = kids * 100 / totalPersons > 0 ? totalPersons : 1;
-            float freePercent = free * 100 / totalPersons > 0 ? totalPersons : 1;
+            var transferSummary = new TransferSummary {
+                TotalPersons = totalPersons,
+                TotalAdults = adults,
+                TotalKids = kids,
+                TotalFree = free
+            };
+
+            return transferSummary;
+
+        }
+
+        public TransferSummaryDetails GetSummaryDetails(string fromDate, string toDate) {
+
+            DateTime _fromDate = Convert.ToDateTime(fromDate);
+            DateTime _toDate = Convert.ToDateTime(toDate);
 
             var totalPersonsPerCustomer = appDbContext.Transfers.Include(x => x.Customer).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Customer.Description }).Select(x => new TotalPersonsPerCustomer { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
             var totalPersonsPerDestination = appDbContext.Transfers.Include(x => x.Destination).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Destination.Description }).Select(x => new TotalPersonsPerDestination { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
@@ -85,14 +97,7 @@ namespace Transfers {
             var totalPersonsPerPort = appDbContext.Transfers.Include(x => x.PickupPoint.Route.Port).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Port.Description }).Select(x => new TotalPersonsPerPort { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
             var totalPersonsPerRoute = appDbContext.Transfers.Include(x => x.PickupPoint.Route).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Description }).Select(x => new TotalPersonsPerRoute { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
 
-            var transferSummary = new TransferSummary {
-                TotalPersons = totalPersons,
-                TotalAdults = adults,
-                TotalKids = kids,
-                TotalFree = free,
-                AdultsPercent = adultsPercent,
-                KidsPercent = kidsPercent,
-                FreePercent = freePercent,
+            var transferSummaryDetails = new TransferSummaryDetails {
                 TotalPersonsPerCustomer = totalPersonsPerCustomer.ToList(),
                 TotalPersonsPerDestination = totalPersonsPerDestination.ToList(),
                 TotalPersonsPerDriver = totalPersonsPerDriver.ToList(),
@@ -100,7 +105,8 @@ namespace Transfers {
                 TotalPersonsPerRoute = totalPersonsPerRoute.ToList(),
             };
 
-            return transferSummary;
+            return transferSummaryDetails;
+
         }
 
     }
