@@ -1,21 +1,26 @@
-import { Component } from '@angular/core'
-import { Title } from '@angular/platform-browser'
-import { ActivatedRoute, Router } from '@angular/router'
-import { Subject } from 'rxjs'
+import moment from 'moment'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
+import { Component } from '@angular/core'
+import { DateAdapter } from '@angular/material/core'
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms'
 import { HelperService } from 'src/app/shared/services/helper.service'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
-import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
-import { TransferOverviewViewModel } from '../../classes/transferOverviewViewModel'
-import { MatDialog } from '@angular/material/dialog'
-import { DialogSummaryComponent } from './../dialog-summary/dialog-summary.component'
+import { Router } from '@angular/router'
+import { SnackbarService } from 'src/app/shared/services/snackbar.service'
+import { Subject } from 'rxjs'
+import { Title } from '@angular/platform-browser'
+import { TransferOverviewViewModel } from './../../classes/transferOverviewViewModel'
+import { TransferService } from '../../classes/transfer.service'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
 @Component({
     selector: 'transfer-overview',
     templateUrl: './transfer-overview.component.html',
-    styleUrls: ['./transfer-overview.component.css']
+    styleUrls: ['../../../../assets/styles/lists.css', './transfer-overview.component.css'],
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class TransferOverviewComponent {
@@ -23,31 +28,42 @@ export class TransferOverviewComponent {
     //#region variables
 
     private ngUnsubscribe = new Subject<void>()
-    private resolver = 'transferOverview'
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'
-    public feature = 'transferOverview'
+    public LastYearMTD = new TransferOverviewViewModel
+    public LastYearYTD = new TransferOverviewViewModel
+    public LastYearPeriod = new TransferOverviewViewModel
+    public MTD = new TransferOverviewViewModel
+    public YTD = new TransferOverviewViewModel
+    public Period = new TransferOverviewViewModel
+    public feature = 'transferOverviewWrapper'
+    public form: FormGroup
+    public input: InputTabStopDirective
 
     //#endregion
 
-    //#region particular variables
-
-    public listResolved: any
-    public queryResult = new TransferOverviewViewModel()
-
-    //#endregion
-
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
-        this.router.events.subscribe(() => {
-            this.loadRecords()
-        })
-    }
+    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private transferService: TransferService, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
 
     ngOnInit(): void {
         this.setWindowTitle()
+        this.initForm()
         this.addShortcuts()
+        this.getLocale()
+        this.initPeriod()
+        this.loadRecords('MTD', this.getMTDFrom(), this.getMTDTo())
+        this.loadRecords('LastYearMTD', this.getMTDFrom(true), this.getMTDTo(true))
+        this.loadRecords('YTD', this.getYTDFrom(), this.getYTDTo())
+        this.loadRecords('LastYearYTD', this.getYTDFrom(true), this.getYTDTo(true))
+        setTimeout(() => {
+            this.calculatePercent('MTD', this.MTD.persons, this.LastYearMTD.persons)
+            this.calculatePercent('YTD', this.YTD.persons, this.LastYearYTD.persons)
+        }, 1000)
+    }
+
+    ngAfterViewInit(): void {
+        this.focus('startDate')
     }
 
     ngOnDestroy(): void {
@@ -60,22 +76,24 @@ export class TransferOverviewComponent {
 
     //#region public methods
 
+    public onDoJobs(): void {
+        this.loadRecords('Period', this.getPeriodFrom(), this.getPeriodTo())
+        this.loadRecords('LastYearPeriod', this.getPeriodFrom(true), this.getPeriodTo(true))
+        setTimeout(() => {
+            this.calculatePercent('Period', this.Period.persons, this.LastYearPeriod.persons)
+        }, 1000)
+    }
+
+    public onGetHint(id: string, minmax = 0): string {
+        return this.messageHintService.getDescription(id, minmax)
+    }
+
     public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
 
     public onGoBack(): void {
         this.router.navigate(['/'])
-    }
-
-    public onShowDetails(header: string, data: any): void {
-        this.dialog.open(DialogSummaryComponent, {
-            height: '600px',
-            data: {
-                header: header,
-                records: data
-            }
-        })
     }
 
     //#endregion
@@ -89,82 +107,139 @@ export class TransferOverviewComponent {
                     this.onGoBack()
                 }
             },
-            'Alt.A': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'assignDriver')
-            },
-            'Alt.C': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'createPdf')
-            },
-            'Alt.N': (event: KeyboardEvent) => {
-                this.buttonClickService.clickOnButton(event, 'new')
-            },
             'Alt.S': (event: KeyboardEvent) => {
                 this.buttonClickService.clickOnButton(event, 'search')
             }
         }, {
-            priority: 2,
+            priority: 1,
             inputs: true
         })
     }
 
-    private loadRecords(): void {
-        const listResolved = this.activatedRoute.snapshot.data[this.resolver]
-        if (listResolved.error === null) {
-            this.populateTotals(listResolved.result)
-            this.populatePercents(listResolved.result)
-            this.populatePersonsPerCustomer(listResolved.result)
-            this.populatePersonsPerDestination(listResolved.result)
-            this.populatePersonsPerRoute(listResolved.result)
-            this.populatePersonsPerDriver(listResolved.result)
-            this.populatePersonsPerPort(listResolved.result)
-        } else {
-            this.onGoBack()
-            this.showSnackbar(this.messageSnackbarService.filterError(this.listResolved.error), 'error')
+    private calculatePercent(variable: string, currentYearPersons: number, lastYearPersons: number): void {
+        let percent = (100 * currentYearPersons / lastYearPersons) - 100
+        if (isNaN(percent)) {
+            percent = 0
         }
+        if (percent == Infinity) {
+            percent = 100
+        }
+        if (percent == 0) {
+            this[variable].color = 'blue'
+            this[variable].percent = '(' + percent.toFixed(2) + '%)'
+        }
+        if (percent > 0) {
+            this[variable].color = 'green'
+            this[variable].percent = '(▲' + percent.toFixed(2) + '%)'
+        }
+        if (percent < 0) {
+            this[variable].color = 'red'
+            this[variable].percent = '(▼' + (percent * -1).toFixed(2) + '%)'
+        }
+    }
+
+    private focus(field: string): void {
+        this.helperService.setFocus(field)
+    }
+
+    private getCurrentDay(): string {
+        return ('0' + moment().date()).slice(-2)
+    }
+
+    private getCurrentMonth(): string {
+        return ('0' + (moment().month() + 1)).slice(-2)
+    }
+
+    private getCurrentYear(): string {
+        return moment().get('year').toString()
+    }
+
+    private getLastYear(): string {
+        return (moment().get('year') - 1).toString()
+    }
+
+    private getLocale(): void {
+        this.dateAdapter.setLocale(this.helperService.readItem("language"))
+    }
+
+    private getMTDFrom(lastYear?: boolean): string {
+        return lastYear ? this.getLastYear() + '-' + this.getCurrentMonth() + '-' + '01' : this.getCurrentYear() + '-' + this.getCurrentMonth() + '-' + '01'
+    }
+
+    private getMTDTo(lastYear?: boolean): string {
+        return lastYear ? this.getLastYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay() : this.getCurrentYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay()
+    }
+
+    private getPeriodFrom(lastYear?: boolean): string {
+        if (lastYear) {
+            const date = this.getLastYear() + '-' + this.startDate.value.format('MM') + '-' + this.startDate.value.format('DD')
+            return date
+        }
+        const date = this.startDate.value.format('YYYY-MM-DD')
+        return date
+    }
+
+    private getPeriodTo(lastYear?: boolean): string {
+        if (lastYear) {
+            const date = this.getLastYear() + '-' + this.endDate.value.format('MM') + '-' + this.endDate.value.format('DD')
+            return date
+        }
+        const date = this.endDate.value.format('YYYY-MM-DD')
+        return date
+
+    }
+
+    private getYTDFrom(lastYear?: boolean): string {
+        return lastYear ? this.getLastYear() + '-01-01' : this.getCurrentYear() + '-01-01'
+    }
+
+    private getYTDTo(lastYear?: boolean): string {
+        return lastYear ? this.getLastYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay() : this.getCurrentYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay()
+    }
+
+    private initForm(): void {
+        this.form = this.formBuilder.group({
+            startDate: ['', [Validators.required]],
+            endDate: ['', [Validators.required]]
+        })
+    }
+
+    private initPeriod(): void {
+        this.Period.persons = 0
+        this.Period.adults = 0
+        this.Period.kids = 0
+        this.Period.free = 0
+        this.Period.percent = '(0.00%)'
+        this.Period.color = 'blue'
+    }
+
+    private loadRecords(variable: any, fromDate: string, toDate: string): Promise<any> {
+        const promise = new Promise((resolve) => {
+            this.transferService.getTransfersOverview(fromDate, toDate).toPromise().then((
+                response => {
+                    this[variable] = response
+                    resolve(this[variable])
+                }))
+        })
+        return promise
     }
 
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showSnackbar(message: string, type: string): void {
-        this.snackbarService.open(message, type)
-    }
-
-    private populateTotals(result: { totalPersons: number; totalAdults: number; totalKids: number; totalFree: number }): void {
-        this.queryResult.persons = result.totalPersons
-        this.queryResult.adults = result.totalAdults
-        this.queryResult.kids = result.totalKids
-        this.queryResult.free = result.totalFree
-    }
-
-    private populatePercents(result: { totalAdults: number; totalPersons: number; totalKids: number; totalFree: number }): void {
-        this.queryResult.percent = (100 * result.totalPersons / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
-        this.queryResult.adultsPercent = (100 * result.totalAdults / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
-        this.queryResult.kidsPercent = (100 * result.totalKids / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
-        this.queryResult.freePercent = (100 * result.totalFree / (result.totalPersons > 0 ? result.totalPersons : 1)).toFixed(2)
-    }
-
-    private populatePersonsPerCustomer(result: { totalPersonsPerCustomer: any[] }): void {
-        this.queryResult.personsPerCustomer = result.totalPersonsPerCustomer
-    }
-
-    private populatePersonsPerDestination(result: { totalPersonsPerDestination: any[] }): void {
-        this.queryResult.personsPerDestination = result.totalPersonsPerDestination
-    }
-
-    private populatePersonsPerDriver(result: { totalPersonsPerDriver: any[] }): void {
-        this.queryResult.personsPerDriver = result.totalPersonsPerDriver
-    }
-
-    private populatePersonsPerPort(result: { totalPersonsPerPort: any[] }): void {
-        this.queryResult.personsPerPort = result.totalPersonsPerPort
-    }
-
-    private populatePersonsPerRoute(result: { totalPersonsPerRoute: any[] }): void {
-        this.queryResult.personsPerRoute = result.totalPersonsPerRoute
-    }
-
     //#endregion
+
+    //#region getters
+
+    get startDate(): AbstractControl {
+        return this.form.get('startDate')
+    }
+
+    get endDate(): AbstractControl {
+        return this.form.get('endDate')
+    }
+
+    //#endregion    
 
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Transfers {
 
-    public class TransferSummaryDetails {
+    public class TransferOverviewDetails : TransferOverview {
 
         public IEnumerable<TotalPersonsPerCustomer> TotalPersonsPerCustomer { get; set; }
         public IEnumerable<TotalPersonsPerDestination> TotalPersonsPerDestination { get; set; }

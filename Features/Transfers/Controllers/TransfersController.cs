@@ -29,13 +29,8 @@ namespace Transfers {
         }
 
         [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
-        public TransferSummary GetSummary(string fromDate, string toDate) {
-            return this.repo.GetSummary(fromDate, toDate);
-        }
-
-        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
-        public TransferSummaryDetails GetSummaryDetails(string fromDate, string toDate) {
-            return this.repo.GetSummaryDetails(fromDate, toDate);
+        public TransferOverview GetOverview(string fromDate, string toDate) {
+            return this.repo.GetOverview(fromDate, toDate);
         }
 
         [HttpGet("{id}")]

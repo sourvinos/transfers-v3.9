@@ -28,7 +28,7 @@ export class TransferService extends DataService {
     }
 
     getTransfersOverview(fromDate: string, toDate: string): Observable<TransferOverviewViewModel> {
-        return this.http.get<TransferOverviewViewModel>('/api/transfers/fromDate/' + fromDate + '/toDate/' + toDate)
+        return this.http.get<TransferOverviewViewModel>('/api/transfers/getOverview/fromDate/' + fromDate + '/toDate/' + toDate)
     }
 
 }

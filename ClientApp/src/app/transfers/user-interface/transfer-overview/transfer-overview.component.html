@@ -1,55 +1,135 @@
-<div id="wrapper">
+<div id="list">
 
-    <div id="person-totals">
-
-        <div>
-            <h2>{{ onGetLabel('total')}}</h2>
-            <h1>{{ queryResult.persons }}</h1>
-            <h3>{{ queryResult.percent }}%</h3>
+    <div id="header">
+        <div id="navigation">
+            <button data-cy="goBack" class="goBack" id="goBack" [routerLink]="['/']" mat-mini-fab>
+                <mat-icon>home</mat-icon>
+            </button>
         </div>
-
-        <div>
-            <h2>{{ onGetLabel('adults')}}</h2>
-            <h1>{{ queryResult.adults }}</h1>
-            <h3>{{ queryResult.adultsPercent }}%</h3>
+        <div @slideFromLeft id="title">
+            <h1>{{ onGetLabel('header') }}</h1>
         </div>
-
-        <div>
-            <h2>{{ onGetLabel('kids')}}</h2>
-            <h1>{{ queryResult.kids }}</h1>
-            <h3>{{ queryResult.kidsPercent }}%</h3>
+        <div id="search-box">
+            <form data-cy="form" [formGroup]="form" autocomplete="off">
+                <mat-form-field class="no-bottom-margin">
+                    <mat-label>{{ onGetLabel('dateRange') }}</mat-label>
+                    <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+                        <input data-cy="startDate" matStartDate matInput class="center" id="startDate" formControlName="startDate" [inputFormat]="'date'" data-tabindex="1" [inputTabStop]="input" autocomplete="off">
+                        <input data-cy="endDate" matEndDate matInput class="center" id="endDate" formControlName="endDate" [inputFormat]="'date'" data-tabindex="2" [inputTabStop]="input" autocomplete="off">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                    <mat-error *ngIf="startDate.hasError('required') || endDate.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="startDate.hasError('matStartDateInvalid') || endDate.hasError('matEndDateInvalid')">{{ onGetHint('invalid') }}</mat-error>
+                    <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
+                </mat-form-field>
+            </form>
+            <button data-cy="search" mat-flat-button id="search" class="primary" (click)="onDoJobs()">{{ onGetLabel('searchButton') }}</button>
         </div>
-
-        <div>
-            <h2>{{ onGetLabel('free')}}</h2>
-            <h1>{{ queryResult.free }}</h1>
-            <h3>{{ queryResult.freePercent }}%</h3>
-        </div>
-
     </div>
 
-    <div id="group-totals">
+    <div id="content">
+        <div id="statistics">
+            <div class="period-summary" id="pediod">
+                <div class="header">
+                    <h1>Period</h1>
+                    <button mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+                <div class="body">
+                    <div class="total">
+                        <h3>Total</h3>
+                        <span class="total">{{ Period.persons }}</span>
+                    </div>
+                    <div class="percent">
+                        <span [ngClass]="Period.color">{{ Period.percent }}</span>
+                    </div>
+                    <div class="adults">
+                        <h3>Adults</h3>
+                        <span class="sub-total">{{ Period.adults }}</span>
+                    </div>
+                    <div class="kids">
+                        <h3>Kids</h3>
+                        <span class="sub-total">{{ Period.kids }}</span>
+                    </div>
+                    <div class="free">
+                        <h3>Free</h3>
+                        <span class="sub-total">{{ Period.free }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="period-summary" id="pediod">
+                <div class="header">
+                    <h1>Month to Date</h1>
+                    <button mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+                <div class="body">
+                    <div class="total">
+                        <h3>Total</h3>
+                        <span class="total">{{ MTD.persons }}</span>
+                    </div>
+                    <div class="percent">
+                        <span [ngClass]="MTD.color">{{ MTD.percent }}</span>
+                    </div>
+                    <div class="adults">
+                        <h3>Adults</h3>
+                        <span class="sub-total">{{ MTD.adults }}</span>
+                    </div>
+                    <div class="kids">
+                        <h3>Kids</h3>
+                        <span class="sub-total">{{ MTD.kids }}</span>
+                    </div>
+                    <div class="free">
+                        <h3>Free</h3>
+                        <span class="sub-total">{{ MTD.free }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="period-summary" id="pediod">
+                <div class="header">
+                    <h1>Year to Date</h1>
+                    <button mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+                <div class="body">
+                    <div class="total">
+                        <h3>Total</h3>
+                        <span class="total">{{ YTD.persons  }}</span>
+                    </div>
+                    <div class="percent">
+                        <span [ngClass]="YTD.color">{{ YTD.percent }}</span>
+                    </div>
+                    <div class="adults">
+                        <h3>Adults</h3>
+                        <span class="sub-total">{{ YTD.adults }}</span>
+                    </div>
+                    <div class="kids">
+                        <h3>Kids</h3>
+                        <span class="sub-total">{{ YTD.kids }}</span>
+                    </div>
+                    <div class="free">
+                        <h3>Free</h3>
+                        <span class="sub-total">{{ YTD.free }}</span>
+                    </div>
+                </div>
+            </div>
 
-        <div (click)="onShowDetails(onGetLabel('customers'), queryResult.personsPerCustomer)">
-            <img src="/assets/images/navigation/customers.svg">
-            <h1>{{ onGetLabel('customers') }}</h1>
         </div>
-        <div (click)="onShowDetails(onGetLabel('destinations'), queryResult.personsPerDestination)">
-            <img src="/assets/images/navigation/destinations.svg">
-            <h1>{{ onGetLabel('destinations') }}</h1>
+
+        <div id="details">
+            <mat-tab-group>
+                <mat-tab label="Customers"> Content 1 </mat-tab>
+                <mat-tab label="Destinations"> Content 2 </mat-tab>
+                <mat-tab label="Drivers"> Content 3 </mat-tab>
+                <mat-tab label="Ports"> Content 3 </mat-tab>
+                <mat-tab label="Routes"> Content 3 </mat-tab>
+            </mat-tab-group>
         </div>
-        <div (click)="onShowDetails(onGetLabel('drivers'), queryResult.personsPerDriver)">
-            <img src="/assets/images/navigation/drivers.svg">
-            <h1>{{ onGetLabel('drivers') }}</h1>
-        </div>
-        <div (click)="onShowDetails(onGetLabel('ports'), queryResult.personsPerPort)">
-            <img src="/assets/images/navigation/ports.svg">
-            <h1>{{ onGetLabel('ports') }}</h1>
-        </div>
-        <div (click)="onShowDetails(onGetLabel('routes'), queryResult.personsPerRoute)">
-            <img src="/assets/images/navigation/routes.svg">
-            <h1>{{ onGetLabel('routes') }}</h1>
-        </div>
+
     </div>
 
 </div>

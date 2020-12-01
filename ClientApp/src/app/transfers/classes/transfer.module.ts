@@ -5,7 +5,6 @@ import { TransferWrapperComponent } from '../user-interface/transfer-wrapper/tra
 import { MaterialModule } from './../../shared/modules/material.module'
 import { SharedModule } from './../../shared/modules/shared.module'
 import { TransferAssignDriverComponent } from '../user-interface/assign-driver/assign-driver-form.component'
-import { TransferOverviewWrapperComponent } from '../user-interface/transfer-overview/transfer-overview-wrapper.component'
 import { TransferOverviewComponent } from '../user-interface/transfer-overview/transfer-overview.component'
 
 @NgModule({
@@ -14,7 +13,6 @@ import { TransferOverviewComponent } from '../user-interface/transfer-overview/t
         TransferListComponent,
         TransferFormComponent,
         TransferAssignDriverComponent,
-        TransferOverviewWrapperComponent,
         TransferOverviewComponent
     ],
     imports: [

@@ -1,105 +1,118 @@
-:host {
-    display: flex;
-    width: 100%;
+#header #search-box {
+    margin-right: 1rem;
+    width: auto;
 }
 
-#wrapper {
+#header #search-box .mat-form-field {
+    width: 16rem !important;
+}
+
+#content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
-    gap: 2rem;
     height: 100%;
     overflow: hidden;
 }
 
-#person-totals {
+#statistics {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    flex-direction: row;
+    gap: 1rem;
     justify-content: space-between;
-    width: 250px;
 }
 
-#person-totals div {
-    align-items: center;
+.period-summary {
     background-color: var(--color-background-table);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    padding: 1rem;
-}
-
-#person-totals div h1 {
-    color: var(--color-text-secondary) !important;
-    font-size: 60px !important;
-    line-height: 70px;
-}
-
-#person-totals div h2 {
-    color: var(--color-text-primary) !important;
-    font-size: 32px;
-    line-height: 16px;
-}
-
-#person-totals div h3 {
-    color: var(--color-text-primary) !important;
-    font-size: 20px;
-    line-height: 10px;
-}
-
-#group-totals {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: space-between;
+    padding: 1.5rem;
     width: 100%;
 }
 
-#group-totals div {
-    align-items: center;
+.period-summary .header {
+    display: flex;
+}
+
+.period-summary .header h1 {
+    width: 95%;
+}
+
+.period-summary .header button {
+    margin: 0;
+    width: 5%;
+}
+
+.period-summary .body {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.total, .percent, .adults, .kids, .free {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.percent, .adults, .kids, .free {
+    padding-bottom: 7px;
+}
+
+h2, h3 {
+    color: var(--color-text-primary);
+    font-variant-caps: petite-caps;
+}
+
+span.total {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-header);
+    font-weight: var(--font-weight-header);
+}
+
+.total span.total {
+    font-size: 2.5rem;
+}
+
+.total h3 {
+    line-height: 8px;
+    padding-top: 1rem !important;
+}
+
+span.sub-total {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-header);
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-header);
+}
+
+.percent span {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-header);
+    padding-bottom: 10px;
+}
+
+.green {
+    color: var(--color-snackbar-info) !important;
+}
+
+.red {
+    color: var(--color-button-delete) !important;
+}
+
+.blue {
+    color: lightblue !important;
+}
+
+.mat-icon {
+    color: var(--color-text-button) !important;
+}
+
+#details {
     background-color: var(--color-background-table);
     border-radius: 10px;
-    display: flex;
-    flex-direction: row;
     height: 100%;
-    justify-content: flex-start;
-    padding-left: 2rem;
-}
-
-#group-totals div:hover {
-    cursor: pointer;
-}
-
-#group-totals div h1 {
-    color: var(--color-text-primary) !important;
-    margin-left: 1rem !important;
-}
-
-#group-totals div img {
-    width: 70px !important;
-}
-
-@media (max-width:1599px) {
-    #wrapper {
-        gap: 1rem;
-    }
-    #person-totals {
-        gap: 1rem;
-    }
-    #group-totals {
-        gap: 1rem;
-    }
-    #group-totals div img {
-        width: 50px !important;
-    }
-    #person-totals div {
-        padding: 0.5rem;
-    }
-    #person-totals div h1 {
-        font-size: 40px !important;
-        line-height: 50px;
-    }
+    padding: 1rem;
 }

@@ -26,8 +26,6 @@ import { RouteFormComponent } from '../routes/user-interface/route-form.componen
 import { RouteListComponent } from '../routes/user-interface/route-list.component'
 import { TransferFormComponent } from '../transfers/user-interface/transfer-wrapper/transfer-form.component'
 import { TransferListComponent } from '../transfers/user-interface/transfer-wrapper/transfer-list.component'
-import { TransferOverviewComponent } from '../transfers/user-interface/transfer-overview/transfer-overview.component'
-import { TransferOverviewWrapperComponent } from '../transfers/user-interface/transfer-overview/transfer-overview-wrapper.component'
 import { TransferWrapperComponent } from '../transfers/user-interface/transfer-wrapper/transfer-wrapper.component'
 import { UserListComponent } from '../users/user-interface/user-list.component'
 
@@ -46,7 +44,7 @@ import { RouteFormResolver } from '../routes/classes/route-form.resolver'
 import { RouteListResolver } from '../routes/classes/route-list.resolver'
 import { TransferFormResolver } from '../transfers/classes/transfer-form.resolver'
 import { TransferListResolver } from '../transfers/classes/transfer-list.resolver'
-import { TransferOverviewResolver } from '../transfers/classes/transfer-overview.resolver'
+import { TransferOverviewComponent } from '../transfers/user-interface/transfer-overview/transfer-overview.component'
 import { UserFormResolver } from '../users/classes/user-form.resolver'
 import { UserListResolver } from '../users/classes/user-list.resolver'
 
@@ -85,13 +83,7 @@ const appRoutes: Routes = [
                 ], runGuardsAndResolvers: 'always'
             }]
     },
-    {
-        path: 'transfersOverview', component: TransferOverviewWrapperComponent, canActivate: [AuthGuardService], children: [
-            {
-                path: 'fromDate/:fromDate/toDate/:toDate', component: TransferOverviewComponent, canActivate: [AuthGuardService], resolve: { transferOverview: TransferOverviewResolver }
-            }
-        ]
-    },
+    { path: 'transfersOverview', component: TransferOverviewComponent, canActivate: [AuthGuardService] },
     { path: 'users', component: UserListComponent, canActivate: [AuthGuardService], resolve: { userList: UserListResolver } },
     { path: 'users/new', component: RegisterUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
     { path: 'users/changePassword/:id', component: ChangePasswordFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
