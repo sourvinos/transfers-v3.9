@@ -65,22 +65,13 @@ namespace Transfers {
             DateTime _fromDate = Convert.ToDateTime(fromDate);
             DateTime _toDate = Convert.ToDateTime(toDate);
 
-            int persons = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.TotalPersons);
-            float adults = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Adults);
-            float kids = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Kids);
-            float free = appDbContext.Transfers.Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).Sum(s => s.Free);
-
-            var totalPersonsPerCustomer = appDbContext.Transfers.Include(x => x.Customer).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Customer.Description }).Select(x => new TotalPersonsPerCustomer { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
-            var totalPersonsPerDestination = appDbContext.Transfers.Include(x => x.Destination).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Destination.Description }).Select(x => new TotalPersonsPerDestination { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
-            var totalPersonsPerDriver = appDbContext.Transfers.Include(x => x.Driver).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Driver.Description }).Select(x => new TotalPersonsPerDriver { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
-            var totalPersonsPerPort = appDbContext.Transfers.Include(x => x.PickupPoint.Route.Port).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Port.Description }).Select(x => new TotalPersonsPerPort { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
-            var totalPersonsPerRoute = appDbContext.Transfers.Include(x => x.PickupPoint.Route).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Description }).Select(x => new TotalPersonsPerRoute { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
+            var totalPersonsPerCustomer = appDbContext.Transfers.Include(x => x.Customer).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Customer.Description }).Select(x => new TotalPersonsPerCustomer { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
+            var totalPersonsPerDestination = appDbContext.Transfers.Include(x => x.Destination).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Destination.Description }).Select(x => new TotalPersonsPerDestination { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
+            var totalPersonsPerDriver = appDbContext.Transfers.Include(x => x.Driver).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Driver.Description }).Select(x => new TotalPersonsPerDriver { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
+            var totalPersonsPerPort = appDbContext.Transfers.Include(x => x.PickupPoint.Route.Port).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Port.Description }).Select(x => new TotalPersonsPerPort { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
+            var totalPersonsPerRoute = appDbContext.Transfers.Include(x => x.PickupPoint.Route).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Description }).Select(x => new TotalPersonsPerRoute { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
 
             var transferOverviewDetails = new TransferOverviewDetails {
-                Persons = persons,
-                Adults = adults,
-                Kids = kids,
-                Free = free,
                 TotalPersonsPerCustomer = totalPersonsPerCustomer.ToList(),
                 TotalPersonsPerDestination = totalPersonsPerDestination.ToList(),
                 TotalPersonsPerDriver = totalPersonsPerDriver.ToList(),

@@ -1,6 +1,8 @@
 .mat-tab-label {
+    background-color: var(--color-background-secondary);
     color: var(--color-text-primary);
-    font-size: var(--font-size-table-header);
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-tab-label);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-header);
 }
@@ -11,5 +13,5 @@
 }
 
 .mat-tab-body-content {
-    padding: 1rem;
+    padding: 0;
 }

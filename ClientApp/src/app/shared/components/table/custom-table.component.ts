@@ -1,6 +1,6 @@
 import { fromEvent, Subscription } from 'rxjs'
 import { MessageLabelService } from './../../services/messages-label.service'
-import { Component, Input, IterableChanges, IterableDiffer, IterableDiffers, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
+import { Component, Input, IterableDiffer, IterableDiffers, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 import { MessageTableService } from '../../services/messages-table.service'
@@ -53,19 +53,15 @@ export class CustomTableComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.differences = this.iterableDiffers.find(this.records).create()
+        if (this.records) {
+            this.differences = this.iterableDiffers.find(this.records).create()
+        }
     }
 
     ngAfterViewInit(): void {
         this.initVariables()
-        if (this.highlightFirstRow)
+        if (this.highlightFirstRow) {
             this.onGotoRow(1)
-    }
-
-    ngDoCheck(): void {
-        const changes: IterableChanges<any> = this.differences.diff(this.records)
-        if (changes) {
-            this.checked = false
         }
     }
 

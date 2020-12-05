@@ -1,0 +1,49 @@
+<div id="overview-details">
+    <mat-tab-group mat-stretch-tabs>
+        <mat-tab label="Customers">
+            <ng-template matTabContent>
+                <div class="table-wrapper">
+                    <div data-cy="content" class="content" class="scrollable">
+                        <custom-table [highlightFirstRow]=false [feature]="feature" [records]="records.totalPersonsPerCustomer" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Destinations">
+            <ng-template matTabContent>
+                <div class="table-wrapper">
+                    <div data-cy="content" class="content" class="scrollable">
+                        <custom-table [highlightFirstRow]=false [feature]="feature" [records]="records.totalPersonsPerDestination" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Drivers">
+            <ng-template matTabContent>
+                <div class="table-wrapper">
+                    <div data-cy="content" class="content" class="scrollable">
+                        <custom-table [highlightFirstRow]=false [feature]="feature" [records]="records.totalPersonsPerDriver" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Ports">
+            <ng-template matTabContent>
+                <div class="table-wrapper">
+                    <div data-cy="content" class="content" class="scrollable">
+                        <custom-table [highlightFirstRow]=false [feature]="feature" [records]="records.totalPersonsPerPort" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Routes">
+            <ng-template matTabContent>
+                <div class="table-wrapper">
+                    <div data-cy="content" class="content" class="scrollable">
+                        <custom-table [highlightFirstRow]=false [feature]="feature" [records]="records.totalPersonsPerRoute" [headers]="headers" [widths]="widths" [visibility]="visibility" [justify]="justify" [fields]="fields"></custom-table>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,5 +1,10 @@
 namespace Transfers {
 
-    public class TotalPersonsPerDriver : TotalPersonsKeyValuePair { }
+    public class TotalPersonsPerDriver : TotalPersonsKeyValuePair { 
+        
+        public int PersonsLastYear { get; set; }
+        public string Percent{get;set;}
+        
+    }
 
 }

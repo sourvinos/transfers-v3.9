@@ -14,13 +14,13 @@
                 <mat-form-field class="no-bottom-margin">
                     <mat-label>{{ onGetLabel('dateRange') }}</mat-label>
                     <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
-                        <input data-cy="startDate" matStartDate matInput class="center" id="startDate" formControlName="startDate" [inputFormat]="'date'" data-tabindex="1" [inputTabStop]="input" autocomplete="off">
-                        <input data-cy="endDate" matEndDate matInput class="center" id="endDate" formControlName="endDate" [inputFormat]="'date'" data-tabindex="2" [inputTabStop]="input" autocomplete="off">
+                        <input data-cy="fromDate" matStartDate matInput class="center" id="fromDate" formControlName="fromDate" [inputFormat]="'date'" data-tabindex="1" [inputTabStop]="input" autocomplete="off">
+                        <input data-cy="toDate" matEndDate matInput class="center" id="toDate" formControlName="toDate" [inputFormat]="'date'" data-tabindex="2" [inputTabStop]="input" autocomplete="off">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
-                    <mat-error *ngIf="startDate.hasError('required') || endDate.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                    <mat-error *ngIf="startDate.hasError('matStartDateInvalid') || endDate.hasError('matEndDateInvalid')">{{ onGetHint('invalid') }}</mat-error>
+                    <mat-error *ngIf="fromDate.hasError('required') || toDate.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="fromDate.hasError('matfromDateInvalid') || toDate.hasError('mattoDateInvalid')">{{ onGetHint('invalid') }}</mat-error>
                     <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
                 </mat-form-field>
             </form>
@@ -33,101 +33,94 @@
             <div class="period-summary" id="pediod">
                 <div class="header">
                     <h1>Period</h1>
-                    <button mat-icon-button>
-                        <mat-icon>more_vert</mat-icon>
+                    <div class="percent">
+                        <span [ngClass]="period.color">{{ period.percent | formatPercent }}</span>
+                    </div>
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'period')">
+                        Details
                     </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total">{{ Period.persons }}</span>
-                    </div>
-                    <div class="percent">
-                        <span [ngClass]="Period.color">{{ Period.percent }}</span>
+                        <span class="total-persons">{{ period.persons }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>
-                        <span class="sub-total">{{ Period.adults }}</span>
+                        <span class="sub-total">{{ period.adults }}</span>
                     </div>
                     <div class="kids">
                         <h3>Kids</h3>
-                        <span class="sub-total">{{ Period.kids }}</span>
+                        <span class="sub-total">{{ period.kids }}</span>
                     </div>
                     <div class="free">
                         <h3>Free</h3>
-                        <span class="sub-total">{{ Period.free }}</span>
+                        <span class="sub-total">{{ period.free }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="pediod">
                 <div class="header">
-                    <h1>Month to Date</h1>
-                    <button mat-icon-button>
-                        <mat-icon>more_vert</mat-icon>
+                    <h1>MTD</h1>
+                    <div class="percent">
+                        <span [ngClass]="mtd.color">{{ mtd.percent | formatPercent }}</span>
+                    </div>
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'mtd')">
+                        Details
                     </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total">{{ MTD.persons }}</span>
-                    </div>
-                    <div class="percent">
-                        <span [ngClass]="MTD.color">{{ MTD.percent }}</span>
+                        <span class="total-persons">{{ mtd.persons }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>
-                        <span class="sub-total">{{ MTD.adults }}</span>
+                        <span class="sub-total">{{ mtd.adults }}</span>
                     </div>
                     <div class="kids">
                         <h3>Kids</h3>
-                        <span class="sub-total">{{ MTD.kids }}</span>
+                        <span class="sub-total">{{ mtd.kids }}</span>
                     </div>
                     <div class="free">
                         <h3>Free</h3>
-                        <span class="sub-total">{{ MTD.free }}</span>
+                        <span class="sub-total">{{ mtd.free }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="pediod">
                 <div class="header">
-                    <h1>Year to Date</h1>
-                    <button mat-icon-button>
-                        <mat-icon>more_vert</mat-icon>
+                    <h1>YTD</h1>
+                    <div class="percent">
+                        <span [ngClass]="ytd.color">{{ ytd.percent |formatPercent }}</span>
+                    </div>
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'ytd')">
+                        Details
                     </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total">{{ YTD.persons  }}</span>
-                    </div>
-                    <div class="percent">
-                        <span [ngClass]="YTD.color">{{ YTD.percent }}</span>
+                        <span class="total-persons">{{ ytd.persons  }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>
-                        <span class="sub-total">{{ YTD.adults }}</span>
+                        <span class="sub-total">{{ ytd.adults }}</span>
                     </div>
                     <div class="kids">
                         <h3>Kids</h3>
-                        <span class="sub-total">{{ YTD.kids }}</span>
+                        <span class="sub-total">{{ ytd.kids }}</span>
                     </div>
                     <div class="free">
                         <h3>Free</h3>
-                        <span class="sub-total">{{ YTD.free }}</span>
+                        <span class="sub-total">{{ ytd.free }}</span>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div id="details">
-            <mat-tab-group>
-                <mat-tab label="Customers"> Content 1 </mat-tab>
-                <mat-tab label="Destinations"> Content 2 </mat-tab>
-                <mat-tab label="Drivers"> Content 3 </mat-tab>
-                <mat-tab label="Ports"> Content 3 </mat-tab>
-                <mat-tab label="Routes"> Content 3 </mat-tab>
-            </mat-tab-group>
+            <overview-details [records]="details"></overview-details>
         </div>
 
     </div>

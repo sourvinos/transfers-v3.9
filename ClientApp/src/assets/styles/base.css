@@ -99,3 +99,19 @@ p.instructions {
 .mat-date-range-input-start-wrapper {
     width: 100% !important;
 }
+
+.mat-tab-header {
+    padding: 0 1rem !important;
+}
+
+.green {
+    color: var(--color-snackbar-info) !important;
+}
+
+.red {
+    color: var(--color-button-delete) !important;
+}
+
+.blue {
+    color: lightblue !important;
+}

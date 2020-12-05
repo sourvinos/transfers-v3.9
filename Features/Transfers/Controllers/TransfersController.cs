@@ -33,6 +33,11 @@ namespace Transfers {
             return this.repo.GetOverview(fromDate, toDate);
         }
 
+        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
+        public TransferOverviewDetails GetOverviewDetails(string fromDate, string toDate) {
+            return this.repo.GetOverviewDetails(fromDate, toDate);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransfer(int id) {
             var transfer = await repo.GetById(id);

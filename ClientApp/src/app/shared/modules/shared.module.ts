@@ -1,27 +1,27 @@
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { RouterModule } from '@angular/router'
-import { InputFormatDirective } from 'src/app/shared/directives/input-format.directive'
-import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
-import { DialogSummaryComponent } from 'src/app/transfers/user-interface/dialog-summary/dialog-summary.component'
+import { CommonModule } from '@angular/common'
+import { CustomTableComponent } from '../components/table/custom-table.component'
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
 import { DialogIndexComponent } from '../components/dialog-index/dialog-index.component'
-import { SnackbarComponent } from '../components/snackbar/snackbar.component'
-import { CustomTableComponent } from '../components/table/custom-table.component'
-import { SafeStylePipe } from '../pipes/safeStyle.pipe'
+import { FormatPercentPipe } from '../pipes/format-percent.pipe'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { InputFormatDirective } from 'src/app/shared/directives/input-format.directive'
+import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { MaterialModule } from './material.module'
+import { RouterModule } from '@angular/router'
+import { SafeStylePipe } from '../pipes/safeStyle.pipe'
+import { SnackbarComponent } from '../components/snackbar/snackbar.component'
 
 @NgModule({
     declarations: [
         CustomTableComponent,
         DialogAlertComponent,
         DialogIndexComponent,
-        DialogSummaryComponent,
-        SnackbarComponent,
         InputFormatDirective,
         InputTabStopDirective,
-        SafeStylePipe,
+        SnackbarComponent,
+        FormatPercentPipe,
+        SafeStylePipe
     ],
     imports: [
         CommonModule,
@@ -32,15 +32,15 @@ import { MaterialModule } from './material.module'
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
         CustomTableComponent,
         InputFormatDirective,
         InputTabStopDirective,
-        RouterModule
+        FormatPercentPipe
     ],
     entryComponents: [
         DialogAlertComponent,
         DialogIndexComponent,
-        DialogSummaryComponent,
         SnackbarComponent
     ]
 })

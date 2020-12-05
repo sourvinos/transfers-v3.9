@@ -1,4 +1,4 @@
-import { TransferViewModel } from './transferViewModel'
+import { TransferViewModel } from './transfer-view-model'
 
 export class TransferListResolved {
 

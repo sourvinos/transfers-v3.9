@@ -9,10 +9,9 @@ import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-sh
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { Router } from '@angular/router'
-import { SnackbarService } from 'src/app/shared/services/snackbar.service'
 import { Subject } from 'rxjs'
 import { Title } from '@angular/platform-browser'
-import { TransferOverviewViewModel } from './../../classes/transferOverviewViewModel'
+import { TransferOverviewViewModel } from '../../classes/transfer-overview-view-model'
 import { TransferService } from '../../classes/transfer.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 
@@ -27,22 +26,27 @@ export class TransferOverviewComponent {
 
     //#region variables
 
+    public period = new TransferOverviewViewModel
+    public mtd = new TransferOverviewViewModel
+    public ytd = new TransferOverviewViewModel
+
+    public kastYearPeriod = new TransferOverviewViewModel
+    public lastYearMtd = new TransferOverviewViewModel
+    public lastYearYtd = new TransferOverviewViewModel
+
+    public details = new TransferOverviewViewModel
+    public lastYearDetails = new TransferOverviewViewModel
+
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'
-    public LastYearMTD = new TransferOverviewViewModel
-    public LastYearYTD = new TransferOverviewViewModel
-    public LastYearPeriod = new TransferOverviewViewModel
-    public MTD = new TransferOverviewViewModel
-    public YTD = new TransferOverviewViewModel
-    public Period = new TransferOverviewViewModel
     public feature = 'transferOverviewWrapper'
     public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion
 
-    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private transferService: TransferService, private snackbarService: SnackbarService, private titleService: Title) { }
+    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private transferService: TransferService, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -52,18 +56,21 @@ export class TransferOverviewComponent {
         this.addShortcuts()
         this.getLocale()
         this.initPeriod()
-        this.loadRecords('MTD', this.getMTDFrom(), this.getMTDTo())
-        this.loadRecords('LastYearMTD', this.getMTDFrom(true), this.getMTDTo(true))
-        this.loadRecords('YTD', this.getYTDFrom(), this.getYTDTo())
-        this.loadRecords('LastYearYTD', this.getYTDFrom(true), this.getYTDTo(true))
+        this.loadRecords('mtd', this.getMTDFrom(), this.getMTDTo())
+        this.loadRecords('lastYearMtd', this.getMTDFrom(true), this.getMTDTo(true))
+        this.loadRecords('ytd', this.getYTDFrom(), this.getYTDTo())
+        this.loadRecords('lastYearYtd', this.getYTDFrom(true), this.getYTDTo(true))
         setTimeout(() => {
-            this.calculatePercent('MTD', this.MTD.persons, this.LastYearMTD.persons)
-            this.calculatePercent('YTD', this.YTD.persons, this.LastYearYTD.persons)
+            this.mtd.percent = this.calculatePercent(this.mtd.persons, this.lastYearMtd.persons)
+            this.ytd.percent = this.calculatePercent(this.ytd.persons, this.lastYearYtd.persons)
+            this.mtd.color = this.colorizePercent(this.mtd.percent)
+            this.ytd.color = this.colorizePercent(this.ytd.percent)
+            // console.log(this.mtd)
         }, 1000)
     }
 
     ngAfterViewInit(): void {
-        this.focus('startDate')
+        this.focus('fromDate')
     }
 
     ngOnDestroy(): void {
@@ -77,10 +84,11 @@ export class TransferOverviewComponent {
     //#region public methods
 
     public onDoJobs(): void {
-        this.loadRecords('Period', this.getPeriodFrom(), this.getPeriodTo())
-        this.loadRecords('LastYearPeriod', this.getPeriodFrom(true), this.getPeriodTo(true))
+        this.loadRecords('period', this.getPeriodFrom(), this.getPeriodTo())
+        this.loadRecords('lastYearPeriod', this.getPeriodFrom(true), this.getPeriodTo(true))
         setTimeout(() => {
-            this.calculatePercent('Period', this.Period.persons, this.LastYearPeriod.persons)
+            this.period.percent = this.calculatePercent(this.period.persons, this.lastYearDetails.persons)
+            this.period.color = this.colorizePercent(this.period.percent)
         }, 1000)
     }
 
@@ -94,6 +102,10 @@ export class TransferOverviewComponent {
 
     public onGoBack(): void {
         this.router.navigate(['/'])
+    }
+
+    public onLoadDetails(viewModel: string, period: string): void {
+        this.loadDetails(viewModel, period)
     }
 
     //#endregion
@@ -116,25 +128,26 @@ export class TransferOverviewComponent {
         })
     }
 
-    private calculatePercent(variable: string, currentYearPersons: number, lastYearPersons: number): void {
-        let percent = (100 * currentYearPersons / lastYearPersons) - 100
-        if (isNaN(percent)) {
-            percent = 0
+    private calculatePercent(currentYearPersons: number, lastYearPersons: number): number {
+        const percent = (100 * currentYearPersons / lastYearPersons) - 100
+        switch (true) {
+            case (percent == Infinity):
+                return 100
+            case (isNaN(percent)):
+                return 0
+            default:
+                return percent
         }
-        if (percent == Infinity) {
-            percent = 100
-        }
-        if (percent == 0) {
-            this[variable].color = 'blue'
-            this[variable].percent = '(' + percent.toFixed(2) + '%)'
-        }
-        if (percent > 0) {
-            this[variable].color = 'green'
-            this[variable].percent = '(▲' + percent.toFixed(2) + '%)'
-        }
-        if (percent < 0) {
-            this[variable].color = 'red'
-            this[variable].percent = '(▼' + (percent * -1).toFixed(2) + '%)'
+    }
+
+    private colorizePercent(percent: number): string {
+        switch (true) {
+            case (percent == 0 || isNaN(percent)):
+                return 'blue'
+            case (percent == Infinity || percent > 0):
+                return 'green'
+            case (percent < 0):
+                return 'red'
         }
     }
 
@@ -172,19 +185,19 @@ export class TransferOverviewComponent {
 
     private getPeriodFrom(lastYear?: boolean): string {
         if (lastYear) {
-            const date = this.getLastYear() + '-' + this.startDate.value.format('MM') + '-' + this.startDate.value.format('DD')
+            const date = this.getLastYear() + '-' + this.fromDate.value.format('MM') + '-' + this.fromDate.value.format('DD')
             return date
         }
-        const date = this.startDate.value.format('YYYY-MM-DD')
+        const date = this.fromDate.value.format('YYYY-MM-DD')
         return date
     }
 
     private getPeriodTo(lastYear?: boolean): string {
         if (lastYear) {
-            const date = this.getLastYear() + '-' + this.endDate.value.format('MM') + '-' + this.endDate.value.format('DD')
+            const date = this.getLastYear() + '-' + this.toDate.value.format('MM') + '-' + this.toDate.value.format('DD')
             return date
         }
-        const date = this.endDate.value.format('YYYY-MM-DD')
+        const date = this.toDate.value.format('YYYY-MM-DD')
         return date
 
     }
@@ -199,30 +212,64 @@ export class TransferOverviewComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            startDate: ['', [Validators.required]],
-            endDate: ['', [Validators.required]]
+            fromDate: ['', [Validators.required]],
+            toDate: ['', [Validators.required]]
         })
     }
 
     private initPeriod(): void {
-        this.Period.persons = 0
-        this.Period.adults = 0
-        this.Period.kids = 0
-        this.Period.free = 0
-        this.Period.percent = '(0.00%)'
-        this.Period.color = 'blue'
+        this.period.persons = 0
+        this.period.adults = 0
+        this.period.kids = 0
+        this.period.free = 0
+        this.period.percent = 0.00
+        this.period.color = 'blue'
     }
 
-    private loadRecords(variable: any, fromDate: string, toDate: string): Promise<any> {
+    private loadRecords(viewModel: any, fromDate: string, toDate: string): Promise<any> {
         const promise = new Promise((resolve) => {
             this.transferService.getTransfersOverview(fromDate, toDate).toPromise().then((
                 response => {
-                    this[variable] = response
-                    resolve(this[variable])
+                    this[viewModel] = response
+                    // console.log(this[viewModel])
+                    resolve(this[viewModel])
                 }))
         })
         return promise
     }
+
+    private loadDetails(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
+        console.log('Loading details for period', period)
+        const promise = new Promise((resolve) => {
+            this.transferService.getTransfersOverviewDetails(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
+                response => {
+                    this[viewModel] = response
+                    console.log('Details', this[viewModel])
+                    resolve(this[viewModel])
+                }))
+        })
+        return promise
+    }
+
+    private periodSelector(variable: string, lastYear?: boolean): string[] {
+        const dates = []
+        switch (variable) {
+            case 'period':
+                dates[0] = this.fromDate.value
+                dates[1] = this.toDate.value
+                break
+            case 'mtd':
+                dates[0] = this.getMTDFrom(lastYear)
+                dates[1] = this.getMTDTo(lastYear)
+                break
+            case 'ytd':
+                dates[0] = this.getYTDFrom(lastYear)
+                dates[1] = this.getYTDTo(lastYear)
+                break
+        }
+        return dates
+    }
+
 
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
@@ -232,12 +279,12 @@ export class TransferOverviewComponent {
 
     //#region getters
 
-    get startDate(): AbstractControl {
-        return this.form.get('startDate')
+    get fromDate(): AbstractControl {
+        return this.form.get('fromDate')
     }
 
-    get endDate(): AbstractControl {
-        return this.form.get('endDate')
+    get toDate(): AbstractControl {
+        return this.form.get('toDate')
     }
 
     //#endregion    

@@ -36,14 +36,14 @@
     width: 15rem;
 }
 
-#content {
+.content, #content {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
     width: auto;
 }
 
-#content.scrollable::-webkit-scrollbar-thumb {
+.content.scrollable::-webkit-scrollbar-thumb, #content.scrollable::-webkit-scrollbar-thumb {
     border-top: 34px solid var(--color-background-secondary) !important;
 }
 
