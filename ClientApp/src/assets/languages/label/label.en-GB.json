@@ -962,7 +962,7 @@
         ]
     },
     {
-        "feature": "dialogSimple",
+        "feature": "overviewDetails",
         "labels": [
             {
                 "id": "description",
@@ -971,6 +971,10 @@
             {
                 "id": "persons",
                 "description": "Persons"
+            },
+            {
+                "id": "percent",
+                "description": "+/-"
             }
         ]
     },

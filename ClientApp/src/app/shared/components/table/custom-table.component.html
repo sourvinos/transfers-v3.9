@@ -20,7 +20,16 @@
                         <ng-container *ngTemplateOutlet="contextMenu"></ng-container>
                     </mat-menu>
                 </div>
-                <ng-template #elseBlock>{{ record[field] }}</ng-template>
+                <ng-template #elseBlock>
+                    <ng-template [ngIf]="type[i] == 'percent'" [ngIfElse]="text">
+                        <span *ngIf="record[field] < 0" class='red'>{{ record[field] }}</span>
+                        <span *ngIf="record[field] > 0" class='green'>{{ record[field] }}</span>
+                        <span *ngIf="record[field] == 0" class='blue'>{{ record[field] }}</span>
+                    </ng-template>
+                    <ng-template #text>
+                        {{ record[field] }}
+                    </ng-template>
+                </ng-template>
             </td>
         </tr>
     </tbody>

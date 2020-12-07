@@ -34,9 +34,9 @@
                 <div class="header">
                     <h1>Period</h1>
                     <div class="percent">
-                        <span [ngClass]="period.color">{{ period.percent | formatPercent }}</span>
+                        <span [ngClass]="period.color">{{ period.percent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'period')">
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('period')">
                         Details
                     </button>
                 </div>
@@ -63,9 +63,9 @@
                 <div class="header">
                     <h1>MTD</h1>
                     <div class="percent">
-                        <span [ngClass]="mtd.color">{{ mtd.percent | formatPercent }}</span>
+                        <span [ngClass]="mtd.color">{{ mtd.percent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'mtd')">
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('mtd')">
                         Details
                     </button>
                 </div>
@@ -92,16 +92,16 @@
                 <div class="header">
                     <h1>YTD</h1>
                     <div class="percent">
-                        <span [ngClass]="ytd.color">{{ ytd.percent |formatPercent }}</span>
+                        <span [ngClass]="ytd.color">{{ ytd.percent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('details', 'ytd')">
+                    <button mat-flat-button class="transparent" (click)="onLoadDetails('ytd')">
                         Details
                     </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total-persons">{{ ytd.persons  }}</span>
+                        <span class="total-persons">{{ ytd.persons }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>

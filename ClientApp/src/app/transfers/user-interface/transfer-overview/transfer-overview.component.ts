@@ -14,6 +14,7 @@ import { Title } from '@angular/platform-browser'
 import { TransferOverviewViewModel } from '../../classes/transfer-overview-view-model'
 import { TransferService } from '../../classes/transfer.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { TransferOverviewDetailsViewModel } from '../../classes/transfer-overview-details-view-model'
 
 @Component({
     selector: 'transfer-overview',
@@ -30,12 +31,12 @@ export class TransferOverviewComponent {
     public mtd = new TransferOverviewViewModel
     public ytd = new TransferOverviewViewModel
 
-    public kastYearPeriod = new TransferOverviewViewModel
+    public lastYearPeriod = new TransferOverviewViewModel
     public lastYearMtd = new TransferOverviewViewModel
     public lastYearYtd = new TransferOverviewViewModel
 
-    public details = new TransferOverviewViewModel
-    public lastYearDetails = new TransferOverviewViewModel
+    public details = new TransferOverviewDetailsViewModel
+    public detailsLastYear = new TransferOverviewDetailsViewModel
 
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
@@ -65,6 +66,7 @@ export class TransferOverviewComponent {
             this.ytd.percent = this.calculatePercent(this.ytd.persons, this.lastYearYtd.persons)
             this.mtd.color = this.colorizePercent(this.mtd.percent)
             this.ytd.color = this.colorizePercent(this.ytd.percent)
+            
             // console.log(this.mtd)
         }, 1000)
     }
@@ -87,8 +89,7 @@ export class TransferOverviewComponent {
         this.loadRecords('period', this.getPeriodFrom(), this.getPeriodTo())
         this.loadRecords('lastYearPeriod', this.getPeriodFrom(true), this.getPeriodTo(true))
         setTimeout(() => {
-            this.period.percent = this.calculatePercent(this.period.persons, this.lastYearDetails.persons)
-            this.period.color = this.colorizePercent(this.period.percent)
+            this.period.percent = this.calculatePercent(this.period.persons, this.lastYearPeriod.persons)
         }, 1000)
     }
 
@@ -104,8 +105,12 @@ export class TransferOverviewComponent {
         this.router.navigate(['/'])
     }
 
-    public onLoadDetails(viewModel: string, period: string): void {
-        this.loadDetails(viewModel, period)
+    public onLoadDetails(period: string): void {
+        this.loadDetails('details', period)
+        this.loadDetails('detailsLastYear', period, true)
+        setTimeout(() => {
+            this.updateDetailsWithLastYear()
+        }, 1000)
     }
 
     //#endregion
@@ -128,25 +133,26 @@ export class TransferOverviewComponent {
         })
     }
 
-    private calculatePercent(currentYearPersons: number, lastYearPersons: number): number {
-        const percent = (100 * currentYearPersons / lastYearPersons) - 100
+    private calculatePercent(currentYearPersons: number, lastYearPersons: number): string {
+        let percent = (100 * currentYearPersons / lastYearPersons) - 100
         switch (true) {
             case (percent == Infinity):
-                return 100
+                percent = 100
+                break
             case (isNaN(percent)):
-                return 0
-            default:
-                return percent
+                percent = 0
+                break
         }
+        return percent.toFixed(2)
     }
 
-    private colorizePercent(percent: number): string {
+    private colorizePercent(percent: string): string {
         switch (true) {
-            case (percent == 0 || isNaN(percent)):
+            case (parseFloat(percent) == 0 || isNaN(parseFloat(percent))):
                 return 'blue'
-            case (percent == Infinity || percent > 0):
+            case (parseFloat(percent) == Infinity || parseFloat(percent) > 0):
                 return 'green'
-            case (percent < 0):
+            case (parseFloat(percent) < 0):
                 return 'red'
         }
     }
@@ -173,6 +179,16 @@ export class TransferOverviewComponent {
 
     private getLocale(): void {
         this.dateAdapter.setLocale(this.helperService.readItem("language"))
+    }
+
+    private getFrom(lastYear?: boolean): string {
+        const date = new Date(this.fromDate.value)
+        return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+    }
+
+    private getTo(lastYear?: boolean): string {
+        const date = new Date(this.toDate.value)
+        return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
     }
 
     private getMTDFrom(lastYear?: boolean): string {
@@ -222,7 +238,7 @@ export class TransferOverviewComponent {
         this.period.adults = 0
         this.period.kids = 0
         this.period.free = 0
-        this.period.percent = 0.00
+        this.period.percent = '0.00'
         this.period.color = 'blue'
     }
 
@@ -239,12 +255,12 @@ export class TransferOverviewComponent {
     }
 
     private loadDetails(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
-        console.log('Loading details for period', period)
+        // console.log('Loading details for period', period, lastYear)
         const promise = new Promise((resolve) => {
             this.transferService.getTransfersOverviewDetails(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
                 response => {
                     this[viewModel] = response
-                    console.log('Details', this[viewModel])
+                    // console.log('Details', this[viewModel], lastYear)
                     resolve(this[viewModel])
                 }))
         })
@@ -255,8 +271,11 @@ export class TransferOverviewComponent {
         const dates = []
         switch (variable) {
             case 'period':
-                dates[0] = this.fromDate.value
-                dates[1] = this.toDate.value
+                dates[0] = this.getFrom(lastYear)
+                dates[1] = this.getTo(lastYear)
+                console.log(dates[0] + ' ' + dates[1])
+                // dates[0] = moment(this.fromDate.value, 'YYYY/MM/DD').toISOString(true)
+                // dates[1] = moment(this.toDate.value, 'YYYY/MM/DD').toISOString(true)
                 break
             case 'mtd':
                 dates[0] = this.getMTDFrom(lastYear)
@@ -270,9 +289,34 @@ export class TransferOverviewComponent {
         return dates
     }
 
-
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
+    }
+
+    private updateDetailsWithLastYear(): void {
+        this.updateDetailsWithLastYearPersons(this.details.totalPersonsPerCustomer, 'totalPersonsPerCustomer')
+        this.updateDetailsWithLastYearPersons(this.details.totalPersonsPerDestination, 'totalPersonsPerDestination')
+        this.updateDetailsWithLastYearPersons(this.details.totalPersonsPerDriver, 'totalPersonsPerDriver')
+        this.updateDetailsWithLastYearPersons(this.details.totalPersonsPerPort, 'totalPersonsPerPort')
+        this.updateDetailsWithLastYearPersons(this.details.totalPersonsPerRoute, 'totalPersonsPerRoute')
+        this.updateDetailsWithPercentage(this.details.totalPersonsPerCustomer)
+        this.updateDetailsWithPercentage(this.details.totalPersonsPerDestination)
+        this.updateDetailsWithPercentage(this.details.totalPersonsPerDriver)
+        this.updateDetailsWithPercentage(this.details.totalPersonsPerPort)
+        this.updateDetailsWithPercentage(this.details.totalPersonsPerRoute)
+    }
+
+    private updateDetailsWithPercentage(group: any[]): void {
+        group.forEach((element) => { element.percent = this.calculatePercent(element.persons, element.personsLastYear) })
+    }
+
+    private updateDetailsWithLastYearPersons(group: any[], variable: string): void {
+        group.forEach((element, index) => {
+            const found = this.detailsLastYear[variable].filter((x: { description: any }) => x.description == element.description)
+            if (found.length > 0) {
+                this.details[variable][index].personsLastYear = found[0].persons
+            }
+        })
     }
 
     //#endregion

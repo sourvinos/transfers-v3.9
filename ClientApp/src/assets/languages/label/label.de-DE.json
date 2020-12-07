@@ -962,15 +962,19 @@
         ]
     },
     {
-        "feature": "dialogSimple",
+        "feature": "overviewDetails",
         "labels": [
             {
                 "id": "description",
-                "description": "Description"
+                "description": "(DE) Description"
             },
             {
                 "id": "persons",
-                "description": "Persons"
+                "description": "(DE) Persons"
+            },
+            {
+                "id": "percent",
+                "description": "+/-"
             }
         ]
     },

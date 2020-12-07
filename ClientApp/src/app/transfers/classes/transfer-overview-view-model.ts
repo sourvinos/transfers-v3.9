@@ -4,7 +4,7 @@ export class TransferOverviewViewModel {
     adults: number
     kids: number
     free: number
-    percent: number
+    percent: string
     color: string
 
 }
