@@ -15,12 +15,6 @@ import { HelperService } from 'src/app/shared/services/helper.service'
 
 export class LanguageMenuComponent {
 
-    //#region variables
-
-    public color = 'yellow'
-
-    //#endregion
-
     constructor(private dateAdapter: DateAdapter<any>, private helperService: HelperService, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) { }
 
     //#region public methods

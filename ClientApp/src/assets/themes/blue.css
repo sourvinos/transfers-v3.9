@@ -7,12 +7,16 @@
     --color-button-secondary: #748CAB;
     --color-logo-primary: #FE9F36;
     --color-logo-secondary: #FFE85C;
+    --color-period-summary-active: #e1e2e2;
     --color-slider-bar-active: #7C9BA1;
     --color-slider-bar-inactive: #9AA9BB;
     --color-snackbar-error: #920402;
     --color-snackbar-info: #76A28D;
+    --color-text-button: #EDEDED;
+    --color-text-percent-negative: #ff4040;
+    --color-text-percent-positive: #6dce7d;
+    --color-text-percent-zero: #53c4e8;
     --color-text-primary: #55828B;
     --color-text-secondary: #AA767C;
     --color-text-selected: #AA767C80;
-    --color-text-button: #EDEDED;
 }

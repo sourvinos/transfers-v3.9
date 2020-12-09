@@ -106,13 +106,13 @@ p.instructions {
 }
 
 .green {
-    color: var(--color-snackbar-info) !important;
+    color: var(--color-text-percent-positive) !important;
 }
 
 .red {
-    color: var(--color-button-delete) !important;
+    color: var(--color-text-percent-negative) !important;
 }
 
 .blue {
-    color: lightblue !important;
+    color: var(--color-text-percent-zero) !important;
 }

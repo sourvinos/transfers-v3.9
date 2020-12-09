@@ -941,7 +941,7 @@
         ]
     },
     {
-        "feature": "transferOverviewWrapper",
+        "feature": "transferOverview",
         "labels": [
             {
                 "id": "header",

@@ -37,7 +37,7 @@ export class TransferOverviewComponent {
     public isDataFound = false
     public isLoaderVisible = false
 
-    public feature = 'transferOverviewWrapper'
+    public feature = 'transferOverview'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'

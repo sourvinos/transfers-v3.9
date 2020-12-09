@@ -32,78 +32,78 @@
         <div id="statistics">
             <div class="period-summary" id="period" (click)="onLoadDetails('period')">
                 <div class="header">
-                    <h1>Period</h1>
+                    <h1>{{ onGetLabel('period') }}</h1>
                     <div class="percent">
                         <span [ngClass]="period.color">{{ period.percent | decoratePercent }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>Total</h3>
+                        <h3>{{ onGetLabel('total') }}</h3>
                         <span class="total-persons">{{ period.persons }}</span>
                     </div>
                     <div class="adults">
-                        <h3>Adults</h3>
+                        <h3>{{ onGetLabel('adults') }}</h3>
                         <span class="sub-total">{{ period.adults }}</span>
                     </div>
                     <div class="kids">
-                        <h3>Kids</h3>
+                        <h3>{{ onGetLabel('kids') }}</h3>
                         <span class="sub-total">{{ period.kids }}</span>
                     </div>
                     <div class="free">
-                        <h3>Free</h3>
+                        <h3>{{ onGetLabel('free') }}</h3>
                         <span class="sub-total">{{ period.free }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="mtd" (click)="onLoadDetails('mtd')">
                 <div class="header">
-                    <h1>MTD</h1>
+                    <h1>{{ onGetLabel('mtd') }}</h1>
                     <div class="percent">
                         <span [ngClass]="MTD.color">{{ MTD.percent | decoratePercent }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>Total</h3>
+                        <h3>{{ onGetLabel('total') }}</h3>
                         <span class="total-persons">{{ MTD.persons }}</span>
                     </div>
                     <div class="adults">
-                        <h3>Adults</h3>
+                        <h3>{{ onGetLabel('adults') }}</h3>
                         <span class="sub-total">{{ MTD.adults }}</span>
                     </div>
                     <div class="kids">
-                        <h3>Kids</h3>
+                        <h3>{{ onGetLabel('kids') }}</h3>
                         <span class="sub-total">{{ MTD.kids }}</span>
                     </div>
                     <div class="free">
-                        <h3>Free</h3>
+                        <h3>{{ onGetLabel('free') }}</h3>
                         <span class="sub-total">{{ MTD.free }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="ytd" (click)="onLoadDetails('ytd')">
                 <div class="header">
-                    <h1>YTD</h1>
+                    <h1>{{ onGetLabel('ytd') }}</h1>
                     <div class="percent">
                         <span [ngClass]="YTD.color">{{ YTD.percent  | decoratePercent }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>Total</h3>
+                        <h3>{{ onGetLabel('total') }}</h3>
                         <span class="total-persons">{{ YTD.persons }}</span>
                     </div>
                     <div class="adults">
-                        <h3>Adults</h3>
+                        <h3>{{ onGetLabel('adults') }}</h3>
                         <span class="sub-total">{{ YTD.adults }}</span>
                     </div>
                     <div class="kids">
-                        <h3>Kids</h3>
+                        <h3>{{ onGetLabel('kids') }}</h3>
                         <span class="sub-total">{{ YTD.kids }}</span>
                     </div>
                     <div class="free">
-                        <h3>Free</h3>
+                        <h3>{{ onGetLabel('free') }}</h3>
                         <span class="sub-total">{{ YTD.free }}</span>
                     </div>
                 </div>

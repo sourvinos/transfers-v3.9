@@ -941,27 +941,6 @@
         ]
     },
     {
-        "feature": "transferOverviewWrapper",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Period Overview"
-            },
-            {
-                "id": "dateRange",
-                "description": "Period"
-            },
-            {
-                "id": "searchHint",
-                "description": "Select or enter period"
-            },
-            {
-                "id": "searchButton",
-                "description": "Search"
-            }
-        ]
-    },
-    {
         "feature": "overviewDetails",
         "labels": [
             {
@@ -981,6 +960,75 @@
     {
         "feature": "transferOverview",
         "labels": [
+            {
+                "id": "header",
+                "description": "Period Overview"
+            },
+            {
+                "id": "dateRange",
+                "description": "Period"
+            },
+            {
+                "id": "searchHint",
+                "description": "Select or enter period"
+            },
+            {
+                "id": "searchButton",
+                "description": "Search"
+            },
+            {
+                "id": "total",
+                "description": "Total"
+            },
+            {
+                "id": "adults",
+                "description": "Adults"
+            },
+            {
+                "id": "kids",
+                "description": "Kids"
+            },
+            {
+                "id": "free",
+                "description": "Free"
+            }
+        ]
+    },
+    {
+        "feature": "overviewDetails",
+        "labels": [
+            {
+                "id": "customers",
+                "description": "Customers"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinations"
+            },
+            {
+                "id": "drivers",
+                "description": "Drivers"
+            },
+            {
+                "id": "ports",
+                "description": "Ports"
+            },
+            {
+                "id": "routes",
+                "description": "Routes"
+            },
+            {
+                "id": "period",
+                "description": "Period"
+            },
+            {
+                "id": "mtd",
+                "description": "MTD"
+            },
+            {
+                "id": "ytd",
+                "description": "YTD"
+            },
             {
                 "id": "total",
                 "description": "Total"

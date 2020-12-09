@@ -941,27 +941,6 @@
         ]
     },
     {
-        "feature": "transferOverviewWrapper",
-        "labels": [
-            {
-                "id": "header",
-                "description": "Συνοπτική εικόνα"
-            },
-            {
-                "id": "dateRange",
-                "description": "Διαστημα"
-            },
-            {
-                "id": "searchHint",
-                "description": "Επιλεξτε ή δωστε διαστημα"
-            },
-            {
-                "id": "searchButton",
-                "description": "Αναζητηση"
-            }
-        ]
-    },
-    {
         "feature": "overviewDetails",
         "labels": [
             {
@@ -982,6 +961,22 @@
         "feature": "transferOverview",
         "labels": [
             {
+                "id": "header",
+                "description": "Συνοπτική εικόνα"
+            },
+            {
+                "id": "dateRange",
+                "description": "Διαστημα"
+            },
+            {
+                "id": "searchHint",
+                "description": "Επιλεξτε ή δωστε διαστημα"
+            },
+            {
+                "id": "searchButton",
+                "description": "Αναζητηση"
+            },
+            {
                 "id": "total",
                 "description": "Σύνολο"
             },
@@ -996,7 +991,12 @@
             {
                 "id": "free",
                 "description": "Δωρεάν"
-            },
+            }
+        ]
+    },
+    {
+        "feature": "overviewDetails",
+        "labels": [
             {
                 "id": "customers",
                 "description": "Πελάτες"
@@ -1016,6 +1016,54 @@
             {
                 "id": "routes",
                 "description": "Διαδρομές"
+            },
+            {
+                "id": "period",
+                "description": "Διάστημα"
+            },
+            {
+                "id": "mtd",
+                "description": "MTD"
+            },
+            {
+                "id": "ytd",
+                "description": "YTD"
+            },
+            {
+                "id": "total",
+                "description": "Συνολο"
+            },
+            {
+                "id": "adults",
+                "description": "Ενηλικες"
+            },
+            {
+                "id": "kids",
+                "description": "Παιδια"
+            },
+            {
+                "id": "free",
+                "description": "Δωρεαν"
+            },
+            {
+                "id": "customers",
+                "description": "Πελατες"
+            },
+            {
+                "id": "destinations",
+                "description": "Προορισμοι"
+            },
+            {
+                "id": "drivers",
+                "description": "Οδηγοι"
+            },
+            {
+                "id": "ports",
+                "description": "Λιμανια"
+            },
+            {
+                "id": "routes",
+                "description": "Διαδρομες"
             }
         ]
     }

@@ -66,7 +66,7 @@
 }
 
 .total, .adults, .kids, .free {
-    background-color: #3c44484f;
+    background-color: var(--color-background-secondary);
     padding-right: 0;
 }
 
