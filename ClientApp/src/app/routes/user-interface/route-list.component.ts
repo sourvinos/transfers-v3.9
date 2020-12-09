@@ -47,7 +47,8 @@ export class RouteListComponent {
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']
     fields = ['', 'id', 'abbreviation', 'description', '']
-
+    types = ['', '', '', '', '']
+    
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }

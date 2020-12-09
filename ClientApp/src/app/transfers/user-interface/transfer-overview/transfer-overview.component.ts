@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { DateAdapter } from '@angular/material/core'
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms'
 import { HelperService } from 'src/app/shared/services/helper.service'
@@ -27,27 +27,31 @@ export class TransferOverviewComponent {
 
     //#region variables
 
-    public period = new TransferOverviewViewModel
-    public mtd = new TransferOverviewViewModel
-    public ytd = new TransferOverviewViewModel
-
-    public lastYearPeriod = new TransferOverviewViewModel
-    public lastYearMtd = new TransferOverviewViewModel
-    public lastYearYtd = new TransferOverviewViewModel
+    public period = new TransferOverviewViewModel; public lastYearPeriod = new TransferOverviewViewModel
+    public MTD = new TransferOverviewViewModel; public lastYearMTD = new TransferOverviewViewModel
+    public YTD = new TransferOverviewViewModel; public lastYearYTD = new TransferOverviewViewModel
 
     public details = new TransferOverviewDetailsViewModel
     public detailsLastYear = new TransferOverviewDetailsViewModel
 
+    public isDataFound = false
+    public isLoaderVisible = false
+
+    public feature = 'transferOverviewWrapper'
     private ngUnsubscribe = new Subject<void>()
     private unlisten: Unlisten
     private windowTitle = 'Transfers overview'
-    public feature = 'transferOverviewWrapper'
     public form: FormGroup
     public input: InputTabStopDirective
 
     //#endregion
 
-    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private transferService: TransferService, private titleService: Title) { }
+    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title, private transferService: TransferService) { }
+
+    @HostListener('window:resize', ['$event']) onResize(): any {
+        this.setSidebarVisibility('hidden')
+        this.setTopLogoVisibility('visible')
+    }
 
     //#region lifecycle hooks
 
@@ -57,18 +61,10 @@ export class TransferOverviewComponent {
         this.addShortcuts()
         this.getLocale()
         this.initPeriod()
-        this.loadRecords('mtd', this.getMTDFrom(), this.getMTDTo())
-        this.loadRecords('lastYearMtd', this.getMTDFrom(true), this.getMTDTo(true))
-        this.loadRecords('ytd', this.getYTDFrom(), this.getYTDTo())
-        this.loadRecords('lastYearYtd', this.getYTDFrom(true), this.getYTDTo(true))
-        setTimeout(() => {
-            this.mtd.percent = this.calculatePercent(this.mtd.persons, this.lastYearMtd.persons)
-            this.ytd.percent = this.calculatePercent(this.ytd.persons, this.lastYearYtd.persons)
-            this.mtd.color = this.colorizePercent(this.mtd.percent)
-            this.ytd.color = this.colorizePercent(this.ytd.percent)
-            
-            // console.log(this.mtd)
-        }, 1000)
+        this.loadStatistics('MTD', 'getMTDFrom', 'getMTDTo').then(() => { this.calculateStatisticPercents('MTD'); this.colorizePercent('MTD') })
+        this.loadStatistics('YTD', 'getYTDFrom', 'getYTDTo').then(() => { this.calculateStatisticPercents('YTD'); this.colorizePercent('YTD') })
+        this.setSidebarVisibility('hidden')
+        this.setTopLogoVisibility('visible')
     }
 
     ngAfterViewInit(): void {
@@ -78,20 +74,13 @@ export class TransferOverviewComponent {
     ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
+        this.setSidebarVisibility()
         this.unlisten()
     }
 
     //#endregion
 
     //#region public methods
-
-    public onDoJobs(): void {
-        this.loadRecords('period', this.getPeriodFrom(), this.getPeriodTo())
-        this.loadRecords('lastYearPeriod', this.getPeriodFrom(true), this.getPeriodTo(true))
-        setTimeout(() => {
-            this.period.percent = this.calculatePercent(this.period.persons, this.lastYearPeriod.persons)
-        }, 1000)
-    }
 
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
@@ -105,12 +94,20 @@ export class TransferOverviewComponent {
         this.router.navigate(['/'])
     }
 
-    public onLoadDetails(period: string): void {
-        this.loadDetails('details', period)
-        this.loadDetails('detailsLastYear', period, true)
-        setTimeout(() => {
-            this.updateDetailsWithLastYear()
-        }, 1000)
+    public async onLoadDetails(period: string): Promise<void> {
+        this.isDataFound = false
+        this.isLoaderVisible = true
+        await this.loadDetails('details', period)
+        await this.loadDetails('detailsLastYear', period, true)
+        this.clearActivePeriod()
+        this.setActivePeriod(period)
+        this.updateDetailsWithLastYear()
+        this.isDataFound = this.details.totalPersonsPerCustomer.length > 0 ? true : false
+        this.isLoaderVisible = false
+    }
+
+    public async onLoadStatisticsForPeriod(): Promise<void> {
+        this.loadStatistics('period', 'getPeriodFrom', 'getPeriodTo').then(() => { this.calculateStatisticPercents('period'); this.colorizePercent('period') })
     }
 
     //#endregion
@@ -133,7 +130,7 @@ export class TransferOverviewComponent {
         })
     }
 
-    private calculatePercent(currentYearPersons: number, lastYearPersons: number): string {
+    private calculatePercent(currentYearPersons: number, lastYearPersons: number): number {
         let percent = (100 * currentYearPersons / lastYearPersons) - 100
         switch (true) {
             case (percent == Infinity):
@@ -143,17 +140,30 @@ export class TransferOverviewComponent {
                 percent = 0
                 break
         }
-        return percent.toFixed(2)
+        return percent
     }
 
-    private colorizePercent(percent: string): string {
+    private calculateStatisticPercents(period: string): void {
+        this[period].percent = this.calculatePercent(this[period].persons, this['lastYear' + period].persons)
+    }
+
+    private clearActivePeriod(): void {
+        const elements = document.querySelectorAll('.period-summary')
+        elements.forEach(element => {
+            element.classList.remove('active')
+        })
+    }
+
+    private colorizePercent(period: string): void {
         switch (true) {
-            case (parseFloat(percent) == 0 || isNaN(parseFloat(percent))):
-                return 'blue'
-            case (parseFloat(percent) == Infinity || parseFloat(percent) > 0):
-                return 'green'
-            case (parseFloat(percent) < 0):
-                return 'red'
+            case (this[period].percent == 0 || isNaN(this[period].percent)):
+                this[period].color = 'blue'
+                break
+            case (this[period].percent == Infinity || this[period].percent > 0):
+                this[period].color = 'green'
+                break
+            case (this[period].percent < 0):
+                this[period].color = 'red'
         }
     }
 
@@ -181,12 +191,12 @@ export class TransferOverviewComponent {
         this.dateAdapter.setLocale(this.helperService.readItem("language"))
     }
 
-    private getFrom(lastYear?: boolean): string {
+    private getPeriodFrom(lastYear?: boolean): string {
         const date = new Date(this.fromDate.value)
         return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
     }
 
-    private getTo(lastYear?: boolean): string {
+    private getPeriodTo(lastYear?: boolean): string {
         const date = new Date(this.toDate.value)
         return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
     }
@@ -197,25 +207,6 @@ export class TransferOverviewComponent {
 
     private getMTDTo(lastYear?: boolean): string {
         return lastYear ? this.getLastYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay() : this.getCurrentYear() + '-' + this.getCurrentMonth() + '-' + this.getCurrentDay()
-    }
-
-    private getPeriodFrom(lastYear?: boolean): string {
-        if (lastYear) {
-            const date = this.getLastYear() + '-' + this.fromDate.value.format('MM') + '-' + this.fromDate.value.format('DD')
-            return date
-        }
-        const date = this.fromDate.value.format('YYYY-MM-DD')
-        return date
-    }
-
-    private getPeriodTo(lastYear?: boolean): string {
-        if (lastYear) {
-            const date = this.getLastYear() + '-' + this.toDate.value.format('MM') + '-' + this.toDate.value.format('DD')
-            return date
-        }
-        const date = this.toDate.value.format('YYYY-MM-DD')
-        return date
-
     }
 
     private getYTDFrom(lastYear?: boolean): string {
@@ -238,16 +229,15 @@ export class TransferOverviewComponent {
         this.period.adults = 0
         this.period.kids = 0
         this.period.free = 0
-        this.period.percent = '0.00'
+        this.period.percent = 0
         this.period.color = 'blue'
     }
 
-    private loadRecords(viewModel: any, fromDate: string, toDate: string): Promise<any> {
+    private loadStatisticsForPeriod(viewModel: any, fromDate: string, toDate: string): Promise<any> {
         const promise = new Promise((resolve) => {
             this.transferService.getTransfersOverview(fromDate, toDate).toPromise().then((
                 response => {
                     this[viewModel] = response
-                    // console.log(this[viewModel])
                     resolve(this[viewModel])
                 }))
         })
@@ -255,27 +245,27 @@ export class TransferOverviewComponent {
     }
 
     private loadDetails(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
-        // console.log('Loading details for period', period, lastYear)
         const promise = new Promise((resolve) => {
             this.transferService.getTransfersOverviewDetails(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
                 response => {
                     this[viewModel] = response
-                    // console.log('Details', this[viewModel], lastYear)
                     resolve(this[viewModel])
                 }))
         })
         return promise
     }
 
+    private async loadStatistics(period: string, fromDateFn: string, toDateFn: string): Promise<void> {
+        await this.loadStatisticsForPeriod(period, this[fromDateFn](), this[toDateFn]())
+        await this.loadStatisticsForPeriod('lastYear' + period, this[fromDateFn](true), this[toDateFn](true))
+    }
+
     private periodSelector(variable: string, lastYear?: boolean): string[] {
         const dates = []
         switch (variable) {
             case 'period':
-                dates[0] = this.getFrom(lastYear)
-                dates[1] = this.getTo(lastYear)
-                console.log(dates[0] + ' ' + dates[1])
-                // dates[0] = moment(this.fromDate.value, 'YYYY/MM/DD').toISOString(true)
-                // dates[1] = moment(this.toDate.value, 'YYYY/MM/DD').toISOString(true)
+                dates[0] = this.getPeriodFrom(lastYear)
+                dates[1] = this.getPeriodTo(lastYear)
                 break
             case 'mtd':
                 dates[0] = this.getMTDFrom(lastYear)
@@ -287,6 +277,33 @@ export class TransferOverviewComponent {
                 break
         }
         return dates
+    }
+
+    private setActivePeriod(period: string): void {
+        document.querySelector('#' + period).classList.add('active')
+    }
+
+    private setTopLogoVisibility(visibility?: string): void {
+        if (screen.width < 1599 && visibility) {
+            document.getElementById('top-logo').style.display = 'flex'
+        } else {
+            document.getElementById('top-logo').style.display = 'none'
+        }
+    }
+
+    private setSidebarVisibility(visibility?: string): void {
+        if (screen.width < 1599 && visibility) {
+            document.getElementById('side-logo').style.opacity = '0'
+            document.getElementById('side-image').style.opacity = '0'
+            document.getElementById('side-footer').style.opacity = '0'
+            document.getElementById('side-bar').style.width = '0'
+            document.getElementById('side-bar').style.overflow = 'hidden'
+        } else {
+            document.getElementById('side-logo').style.opacity = '1'
+            document.getElementById('side-image').style.opacity = '1'
+            document.getElementById('side-footer').style.opacity = '1'
+            document.getElementById('side-bar').style.width = '16.5rem'
+        }
     }
 
     private setWindowTitle(): void {

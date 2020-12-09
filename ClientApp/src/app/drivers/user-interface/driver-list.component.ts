@@ -47,7 +47,8 @@ export class DriverListComponent {
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center']
     fields = ['', 'id', 'description', 'phones', '']
-
+    types = ['', '', '', '', '']
+    
     //#endregion
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }

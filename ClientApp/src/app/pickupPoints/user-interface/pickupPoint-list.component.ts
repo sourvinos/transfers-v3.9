@@ -55,6 +55,7 @@ export class PickupPointListComponent {
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center', 'center']
     fields = ['', 'id', 'description', 'exactPoint', 'time', '']
+    types = ['', '', '', '', '', '']
 
     //#endregion
 

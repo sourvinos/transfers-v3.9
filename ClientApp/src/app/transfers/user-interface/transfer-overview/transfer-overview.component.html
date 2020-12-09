@@ -24,21 +24,18 @@
                     <mat-hint>{{ onGetLabel('searchHint') }}</mat-hint>
                 </mat-form-field>
             </form>
-            <button data-cy="search" mat-flat-button id="search" class="primary" (click)="onDoJobs()">{{ onGetLabel('searchButton') }}</button>
+            <button data-cy="search" mat-flat-button id="search" class="primary" (click)="onLoadStatisticsForPeriod()">{{ onGetLabel('searchButton') }}</button>
         </div>
     </div>
 
     <div id="content">
         <div id="statistics">
-            <div class="period-summary" id="pediod">
+            <div class="period-summary" id="period" (click)="onLoadDetails('period')">
                 <div class="header">
                     <h1>Period</h1>
                     <div class="percent">
-                        <span [ngClass]="period.color">{{ period.percent }}</span>
+                        <span [ngClass]="period.color">{{ period.percent | decoratePercent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('period')">
-                        Details
-                    </button>
                 </div>
                 <div class="body">
                     <div class="total">
@@ -59,70 +56,62 @@
                     </div>
                 </div>
             </div>
-            <div class="period-summary" id="pediod">
+            <div class="period-summary" id="mtd" (click)="onLoadDetails('mtd')">
                 <div class="header">
                     <h1>MTD</h1>
                     <div class="percent">
-                        <span [ngClass]="mtd.color">{{ mtd.percent }}</span>
+                        <span [ngClass]="MTD.color">{{ MTD.percent | decoratePercent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('mtd')">
-                        Details
-                    </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total-persons">{{ mtd.persons }}</span>
+                        <span class="total-persons">{{ MTD.persons }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>
-                        <span class="sub-total">{{ mtd.adults }}</span>
+                        <span class="sub-total">{{ MTD.adults }}</span>
                     </div>
                     <div class="kids">
                         <h3>Kids</h3>
-                        <span class="sub-total">{{ mtd.kids }}</span>
+                        <span class="sub-total">{{ MTD.kids }}</span>
                     </div>
                     <div class="free">
                         <h3>Free</h3>
-                        <span class="sub-total">{{ mtd.free }}</span>
+                        <span class="sub-total">{{ MTD.free }}</span>
                     </div>
                 </div>
             </div>
-            <div class="period-summary" id="pediod">
+            <div class="period-summary" id="ytd" (click)="onLoadDetails('ytd')">
                 <div class="header">
                     <h1>YTD</h1>
                     <div class="percent">
-                        <span [ngClass]="ytd.color">{{ ytd.percent }}</span>
+                        <span [ngClass]="YTD.color">{{ YTD.percent  | decoratePercent }}</span>
                     </div>
-                    <button mat-flat-button class="transparent" (click)="onLoadDetails('ytd')">
-                        Details
-                    </button>
                 </div>
                 <div class="body">
                     <div class="total">
                         <h3>Total</h3>
-                        <span class="total-persons">{{ ytd.persons }}</span>
+                        <span class="total-persons">{{ YTD.persons }}</span>
                     </div>
                     <div class="adults">
                         <h3>Adults</h3>
-                        <span class="sub-total">{{ ytd.adults }}</span>
+                        <span class="sub-total">{{ YTD.adults }}</span>
                     </div>
                     <div class="kids">
                         <h3>Kids</h3>
-                        <span class="sub-total">{{ ytd.kids }}</span>
+                        <span class="sub-total">{{ YTD.kids }}</span>
                     </div>
                     <div class="free">
                         <h3>Free</h3>
-                        <span class="sub-total">{{ ytd.free }}</span>
+                        <span class="sub-total">{{ YTD.free }}</span>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="details">
-            <overview-details [records]="details"></overview-details>
+            <overview-details [records]="details" [isLoaderVisible]="isLoaderVisible" [isDataFound]="isDataFound"></overview-details>
         </div>
-
     </div>
 
 </div>

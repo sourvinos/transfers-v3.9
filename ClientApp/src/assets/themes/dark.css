@@ -7,12 +7,13 @@
     --color-button-secondary: #426176;
     --color-logo-primary: #FE9F36;
     --color-logo-secondary: #FFE85C;
+    --color-period-summary-active:#5a5e5f;
     --color-slider-bar-active: #7C9BA1;
     --color-slider-bar-inactive: #697880;
     --color-snackbar-error: #920402;
     --color-snackbar-info: #76A28D;
+    --color-text-button: #EDEDED;
     --color-text-primary: #EFEFEF;
     --color-text-secondary: #F2D492;
     --color-text-selected: #f2d49266;
-    --color-text-button: #EDEDED;
 }

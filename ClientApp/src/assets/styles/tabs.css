@@ -15,3 +15,13 @@
 .mat-tab-body-content {
     padding: 0;
 }
+
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    background-color: var(--color-background-secondary) !important;
+}
+
+@media (max-height:768px) {
+    .mat-tab-label {
+        /* height: 2.375rem !important; */
+    }
+}

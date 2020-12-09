@@ -1,19 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core'
 
-@Pipe({ name: 'formatPercent' })
+@Pipe({ name: 'decoratePercent' })
 
-export class FormatPercentPipe implements PipeTransform {
+export class DecoratePercentPipe implements PipeTransform {
 
     //#region public methods
 
     public transform(value: number): string {
         switch (true) {
             case (value == 0):
-                return value.toFixed(2) + '% •'
+                return value.toFixed(2) + '% ––'
             case (value < 0):
-                return (value).toFixed(2) + '% ▼'
+                return value.toFixed(2) + '% ▼'
             case (value > 0):
-                return (value).toFixed(2) + '% ▲'
+                return value.toFixed(2) + '% ▲'
         }
     }
 

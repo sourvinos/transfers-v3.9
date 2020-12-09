@@ -47,6 +47,7 @@ export class DestinationListComponent {
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']
     fields = ['', 'id', 'abbreviation', 'description', '']
+    types = ['', '', '', '', '']
 
     //#endregion
 

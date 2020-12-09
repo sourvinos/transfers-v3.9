@@ -47,6 +47,7 @@ export class UserListComponent {
     visibility = ['none', 'none']
     justify = ['center', 'left', 'left', 'left', 'left', 'center']
     fields = ['', 'id', 'displayname', 'username', 'email', '']
+    types = ['', '', '', '', '', '']
 
     //#endregion
 

@@ -28,7 +28,7 @@ export class CustomTableComponent {
     @Input() records: any[]
     @Input() visibility: any
     @Input() widths: any
-    @Input() type: any
+    @Input() types: any
     @Input() highlightFirstRow: boolean
 
     @ViewChild('contextMenu') contextMenu: TemplateRef<any>

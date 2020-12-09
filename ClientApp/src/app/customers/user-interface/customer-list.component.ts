@@ -47,6 +47,7 @@ export class CustomerListComponent {
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
     fields = ['', 'id', 'description', 'phones', 'email', '']
+    types = ['', '', '', '', '', '']
 
     //#endregion
 
