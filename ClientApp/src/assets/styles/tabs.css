@@ -8,8 +8,8 @@
 }
 
 .mat-ink-bar {
-    background-color: var(--color-text-secondary) !important;
-    height: 3px !important;
+    background-color: var(--color-ink-bar) !important;
+    height: 2px !important;
 }
 
 .mat-tab-body-content {
@@ -18,10 +18,4 @@
 
 .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     background-color: var(--color-background-secondary) !important;
-}
-
-@media (max-height:768px) {
-    .mat-tab-label {
-        /* height: 2.375rem !important; */
-    }
 }

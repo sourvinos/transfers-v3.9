@@ -42,7 +42,8 @@
 }
 
 .mat-calendar-body-in-range:not(.mat-calendar-body-range-start):not(.mat-calendar-body-range-end) {
-    background-color: var(--color-background-secondary) !important;
+    background-color: var(--color-button-secondary) !important;
+    border-radius: 50% !important;
 }
 
 .mat-calendar-body-cell::before, .mat-calendar-body-cell::after, .mat-calendar-body-cell-preview {

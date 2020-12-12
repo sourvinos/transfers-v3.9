@@ -34,25 +34,25 @@
                 <div class="header">
                     <h1>{{ onGetLabel('period') }}</h1>
                     <div class="percent">
-                        <span [ngClass]="period.color">{{ period.percent | decoratePercent }}</span>
+                        <span [ngClass]="period.color">{{ period.percent | formatNumber:2:true }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>{{ onGetLabel('total') }}</h3>
-                        <span class="total-persons">{{ period.persons }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('total') }}</span>
+                        <span class="total-persons">{{ period.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <h3>{{ onGetLabel('adults') }}</h3>
-                        <span class="sub-total">{{ period.adults }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
+                        <span class="sub-total">{{ period.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <h3>{{ onGetLabel('kids') }}</h3>
-                        <span class="sub-total">{{ period.kids }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
+                        <span class="sub-total">{{ period.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <h3>{{ onGetLabel('free') }}</h3>
-                        <span class="sub-total">{{ period.free }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
+                        <span class="sub-total">{{ period.free | formatNumber }}</span>
                     </div>
                 </div>
             </div>
@@ -60,25 +60,25 @@
                 <div class="header">
                     <h1>{{ onGetLabel('mtd') }}</h1>
                     <div class="percent">
-                        <span [ngClass]="MTD.color">{{ MTD.percent | decoratePercent }}</span>
+                        <span [ngClass]="MTD.color">{{ MTD.percent | formatNumber:2:true }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>{{ onGetLabel('total') }}</h3>
-                        <span class="total-persons">{{ MTD.persons }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('total') }}</span>
+                        <span class="total-persons">{{ MTD.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <h3>{{ onGetLabel('adults') }}</h3>
-                        <span class="sub-total">{{ MTD.adults }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
+                        <span class="sub-total">{{ MTD.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <h3>{{ onGetLabel('kids') }}</h3>
-                        <span class="sub-total">{{ MTD.kids }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
+                        <span class="sub-total">{{ MTD.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <h3>{{ onGetLabel('free') }}</h3>
-                        <span class="sub-total">{{ MTD.free }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
+                        <span class="sub-total">{{ MTD.free | formatNumber }}</span>
                     </div>
                 </div>
             </div>
@@ -86,25 +86,25 @@
                 <div class="header">
                     <h1>{{ onGetLabel('ytd') }}</h1>
                     <div class="percent">
-                        <span [ngClass]="YTD.color">{{ YTD.percent  | decoratePercent }}</span>
+                        <span [ngClass]="YTD.color">{{ YTD.percent  | formatNumber:2:true }}</span>
                     </div>
                 </div>
                 <div class="body">
                     <div class="total">
-                        <h3>{{ onGetLabel('total') }}</h3>
-                        <span class="total-persons">{{ YTD.persons }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('total') }}</span>
+                        <span class="total-persons">{{ YTD.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <h3>{{ onGetLabel('adults') }}</h3>
-                        <span class="sub-total">{{ YTD.adults }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
+                        <span class="sub-total">{{ YTD.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <h3>{{ onGetLabel('kids') }}</h3>
-                        <span class="sub-total">{{ YTD.kids }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
+                        <span class="sub-total">{{ YTD.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <h3>{{ onGetLabel('free') }}</h3>
-                        <span class="sub-total">{{ YTD.free }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
+                        <span class="sub-total">{{ YTD.free | formatNumber }}</span>
                     </div>
                 </div>
             </div>

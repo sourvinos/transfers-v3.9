@@ -1,7 +1,7 @@
 <div id="overview-details">
     <ng-template [ngIf]="isDataFound == true && isLoaderVisible == false">
         <mat-tab-group mat-stretch-tabs>
-            <mat-tab label="Customers">
+            <mat-tab label="{{ onGetLabel('customers')}}">
                 <ng-template matTabContent>
                     <div class="table-wrapper">
                         <div data-cy="content" class="content" class="scrollable">
@@ -10,7 +10,7 @@
                     </div>
                 </ng-template>
             </mat-tab>
-            <mat-tab label="Destinations">
+            <mat-tab label="{{ onGetLabel('destinations')}}">
                 <ng-template matTabContent>
                     <div class="table-wrapper">
                         <div data-cy="content" class="content" class="scrollable">
@@ -19,7 +19,7 @@
                     </div>
                 </ng-template>
             </mat-tab>
-            <mat-tab label="Drivers">
+            <mat-tab label="{{ onGetLabel('drivers')}}">
                 <ng-template matTabContent>
                     <div class="table-wrapper">
                         <div data-cy="content" class="content" class="scrollable">
@@ -28,7 +28,7 @@
                     </div>
                 </ng-template>
             </mat-tab>
-            <mat-tab label="Ports">
+            <mat-tab label="{{ onGetLabel('ports')}}">
                 <ng-template matTabContent>
                     <div class="table-wrapper">
                         <div data-cy="content" class="content" class="scrollable">
@@ -37,7 +37,7 @@
                     </div>
                 </ng-template>
             </mat-tab>
-            <mat-tab label="Routes">
+            <mat-tab label="{{ onGetLabel('routes')}}">
                 <ng-template matTabContent>
                     <div class="table-wrapper">
                         <div data-cy="content" class="content" class="scrollable">
@@ -49,9 +49,10 @@
         </mat-tab-group>
     </ng-template>
     <ng-template [ngIf]="isLoaderVisible == true">
-        <h1>Loading</h1>
+        <div id="spinner"></div>
     </ng-template>
     <ng-template [ngIf]="isDataFound == false && isLoaderVisible == false">
-        <h1>Nothing</h1>
+        <h1>{{ onGetLabel('nothingH1') }}</h1>
+        <h2>{{ onGetLabel('nothingH2') }}</h2>
     </ng-template>
 </div>

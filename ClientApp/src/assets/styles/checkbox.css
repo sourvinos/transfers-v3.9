@@ -42,7 +42,6 @@
 
 /* Ripple */
 
-.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
-.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
     background-color: var(--color-button-primary) !important;
 }

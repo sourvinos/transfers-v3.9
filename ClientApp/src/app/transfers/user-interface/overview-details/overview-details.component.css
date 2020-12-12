@@ -1,85 +1,40 @@
-table {
-    border-spacing: 0;
-    flex: 1;
-    transition: background-color 0.7s;
-    width: 100%;
-}
-
-th {
-    background-color: var(--color-background-secondary);
-    border-right: 0.125rem solid var(--color-background-table);
-    color: var(--color-text-primary);
-    font-family: var(--font-family-table-header);
-    font-size: var(--font-size-table-header);
-    font-variant-caps: petite-caps;
-    font-weight: var(--font-weight-table-header);
-    padding: 0.4rem;
-    position: sticky;
-    text-align: center;
-    top: 0;
-    transition: background-color 0.7s;
-    z-index: 1;
-}
-
-th:nth-child(1) {
-    width: 400px;
-}
-
-th:nth-child(2) {
-    width: 100px;
-}
-
-th:hover {
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-primary);
-    cursor: pointer;
-    font-weight: bold;
-}
-
-tr:hover td {
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-primary);
-    cursor: default;
-    font-weight: bold;
-}
-
-tr:hover td:last-child>div>.button-row-menu {
-    visibility: visible;
-}
-
-td {
-    color: var(--color-text-primary);
-    font-family: var(--font-family-table-body);
-    font-size: var(--font-size-table-row);
-    max-width: 0;
-    overflow: hidden;
-    padding: 0.5rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.right {
-    text-align: right;
-}
-
-.table-wrapper .scrollable::-webkit-scrollbar-thumb {
-    border-top: 34px solid var(--color-background-secondary) !important;
-}
-
 #overview-details {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-}
-
-ul {
-    padding: 0;
-    margin: 0;
+    justify-content: center;
 }
 
 .mat-tab-group {
     display: flex;
     height: 100% !important;
+    width: 100%;
 }
 
 .mat-tab-body {
     height: 100% !important;
+}
+
+#spinner {
+    border: 0.1875rem solid var(--color-logo-secondary);
+    border-top: 0.1875rem solid var(--color-logo-primary);
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    animation: spin 1700ms linear infinite;
+}
+
+.table-wrapper {
+    padding: 1rem 0 0 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { CustomTableComponent } from '../components/table/custom-table.component'
 import { DialogAlertComponent } from '../components/dialog-alert/dialog-alert.component'
 import { DialogIndexComponent } from '../components/dialog-index/dialog-index.component'
-import { DecoratePercentPipe } from '../pipes/decorate-percent.pipe'
+import { FormatNumberPipe } from '../pipes/format-number.pipe'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { InputFormatDirective } from 'src/app/shared/directives/input-format.directive'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
@@ -20,7 +20,7 @@ import { SnackbarComponent } from '../components/snackbar/snackbar.component'
         InputFormatDirective,
         InputTabStopDirective,
         SnackbarComponent,
-        DecoratePercentPipe,
+        FormatNumberPipe,
         SafeStylePipe
     ],
     imports: [
@@ -36,7 +36,7 @@ import { SnackbarComponent } from '../components/snackbar/snackbar.component'
         CustomTableComponent,
         InputFormatDirective,
         InputTabStopDirective,
-        DecoratePercentPipe
+        FormatNumberPipe
     ],
     entryComponents: [
         DialogAlertComponent,

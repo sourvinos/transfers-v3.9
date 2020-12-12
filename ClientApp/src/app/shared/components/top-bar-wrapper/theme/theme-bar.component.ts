@@ -36,7 +36,6 @@ export class ThemeBarComponent {
     }
 
     public onToggleTheme(): void {
-        this.changeTheme()
         this.attachStylesheetToHead()
         this.updateLocalStorage()
     }
@@ -57,10 +56,6 @@ export class ThemeBarComponent {
         newLinkElement.rel = 'stylesheet'
         newLinkElement.href = this.theme + '.css'
         headElement.appendChild(newLinkElement)
-    }
-
-    private changeTheme(): void {
-        this.theme = this.theme == 'light' ? 'dark' : 'light'
     }
 
     private updateLocalStorage(): void {

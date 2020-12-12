@@ -935,25 +935,8 @@
                 "description": "Εβενος"
             },
             {
-                "id": "dark",
+                "id": "gray",
                 "description": "Γκρι"
-            }
-        ]
-    },
-    {
-        "feature": "overviewDetails",
-        "labels": [
-            {
-                "id": "description",
-                "description": "Περιγραφη"
-            },
-            {
-                "id": "persons",
-                "description": "Ατομα"
-            },
-            {
-                "id": "percent",
-                "description": "+/-"
             }
         ]
     },
@@ -977,57 +960,8 @@
                 "description": "Αναζητηση"
             },
             {
-                "id": "total",
-                "description": "Σύνολο"
-            },
-            {
-                "id": "adults",
-                "description": "Ενήλικες"
-            },
-            {
-                "id": "kids",
-                "description": "Παιδιά"
-            },
-            {
-                "id": "free",
-                "description": "Δωρεάν"
-            }
-        ]
-    },
-    {
-        "feature": "overviewDetails",
-        "labels": [
-            {
-                "id": "customers",
-                "description": "Πελάτες"
-            },
-            {
-                "id": "destinations",
-                "description": "Προορισμοί"
-            },
-            {
-                "id": "drivers",
-                "description": "Οδηγοί"
-            },
-            {
-                "id": "ports",
-                "description": "Λιμάνια"
-            },
-            {
-                "id": "routes",
-                "description": "Διαδρομές"
-            },
-            {
                 "id": "period",
                 "description": "Διάστημα"
-            },
-            {
-                "id": "mtd",
-                "description": "MTD"
-            },
-            {
-                "id": "ytd",
-                "description": "YTD"
             },
             {
                 "id": "total",
@@ -1044,6 +978,39 @@
             {
                 "id": "free",
                 "description": "Δωρεαν"
+            },
+            {
+                "id": "mtd",
+                "description": "MTD"
+            },
+            {
+                "id": "ytd",
+                "description": "YTD"
+            }
+        ]
+    },
+    {
+        "feature": "overviewDetails",
+        "labels": [
+            {
+                "id": "nothingH1",
+                "description": "Επιλέξτε μία κάρτα από τα αριστερά"
+            },
+            {
+                "id": "nothingH2",
+                "description": "για αναλυτική εικόνα"
+            },
+            {
+                "id": "description",
+                "description": "Περιγραφη"
+            },
+            {
+                "id": "persons",
+                "description": "Ατομα"
+            },
+            {
+                "id": "percent",
+                "description": "+/-"
             },
             {
                 "id": "customers",

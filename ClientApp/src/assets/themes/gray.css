@@ -1,0 +1,29 @@
+:root {
+    /* Common */
+    --color-background-secondary: #3c4448;
+    --color-background-table: #22333B;
+    --color-button-delete: #F28482;
+    --color-logo-primary: #FE9F36;
+    --color-logo-secondary: #FFE85C;
+    --color-snackbar-error: #920402;
+    --color-snackbar-info: #76A28D;
+    --color-text-button: #EDEDED;
+    --color-text-secondary: #F2D492;
+    --color-text-selected: #f2d49266;
+    /* Sidebar, Topbar, Datepicker, Menu, Scrollbar, Select border */
+    --color-background-primary: #001214;
+    /* Buttons */
+    --color-button-primary: #55828B;
+    --color-button-secondary: #426176;
+    /* Selected tab */
+    --color-ink-bar:#FFE85C;
+    /* Sliders */
+    --color-slider-bar-active: #55747c;
+    --color-slider-bar-inactive: #697880;
+    /* Percents */
+    --color-text-percent-negative: #ff9090;
+    --color-text-percent-positive: #6dce7d;
+    --color-text-percent-zero: #53c4e8;
+    /* Text */
+    --color-text-primary: #EFEFEF;
+}

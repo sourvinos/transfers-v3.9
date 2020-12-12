@@ -11,19 +11,19 @@
     --color-text-secondary: #AA767C;
     --color-text-selected: #dcafb480;
     /* Sidebar, Topbar, Datepicker, Menu, Scrollbar, Select border */
-    --color-background-primary: #3E5C76;
+    --color-background-primary: #461220;
     /* Buttons */
-    --color-button-primary: #3E5C76;
-    --color-button-secondary: #748CAB;
+    --color-button-primary: #461220;
+    --color-button-secondary: #9E414B;
     /* Selected tab */
-    --color-ink-bar: #748CAB;
+    --color-ink-bar: #9E414B;
     /* Sliders */
-    --color-slider-bar-active: #7C9BA1;
-    --color-slider-bar-inactive: #9ca2ab;
+    --color-slider-bar-active: #791F28;
+    --color-slider-bar-inactive: #9e7e82;
     /* Percents */
     --color-text-percent-negative: #ff4040;
     --color-text-percent-positive: #2f773b;
     --color-text-percent-zero: #1084a9;
     /* Text */
-    --color-text-primary: #3E5C76;
+    --color-text-primary: #461220;
 }

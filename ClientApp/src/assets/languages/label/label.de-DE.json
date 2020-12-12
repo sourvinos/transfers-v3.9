@@ -935,7 +935,7 @@
                 "description": "Ebenholz"
             },
             {
-                "id": "dark",
+                "id": "gray",
                 "description": "Grau"
             }
         ]
@@ -958,29 +958,11 @@
             {
                 "id": "searchButton",
                 "description": "(DE) Search"
-            }
-        ]
-    },
-    {
-        "feature": "overviewDetails",
-        "labels": [
-            {
-                "id": "description",
-                "description": "(DE) Description"
             },
             {
-                "id": "persons",
-                "description": "(DE) Persons"
+                "id": "period",
+                "description": "(DE) Period"
             },
-            {
-                "id": "percent",
-                "description": "+/-"
-            }
-        ]
-    },
-    {
-        "feature": "transferOverview",
-        "labels": [
             {
                 "id": "total",
                 "description": "(DE) Total"
@@ -996,6 +978,39 @@
             {
                 "id": "free",
                 "description": "(DE) Free"
+            },
+            {
+                "id": "mtd",
+                "description": "MTD"
+            },
+            {
+                "id": "ytd",
+                "description": "YTD"
+            }
+        ]
+    },
+    {
+        "feature": "overviewDetails",
+        "labels": [
+            {
+                "id": "nothingH1",
+                "description": "(DE) Select a card from the left"
+            },
+            {
+                "id": "nothingH2",
+                "description": "(DE) for breakdown analysis"
+            },
+            {
+                "id": "description",
+                "description": "(DE) Description"
+            },
+            {
+                "id": "persons",
+                "description": "(DE) Persons"
+            },
+            {
+                "id": "percent",
+                "description": "+/-"
             },
             {
                 "id": "customers",

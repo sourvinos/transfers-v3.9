@@ -219,8 +219,8 @@ export class TransferOverviewComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            fromDate: ['', [Validators.required]],
-            toDate: ['', [Validators.required]]
+            fromDate: [''],
+            toDate: ['']
         })
     }
 

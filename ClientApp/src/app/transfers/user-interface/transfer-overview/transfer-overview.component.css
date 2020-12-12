@@ -25,6 +25,7 @@
 .period-summary {
     background-color: var(--color-background-table);
     border-radius: 10px;
+    border: 2px dotted var(--color-background-table);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -32,13 +33,12 @@
 }
 
 .period-summary.active {
-    background-color: var(--color-period-summary-active) !important;
+    border: 2px dotted var(--color-background-primary);
 }
 
 .period-summary:hover {
-    background-color: var(--color-period-summary-active) !important;
+    border: 2px dotted var(--color-background-primary);
     cursor: pointer;
-    transition-duration: 500ms;
 }
 
 .period-summary:nth-child(2) {
@@ -65,39 +65,38 @@
     text-align: center;
 }
 
-.total, .adults, .kids, .free {
-    background-color: var(--color-background-secondary);
-    padding-right: 0;
+.free {
+    padding-right: 0.5rem;
 }
 
 .total {
     max-width: 8rem;
     min-width: 8rem;
-    padding: 0.5rem 0;
 }
 
 .adults, .kids, .free {
-    max-width: 4rem;
     min-width: 4rem;
-    padding-bottom: 0.5rem;
-}
-
-h2, h3 {
-    color: var(--color-text-primary);
-    font-variant-caps: petite-caps;
 }
 
 .total-persons {
     color: var(--color-logo-primary);
     font-family: var(--font-family-header);
-    font-size: 2.5rem;
+    font-size: var(--font-size-total-persons-overview);
+    font-weight: var(--font-weight-header);
+}
+
+.sub-total-header {
+    color: var(--color-text-primary);
+    font-family: var(--font-family-header);
+    font-size: var(--font-size-overview-total-header);
+    font-variant-caps: petite-caps;
     font-weight: var(--font-weight-header);
 }
 
 .sub-total {
     color: var(--color-text-secondary);
     font-family: var(--font-family-header);
-    font-size: 1.3rem;
+    font-size: var(--font-size-sum-persons);
     font-weight: var(--font-weight-header);
     justify-content: center;
     line-height: 1.31rem;
@@ -105,7 +104,9 @@ h2, h3 {
 
 .percent span {
     color: var(--color-text-secondary);
-    font-family: var(--font-family-header);
+    font-family: var(--font-family-overview-percent);
+    font-size: var(--font-size-sum);
+    font-weight: var(--font-weight-header);
 }
 
 .mat-icon {
@@ -117,7 +118,7 @@ h2, h3 {
     border-radius: 10px;
     height: 100%;
     overflow-x: hidden;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem;
     width: 100%;
 }
 

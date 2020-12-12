@@ -17,7 +17,6 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
-
 * {
     box-sizing: border-box !important;
 }
@@ -99,10 +98,6 @@ p.instructions {
 
 .mat-date-range-input-start-wrapper {
     width: 100% !important;
-}
-
-.mat-tab-header {
-    padding: 0 1rem !important;
 }
 
 .green {

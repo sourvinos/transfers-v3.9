@@ -935,25 +935,8 @@
                 "description": "Ebony"
             },
             {
-                "id": "dark",
+                "id": "gray",
                 "description": "Gray"
-            }
-        ]
-    },
-    {
-        "feature": "overviewDetails",
-        "labels": [
-            {
-                "id": "description",
-                "description": "Description"
-            },
-            {
-                "id": "persons",
-                "description": "Persons"
-            },
-            {
-                "id": "percent",
-                "description": "+/-"
             }
         ]
     },
@@ -977,6 +960,10 @@
                 "description": "Search"
             },
             {
+                "id": "period",
+                "description": "Period"
+            },
+            {
                 "id": "total",
                 "description": "Total"
             },
@@ -991,35 +978,6 @@
             {
                 "id": "free",
                 "description": "Free"
-            }
-        ]
-    },
-    {
-        "feature": "overviewDetails",
-        "labels": [
-            {
-                "id": "customers",
-                "description": "Customers"
-            },
-            {
-                "id": "destinations",
-                "description": "Destinations"
-            },
-            {
-                "id": "drivers",
-                "description": "Drivers"
-            },
-            {
-                "id": "ports",
-                "description": "Ports"
-            },
-            {
-                "id": "routes",
-                "description": "Routes"
-            },
-            {
-                "id": "period",
-                "description": "Period"
             },
             {
                 "id": "mtd",
@@ -1028,22 +986,31 @@
             {
                 "id": "ytd",
                 "description": "YTD"
+            }
+        ]
+    },
+    {
+        "feature": "overviewDetails",
+        "labels": [
+            {
+                "id": "nothingH1",
+                "description": "Select a card from the left"
             },
             {
-                "id": "total",
-                "description": "Total"
+                "id": "nothingH2",
+                "description": "for breakdown analysis"
             },
             {
-                "id": "adults",
-                "description": "Adults"
+                "id": "description",
+                "description": "Description"
             },
             {
-                "id": "kids",
-                "description": "Kids"
+                "id": "persons",
+                "description": "Persons"
             },
             {
-                "id": "free",
-                "description": "Free"
+                "id": "percent",
+                "description": "+/-"
             },
             {
                 "id": "customers",
