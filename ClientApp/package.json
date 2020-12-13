@@ -23,6 +23,7 @@
         "ajv": "6.12.2",
         "angular-user-idle": "2.2.4",
         "aspnet-prerendering": "3.0.1",
+        "chart.js": "2.9.4",
         "core-js": "3.6.5",
         "jwt-decode": "2.2.0",
         "moment": "2.25.3",

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -36,6 +37,11 @@ namespace Transfers {
         [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
         public TransferOverviewDetails GetOverviewDetails(string fromDate, string toDate) {
             return this.repo.GetOverviewDetails(fromDate, toDate);
+        }
+
+        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
+        public async Task<IEnumerable<TotalPersonsPerDate>> TotalPersonsPerDate(string fromDate, string toDate) {
+            return await this.repo.GetTotalPersonsPerDate(fromDate, toDate);
         }
 
         [HttpGet("{id}")]

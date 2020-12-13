@@ -24,6 +24,8 @@
     --color-text-percent-negative: #ff4040;
     --color-text-percent-positive: #2f773b;
     --color-text-percent-zero: #1084a9;
+    /* Period summary */
+    --color-background-period-summary-selected: #fbf0c5;
     /* Text */
     --color-text-primary: #3E5C76;
 }

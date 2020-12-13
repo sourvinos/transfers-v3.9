@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -69,7 +70,10 @@ namespace Transfers {
             var totalPersonsPerDestination = appDbContext.Transfers.Include(x => x.Destination).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Destination.Description }).Select(x => new TotalPersonsPerDestination { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
             var totalPersonsPerDriver = appDbContext.Transfers.Include(x => x.Driver).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.Driver.Description }).Select(x => new TotalPersonsPerDriver { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
             var totalPersonsPerPort = appDbContext.Transfers.Include(x => x.PickupPoint.Route.Port).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Port.Description }).Select(x => new TotalPersonsPerPort { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
-            var totalPersonsPerRoute = appDbContext.Transfers.Include(x => x.PickupPoint.Route).Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate).GroupBy(x => new { x.PickupPoint.Route.Description }).Select(x => new TotalPersonsPerRoute { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
+            var totalPersonsPerRoute = appDbContext.Transfers.Include(x => x.PickupPoint.Route)
+                .Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate)
+                .GroupBy(x => new { x.PickupPoint.Route.Description })
+                .Select(x => new TotalPersonsPerRoute { Description = x.Key.Description, Persons = x.Sum(s => s.TotalPersons), PersonsLastYear = 0, Percent = "" });
 
             var transferOverviewDetails = new TransferOverviewDetails {
                 TotalPersonsPerCustomer = totalPersonsPerCustomer.ToList(),
@@ -80,6 +84,21 @@ namespace Transfers {
             };
 
             return transferOverviewDetails;
+
+        }
+
+        public async Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerDate(string fromDate, string toDate) {
+
+            DateTime _fromDate = Convert.ToDateTime(fromDate);
+            DateTime _toDate = Convert.ToDateTime(toDate);
+
+            var totalPersons = appDbContext.Transfers
+                .Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate)
+                .GroupBy(x => x.DateIn)
+                .Select(x => new TotalPersonsPerDate { DateIn = x.Key, Persons = x.Sum(s => s.TotalPersons) })
+                .OrderBy(x => x.DateIn);
+
+            return await totalPersons.ToListAsync();
 
         }
 

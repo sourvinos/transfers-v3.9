@@ -25,7 +25,6 @@
 .period-summary {
     background-color: var(--color-background-table);
     border-radius: 10px;
-    border: 2px dotted var(--color-background-table);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -33,11 +32,11 @@
 }
 
 .period-summary.active {
-    border: 2px dotted var(--color-background-primary);
+    background-color: var(--color-background-period-summary-selected);
 }
 
 .period-summary:hover {
-    border: 2px dotted var(--color-background-primary);
+    background-color: var(--color-background-period-summary-selected);
     cursor: pointer;
 }
 
