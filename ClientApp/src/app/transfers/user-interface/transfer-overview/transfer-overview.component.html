@@ -56,6 +56,7 @@
                     </div>
                 </div>
             </div>
+            <button mat-flat-button class="secondary" (click)="onCreateChart('mtd')">Chart</button>
             <div class="period-summary" id="mtd" (click)="onLoadDetails('mtd')">
                 <div class="header">
                     <h1>{{ onGetLabel('mtd') }}</h1>
@@ -82,11 +83,12 @@
                     </div>
                 </div>
             </div>
+            <button mat-flat-button class="secondary" (click)="onCreateChart('ytd')">Chart</button>
             <div class="period-summary" id="ytd" (click)="onLoadDetails('ytd')">
                 <div class="header">
                     <h1>{{ onGetLabel('ytd') }}</h1>
                     <div class="percent">
-                        <span [ngClass]="YTD.color">{{ YTD.percent  | formatNumber:2:true }}</span>
+                        <span [ngClass]="YTD.color">{{ YTD.percent | formatNumber:2:true }}</span>
                     </div>
                 </div>
                 <div class="body">
@@ -109,8 +111,11 @@
                 </div>
             </div>
         </div>
-        <div id="details">
+        <!-- <div id="details">
             <overview-details [records]="details" [isLoaderVisible]="isLoaderVisible" [isDataFound]="isDataFound"></overview-details>
+        </div> -->
+        <div id="chart">
+            <chart-component [xAxis]="xAxis" [yAxis]="yAxis"></chart-component>
         </div>
     </div>
 

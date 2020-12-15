@@ -4,7 +4,7 @@ namespace Transfers {
 
     public class TotalPersonsPerDate {
 
-        public DateTime DateIn { get; set; }
+        public string DateIn { get; set; }
         public int Persons { get; set; }
 
     }

@@ -95,7 +95,7 @@ namespace Transfers {
             var totalPersons = appDbContext.Transfers
                 .Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate)
                 .GroupBy(x => x.DateIn)
-                .Select(x => new TotalPersonsPerDate { DateIn = x.Key, Persons = x.Sum(s => s.TotalPersons) })
+                .Select(x => new TotalPersonsPerDate { DateIn = x.Key.ToString(), Persons = x.Sum(s => s.TotalPersons) })
                 .OrderBy(x => x.DateIn);
 
             return await totalPersons.ToListAsync();

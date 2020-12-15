@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { ChartComponent } from './../../shared/components/chart/chart.component'
 import { MaterialModule } from './../../shared/modules/material.module'
 import { OverviewDetailsComponent } from '../user-interface/overview-details/overview-details.component'
 import { SharedModule } from './../../shared/modules/shared.module'
@@ -15,7 +16,8 @@ import { TransferWrapperComponent } from '../user-interface/transfer-wrapper/tra
         TransferFormComponent,
         TransferAssignDriverComponent,
         TransferOverviewComponent,
-        OverviewDetailsComponent
+        OverviewDetailsComponent,
+        ChartComponent
     ],
     imports: [
         SharedModule,

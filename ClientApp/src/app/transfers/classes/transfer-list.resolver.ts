@@ -12,7 +12,7 @@ export class TransferListResolver  {
     constructor(private transferService: TransferService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<TransferListResolved> {
-        return this.transferService.getTransfers(route.params.dateIn)
+        return this.transferService.get(route.params.dateIn)
             .pipe(
                 map((transferList) => new TransferListResolved(transferList)),
                 catchError((err: any) => of(new TransferListResolved(null, err)))

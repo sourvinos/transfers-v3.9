@@ -22,6 +22,10 @@
     gap: 1rem;
 }
 
+#chart {
+    width: 100%;
+}
+
 .period-summary {
     background-color: var(--color-background-table);
     border-radius: 10px;

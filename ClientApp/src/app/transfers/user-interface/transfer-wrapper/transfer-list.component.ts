@@ -408,7 +408,7 @@ export class TransferListComponent {
             this.editRecord(response['id'])
         })
         this.interactionService.refreshList.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
-            this.service.getTransfers(this.dateIn).subscribe(result => {
+            this.service.get(this.dateIn).subscribe(result => {
                 this.queryResult = result
                 this.ngAfterViewInit()
             })

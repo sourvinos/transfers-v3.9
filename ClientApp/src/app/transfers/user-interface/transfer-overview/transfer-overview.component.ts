@@ -2,7 +2,7 @@ import moment from 'moment'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { Component, HostListener } from '@angular/core'
 import { DateAdapter } from '@angular/material/core'
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms'
+import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { KeyboardShortcuts, Unlisten } from 'src/app/shared/services/keyboard-shortcuts.service'
@@ -36,6 +36,11 @@ export class TransferOverviewComponent {
 
     public isDataFound = false
     public isLoaderVisible = false
+
+    public personsPerDate = []
+
+    public xAxis = []
+    public yAxis = []
 
     public feature = 'transferOverview'
     private ngUnsubscribe = new Subject<void>()
@@ -94,6 +99,13 @@ export class TransferOverviewComponent {
         this.router.navigate(['/'])
     }
 
+    public async onCreateChart(period: string): Promise<void> {
+        await this.loadPersonsPerDate('personsPerDate', period).then(() => {
+            this.createXAxis()
+            this.createYAxis()
+        })
+    }
+
     public async onLoadDetails(period: string): Promise<void> {
         this.isDataFound = false
         this.isLoaderVisible = true
@@ -104,6 +116,18 @@ export class TransferOverviewComponent {
         this.updateDetailsWithLastYear()
         this.isDataFound = this.details.totalPersonsPerCustomer.length > 0 ? true : false
         this.isLoaderVisible = false
+    }
+
+    private loadPersonsPerDate(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
+        const promise = new Promise((resolve) => {
+            this.transferService.getPersonsPerDate(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
+                response => {
+                    this[viewModel] = response
+                    resolve(this[viewModel])
+                    // console.log('1', this[viewModel])
+                }))
+        })
+        return promise
     }
 
     public async onLoadStatisticsForPeriod(): Promise<void> {
@@ -166,6 +190,39 @@ export class TransferOverviewComponent {
                 this[period].color = 'red'
         }
     }
+
+    private createXAxis(): void {
+        this.xAxis = []
+        const today = new Date()
+        for (let index = 1; index <= today.getDate(); index++) {
+            const day = '0' + index
+            this.xAxis.push(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day.substr(day.length - 2, 2))
+        }
+        console.log('X Axis', this.xAxis)
+    }
+
+    private createYAxis(): void {
+        this.yAxis = []
+        // console.log('Creating Y Axis', this.yAxis)
+        // console.log('PersonsPerDate', this.personsPerDate.length)
+        let found = false
+        // console.log(this.personsPerDate[0].dateIn, this.personsPerDate[0].persons)
+        // console.log(this.xAxis[index - 1], this.personsPerDate[i - 1].dateIn, this.personsPerDate[i - 1].persons)
+        for (let index = 1; index <= this.xAxis.length; index++) {
+            found = false
+            for (let i = 1; i <= this.personsPerDate.length; i++) {
+                if (this.xAxis[index - 1] == this.personsPerDate[i - 1].dateIn) {
+                    found = true
+                    this.yAxis.push(this.personsPerDate[i - 1].persons)
+                }
+            }
+            if (found == false) {
+                this.yAxis.push(0)
+            }
+        }
+        console.log('Y Axis', this.yAxis)
+    }
+
 
     private focus(field: string): void {
         this.helperService.setFocus(field)
@@ -235,7 +292,7 @@ export class TransferOverviewComponent {
 
     private loadStatisticsForPeriod(viewModel: any, fromDate: string, toDate: string): Promise<any> {
         const promise = new Promise((resolve) => {
-            this.transferService.getTransfersOverview(fromDate, toDate).toPromise().then((
+            this.transferService.getOverview(fromDate, toDate).toPromise().then((
                 response => {
                     this[viewModel] = response
                     resolve(this[viewModel])
@@ -246,7 +303,7 @@ export class TransferOverviewComponent {
 
     private loadDetails(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
         const promise = new Promise((resolve) => {
-            this.transferService.getTransfersOverviewDetails(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
+            this.transferService.getOverviewDetails(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
                 response => {
                     this[viewModel] = response
                     resolve(this[viewModel])
