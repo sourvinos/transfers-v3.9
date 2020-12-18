@@ -44,6 +44,11 @@ namespace Transfers {
             return await this.repo.GetTotalPersonsPerDate(fromDate, toDate);
         }
 
+        [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
+        public async Task<IEnumerable<TotalPersonsPerDate>> TotalPersonsPerMonth(string fromDate, string toDate) {
+            return await this.repo.GetTotalPersonsPerMonth(fromDate, toDate);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransfer(int id) {
             var transfer = await repo.GetById(id);

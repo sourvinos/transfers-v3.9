@@ -28,4 +28,9 @@
     --color-background-period-summary-selected: #fbf0c5;
     /* Text */
     --color-text-primary: #3E5C76;
+    /* Charts */
+    --color-chart-bar:#3E5C76;
+    --color-chart-bar-lastYear:#748CAB;
+    --color-chart-gridLines: #d6d0bb;
+    --color-chart-labels: #3E5C76;
 }

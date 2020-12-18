@@ -23,6 +23,7 @@
 }
 
 #chart {
+    height: 100%;
     width: 100%;
 }
 
@@ -37,11 +38,6 @@
 
 .period-summary.active {
     background-color: var(--color-background-period-summary-selected);
-}
-
-.period-summary:hover {
-    background-color: var(--color-background-period-summary-selected);
-    cursor: pointer;
 }
 
 .period-summary:nth-child(2) {
@@ -119,7 +115,9 @@
 #details {
     background-color: var(--color-background-table);
     border-radius: 10px;
+    display: flex;
     height: 100%;
+    justify-content: center;
     overflow-x: hidden;
     padding: 2rem;
     width: 100%;

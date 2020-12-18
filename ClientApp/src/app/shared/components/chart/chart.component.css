@@ -1,8 +1,13 @@
-#chartWrapper {
+:host {
+    display: flex;
     height: 100%;
-    width: 100% !important;
+    width: 100%;
 }
 
-#myChart {
-    height: 100%;
+#chartWrapper {
+    background-color: var(--color-background-table);
+    border-radius: 10px;
+    display: flex;
+    height: 100% !important;
+    width: 100% !important;
 }

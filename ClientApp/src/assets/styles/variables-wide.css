@@ -31,5 +31,7 @@
         --font-size-overview-total-header: 1.6rem;
         --font-size-total-persons-overview: 2.7rem;
         --font-size-user-greeting: 1.25rem;
+        --font-size-charts-xAxis: 18;
+        --font-size-charts-yAxis: 18;
     }
 }

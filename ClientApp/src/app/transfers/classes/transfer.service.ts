@@ -41,4 +41,8 @@ export class TransferService extends DataService {
         return this.http.get<TransferPersonsPerDate>('/api/transfers/totalPersonsPerDate/fromDate/' + fromDate + '/toDate/' + toDate)
     }
 
+    getPersonsPerMonth(fromDate: string, toDate: string): Observable<TransferPersonsPerDate> {
+        return this.http.get<TransferPersonsPerDate>('/api/transfers/totalPersonsPerMonth/fromDate/' + fromDate + '/toDate/' + toDate)
+    }
+
 }

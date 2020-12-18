@@ -1,9 +1,15 @@
+:host {
+    display: flex;
+    width: 100%;
+}
+
 #overview-details {
     align-items: center;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    width: 100%;
 }
 
 .mat-tab-group {

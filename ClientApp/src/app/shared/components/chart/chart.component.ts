@@ -1,5 +1,5 @@
-import { Component, Input, KeyValueDiffers, SimpleChanges } from '@angular/core'
-import { Chart } from 'node_modules/chart.js'
+import { Component, Input, SimpleChanges } from '@angular/core'
+import { Chart } from 'chart.js'
 
 @Component({
     selector: 'chart-component',
@@ -11,77 +11,128 @@ export class ChartComponent {
 
     //#region variables
 
+    @Input() period: string
     @Input() xAxis: string[]
     @Input() yAxis: number[]
     @Input() yAxisLastYear: number[]
 
     private newXAxis = []
-    private differ: any
-    private backgroundColor = []
 
     //#endregion
 
-    constructor(differs: KeyValueDiffers) {
-        this.differ = differs.find([]).create()
-    }
-
     //#region lifecycle hooks
 
-    ngDoCheck(): void {
-        // const changes = this.differ.diff(this.xAxis)
-        // if (changes) {
-        //     console.log('Changed...')
-        // }
-    }
-
     ngOnChanges(changes: SimpleChanges): void {
-        console.log('Detecting', changes)
-        this.createMTD()
-        // this.updateYAxis('yAxis', 'newYAxis')
-        // this.update('newYAxisLastYear', 'yAxisLastYear')
-        this.createChart()
+        if (changes) {
+            if (this.period == 'period') this.createPeriod()
+            if (this.period == 'mtd') this.createMTD()
+            if (this.period == 'ytd') this.createYTD()
+            this.createChart()
+        }
     }
 
     //#endregion
 
     //#region private methods
 
-    private createChart(): void {
+    private createChart(): Chart {
         return new Chart("myChart", {
             type: 'bar',
             data: {
-                labels: this.updateXAxisLocale(),
+                // labels: this.updateXAxisLocale(),
+                labels: this.xAxis,
                 datasets: [
                     {
                         barPercentage: 1,
-                        backgroundColor: this.backgroundColor,
+                        backgroundColor: this.updateBarColor(),
+                        label: this.getYear(),
                         data: this.yAxis,
-                        label: 'MTD',
+                        hoverBackgroundColor: this.updateBarColor()
+                    },
+                    {
+                        barPercentage: 0.5,
+                        backgroundColor: this.updateBarColor('lastYear'),
+                        label: this.getYear(true),
+                        data: this.yAxisLastYear,
+                        hoverBackgroundColor: this.updateBarColor('lastYear')
                     }
                 ]
+            },
+            options: {
+                events: ['click'],
+                scales: {
+                    xAxes: [
+                        {
+                            gridLines: { color: getComputedStyle(document.body).getPropertyValue('--color-chart-gridLines') },
+                            ticks: {
+                                fontColor: getComputedStyle(document.body).getPropertyValue('--color-chart-labels'),
+                                fontFamily: getComputedStyle(document.body).getPropertyValue('--font-family-charts'),
+                                fontSize: parseInt(getComputedStyle(document.body).getPropertyValue('--font-size-charts-xAxis'))
+                            },
+                        }],
+                    yAxes: [{
+                        gridLines: { color: getComputedStyle(document.body).getPropertyValue('--color-chart-gridLines') },
+                        ticks: {
+                            fontColor: getComputedStyle(document.body).getPropertyValue('--color-chart-labels'),
+                            fontFamily: getComputedStyle(document.body).getPropertyValue('--font-family-charts'),
+                            fontSize: parseInt(getComputedStyle(document.body).getPropertyValue('--font-size-charts-yAxis'))
+                        },
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontColor: getComputedStyle(document.body).getPropertyValue('--color-chart-labels'),
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 20,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                maintainAspectRatio: false
             }
         })
+    }
+
+    private createPeriod(): void {
+        this.newXAxis = this.xAxis
     }
 
     private createMTD(): void {
         const today = new Date()
         this.newXAxis = []
-        for (let index = 1; index <= today.getDate(); index++) {
+        for (let index = 1; index <= this.getLastDayOfMonth(today.getFullYear(), (today.getMonth() + 1)); index++) {
             const day = '0' + index
             this.newXAxis.push(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day.substr(day.length - 2, 2))
         }
     }
 
-    // private updateYAxis(axis: string, newAxis: string): void {
-    //     this.yAxis.forEach((element, index) => {
-    //         const found = this.newYAxis.find(x => x == element)
-    //         if (found) {
-    //             const position = this.newYAxis.indexOf(found)
-    //             this[newAxis][position] = this[axis][index]
-    //         }
-    //     })
-    //     // console.log('new yAxis', newAxis)
-    // }
+    private createYTD(): void {
+        const today = new Date()
+        this.newXAxis = []
+        for (let index = 1; index <= 12; index++) {
+            this.newXAxis.push(today.getFullYear() + '-' + index)
+        }
+    }
+
+    private getLastDayOfMonth(year: number, month: number): any {
+        return new Date(year, month, 0).getDate()
+    }
+
+    private getYear(lastYear?: boolean): string {
+        return lastYear ? (new Date().getFullYear() - 1).toString() : (new Date().getFullYear()).toString()
+    }
+
+    private updateBarColor(period?: string): string[] {
+        const barColor = []
+        for (let i = 1; i <= this.xAxis.length; i++) {
+            barColor.push(getComputedStyle(document.body).getPropertyValue(period == null ? '--color-chart-bar' : '--color-chart-bar-lastYear'))
+        }
+        return barColor
+    }
 
     private updateXAxisLocale(): string[] {
         this.newXAxis.forEach((element, index) => {

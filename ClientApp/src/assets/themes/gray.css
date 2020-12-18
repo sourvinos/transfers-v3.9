@@ -16,7 +16,7 @@
     --color-button-primary: #55828B;
     --color-button-secondary: #426176;
     /* Selected tab */
-    --color-ink-bar:#FFE85C;
+    --color-ink-bar: #FFE85C;
     /* Sliders */
     --color-slider-bar-active: #55747c;
     --color-slider-bar-inactive: #697880;
@@ -24,8 +24,13 @@
     --color-text-percent-negative: #ff9090;
     --color-text-percent-positive: #6dce7d;
     --color-text-percent-zero: #53c4e8;
-     /* Period summary */
-     --color-background-period-summary-selected: #304752;
-     /* Text */
+    /* Period summary */
+    --color-background-period-summary-selected: #304752;
+    /* Text */
     --color-text-primary: #EFEFEF;
+    /* Charts */
+    --color-chart-bar: #55828B;
+    --color-chart-bar-lastYear: #426176;
+    --color-chart-gridLines: #707070;
+    --color-chart-labels: #EFEFEF;
 }

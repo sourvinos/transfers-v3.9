@@ -30,9 +30,17 @@
 
     <div id="content">
         <div id="statistics">
-            <div class="period-summary" id="period" (click)="onLoadDetails('period')">
-                <div class="header">
+            <div class="period-summary" id="period">
+                <div class=" header">
                     <h1>{{ onGetLabel('period') }}</h1>
+                    <div class="buttons">
+                        <button class="chart" mat-mini-fab (click)="onCreateChart('period')">
+                            <mat-icon>insert_chart_outlined</mat-icon>
+                        </button>
+                        <button class="details" mat-mini-fab (click)="onLoadDetails('period')">
+                            <mat-icon>list</mat-icon>
+                        </button>
+                    </div>
                     <div class="percent">
                         <span [ngClass]="period.color">{{ period.percent | formatNumber:2:true }}</span>
                     </div>
@@ -56,10 +64,17 @@
                     </div>
                 </div>
             </div>
-            <button mat-flat-button class="secondary" (click)="onCreateChart('mtd')">Chart</button>
-            <div class="period-summary" id="mtd" (click)="onLoadDetails('mtd')">
+            <div class="period-summary" id="mtd">
                 <div class="header">
                     <h1>{{ onGetLabel('mtd') }}</h1>
+                    <div class="buttons">
+                        <button class="chart" mat-mini-fab (click)="onCreateChart('mtd')">
+                            <mat-icon>insert_chart_outlined</mat-icon>
+                        </button>
+                        <button class="details" mat-mini-fab (click)="onLoadDetails('mtd')">
+                            <mat-icon>list</mat-icon>
+                        </button>
+                    </div>
                     <div class="percent">
                         <span [ngClass]="MTD.color">{{ MTD.percent | formatNumber:2:true }}</span>
                     </div>
@@ -83,10 +98,17 @@
                     </div>
                 </div>
             </div>
-            <button mat-flat-button class="secondary" (click)="onCreateChart('ytd')">Chart</button>
-            <div class="period-summary" id="ytd" (click)="onLoadDetails('ytd')">
+            <div class="period-summary" id="ytd">
                 <div class="header">
                     <h1>{{ onGetLabel('ytd') }}</h1>
+                    <div class="buttons">
+                        <button class="chart" mat-mini-fab (click)="onCreateChart('ytd')">
+                            <mat-icon>insert_chart_outlined</mat-icon>
+                        </button>
+                        <button class="details" mat-mini-fab (click)="onLoadDetails('ytd')">
+                            <mat-icon>list</mat-icon>
+                        </button>
+                    </div>
                     <div class="percent">
                         <span [ngClass]="YTD.color">{{ YTD.percent | formatNumber:2:true }}</span>
                     </div>
@@ -111,11 +133,11 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="details">
+        <div id="details">
             <overview-details [records]="details" [isLoaderVisible]="isLoaderVisible" [isDataFound]="isDataFound"></overview-details>
-        </div> -->
+        </div>
         <div id="chart">
-            <chart-component [xAxis]="xAxis" [yAxis]="yAxis"></chart-component>
+            <chart-component [period]="period" [xAxis]="xAxis" [yAxis]="yAxis" [yAxisLastYear]="xAxisLastYear"></chart-component>
         </div>
     </div>
 
