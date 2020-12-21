@@ -931,10 +931,6 @@
                 "description": "Pfirsich"
             },
             {
-                "id": "ebony",
-                "description": "Ebenholz"
-            },
-            {
                 "id": "gray",
                 "description": "Grau"
             }
@@ -986,6 +982,14 @@
             {
                 "id": "ytd",
                 "description": "YTD"
+            },
+            {
+                "id": "chart",
+                "description": "(DE) Chart"
+            },
+            {
+                "id": "details",
+                "description": "(DE) Details"
             }
         ]
     },

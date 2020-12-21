@@ -1,3 +1,4 @@
+import { HelperService } from './../../services/helper.service'
 import { Component, Input, SimpleChanges } from '@angular/core'
 import { Chart } from 'chart.js'
 
@@ -16,9 +17,12 @@ export class ChartComponent {
     @Input() yAxis: number[]
     @Input() yAxisLastYear: number[]
 
+    private chart: Chart
     private newXAxis = []
 
     //#endregion
+
+    constructor(private helperService: HelperService) { }
 
     //#region lifecycle hooks
 
@@ -35,8 +39,8 @@ export class ChartComponent {
 
     //#region private methods
 
-    private createChart(): Chart {
-        return new Chart("myChart", {
+    private createChart(): any {
+        this.chart = new Chart("myChart", {
             type: 'bar',
             data: {
                 // labels: this.updateXAxisLocale(),
@@ -59,6 +63,9 @@ export class ChartComponent {
                 ]
             },
             options: {
+                animation: {
+                    duration: 0
+                },
                 events: ['click'],
                 scales: {
                     xAxes: [
@@ -95,6 +102,7 @@ export class ChartComponent {
                 maintainAspectRatio: false
             }
         })
+        return this.chart
     }
 
     private createPeriod(): void {
@@ -104,7 +112,7 @@ export class ChartComponent {
     private createMTD(): void {
         const today = new Date()
         this.newXAxis = []
-        for (let index = 1; index <= this.getLastDayOfMonth(today.getFullYear(), (today.getMonth() + 1)); index++) {
+        for (let index = 1; index <= today.getDate(); index++) {
             const day = '0' + index
             this.newXAxis.push(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day.substr(day.length - 2, 2))
         }
@@ -114,12 +122,9 @@ export class ChartComponent {
         const today = new Date()
         this.newXAxis = []
         for (let index = 1; index <= 12; index++) {
-            this.newXAxis.push(today.getFullYear() + '-' + index)
+            const month = '0' + index
+            this.newXAxis.push(today.getFullYear() + '-' + month.substr(month.length - 2, 2))
         }
-    }
-
-    private getLastDayOfMonth(year: number, month: number): any {
-        return new Date(year, month, 0).getDate()
     }
 
     private getYear(lastYear?: boolean): string {
@@ -132,23 +137,6 @@ export class ChartComponent {
             barColor.push(getComputedStyle(document.body).getPropertyValue(period == null ? '--color-chart-bar' : '--color-chart-bar-lastYear'))
         }
         return barColor
-    }
-
-    private updateXAxisLocale(): string[] {
-        this.newXAxis.forEach((element, index) => {
-            this.newXAxis[index] = this.updateElementLocale(element.substr(5, 6))
-        })
-        return this.newXAxis
-    }
-
-    private updateElementLocale(element: string): string {
-        const locale = localStorage.getItem('language')
-        switch (locale) {
-            case 'en-GB':
-                return element.substr(3, 4) + '/' + element.substr(0, 2)
-            case 'en-US':
-                return element.replace('-', '/')
-        }
     }
 
     //#endregion

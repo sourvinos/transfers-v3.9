@@ -931,10 +931,6 @@
                 "description": "Peach"
             },
             {
-                "id": "ebony",
-                "description": "Ebony"
-            },
-            {
                 "id": "gray",
                 "description": "Gray"
             }
@@ -986,6 +982,14 @@
             {
                 "id": "ytd",
                 "description": "YTD"
+            },
+            {
+                "id": "chart",
+                "description": "Chart"
+            },
+            {
+                "id": "details",
+                "description": "Details"
             }
         ]
     },

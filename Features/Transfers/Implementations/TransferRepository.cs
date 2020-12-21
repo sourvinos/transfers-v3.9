@@ -110,7 +110,7 @@ namespace Transfers {
             var totalPersons = appDbContext.Transfers
                 .Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate)
                 .GroupBy(x => new { x.DateIn.Year, x.DateIn.Month })
-                .Select(x => new TotalPersonsPerDate { DateIn = x.Key.Year.ToString() + "-" + x.Key.Month.ToString(), Persons = x.Sum(s => s.TotalPersons) })
+                .Select(x => new TotalPersonsPerDate { DateIn = x.Key.Year.ToString() + "-" + ("0" + x.Key.Month.ToString()).Substring(("0" + x.Key.Month.ToString()).Length - 2, 2), Persons = x.Sum(s => s.TotalPersons) })
                 .OrderBy(x => x.DateIn);
 
             return await totalPersons.ToListAsync();
@@ -141,13 +141,6 @@ namespace Transfers {
             var transfers = appDbContext.Transfers.Where(x => ids.Contains(x.Id)).ToList();
             transfers.ForEach(a => a.DriverId = driverId);
             appDbContext.SaveChanges();
-        }
-
-        private string AddLeadingZero(string month) {
-            var newValue = "0";
-            newValue = newValue + month;
-            newValue.Substring(newValue.Length - 1, 2);
-            return newValue;
         }
 
     }

@@ -1,0 +1,72 @@
+[
+    {
+        "feature": "menu",
+        "labels": [
+            {
+                "id": "cruises",
+                "description": "Plavby"
+            },
+            {
+                "id": "transfers",
+                "description": "Převody"
+            },
+            {
+                "id": "tables",
+                "description": "Tabulky"
+            },
+            {
+                "id": "users",
+                "description": "Uživatelé"
+            },
+            {
+                "id": "customers",
+                "description": "Zákazníci"
+            },
+            {
+                "id": "destinations",
+                "description": "Destinace"
+            },
+            {
+                "id": "drivers",
+                "description": "Řidiči"
+            },
+            {
+                "id": "pickupPoints",
+                "description": "Body vyzvednutí"
+            },
+            {
+                "id": "ports",
+                "description": "Přístavy"
+            },
+            {
+                "id": "routes",
+                "description": "Trasy"
+            },
+            {
+                "id": "logout",
+                "description": "Odhlásit se"
+            },
+            {
+                "id": "dailyMenu",
+                "description": "Denní transakce"
+            },
+            {
+                "id": "overviewMenu",
+                "description": "Přehled"
+            }
+        ]
+    },
+    {
+        "feature": "dialogSimple",
+        "labels": [
+            {
+                "id": "description",
+                "description": "(CZ) Popis"
+            },
+            {
+                "id": "persons",
+                "description": "(CZ) Osoby"
+            }
+        ]
+    }
+]

@@ -4,27 +4,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Σύνδεση"
+                "description": "(CZ) Login"
             },
             {
                 "id": "usernameLabel",
-                "description": "Χρηστης"
+                "description": "(CZ) Username"
             },
             {
                 "id": "passwordLabel",
-                "description": "Κωδικος"
+                "description": "(CZ) Password"
             },
             {
                 "id": "noRobotCheckbox",
-                "description": "Δεν ειμαι ρομποτ"
+                "description": "(CZ) I am not a robot"
             },
             {
                 "id": "forgotPasswordButton",
-                "description": "Ξεχασα τον κωδικο μου"
+                "description": "(CZ) I forgot my password"
             },
             {
                 "id": "loginButton",
-                "description": "Συνδεση"
+                "description": "(CZ) Login"
             }
         ]
     },
@@ -33,31 +33,31 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Πελάτες"
+                "description": "(CZ) Customers"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την επωνυμια"
+                "description": "(CZ) Search by name"
             },
             {
                 "id": "newButton",
-                "description": "Νεος"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerName",
-                "description": "Επωνυμια"
+                "description": "(CZ) Name"
             },
             {
                 "id": "headerPhones",
-                "description": "Τηλεφωνα"
+                "description": "(CZ) Phones"
             },
             {
                 "id": "headerEmail",
-                "description": "Email"
+                "description": "(CZ) Email"
             }
         ]
     },
@@ -66,43 +66,43 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Πελάτης"
+                "description": "(CZ) Customer"
             },
             {
                 "id": "description",
-                "description": "Επωνυμια"
+                "description": "(CZ) Name"
             },
             {
                 "id": "profession",
-                "description": "Δραστηριοτητα"
+                "description": "(CZ) Profession"
             },
             {
                 "id": "address",
-                "description": "Διευθυνση"
+                "description": "(CZ) Address"
             },
             {
                 "id": "phones",
-                "description": "Τηλεφωνα"
+                "description": "(CZ) Phones"
             },
             {
                 "id": "personInCharge",
-                "description": "Υπευθυνος επικοινωνιας"
+                "description": "(CZ) Person in charge"
             },
             {
                 "id": "email",
-                "description": "Email"
+                "description": "(CZ) Email"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργος"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -111,27 +111,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Προορισμοί"
+                "description": "(CZ) Destinations"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την περιγραφη"
+                "description": "(CZ) Search by description"
             },
             {
                 "id": "newButton",
-                "description": "Νεος"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerAbbreviation",
-                "description": "Συντ."
+                "description": "(CZ) Abbr"
             },
             {
                 "id": "headerDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             }
         ]
     },
@@ -140,27 +140,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Προορισμός"
+                "description": "(CZ) Destination"
             },
             {
                 "id": "abbreviation",
-                "description": "Συντ."
+                "description": "(CZ) Abbr"
             },
             {
                 "id": "description",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργος"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -169,27 +169,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Οδηγοί"
+                "description": "(CZ) Drivers"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση το ονομα"
+                "description": "(CZ) Search by name"
             },
             {
                 "id": "newButton",
-                "description": "Νεος"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerName",
-                "description": "Ονομα"
+                "description": "(CZ) Name"
             },
             {
                 "id": "headerPhones",
-                "description": "Τηλεφωνα"
+                "description": "(CZ) Phones"
             }
         ]
     },
@@ -198,31 +198,31 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Οδηγός"
+                "description": "(CZ) Driver"
             },
             {
                 "id": "description",
-                "description": "Ονομα"
+                "description": "(CZ) Name"
             },
             {
                 "id": "phones",
-                "description": "Τηλεφωνα"
+                "description": "(CZ) Phones"
             },
             {
                 "id": "isDefault",
-                "description": "Εξ ορισμου"
+                "description": "(CZ) Default"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργος"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -231,15 +231,15 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Σημεία παραλαβής"
+                "description": "(CZ) Pickup points"
             },
             {
                 "id": "searchLabel",
-                "description": "Διαδρομες"
+                "description": "(CZ) Routes"
             },
             {
                 "id": "searchHint",
-                "description": "Επιλεξτε απο τη λιστα"
+                "description": "(CZ) Select from the list"
             }
         ]
     },
@@ -248,31 +248,31 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Σημεία παραλαβής διαδρομής: "
+                "description": "(CZ) Pickup points for route: "
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την περιγραφη"
+                "description": "(CZ) Search by description"
             },
             {
                 "id": "newButton",
-                "description": "Νεο"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "headerExactPoint",
-                "description": "Ακριβες σημειο"
+                "description": "(CZ) Exact point"
             },
             {
                 "id": "headerTime",
-                "description": "Ωρα"
+                "description": "(CZ) Time"
             }
         ]
     },
@@ -281,35 +281,35 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Σημείο παραλαβής"
+                "description": "(CZ) Pickup point"
             },
             {
                 "id": "route",
-                "description": "Διαδρομη"
+                "description": "(CZ) Route"
             },
             {
                 "id": "description",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "exactPoint",
-                "description": "Ακριβες σημειο"
+                "description": "(CZ) Exact point"
             },
             {
                 "id": "time",
-                "description": "Ωρα"
+                "description": "(CZ) Time"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργο"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -318,23 +318,23 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Λιμάνια"
+                "description": "(CZ) Ports"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την περιγραφη"
+                "description": "(CZ) Search by description"
             },
             {
                 "id": "newButton",
-                "description": "Νεο"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             }
         ]
     },
@@ -343,23 +343,23 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Λιμάνι"
+                "description": "(CZ) Port"
             },
             {
                 "id": "description",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργο"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -368,27 +368,27 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Διαδρομές"
+                "description": "(CZ) Routes"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την πληρη περιγραφη"
+                "description": "(CZ) Search by full description"
             },
             {
                 "id": "newButton",
-                "description": "Νεο"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerAbbreviation",
-                "description": "Συντ."
+                "description": "(CZ) Abbr."
             },
             {
                 "id": "headerDescription",
-                "description": "Περιγραφή"
+                "description": "(CZ) Description"
             }
         ]
     },
@@ -397,31 +397,31 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Διαδρομή"
+                "description": "(CZ) Route"
             },
             {
                 "id": "abbreviation",
-                "description": "Συντ."
+                "description": "(CZ) Abbr."
             },
             {
                 "id": "description",
-                "description": "Περιγραφη"
+                "description": "(CZ) description"
             },
             {
                 "id": "port",
-                "description": "Λιμανι"
+                "description": "(CZ) Port"
             },
             {
                 "id": "isActive",
-                "description": "Ενεργο"
+                "description": "(CZ) Active"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -430,19 +430,19 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Μεταφορές"
+                "description": "(CZ) Transfers"
             },
             {
                 "id": "searchLabel",
-                "description": "Ημερομηνια"
+                "description": "(CZ) Date"
             },
             {
                 "id": "searchHint",
-                "description": "Επιλεξτε ή δωστε ημερομηνια"
+                "description": "(CZ) Select or enter date"
             },
             {
                 "id": "searchButton",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             }
         ]
     },
@@ -451,31 +451,31 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Χρήστες"
+                "description": "(CZ) Users"
             },
             {
                 "id": "searchLabel",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση το ονομα"
+                "description": "(CZ) Search by username"
             },
             {
                 "id": "newButton",
-                "description": "Νεος"
+                "description": "(CZ) New"
             },
             {
                 "id": "headerUsername",
-                "description": "Ονομα χρηστη"
+                "description": "(CZ) Username"
             },
             {
                 "id": "headerDisplayname",
-                "description": "Εμφανιζομενο ονομα"
+                "description": "(CZ) Display name"
             },
             {
                 "id": "headerEmail",
-                "description": "Email"
+                "description": "(CZ) Email"
             }
         ]
     },
@@ -484,35 +484,35 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Χρήστης"
+                "description": "(CZ) User"
             },
             {
                 "id": "userName",
-                "description": "Ονομα"
+                "description": "(CZ) Username"
             },
             {
                 "id": "displayName",
-                "description": "Εμφανιζομενο ονομα"
+                "description": "(CZ) Displayed name"
             },
             {
                 "id": "email",
-                "description": "Email"
+                "description": "(CZ) Email"
             },
             {
                 "id": "isAdmin",
-                "description": "Διαχειριστης"
+                "description": "(CZ) Admin"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "changePasswordButton",
-                "description": "Αλλαγη κωδικου"
+                "description": "(CZ) Change password"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -521,35 +521,35 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Χρήστης"
+                "description": "(CZ) User"
             },
             {
                 "id": "userName",
-                "description": "Ονομα"
+                "description": "(CZ) Name"
             },
             {
                 "id": "displayName",
-                "description": "Εμφανιζομενο ονομα"
+                "description": "(CZ) Displayed name"
             },
             {
                 "id": "email",
-                "description": "Email"
+                "description": "(CZ) Email"
             },
             {
                 "id": "password",
-                "description": "Κωδικος"
+                "description": "(CZ) Password"
             },
             {
                 "id": "confirmPassword",
-                "description": "Επιβεβαιωση κωδικου"
+                "description": "(CZ) Confirm password"
             },
             {
                 "id": "isAdmin",
-                "description": "Διαχειριστης"
+                "description": "(CZ) Admin"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -558,23 +558,23 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Αλλαγή κωδικού"
+                "description": "(CZ) Change password"
             },
             {
                 "id": "currentPassword",
-                "description": "Τρεχων κωδικος"
+                "description": "(CZ) Current password"
             },
             {
                 "id": "newPassword",
-                "description": "Νεος κωδικος"
+                "description": "(CZ) New password"
             },
             {
                 "id": "confirmPassword",
-                "description": "Επιβεβαιωση νεου κωδικου"
+                "description": "(CZ) Confirm new password"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -583,99 +583,99 @@
         "labels": [
             {
                 "id": "summaryTab",
-                "description": "Συνοπτικα"
+                "description": "(CZ) Summary"
             },
             {
                 "id": "listTab",
-                "description": "Εγγραφες"
+                "description": "(CZ) Records"
             },
             {
                 "id": "summaryHeaderDestinations",
-                "description": "Προορισμοι"
+                "description": "(CZ) Destinations"
             },
             {
                 "id": "summaryHeaderCustomers",
-                "description": "Πελατες"
+                "description": "(CZ) Customers"
             },
             {
                 "id": "summaryHeaderRoutes",
-                "description": "Διαδρομες"
+                "description": "(CZ) Routes"
             },
             {
                 "id": "summaryHeaderDrivers",
-                "description": "Οδηγοι"
+                "description": "(CZ) Drivers"
             },
             {
                 "id": "summaryHeaderPorts",
-                "description": "Λιμανια"
+                "description": "(CZ) Ports"
             },
             {
                 "id": "assignDriverButton",
-                "description": "Αναθεση σε οδηγο"
+                "description": "(CZ) Assign to driver"
             },
             {
                 "id": "createPdfButton",
-                "description": "Δημιουργια PDF"
+                "description": "(CZ) Create PDF"
             },
             {
                 "id": "newButton",
-                "description": "Νεα"
+                "description": "(CZ) New"
             },
             {
                 "id": "total",
-                "description": "Συνολο"
+                "description": "(CZ) All"
             },
             {
                 "id": "displayed",
-                "description": "Εμφανιζονται"
+                "description": "(CZ) Displayed"
             },
             {
                 "id": "selected",
-                "description": "Επιλεγμενες"
+                "description": "(CZ) Selected"
             },
             {
                 "id": "headerDestination",
-                "description": "Προορισμος"
+                "description": "(CZ) Destination"
             },
             {
                 "id": "headerRoute",
-                "description": "Διαδρομη"
+                "description": "(CZ) Route"
             },
             {
                 "id": "headerCustomer",
-                "description": "Πελατης"
+                "description": "(CZ) Customer"
             },
             {
                 "id": "headerPickupPoint",
-                "description": "Σημειο παραλαβης"
+                "description": "(CZ) Pickup point"
             },
             {
                 "id": "headerTime",
-                "description": "Ωρα"
+                "description": "(CZ) Time"
             },
             {
                 "id": "headerAdults",
-                "description": "Ε"
+                "description": "(CZ) A"
             },
             {
                 "id": "headerKids",
-                "description": "Π"
+                "description": "(CZ) K"
             },
             {
                 "id": "headerFree",
-                "description": "Δ"
+                "description": "(CZ) F"
             },
             {
                 "id": "headerTotal",
-                "description": "Σ"
+                "description": "(CZ) T"
             },
             {
                 "id": "headerDriver",
-                "description": "Οδηγος"
+                "description": "(CZ) Driver"
             },
             {
                 "id": "headerPort",
-                "description": "Λιμανι"
+                "description": "(CZ) Port"
             }
         ]
     },
@@ -684,59 +684,59 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Μεταφορά"
+                "description": "(CZ) Transfers"
             },
             {
                 "id": "destination",
-                "description": "Προορισμος"
+                "description": "(CZ) Destination"
             },
             {
                 "id": "customer",
-                "description": "Πελατης"
+                "description": "(CZ) Customer"
             },
             {
                 "id": "pickupPoint",
-                "description": "Σημειο παραλαβης"
+                "description": "(CZ) Pickup point"
             },
             {
                 "id": "adults",
-                "description": "Ενηλικες"
+                "description": "(CZ) Adults"
             },
             {
                 "id": "kids",
-                "description": "Παιδια"
+                "description": "(CZ) Kids"
             },
             {
                 "id": "free",
-                "description": "Δωρεαν"
+                "description": "(CZ) Free"
             },
             {
                 "id": "totalPersons",
-                "description": "Συνολο"
+                "description": "(CZ) Total"
             },
             {
                 "id": "driver",
-                "description": "Οδηγος"
+                "description": "(CZ) Driver"
             },
             {
                 "id": "port",
-                "description": "Λιμανι"
+                "description": "(CZ) Port"
             },
             {
                 "id": "remarks",
-                "description": "Παρατηρησεις"
+                "description": "(CZ) Remarks"
             },
             {
                 "id": "abortButton",
-                "description": "Ακυρο"
+                "description": "(CZ) Cancel"
             },
             {
                 "id": "deleteButton",
-                "description": "Διαγραφη"
+                "description": "(CZ) Delete"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -745,19 +745,19 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Απώλεια κωδικού"
+                "description": "(CZ) Forgot password"
             },
             {
                 "id": "email",
-                "description": "Email"
+                "description": "(CZ) Email"
             },
             {
                 "id": "submitButton",
-                "description": "Υποβολη"
+                "description": "(CZ) Submit"
             },
             {
                 "id": "weNeedYourEmail",
-                "description": "Δωστε μας το email σας και θα σας στειλουμε οδηγιες για να δημιουργησετε νεο κωδικο"
+                "description": "(CZ) Give us your email and we'll send you instructions on how to reset your password"
             }
         ]
     },
@@ -766,19 +766,19 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Επαναφορά κωδικού"
+                "description": "(CZ) Reset password"
             },
             {
                 "id": "password",
-                "description": "Κωδικος"
+                "description": "(CZ) Password"
             },
             {
                 "id": "confirmPassword",
-                "description": "Επιβεβαιωση κωδικου"
+                "description": "(CZ) Confirm password"
             },
             {
                 "id": "saveButton",
-                "description": "Αποθηκευση"
+                "description": "(CZ) Save"
             }
         ]
     },
@@ -787,15 +787,15 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Προσοχή!"
+                "description": "(CZ) Warning!"
             },
             {
                 "id": "okButton",
-                "description": "OK"
+                "description": "(CZ) OK"
             },
             {
                 "id": "noButton",
-                "description": "Ακυρο"
+                "description": "(CZ) Cancel"
             }
         ]
     },
@@ -804,7 +804,7 @@
         "labels": [
             {
                 "id": "red",
-                "description": "Κοκκινο"
+                "description": "(CZ) Red"
             }
         ]
     },
@@ -813,23 +813,23 @@
         "labels": [
             {
                 "id": "searchHint",
-                "description": "Επιλεξτε απο τη λιστα"
+                "description": "(CZ) Select from the list"
             },
             {
                 "id": "header",
-                "description": "Ανάθεση σε οδηγό"
+                "description": "(CZ) Assign to driver"
             },
             {
                 "id": "driver",
-                "description": "Οδηγος"
+                "description": "(CZ) Driver"
             },
             {
                 "id": "okButton",
-                "description": "OK"
+                "description": "(CZ) OK"
             },
             {
                 "id": "noButton",
-                "description": "Ακυρο"
+                "description": "(CZ) Cancel"
             }
         ]
     },
@@ -838,63 +838,63 @@
         "labels": [
             {
                 "id": "ports",
-                "description": "Λιμάνια"
+                "description": "(CZ) Ports"
             },
             {
                 "id": "portId",
-                "description": "Id"
+                "description": "(CZ) Id"
             },
             {
                 "id": "portDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "destinations",
-                "description": "Προορισμοί"
+                "description": "(CZ) Destinations"
             },
             {
                 "id": "destinationId",
-                "description": "Id"
+                "description": "(CZ) Id"
             },
             {
                 "id": "destinationDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "customers",
-                "description": "Πελάτες"
+                "description": "(CZ) Customers"
             },
             {
                 "id": "customerId",
-                "description": "Id"
+                "description": "(CZ) Id"
             },
             {
                 "id": "customerDescription",
-                "description": "Επωνυμια"
+                "description": "(CZ) Name"
             },
             {
                 "id": "pickupPoints",
-                "description": "Σημεία παραλαβής"
+                "description": "(CZ) Pickup points"
             },
             {
                 "id": "pickupPointId",
-                "description": "Id"
+                "description": "(CZ) Id"
             },
             {
                 "id": "pickupPointDescription",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "exactPoint",
-                "description": "Ακριβες σημειο"
+                "description": "(CZ) Exact point"
             },
             {
                 "id": "time",
-                "description": "Ωρα"
+                "description": "(CZ) Time"
             },
             {
                 "id": "selectButton",
-                "description": "Επιλογη"
+                "description": "(CZ) Select"
             }
         ]
     },
@@ -903,11 +903,11 @@
         "labels": [
             {
                 "id": "myAccount",
-                "description": "Ο λογαριασμος μου"
+                "description": "(CZ) My account"
             },
             {
                 "id": "logout",
-                "description": "Εξοδος"
+                "description": "(CZ) Logout"
             }
         ]
     },
@@ -916,23 +916,23 @@
         "labels": [
             {
                 "id": "blue",
-                "description": "Μπλε"
+                "description": "Modrý"
             },
             {
                 "id": "green",
-                "description": "Πρασινο"
+                "description": "Zelená"
             },
             {
                 "id": "red",
-                "description": "Κοκκινο"
+                "description": "Červené"
             },
             {
                 "id": "peach",
-                "description": "Ροδακινι"
+                "description": "Broskev"
             },
             {
                 "id": "gray",
-                "description": "Γκρι"
+                "description": "Šedá"
             }
         ]
     },
@@ -941,39 +941,39 @@
         "labels": [
             {
                 "id": "header",
-                "description": "Συνοπτική εικόνα"
+                "description": "(CZ) Period Overview"
             },
             {
                 "id": "dateRange",
-                "description": "Διαστημα"
+                "description": "(CZ) Period"
             },
             {
                 "id": "searchHint",
-                "description": "Επιλεξτε ή δωστε διαστημα"
+                "description": "(CZ) Select or enter period"
             },
             {
                 "id": "searchButton",
-                "description": "Αναζητηση"
+                "description": "(CZ) Search"
             },
             {
                 "id": "period",
-                "description": "Διάστημα"
+                "description": "(CZ) Period"
             },
             {
                 "id": "total",
-                "description": "Συνολο"
+                "description": "(CZ) Total"
             },
             {
                 "id": "adults",
-                "description": "Ενηλικες"
+                "description": "(CZ) Adults"
             },
             {
                 "id": "kids",
-                "description": "Παιδια"
+                "description": "(CZ) Kids"
             },
             {
                 "id": "free",
-                "description": "Δωρεαν"
+                "description": "(CZ) Free"
             },
             {
                 "id": "mtd",
@@ -985,11 +985,11 @@
             },
             {
                 "id": "chart",
-                "description": "Γραφημα"
+                "description": "(CZ) Chart"
             },
             {
                 "id": "details",
-                "description": "Αναλυση"
+                "description": "(CZ) Details"
             }
         ]
     },
@@ -998,19 +998,19 @@
         "labels": [
             {
                 "id": "nothingH1",
-                "description": "Επιλέξτε μία κάρτα από τα αριστερά"
+                "description": "(CZ) Select a card from the left"
             },
             {
                 "id": "nothingH2",
-                "description": "για αναλυτική εικόνα"
+                "description": "(CZ) for breakdown analysis"
             },
             {
                 "id": "description",
-                "description": "Περιγραφη"
+                "description": "(CZ) Description"
             },
             {
                 "id": "persons",
-                "description": "Ατομα"
+                "description": "(CZ) Persons"
             },
             {
                 "id": "percent",
@@ -1018,23 +1018,23 @@
             },
             {
                 "id": "customers",
-                "description": "Πελατες"
+                "description": "Kunden"
             },
             {
                 "id": "destinations",
-                "description": "Προορισμοι"
+                "description": "Reiseziele"
             },
             {
                 "id": "drivers",
-                "description": "Οδηγοι"
+                "description": "Fahrer"
             },
             {
                 "id": "ports",
-                "description": "Λιμανια"
+                "description": "Häfen"
             },
             {
                 "id": "routes",
-                "description": "Διαδρομες"
+                "description": "Routen"
             }
         ]
     }

@@ -15,6 +15,7 @@ import { TransferOverviewViewModel } from '../../classes/transfer-overview-view-
 import { TransferService } from '../../classes/transfer.service'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { TransferOverviewDetailsViewModel } from '../../classes/transfer-overview-details-view-model'
+import { TransferChartService } from '../../classes/transfer-chart.service'
 
 @Component({
     selector: 'transfer-overview',
@@ -40,8 +41,8 @@ export class TransferOverviewComponent {
     public personsPerDate = []
 
     public xAxis = []
-    public yAxis = []
-    public yAxisLastYear = []
+    public yAxisCurrent = []
+    public yAxisPrevious = []
 
     public feature = 'transferOverview'
     private ngUnsubscribe = new Subject<void>()
@@ -50,9 +51,13 @@ export class TransferOverviewComponent {
     public form: FormGroup
     public input: InputTabStopDirective
 
+    private isChartCreated = false
+    private savedTheme = ''
+    private selectedPeriod = ''
+
     //#endregion
 
-    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title, private transferService: TransferService) { }
+    constructor(private buttonClickService: ButtonClickService, private dateAdapter: DateAdapter<any>, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title, private transferChartService: TransferChartService, private transferService: TransferService) { }
 
     @HostListener('window:resize', ['$event']) onResize(): any {
         this.setSidebarVisibility('hidden')
@@ -78,6 +83,14 @@ export class TransferOverviewComponent {
         this.focus('fromDate')
     }
 
+    ngDoCheck(): void {
+        if (this.isChartCreated && this.savedTheme != this.helperService.readItem('theme')) {
+            setTimeout(() => {
+                this.onCreateChart(this.selectedPeriod)
+            }, 2000)
+        }
+    }
+
     ngOnDestroy(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
@@ -89,6 +102,15 @@ export class TransferOverviewComponent {
 
     //#region public methods
 
+    public onCreateChart(period: string): void {
+        this.setChartVisibility('flex')
+        this.setDetailsVisibility('hidden')
+        this.clearActivePeriod()
+        this.setActivePeriod(period)
+        this.createChart(period)
+        this.updateThemeRelatedVariables(period)
+    }
+
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -99,13 +121,6 @@ export class TransferOverviewComponent {
 
     public onGoBack(): void {
         this.router.navigate(['/'])
-    }
-
-    public onCreateChart(period: string): void {
-        this.setDetailsVisibility('hidden')
-        this.setChartVisibility('flex')
-        this.createXAxis(period)
-        this.loadPersons(period)
     }
 
     public async onLoadDetails(period: string): Promise<void> {
@@ -120,28 +135,6 @@ export class TransferOverviewComponent {
         this.updateDetailsWithLastYear()
         this.isDataFound = this.details.totalPersonsPerCustomer.length > 0 ? true : false
         this.isLoaderVisible = false
-    }
-
-    private loadPersonsGroupByDate(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
-        const promise = new Promise((resolve) => {
-            this.transferService.getPersonsPerDate(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
-                response => {
-                    this[viewModel] = response
-                    resolve(this[viewModel])
-                }))
-        })
-        return promise
-    }
-
-    private loadPersonsGroupByMonth(viewModel: string, period: string, lastYear?: boolean): Promise<any> {
-        const promise = new Promise((resolve) => {
-            this.transferService.getPersonsPerMonth(this.periodSelector(period, lastYear)[0], this.periodSelector(period, lastYear)[1]).toPromise().then((
-                response => {
-                    this[viewModel] = response
-                    resolve(this[viewModel])
-                }))
-        })
-        return promise
     }
 
     public async onLoadStatisticsForPeriod(): Promise<void> {
@@ -205,64 +198,14 @@ export class TransferOverviewComponent {
         }
     }
 
-    private createXAxis(period: string): void {
-        if (period == 'period') this.xAxis = this.createXAxisPeriod(this.fromDate.value, this.toDate.value)
-        if (period == 'mtd') this.xAxis = this.createXAxisMTD()
-        if (period == 'ytd') this.xAxis = this.createXAxisYTD()
-    }
-
-    private createXAxisMTD(): string[] {
-        this.xAxis = []
-        const today = new Date()
-        for (let index = 1; index <= today.getDate(); index++) {
-            const day = '0' + index
-            const me = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day.substr(day.length - 2, 2)
-            this.xAxis.push(me)
-        }
-        return this.xAxis
-    }
-
-    private createXAxisPeriod(fromDate: string, toDate: string): string[] {
-        this.xAxis = []
-        const _fromDate = new Date(fromDate)
-        const _toDate = new Date(toDate)
-        const days = (_toDate.getTime() - _fromDate.getTime()) / (1000 * 3600 * 24) + 1
-        let dayOffset = 0
-        while (dayOffset < days) {
-            const date = new Date()
-            date.setDate(_fromDate.getDate() + dayOffset)
-            const day = '0' + date.getDate()
-            this.xAxis.push(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + day.substr(day.length - 2, 2))
-            dayOffset++
-        }
-        return this.xAxis
-    }
-
-    private createXAxisYTD(): string[] {
-        this.xAxis = []
-        const today = new Date()
-        for (let index = 1; index <= 12; index++) {
-            const me = today.getFullYear() + '-' + index
-            this.xAxis.push(me)
-        }
-        return this.xAxis
-    }
-
-    private createYAxis(array: string): void {
-        this[array] = []
-        let dayHasPersons: boolean
-        for (let index = 1; index <= this.xAxis.length; index++) {
-            dayHasPersons = false
-            for (let i = 1; i <= this.personsPerDate.length; i++) {
-                if (this.xAxis[index - 1].substr(5, 5) == this.personsPerDate[i - 1].dateIn.substr(5, 5)) {
-                    dayHasPersons = true
-                    this[array].push(this.personsPerDate[i - 1].persons)
-                }
-            }
-            if (dayHasPersons == false) {
-                this[array].push(0)
-            }
-        }
+    private async createChart(period: string): Promise<void> {
+        await this.transferChartService.createXAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
+            this.xAxis = response
+            this.transferChartService.verticalAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
+                this.yAxisCurrent = response.yAxisCurrent
+                this.yAxisPrevious = response.yAxisPrevious
+            })
+        })
     }
 
     private focus(field: string): void {
@@ -279,10 +222,6 @@ export class TransferOverviewComponent {
 
     private getCurrentYear(): string {
         return moment().get('year').toString()
-    }
-
-    private getLastDayOfMonth(year: number, month: number): any {
-        return new Date(year, month, 0).getDate()
     }
 
     private getLastYear(): string {
@@ -362,23 +301,6 @@ export class TransferOverviewComponent {
         await this.loadStatisticsForPeriod('lastYear' + period, this[fromDateFn](true), this[toDateFn](true))
     }
 
-    private async loadPersons(period: string): Promise<void> {
-        switch (period) {
-            case 'period':
-                await this.loadPersonsGroupByDate('personsPerDate', period).then(() => { this.createYAxis('yAxis') })
-                await this.loadPersonsGroupByDate('personsPerDate', period, true).then(() => { this.createYAxis('xAxisLastYear') })
-                break
-            case 'mtd':
-                await this.loadPersonsGroupByDate('personsPerDate', period).then(() => { this.createYAxis('yAxis') })
-                await this.loadPersonsGroupByDate('personsPerDate', period, true).then(() => { this.createYAxis('xAxisLastYear') })
-                break
-            case 'ytd':
-                await this.loadPersonsGroupByMonth('personsPerDate', period).then(() => { this.createYAxis('yAxis') })
-                await this.loadPersonsGroupByMonth('personsPerDate', period, true).then(() => { this.createYAxis('xAxisLastYear') })
-                break
-        }
-    }
-
     private periodSelector(variable: string, lastYear?: boolean): string[] {
         const dates = []
         switch (variable) {
@@ -395,7 +317,6 @@ export class TransferOverviewComponent {
                 dates[1] = this.getYTDTo(lastYear)
                 break
         }
-        // console.log(dates)
         return dates
     }
 
@@ -470,6 +391,12 @@ export class TransferOverviewComponent {
                 this.details[variable][index].personsLastYear = found[0].persons
             }
         })
+    }
+
+    private updateThemeRelatedVariables(period: string): void {
+        this.savedTheme = this.helperService.readItem('theme')
+        this.selectedPeriod = period
+        this.isChartCreated = true
     }
 
     //#endregion

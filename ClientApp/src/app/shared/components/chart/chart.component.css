@@ -6,7 +6,6 @@
 
 #chartWrapper {
     background-color: var(--color-background-table);
-    border-radius: 10px;
     display: flex;
     height: 100% !important;
     width: 100% !important;

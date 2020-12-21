@@ -29,7 +29,7 @@
 
 .period-summary {
     background-color: var(--color-background-table);
-    border-radius: 10px;
+    border-left: 2px solid var(--color-background-table);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
@@ -37,7 +37,7 @@
 }
 
 .period-summary.active {
-    background-color: var(--color-background-period-summary-selected);
+    border-left: 2px solid var(--color-border-period-summary-selected);
 }
 
 .period-summary:nth-child(2) {
@@ -49,6 +49,10 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
+}
+
+.period-summary .header .menu {
+    margin-left: auto !important;
 }
 
 .period-summary .body {
@@ -101,20 +105,20 @@
     line-height: 1.31rem;
 }
 
-.percent span {
+.percent {
     color: var(--color-text-secondary);
     font-family: var(--font-family-overview-percent);
     font-size: var(--font-size-sum);
     font-weight: var(--font-weight-header);
+    margin-left: auto;
 }
 
 .mat-icon {
-    color: var(--color-text-button) !important;
+    color: var(--color-text-primary) !important;
 }
 
 #details {
     background-color: var(--color-background-table);
-    border-radius: 10px;
     display: flex;
     height: 100%;
     justify-content: center;
@@ -160,4 +164,18 @@
     #details {
         padding: 1rem 0.5rem 0rem 0.5rem;
     }
+}
+
+.option {
+    color: var(--color-select-items);
+    font-family: "PF Handbook Pro";
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-start;
 }
