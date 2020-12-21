@@ -24,7 +24,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
 @Component({
     selector: 'pickuppoint-form',
     templateUrl: './pickupPoint-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css'],
+    styleUrls: ['../../../assets/styles/forms.css', './pickupPoint-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 

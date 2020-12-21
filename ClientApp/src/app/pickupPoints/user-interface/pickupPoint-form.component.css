@@ -1,0 +1,14 @@
+#content {
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+}
+
+form {
+    width: 50%;
+}
+
+#myMap {
+    background-color: aquamarine;
+    width: 50%;
+}

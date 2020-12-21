@@ -7,6 +7,7 @@ import { FormatNumberPipe } from '../pipes/format-number.pipe'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { InputFormatDirective } from 'src/app/shared/directives/input-format.directive'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
+import { MapComponent } from '../components/map/map.component'
 import { MaterialModule } from './material.module'
 import { RouterModule } from '@angular/router'
 import { SafeStylePipe } from '../pipes/safeStyle.pipe'
@@ -17,11 +18,12 @@ import { SnackbarComponent } from '../components/snackbar/snackbar.component'
         CustomTableComponent,
         DialogAlertComponent,
         DialogIndexComponent,
+        FormatNumberPipe,
         InputFormatDirective,
         InputTabStopDirective,
+        MapComponent,
+        SafeStylePipe,
         SnackbarComponent,
-        FormatNumberPipe,
-        SafeStylePipe
     ],
     imports: [
         CommonModule,
@@ -30,13 +32,14 @@ import { SnackbarComponent } from '../components/snackbar/snackbar.component'
     ],
     exports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
         CustomTableComponent,
+        FormatNumberPipe,
+        FormsModule,
         InputFormatDirective,
         InputTabStopDirective,
-        FormatNumberPipe
+        MapComponent,
+        ReactiveFormsModule,
+        RouterModule,
     ],
     entryComponents: [
         DialogAlertComponent,
