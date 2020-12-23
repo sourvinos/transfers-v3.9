@@ -11,3 +11,7 @@
     cursor: crosshair;
     height: 100%;
 }
+
+#toggleMapSize {
+    z-index: 9999;
+}

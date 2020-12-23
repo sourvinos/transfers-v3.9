@@ -50,12 +50,12 @@ export class PickupPointListComponent {
 
     //#region table
 
-    headers = ['', 'Id', 'headerDescription', 'headerExactPoint', 'headerTime', '']
-    widths = ['40px', '0', '45%', '', '100px', '56px']
+    headers = ['', 'Id', 'headerDescription', 'headerExactPoint', 'headerTime', 'headerCoordinates', '']
+    widths = ['40px', '0', '45%', '', '100px', '20%', '56px']
     visibility = ['none', 'none']
-    justify = ['center', 'center', 'left', 'left', 'center', 'center']
-    fields = ['', 'id', 'description', 'exactPoint', 'time', '']
-    types = ['', '', '', '', '', '']
+    justify = ['center', 'center', 'left', 'left', 'center', 'left', 'center']
+    fields = ['', 'id', 'description', 'exactPoint', 'time', 'coordinates', '']
+    types = ['', '', '', '', '', '', '']
 
     //#endregion
 

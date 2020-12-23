@@ -8,5 +8,6 @@ export class PickupPoint extends KeyValuePair {
     }
     exactPoint: string
     time: string
+    coordinates: string
     isActive: boolean
 }

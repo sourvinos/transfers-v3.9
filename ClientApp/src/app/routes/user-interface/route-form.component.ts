@@ -1,3 +1,4 @@
+import { PickupPointService } from 'src/app/pickupPoints/classes/pickupPoint.service'
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
@@ -23,7 +24,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
 @Component({
     selector: 'route-form',
     templateUrl: './route-form.component.html',
-    styleUrls: ['../../../assets/styles/forms.css'],
+    styleUrls: ['../../../assets/styles/forms.css', './route-form.component.css'],
     animations: [slideFromLeft, slideFromRight]
 })
 
@@ -44,13 +45,18 @@ export class RouteFormComponent {
 
     //#region particular variables
 
+    public color = 'red'
+    public pickupPoints = []
     public ports: any
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe(p => {
-            if (p.id) { this.getRecord(p.id) }
+            if (p.id) {
+                this.getRecord(p.id)
+                this.getPickupPoints(p.id)
+            }
         })
     }
 
@@ -195,6 +201,14 @@ export class RouteFormComponent {
 
     private focus(field: string): void {
         this.helperService.setFocus(field)
+    }
+
+    private getPickupPoints(id: string): void {
+        this.pickupPointService.getAllForRoute(id).subscribe(result => {
+            result.forEach(element => {
+                this.pickupPoints.push(element.coordinates)
+            })
+        })
     }
 
     private getRecord(id: number): void {

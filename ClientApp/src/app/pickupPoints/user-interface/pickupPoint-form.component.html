@@ -32,12 +32,19 @@
                     <mat-error *ngIf="time.hasError('required')">{{ onGetHint('required') }}</mat-error>
                     <mat-error *ngIf="!time.hasError('required') && !time.hasError('isTime')">{{ onGetHint('invalid') }}</mat-error>
                 </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput [placeholder]="onGetLabel('coordinates')" formControlName="coordinates" id="coordinates">
+                </mat-form-field>
                 <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
             </div>
         </form>
-        <div id="myMap">
-            <map></map>
+        <div *ngIf="pickupPoints" id="myMap">
+            <map [pickupPoints]="pickupPoints" [color]="color" (outputCoordinates)="onUpdateCoordinates($event)"></map>
         </div>
+
+        <!-- <div id="myMap">
+            <map [coordinates]="form.value.coordinates" [color]="color" (outputCoordinates)="onUpdateCoordinates($event)"></map>
+        </div> -->
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 

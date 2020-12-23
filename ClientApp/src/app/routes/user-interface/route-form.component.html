@@ -29,6 +29,9 @@
             </mat-form-field>
             <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
+        <div *ngIf="pickupPoints" id="myMap">
+            <map [pickupPoints]="pickupPoints" [color]="color"></map>
+        </div>
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 

@@ -1,12 +1,10 @@
 import { ValidationService } from './../../shared/services/validation.service'
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
-import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import { forkJoin, Subject, Subscription } from 'rxjs'
 import { RouteService } from 'src/app/routes/classes/route.service'
-import { DialogIndexComponent } from 'src/app/shared/components/dialog-index/dialog-index.component'
 import { InputTabStopDirective } from 'src/app/shared/directives/input-tabstop.directive'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { HelperService } from 'src/app/shared/services/helper.service'
@@ -47,13 +45,16 @@ export class PickupPointFormComponent {
 
     private routeId: number
     private routes: any
+    public color = 'red'
+    public pickupPoints = []
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
                 this.getRecord(p.pickupPointId)
+                this.getPickupPoints(p.pickupPointId)
             } else {
                 this.routeId = parseInt(this.router.url.split('/')[3], 10)
                 this.patchRouteFields()
@@ -143,6 +144,12 @@ export class PickupPointFormComponent {
         }
     }
 
+    public onUpdateCoordinates(coordinates: any): void {
+        this.form.patchValue({
+            coordinates: coordinates.lat + ',' + coordinates.lng
+        })
+    }
+
     //#endregion
 
     //#region private methods
@@ -178,13 +185,14 @@ export class PickupPointFormComponent {
         })
     }
 
-    private clearFields(result: any, id: any, description: any): void {
-        this.form.patchValue({ [id]: result ? result.id : '' })
-        this.form.patchValue({ [description]: result ? result.description : '' })
-    }
-
     private focus(field: string): void {
         this.helperService.setFocus(field)
+    }
+
+    private getPickupPoints(id: string): void {
+        this.pickupPointService.getSingle(id).subscribe(result => {
+            this.pickupPoints.push(result.coordinates)
+        })
     }
 
     private getRecord(id: number): void {
@@ -203,6 +211,7 @@ export class PickupPointFormComponent {
             description: ['', [Validators.required, Validators.maxLength(128)]],
             exactPoint: ['', [Validators.required, Validators.maxLength(128)]],
             time: ['', [Validators.required, ValidationService.isTime]],
+            coordinates: [''],
             isActive: true,
             userId: this.helperService.readItem('userId')
         })
@@ -214,21 +223,9 @@ export class PickupPointFormComponent {
         }, 200)
     }
 
-    private patchFields(result: any, fields: any[]): void {
-        if (result) {
-            Object.entries(result).forEach(([key, value]) => {
-                this.form.patchValue({ [key]: value })
-            })
-        } else {
-            fields.forEach(field => {
-                this.form.patchValue({ [field]: '' })
-            })
-        }
-    }
-
     private patchRouteFields(): void {
         setTimeout(() => {
-            const route: any[] = this.routes.filter(x => x.routeId === this.routeId)
+            const route: any[] = this.routes.filter((x: { routeId: number }) => x.routeId === this.routeId)
             this.form.patchValue({
                 routeId: this.routeId,
                 routeDescription: route[0].routeDescription
@@ -254,6 +251,7 @@ export class PickupPointFormComponent {
             description: result.description,
             exactPoint: result.exactPoint,
             time: result.time,
+            coordinates: result.coordinates,
             isActive: result.isActive,
             userId: this.helperService.readItem('userId')
         })
@@ -281,24 +279,6 @@ export class PickupPointFormComponent {
 
     private setWindowTitle(): void {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
-    }
-
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
-        const dialog = this.dialog.open(DialogIndexComponent, {
-            height: '685px',
-            data: {
-                records: elements,
-                title: title,
-                fields: fields,
-                headers: headers,
-                widths: widths,
-                visibility: visibility,
-                justify: justify
-            }
-        })
-        dialog.afterClosed().subscribe((result) => {
-            this.patchFields(result, fields)
-        })
     }
 
     private showSnackbar(message: string, type: string): void {
@@ -330,6 +310,11 @@ export class PickupPointFormComponent {
         return this.form.get('time')
     }
 
+    get coordinates(): AbstractControl {
+        return this.form.get('coordinates')
+    }
+
     //#endregion
+
 
 }

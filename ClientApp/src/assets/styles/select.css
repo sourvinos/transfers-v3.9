@@ -3,10 +3,12 @@
     border: 0.0625rem solid var(--color-background-primary) !important;
 }
 
-.mat-option:hover:not(.mat-option-disabled),
-.mat-option:focus:not(.mat-option-disabled) {
-    background: var(--color-button-primary) !important;
-    color: var(--color-background-secondary) !important;
+.mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled) {
+    background-color: var(--color-button-primary) !important;
+}
+
+.mat-option-text:hover {
+    color: var(--color-text-button) !important;
 }
 
 .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {

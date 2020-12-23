@@ -71,7 +71,6 @@ export class TransferChartService {
         for (let index = 1; index <= xAxis.length; index++) {
             dayHasPersons = false
             for (let i = 1; i <= personsPerDate.length; i++) {
-                // console.log(xAxis[index - 1], ' ** ', personsPerDate[i - 1].dateIn)
                 if (xAxis[index - 1].substr(5, 5) == personsPerDate[i - 1].dateIn.substr(5, 5)) {
                     dayHasPersons = true
                     array.push(personsPerDate[i - 1].persons)

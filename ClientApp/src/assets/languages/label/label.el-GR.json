@@ -271,6 +271,10 @@
                 "description": "Ακριβες σημειο"
             },
             {
+                "id": "headerCoordinates",
+                "description": "GPS Συντεταγμένες"
+            },
+            {
                 "id": "headerTime",
                 "description": "Ωρα"
             }
@@ -298,6 +302,10 @@
             {
                 "id": "time",
                 "description": "Ωρα"
+            },
+            {
+                "id": "coordinates",
+                "description": "GPS Συντεταγμένες"
             },
             {
                 "id": "isActive",

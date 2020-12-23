@@ -271,6 +271,10 @@
                 "description": "Exact point"
             },
             {
+                "id": "headerCoordinates",
+                "description": "GPS Coordinates"
+            },
+            {
                 "id": "headerTime",
                 "description": "Time"
             }
@@ -298,6 +302,10 @@
             {
                 "id": "time",
                 "description": "Time"
+            },
+            {
+                "id": "coordinates",
+                "description": "GPS Coordinates"
             },
             {
                 "id": "isActive",
