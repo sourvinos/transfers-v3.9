@@ -144,6 +144,11 @@ export class PickupPointFormComponent {
         }
     }
 
+    public onToggleFullScreen(): void {
+        document.getElementById('form').style.display = 'none'
+        document.getElementById('map').style.width = '100% !important'
+    }
+
     public onUpdateCoordinates(coordinates: any): void {
         this.form.patchValue({
             coordinates: coordinates.lat + ',' + coordinates.lng

@@ -206,7 +206,7 @@ export class RouteFormComponent {
     private getPickupPoints(id: string): void {
         this.pickupPointService.getAllForRoute(id).subscribe(result => {
             result.forEach(element => {
-                this.pickupPoints.push(element.coordinates)
+                this.pickupPoints.push(element)
             })
         })
     }

@@ -1,14 +1,13 @@
 #content {
-    align-items: center;
     flex-direction: row;
-    gap: 2rem;
 }
 
-form {
-    width: 50%;
+#form {
+    padding-right: 2rem;
 }
 
-#myMap {
-    height: 100%;
-    width: 50%;
+#map-wrapper {
+    background-color: var(--color-background-table);
+    padding-bottom: 2rem;
+    z-index: 1;
 }

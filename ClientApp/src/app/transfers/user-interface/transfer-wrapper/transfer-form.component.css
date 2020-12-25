@@ -1,4 +1,4 @@
-#form {
+#form-wrapper {
     background-color: var(--color-background-secondary);
     border-radius: 20px;
     display: grid;

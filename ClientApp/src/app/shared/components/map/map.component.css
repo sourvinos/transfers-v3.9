@@ -1,8 +1,26 @@
-.map-container {
-    height: 100%;
+#controls {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    z-index: 999;
 }
 
-.map-frame {
+#controls button {
+    background-color: var(--color-button-primary) !important;
+}
+
+#controls button .mat-icon {
+    color: var(--color-text-primary) !important;
+}
+
+#map-container {
+    position: relative;
+    height: 600px;
+    width: 500px;
+}
+
+#map-frame {
     border: 2px solid black;
     height: 100%;
 }
@@ -10,8 +28,9 @@
 #map {
     cursor: crosshair;
     height: 100%;
+    margin: 2rem;
 }
 
-#toggleMapSize {
-    z-index: 9999;
+#form {
+    transition: width 0.7s;
 }
