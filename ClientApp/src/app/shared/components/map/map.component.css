@@ -1,36 +1,26 @@
 #controls {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
     position: absolute;
     z-index: 999;
 }
 
 #controls button {
-    background-color: var(--color-button-primary) !important;
+    background-color: var(--color-map-buttons-background) !important;
 }
 
 #controls button .mat-icon {
-    color: var(--color-text-primary) !important;
+    color: var(--color-map-buttons) !important;
 }
 
 #map-container {
-    position: relative;
-    height: 600px;
-    width: 500px;
-}
-
-#map-frame {
-    border: 2px solid black;
     height: 100%;
+    position: relative;
+    width: 100%;
 }
 
 #map {
     cursor: crosshair;
     height: 100%;
-    margin: 2rem;
-}
-
-#form {
-    transition: width 0.7s;
 }

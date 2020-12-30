@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
 
     public class PickupPointsController : ControllerBase {
@@ -22,7 +23,7 @@ namespace Transfers {
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<PickupPoint>> Get() {
             return await repo.Get();
         }
@@ -40,7 +41,7 @@ namespace Transfers {
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPickupPoint(int id) {
             PickupPoint record = await repo.GetById(id);
             if (record == null) {
@@ -94,6 +95,21 @@ namespace Transfers {
             return StatusCode(400, new {
                 response = ApiMessages.InvalidModel()
             });
+        }
+
+        [HttpPatch("{id}")]
+        // [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PatchPickupPoint(int pickupPointId, [FromQuery(Name = "coordinates")] string coordinates) {
+            PickupPoint record = await repo.GetById(pickupPointId);
+            try {
+                repo.UpdateCoordinates(pickupPointId, coordinates);
+                return StatusCode(200, new { response = ApiMessages.RecordUpdated() });
+            } catch (DbUpdateException exception) {
+                LoggerExtensions.LogException(pickupPointId, logger, ControllerContext, null, exception);
+                return StatusCode(490, new {
+                    response = ApiMessages.RecordNotSaved()
+                });
+            }
         }
 
         [HttpDelete("{id}")]

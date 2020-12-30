@@ -46,8 +46,8 @@ export class PortListComponent {
     widths = ['40px', '0', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'center']
-    fields = ['', 'id', 'description', '']
     types = ['', '', '',  '']
+    fields = ['', 'id', 'description', '']
 
     //#endregion
 

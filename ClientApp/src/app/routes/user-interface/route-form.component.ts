@@ -1,5 +1,5 @@
 import { PickupPointService } from 'src/app/pickupPoints/classes/pickupPoint.service'
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { Title } from '@angular/platform-browser'
@@ -20,6 +20,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
+import { MapComponent } from 'src/app/shared/components/map/map.component'
 
 @Component({
     selector: 'route-form',
@@ -45,11 +46,13 @@ export class RouteFormComponent {
 
     //#region particular variables
 
-    public color = 'red'
+    public activePanel: string
     public pickupPoints = []
     public ports: any
 
     //#endregion
+
+    @ViewChild(MapComponent) child: MapComponent
 
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private portService: PortService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, public dialog: MatDialog) {
         this.activatedRoute.params.subscribe(p => {
@@ -67,6 +70,7 @@ export class RouteFormComponent {
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
+        this.onFocusFormPanel()
     }
 
     ngAfterViewInit(): void {
@@ -110,6 +114,21 @@ export class RouteFormComponent {
         })
     }
 
+    public onFocusMapPanel(): void {
+        this.activePanel = 'map'
+        document.getElementById('formTab').classList.remove('active')
+        document.getElementById('mapTab').classList.add('active')
+        document.getElementById('map-outer-wrapper').style.display = 'flex'
+        this.child.onRefreshMap()
+    }
+
+    public onFocusFormPanel(): void {
+        this.activePanel = 'form'
+        document.getElementById('formTab').classList.add('active')
+        document.getElementById('mapTab').classList.remove('active')
+        document.getElementById('form').style.display = 'flex'
+    }
+
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -122,7 +141,7 @@ export class RouteFormComponent {
         this.router.navigate([this.url])
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], types: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -131,7 +150,7 @@ export class RouteFormComponent {
             }
         })
         if (filteredArray.length > 0) {
-            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify)
+            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify, types)
         }
         if (filteredArray.length === 0) {
             this.clearFields(null, formFields[0], formFields[1])
@@ -157,6 +176,12 @@ export class RouteFormComponent {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         }
+    }
+
+    public onUpdateCoordinates(element: any): void {
+        this.pickupPointService.updateCoordinates(element[0], element[1]).subscribe(() => {
+            this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
+        })
     }
 
     //#endregion
@@ -295,7 +320,7 @@ export class RouteFormComponent {
         this.titleService.setTitle(this.helperService.getApplicationTitle() + ' :: ' + this.windowTitle)
     }
 
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
+    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], types: any[]): void {
         const dialog = this.dialog.open(DialogIndexComponent, {
             height: '685px',
             data: {
@@ -306,6 +331,7 @@ export class RouteFormComponent {
                 widths: widths,
                 visibility: visibility,
                 justify: justify,
+                types: types,
                 highlightFirstRow: true
             }
         })

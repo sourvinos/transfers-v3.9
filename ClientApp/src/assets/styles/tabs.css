@@ -13,6 +13,9 @@
 }
 
 .mat-tab-body-content {
+    align-items: center !important;
+    display: flex !important;
+    height: 100% !important;
     padding: 0;
 }
 

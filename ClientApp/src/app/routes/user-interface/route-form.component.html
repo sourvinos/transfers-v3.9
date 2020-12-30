@@ -12,27 +12,35 @@
     </div>
 
     <div id="content">
-        <form id="form" data-cy="form" [formGroup]='form' autocomplete='off'>
-            <mat-form-field>
-                <input data-cy="abbreviation" type="text" matInput [placeholder]="onGetLabel('abbreviation')" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
-                <mat-error *ngIf="abbreviation.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="abbreviation.hasError('maxlength')">{{ onGetHint('maxLength', abbreviation.errors.maxlength.requiredLength) }}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">
-                <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
-                <mat-error *ngIf="description.hasError('maxlength')">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input data-cy="portDescription" type="text" matInput [placeholder]="onGetLabel('port')" formControlName="portDescription" data-tabindex="3" id="portDescription" [inputTabStop]="input" (change)="onLookupIndex(ports, 'ports', ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], $event)">
-                <mat-error *ngIf="portDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
-            </mat-form-field>
-            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
-        </form>
-        <div *ngIf="pickupPoints" id="map-wrapper">
-            <map [pickupPoints]="pickupPoints" [color]="color"></map>
+        <div id="panelButtons">
+            <button mat-flat-button class="tab" id="formTab" [disabled]="activePanel=='form'" (click)="onFocusFormPanel()">Form</button>
+            <button mat-flat-button class="tab" id="mapTab" [disabled]="activePanel=='map'" (click)="onFocusMapPanel()">Map</button>
         </div>
-        <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
+        <div id="form" [class.hidden]="activePanel=='map'">
+            <form data-cy="form" [formGroup]='form' autocomplete='off'>
+                <mat-form-field>
+                    <input data-cy="abbreviation" type="text" matInput [placeholder]="onGetLabel('abbreviation')" formControlName="abbreviation" data-tabindex="1" id="abbreviation" [inputTabStop]="input">
+                    <mat-error *ngIf="abbreviation.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="abbreviation.hasError('maxlength')">{{ onGetHint('maxLength', abbreviation.errors.maxlength.requiredLength) }}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input data-cy="description" type="text" matInput [placeholder]="onGetLabel('description')" formControlName="description" data-tabindex="2" id="description" [inputTabStop]="input">
+                    <mat-error *ngIf="description.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                    <mat-error *ngIf="description.hasError('maxlength')">{{ onGetHint('maxLength', description.errors.maxlength.requiredLength) }}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input data-cy="portDescription" type="text" matInput [placeholder]="onGetLabel('port')" formControlName="portDescription" data-tabindex="3" id="portDescription" [inputTabStop]="input" (change)="onLookupIndex(ports, 'ports', ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['portId', 'portDescription', ''], ['1px', '440px', '56px'], ['none'], ['center', 'left', 'center'], ['', '', ''], $event)">
+                    <mat-error *ngIf="portDescription.hasError('required')">{{ onGetHint('required') }}</mat-error>
+                </mat-form-field>
+                <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
+            </form>
+            <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
+        </div>
+        <div id="map-outer-wrapper" [class.hidden]="activePanel=='form'">
+            <div *ngIf="pickupPoints" id="map-wrapper">
+                <map [pickupPoints]="pickupPoints" (outputCoordinates)="onUpdateCoordinates($event)"></map>
+            </div>
+        </div>
     </div>
 
     <div @slideFromRight id="footer">
@@ -41,9 +49,5 @@
             <button data-cy="save" mat-flat-button class="primary" [disabled]="!form.valid" id="save" (click)="onSave()">{{ onGetLabel('saveButton') }}</button>
         </div>
     </div>
-
-    <!-- <h2>Route: NISSAKI</h2>
-    <h2>Pickup point: KOTSOVOLOS</h2>
-    <h3>Time: 07:15</h3> -->
 
 </div>

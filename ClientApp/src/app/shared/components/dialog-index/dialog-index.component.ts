@@ -25,6 +25,7 @@ export class DialogIndexComponent {
     public title: string
     public visibility: any[]
     public widths: any[]
+    public types: any[]
     public highlightFirstRow: boolean
 
     //#endregion
@@ -33,6 +34,7 @@ export class DialogIndexComponent {
         this.fields = data.fields
         this.headers = data.headers
         this.justify = data.justify
+        this.types = data.types
         this.records = data.records
         this.title = data.title
         this.visibility = data.visibility

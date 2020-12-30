@@ -146,7 +146,7 @@ export class TransferFormComponent {
         this.router.navigate([this.url], { relativeTo: this.activatedRoute })
     }
 
-    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], value: { target: { value: any } }): void {
+    public onLookupIndex(lookupArray: any[], title: string, formFields: any[], fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], types: any[], value: { target: { value: any } }): void {
         const filteredArray = []
         lookupArray.filter(x => {
             const key = fields[1]
@@ -162,7 +162,7 @@ export class TransferFormComponent {
             this.patchFields(elements[0], fields)
         }
         if (filteredArray.length > 1) {
-            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify)
+            this.showModalIndex(filteredArray, title, fields, headers, widths, visibility, justify, types)
         }
     }
 
@@ -407,7 +407,7 @@ export class TransferFormComponent {
         document.getElementById('transferFormModal').style.visibility = "visible"
     }
 
-    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[]): void {
+    private showModalIndex(elements: any, title: string, fields: any[], headers: any[], widths: any[], visibility: any[], justify: any[], types: any[]): void {
         const dialog = this.dialog.open(DialogIndexComponent, {
             height: '685px',
             data: {
@@ -418,6 +418,7 @@ export class TransferFormComponent {
                 widths: widths,
                 visibility: visibility,
                 justify: justify,
+                types: types,
                 highlightFirstRow: true
             }
         })

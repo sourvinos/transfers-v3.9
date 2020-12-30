@@ -1,13 +1,26 @@
 #content {
-    flex-direction: row;
+    flex-direction: column;
+}
+
+#panelButtons button {
+    border-radius: 0;
+    color: var(--color-text-primary) !important;
+    font-size: var(--font-size-panel-buttons) !important;
+    font-variant-caps: petite-caps;
 }
 
 #form {
-    padding-right: 2rem;
+    height: 100%;
+    width: 100%;
+}
+
+#map-outer-wrapper {
+    height: 100%;
+    padding-top: 1rem;
+    width: 100%;
 }
 
 #map-wrapper {
-    background-color: var(--color-background-table);
-    padding-bottom: 2rem;
-    z-index: 1;
+    height: 100%;
+    width: 100%;
 }

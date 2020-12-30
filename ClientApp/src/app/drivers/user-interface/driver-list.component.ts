@@ -46,8 +46,8 @@ export class DriverListComponent {
     widths = ['40px', '0px', '50%', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'left', 'left', 'center']
-    fields = ['', 'id', 'description', 'phones', '']
     types = ['', '', '', '', '']
+    fields = ['', 'id', 'description', 'phones', '']
     
     //#endregion
 

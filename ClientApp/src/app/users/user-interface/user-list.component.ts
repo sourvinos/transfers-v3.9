@@ -46,8 +46,8 @@ export class UserListComponent {
     widths = ['40px', '', '30%', '30%', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'left', 'left', 'left', 'left', 'center']
-    fields = ['', 'id', 'displayname', 'username', 'email', '']
     types = ['', '', '', '', '', '']
+    fields = ['', 'id', 'displayname', 'username', 'email', '']
 
     //#endregion
 

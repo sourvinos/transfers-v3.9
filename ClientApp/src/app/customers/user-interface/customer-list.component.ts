@@ -46,8 +46,8 @@ export class CustomerListComponent {
     widths = ['40px', '0px', '50%', '25%', '', '56px']
     visibility = ['none', 'none', '', '', '', '']
     justify = ['center', 'center', 'left', 'left', 'left', 'center']
-    fields = ['', 'id', 'description', 'phones', 'email', '']
     types = ['', '', '', '', '', '']
+    fields = ['', 'id', 'description', 'phones', 'email', '']
 
     //#endregion
 

@@ -1,5 +1,5 @@
 import { ValidationService } from './../../shared/services/validation.service'
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms'
 import { Title } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment'
 import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
+import { MapComponent } from 'src/app/shared/components/map/map.component'
 
 @Component({
     selector: 'pickuppoint-form',
@@ -43,13 +44,15 @@ export class PickupPointFormComponent {
 
     //#region particular variables
 
+    public activePanel: string
     private routeId: number
     private routes: any
-    public color = 'red'
     public pickupPoints = []
 
     //#endregion
 
+    @ViewChild(MapComponent) child: MapComponent
+    
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
@@ -69,6 +72,7 @@ export class PickupPointFormComponent {
         this.initForm()
         this.addShortcuts()
         this.populateDropDowns()
+        this.onFocusFormPanel()
     }
 
     ngAfterViewInit(): void {
@@ -112,6 +116,21 @@ export class PickupPointFormComponent {
         })
     }
 
+    public onFocusMapPanel(): void {
+        this.activePanel = 'map'
+        document.getElementById('formTab').classList.remove('active')
+        document.getElementById('mapTab').classList.add('active')
+        document.getElementById('map-outer-wrapper').style.display = 'flex'
+        this.child.onRefreshMap()
+    }
+
+    public onFocusFormPanel(): void {
+        this.activePanel = 'form'
+        document.getElementById('formTab').classList.add('active')
+        document.getElementById('mapTab').classList.remove('active')
+        document.getElementById('form').style.display = 'flex'
+    }
+
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
     }
@@ -149,9 +168,9 @@ export class PickupPointFormComponent {
         document.getElementById('map').style.width = '100% !important'
     }
 
-    public onUpdateCoordinates(coordinates: any): void {
+    public onUpdateCoordinates(element: any): void {
         this.form.patchValue({
-            coordinates: coordinates.lat + ',' + coordinates.lng
+            coordinates: element[1]
         })
     }
 
@@ -196,7 +215,7 @@ export class PickupPointFormComponent {
 
     private getPickupPoints(id: string): void {
         this.pickupPointService.getSingle(id).subscribe(result => {
-            this.pickupPoints.push(result.coordinates)
+            this.pickupPoints.push(result)
         })
     }
 

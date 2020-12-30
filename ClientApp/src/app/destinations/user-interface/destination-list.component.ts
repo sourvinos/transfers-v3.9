@@ -46,8 +46,8 @@ export class DestinationListComponent {
     widths = ['40px', '0px', '150px', '', '56px']
     visibility = ['none', 'none']
     justify = ['center', 'center', 'center', 'left', 'center']
-    fields = ['', 'id', 'abbreviation', 'description', '']
     types = ['', '', '', '', '']
+    fields = ['', 'id', 'abbreviation', 'description', '']
 
     //#endregion
 

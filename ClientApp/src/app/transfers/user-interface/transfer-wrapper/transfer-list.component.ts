@@ -74,8 +74,8 @@ export class TransferListComponent {
     widths = ['40px', '100px', '180px', '0px', '120px', '180px', '180px', '50px', '40px', '40px', '40px', '40px', '150px', '100px', '45px']
     visibility = ['', 'none', '', 'none']
     justify = ['center', 'center', 'left', 'left', 'left', 'left', 'left', 'center', 'right', 'right', 'right', 'right', 'left', 'left', 'center']
-    fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port', '']
     types = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+    fields = ['', 'id', 'destination', 'destinationAbbreviation', 'route', 'customer', 'pickupPoint', 'time', 'adults', 'kids', 'free', 'totalPersons', 'driver', 'port', '']
 
     //#endregion
 

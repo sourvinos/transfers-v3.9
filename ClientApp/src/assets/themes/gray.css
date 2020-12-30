@@ -33,4 +33,9 @@
     --color-chart-bar-lastYear: #ffe95cb9;
     --color-chart-gridLines: #707070;
     --color-chart-labels: #EFEFEF;
+    /* Maps */
+    --color-map-tooltip-background: #22333B;
+    --color-map-tooltip-color: #EFEFEF;
+    --color-map-buttons-background: #426176;
+    --color-map-buttons: #EBE5CD;
 }

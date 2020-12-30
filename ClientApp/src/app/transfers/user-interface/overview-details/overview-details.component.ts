@@ -25,8 +25,8 @@ export class OverviewDetailsComponent {
     widths = ['0px', '70%', '15%', '15%', '']
     visibility = ['none', '', '', '', 'none']
     justify = ['center', 'left', 'right', 'right', 'center']
-    fields = ['', 'description', 'persons', 'percent', '']
     types = ['', '', '', 'percent', '']
+    fields = ['', 'description', 'persons', 'percent', '']
 
     //#endregion
 

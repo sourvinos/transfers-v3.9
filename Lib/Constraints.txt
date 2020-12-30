@@ -1,0 +1,45 @@
+ALTER TABLE Customers MODIFY Id INT AUTO_INCREMENT;
+ALTER TABLE Destinations MODIFY Id INT AUTO_INCREMENT;
+ALTER TABLE Drivers MODIFY Id INT AUTO_INCREMENT;
+ALTER TABLE PickupPoints MODIFY Id INT AUTO_INCREMENT;
+ALTER TABLE Ports MODIFY Id INT AUTO_INCREMENT;
+ALTER TABLE Routes MODIFY Id INT AUTO_INCREMENT;
+
+ALTER TABLE Transfers 
+    ADD FOREIGN KEY FK_Transfers_Customers (CustomerId)
+		REFERENCES Customers (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+        
+ALTER TABLE Transfers 
+    ADD FOREIGN KEY FK_Transfers_Destinations (DestinationId)
+		REFERENCES Destinations (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+
+ALTER TABLE Transfers 
+    ADD FOREIGN KEY FK_Transfers_Drivers (DriverId)
+		REFERENCES Drivers (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+
+ALTER TABLE Transfers
+    ADD FOREIGN KEY FK_Transfers_PickupPoints (PickupPointId)
+		REFERENCES PickupPoints (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+        
+ALTER TABLE PickupPoints
+    ADD FOREIGN KEY FK_PickupPoints_Routes (RouteId)
+		REFERENCES Routes (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+
+ALTER TABLE Routes
+    ADD FOREIGN KEY FK_Routes_Ports (PortId)
+		REFERENCES Ports (Id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION;
+
+DELETE FROM Transfers WHERE Id > 1;
+ALTER TABLE Transfers AUTO_INCREMENT = 1;

@@ -1,7 +1,7 @@
 <div id="top-menu" *ngIf="loginStatus | async">
     <button mat-flat-button class="transparent inverted">{{ onGetLabel('cruises') }}</button>
-    <button data-cy="transfersMenu" mat-flat-button class="transparent inverted" *ngIf="isConnectedUserAdmin" [matMenuTriggerFor]="transfersMenu">{{ onGetLabel('transfers') }} <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
-    <button data-cy="tablesMenu" mat-flat-button class="transparent inverted" *ngIf="isConnectedUserAdmin" [matMenuTriggerFor]="tablesMenu">{{ onGetLabel('tables') }} <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
+    <button data-cy="transfersMenu" mat-flat-button class="transparent inverted" *ngIf="isConnectedUserAdmin" [matMenuTriggerFor]="transfersMenu">{{ onGetLabel('transfers') }}<img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
+    <button data-cy="tablesMenu" mat-flat-button class="transparent inverted" *ngIf="isConnectedUserAdmin" [matMenuTriggerFor]="tablesMenu">{{ onGetLabel('tables') }}<img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
     <button data-cy="usersMenu" mat-flat-button class="transparent inverted" *ngIf="isConnectedUserAdmin" [routerLink]="['/users']">{{ onGetLabel('users') }}</button>
 </div>
 
@@ -11,7 +11,7 @@
     <button data-cy="driversMenu" mat-menu-item [routerLink]="['/drivers']">{{ onGetLabel('drivers') }}</button>
     <button data-cy="pickupPointsMenu" mat-menu-item [routerLink]="['/pickupPoints']">{{ onGetLabel('pickupPoints') }}</button>
     <button data-cy="portsMenu" mat-menu-item [routerLink]="['/ports']">{{ onGetLabel('ports') }}</button>
-    <button data-cy="routesMenu" mat-menu-item [routerLink]="['/routes/19']">{{ onGetLabel('routes') }}</button>
+    <button data-cy="routesMenu" mat-menu-item [routerLink]="['/routes']">{{ onGetLabel('routes') }}</button>
 </mat-menu>
 
 <mat-menu #transfersMenu="matMenu">

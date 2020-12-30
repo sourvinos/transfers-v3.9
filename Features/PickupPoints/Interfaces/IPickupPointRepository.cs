@@ -9,6 +9,7 @@ namespace Transfers {
         Task<IEnumerable<PickupPoint>> GetActive();
         Task<IEnumerable<PickupPoint>> GetForRoute(int routeId);
         new Task<PickupPoint> GetById(int pickupPointId);
+        void UpdateCoordinates(int pickupPointId, string coordinates);
 
     }
 
