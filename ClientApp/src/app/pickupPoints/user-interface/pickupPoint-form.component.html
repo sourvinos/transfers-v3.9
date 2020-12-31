@@ -13,8 +13,8 @@
 
     <div id="content">
         <div id="panelButtons">
-            <button mat-flat-button class="tab" id="formTab" [disabled]="activePanel=='form'" (click)="onFocusFormPanel()">Form</button>
-            <button mat-flat-button class="tab" id="mapTab" [disabled]="activePanel=='map'" (click)="onFocusMapPanel()">Map</button>
+            <button mat-flat-button class="tab" id="formTab" [disabled]="activePanel=='form'" (click)="onFocusFormPanel()">{{ onGetLabel('formTab') }}</button>
+            <button mat-flat-button class="tab" id="mapTab" [disabled]="activePanel=='map'" (click)="onFocusMapPanel()">{{ onGetLabel('mapTab') }}</button>
         </div>
         <div id="form" [class.hidden]="activePanel=='map'">
             <form data-cy="form" [formGroup]="form" autocomplete="off">

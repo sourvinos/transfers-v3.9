@@ -52,7 +52,7 @@ export class PickupPointFormComponent {
     //#endregion
 
     @ViewChild(MapComponent) child: MapComponent
-    
+
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private pickupPointService: PickupPointService, private routeService: RouteService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.pickupPointId) {
@@ -145,6 +145,7 @@ export class PickupPointFormComponent {
 
     public onSave(): void {
         if (this.form.value.id === 0 || this.form.value.id === null) {
+            this.form.get('coordinates').enable()
             this.pickupPointService.add(this.form.value).subscribe(() => {
                 this.focus('description')
                 this.initFormAfterDelay()
@@ -153,6 +154,7 @@ export class PickupPointFormComponent {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
             })
         } else {
+            this.form.get('coordinates').enable()
             this.pickupPointService.update(this.form.value.id, this.form.value).subscribe(() => {
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
                 this.resetForm()
@@ -235,7 +237,7 @@ export class PickupPointFormComponent {
             description: ['', [Validators.required, Validators.maxLength(128)]],
             exactPoint: ['', [Validators.required, Validators.maxLength(128)]],
             time: ['', [Validators.required, ValidationService.isTime]],
-            coordinates: [''],
+            coordinates: [{ value: '', disabled: true }],
             isActive: true,
             userId: this.helperService.readItem('userId')
         })

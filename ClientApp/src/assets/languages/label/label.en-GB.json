@@ -318,6 +318,14 @@
             {
                 "id": "saveButton",
                 "description": "Save"
+            },
+            {
+                "id": "formTab",
+                "description": "Form"
+            },
+            {
+                "id": "mapTab",
+                "description": "Map"
             }
         ]
     },
@@ -430,6 +438,14 @@
             {
                 "id": "saveButton",
                 "description": "Save"
+            },
+            {
+                "id": "formTab",
+                "description": "Form"
+            },
+            {
+                "id": "mapTab",
+                "description": "Map"
             }
         ]
     },

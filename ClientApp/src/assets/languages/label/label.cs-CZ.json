@@ -318,6 +318,14 @@
             {
                 "id": "saveButton",
                 "description": "(CZ) Save"
+            },
+            {
+                "id": "formTab",
+                "description": "(CZ) Form"
+            },
+            {
+                "id": "mapTab",
+                "description": "(CZ) Map"
             }
         ]
     },
@@ -384,7 +392,7 @@
             },
             {
                 "id": "searchHint",
-                "description": "(CZ) Search by full description"
+                "description": "(CZ) Search by description"
             },
             {
                 "id": "newButton",
@@ -430,6 +438,14 @@
             {
                 "id": "saveButton",
                 "description": "(CZ) Save"
+            },
+            {
+                "id": "formTab",
+                "description": "(CZ) Form"
+            },
+            {
+                "id": "mapTab",
+                "description": "(CZ) Map"
             }
         ]
     },

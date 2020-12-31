@@ -272,7 +272,7 @@
             },
             {
                 "id": "headerCoordinates",
-                "description": "GPS Συντεταγμένες"
+                "description": "GPS Συντεταγμενες"
             },
             {
                 "id": "headerTime",
@@ -305,7 +305,7 @@
             },
             {
                 "id": "coordinates",
-                "description": "GPS Συντεταγμένες"
+                "description": "GPS Συντεταγμενες"
             },
             {
                 "id": "isActive",
@@ -318,6 +318,14 @@
             {
                 "id": "saveButton",
                 "description": "Αποθηκευση"
+            },
+            {
+                "id": "formTab",
+                "description": "Στοιχεια"
+            },
+            {
+                "id": "mapTab",
+                "description": "Χαρτης"
             }
         ]
     },
@@ -384,7 +392,7 @@
             },
             {
                 "id": "searchHint",
-                "description": "Με βαση την πληρη περιγραφη"
+                "description": "Με βαση την περιγραφη"
             },
             {
                 "id": "newButton",
@@ -430,6 +438,14 @@
             {
                 "id": "saveButton",
                 "description": "Αποθηκευση"
+            },
+            {
+                "id": "formTab",
+                "description": "Στοιχεια"
+            },
+            {
+                "id": "mapTab",
+                "description": "Χαρτης"
             }
         ]
     },

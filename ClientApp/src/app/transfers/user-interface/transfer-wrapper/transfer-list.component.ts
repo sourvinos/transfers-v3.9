@@ -167,6 +167,21 @@ export class TransferListComponent {
         this.pdfService.createReport(this.transfersFlat, this.getDriversFromLocalStorage(), this.dateIn)
     }
 
+    public onFocusListPanel(): void {
+        this.activePanel = 'list'
+        document.getElementById('summaryTab').classList.remove('active')
+        document.getElementById('listTab').classList.add('active')
+        document.getElementById('table-wrapper').style.display = 'block'
+        this.flattenResults()
+    }
+
+    public onFocusSummaryPanel(): void {
+        this.activePanel = 'summary'
+        document.getElementById('summaryTab').classList.add('active')
+        document.getElementById('listTab').classList.remove('active')
+        document.getElementById('table-wrapper').style.display = 'none'
+    }
+
     public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
@@ -282,21 +297,6 @@ export class TransferListComponent {
         } of this.queryResultClone.transfers) {
             this.transfersFlat.push({ id: a, destination: b, destinationAbbreviation: c, customer: d, adults: e, kids: f, free: g, totalPersons: h, pickupPoint: i, time: j, route: k, port: l, driver: m, dateIn: n, remarks: o })
         }
-    }
-
-    public onFocusListPanel(): void {
-        this.activePanel = 'list'
-        document.getElementById('summaryTab').classList.remove('active')
-        document.getElementById('listTab').classList.add('active')
-        document.getElementById('table-wrapper').style.display = 'block'
-        this.flattenResults()
-    }
-
-    public onFocusSummaryPanel(): void {
-        this.activePanel = 'summary'
-        document.getElementById('summaryTab').classList.add('active')
-        document.getElementById('listTab').classList.remove('active')
-        document.getElementById('table-wrapper').style.display = 'none'
     }
 
     private getDriversFromLocalStorage(): any {

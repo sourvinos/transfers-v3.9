@@ -20,7 +20,7 @@ export class LanguageMenuComponent {
     //#region public methods
 
     public onGetLanguage(): string {
-        return this.helperService.readItem("language") == '' ? this.onSaveLanguage('en-GB') : this.helperService.readItem("language")
+        return this.helperService.readItem("language") == '' ? this.onSaveLanguage('el-GR') : this.helperService.readItem("language")
     }
 
     public onSaveLanguage(language: string): string {

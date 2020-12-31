@@ -151,21 +151,25 @@ export class MapComponent {
     }
 
     private isValidCoordinates(coordinates: string): boolean {
-        const lat = parseFloat(coordinates.split(',')[0])
-        const lon = parseFloat(coordinates.split(',')[1])
-        const validCoordinates = (lat >= -90 && lat <= 90) && (lon >= -180 && lon <= 180)
-        if (!validCoordinates) {
-            return false
+        if (coordinates != null) {
+            const lat = parseFloat(coordinates.split(',')[0])
+            const lon = parseFloat(coordinates.split(',')[1])
+            const validCoordinates = (lat >= -90 && lat <= 90) && (lon >= -180 && lon <= 180)
+            if (!validCoordinates) {
+                return false
+            }
+            return true
         }
-        return true
     }
 
     private mustZoomToMarker(): void {
         if (this.pickupPoints.length == 1) {
             const element = this.pickupPoints[0]
-            const lat = parseFloat(element.coordinates.split(',')[0])
-            const lon = parseFloat(element.coordinates.split(',')[1])
-            this.zoomToMarker(lat, lon)
+            if (element.coordinates) {
+                const lat = parseFloat(element.coordinates.split(',')[0])
+                const lon = parseFloat(element.coordinates.split(',')[1])
+                this.zoomToMarker(lat, lon)
+            }
         }
     }
 
