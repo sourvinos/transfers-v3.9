@@ -10,9 +10,10 @@ export class DriverFormResolver {
 
     resolve(route: ActivatedRouteSnapshot): any {
         const response = this.driverService.getSingle(route.params.id)
-        response.subscribe(() => {
-            return response
-        })
+        if (response)
+            response.subscribe(() => {
+                return response
+            })
     }
 
 }

@@ -10,9 +10,10 @@ export class DestinationFormResolver {
 
     resolve(route: ActivatedRouteSnapshot): any {
         const response = this.destinationService.getSingle(route.params.id)
-        response.subscribe(() => {
-            return response
-        })
+        if (response)
+            response.subscribe(() => {
+                return response
+            })
     }
 
 }

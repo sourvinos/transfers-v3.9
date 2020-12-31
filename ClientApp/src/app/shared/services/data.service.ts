@@ -12,7 +12,8 @@ export class DataService {
     }
 
     public delete(id: string | number): Observable<any> {
-        return this.http.delete<any>(this.url + '/' + id)
+        if (id != undefined)
+            return this.http.delete<any>(this.url + '/' + id)
     }
 
     public getAll(): Observable<any[]> {
@@ -20,11 +21,13 @@ export class DataService {
     }
 
     public getSingle(id: string | number): Observable<any> {
-        return this.http.get<any>(this.url + '/' + id)
+        if (id != undefined)
+            return this.http.get<any>(this.url + '/' + id)
     }
 
     public update(id: string | number, formData: any): Observable<any> {
-        return this.http.put<any>(this.url + '/' + id, formData)
+        if (id != undefined)
+            return this.http.put<any>(this.url + '/' + id, formData)
     }
 
     //#endregion

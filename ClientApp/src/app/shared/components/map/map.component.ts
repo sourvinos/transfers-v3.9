@@ -59,7 +59,6 @@ export class MapComponent {
     //#region private methods
 
     private addMarkers(): void {
-        console.log('Adding markers')
         if (this.pickupPoints.length == 1 && this.pickupPoints[0].coordinates != '' && this.isValidCoordinates(this.pickupPoints[0].coordinates)) {
             this.createMarker(this.pickupPoints[0]).addTo(this.map)
         }
@@ -126,7 +125,6 @@ export class MapComponent {
     }
 
     private initMap(): void {
-        console.log('Init map')
         this.map = L.map('map', {
             boxZoom: true,
             zoomControl: false,

@@ -20,7 +20,7 @@ export class PickupPointService extends DataService {
         return this.http.get<PickupPoint[]>('/api/pickupPoints/routeId/' + routeId)
     }
 
-    public updateCoordinates(pickupPointId: string, coordinates: string): Observable<any> {
+    updateCoordinates(pickupPointId: string, coordinates: string): Observable<any> {
         const params = new HttpParams().set('pickupPointId', pickupPointId).set('coordinates', coordinates)
         return this.http.patch(this.url + '/updateCoordinates?', null, { params: params })
     }

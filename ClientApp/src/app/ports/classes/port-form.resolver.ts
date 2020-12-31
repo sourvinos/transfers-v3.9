@@ -10,9 +10,10 @@ export class PortFormResolver {
 
     resolve(route: ActivatedRouteSnapshot): any {
         const response = this.portService.getSingle(route.params.id)
-        response.subscribe(() => {
-            return response
-        })
+        if (response)
+            response.subscribe(() => {
+                return response
+            })
     }
 
 }

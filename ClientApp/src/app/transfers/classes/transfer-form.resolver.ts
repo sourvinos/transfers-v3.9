@@ -10,9 +10,10 @@ export class TransferFormResolver {
 
     resolve(route: ActivatedRouteSnapshot): any {
         const response = this.transferService.getSingle(route.params.id)
-        response.subscribe(() => {
-            return response
-        })
+        if (response)
+            response.subscribe(() => {
+                return response
+            })
     }
 
 }

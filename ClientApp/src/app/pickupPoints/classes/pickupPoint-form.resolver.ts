@@ -10,9 +10,10 @@ export class PickupPointFormResolver {
 
     resolve(route: ActivatedRouteSnapshot): any {
         const response = this.pickupPointService.getSingle(route.params.id)
-        response.subscribe(() => {
-            return response
-        })
+        if (response)
+            response.subscribe(() => {
+                return response
+            })
     }
 
 }
