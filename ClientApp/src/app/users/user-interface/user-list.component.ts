@@ -37,6 +37,8 @@ export class UserListComponent {
     public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
+    public sortColumn: string
+    public sortOrder: string
 
     //#endregion
 
@@ -57,17 +59,18 @@ export class UserListComponent {
 
     ngOnInit(): void {
         this.setWindowTitle()
-        this.getFilterFromLocalStorage()
+        this.getFilterFromStorage()
+        if (!this.getSortObjectFromStorage()) this.saveSortObjectToStorage('displayName', 'asc')
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
-        this.updateLocalStorageWithCallerForm()
+        this.updateStorageWithCallerForm()
         this.onFilter(this.searchTerm)
         this.focus('searchTerm')
     }
 
     ngOnDestroy(): void {
-        this.updateLocalStorageWithFilter()
+        this.updateStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -116,11 +119,24 @@ export class UserListComponent {
         this.helperService.setFocus(element)
     }
 
-    private getFilterFromLocalStorage(): void {
+    private getFilterFromStorage(): void {
         this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
-    public onGoBack(): void {
+    private getSortObjectFromStorage(): boolean {
+        try {
+            const sortObject = JSON.parse(this.helperService.readItem(this.feature))
+            if (sortObject) {
+                this.sortColumn = sortObject.column
+                this.sortOrder = sortObject.order
+                return true
+            }
+        } catch {
+            return false
+        }
+    }
+
+    private goBack(): void {
         this.router.navigate(['/'])
     }
 
@@ -130,9 +146,13 @@ export class UserListComponent {
             this.records = listResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
         } else {
-            this.onGoBack()
+            this.goBack()
             this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
+    }
+
+    private saveSortObjectToStorage(columnName: string, sortOrder: string): void {
+        this.helperService.saveItem(this.feature, JSON.stringify({ columnName, sortOrder }))
     }
 
     private setWindowTitle(): void {
@@ -145,16 +165,16 @@ export class UserListComponent {
 
     private subscribeToInteractionService(): void {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
-            this.updateLocalStorageWithFilter()
+            this.updateStorageWithFilter()
             this.editRecord(response['id'])
         })
     }
 
-    private updateLocalStorageWithCallerForm(): void {
+    private updateStorageWithCallerForm(): void {
         this.helperService.saveItem('editUserCaller', 'list')
     }
 
-    private updateLocalStorageWithFilter(): void {
+    private updateStorageWithFilter(): void {
         this.helperService.saveItem(this.localStorageSearchTerm, this.searchTerm)
     }
 

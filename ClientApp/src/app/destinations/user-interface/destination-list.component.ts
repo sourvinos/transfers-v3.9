@@ -37,6 +37,8 @@ export class DestinationListComponent {
     public highlightFirstRow = false
     public newUrl = this.baseUrl + '/new'
     public searchTerm = ''
+    public sortColumn: string
+    public sortOrder: string
 
     //#endregion
 
@@ -54,9 +56,11 @@ export class DestinationListComponent {
     constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) { }
 
     //#region lifecycle hooks
+
     ngOnInit(): void {
         this.setWindowTitle()
-        this.getFilterFromLocalStorage()
+        this.getFilterFromStorage()
+        if (!this.getSortObjectFromStorage()) this.saveSortObjectToStorage('description', 'asc')
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
@@ -65,7 +69,7 @@ export class DestinationListComponent {
     }
 
     ngOnDestroy(): void {
-        this.updateLocalStorageWithFilter()
+        this.updateStorageWithFilter()
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.unlisten()
@@ -114,11 +118,24 @@ export class DestinationListComponent {
         this.helperService.setFocus(element)
     }
 
-    private getFilterFromLocalStorage(): void {
+    private getFilterFromStorage(): void {
         this.searchTerm = this.helperService.readItem(this.localStorageSearchTerm)
     }
 
-    private onGoBack(): void {
+    private getSortObjectFromStorage(): boolean {
+        try {
+            const sortObject = JSON.parse(this.helperService.readItem(this.feature))
+            if (sortObject) {
+                this.sortColumn = sortObject.column
+                this.sortOrder = sortObject.order
+                return true
+            }
+        } catch {
+            return false
+        }
+    }
+
+    private goBack(): void {
         this.router.navigate(['/'])
     }
 
@@ -128,9 +145,13 @@ export class DestinationListComponent {
             this.records = listResolved.list
             this.filteredRecords = this.records.sort((a, b) => (a.description > b.description) ? 1 : -1)
         } else {
-            this.onGoBack()
+            this.goBack()
             this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')
         }
+    }
+
+    private saveSortObjectToStorage(columnName: string, sortOrder: string): void {
+        this.helperService.saveItem(this.feature, JSON.stringify({ columnName, sortOrder }))
     }
 
     private setWindowTitle(): void {
@@ -143,12 +164,12 @@ export class DestinationListComponent {
 
     private subscribeToInteractionService(): void {
         this.interactionService.record.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
-            this.updateLocalStorageWithFilter()
+            this.updateStorageWithFilter()
             this.editRecord(response['id'])
         })
     }
 
-    private updateLocalStorageWithFilter(): void {
+    private updateStorageWithFilter(): void {
         this.helperService.saveItem(this.localStorageSearchTerm, this.searchTerm)
     }
 

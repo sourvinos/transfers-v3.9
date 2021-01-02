@@ -1,13 +1,13 @@
-import { fromEvent, Subscription } from 'rxjs'
-import { MessageLabelService } from './../../services/messages-label.service'
-import { Component, Input, IterableDiffer, IterableDiffers, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
-import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { MessageTableService } from '../../services/messages-table.service'
-import { HelperService } from '../../services/helper.service'
+import { Component, Input, IterableDiffer, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core'
 import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { TemplatePortal } from '@angular/cdk/portal'
+import { HelperService } from '../../services/helper.service'
+import { IndexInteractionService } from 'src/app/shared/services/index-interaction.service'
+import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { MessageLabelService } from './../../services/messages-label.service'
+import { MessageTableService } from '../../services/messages-table.service'
 import { filter, take } from 'rxjs/operators'
+import { fromEvent, Subscription } from 'rxjs'
 import { listAnimation } from '../../animations/animations'
 
 @Component({
@@ -33,15 +33,16 @@ export class CustomTableComponent {
 
     @ViewChild('contextMenu') contextMenu: TemplateRef<any>
 
-    checked = false
     checkedIds: string[] = []
     currentRow = 0
     differences: IterableDiffer<any>;
+    isColumnChecked = false
     overlayRef: OverlayRef | null
     randomTableId = Math.floor(Math.random() * 1000) + 1
     rowCount = 0
     rowHeight = 0
-    sortOrder = 'desc'
+    sortColumn = ''
+    sortOrder = ''
     subscription: Subscription
     table: any
     tableContainer: any
@@ -49,18 +50,14 @@ export class CustomTableComponent {
 
     //#endregion
 
-    constructor(private helperService: HelperService, private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private iterableDiffers: IterableDiffers, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService, private overlay: Overlay, public viewContainerRef: ViewContainerRef) { }
+    constructor(private helperService: HelperService, private indexInteractionService: IndexInteractionService, private interactionService: InteractionService, private messageLabelService: MessageLabelService, private messageTableService: MessageTableService, private overlay: Overlay, public viewContainerRef: ViewContainerRef) { }
 
     //#region lifecycle hooks
 
-    ngOnInit(): void {
-        if (this.records) {
-            this.differences = this.iterableDiffers.find(this.records).create()
-        }
-    }
-
     ngAfterViewInit(): void {
         this.initVariables()
+        this.getSortObject()
+        this.sortTable(this.sortColumn, this.sortOrder)
         if (this.highlightFirstRow) {
             this.onGotoRow(1)
         }
@@ -74,13 +71,9 @@ export class CustomTableComponent {
         switch (event.keyCode) {
             case 38: this.onGotoRow('Up'); break
             case 40: this.onGotoRow('Down'); break
-            case 13: this.sendRowToService(); break
+            case 13: this.onSendRowToService(); break
             default: break
         }
-    }
-
-    public onDomChange(): void {
-        this.onGotoRow(1)
     }
 
     public onGetLabel(id: string): string {
@@ -91,26 +84,9 @@ export class CustomTableComponent {
         return this.messageTableService.getDescription('table', id)
     }
 
-    public onHeaderClick(columnName: string, sortOrder: string, column: any): void {
-        if (column.toElement.cellIndex === 0) {
-            this.checked = !this.checked
-            this.checkedIds = []
-            this.totalPersons = 0
-            this.table.querySelectorAll('tbody tr').forEach((element: { classList: { add: (arg0: string) => void; remove: (arg0: string) => void }; childNodes: { innerText: string }[] }) => {
-                if (this.checked) {
-                    element.classList.add('checked')
-                    this.checkedIds.push(element.childNodes[1].innerText)
-                    this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
-                } else {
-                    element.classList.remove('checked')
-                }
-            })
-            this.helperService.saveItem('selectedIds', JSON.stringify(this.checkedIds))
-            this.interactionService.setCheckedTotalPersons(this.totalPersons)
-        } else {
-            this.records.sort(this.compareValues(columnName, sortOrder))
-            this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
-        }
+    public onHeaderClick(field: string, _sortOrder: string, event: any): void {
+        this.sortTable(field, _sortOrder, event)
+        this.saveSortOrder(field, _sortOrder)
     }
 
     public onOpenContextMenu({ x, y }: MouseEvent, record: any): void {
@@ -131,11 +107,6 @@ export class CustomTableComponent {
         }), take(1)).subscribe(() => {
             this.closeContextMenu()
         })
-    }
-
-    public onSortMe(columnName: string, sortOrder: string): void {
-        this.records.sort(this.compareValues(columnName, sortOrder))
-        this.sortOrder = this.sortOrder === 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
     }
 
     public onGotoRow(key: any): void {
@@ -163,6 +134,15 @@ export class CustomTableComponent {
         }
     }
 
+    public onSendRowToService(): void {
+        this.closeContextMenu()
+        if (document.getElementsByClassName('mat-dialog-container').length === 0) {
+            this.interactionService.sendObject(this.records[this.currentRow - 1])
+        } else {
+            this.indexInteractionService.action(true)
+        }
+    }
+
     public onToggleCheckBox(row: number): void {
         this.checkedIds = []
         this.totalPersons = 0
@@ -173,15 +153,6 @@ export class CustomTableComponent {
         })
         this.helperService.saveItem('selectedIds', JSON.stringify(this.checkedIds))
         this.interactionService.setCheckedTotalPersons(this.totalPersons)
-    }
-
-    public sendRowToService(): void {
-        this.closeContextMenu()
-        if (document.getElementsByClassName('mat-dialog-container').length === 0) {
-            this.interactionService.sendObject(this.records[this.currentRow - 1])
-        } else {
-            this.indexInteractionService.action(true)
-        }
     }
 
     //#endregion
@@ -211,6 +182,19 @@ export class CustomTableComponent {
         setTimeout(() => {
             document.getElementById('custom-table-input-' + this.randomTableId).focus()
         }, 300)
+    }
+
+    private getSortObject(): boolean {
+        try {
+            const sortObject = JSON.parse(this.helperService.readItem(this.feature))
+            if (sortObject) {
+                this.sortColumn = sortObject.columnName
+                this.sortOrder = sortObject.sortOrder
+                return true
+            }
+        } catch {
+            return false
+        }
     }
 
     private initVariables(): void {
@@ -257,6 +241,32 @@ export class CustomTableComponent {
 
     private sendRowToIndexService(): void {
         this.indexInteractionService.sendObject(this.records[this.currentRow - 1])
+    }
+
+    private saveSortOrder(columnName: string, sortOrder: string): void {
+        this.helperService.saveItem(this.feature, JSON.stringify({ columnName, sortOrder }))
+    }
+
+    private sortTable(field: string, sortOrder: string, event?: any): void {
+        if (event && event.toElement.cellIndex === 0) {
+            this.isColumnChecked = !this.isColumnChecked
+            this.checkedIds = []
+            this.totalPersons = 0
+            this.table.querySelectorAll('tbody tr').forEach((element: { classList: { add: (arg0: string) => void; remove: (arg0: string) => void }; childNodes: { innerText: string }[] }) => {
+                if (this.isColumnChecked) {
+                    element.classList.add('checked')
+                    this.checkedIds.push(element.childNodes[1].innerText)
+                    this.totalPersons += parseInt(element.childNodes[11].innerText, 10)
+                } else {
+                    element.classList.remove('checked')
+                }
+            })
+            this.helperService.saveItem('selectedIds', JSON.stringify(this.checkedIds))
+            this.interactionService.setCheckedTotalPersons(this.totalPersons)
+        } else {
+            this.records.sort(this.compareValues(field, sortOrder))
+            this.sortOrder = this.sortOrder == 'asc' ? this.sortOrder = 'desc' : this.sortOrder = 'asc'
+        }
     }
 
     private async unselectAllRows(): Promise<void> {

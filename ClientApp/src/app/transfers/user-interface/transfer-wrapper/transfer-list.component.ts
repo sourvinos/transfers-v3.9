@@ -38,6 +38,8 @@ export class TransferListComponent {
     private windowTitle = 'Transfers'
     public feature = 'transferList'
     public highlightFirstRow = false
+    public sortColumn: string
+    public sortOrder: string
 
     //#endregion
 
@@ -304,6 +306,19 @@ export class TransferListComponent {
         return JSON.parse(localStorageData.drivers)
     }
 
+    private getSortObjectFromStorage(): boolean {
+        try {
+            const sortObject = JSON.parse(this.helperService.readItem(this.feature))
+            if (sortObject) {
+                this.sortColumn = sortObject.column
+                this.sortOrder = sortObject.order
+                return true
+            }
+        } catch {
+            return false
+        }
+    }
+
     private initCheckedPersons(): void {
         this.interactionService.setCheckedTotalPersons(0)
     }
@@ -357,6 +372,10 @@ export class TransferListComponent {
         }
         this.helperService.saveItem('transfers', JSON.stringify(summaryItems))
         localStorage.removeItem('selectedIds')
+    }
+
+    private saveSortObjectToStorage(columnName: string, sortOrder: string): void {
+        this.helperService.saveItem(this.feature, JSON.stringify({ columnName, sortOrder }))
     }
 
     private selectItems(className: string, lookupArray: string[], checked: boolean): void {
