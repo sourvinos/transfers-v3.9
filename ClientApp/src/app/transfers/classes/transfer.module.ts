@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+
 import { ChartComponent } from './../../shared/components/chart/chart.component'
 import { MaterialModule } from './../../shared/modules/material.module'
 import { OverviewDetailsComponent } from '../user-interface/overview-details/overview-details.component'
@@ -7,6 +8,7 @@ import { TransferAssignDriverComponent } from '../user-interface/assign-driver/a
 import { TransferFormComponent } from '../user-interface/transfer-wrapper/transfer-form.component'
 import { TransferListComponent } from '../user-interface/transfer-wrapper/transfer-list.component'
 import { TransferOverviewComponent } from '../user-interface/transfer-overview/transfer-overview.component'
+import { TransferRoutingModule } from './transfer.routing.module'
 import { TransferWrapperComponent } from '../user-interface/transfer-wrapper/transfer-wrapper.component'
 
 @NgModule({
@@ -21,7 +23,8 @@ import { TransferWrapperComponent } from '../user-interface/transfer-wrapper/tra
     ],
     imports: [
         SharedModule,
-        MaterialModule
+        MaterialModule,
+        TransferRoutingModule
     ],
     entryComponents: [
         TransferAssignDriverComponent

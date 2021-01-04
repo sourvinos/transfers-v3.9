@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class TransfersController : ControllerBase {

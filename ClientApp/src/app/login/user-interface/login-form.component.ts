@@ -68,7 +68,7 @@ export class LoginFormComponent {
     //#region public methods
 
     public onForgotPassword(): void {
-        this.router.navigate(['/forgotPassword'])
+        this.router.navigate(['/account/forgotPassword'])
     }
 
     public onGetHint(id: string, minmax = 0): string {

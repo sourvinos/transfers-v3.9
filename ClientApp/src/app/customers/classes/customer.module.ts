@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core'
-import { MaterialModule } from '../../shared/modules/material.module'
-import { SharedModule } from '../../shared/modules/shared.module'
+
 import { CustomerFormComponent } from '../user-interface/customer-form.component'
 import { CustomerListComponent } from '../user-interface/customer-list.component'
+import { CustomerRoutingModule } from './customer.routing.module'
+import { MaterialModule } from '../../shared/modules/material.module'
+import { SharedModule } from '../../shared/modules/shared.module'
 
 @NgModule({
     declarations: [
@@ -11,7 +13,8 @@ import { CustomerListComponent } from '../user-interface/customer-list.component
     ],
     imports: [
         SharedModule,
-        MaterialModule
+        MaterialModule,
+        CustomerRoutingModule
     ]
 })
 

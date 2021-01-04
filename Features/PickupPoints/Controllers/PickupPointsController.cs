@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    // [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 
     public class PickupPointsController : ControllerBase {
@@ -23,7 +23,7 @@ namespace Transfers {
         }
 
         [HttpGet]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<PickupPoint>> Get() {
             return await repo.Get();
         }
@@ -41,7 +41,7 @@ namespace Transfers {
         }
 
         [HttpGet("{id}")]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPickupPoint(int id) {
             PickupPoint record = await repo.GetById(id);
             if (record == null) {
@@ -98,7 +98,7 @@ namespace Transfers {
         }
 
         [HttpPatch("{id}")]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PatchPickupPoint(int pickupPointId, [FromQuery(Name = "coordinates")] string coordinates) {
             PickupPoint record = await repo.GetById(pickupPointId);
             try {

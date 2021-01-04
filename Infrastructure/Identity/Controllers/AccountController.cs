@@ -71,7 +71,7 @@ namespace Transfers {
                     string token = await userManager.GeneratePasswordResetTokenAsync(user);
                     string tokenEncoded = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
                     string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
-                    string passwordResetLink = Url.Content($"{baseUrl}/resetPassword?email={model.Email}&token={tokenEncoded}");
+                    string passwordResetLink = Url.Content($"{baseUrl}/account/resetPassword?email={model.Email}&token={tokenEncoded}");
                     emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
                     return StatusCode(200, new { response = ApiMessages.EmailInstructions() }); // Ok
                 }
