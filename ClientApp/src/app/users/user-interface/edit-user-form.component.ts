@@ -36,6 +36,12 @@ export class EditUserFormComponent {
     public environment = environment.production
     public form: FormGroup
     public input: InputTabStopDirective
+
+    //#endregion
+
+    //#region particular variables
+
+    private callerParent: string
     private isAdmin: boolean
 
     //#endregion
@@ -88,7 +94,7 @@ export class EditUserFormComponent {
         if (this.form.dirty) {
             this.showSnackbar(this.messageSnackbarService.formIsDirty(), 'error')
         } else {
-            this.router.navigate(['/users/changePassword/' + this.form.value.id])
+            this.router.navigate(['/users/' + this.form.value.id + '/changePassword'])
         }
     }
 
@@ -108,6 +114,10 @@ export class EditUserFormComponent {
 
     public onGetHint(id: string, minmax = 0): string {
         return this.messageHintService.getDescription(id, minmax)
+    }
+
+    public onGetEditUserCaller(): string {
+        return this.helperService.readItem('editUserCaller')
     }
 
     public onGetLabel(id: string): string {

@@ -43,7 +43,7 @@ export class UserMenuComponent {
         this.accountService.currentUserId.subscribe((result: any) => {
             userId = result
         })
-        this.helperService.saveItem('editUserCaller', 'userGreeting')
+        this.updateStorageWithCallerForm()
         this.router.navigate([this.baseUrl, userId])
     }
 
@@ -54,6 +54,10 @@ export class UserMenuComponent {
     //#endregion
 
     //#region private methods
+
+    private updateStorageWithCallerForm(): void {
+        this.helperService.saveItem('editUserCaller', 'menu')
+    }
 
     private updateVariables(): void {
         this.displayName = this.accountService.currentDisplayName

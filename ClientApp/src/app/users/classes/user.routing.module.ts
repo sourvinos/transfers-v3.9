@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: '', component: UserListComponent, canActivate: [AuthGuardService], resolve: { userList: UserListResolver } },
     { path: 'new', component: RegisterUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
     { path: ':id', component: EditUserFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard], resolve: { userForm: UserFormResolver } },
-    { path: 'changePassword/:id', component: ChangePasswordFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
+    { path: ':id/changePassword', component: ChangePasswordFormComponent, canActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard] },
 ]
 
 @NgModule({

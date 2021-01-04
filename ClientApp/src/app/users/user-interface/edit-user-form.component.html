@@ -2,14 +2,10 @@
 
     <div id="header">
         <div id="navigation">
-            <div [ngSwitch]="isConnectedUserAdmin">
-                <button data-cy="goBack" class="goBack" id="goBack" *ngSwitchCase="true" [routerLink]="['/users']" mat-mini-fab>
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-                <button data-cy="goBack" class="goBack" id="goBack" *ngSwitchCase="false" [routerLink]="['/']" mat-mini-fab>
-                    <mat-icon>home</mat-icon>
-                </button>
-            </div>
+            <button data-cy="goBack" class="goBack" id="goBack" (click)="onGoBack()" mat-mini-fab>
+                <mat-icon *ngIf="onGetEditUserCaller() == 'list'">arrow_back</mat-icon>
+                <mat-icon *ngIf="onGetEditUserCaller() == 'menu'">home</mat-icon>
+            </button>
         </div>
         <div @slideFromLeft id="title">
             <h1>{{ onGetLabel('header') }}</h1>

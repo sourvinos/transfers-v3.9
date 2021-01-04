@@ -64,7 +64,6 @@ export class UserListComponent {
         this.loadRecords()
         this.addShortcuts()
         this.subscribeToInteractionService()
-        this.updateStorageWithCallerForm()
         this.onFilter(this.searchTerm)
         this.focus('searchTerm')
     }
@@ -111,6 +110,7 @@ export class UserListComponent {
     }
 
     private editRecord(id: number): void {
+        this.updateStorageWithCallerForm()
         this.router.navigate([this.baseUrl, id])
     }
 

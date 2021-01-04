@@ -51,7 +51,9 @@ export class ChangePasswordFormComponent {
 
     constructor(private accountService: AccountService, private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService) {
         this.activatedRoute.params.subscribe(p => {
-            if (p.id) { this.getRecord(p.id) }
+            if (p.id) {
+                this.getRecord(p.id)
+            }
         })
 
     }
@@ -101,7 +103,7 @@ export class ChangePasswordFormComponent {
     }
 
     public onGoBack(): void {
-        this.router.navigate([this.url])
+        this.router.navigate(['../'], { relativeTo: this.activatedRoute })
     }
 
     public onSave(): void {
