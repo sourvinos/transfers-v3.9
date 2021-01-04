@@ -168,7 +168,7 @@
 
 .option {
     color: var(--color-select-items);
-    font-family: "PF Handbook Pro";
+    font-family: var(--font-family-menu-list-item);
     font-size: 19px;
     font-variant-caps: small-caps;
     font-weight: 500;

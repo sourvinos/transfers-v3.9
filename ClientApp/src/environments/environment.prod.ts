@@ -1,8 +1,12 @@
 export const environment = {
-    production: true,
+    production: false,
     login: {
-        userName: '',
+        username: '',
         password: '',
         isHuman: false
-    }
+    },
+    leaflet: {
+        token: 'pk.eyJ1Ijoic291cnZpbm9zIiwiYSI6ImNrajEwa3plbDRzY2gzMnFqcXppZzNhaDkifQ.JMR_dEvdaFTpQ2jiapPrhg'
+    },
+    appName: 'Island cruises'
 }

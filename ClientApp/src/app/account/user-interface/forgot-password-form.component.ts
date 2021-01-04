@@ -111,7 +111,7 @@ export class ForgotPasswordFormComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]]
+            email: [environment.login.email, [Validators.required, Validators.email]]
         })
     }
 

@@ -101,16 +101,16 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
     public onSave(): void {
         this.flattenFormFields()
         this.accountService.register(this.flatForm).subscribe(() => {
-            this.initForm()
-            this.focus('userName')
             this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
+            this.resetForm()
+            this.onGoBack()
         }, errorFromInterceptor => {
             // 200 = Ok
             // 492 = Unable to register user (username and/or email already exist)
             // 500 = Invalid model
             this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
         })
-}
+    }
 
     //#endregion
 
@@ -161,12 +161,12 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            userName: ['', [Validators.required, Validators.maxLength(32), ValidationService.containsSpace]],
-            displayName: ['', [Validators.required, Validators.maxLength(32)]],
-            email: ['', [Validators.required, Validators.maxLength(128), Validators.email]],
+            userName: [environment.newUser.username, [Validators.required, Validators.maxLength(32), ValidationService.containsSpace]],
+            displayName: [environment.newUser.displayName, [Validators.required, Validators.maxLength(32)]],
+            email: [environment.newUser.email, [Validators.required, Validators.maxLength(128), Validators.email]],
             passwords: this.formBuilder.group({
-                password: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
-                confirmPassword: ['', [Validators.required, ValidationService.containsSpace]]
+                password: [environment.newUser.password, [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
+                confirmPassword: [environment.newUser.confirmPassword, [Validators.required, ValidationService.containsSpace]]
             }, { validator: ValidationService.childrenEqual }),
             isAdmin: false
         })
