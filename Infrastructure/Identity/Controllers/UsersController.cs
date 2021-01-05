@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Transfers {
 
-    [Authorize]
     [Route("api/[controller]")]
 
     public class UsersController : ControllerBase {
@@ -24,8 +23,8 @@ namespace Transfers {
             this.logger = logger;
         }
 
-        [HttpGet]
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public async Task<IEnumerable<UserListViewModel>> Get() {
             return await userManager.Users.Select(u => new UserListViewModel {
                 Id = u.Id,
@@ -36,8 +35,8 @@ namespace Transfers {
             }).OrderBy(o => o.Username).AsNoTracking().ToListAsync();
         }
 
+        [Authorize]
         [HttpGet("{id}")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetUser(string id) {
             AppUser record = await userManager.FindByIdAsync(id);
             if (record == null) {
@@ -56,8 +55,8 @@ namespace Transfers {
             return StatusCode(200, vm);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> PutUser([FromRoute] string id, [FromBody] UserViewModel vm) {
             if (id == vm.Id && ModelState.IsValid) {
                 AppUser record = await userManager.FindByIdAsync(id);
@@ -78,8 +77,8 @@ namespace Transfers {
 
         }
 
-        [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id) {
             AppUser record = await userManager.FindByIdAsync(id);
             if (record == null) {

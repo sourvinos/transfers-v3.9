@@ -22,25 +22,21 @@ namespace Transfers {
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<PickupPoint>> Get() {
             return await repo.Get();
         }
 
         [HttpGet("[action]")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IEnumerable<PickupPoint>> GetActive() {
             return await repo.GetActive();
         }
 
         [HttpGet("routeId/{routeId}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<PickupPoint>> Get(int routeId) {
             return await repo.GetForRoute(routeId);
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetPickupPoint(int id) {
             PickupPoint record = await repo.GetById(id);
             if (record == null) {
@@ -53,7 +49,6 @@ namespace Transfers {
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public IActionResult PostPickupPoint([FromBody] PickupPoint record) {
             if (ModelState.IsValid) {
                 try {
@@ -75,7 +70,6 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public IActionResult PutPickupPoint([FromRoute] int id, [FromBody] PickupPoint record) {
             if (id == record.Id && ModelState.IsValid) {
                 try {
@@ -97,7 +91,6 @@ namespace Transfers {
         }
 
         [HttpPatch("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PatchPickupPoint(int pickupPointId, [FromQuery(Name = "coordinates")] string coordinates) {
             PickupPoint record = await repo.GetById(pickupPointId);
             try {
@@ -112,7 +105,6 @@ namespace Transfers {
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePickupPoint([FromRoute] int id) {
             PickupPoint record = await repo.GetById(id);
             if (record == null) {

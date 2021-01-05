@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Transfers {
 
-    [Authorize]
     [Route("api/[controller]")]
 
     public class AccountController : Controller {
@@ -24,8 +23,8 @@ namespace Transfers {
             this.emailSender = emailSender;
         }
 
-        [HttpPost("[action]")]
         [Authorize(Roles = "Admin")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel formData) {
             if (ModelState.IsValid) {
                 var user = new AppUser {
@@ -107,8 +106,8 @@ namespace Transfers {
             return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
         }
 
+        [Authorize]
         [HttpPost("[action]")]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel vm) {
             if (ModelState.IsValid) {
                 var user = await userManager.FindByIdAsync(vm.UserId);
