@@ -39,7 +39,7 @@ namespace Transfers {
                 if (result.Succeeded) {
                     await userManager.AddToRoleAsync(user, user.IsAdmin ? "Admin" : "User");
                     string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token }, protocol: HttpContext.Request.Scheme);
+                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token, Language = formData.Language }, protocol: HttpContext.Request.Scheme);
                     emailSender.SendRegistrationEmail(user.Email, user.DisplayName, callbackUrl);
                     return StatusCode(200, new { response = ApiMessages.EmailInstructions() });
                 } else {
@@ -51,14 +51,16 @@ namespace Transfers {
 
         [AllowAnonymous]
         [HttpGet("[action]")]
-        public async Task<IActionResult> ConfirmEmail(string userId, string token) {
+        public async Task<IActionResult> ConfirmEmail(string userId, string token, string language) {
             var user = await userManager.FindByIdAsync(userId);
             if (user == null) { return RedirectToAction("ActivationError", "Notifications"); }
-            var result = await userManager.ConfirmEmailAsync(user, token);
-            if (result.Succeeded) {
-                return RedirectToAction("ActivationSuccess", "Notifications", new { userId, token });
+            if (!user.EmailConfirmed) {
+                var result = await userManager.ConfirmEmailAsync(user, token);
+                if (result.Succeeded) {
+                    return View("ActivationSuccess", new ActivationMessage { description = EmailMessages.AccountActivatedSuccessfully(language) });
+                }
             }
-            return RedirectToAction("ActivationError", "Notifications");
+            return View("ActivationError", new ActivationMessage { description = EmailMessages.AccountAlreadyActivatedOrError(language) });
         }
 
         [AllowAnonymous]

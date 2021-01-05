@@ -151,7 +151,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
             email: this.form.value.email,
             password: this.form.value.passwords.password,
             confirmPassword: this.form.value.passwords.confirmPassword,
-            isAdmin: this.form.value.isAdmin
+            isAdmin: this.form.value.isAdmin,
+            language: this.helperService.readItem('language')
         }
     }
 

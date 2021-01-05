@@ -28,6 +28,8 @@ namespace Transfers {
         public string ConfirmPassword { get; set; }
 
         public bool IsAdmin { get; set; }
+        
+        public string Language { get; set; }
 
     }
 

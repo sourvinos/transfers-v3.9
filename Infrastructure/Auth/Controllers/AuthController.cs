@@ -37,7 +37,7 @@ namespace Transfers {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
-                    return StatusCode(495, new { response = ApiMessages.AccountNotConfirmed() }); // Tested
+                    return StatusCode(495, new { response = ApiMessages.AccountNotConfirmed() });
                 }
                 var newRefreshToken = CreateRefreshToken(settings.ClientId, user.Id);
                 var oldRefreshTokens = db.Tokens.Where(rt => rt.UserId == user.Id);
@@ -49,7 +49,7 @@ namespace Transfers {
                 db.Tokens.Add(newRefreshToken);
                 await db.SaveChangesAsync();
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
-                return StatusCode(200, new { response = accessToken }); // Tested
+                return StatusCode(200, new { response = accessToken });
             }
             return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() }); // Tested
         }

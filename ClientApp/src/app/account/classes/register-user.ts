@@ -5,4 +5,5 @@ export class RegisterUser {
     confirmPassword: string
     email: string
     isAdmin: boolean
+    language: string
 }

@@ -109,7 +109,7 @@ export class ChangePasswordFormComponent {
     public onSave(): void {
         this.flattenFormFields()
         this.userService.updatePassword(this.flatForm).subscribe(() => {
-            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info') // Tested
+            this.showSnackbar(this.messageSnackbarService.passwordChanged(), 'info')
             this.resetForm()
             this.accountService.logout()
         }, errorFromInterceptor => {
@@ -117,7 +117,7 @@ export class ChangePasswordFormComponent {
             // 404 = User not found
             // 494 = Unable to change password
             // 500 = Invalid model
-            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')  // Tested
+            this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error') 
         })
     }
 

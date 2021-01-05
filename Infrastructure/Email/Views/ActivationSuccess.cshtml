@@ -1,10 +1,12 @@
+@model Transfers.ActivationMessage
+
 <link rel="stylesheet" href="~/styles/notifications.css">
 
 <div id="content">
     <div id="companyLogo">
-      <p>Island</p>
-      <p>cruises</p>
+        <p>Island</p>
+        <p>cruises</p>
     </div>
-    <p class="message">This account is now activated!</p>
+    <p class="message">@Model.description</p>
     <a href="/login">Login</a>
 </div>
