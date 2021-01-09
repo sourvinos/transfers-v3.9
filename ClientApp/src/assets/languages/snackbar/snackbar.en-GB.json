@@ -11,6 +11,7 @@
         { "error": 492, "id": "unableToRegisterUser", "message": "A user with these details can not be created." },
         { "error": 494, "id": "unableToChangePassword", "message": "The password can not be changed." },
         { "error": 495, "id": "accountNotConfirmed", "message": "This account is pending email confirmation." },
+        { "error": 496, "id": "emailNotSent", "message": "The email was not sent." },
         { "error": 499, "id": "redAlert", "message":"Something very bad happened. Logout immediately." },
         { "id": "askConfirmationToAbortEditing", "message": "If you continue, all changes will be lost." },
         { "id": "askConfirmationToDelete", "message": "If you continue, this record will be lost for ever." },

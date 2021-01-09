@@ -130,10 +130,10 @@ export class LoginFormComponent {
     private showError(error: any): void {
         switch (error.status) {
             case 401:
-                this.showSnackbar(this.messageSnackbarService.authenticationFailed(), 'error') 
+                this.showSnackbar(this.messageSnackbarService.authenticationFailed(), 'error')
                 break
             case 495:
-                this.showSnackbar(this.messageSnackbarService.accountNotConfirmed(), 'error') 
+                this.showSnackbar(this.messageSnackbarService.accountNotConfirmed(), 'error')
                 break
         }
     }

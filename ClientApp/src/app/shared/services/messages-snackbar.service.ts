@@ -44,6 +44,7 @@ export class MessageSnackbarService {
     }
 
     public accountNotConfirmed(): string { return this.getDescription(this.feature, "accountNotConfirmed") }
+    public invalidOneTimePassword(): string { return this.getDescription(this.feature, "invalidOneTimePassword") }
     public askConfirmationToAbortEditing(): string { return this.getDescription(this.feature, "askConfirmationToAbortEditing") }
     public askConfirmationToDelete(): string { return this.getDescription(this.feature, "askConfirmationToDelete") }
     public authenticationFailed(): string { return this.getDescription(this.feature, "authenticationFailed") }

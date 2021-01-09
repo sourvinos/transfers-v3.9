@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Transfers {
+
     public class LoginViewModel {
 
         [Required]
@@ -9,6 +10,7 @@ namespace Transfers {
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
     }
 
 }

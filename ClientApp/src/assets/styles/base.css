@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
 @import "~leaflet/dist/leaflet.css";
 @import "buttons.css";
 @import "checkbox.css";

@@ -11,6 +11,8 @@
         { "error": 492, "id": "unableToRegisterUser", "message": "Ο χρήστης με αυτά τα στοιχεία δεν μπορεί να δημιουργηθεί." },
         { "error": 494, "id": "unableToChangePassword", "message": "Ο κωδικός δεν μπορεί να αλλάξει." },
         { "error": 495, "id": "accountNotConfirmed", "message": "Η εγγραφή του χρήστη δεν έχει ακόμη επιβεβαιωθεί." },
+        { "error": 496, "id": "emailNotSent", "message": "Το email δεν στάλθηκε." },
+        { "error": 499, "id": "redAlert", "message":"Κάτι πήγε πολύ στραβά! Αποσυνδεθείτε αμέσως!" },
         { "id": "askConfirmationToAbortEditing", "message": "Αν συνεχίσετε, οι αλλαγές θα χαθούν." },
         { "id": "askConfirmationToDelete", "message": "Αν συνεχίσετε, η εγγραφή θα διαγραφεί για πάντα." },
         { "id": "emailSent", "message": "Στάλθηκε ένα email με οδηγίες." },

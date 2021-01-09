@@ -1,10 +1,8 @@
-using System.Threading.Tasks;
-
 namespace Transfers {
 
     public interface IEmailSender {
 
-        void SendRegistrationEmail(string userEmail, string displayName, string callbackUrl);
+        SendEmailResponse SendFirstLoginCredentials(FirstLoginCredentialsViewModel model, string loginLink);
         SendEmailResponse SendResetPasswordEmail(string displayName, string userEmail, string callbackUrl);
 
     }

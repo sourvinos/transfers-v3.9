@@ -14,12 +14,15 @@ namespace Transfers {
     [Route("api/[controller]")]
     public class AuthController : ControllerBase {
 
-        private readonly UserManager<AppUser> userManager;
-        private readonly TokenSettings settings;
         private readonly AppDbContext db;
+        private readonly TokenSettings settings;
+        private readonly UserManager<AppUser> userManager;
 
-        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) =>
-            (this.userManager, this.settings, this.db) = (userManager, settings.Value, db);
+        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) {
+            this.db = db;
+            this.settings = settings.Value;
+            this.userManager = userManager;
+        }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> Auth([FromBody] TokenRequest model) {
@@ -36,6 +39,13 @@ namespace Transfers {
         private async Task<IActionResult> GenerateNewToken(TokenRequest model) {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
+                if (this.IsFirstLogin(user)) {
+                    await this.UpdateFirstLogin(user);
+                } else {
+                    if (IsOneTimePasswordChanged(user) == false) {
+                        return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
+                    }
+                }
                 if (!await userManager.IsEmailConfirmedAsync(user)) {
                     return StatusCode(495, new { response = ApiMessages.AccountNotConfirmed() });
                 }
@@ -57,10 +67,10 @@ namespace Transfers {
         private Token CreateRefreshToken(string clientId, string userId) {
             return new Token() {
                 ClientId = clientId,
-                    UserId = userId,
-                    Value = Guid.NewGuid().ToString("N"),
-                    CreatedDate = DateTime.UtcNow,
-                    ExpiryTime = DateTime.UtcNow.AddMinutes(90)
+                UserId = userId,
+                Value = Guid.NewGuid().ToString("N"),
+                CreatedDate = DateTime.UtcNow,
+                ExpiryTime = DateTime.UtcNow.AddMinutes(90)
             };
         }
 
@@ -86,11 +96,11 @@ namespace Transfers {
             var encodedToken = tokenHandler.WriteToken(newtoken);
             return new TokenResponse() {
                 token = encodedToken,
-                    expiration = newtoken.ValidTo,
-                    refresh_token = refreshToken,
-                    roles = roles.FirstOrDefault(),
-                    userId = user.Id,
-                    displayName = user.DisplayName
+                expiration = newtoken.ValidTo,
+                refresh_token = refreshToken,
+                roles = roles.FirstOrDefault(),
+                userId = user.Id,
+                displayName = user.DisplayName
             };
         }
 
@@ -110,6 +120,20 @@ namespace Transfers {
             } catch {
                 return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
             }
+        }
+
+        private Boolean IsFirstLogin(AppUser user) {
+            return user.IsFirstLogin;
+        }
+
+        private bool IsOneTimePasswordChanged(AppUser user) {
+            return user.IsOneTimePasswordChanged;
+        }
+
+        private async Task<IdentityResult> UpdateFirstLogin(AppUser user) {
+            user.IsFirstLogin = false;
+            user.OneTimePassword = "";
+            return await userManager.UpdateAsync(user);
         }
 
     }

@@ -535,6 +535,10 @@
                 "description": "Αλλαγη κωδικου"
             },
             {
+                "id": "sendEmailToUser",
+                "description": "Αποστολη email"
+            },
+            {
                 "id": "saveButton",
                 "description": "Αποθηκευση"
             }

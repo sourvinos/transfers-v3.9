@@ -535,6 +535,10 @@
                 "description": "(CZ) Change password"
             },
             {
+                "id": "sendEmailToUser",
+                "description": "(CZ) Send email"
+            },
+            {
                 "id": "saveButton",
                 "description": "(CZ) Save"
             }

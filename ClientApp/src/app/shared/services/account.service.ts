@@ -16,6 +16,7 @@ export class AccountService {
     private urlForgotPassword = '/api/account/forgotPassword'
     private urlRegister = '/api/account/register'
     private urlResetPassword = '/api/account/resetPassword'
+    private urlSendEmail = '/api/account/sendEmail'
     private urlToken = '/api/auth/auth'
     private userId = new BehaviorSubject<string>(localStorage.getItem('userId'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
@@ -26,8 +27,8 @@ export class AccountService {
 
     //#region public methods
 
-    public forgotPassword(email: string, language: string): Observable<any> {
-        return this.httpClient.post<any>(this.urlForgotPassword, { email, language })
+    public forgotPassword(email: string): Observable<any> {
+        return this.httpClient.post<any>(this.urlForgotPassword, { email })
     }
 
     public getNewRefreshToken(): Observable<any> {

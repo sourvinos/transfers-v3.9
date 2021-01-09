@@ -46,7 +46,21 @@ export class EditUserFormComponent {
 
     //#endregion
 
-    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private buttonClickService: ButtonClickService,
+        private dialogService: DialogService,
+        private formBuilder: FormBuilder,
+        private helperService: HelperService,
+        private keyboardShortcutsService: KeyboardShortcuts,
+        private messageHintService: MessageHintService,
+        private messageLabelService: MessageLabelService,
+        private messageSnackbarService: MessageSnackbarService,
+        private router: Router,
+        private snackbarService: SnackbarService,
+        private titleService: Title,
+        private userService: UserService
+    ) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)
@@ -138,6 +152,14 @@ export class EditUserFormComponent {
         })
     }
 
+    public onSendFirstLoginCredentials(): void {
+        this.userService.sendFirstLoginCredentials(this.form.value).subscribe(() => {
+            this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
+        }, errorCode => {
+            this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')
+        })
+    }
+
     //#endregion
 
     //#region private methods
@@ -201,6 +223,7 @@ export class EditUserFormComponent {
             userName: ['', [Validators.required, Validators.maxLength(32)]],
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
             email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
+            oneTimePassword: [''],
             isAdmin: false
         })
     }
@@ -211,7 +234,8 @@ export class EditUserFormComponent {
             userName: result.username,
             displayName: result.displayName,
             email: result.email,
-            isAdmin: result.isAdmin
+            isAdmin: result.isAdmin,
+            oneTimePassword: result.oneTimePassword
         })
     }
 

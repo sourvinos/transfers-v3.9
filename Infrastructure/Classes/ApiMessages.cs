@@ -19,6 +19,7 @@ namespace Transfers {
         #region Errors
 
         public static string AccountNotConfirmed() { return "This account is pending email confirmation."; }
+        public static string InvalidOneTimePassword() { return "This password is no longer valid."; }
         public static string RecordInUse() { return "This record is in use and can not be deleted."; }
         public static string AuthenticationFailed() { return "Authentication failed."; }
         public static string RecordNotFound() { return "Record not found."; }
@@ -26,6 +27,7 @@ namespace Transfers {
         public static string DefaultDriverNotFound() { return "Default driver not found."; }
         public static string RecordNotSaved() { return "Record not saved."; }
         public static string InvalidModel() { return "The model is invalid"; }
+        public static string EmailNotSent() { return "Email not sent"; }
 
         #endregion
 

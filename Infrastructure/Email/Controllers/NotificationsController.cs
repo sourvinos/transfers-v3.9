@@ -11,11 +11,13 @@ namespace Transfers {
             _hostingEnv = env;
         }
 
-        public IActionResult ActivationError(string userId, string token) =>
-            View(_hostingEnv);
+        public IActionResult ActivationError(string userId, string token) {
+            return View(_hostingEnv);
+        }
 
-        public IActionResult ActivationSuccess() =>
-            View();
+        public IActionResult ActivationSuccess() {
+            return View();
+        }
 
     }
 

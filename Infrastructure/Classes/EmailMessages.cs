@@ -32,6 +32,36 @@ namespace Transfers {
             }
         }
 
+        public static string[] EmailBody(string url) {
+            switch (url.Substring(url.Length - 5, 5)) {
+                case "el-GR":
+                    return new[] {
+                        "Γεια σας, ",
+                        "Για να μπορέσετε να συνδεθείτε στην online πλατφόρμα μας και να κάνετε κρατήσεις, η εγγραφή σας πρέπει να επιβεβαιωθεί.",
+                        "Επιβεβαίωση" };
+                case "en-GB":
+                    return new[] {
+                        "Hello, ",
+                        "In order to be able to connect to our online platform and make reservations, your registration must be confirmed.",
+                        "Confirm" };
+                case "de-DE":
+                    return new[] {
+                        "Hallo, ",
+                        "Um eine Verbindung zu unserer Online-Plattform herstellen und Reservierungen vornehmen zu können, muss Ihre Registrierung bestätigt werden.",
+                        "Bestätigen" };
+                case "cs-CZ":
+                    return new[] {
+                        "Ahoj",
+                        "Abyste se mohli připojit k naší online platformě a provádět rezervace, musí být vaše registrace potvrzena.",
+                        "Potvrdit" };
+                default:
+                    return new[] {
+                        "Hallo, ",
+                        "Um eine Verbindung zu unserer Online-Plattform herstellen und Reservierungen vornehmen zu können, muss Ihre Registrierung bestätigt werden.",
+                        "Bestätigen" };
+            }
+        }
+
     }
 
 }

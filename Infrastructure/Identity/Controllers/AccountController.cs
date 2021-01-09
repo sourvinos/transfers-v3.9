@@ -32,16 +32,18 @@ namespace Transfers {
                     DisplayName = formData.Displayname,
                     UserName = formData.Username,
                     IsAdmin = formData.IsAdmin,
-                    EmailConfirmed = false,
+                    EmailConfirmed = true,
+                    IsFirstLogin = true,
+                    OneTimePassword = formData.Password,
+                    IsOneTimePasswordChanged = false,
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
                 var result = await userManager.CreateAsync(user, formData.Password);
                 if (result.Succeeded) {
                     await userManager.AddToRoleAsync(user, user.IsAdmin ? "Admin" : "User");
-                    string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-                    string callbackUrl = Url.Action("ConfirmEmail", "Account", new { UserId = user.Id, Token = token, Language = formData.Language }, protocol: HttpContext.Request.Scheme);
-                    emailSender.SendRegistrationEmail(user.Email, user.DisplayName, callbackUrl);
-                    return StatusCode(200, new { response = ApiMessages.EmailInstructions() });
+                    return StatusCode(200, new {
+                        response = ApiMessages.RecordCreated()
+                    });
                 } else {
                     return StatusCode(492, new { response = result.Errors.Select(x => x.Description) });
                 }
@@ -99,6 +101,8 @@ namespace Transfers {
                 if (user != null) {
                     var result = await userManager.ResetPasswordAsync(user, Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Token)), model.Password);
                     if (result.Succeeded) {
+                        await signInManager.RefreshSignInAsync(user);
+                        await this.UpdateIsOneTimePasswordChanged(user);
                         return StatusCode(200, new { response = ApiMessages.PasswordReset() });
                     }
                     return StatusCode(494, new { response = result.Errors.Select(x => x.Description) });
@@ -117,6 +121,7 @@ namespace Transfers {
                     var result = await userManager.ChangePasswordAsync(user, vm.CurrentPassword, vm.Password);
                     if (result.Succeeded) {
                         await signInManager.RefreshSignInAsync(user);
+                        await this.UpdateIsOneTimePasswordChanged(user);
                         return StatusCode(200, new { response = ApiMessages.PasswordChanged() });
                     }
                     return StatusCode(494, new { response = result.Errors.Select(x => x.Description) });
@@ -124,6 +129,11 @@ namespace Transfers {
                 return StatusCode(404, new { response = ApiMessages.RecordNotFound() });
             }
             return StatusCode(400, new { response = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage) });
+        }
+
+        private async Task<IdentityResult> UpdateIsOneTimePasswordChanged(AppUser user) {
+            user.IsOneTimePasswordChanged = true;
+            return await userManager.UpdateAsync(user);
         }
 
     }

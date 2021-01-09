@@ -13,14 +13,16 @@ namespace Transfers {
 
     public class UsersController : ControllerBase {
 
-        private readonly UserManager<AppUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IEmailSender emailSender;
         private readonly ILogger<UsersController> logger;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<AppUser> userManager;
 
-        public UsersController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ILogger<UsersController> logger) {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
+        public UsersController(IEmailSender emailSender, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ILogger<UsersController> logger) {
+            this.emailSender = emailSender;
             this.logger = logger;
+            this.roleManager = roleManager;
+            this.userManager = userManager;
         }
 
         [Authorize(Roles = "Admin")]
@@ -28,11 +30,11 @@ namespace Transfers {
         public async Task<IEnumerable<UserListViewModel>> Get() {
             return await userManager.Users.Select(u => new UserListViewModel {
                 Id = u.Id,
-                Username = u.UserName,
-                Displayname = u.DisplayName,
+                UserName = u.UserName,
+                DisplayName = u.DisplayName,
                 Email = u.Email,
                 IsAdmin = u.IsAdmin
-            }).OrderBy(o => o.Username).AsNoTracking().ToListAsync();
+            }).OrderBy(o => o.UserName).AsNoTracking().ToListAsync();
         }
 
         [Authorize]
@@ -50,7 +52,8 @@ namespace Transfers {
                 Username = record.UserName,
                 DisplayName = record.DisplayName,
                 Email = record.Email,
-                IsAdmin = record.IsAdmin
+                IsAdmin = record.IsAdmin,
+                OneTimePassword = record.OneTimePassword
             };
             return StatusCode(200, vm);
         }
@@ -98,6 +101,18 @@ namespace Transfers {
                     response = ApiMessages.RecordInUse()
                 });
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("[action]")]
+        public IActionResult SendFirstLoginCredentials([FromBody] FirstLoginCredentialsViewModel model) {
+            string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
+            string loginLink = Url.Content($"{baseUrl}/login");
+            var result = emailSender.SendFirstLoginCredentials(model, loginLink);
+            if (result.Successful) {
+                return StatusCode(200, new { response = ApiMessages.EmailInstructions() });
+            }
+            return StatusCode(496, new { response = ApiMessages.EmailNotSent() });
         }
 
         private async Task<IdentityResult> UpdateUser(AppUser user, UserViewModel vm) {
