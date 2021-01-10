@@ -75,7 +75,7 @@ export class ForgotPasswordFormComponent {
 
     public onSave(): void {
         const form = this.form.value
-        this.accountService.forgotPassword(form.email).subscribe(() => {
+        this.accountService.forgotPassword(form.email, 'en-GB').subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
             this.onGoBack()
         }, () => {

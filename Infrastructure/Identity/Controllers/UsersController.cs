@@ -108,7 +108,7 @@ namespace Transfers {
         public IActionResult SendFirstLoginCredentials([FromBody] FirstLoginCredentialsViewModel model) {
             string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
             string loginLink = Url.Content($"{baseUrl}/login");
-            var result = emailSender.SendFirstLoginCredentials(model, loginLink);
+            var result = emailSender.SendFirstLoginCredentials(model, loginLink, model.Language);
             if (result.Successful) {
                 return StatusCode(200, new { response = ApiMessages.EmailInstructions() });
             }

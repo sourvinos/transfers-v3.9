@@ -12,23 +12,29 @@ namespace Transfers {
             this.settings = settings.Value;
         }
 
-        public SendEmailResponse SendFirstLoginCredentials(FirstLoginCredentialsViewModel model, string loginLink) {
+        public SendEmailResponse SendFirstLoginCredentials(FirstLoginCredentialsViewModel model, string loginLink, string language) {
 
             var message = new MimeMessage();
 
             var htmlContent = "";
+            var body = EmailMessages.FirstLoginCredentials(language);
 
-            htmlContent += "<h2>Hello, " + model.DisplayName + "!" + "</h2>";
-            htmlContent += "<p>Use these credentials to login:</p>";
-            htmlContent += "<p>Username: " + model.UserName + "</p>";
-            htmlContent += "<p>Password: " + model.OneTimePassword + "</p>";
-            htmlContent += "<p>Warning</p>";
-            htmlContent += "<p>This password is temporary and can be used only once.</p>";
-            htmlContent += "<p>You must change it immediately after your first successful login.</p>";
-            htmlContent += "<a href=" + loginLink + ">Login</a>";
-            htmlContent += "<p>We wish you a pleasant experience using our application.</p>";
+            htmlContent += "<h2 style = 'font-weight: 500;'>" + body[0] + model.DisplayName + "!" + "</h2>";
+            htmlContent += "<p>" + body[1] + "</p>";
+            htmlContent += "<p>" + body[2] + model.UserName + "</p>";
+            htmlContent += "<p>" + body[3] + model.OneTimePassword + "</p>";
             htmlContent += "<br>";
-            htmlContent += "<p>Regards,</p>";
+            htmlContent += "<a style = 'color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + loginLink + ">" + body[7] + "</a>";
+            htmlContent += "<br>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[4] + "</p>";
+            htmlContent += "<p>" + body[5] + "</p>";
+            htmlContent += "<p>" + body[6] + "</p>";
+            htmlContent += "<br>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[8] + "</p>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[9] + "</p>";
             htmlContent += "<p>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             message.From.Add(new MailboxAddress(settings.From, settings.Username));
@@ -49,20 +55,24 @@ namespace Transfers {
 
         }
 
-        public SendEmailResponse SendResetPasswordEmail(string displayName, string userEmail, string callbackUrl) {
+        public SendEmailResponse SendResetPasswordEmail(string displayName, string userEmail, string callbackUrl, string language) {
 
             var message = new MimeMessage();
 
             var htmlContent = "";
+            var body = EmailMessages.ResetPassword(language);
 
-            htmlContent += "<h2>Hello, " + displayName + "!" + "</h2>";
-            htmlContent += "<p>You have requested a password reset.</p>";
-            htmlContent += "<p>Click the following button to set a new password</p>";
-            htmlContent += "<a href=" + callbackUrl + ">Reset password</a>";
-            htmlContent += "<p>Thank you for using our application.</p>";
+            htmlContent += "<h2 style = 'font-weight: 500;'>" + body[0] + displayName + "!" + "</h2>";
+            htmlContent += "<p>" + body[1] + "</p>";
+            htmlContent += "<p>" + body[2] + "</p>";
             htmlContent += "<br>";
-            htmlContent += "<p>Regards,</p>";
-            htmlContent += "<p>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<a style = 'color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + callbackUrl + ">" + body[3] + "</a>";
+            htmlContent += "<br>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[4] + "</p>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[5] + "</p>";
+            htmlContent += "<p>Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             message.From.Add(new MailboxAddress(settings.From, settings.Username));
             message.To.Add(new MailboxAddress(displayName, userEmail));

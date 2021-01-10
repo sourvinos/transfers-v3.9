@@ -75,7 +75,7 @@ namespace Transfers {
                     string tokenEncoded = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
                     string baseUrl = $"{Request.Scheme}://{Request.Host.Value}{Request.PathBase.Value}";
                     string passwordResetLink = Url.Content($"{baseUrl}/account/resetPassword?email={model.Email}&token={tokenEncoded}");
-                    emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink);
+                    emailSender.SendResetPasswordEmail(user.DisplayName, user.Email, passwordResetLink, model.Language);
                     return StatusCode(200, new { response = ApiMessages.EmailInstructions() });
                 }
                 return StatusCode(200, new { response = ApiMessages.EmailInstructions() });

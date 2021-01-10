@@ -27,8 +27,8 @@ export class AccountService {
 
     //#region public methods
 
-    public forgotPassword(email: string): Observable<any> {
-        return this.httpClient.post<any>(this.urlForgotPassword, { email })
+    public forgotPassword(email: string, language: string): Observable<any> {
+        return this.httpClient.post<any>(this.urlForgotPassword, { email, language })
     }
 
     public getNewRefreshToken(): Observable<any> {

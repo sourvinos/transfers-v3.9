@@ -32,33 +32,78 @@ namespace Transfers {
             }
         }
 
-        public static string[] EmailBody(string url) {
-            switch (url.Substring(url.Length - 5, 5)) {
+        public static string[] FirstLoginCredentials(string language) {
+            switch (language) {
                 case "el-GR":
                     return new[] {
                         "Γεια σας, ",
-                        "Για να μπορέσετε να συνδεθείτε στην online πλατφόρμα μας και να κάνετε κρατήσεις, η εγγραφή σας πρέπει να επιβεβαιωθεί.",
-                        "Επιβεβαίωση" };
+                        "Χρησιμοποιήστε τα παρακάτω στοιχεία για να συνδεθείτε:",
+                        "Χρήστης: " ,
+                        "Κωδικός: ",
+                        "Προσοχή!",
+                        "Ο κωδικός είναι προσωρινός και μπορεί να χρησιμοποιηθεί μόνο μία φορά.",
+                        "Πρέπει να τον αλλάξετε αμέσως μετά την πρώτη σύνδεσή σας.",
+                        "Σύνδεση",
+                        "Ευχαριστούμε που χρησιμοποιείτε την online πλατφόρμα μας.",
+                        "Με φιλικούς χαιρετισμούς,"
+                    };
                 case "en-GB":
                     return new[] {
                         "Hello, ",
-                        "In order to be able to connect to our online platform and make reservations, your registration must be confirmed.",
-                        "Confirm" };
+                        "Use the following credentials to login:",
+                        "User: " ,
+                        "Password: ",
+                        "Warning!",
+                        "This is a temporary password and can be used only once.",
+                        "You must change it immediateley after your first login.",
+                        "Login",
+                        "Thank you for using our online platform.",
+                        "Best regards,"
+                     };
                 case "de-DE":
                     return new[] {
-                        "Hallo, ",
-                        "Um eine Verbindung zu unserer Online-Plattform herstellen und Reservierungen vornehmen zu können, muss Ihre Registrierung bestätigt werden.",
-                        "Bestätigen" };
+                        ""
+                    };
                 case "cs-CZ":
                     return new[] {
-                        "Ahoj",
-                        "Abyste se mohli připojit k naší online platformě a provádět rezervace, musí být vaše registrace potvrzena.",
-                        "Potvrdit" };
+                        ""
+                    };
                 default:
                     return new[] {
-                        "Hallo, ",
-                        "Um eine Verbindung zu unserer Online-Plattform herstellen und Reservierungen vornehmen zu können, muss Ihre Registrierung bestätigt werden.",
-                        "Bestätigen" };
+                        ""
+                    };
+            }
+        }
+
+        public static string[] ResetPassword(string language) {
+            switch (language) {
+                case "el-GR":
+                    return new[] {
+                        "Γεια σας, ",
+                        "Εχετε ζητήσει επαναφορά κωδικού.",
+                        "Κάντε κλικ στο παρακάτω κουμπί για να καταχωρήσετε νέο κωδικό.",
+                        "Επαναφορά κωδικού",
+                        "Ευχαριστούμε που χρησιμοποιείτε την online πλατφόρμα μας",
+                        "Με φιλικούς χαιρετισμούς,"
+                    };
+                case "en-GB":
+                    return new[] {
+                        "Hello, ",
+                        "You have requested a password reset.",
+                        "Click the following button to set a new password.",
+                        "Password reset",
+                        "Thank you for using our online platform.",
+                        "Kind regards,"
+                    };
+                default:
+                    return new[] {
+                        "Hello, ",
+                        "You have requested a password reset.",
+                        "Click the following button to set a new password.",
+                        "Password reset",
+                        "Thank you for using our online platform",
+                        "Kind regards,"
+                    };
             }
         }
 
