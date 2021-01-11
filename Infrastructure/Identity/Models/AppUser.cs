@@ -9,6 +9,7 @@ namespace Transfers {
         public bool IsFirstLogin { get; set; }
         public string OneTimePassword { get; set; }
         public bool IsOneTimePasswordChanged { get; set; }
+        public bool IsActive { get; set; }
         public virtual List<Token> Tokens { get; set; }
     }
 

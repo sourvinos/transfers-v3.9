@@ -210,9 +210,10 @@ export class EditUserFormComponent {
             userName: ['', [Validators.required, Validators.maxLength(32)]],
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
             email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
+            isAdmin: false,
+            isActive: true,
             oneTimePassword: [''],
             language: [''],
-            isAdmin: false
         })
     }
 
@@ -223,6 +224,7 @@ export class EditUserFormComponent {
             displayName: result.displayName,
             email: result.email,
             isAdmin: result.isAdmin,
+            isActive: result.isActive,
             oneTimePassword: result.oneTimePassword,
             language: this.helperService.readItem('language'),
         })

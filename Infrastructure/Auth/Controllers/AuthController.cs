@@ -38,7 +38,7 @@ namespace Transfers {
 
         private async Task<IActionResult> GenerateNewToken(TokenRequest model) {
             var user = await userManager.FindByNameAsync(model.Username);
-            if (user != null && await userManager.CheckPasswordAsync(user, model.Password)) {
+            if (user != null && user.IsActive && await userManager.CheckPasswordAsync(user, model.Password)) {
                 if (this.IsFirstLogin(user)) {
                     await this.UpdateFirstLogin(user);
                 } else {
@@ -61,7 +61,7 @@ namespace Transfers {
                 var accessToken = await CreateAccessToken(user, newRefreshToken.Value);
                 return StatusCode(200, new { response = accessToken });
             }
-            return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() }); // Tested
+            return StatusCode(401, new { response = ApiMessages.AuthenticationFailed() });
         }
 
         private Token CreateRefreshToken(string clientId, string userId) {

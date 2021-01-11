@@ -53,6 +53,7 @@ namespace Transfers {
                 DisplayName = record.DisplayName,
                 Email = record.Email,
                 IsAdmin = record.IsAdmin,
+                IsActive = record.IsActive,
                 OneTimePassword = record.OneTimePassword
             };
             return StatusCode(200, vm);
@@ -120,6 +121,7 @@ namespace Transfers {
             user.DisplayName = vm.DisplayName;
             user.Email = vm.Email;
             user.IsAdmin = vm.IsAdmin;
+            user.IsActive = vm.IsActive;
             return await userManager.UpdateAsync(user);
         }
 

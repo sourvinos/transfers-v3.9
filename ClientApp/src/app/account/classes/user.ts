@@ -5,4 +5,5 @@ export class User {
     email: string
     isAdmin: boolean
     oneTimePassword: string
+    isActive: boolean
 }
