@@ -47,20 +47,7 @@ export class EditUserFormComponent {
     //#endregion
 
     constructor(
-        private activatedRoute: ActivatedRoute,
-        private buttonClickService: ButtonClickService,
-        private dialogService: DialogService,
-        private formBuilder: FormBuilder,
-        private helperService: HelperService,
-        private keyboardShortcutsService: KeyboardShortcuts,
-        private messageHintService: MessageHintService,
-        private messageLabelService: MessageLabelService,
-        private messageSnackbarService: MessageSnackbarService,
-        private router: Router,
-        private snackbarService: SnackbarService,
-        private titleService: Title,
-        private userService: UserService
-    ) {
+        private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userService: UserService) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) {
                 this.getRecord(p.id)
@@ -224,6 +211,7 @@ export class EditUserFormComponent {
             displayName: ['', [Validators.required, Validators.maxLength(32)]],
             email: ['', [Validators.required, Validators.email, Validators.maxLength(128)]],
             oneTimePassword: [''],
+            language: [''],
             isAdmin: false
         })
     }
@@ -235,7 +223,8 @@ export class EditUserFormComponent {
             displayName: result.displayName,
             email: result.email,
             isAdmin: result.isAdmin,
-            oneTimePassword: result.oneTimePassword
+            oneTimePassword: result.oneTimePassword,
+            language: this.helperService.readItem('language'),
         })
     }
 
@@ -270,6 +259,10 @@ export class EditUserFormComponent {
     get isConnectedUserAdmin(): boolean {
         this.getRoleForConnectedUser()
         return this.isAdmin
+    }
+
+    get isFirstLogin(): boolean {
+        return this.form.value.oneTimePassword
     }
 
     //#endregion

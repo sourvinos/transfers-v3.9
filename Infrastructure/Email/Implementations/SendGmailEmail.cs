@@ -12,34 +12,34 @@ namespace Transfers {
             this.settings = settings.Value;
         }
 
-        public SendEmailResponse SendFirstLoginCredentials(FirstLoginCredentialsViewModel model, string loginLink, string language) {
+        public SendEmailResponse SendFirstLoginCredentials(FirstLoginCredentialsViewModel model, string loginLink) {
 
             var message = new MimeMessage();
 
             var htmlContent = "";
-            var body = EmailMessages.FirstLoginCredentials(language);
+            var body = EmailMessages.FirstLoginCredentials(model.Language);
 
-            htmlContent += "<h2 style = 'font-weight: 500;'>" + body[0] + model.DisplayName + "!" + "</h2>";
+            htmlContent += "<h1 style = 'font-weight: 500;'><span style = 'color: #0078d7;'>Island</span><span style = 'color: #5db2ff;'> Cruises</span></h1>";
+            htmlContent += "<p>" + body[0] + model.DisplayName + "!" + "</p>";
             htmlContent += "<p>" + body[1] + "</p>";
             htmlContent += "<p>" + body[2] + model.UserName + "</p>";
             htmlContent += "<p>" + body[3] + model.OneTimePassword + "</p>";
             htmlContent += "<br>";
-            htmlContent += "<a style = 'color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + loginLink + ">" + body[7] + "</a>";
+            htmlContent += "<a style = 'font-variant: petite-caps; color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + loginLink + ">" + body[7] + "</a>";
             htmlContent += "<br>";
             htmlContent += "<br>";
-            htmlContent += "<p>" + body[4] + "</p>";
-            htmlContent += "<p>" + body[5] + "</p>";
-            htmlContent += "<p>" + body[6] + "</p>";
-            htmlContent += "<br>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[4] + "</p>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[5] + "</p>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[6] + "</p>";
             htmlContent += "<br>";
             htmlContent += "<p>" + body[8] + "</p>";
             htmlContent += "<br>";
             htmlContent += "<p>" + body[9] + "</p>";
-            htmlContent += "<p>&copy; Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p>Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             message.From.Add(new MailboxAddress(settings.From, settings.Username));
             message.To.Add(new MailboxAddress(model.DisplayName, model.Email));
-            message.Subject = "Login details";
+            message.Subject = body[10];
             message.Body = new TextPart("html") {
                 Text = htmlContent
             };
@@ -62,21 +62,26 @@ namespace Transfers {
             var htmlContent = "";
             var body = EmailMessages.ResetPassword(language);
 
-            htmlContent += "<h2 style = 'font-weight: 500;'>" + body[0] + displayName + "!" + "</h2>";
+            htmlContent += "<h1 style = 'font-weight: 500;'><span style = 'color: #0078d7;'>Island</span><span style = 'color: #5db2ff;'> Cruises</span></h1>";
+            htmlContent += "<p>" + body[0] + displayName + "!" + "</p>";
             htmlContent += "<p>" + body[1] + "</p>";
             htmlContent += "<p>" + body[2] + "</p>";
             htmlContent += "<br>";
-            htmlContent += "<a style = 'color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + callbackUrl + ">" + body[3] + "</a>";
+            htmlContent += "<a style = 'font-variant: petite-caps; color: #ffffff; margin: 1rem; background-color: #55828B; padding: 1rem; border-radius: 5px; text-decoration: none;' href=" + callbackUrl + ">" + body[3] + "</a>";
             htmlContent += "<br>";
             htmlContent += "<br>";
-            htmlContent += "<p>" + body[4] + "</p>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[4] + "</p>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[5] + "</p>";
+            htmlContent += "<p style = 'color: #ff0000;'>" + body[6] + "</p>";
             htmlContent += "<br>";
-            htmlContent += "<p>" + body[5] + "</p>";
-            htmlContent += "<p>Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
+            htmlContent += "<p>" + body[7] + "</p>";
+            htmlContent += "<br>";
+            htmlContent += "<p>" + body[8] + "</p>";
+            htmlContent += "<p style = 'font-'>Island Cruises " + DateTime.Now.ToString("yyyy") + "</p>";
 
             message.From.Add(new MailboxAddress(settings.From, settings.Username));
             message.To.Add(new MailboxAddress(displayName, userEmail));
-            message.Subject = "Password reset";
+            message.Subject = body[9];
             message.Body = new TextPart("html") {
                 Text = htmlContent
             };

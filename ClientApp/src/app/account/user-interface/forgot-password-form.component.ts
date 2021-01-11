@@ -44,6 +44,7 @@ export class ForgotPasswordFormComponent {
     ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
+        this.populateFields()
         this.addShortcuts()
     }
 
@@ -74,8 +75,7 @@ export class ForgotPasswordFormComponent {
     }
 
     public onSave(): void {
-        const form = this.form.value
-        this.accountService.forgotPassword(form.email, 'en-GB').subscribe(() => {
+        this.accountService.forgotPassword(this.form.value).subscribe(() => {
             this.showSnackbar(this.messageSnackbarService.emailSent(), 'info')
             this.onGoBack()
         }, () => {
@@ -111,7 +111,15 @@ export class ForgotPasswordFormComponent {
 
     private initForm(): void {
         this.form = this.formBuilder.group({
-            email: [environment.login.email, [Validators.required, Validators.email]]
+            email: ['', [Validators.required, Validators.email]],
+            language: ['']
+        })
+    }
+
+    private populateFields(): void {
+        this.form.setValue({
+            email: environment.login.email,
+            language: this.helperService.readItem('language'),
         })
     }
 

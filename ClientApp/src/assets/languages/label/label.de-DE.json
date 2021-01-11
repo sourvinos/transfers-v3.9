@@ -536,7 +536,7 @@
             },
             {
                 "id": "sendEmailToUser",
-                "description": "(DE Send email"
+                "description": "(DE) Send email"
             },
             {
                 "id": "saveButton",
