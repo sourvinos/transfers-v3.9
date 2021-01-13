@@ -95,6 +95,7 @@ export class TransferOverviewComponent {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
         this.setSidebarVisibility()
+        this.setTopLogoVisibility()
         this.unlisten()
     }
 

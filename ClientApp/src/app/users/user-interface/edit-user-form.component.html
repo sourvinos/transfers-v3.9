@@ -29,17 +29,17 @@
                 <mat-error *ngIf="email.hasError('required')">{{ onGetHint('required') }}</mat-error>
                 <mat-error *ngIf="email.hasError('email')">{{ onGetHint('invalid') }}</mat-error>
             </mat-form-field>
-            <mat-slide-toggle *ngIf="isConnectedUserAdmin" data-cy="isAdmin" formControlName="isAdmin">{{ onGetLabel('isAdmin') }}</mat-slide-toggle>
-            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
+            <mat-slide-toggle *ngIf="isUserAdmin" data-cy="isAdmin" formControlName="isAdmin">{{ onGetLabel('isAdmin') }}</mat-slide-toggle>
+            <mat-slide-toggle data-cy="isActive" *ngIf="isUserAdmin" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
         <p class="instructions" [class.hidden]=environment>{{ form.value | json }} {{ form.valid }}</p>
     </div>
 
     <div @slideFromRight id="footer">
         <div id="buttons">
-            <button *ngIf="isConnectedUserAdmin" data-cy="delete" mat-flat-button class="delete" id="delete" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
+            <button *ngIf="isUserAdmin" data-cy="delete" mat-flat-button class="delete" id="delete" (click)="onDelete()">{{ onGetLabel('deleteButton') }}</button>
             <button data-cy="changePassword" mat-flat-button class="secondary" id="changePassword" (click)="onChangePassword()">{{ onGetLabel('changePasswordButton') }}</button>
-            <button *ngIf="isConnectedUserAdmin && isFirstLogin" data-cy="sendEmailToUser" mat-flat-button class="secondary" id="sendEmailToUser" (click)="onSendFirstLoginCredentials()">{{ onGetLabel('sendEmailToUser') }}</button>
+            <button *ngIf="isUserAdmin && isFirstLogin" data-cy="sendEmailToUser" mat-flat-button class="secondary" id="sendEmailToUser" (click)="onSendFirstLoginCredentials()">{{ onGetLabel('sendEmailToUser') }}</button>
             <button data-cy="save" mat-flat-button class="primary" id="save" (click)="onSave()" [disabled]="!form.valid">{{ onGetLabel('saveButton') }}</button>
         </div>
     </div>

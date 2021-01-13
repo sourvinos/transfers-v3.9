@@ -38,4 +38,12 @@
     --color-map-tooltip-color: #EFEFEF;
     --color-map-buttons-background: #426176;
     --color-map-buttons: #EBE5CD;
+    /* Spinner */
+    --color-spinner-outer: #FE9F36;
+    --color-spinner-inner: #FFE85C;
+    /* Credits */
+    --color-title: #FE9F36;
+    --color-url: #FFE85C;
+    --color-about: #EFEFEF;
+    --color-hover: #545454;
 }

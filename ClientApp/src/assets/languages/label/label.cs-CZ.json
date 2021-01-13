@@ -557,7 +557,7 @@
             },
             {
                 "id": "userName",
-                "description": "(CZ) Name"
+                "description": "(CZ) Username"
             },
             {
                 "id": "displayName",
@@ -1067,6 +1067,19 @@
             {
                 "id": "routes",
                 "description": "Routen"
+            }
+        ]
+    },
+    {
+        "feature": "credits",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Zdroje"
+            },
+            {
+                "id": "closeButton",
+                "description": "Zavřít"
             }
         ]
     }

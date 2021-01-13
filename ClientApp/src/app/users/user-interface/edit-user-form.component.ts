@@ -41,7 +41,6 @@ export class EditUserFormComponent {
 
     //#region particular variables
 
-    private callerParent: string
     private isAdmin: boolean
 
     //#endregion
@@ -191,17 +190,15 @@ export class EditUserFormComponent {
     private getRecord(id: string): void {
         this.userService.getSingle(id).subscribe(result => {
             this.populateFields(result)
+            this.updateUserRole()
         }, errorFromInterceptor => {
             this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')
             this.onGoBack()
         })
     }
 
-    private async getRoleForConnectedUser(): Promise<void> {
-        if (this.isAdmin == null) {
-            const result = await this.userService.getSingle(localStorage.getItem('userId')).toPromise()
-            this.isAdmin = result.isAdmin
-        }
+    private updateUserRole(): void {
+        this.isAdmin = this.form.value.isAdmin
     }
 
     private initForm(): void {
@@ -258,13 +255,12 @@ export class EditUserFormComponent {
         return this.form.get('email')
     }
 
-    get isConnectedUserAdmin(): boolean {
-        this.getRoleForConnectedUser()
-        return this.isAdmin
-    }
-
     get isFirstLogin(): boolean {
         return this.form.value.oneTimePassword
+    }
+
+    get isUserAdmin(): boolean {
+        if (this.isAdmin) return this.isAdmin
     }
 
     //#endregion

@@ -52,7 +52,7 @@
 }
 
 .period-summary .header .menu {
-    margin-left: auto !important;
+    margin-left: auto;
 }
 
 .period-summary .body {
@@ -130,29 +130,36 @@
 @media (max-height:768px) {
     #statistics {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
     }
     .period-summary {
         align-items: center;
-        flex-direction: row;
+        flex-direction: column;
+        margin-top: 0 !important;
         padding: 1rem;
     }
     .period-summary .header {
         flex-direction: column;
+        margin-left: 0;
         padding-bottom: 0;
         width: 100%;
     }
+    .period-summary .header .menu {
+        margin-left: 0;
+    }
     .period-summary .body {
         align-items: center;
-        flex-direction: row;
-        margin-left: 1rem;
-        margin-top: 0;
+        flex-direction: column;
+        margin-top: auto;
+    }
+    .percent {
+        margin-left: 0;
     }
     .total, .adults, .kids, .free {
-        padding-bottom: 0;
-    }
-    .total {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
         padding: 0;
     }
     .total-persons {

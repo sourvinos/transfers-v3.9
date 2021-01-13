@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 // Components
+import { CreditsComponent } from '../credits/user-interface/credits.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from '../home/home.component'
 import { LoginFormComponent } from '../login/user-interface/login-form.component'
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     { path: 'routes', loadChildren: (): any => import('../routes/classes/route.module').then(m => m.RouteModule) },
     { path: 'transfers', loadChildren: (): any => import('../transfers/classes/transfer.module').then(m => m.TransferModule) },
     { path: 'users', loadChildren: (): any => import('../users/classes/user.module').then(m => m.UserModule) },
+    { path: 'credits', component: CreditsComponent },
     { path: '**', component: EmptyPageComponent }
 ]
 

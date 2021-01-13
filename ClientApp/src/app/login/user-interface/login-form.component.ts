@@ -11,7 +11,7 @@ import { AccountService } from '../../shared/services/account.service'
 import { SnackbarService } from '../../shared/services/snackbar.service'
 import { ButtonClickService } from 'src/app/shared/services/button-click.service'
 import { environment } from 'src/environments/environment'
-import { fade, slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
+import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animations'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
@@ -20,7 +20,7 @@ import { MessageHintService } from 'src/app/shared/services/messages-hint.servic
     selector: 'login-form',
     templateUrl: './login-form.component.html',
     styleUrls: ['../../../assets/styles/forms.css', './login-form.component.css'],
-    animations: [fade, slideFromLeft, slideFromRight]
+    animations: [slideFromLeft, slideFromRight]
 })
 
 export class LoginFormComponent {

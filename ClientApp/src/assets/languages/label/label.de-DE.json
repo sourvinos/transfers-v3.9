@@ -557,7 +557,7 @@
             },
             {
                 "id": "userName",
-                "description": "(DE) Name"
+                "description": "(DE) Username"
             },
             {
                 "id": "displayName",
@@ -1067,6 +1067,19 @@
             {
                 "id": "routes",
                 "description": "Routen"
+            }
+        ]
+    },
+    {
+        "feature": "credits",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Ressourcen"
+            },
+            {
+                "id": "closeButton",
+                "description": "Schließen"
             }
         ]
     }

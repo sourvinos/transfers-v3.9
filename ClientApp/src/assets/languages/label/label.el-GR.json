@@ -557,7 +557,7 @@
             },
             {
                 "id": "userName",
-                "description": "Ονομα"
+                "description": "Χρηστης"
             },
             {
                 "id": "displayName",
@@ -1067,6 +1067,19 @@
             {
                 "id": "routes",
                 "description": "Διαδρομες"
+            }
+        ]
+    },
+    {
+        "feature": "credits",
+        "labels": [
+            {
+                "id": "header",
+                "description": "Πόροι"
+            },
+            {
+                "id": "closeButton",
+                "description": "Κλεισιμο"
             }
         ]
     }
