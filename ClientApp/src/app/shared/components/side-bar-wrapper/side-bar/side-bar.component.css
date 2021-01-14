@@ -1,10 +1,13 @@
 #side-bar {
     align-items: center;
+    background-blend-mode: luminosity;
     background-color: var(--color-background-primary);
+    background-image: url("../../../../../assets/images/background/background.svg");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     height: 100%;
     padding-left: 0.5rem;
-    width: 16.5rem;
     transition: width 0.7s, background-color 0.7s;
+    width: 16.5rem;
 }
