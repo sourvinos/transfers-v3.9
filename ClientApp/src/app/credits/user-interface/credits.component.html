@@ -2,7 +2,7 @@
 
     <div id="header">
         <div id="navigation">
-            <button data-cy="goBack" class="goBack" id="goBack" [routerLink]="['/customers']" mat-mini-fab>
+            <button data-cy="goBack" class="goBack" id="goBack" (click)="onClose()" mat-mini-fab>
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </div>
@@ -13,7 +13,7 @@
 
     <div id="content-wrapper">
         <div [@fancyAnimation]="credits.length" id="content" class="scrollable">
-            <div class="item" *ngFor="let item of credits" (click)="onGotoUrl(item.url)">
+            <div class="item" *ngFor="let item of credits" (click)="onGotoExternalLink(item.url)">
                 <div class="title">{{ item.title }}</div>
                 <div class="url">{{ item.url }}</div>
                 <div class="about">{{ item.about }}</div>

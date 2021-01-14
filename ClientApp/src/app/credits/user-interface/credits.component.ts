@@ -1,4 +1,5 @@
 import { fancyAnimation } from './../../shared/animations/animations'
+import { Location } from '@angular/common'
 import { Component } from "@angular/core"
 import { Title } from "@angular/platform-browser"
 import { Router } from "@angular/router"
@@ -8,6 +9,7 @@ import { ButtonClickService } from "src/app/shared/services/button-click.service
 import { HelperService } from "src/app/shared/services/helper.service"
 import { KeyboardShortcuts, Unlisten } from "src/app/shared/services/keyboard-shortcuts.service"
 import { MessageLabelService } from "src/app/shared/services/messages-label.service"
+import creditsJson from '../../../assets/credits/credits.json'
 
 @Component({
     selector: 'credits',
@@ -25,88 +27,11 @@ export class CreditsComponent {
     private unlisten: Unlisten
     private url = '/credits'
     private windowTitle = 'Credits'
+    public credits = creditsJson
 
     //#endregion
 
-    //#region particular variables
-
-    public credits = [
-        {
-            "title": "ASP.NET Core 3 and Angular 9 Third Edition",
-            "url": "https://www.packtpub.com/product/asp-net-core-3-and-angular-9-third-edition/9781789612165",
-            "about": "Packt (c) 2020"
-        },
-        {
-            "title": "ng-book, The complete guide to Angular",
-            "url": "https://www.newline.co/ng-book/2/",
-            "about": "Fullstack.io (c) 2020"
-        },
-        {
-            "title": "Pro Angular 9 Fourth Edition",
-            "url": "https://www.apress.com/gp/book/9781484259979",
-            "about": "Apress (c) 2020"
-        },
-        {
-            "title": "Mosh Hamedani",
-            "url": "https://codewithmosh.com/p/asp-net-core",
-            "about": "C# & Angular"
-        },
-        {
-            "title": "Kudvenkat",
-            "url": "https://www.youtube.com/watch?v=CusfUmB6mkY&list=PL6n9fhu94yhWNJaDgh0mfae_9xoQ4E_Zj",
-            "about": "Angular forms"
-        },
-        {
-            "title": "Codevolution",
-            "url": "https://www.youtube.com/watch?v=nGr3C3wbh9c&list=PLC3y8-rFHvwhwL-XH04cHOpJnkgRKykFi",
-            "about": "Angular forms and Validation"
-        },
-        {
-            "title": "Tech Howdy",
-            "url": "https://www.youtube.com/watch?v=ayTm_gxUJ1Y&list=PLHy1vgmVoz-KN3R5Grr30oW1dOW0VmWVT",
-            "about": "Refresh tokens"
-        },
-        {
-            "title": "Netanel Basal",
-            "url": "https://netbasal.medium.com/",
-            "about": "Various issues and problem solving"
-        },
-        {
-            "title": "Amir Rustamzadeh",
-            "url": "https://www.cypress.io/",
-            "about": "e2e testing"
-        },
-        {
-            "title": "Stackoverflow",
-            "url": "https://stackoverflow.com/",
-            "about": "Difficult to find acceptable answers, nonetheless loads of solutions"
-        },
-        {
-            "title": "FreePic",
-            "url": "https://www.freepik.com/",
-            "about": "Images and Icons"
-        },
-        {
-            "title": "Figma",
-            "url": "https://www.figma.com/",
-            "about": "My drawing board for styling"
-        },
-        {
-            "title": "Iconfinder",
-            "url": "https://www.iconfinder.com/",
-            "about": "Images and icons"
-        },
-        {
-            "title": "Pinterest",
-            "url": "https://www.pinterest.de/zerpixelung/dashboard-ui/",
-            "about": "Dashboard design"
-        },
-    ]
-
-    //#endregion
-
-    constructor(private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) {
-    }
+    constructor(private buttonClickService: ButtonClickService, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private location: Location, private messageLabelService: MessageLabelService, private router: Router, private titleService: Title) { }
 
     //#region lifecycle hooks
 
@@ -125,7 +50,7 @@ export class CreditsComponent {
     //#region public methods
 
     public onClose(): void {
-        this.router.navigate([this.url])
+        this.location.back()
     }
 
     public onGetLabel(id: string): string {
@@ -136,7 +61,7 @@ export class CreditsComponent {
         this.router.navigate([this.url])
     }
 
-    public onGotoUrl(url: string): void {
+    public onGotoExternalLink(url: string): void {
         window.open(url, "_blank")
     }
 

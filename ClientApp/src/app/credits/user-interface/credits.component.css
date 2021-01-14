@@ -1,10 +1,10 @@
 #content-wrapper {
     overflow: hidden;
+    text-align: center;
 }
 
 #content {
-    flex-direction: column;
-    justify-content: flex-start;
+    align-items: center;
 }
 
 .item {
@@ -15,6 +15,7 @@
     margin-right: 1rem;
     padding: 1rem;
     transition: background-color 0.2s ease;
+    width: 80%;
 }
 
 .item:hover {
@@ -27,7 +28,7 @@
 }
 
 .url {
-    color: var(--color-url) ;
+    color: var(--color-url);
     font-size: 1rem;
 }
 
