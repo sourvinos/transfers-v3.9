@@ -1,5 +1,7 @@
 #list {
     background-color: var(--color-background-secondary);
+    background-image: url("../images/background/form-background.svg");
+    background-size: cover;
     border-radius: 20px 0 0 20px;
     display: flex;
     flex-direction: column;
@@ -44,7 +46,7 @@
 }
 
 .content.scrollable::-webkit-scrollbar-thumb, #content.scrollable::-webkit-scrollbar-thumb {
-    border-top: 34px solid var(--color-background-secondary) !important;
+    border-top: 2.5625rem solid var(--color-background-secondary) !important;
 }
 
 #footer {

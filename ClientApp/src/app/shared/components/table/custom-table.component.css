@@ -11,14 +11,14 @@ table {
 }
 
 th {
-    background-color: var(--color-background-secondary);
-    border-right: 0.125rem solid var(--color-background-table);
+    background-color: var(--color-table-header);
+    border-right: 0.125rem solid var(--color-background-secondary);
     color: var(--color-text-primary);
     font-family: var(--font-family-table-header);
     font-size: var(--font-size-table-header);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-table-header);
-    padding: 0.4rem;
+    padding: 0.625rem 0 0.5625rem 0;
     position: sticky;
     text-align: center;
     top: 0;
@@ -37,7 +37,7 @@ tr:hover {
 }
 
 tr:hover td {
-    background-color: var(--color-background-secondary);
+    background-color: var(--color-table-row-highlight);
     cursor: default;
     font-weight: bold;
 }
@@ -47,7 +47,7 @@ tr:hover td:last-child>div>.button-row-menu {
 }
 
 tr.selected {
-    background-color: var(--color-background-secondary) !important;
+    background-color: var(--color-table-row-highlight) !important;
 }
 
 tr.selected td {
