@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -50,7 +50,8 @@
      inkscape:window-x="1272"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="surface1" />
+     inkscape:current-layer="surface1"
+     inkscape:document-rotation="0" />
   <defs
      id="defs3883">
     <clipPath
@@ -9480,15 +9481,15 @@
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter9942"
-       x="-0.011314037"
-       width="1.0226281"
-       y="-0.012774511"
-       height="1.0255491">
+       id="filter4461"
+       x="-0.0028285092"
+       width="1.005657"
+       y="-0.0031936277"
+       height="1.0063873">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="1.3648502"
-         id="feGaussianBlur9944" />
+         stdDeviation="0.34121256"
+         id="feGaussianBlur4463" />
     </filter>
   </defs>
   <g
@@ -9497,7 +9498,7 @@
     <g
        id="g9704"
        transform="matrix(1.6166133,0,0,1.6166133,-560.79904,67.150728)"
-       style="opacity:0.35;fill:none;stroke:none;stroke-opacity:1;filter:url(#filter9942)">
+       style="opacity:0.35;fill:none;stroke:none;stroke-opacity:1;filter:url(#filter4461)">
       <g
          clip-path="url(#clip4)"
          clip-rule="nonzero"
