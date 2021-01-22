@@ -161,8 +161,8 @@ export class RouteFormComponent {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.routeService.add(this.form.value).subscribe(() => {
-                this.focus('abbreviation')
-                this.initFormAfterDelay()
+                this.resetForm()
+                this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')

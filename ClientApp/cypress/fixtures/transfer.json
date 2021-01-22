@@ -1,38 +1,38 @@
 {
-    "id": 587,
-    "dateIn": "2020-08-01",
-    "adults": 4,
+    "id": 1,
+    "dateIn": "10/07/2020",
+    "adults": 2,
     "kids": 0,
     "free": 0,
-    "totalPersons": 4,
-    "remarks": "WHATEVER",
-    "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+    "totalPersons": 2,
+    "remarks": "",
+    "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
     "customer": {
-        "id": 73,
-        "description": "PANDIS TRAVEL KAVOS"
+        "id": 155,
+        "description": "AKVILA TRAVEL"
     },
     "destination": {
-        "id": 45,
-        "abbreviation": "BL",
-        "description": "BLUE LAGOON-SPACE SAFE"
+        "id": 2,
+        "abbreviation": "P",
+        "description": "PAXOS - ANTIPAXOS"
     },
     "pickupPoint": {
-        "id": 1244,
-        "description": "CORFU TOWN NEW PORT",
-        "exactPoint": "-",
-        "time": "08:30",
+        "id": 1100,
+        "description": "SANDY BEACH",
+        "exactPoint": "HOTEL",
+        "time": "09:30",
         "route": {
-            "id": 31,
-            "description": "L.P.-C.P.",
-            "fullDescription": "NO TRANSFER",
+            "id": 20,
+            "abbreviation": "SOUTH",
+            "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
             "port": {
-                "id": 1,
-                "description": "CORFU PORT"
+                "id": 2,
+                "description": "LEFKIMMI PORT"
             }
         }
     },
     "driver": {
-        "id": 8,
-        "description": "-"
+        "id": 1,
+        "description": "STAMATIS 6972 771 185"
     }
 }

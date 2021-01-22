@@ -108,8 +108,8 @@ export class PortFormComponent {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.portService.add(this.form.value).subscribe(() => {
-                this.focus('description')
-                this.initFormAfterDelay()
+                this.resetForm()
+                this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')

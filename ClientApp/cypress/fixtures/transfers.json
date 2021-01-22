@@ -1,223 +1,33 @@
 {
-    "persons": 72,
+    "persons": 45,
     "transfers": [
         {
-            "id": 587,
-            "dateIn": "2020-08-01",
-            "adults": 4,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 4,
-            "remarks": "WHATEVER",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 73,
-                "description": "PANDIS TRAVEL KAVOS"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1244,
-                "description": "CORFU TOWN NEW PORT",
-                "exactPoint": "-",
-                "time": "08:30",
-                "route": {
-                    "id": 31,
-                    "description": "L.P.-C.P.",
-                    "fullDescription": "NO TRANSFER",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 8,
-                "description": "-"
-            }
-        },
-        {
-            "id": 588,
-            "dateIn": "2020-08-01",
+            "id": 1,
+            "dateIn": "10/07/2020",
             "adults": 2,
             "kids": 0,
             "free": 0,
             "totalPersons": 2,
             "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
-                "id": 230,
-                "description": "MARIA'S TOURIST SERVICES"
+                "id": 155,
+                "description": "AKVILA TRAVEL"
             },
             "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 1665,
-                "description": "COSTAS RENT A CAR / BIO MARKET",
-                "exactPoint": "MAIN ROAD",
-                "time": "06:50",
+                "id": 1100,
+                "description": "SANDY BEACH",
+                "exactPoint": "HOTEL",
+                "time": "09:30",
                 "route": {
-                    "id": 32,
-                    "description": "PAGOI",
-                    "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 19,
-                "description": "SCHERIA KOTINAS"
-            }
-        },
-        {
-            "id": 589,
-            "dateIn": "2020-08-01",
-            "adults": 2,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 2,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 181,
-                "description": "OLYMPUS CORFU TRAVEL"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1683,
-                "description": "FIORI HTL",
-                "exactPoint": "MAIN ROAD",
-                "time": "07:55",
-                "route": {
-                    "id": 28,
-                    "description": "ACH-SID",
-                    "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 21,
-                "description": "VASILIS NORTH"
-            }
-        },
-        {
-            "id": 590,
-            "dateIn": "2020-08-01",
-            "adults": 3,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 3,
-            "remarks": "GYG",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 73,
-                "description": "PANDIS TRAVEL KAVOS"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1126,
-                "description": "DIVANI",
-                "exactPoint": "M.ROAD",
-                "time": "08:10",
-                "route": {
-                    "id": 19,
-                    "description": "NISAKI",
-                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 8,
-                "description": "-"
-            }
-        },
-        {
-            "id": 591,
-            "dateIn": "2020-08-01",
-            "adults": 2,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 2,
-            "remarks": "WEB",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 141,
-                "description": "CORFU CRUISES"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1169,
-                "description": "PALEO POLICE",
-                "exactPoint": "MAIN ROAD",
-                "time": "07:00",
-                "route": {
-                    "id": 22,
-                    "description": "WEST",
-                    "fullDescription": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 8,
-                "description": "-"
-            }
-        },
-        {
-            "id": 592,
-            "dateIn": "2020-08-01",
-            "adults": 4,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 4,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 73,
-                "description": "PANDIS TRAVEL KAVOS"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 872,
-                "description": "PANDIS TRAVEL",
-                "exactPoint": "OFFICE",
-                "time": "09:45",
-                "route": {
-                    "id": 29,
-                    "description": "KAVOS",
-                    "fullDescription": "KAVOS",
+                    "id": 20,
+                    "abbreviation": "SOUTH",
+                    "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
                     "port": {
                         "id": 2,
                         "description": "LEFKIMMI PORT"
@@ -225,151 +35,151 @@
                 }
             },
             "driver": {
-                "id": 13,
-                "description": "TAXI VASILIS"
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
             }
         },
         {
-            "id": 593,
-            "dateIn": "2020-08-01",
-            "adults": 1,
+            "id": 9,
+            "dateIn": "10/07/2020",
+            "adults": 2,
             "kids": 0,
             "free": 0,
-            "totalPersons": 1,
-            "remarks": "RN: 131",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "totalPersons": 2,
+            "remarks": "LABRANDA",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
-                "id": 133,
-                "description": "MEETING POINT HELLAS AE"
+                "id": 155,
+                "description": "AKVILA TRAVEL"
             },
             "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 1183,
-                "description": "ALKYON HOTEL",
-                "exactPoint": "MAIN ROAD",
-                "time": "06:50",
+                "id": 1100,
+                "description": "SANDY BEACH",
+                "exactPoint": "HOTEL",
+                "time": "09:30",
                 "route": {
-                    "id": 32,
-                    "description": "PAGOI",
-                    "fullDescription": "AG.STEFANOS - ARILLAS - PAGOI - CORFU PORT",
+                    "id": 20,
+                    "abbreviation": "SOUTH",
+                    "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
                     "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
+                        "id": 2,
+                        "description": "LEFKIMMI PORT"
                     }
                 }
             },
             "driver": {
-                "id": 19,
-                "description": "SCHERIA KOTINAS"
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
             }
         },
         {
-            "id": 594,
-            "dateIn": "2020-08-01",
-            "adults": 8,
-            "kids": 3,
-            "free": 0,
-            "totalPersons": 11,
-            "remarks": "RN: 906,940,852",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 133,
-                "description": "MEETING POINT HELLAS AE"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1158,
-                "description": "RODA BEACH",
-                "exactPoint": "RECEPTION",
-                "time": "07:10",
-                "route": {
-                    "id": 28,
-                    "description": "ACH-SID",
-                    "fullDescription": "ACHARAVI - RODA - SIDARI - CORFU PORT",
-                    "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 21,
-                "description": "VASILIS NORTH"
-            }
-        },
-        {
-            "id": 595,
-            "dateIn": "2020-08-01",
-            "adults": 2,
+            "id": 12,
+            "dateIn": "10/07/2020",
+            "adults": 3,
             "kids": 1,
             "free": 0,
-            "totalPersons": 3,
-            "remarks": "RN: 708",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "totalPersons": 4,
+            "remarks": "GYG6X7RFH964X",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
+            "customer": {
+                "id": 73,
+                "description": "PANDIS TRAVEL KAVOS"
+            },
+            "destination": {
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 1100,
+                "description": "SANDY BEACH",
+                "exactPoint": "HOTEL",
+                "time": "09:30",
+                "route": {
+                    "id": 20,
+                    "abbreviation": "SOUTH",
+                    "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+                    "port": {
+                        "id": 2,
+                        "description": "LEFKIMMI PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
+            }
+        },
+        {
+            "id": 15,
+            "dateIn": "10/07/2020",
+            "adults": 15,
+            "kids": 1,
+            "free": 0,
+            "totalPersons": 16,
+            "remarks": "3106,1323,7131,5112,4214,1323,6123,2512",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
                 "id": 133,
                 "description": "MEETING POINT HELLAS AE"
             },
             "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 953,
-                "description": "TILEMACHOS HOTEL",
-                "exactPoint": "MAIN ROAD",
-                "time": "07:35",
+                "id": 1100,
+                "description": "SANDY BEACH",
+                "exactPoint": "HOTEL",
+                "time": "09:30",
                 "route": {
-                    "id": 19,
-                    "description": "NISAKI",
-                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+                    "id": 20,
+                    "abbreviation": "SOUTH",
+                    "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
                     "port": {
-                        "id": 1,
-                        "description": "CORFU PORT"
+                        "id": 2,
+                        "description": "LEFKIMMI PORT"
                     }
                 }
             },
             "driver": {
-                "id": 8,
-                "description": "-"
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
             }
         },
         {
-            "id": 596,
-            "dateIn": "2020-08-01",
+            "id": 16,
+            "dateIn": "10/07/2020",
             "adults": 4,
             "kids": 0,
             "free": 0,
             "totalPersons": 4,
-            "remarks": "RN: 1330, 2403",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "remarks": "SANDY VILLAS 312,214",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
                 "id": 133,
                 "description": "MEETING POINT HELLAS AE"
             },
             "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 1691,
-                "description": "MYTHOS KAIRABA HOTEL",
-                "exactPoint": "RECEPTION",
-                "time": "09:00",
+                "id": 1100,
+                "description": "SANDY BEACH",
+                "exactPoint": "HOTEL",
+                "time": "09:30",
                 "route": {
                     "id": 20,
-                    "description": "SOUTH",
-                    "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
+                    "abbreviation": "SOUTH",
+                    "description": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
                     "port": {
                         "id": 2,
                         "description": "LEFKIMMI PORT"
@@ -378,150 +188,74 @@
             },
             "driver": {
                 "id": 9,
-                "description": "MED BLUE  VASILIS"
+                "description": "MED BLUE  VASILIS 6948 590 575"
             }
         },
         {
-            "id": 597,
-            "dateIn": "2020-08-01",
-            "adults": 7,
-            "kids": 6,
-            "free": 0,
-            "totalPersons": 13,
-            "remarks": "RN: 5114,8102",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 133,
-                "description": "MEETING POINT HELLAS AE"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1100,
-                "description": "SANDY BEACH",
-                "exactPoint": "HOTEL",
-                "time": "09:30",
-                "route": {
-                    "id": 20,
-                    "description": "SOUTH",
-                    "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
-                    "port": {
-                        "id": 2,
-                        "description": "LEFKIMMI PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 1,
-                "description": "STAMATIS"
-            }
-        },
-        {
-            "id": 598,
-            "dateIn": "2020-08-01",
-            "adults": 4,
-            "kids": 2,
-            "free": 0,
-            "totalPersons": 6,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 155,
-                "description": "AKVILA TRAVEL"
-            },
-            "destination": {
-                "id": 3,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON"
-            },
-            "pickupPoint": {
-                "id": 1100,
-                "description": "SANDY BEACH",
-                "exactPoint": "HOTEL",
-                "time": "09:30",
-                "route": {
-                    "id": 20,
-                    "description": "SOUTH",
-                    "fullDescription": "TOWN - ΠΕΡΑΜΑ - ΜΕΣΣΟΓΓΗ - ΛΕΥΚΙΜΜΗ",
-                    "port": {
-                        "id": 2,
-                        "description": "LEFKIMMI PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 1,
-                "description": "STAMATIS"
-            }
-        },
-        {
-            "id": 599,
-            "dateIn": "2020-08-01",
-            "adults": 5,
+            "id": 13,
+            "dateIn": "10/07/2020",
+            "adults": 2,
             "kids": 0,
             "free": 0,
-            "totalPersons": 5,
-            "remarks": "3 OF THEM REST TO PAY 75EUROS",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "totalPersons": 2,
+            "remarks": "SOPHIE VAN DER BEKE",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
+            "customer": {
+                "id": 35,
+                "description": "TUI HELLAS"
+            },
+            "destination": {
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 885,
+                "description": "GR.MEDITTERANNEO",
+                "exactPoint": "HOTEL",
+                "time": "07:05",
+                "route": {
+                    "id": 22,
+                    "abbreviation": "WEST",
+                    "description": "PALEO - ERMONES - GLYFADA - PELEKA - AG.GORDIS - CORFU PORT",
+                    "port": {
+                        "id": 1,
+                        "description": "CORFU PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 1,
+                "description": "STAMATIS 6972 771 185"
+            }
+        },
+        {
+            "id": 6,
+            "dateIn": "10/07/2020",
+            "adults": 2,
+            "kids": 0,
+            "free": 0,
+            "totalPersons": 2,
+            "remarks": "CHECK YETI 47BW12",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
                 "id": 73,
                 "description": "PANDIS TRAVEL KAVOS"
             },
             "destination": {
-                "id": 3,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 872,
-                "description": "PANDIS TRAVEL",
-                "exactPoint": "OFFICE",
+                "id": 964,
+                "description": "LEFKIMMI PORT",
+                "exactPoint": "-",
                 "time": "09:45",
                 "route": {
-                    "id": 29,
-                    "description": "KAVOS",
-                    "fullDescription": "KAVOS",
-                    "port": {
-                        "id": 2,
-                        "description": "LEFKIMMI PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 13,
-                "description": "TAXI VASILIS"
-            }
-        },
-        {
-            "id": 600,
-            "dateIn": "2020-08-01",
-            "adults": 4,
-            "kids": 0,
-            "free": 0,
-            "totalPersons": 4,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 35,
-                "description": "TUI HELLAS"
-            },
-            "destination": {
-                "id": 3,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON"
-            },
-            "pickupPoint": {
-                "id": 1148,
-                "description": "MAGNA GRECIA",
-                "exactPoint": "BUS STOP",
-                "time": "07:32",
-                "route": {
-                    "id": 19,
-                    "description": "NISAKI",
-                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
                     "port": {
                         "id": 1,
                         "description": "CORFU PORT"
@@ -534,32 +268,146 @@
             }
         },
         {
-            "id": 601,
-            "dateIn": "2020-08-01",
+            "id": 7,
+            "dateIn": "10/07/2020",
+            "adults": 4,
+            "kids": 0,
+            "free": 0,
+            "totalPersons": 4,
+            "remarks": "ΧΡΕΩΣΗ 17,- ΕΥΡΩ",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
+            "customer": {
+                "id": 193,
+                "description": "CORFU EXPRESS"
+            },
+            "destination": {
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 964,
+                "description": "LEFKIMMI PORT",
+                "exactPoint": "-",
+                "time": "09:45",
+                "route": {
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
+                    "port": {
+                        "id": 1,
+                        "description": "CORFU PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 8,
+                "description": "-"
+            }
+        },
+        {
+            "id": 8,
+            "dateIn": "10/07/2020",
+            "adults": 2,
+            "kids": 0,
+            "free": 1,
+            "totalPersons": 3,
+            "remarks": "ΧΡΕΩΣΗ 17,- ΕΥΡΩ",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
+            "customer": {
+                "id": 193,
+                "description": "CORFU EXPRESS"
+            },
+            "destination": {
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 964,
+                "description": "LEFKIMMI PORT",
+                "exactPoint": "-",
+                "time": "09:45",
+                "route": {
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
+                    "port": {
+                        "id": 1,
+                        "description": "CORFU PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 8,
+                "description": "-"
+            }
+        },
+        {
+            "id": 10,
+            "dateIn": "10/07/2020",
+            "adults": 2,
+            "kids": 0,
+            "free": 0,
+            "totalPersons": 2,
+            "remarks": "GYG7VMXX7ZML",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
+            "customer": {
+                "id": 73,
+                "description": "PANDIS TRAVEL KAVOS"
+            },
+            "destination": {
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
+            },
+            "pickupPoint": {
+                "id": 964,
+                "description": "LEFKIMMI PORT",
+                "exactPoint": "-",
+                "time": "09:45",
+                "route": {
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
+                    "port": {
+                        "id": 1,
+                        "description": "CORFU PORT"
+                    }
+                }
+            },
+            "driver": {
+                "id": 8,
+                "description": "-"
+            }
+        },
+        {
+            "id": 2,
+            "dateIn": "10/07/2020",
             "adults": 2,
             "kids": 0,
             "free": 0,
             "totalPersons": 2,
             "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
-                "id": 35,
-                "description": "TUI HELLAS"
+                "id": 200,
+                "description": "LET'S BOOK TRAVEL"
             },
             "destination": {
-                "id": 3,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 1131,
-                "description": "KONTOKALI BAY",
-                "exactPoint": "M.GATE",
-                "time": "07:55",
+                "id": 1244,
+                "description": "CORFU TOWN NEW PORT",
+                "exactPoint": "-",
+                "time": "08:30",
                 "route": {
-                    "id": 19,
-                    "description": "NISAKI",
-                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
                     "port": {
                         "id": 1,
                         "description": "CORFU PORT"
@@ -572,70 +420,32 @@
             }
         },
         {
-            "id": 602,
-            "dateIn": "2020-08-01",
+            "id": 5,
+            "dateIn": "10/07/2020",
             "adults": 2,
-            "kids": 1,
+            "kids": 0,
             "free": 0,
-            "totalPersons": 3,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+            "totalPersons": 2,
+            "remarks": "GYGG47VBQVL4,GYGKBKA866F6",
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
             "customer": {
-                "id": 35,
-                "description": "TUI HELLAS"
+                "id": 73,
+                "description": "PANDIS TRAVEL KAVOS"
             },
             "destination": {
-                "id": 3,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON"
+                "id": 2,
+                "abbreviation": "P",
+                "description": "PAXOS - ANTIPAXOS"
             },
             "pickupPoint": {
-                "id": 957,
-                "description": "CAPO DI CORFU",
-                "exactPoint": "M.GATE",
-                "time": "09:44",
+                "id": 1244,
+                "description": "CORFU TOWN NEW PORT",
+                "exactPoint": "-",
+                "time": "08:30",
                 "route": {
-                    "id": 29,
-                    "description": "KAVOS",
-                    "fullDescription": "KAVOS",
-                    "port": {
-                        "id": 2,
-                        "description": "LEFKIMMI PORT"
-                    }
-                }
-            },
-            "driver": {
-                "id": 13,
-                "description": "TAXI VASILIS"
-            }
-        },
-        {
-            "id": 603,
-            "dateIn": "2020-08-01",
-            "adults": 2,
-            "kids": 1,
-            "free": 0,
-            "totalPersons": 3,
-            "remarks": "",
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
-            "customer": {
-                "id": 189,
-                "description": "PANDIS TRAVEL (ΥΠΟΚ.7- ΠΟΛΗΣ )"
-            },
-            "destination": {
-                "id": 45,
-                "abbreviation": "BL",
-                "description": "BLUE LAGOON-SPACE SAFE"
-            },
-            "pickupPoint": {
-                "id": 1246,
-                "description": "AKTAION",
-                "exactPoint": "MAIN ROAD",
-                "time": "08:15",
-                "route": {
-                    "id": 19,
-                    "description": "NISAKI",
-                    "fullDescription": "NISAKI - KALAMI - BARBATI - DASIA - GOUVIA - CORFU PORT",
+                    "id": 31,
+                    "abbreviation": "L.P.-C.P.",
+                    "description": "NO TRANSFER",
                     "port": {
                         "id": 1,
                         "description": "CORFU PORT"
@@ -650,112 +460,102 @@
     ],
     "personsPerCustomer": [
         {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "AKVILA TRAVEL",
-            "persons": 6
+            "persons": 4
         },
         {
-            "description": "CORFU CRUISES",
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "LET'S BOOK TRAVEL",
             "persons": 2
         },
         {
-            "description": "MARIA'S TOURIST SERVICES",
-            "persons": 2
-        },
-        {
-            "description": "MEETING POINT HELLAS AE",
-            "persons": 32
-        },
-        {
-            "description": "OLYMPUS CORFU TRAVEL",
-            "persons": 2
-        },
-        {
-            "description": "PANDIS TRAVEL (ΥΠΟΚ.7- ΠΟΛΗΣ )",
-            "persons": 3
-        },
-        {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "PANDIS TRAVEL KAVOS",
-            "persons": 16
+            "persons": 10
         },
         {
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "CORFU EXPRESS",
+            "persons": 7
+        },
+        {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "TUI HELLAS",
-            "persons": 9
+            "persons": 2
+        },
+        {
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "MEETING POINT HELLAS AE",
+            "persons": 20
         }
     ],
     "personsPerDestination": [
         {
-            "description": "BLUE LAGOON",
-            "persons": 20
-        },
-        {
-            "description": "BLUE LAGOON-SPACE SAFE",
-            "persons": 52
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "PAXOS - ANTIPAXOS",
+            "persons": 45
         }
     ],
     "personsPerRoute": [
         {
-            "description": "ACH-SID",
-            "persons": 13
-        },
-        {
-            "description": "KAVOS",
-            "persons": 12
-        },
-        {
-            "description": "L.P.-C.P.",
-            "persons": 4
-        },
-        {
-            "description": "NISAKI",
-            "persons": 15
-        },
-        {
-            "description": "PAGOI",
-            "persons": 3
-        },
-        {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "SOUTH",
-            "persons": 23
+            "persons": 28
         },
         {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "WEST",
             "persons": 2
+        },
+        {
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "L.P.-C.P.",
+            "persons": 15
         }
     ],
     "personsPerDriver": [
         {
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "STAMATIS 6972 771 185",
+            "persons": 26
+        },
+        {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "-",
-            "persons": 21
+            "persons": 15
         },
         {
-            "description": "MED BLUE  VASILIS",
+            "personsLastYear": 0,
+            "percent": null,
+            "description": "MED BLUE  VASILIS 6948 590 575",
             "persons": 4
-        },
-        {
-            "description": "SCHERIA KOTINAS",
-            "persons": 3
-        },
-        {
-            "description": "STAMATIS",
-            "persons": 19
-        },
-        {
-            "description": "TAXI VASILIS",
-            "persons": 12
-        },
-        {
-            "description": "VASILIS NORTH",
-            "persons": 13
         }
     ],
     "personsPerPort": [
         {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "CORFU PORT",
-            "persons": 37
+            "persons": 17
         },
         {
+            "personsLastYear": 0,
+            "percent": null,
             "description": "LEFKIMMI PORT",
-            "persons": 35
+            "persons": 28
         }
     ]
 }

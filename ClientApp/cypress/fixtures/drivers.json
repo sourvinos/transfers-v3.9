@@ -1,210 +1,26 @@
 [
     {
         "id": 1,
-        "description": "STAMATIS!",
-        "phones": "6972 771 185",
+        "description": "STAMATIS 6972 771 185",
+        "phones": "1",
         "isDefault": false,
         "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+        "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
     },
     {
         "id": 2,
-        "description": "SELLAS ALEKOS",
-        "phones": "6906 624 374",
+        "description": "SELLAS ALEKOS 6906 624 374",
+        "phones": "1",
         "isDefault": false,
         "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
+        "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
     },
     {
         "id": 3,
-        "description": "SCHERIA FOTIS MARK",
-        "phones": "6944 869 230",
+        "description": "SCHERIA FOTIS MARK. 6944 869 230",
+        "phones": "1",
         "isDefault": false,
         "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 6,
-        "description": "SCHERIA NONTAS",
-        "phones": "6936 943 610",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 7,
-        "description": "SCHERIA SKORDILIS",
-        "phones": "6944 791 714",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 8,
-        "description": "-",
-        "phones": "",
-        "isDefault": true,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 9,
-        "description": "MED BLUE  VASILIS",
-        "phones": "6948 590 575",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 10,
-        "description": "SCHERIA ALEKOS",
-        "phones": "6932 413 447",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 11,
-        "description": "SELLAS NORTH",
-        "phones": "6944721735",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 12,
-        "description": "SELLAS KYRIAKOS",
-        "phones": "6986 670 108",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 13,
-        "description": "TAXI VASILIS",
-        "phones": "26620 22214",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 14,
-        "description": "SELLAS NORTH2 ",
-        "phones": "6944 721 735",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 15,
-        "description": "SCHERIA SPIROS",
-        "phones": "6934311713",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 16,
-        "description": "SCHERIAS TSAGKARIS",
-        "phones": "",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
-    },
-    {
-        "id": 17,
-        "description": "SELLAS NORTH 3",
-        "phones": "6944721735",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 18,
-        "description": "SCHERIA AIMILIOS",
-        "phones": "6936778419",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 19,
-        "description": "SCHERIA KOTINAS",
-        "phones": "",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
-    },
-    {
-        "id": 20,
-        "description": "SELLAS GIORGOS",
-        "phones": "694 87 50 672",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 21,
-        "description": "VASILIS NORTH",
-        "phones": "6938878924",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 22,
-        "description": "NORTH ΧΑΝΔΡΙΝΟΣ ΣΠΥΡΟΣ",
-        "phones": "6975580110",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 23,
-        "description": "MED.BLUE ARHS",
-        "phones": "6986080045",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 24,
-        "description": "ΤΣΙΡΙΓΓΩΤΗΣ",
-        "phones": "6973330223",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 25,
-        "description": "MERIANOS CHRISTOS",
-        "phones": "6937762673",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 26,
-        "description": "ΜΑΚΡΗΣ",
-        "phones": "6932474125",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2207"
-    },
-    {
-        "id": 27,
-        "description": "KATSAROS",
-        "phones": "",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
-    },
-    {
-        "id": 28,
-        "description": "MALACHAS",
-        "phones": "",
-        "isDefault": false,
-        "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+        "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
     }
 ]

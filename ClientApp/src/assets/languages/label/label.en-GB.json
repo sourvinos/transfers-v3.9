@@ -580,6 +580,10 @@
                 "description": "Admin"
             },
             {
+                "id": "isActive",
+                "description": "Active"
+            },
+            {
                 "id": "saveButton",
                 "description": "Save"
             }

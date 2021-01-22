@@ -169,7 +169,8 @@ export class RegisterUserFormComponent implements OnInit, AfterViewInit, OnDestr
                 password: [environment.newUser.password, [Validators.required, Validators.minLength(10), Validators.maxLength(128), ValidationService.containsSpace]],
                 confirmPassword: [environment.newUser.confirmPassword, [Validators.required, ValidationService.containsSpace]]
             }, { validator: ValidationService.childrenEqual }),
-            isAdmin: false
+            isAdmin: false,
+            isActive: false
         })
     }
 

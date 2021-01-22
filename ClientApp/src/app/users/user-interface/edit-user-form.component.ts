@@ -217,7 +217,7 @@ export class EditUserFormComponent {
     private populateFields(result: User): void {
         this.form.setValue({
             id: result.id,
-            userName: result.username,
+            userName: result.userName,
             displayName: result.displayName,
             email: result.email,
             isAdmin: result.isAdmin,
@@ -243,7 +243,7 @@ export class EditUserFormComponent {
 
     //#region getters
 
-    get username(): AbstractControl {
+    get userName(): AbstractControl {
         return this.form.get('userName')
     }
 
@@ -259,8 +259,13 @@ export class EditUserFormComponent {
         return this.form.value.oneTimePassword
     }
 
-    get isUserAdmin(): boolean {
-        if (this.isAdmin) return this.isAdmin
+    get isLoggedInUserAdmin(): boolean {
+        if (this.isAdmin == null) {
+            this.userService.getSingle(this.helperService.readItem('userId')).subscribe(result => {
+                this.isAdmin = result.isAdmin
+            })
+        }
+        return this.isAdmin
     }
 
     //#endregion

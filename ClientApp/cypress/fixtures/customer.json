@@ -1,11 +1,11 @@
 {
-    "id": 222,
-    "description": "ASK 2 TRAVEL",
-    "profession": "ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ ΤΑΞΙΔΙΩΤΙΚΩΝ ΠΡΑΚΤΟΡΕΙΩΝ",
-    "address": "ΛΕΩΦ. ΣΥΓΓΡΟΥ 188, 17671 ΚΑΛΛΙΘΕΑ-ΑΘΗΝΑ",
-    "phones": "",
-    "personInCharge": "MR FOUFOUTOS",
+    "id": 22,
+    "description": "LORD TRAVEL",
+    "profession": "ΓΡΑΦΕΙΟ ΓΕΝΙΚΟΥ ΤΟΥΡΙΣΜΟΥ",
+    "address": "ΕΘΝΙΚΗ ΛΕΥΚΙΜΜΗΣ 38 - ΚΕΡΚΥΡΑ",
+    "phones": "0661.91617",
+    "personInCharge": "KALOUDIS VASILIS",
     "email": "",
     "isActive": true,
-    "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+    "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
 }

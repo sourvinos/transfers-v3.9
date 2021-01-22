@@ -6,6 +6,7 @@ namespace Transfers {
 
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Abbreviation is required")]
         [MaxLength(5, ErrorMessage = "Abbreviation can not be longer than 5 characters")]
         public string Abbreviation { get; set; }
 

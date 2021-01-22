@@ -580,6 +580,10 @@
                 "description": "Διαχειριστης"
             },
             {
+                "id": "isActive",
+                "description": "Ενεργός"
+            },
+            {
                 "id": "saveButton",
                 "description": "Αποθηκευση"
             }

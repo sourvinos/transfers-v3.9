@@ -54,6 +54,7 @@
                 </mat-form-field>
             </div>
             <mat-slide-toggle data-cy="isAdmin" formControlName="isAdmin">{{ onGetLabel('isAdmin') }}</mat-slide-toggle>
+            <mat-slide-toggle data-cy="isActive" formControlName="isActive">{{ onGetLabel('isActive') }}</mat-slide-toggle>
         </form>
         <p class="instructions" [class.hidden]=true>{{ form.value | json }} {{ form.valid }}</p>
     </div>

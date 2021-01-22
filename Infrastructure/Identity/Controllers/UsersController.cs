@@ -49,7 +49,7 @@ namespace Transfers {
             }
             UserViewModel vm = new UserViewModel {
                 Id = record.Id,
-                Username = record.UserName,
+                UserName = record.UserName,
                 DisplayName = record.DisplayName,
                 Email = record.Email,
                 IsAdmin = record.IsAdmin,
@@ -117,7 +117,7 @@ namespace Transfers {
         }
 
         private async Task<IdentityResult> UpdateUser(AppUser user, UserViewModel vm) {
-            user.UserName = vm.Username;
+            user.UserName = vm.UserName;
             user.DisplayName = vm.DisplayName;
             user.Email = vm.Email;
             user.IsAdmin = vm.IsAdmin;

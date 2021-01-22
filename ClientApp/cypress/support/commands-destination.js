@@ -19,7 +19,7 @@ Cypress.Commands.add('readDestinationRecord', () => {
     cy.route('GET', Cypress.config().baseUrl + '/api/destinations/2', 'fixture:destination.json').as('getDestination')
     cy.wait(500)
     cy.get('[data-cy=searchTerm]').clear().type('paxos').should('have.value', 'paxos')
-    cy.get('.button-row-menu').eq(1).click({ force: true })
+    cy.get('.button-row-menu').eq(0).click({ force: true })
     cy.get('[data-cy=editButton]').first().click()
     cy.wait('@getDestination').its('status').should('eq', 200)
     cy.url().should('eq', Cypress.config().baseUrl + '/destinations/2').then(() => {

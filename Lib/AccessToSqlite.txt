@@ -1,6 +1,6 @@
 In Access
 ----------
-Rename columns, update fields
+Rename columns, update fields, Reorder
 Export as csv 
 	Code Page = UTF-8 
 	Include field names on first row
@@ -16,4 +16,6 @@ Import
 
 For Transfers before import: 
 	Remove the time part of DateIn field
+	Include Id
+	Exclude TotalPersons
 

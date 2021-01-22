@@ -13,6 +13,15 @@ export class HelperService {
 
     //#region public methods
 
+    public createJsonFile(data: any): void {
+        const theJSON = JSON.stringify(data)
+        const uri = "data:application/json;charset=UTF-8," + encodeURIComponent(theJSON)
+        const a = document.createElement('a')
+        a.href = uri
+        a.innerHTML = "Right-click and choose 'save as...'"
+        document.body.appendChild(a)
+    }
+    
     public getApplicationTitle(): any {
         return this.appName
     }

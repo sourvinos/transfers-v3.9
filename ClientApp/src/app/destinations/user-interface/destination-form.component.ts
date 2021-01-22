@@ -111,8 +111,8 @@ export class DestinationFormComponent {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.destinationService.add(this.form.value).subscribe(() => {
-                this.focus('abbreviation')
-                this.initFormAfterDelay()
+                this.resetForm()
+                this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorFromInterceptor => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorFromInterceptor), 'error')

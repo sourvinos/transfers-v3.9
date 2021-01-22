@@ -580,6 +580,10 @@
                 "description": "(CZ) Admin"
             },
             {
+                "id": "isActive",
+                "description": "(CZ) Active"
+            },
+            {
                 "id": "saveButton",
                 "description": "(CZ) Save"
             }

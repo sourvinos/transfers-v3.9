@@ -81,7 +81,7 @@ export class UserListComponent {
 
     public onFilter(query: string): void {
         this.searchTerm = query
-        this.filteredRecords = query ? this.records.filter(p => p.username.toLowerCase().includes(query.toLowerCase())) : this.records
+        this.filteredRecords = query ? this.records.filter(p => p.userName.toLowerCase().includes(query.toLowerCase())) : this.records
     }
 
     public onGetLabel(id: string): string {
@@ -144,7 +144,7 @@ export class UserListComponent {
         const listResolved: ListResolved = this.activatedRoute.snapshot.data[this.resolver]
         if (listResolved.error === null) {
             this.records = listResolved.list
-            this.filteredRecords = this.records.sort((a, b) => (a.username > b.username) ? 1 : -1)
+            this.filteredRecords = this.records.sort((a, b) => (a.userName > b.userName) ? 1 : -1)
         } else {
             this.goBack()
             this.showSnackbar(this.messageSnackbarService.filterError(listResolved.error), 'error')

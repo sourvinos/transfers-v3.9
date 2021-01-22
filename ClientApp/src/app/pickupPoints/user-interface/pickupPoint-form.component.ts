@@ -147,8 +147,8 @@ export class PickupPointFormComponent {
         if (this.form.value.id === 0 || this.form.value.id === null) {
             this.form.get('coordinates').enable()
             this.pickupPointService.add(this.form.value).subscribe(() => {
-                this.focus('description')
-                this.initFormAfterDelay()
+                this.resetForm()
+                this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
             }, errorCode => {
                 this.showSnackbar(this.messageSnackbarService.filterError(errorCode), 'error')

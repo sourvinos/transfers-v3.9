@@ -18,7 +18,7 @@ Cypress.Commands.add('gotoEmptyUserForm', () => {
 Cypress.Commands.add('readUserRecord', () => {
     cy.server()
     cy.route('GET', Cypress.config().baseUrl + '/api/users/8d204972-9982-491e-aeec-7ce2dcbd56c5', 'fixture:user.json').as('getUser')
-    cy.wait(1500)
+    cy.wait(500)
     cy.get('[data-cy=searchTerm]').clear().type('gatopoulidis').should('have.value', 'gatopoulidis')
     cy.get('.button-row-menu').eq(0).click({ force: true })
     cy.get('[data-cy=editButton]').first().click()

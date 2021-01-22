@@ -1,6 +1,6 @@
 :root {
     /* Common */
-    --color-background-secondary: #3c4448;
+    --color-background-secondary: #4c565a;
     --color-button-delete: #F28482;
     --color-logo-primary: #FE9F36;
     --color-logo-secondary: #FFE85C;
@@ -46,6 +46,6 @@
     --color-about: #EFEFEF;
     --color-hover: #545454;
     /* Tables */
-    --color-table-header: #4a5458;
-    --color-table-row-highlight:#4a5458;
+    --color-table-header: #4f5c61;
+    --color-table-row-highlight:#4f5c61;
 }
