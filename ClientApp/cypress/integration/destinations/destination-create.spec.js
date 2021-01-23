@@ -26,8 +26,8 @@ context('Destinations', () => {
 
         it('Create record', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
-            cy.route('POST', Cypress.config().baseUrl + '/api/destinations', 'fixture:destination.json').as('saveDestination')
+            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations/destinations.json').as('getDestinations')
+            cy.route('POST', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations/destination.json').as('saveDestination')
             cy.get('[data-cy=save]').click()
             cy.wait('@saveDestination').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/destinations')

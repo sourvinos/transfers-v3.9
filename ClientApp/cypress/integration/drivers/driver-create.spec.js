@@ -26,8 +26,8 @@ context('Drivers', () => {
 
         it('Create record', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
-            cy.route('POST', Cypress.config().baseUrl + '/api/drivers', 'fixture:driver.json').as('saveDriver')
+            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers/drivers.json').as('getDrivers')
+            cy.route('POST', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers/driver.json').as('saveDriver')
             cy.get('[data-cy=save]').click()
             cy.wait('@saveDriver').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/drivers')

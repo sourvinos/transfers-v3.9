@@ -30,8 +30,8 @@ context('Pickup points', () => {
 
         it('Delete record', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints.json').as('getPickupPoints')
-            cy.route('DELETE', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoint.json').as('deletePickupPoint')
+            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints/pickupPoints.json').as('getPickupPoints')
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoints/pickupPoint.json').as('deletePickupPoint')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

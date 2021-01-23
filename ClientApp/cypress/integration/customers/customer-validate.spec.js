@@ -67,7 +67,7 @@ context('Customers', () => {
 
         it('Choose to abort when the back icon is clicked', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers/customers.json').as('getCustomers')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()
@@ -75,7 +75,7 @@ context('Customers', () => {
             cy.url().should('eq', Cypress.config().baseUrl + '/customers')
         })
 
-      })
+    })
 
     after(() => {
         cy.logout()

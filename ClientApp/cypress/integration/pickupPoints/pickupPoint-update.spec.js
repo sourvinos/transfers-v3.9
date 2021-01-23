@@ -25,8 +25,8 @@ context('Pickup points', () => {
 
         it('Update record', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints.json').as('getPickupPoints')
-            cy.route('PUT', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoint.json').as('savePickupPoint')
+            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/routeId/19', 'fixture:pickupPoints/pickupPoints.json').as('getPickupPoints')
+            cy.route('PUT', Cypress.config().baseUrl + '/api/pickupPoints/1700', 'fixture:pickupPoints/pickupPoint.json').as('savePickupPoint')
             cy.get('[data-cy=save]').click()
             cy.wait('@savePickupPoint').its('status').should('eq', 200)
             cy.wait('@getPickupPoints').its('status').should('eq', 200)

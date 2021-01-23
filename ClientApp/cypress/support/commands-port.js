@@ -2,7 +2,7 @@ import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('gotoPortList', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/ports', 'fixture:ports.json').as('getPorts')
+    cy.route('GET', Cypress.config().baseUrl + '/api/ports', 'fixture:ports/ports.json').as('getPorts')
     cy.get('[data-cy=tablesMenu]').click()
     cy.get('[data-cy=portsMenu]').click()
     cy.wait('@getPorts').its('status').should('eq', 200)
@@ -16,7 +16,7 @@ Cypress.Commands.add('gotoEmptyPortForm', () => {
 
 Cypress.Commands.add('readPortRecord', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/ports/1', 'fixture:port.json').as('getPort')
+    cy.route('GET', Cypress.config().baseUrl + '/api/ports/1', 'fixture:ports/port.json').as('getPort')
     cy.wait(500)
     cy.get('[data-cy=searchTerm]').clear().type('corfu').should('have.value', 'corfu')
     cy.get('.button-row-menu').eq(0).click({ force: true })

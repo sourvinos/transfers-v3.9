@@ -2,7 +2,7 @@ import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('gotoCustomerList', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers.json').as('getCustomers')
+    cy.route('GET', Cypress.config().baseUrl + '/api/customers', 'fixture:customers/customers.json').as('getCustomers')
     cy.get('[data-cy=tablesMenu]').click()
     cy.get('[data-cy=customersMenu]').click()
     cy.wait('@getCustomers').its('status').should('eq', 200)
@@ -16,7 +16,7 @@ Cypress.Commands.add('gotoEmptyCustomerForm', () => {
 
 Cypress.Commands.add('readCustomerRecord', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/customers/22', 'fixture:customer.json').as('getCustomer')
+    cy.route('GET', Cypress.config().baseUrl + '/api/customers/22', 'fixture:customers/customer.json').as('getCustomer')
     cy.wait(500)
     cy.get('[data-cy=searchTerm]').clear().type('lord')
     cy.get('.button-row-menu').eq(0).click({ force: true })

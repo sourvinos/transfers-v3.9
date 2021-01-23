@@ -35,8 +35,8 @@ context('Routes', () => {
 
         it('Create record', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes.json').as('getRoutes')
-            cy.route('POST', Cypress.config().baseUrl + '/api/routes', 'fixture:route.json').as('saveRoute')
+            cy.route('GET', Cypress.config().baseUrl + '/api/routes', 'fixture:routes/routes.json').as('getRoutes')
+            cy.route('POST', Cypress.config().baseUrl + '/api/routes', 'fixture:routes/route.json').as('saveRoute')
             cy.get('[data-cy=save]').click()
             cy.wait('@saveRoute').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/routes')

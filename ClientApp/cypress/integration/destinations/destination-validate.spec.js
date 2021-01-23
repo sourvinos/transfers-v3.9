@@ -51,7 +51,7 @@ context('Destinations', () => {
 
         it('Choose to abort when the back icon is clicked', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
+            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations/destinations.json').as('getDestinations')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

@@ -19,8 +19,8 @@ context('Drivers', () => {
 
         it('Ask to delete and continue', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
-            cy.route('DELETE', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('deleteDriver')
+            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers/drivers.json').as('getDrivers')
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:drivers/driver.json').as('deleteDriver')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

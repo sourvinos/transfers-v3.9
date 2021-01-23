@@ -2,7 +2,7 @@ import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('gotoDriverList', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
+    cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers/drivers.json').as('getDrivers')
     cy.get('[data-cy=tablesMenu]').click()
     cy.get('[data-cy=driversMenu]').click()
     cy.wait('@getDrivers').its('status').should('eq', 200)
@@ -16,7 +16,7 @@ Cypress.Commands.add('gotoEmptyDriverForm', () => {
 
 Cypress.Commands.add('readDriverRecord', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:driver.json').as('getDriver')
+    cy.route('GET', Cypress.config().baseUrl + '/api/drivers/1', 'fixture:drivers/driver.json').as('getDriver')
     cy.wait(500)
     cy.get('[data-cy=searchTerm]').clear().type('stamatis').should('have.value', 'stamatis')
     cy.get('.button-row-menu').eq(0).click({ force: true })

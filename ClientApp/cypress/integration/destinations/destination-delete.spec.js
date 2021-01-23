@@ -19,8 +19,8 @@ context('Destinations', () => {
 
         it('Ask to delete and continue', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations.json').as('getDestinations')
-            cy.route('DELETE', Cypress.config().baseUrl + '/api/destinations/2', 'fixture:destination.json').as('deleteDestination')
+            cy.route('GET', Cypress.config().baseUrl + '/api/destinations', 'fixture:destinations/destinations.json').as('getDestinations')
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/destinations/2', 'fixture:destinations/destination.json').as('deleteDestination')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

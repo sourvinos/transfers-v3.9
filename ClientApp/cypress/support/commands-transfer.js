@@ -7,7 +7,7 @@ Cypress.Commands.add('gotoTransfersWrapper', () => {
 
 Cypress.Commands.add('searchTransfers', () => {
     cy.server()
-    cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers.json').as('getTransfers')
+    cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers/transfers.json').as('getTransfers')
     cy.get('[data-cy=dateIn]').clear().type('10/7/2020{enter}')
     cy.get('[data-cy=search]').click()
     cy.wait('@getTransfers').its('status').should('eq', 200)
@@ -18,7 +18,7 @@ Cypress.Commands.add('searchTransfers', () => {
 
 Cypress.Commands.add('seekTransfer', () => {
     cy.server()
-    cy.route('GET', 'https://localhost:5001/api/transfers/1', 'fixture:transfer.json').as('getTransfer')
+    cy.route('GET', 'https://localhost:5001/api/transfers/1', 'fixture:transfers/transfer.json').as('getTransfer')
     cy.get('.button-row-menu').eq(0).click({ force: true })
     cy.get('[data-cy=editButton]').first().click()
     cy.wait('@getTransfer').its('status').should('eq', 200)

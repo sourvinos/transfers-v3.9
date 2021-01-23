@@ -28,8 +28,8 @@ context('Transfers', () => {
 
         it('Ask to delete and continue', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers.json').as('getTransfers')
-            cy.route('DELETE', Cypress.config().baseUrl + '/api/transfers/1', 'fixture:transfer.json').as('deleteTransfer')
+            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers/transfers.json').as('getTransfers')
+            cy.route('DELETE', Cypress.config().baseUrl + '/api/transfers/1', 'fixture:transfers/transfer.json').as('deleteTransfer')
             cy.get('[data-cy=delete]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

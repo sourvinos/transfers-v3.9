@@ -1,4 +1,4 @@
-context('Drivers', () => {
+qcontext('Drivers', () => {
 
     before(() => {
         cy.login()
@@ -47,7 +47,7 @@ context('Drivers', () => {
 
         it('Choose to abort when the back icon is clicked', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers.json').as('getDrivers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/drivers', 'fixture:drivers/drivers.json').as('getDrivers')
             cy.get('[data-cy=goBack]').click()
             cy.get('.mat-dialog-container')
             cy.get('[data-cy=dialog-ok]').click()

@@ -16,13 +16,13 @@ context('Transfers', () => {
 
         it('Goto an empty form', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers.json').as('getTransfers')
-            cy.route('GET', Cypress.config().baseUrl + '/api/customers/getActive', 'fixture:customers.json').as('getCustomers')
-            cy.route('GET', Cypress.config().baseUrl + '/api/destinations/getActive', 'fixture:destinations.json').as('getDestinations')
-            cy.route('GET', Cypress.config().baseUrl + '/api/drivers/getActive', 'fixture:drivers.json').as('getDrivers')
-            cy.route('GET', Cypress.config().baseUrl + '/api/drivers/getDefaultDriver', 'fixture:driver.json').as('getDefaultDriver')
-            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/getActive', 'fixture:pickupPoints.json').as('getPickupPoints')
-            cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports.json').as('getPorts')
+            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers/transfers.json').as('getTransfers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/customers/getActive', 'fixture:customers/customers.json').as('getCustomers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/destinations/getActive', 'fixture:destinations/destinations.json').as('getDestinations')
+            cy.route('GET', Cypress.config().baseUrl + '/api/drivers/getActive', 'fixture:drivers/drivers.json').as('getDrivers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/drivers/getDefaultDriver', 'fixture:drivers/driver.json').as('getDefaultDriver')
+            cy.route('GET', Cypress.config().baseUrl + '/api/pickupPoints/getActive', 'fixture:pickupPoints/pickupPoints.json').as('getPickupPoints')
+            cy.route('GET', Cypress.config().baseUrl + '/api/ports/getActive', 'fixture:ports/ports.json').as('getPorts')
             cy.get('[data-cy=new]').click()
             cy.wait('@getTransfers').its('status').should('eq', 200)
             cy.wait('@getCustomers').its('status').should('eq', 200)
@@ -79,7 +79,7 @@ context('Transfers', () => {
 
         it('Save and display a snackbar', () => {
             cy.server()
-            cy.route('POST', 'https://localhost:5001/api/transfers', 'fixture:transfer.json').as('saveTransfer')
+            cy.route('POST', 'https://localhost:5001/api/transfers', 'fixture:transfers/transfer.json').as('saveTransfer')
             cy.get('[data-cy=save]').click()
             cy.wait('@saveTransfer').its('status').should('eq', 200)
             cy.get('[data-cy=customSnackbar]')
@@ -87,7 +87,7 @@ context('Transfers', () => {
 
         it('Close the form', () => {
             cy.server()
-            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers.json').as('getTransfers')
+            cy.route('GET', Cypress.config().baseUrl + '/api/transfers/date/2020-07-10', 'fixture:transfers/transfers.json').as('getTransfers')
             cy.get('[data-cy=goBackToSummary]').click({ force: true })
             cy.wait('@getTransfers').its('status').should('eq', 200)
             cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-07-10')
