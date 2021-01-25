@@ -2,7 +2,6 @@ context('Transfers', () => {
 
     before(() => {
         cy.login()
-        cy.saveLocalStorage()
     })
 
     describe('Assign driver', () => {
@@ -44,7 +43,7 @@ context('Transfers', () => {
             cy.route('PATCH', Cypress.config().baseUrl + '/api/transfers/assignDriver?driverId=1&id=6&id=7', 'fixture:transfers/transfers-assign-driver.json').as('assignDriver')
             cy.get('[data-cy=assignDriver]').click()
             cy.get('[data-cy=driverSelect]').click()
-            cy.get('[data-cy=driverElement]').contains('STAMATIS!').click();
+            cy.get('[data-cy=driverElement]').contains('STAMATIS').click();
             cy.get('[data-cy=continue]').click()
             cy.get('[data-cy=customSnackbar]')
             cy.wait('@getTransfers').its('status').should('eq', 200)

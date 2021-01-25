@@ -6,6 +6,10 @@ context('Transfers', () => {
 
     describe('List', () => {
 
+        beforeEach(() => {
+            cy.restoreLocalStorage()
+        })
+
         it('Goto the list', () => {
             cy.gotoTransfersWrapper()
         })
@@ -147,6 +151,19 @@ context('Transfers', () => {
             cy.get('[data-cy=summaryTab]').click()
         })
 
+        it('Goto the home page', () => {
+            cy.get('[data-cy=goBack]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/')
+        })
+
+        afterEach(() => {
+            cy.saveLocalStorage()
+        })
+
+    })
+
+    after(() => {
+        cy.logout()
     })
 
 })

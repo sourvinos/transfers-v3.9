@@ -284,7 +284,7 @@ export class TransferFormComponent {
             free: [0, [Validators.required, Validators.min(0), Validators.max(999)]],
             totalPersons: [{ value: '0', disabled: true }, Validators.required],
             driverId: [0, Validators.required], driverDescription: [{ value: '', disabled: true }, Validators.required],
-            portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }],
+            portId: [0, Validators.required], portDescription: [{ value: '', disabled: true }, Validators.required],
             remarks: ['', Validators.maxLength(128)],
             userId: this.helperService.readItem('userId')
         })

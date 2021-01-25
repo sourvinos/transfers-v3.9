@@ -4,12 +4,12 @@
         "abbreviation": "NISAKI",
         "description": "NISAKI - CORFU PORT",
         "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+        "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
         "port": {
             "id": 1,
             "description": "CORFU PORT",
             "isActive": true,
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
         }
     },
     {
@@ -17,12 +17,12 @@
         "abbreviation": "SOUTH",
         "description": "TOWN - LEFKIMMI",
         "isActive": true,
-        "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210",
+        "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da",
         "port": {
             "id": 2,
             "description": "LEFKIMMI PORT",
             "isActive": false,
-            "userId": "b6401c3e-7683-49bc-bb7f-8be3b2fd2210"
+            "userId": "e7e014fd-5608-4936-866e-ec11fc8c16da"
         }
     }
 ]

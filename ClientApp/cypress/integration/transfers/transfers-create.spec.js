@@ -6,6 +6,10 @@ context('Transfers', () => {
 
     describe('Create', () => {
 
+        beforeEach(() => {
+            cy.restoreLocalStorage()
+        })
+
         it('Goto the list', () => {
             cy.gotoTransfersWrapper()
         })
@@ -35,27 +39,18 @@ context('Transfers', () => {
         })
 
         it('Destination is valid', () => {
-            cy.typeNotRandomChars('destination', 'paxos')
-            cy.get('#dialog').within(() => {
-                cy.get('input[type=text]')
-                    .type('{downarrow}{downarrow}{enter}', { force: true })
-            })
+            cy.typeNotRandomChars('destination', 'a').then(() => { cy.get('#dialog').within(() => { cy.get('input[type=text]').type('{enter}', { force: true }) }) })
+            cy.get('[data-cy=destination]').should('have.value', 'PAXOS - ANTIPAXOS')
         })
 
         it('Customer is valid', () => {
-            cy.typeNotRandomChars('customer', 'travel')
-            cy.get('#dialog').within(() => {
-                cy.get('input[type=text]')
-                    .type('{downarrow}{downarrow}{enter}', { force: true })
-            })
+            cy.typeNotRandomChars('customer', 'travel').then(() => { cy.get('#dialog').within(() => { cy.get('input[type=text]').type('{enter}', { force: true }) }) })
+            cy.get('[data-cy=customer]').should('have.value', 'PACHIS TRAVEL')
         })
 
         it('Pickup point is valid', () => {
-            cy.typeNotRandomChars('pickupPoint', 'ant')
-            cy.get('#dialog').within(() => {
-                cy.get('input[type=text]')
-                    .type('{downarrow}{downarrow}{enter}', { force: true })
-            })
+            cy.typeNotRandomChars('pickupPoint', 'nissaki').then(() => { cy.get('#dialog').within(() => { cy.get('input[type=text]').type('{enter}', { force: true }) }) })
+            cy.get('[data-cy=pickupPoint]').should('have.value', 'NISSAKI BEACH')
         })
 
         it('Adults is valid', () => {
@@ -72,9 +67,10 @@ context('Transfers', () => {
 
         it('Remarks is valid', () => {
             cy.typeRandomChars('remarks', 10)
-                .elementShouldBeValid('remarks')
-                .elementShouldBeValid('form')
-                .buttonShouldBeEnabled('save')
+        })
+
+        it('Form is valid', () => {
+            cy.buttonShouldBeEnabled('save')
         })
 
         it('Save and display a snackbar', () => {
@@ -93,6 +89,19 @@ context('Transfers', () => {
             cy.url().should('eq', Cypress.config().baseUrl + '/transfers/date/2020-07-10')
         })
 
+        it('Goto the home page', () => {
+            cy.get('[data-cy=goBack]').click()
+            cy.url().should('eq', Cypress.config().baseUrl + '/')
+        })
+
+        afterEach(() => {
+            cy.saveLocalStorage()
+        })
+
+    })
+
+    after(() => {
+        cy.logout()
     })
 
 })

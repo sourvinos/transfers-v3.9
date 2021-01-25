@@ -1,26 +1,43 @@
 import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('login', () => {
-    cy.visit('/login')
-        .get('[data-cy=login]')
-        .click()
+    cy.request({
+        url: Cypress.config().baseUrl + '/api/auth/auth',
+        method: 'POST',
+        body: {
+            username: 'sourvinos',
+            password: '46929e6c-ee70-447a-ba35-542b4be14746',
+            grantType: "password"
+        }
+    }).its('body.response').then(response => {
+        cy.setLocalStorage('jwt', response.token)
+        cy.setLocalStorage('refresh_token', response.refresh_token)
+        cy.setLocalStorage('expiration', response.expiration)
+        cy.setLocalStorage('roles', response.roles)
+        cy.setLocalStorage('userId', response.userId)
+        cy.setLocalStorage('displayName', response.displayName)
+        cy.setLocalStorage('language', 'el-GR')
+        cy.setLocalStorage('theme', 'blue')
+        cy.setLocalStorage('userRole', 'Admin')
+        cy.setLocalStorage('loginStatus', '1')
+    })
+    cy.visit("https://localhost:5001")
+    cy.saveLocalStorage()
 })
 
 Cypress.Commands.add('logout', () => {
-    cy.get('[data-cy=userMenu]').click()
-    cy.get('[data-cy=logout]').click()
+    cy.clearLocalStorage()
 })
 
 Cypress.Commands.add('typeRandomChars', (fieldName, length) => {
     cy.get('[data-cy=' + fieldName + ']')
-        .clear()
+        .clear({ force: true })
         .type(createRandomLetters(length) + '{enter}')
 })
 
 Cypress.Commands.add('typeNotRandomChars', (fieldName, fieldContent) => {
     cy.get('[data-cy=' + fieldName + ']')
-        .clear()
-        .type(fieldContent + '{enter}')
+        .type(fieldContent + '{enter}', { force: true })
 })
 
 Cypress.Commands.add('formShouldBeInvalid', (element) => {
