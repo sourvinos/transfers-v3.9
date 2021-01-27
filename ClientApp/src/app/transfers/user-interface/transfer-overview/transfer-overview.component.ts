@@ -38,8 +38,9 @@ export class TransferOverviewComponent {
     public isDataFound = false
     public isLoaderVisible = false
 
-    public personsPerDate = []
+    // public chartViewModel = new ChartViewModel
 
+    public myPeriod = ''
     public xAxis = []
     public yAxisCurrent = []
     public yAxisPrevious = []
@@ -200,11 +201,16 @@ export class TransferOverviewComponent {
     }
 
     private async createChart(period: string): Promise<void> {
+
         await this.transferChartService.createXAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
+            this.myPeriod = period
             this.xAxis = response
+            // this.xAxis = response
             this.transferChartService.verticalAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
                 this.yAxisCurrent = response.yAxisCurrent
                 this.yAxisPrevious = response.yAxisPrevious
+                // this.yAxisCurrent = response.yAxisCurrent
+                // this.yAxisPrevious = response.yAxisPrevious
             })
         })
     }
@@ -267,12 +273,7 @@ export class TransferOverviewComponent {
     }
 
     private initPeriod(): void {
-        this.period.persons = 0
-        this.period.adults = 0
-        this.period.kids = 0
-        this.period.free = 0
-        this.period.percent = 0
-        this.period.color = 'blue'
+        this.period = { persons: 0, adults: 0, kids: 0, free: 0, percent: 0, color: 'blue' }
     }
 
     private loadStatisticsForPeriod(viewModel: any, fromDate: string, toDate: string): Promise<any> {

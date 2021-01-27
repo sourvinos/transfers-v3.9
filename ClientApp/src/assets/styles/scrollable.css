@@ -18,10 +18,10 @@
 }
 
 .scrollable::-webkit-scrollbar-thumb, .mat-tab-body-content::-webkit-scrollbar-thumb {
-    background-color: var(--color-button-secondary) !important;
+    background-color: var(--color-scrollbar) !important;
     min-height: 6rem !important;
 }
 
 .scrollable::-webkit-scrollbar-thumb:hover, .mat-tab-body-content::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-button-secondary) !important;
+    background-color: var(--color-scrollbar) !important;
 }

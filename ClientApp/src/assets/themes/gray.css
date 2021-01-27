@@ -24,6 +24,7 @@
     --color-text-percent-positive: #6dce7d;
     --color-text-percent-zero: #53c4e8;
     /* Period summary */
+    --color-background-summary: #6c787b0d;
     --color-border-period-summary-selected: #FE9F36;
     /* Text */
     --color-text-primary: #EFEFEF;
@@ -47,5 +48,7 @@
     --color-hover: #545454;
     /* Tables */
     --color-table-header: #4f5c61;
-    --color-table-row-highlight:#4f5c61;
+    --color-table-row-highlight: #4f5c61;
+    /* Scroll bars */
+    --color-scrollbar: #FE9F36;
 }

@@ -90,7 +90,7 @@
 }
 
 .summaryBlock {
-    background-color: var(--color-background-table) !important;
+    background-color: var(--color-background-summary) !important;
     border-radius: 0 20px 20px 0px;
     box-shadow: none;
     display: flex;

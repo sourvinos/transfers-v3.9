@@ -146,7 +146,8 @@
             <overview-details [records]="details" [isLoaderVisible]="isLoaderVisible" [isDataFound]="isDataFound"></overview-details>
         </div>
         <div id="chart">
-            <chart-component [period]="period" [xAxis]="xAxis" [yAxis]="yAxisCurrent" [yAxisLastYear]="yAxisPrevious"></chart-component>
+            <chart-component [period]="myPeriod" [xAxis]="xAxis" [yAxisCurrent]="yAxisCurrent" [yAxisPrevious]="yAxisPrevious"></chart-component>
+            <!-- <chart-component [chartViewModel]="chartViewModel"></chart-component> -->
         </div>
     </div>
 

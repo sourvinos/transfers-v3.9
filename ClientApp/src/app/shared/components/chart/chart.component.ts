@@ -1,5 +1,4 @@
-import { HelperService } from './../../services/helper.service'
-import { Component, Input, SimpleChanges } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Chart } from 'chart.js'
 
 @Component({
@@ -14,24 +13,32 @@ export class ChartComponent {
 
     @Input() period: string
     @Input() xAxis: string[]
-    @Input() yAxis: number[]
-    @Input() yAxisLastYear: number[]
+    @Input() yAxisCurrent: number[]
+    @Input() yAxisPrevious: number[]
 
     private chart: Chart
     private newXAxis = []
 
     //#endregion
 
-    constructor(private helperService: HelperService) { }
-
     //#region lifecycle hooks
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes) {
-            if (this.period == 'period') this.createPeriod()
-            if (this.period == 'mtd') this.createMTD()
-            if (this.period == 'ytd') this.createYTD()
-            this.createChart()
+    ngOnChanges(): void {
+        if (this.xAxis.length > 0) {
+            if (this.period == 'period') {
+                this.createPeriod()
+                this.createChart()
+            }
+            if (this.period == 'mtd') {
+                console.log('onChanges:', this.xAxis)
+                this.createMTD()
+                this.createChart()
+            }
+            if (this.period == 'ytd') {
+                console.log('onChanges:', this.xAxis)
+                this.createYTD()
+                this.createChart()
+            }
         }
     }
 
@@ -43,21 +50,20 @@ export class ChartComponent {
         this.chart = new Chart("myChart", {
             type: 'bar',
             data: {
-                // labels: this.updateXAxisLocale(),
                 labels: this.xAxis,
                 datasets: [
                     {
                         barPercentage: 1,
                         backgroundColor: this.updateBarColor(),
                         label: this.getYear(),
-                        data: this.yAxis,
+                        data: this.yAxisCurrent,
                         hoverBackgroundColor: this.updateBarColor()
                     },
                     {
                         barPercentage: 0.5,
                         backgroundColor: this.updateBarColor('lastYear'),
                         label: this.getYear(true),
-                        data: this.yAxisLastYear,
+                        data: this.yAxisPrevious,
                         hoverBackgroundColor: this.updateBarColor('lastYear')
                     }
                 ]
@@ -114,8 +120,10 @@ export class ChartComponent {
         this.newXAxis = []
         for (let index = 1; index <= today.getDate(); index++) {
             const day = '0' + index
-            this.newXAxis.push(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day.substr(day.length - 2, 2))
+            const month = '0' + today.getMonth() + 1
+            this.newXAxis.push(today.getFullYear() + '-' + month.substr(month.length - 2, 2) + '-' + day.substr(day.length - 2, 2))
         }
+        console.log('new X', this.newXAxis)
     }
 
     private createYTD(): void {
@@ -128,7 +136,10 @@ export class ChartComponent {
     }
 
     private getYear(lastYear?: boolean): string {
-        return lastYear ? (new Date().getFullYear() - 1).toString() : (new Date().getFullYear()).toString()
+        if (this.xAxis.length > 0) {
+            const year = parseInt(this.xAxis[0].substr(this.xAxis[0].length - 4, 4))
+            return lastYear ? (year - 1).toString() : year.toString()
+        }
     }
 
     private updateBarColor(period?: string): string[] {
@@ -137,6 +148,23 @@ export class ChartComponent {
             barColor.push(getComputedStyle(document.body).getPropertyValue(period == null ? '--color-chart-bar' : '--color-chart-bar-lastYear'))
         }
         return barColor
+    }
+
+    private updateElementLocale(element: string): string {
+        const locale = localStorage.getItem('language')
+        switch (locale) {
+            case 'en-GB':
+                return element.substr(3, 4) + '/' + element.substr(0, 2)
+            case 'en-US':
+                return element.replace('-', '/')
+        }
+    }
+
+    private updateXAxisLocale(): string[] {
+        this.newXAxis.forEach((element, index) => {
+            this.newXAxis[index] = this.updateElementLocale(element.substr(5, 6))
+        })
+        return this.newXAxis
     }
 
     //#endregion

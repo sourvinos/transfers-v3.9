@@ -23,12 +23,13 @@
 }
 
 #chart {
+    background-color: var(--color-background-summary);
     height: 100%;
     width: 100%;
 }
 
 .period-summary {
-    background-color: var(--color-background-table);
+    background-color: var(--color-background-summary);
     border-left: 2px solid var(--color-background-table);
     display: flex;
     flex-direction: column;
@@ -118,7 +119,7 @@
 }
 
 #details {
-    background-color: var(--color-background-table);
+    background-color: var(--color-background-summary);
     display: flex;
     height: 100%;
     justify-content: center;
