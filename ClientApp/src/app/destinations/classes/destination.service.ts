@@ -14,6 +14,10 @@ export class DestinationService extends DataService {
 
     //#region public methods
 
+    public getCount(): Observable<number> {
+        return this.http.get<number>('/api/destinations/getCount')
+    }
+
     public getAllActive(): Observable<Destination[]> {
         return this.http.get<Destination[]>('/api/destinations/getActive')
     }

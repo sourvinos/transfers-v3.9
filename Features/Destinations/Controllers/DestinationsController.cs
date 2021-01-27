@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -15,15 +16,22 @@ namespace Transfers {
 
         private readonly IDestinationRepository repo;
         private readonly ILogger<DestinationsController> logger;
+        private readonly IHubContext<MessageHub> messageHubContext;
 
-        public DestinationsController(IDestinationRepository repo, ILogger<DestinationsController> logger) {
+        public DestinationsController(IDestinationRepository repo, ILogger<DestinationsController> logger, IHubContext<MessageHub> messageHubContext) {
             this.repo = repo;
             this.logger = logger;
+            this.messageHubContext = messageHubContext;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Destination>> Get() {
             return await repo.Get();
+        }
+
+        [HttpGet("[action]")]
+        public int GetCount() {
+            return repo.GetCount();
         }
 
         [HttpGet("[action]")]
@@ -69,8 +77,10 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
+                    messageHubContext.Clients.All.SendAsync("send", repo.GetCount());
                     return StatusCode(200, new {
-                        response = ApiMessages.RecordUpdated()
+                        // response = ApiMessages.RecordUpdated()
+                        response = repo.GetCount()
                     });
                 } catch (DbUpdateException exception) {
                     LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);

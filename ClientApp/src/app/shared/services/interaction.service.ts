@@ -11,11 +11,13 @@ export class InteractionService {
     private _checked = new Subject<number>()
     private _refreshList = new Subject<any>()
     private _tableRow = new Subject()
+    private _recordCount = new Subject<number>()
 
     public record = this._record.asObservable()
     public checked = this._checked.asObservable()
     public refreshList = this._refreshList.asObservable()
     public tableRow = this._tableRow.asObservable()
+    public recordCount = this._recordCount.asObservable()
 
     //#endregion
 
@@ -85,6 +87,20 @@ export class InteractionService {
      */
     public removeTableRow(rowIndex: number): void {
         this._tableRow.next(rowIndex)
+    }
+
+    /**
+     * Caller(s):
+     *  app.component.ts
+     * 
+     * Subscriber(s):
+     *  record-count.component.ts
+     * 
+     * Description:
+     *  The caller(s) send the count so that the subscriber(s) can display it
+     */
+    public getRecordCount(count: number): void {
+        this._recordCount.next(count)
     }
 
     //#endregion

@@ -27,6 +27,7 @@ import { CreditsComponent } from '../credits/user-interface/credits.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
 import { LanguageMenuComponent } from '../shared/components/top-bar-wrapper/top-language-menu/language-menu.component'
+import { RecordCountComponent } from '../shared/components/record-count/record-count.component'
 import { SideBarComponent } from '../shared/components/side-bar-wrapper/side-bar/side-bar.component'
 import { SideFooterComponent } from './../shared/components/side-bar-wrapper/side-footer/side-footer.component'
 import { SideImageComponent } from '../shared/components/side-bar-wrapper/side-image/side-image.component'
@@ -48,6 +49,7 @@ import { JwtInterceptor } from '../shared/services/jwt.interceptor'
         EmptyPageComponent,
         HomeComponent,
         LanguageMenuComponent,
+        RecordCountComponent,
         SideBarComponent,
         SideFooterComponent,
         SideImageComponent,

@@ -34,6 +34,7 @@ namespace Transfers {
             services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:MySqlConnection"]));
             services.AddEmailSenders();
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddSignalR();
             services.Configure<CookiePolicyOptions>(options => { options.CheckConsentNeeded = context => true; options.MinimumSameSitePolicy = SameSiteMode.None; });
             services.Configure<OutlookSettings>(options => Configuration.GetSection("OutlookSettings").Bind(options));
             services.Configure<SendGridSettings>(options => Configuration.GetSection("SendGridSettings").Bind(options));
@@ -50,6 +51,7 @@ namespace Transfers {
                 app.UseHsts();
             }
             app.UseStaticFiles();
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -57,9 +59,8 @@ namespace Transfers {
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseEndpoints(endpoints => {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<MessageHub>("/destinations");
             });
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";

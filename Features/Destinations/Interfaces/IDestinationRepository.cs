@@ -1,5 +1,9 @@
 namespace Transfers {
 
-    public interface IDestinationRepository : IRepository<Destination> { }
+    public interface IDestinationRepository : IRepository<Destination> {
+
+        int GetCount();
+
+    }
 
 }

@@ -1,6 +1,8 @@
 import { Component, HostListener } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
+import { InteractionService } from '../shared/services/interaction.service'
+import * as signalR from '@aspnet/signalr'
 
 @Component({
     selector: 'root',
@@ -16,7 +18,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private router: Router) {
+    constructor(private accountService: AccountService, private interactionService: InteractionService, private router: Router) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -36,6 +38,15 @@ export class AppComponent {
     }
 
     //#region lifecycle hooks
+
+    ngOnInit(): void {
+        const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
+        connection.on('send', (data) => {
+            this.interactionService.getRecordCount(data)
+            console.log('App', data)
+        })
+        connection.start().then(() => console.log('Connected'))
+    }
 
     ngAfterViewInit(): void {
         this.positionSpinner()
