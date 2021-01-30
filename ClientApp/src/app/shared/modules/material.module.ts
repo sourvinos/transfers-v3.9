@@ -18,6 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip'
+import { MatBadgeModule } from '@angular/material/badge'
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     showDelay: 0,
@@ -28,6 +29,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 
 @NgModule({
     exports: [
+        MatBadgeModule,
         MatButtonModule,
         MatButtonToggleModule,
         MatCheckboxModule,

@@ -18,7 +18,6 @@
 @import "variables-narrow.css";
 @import "variables-wide.css";
 @import "variables.css";
-
 * {
     box-sizing: border-box !important;
 }
@@ -158,4 +157,9 @@ p.instructions {
 
 .mat-tab-body.mat-tab-body-active {
     height: 100% !important;
+}
+
+.mat-badge-small.mat-badge-above .mat-badge-content {
+    background-color: var(--color-badge);
+    top: 0 !important;
 }

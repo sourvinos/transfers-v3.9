@@ -40,12 +40,7 @@ export class AppComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
-        connection.on('send', (data) => {
-            this.interactionService.getRecordCount(data)
-            console.log('App', data)
-        })
-        connection.start().then(() => console.log('Connected'))
+        this.initNofifications()
     }
 
     ngAfterViewInit(): void {
@@ -55,6 +50,14 @@ export class AppComponent {
     //#endregion
 
     //#region private methods
+
+    private initNofifications(): void {
+        const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
+        connection.on('send', (data) => {
+            this.interactionService.getRecordCount(data)
+        })
+        connection.start().then(() => console.log('Connected'))
+    }
 
     private positionSpinner(): void {
         document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementById('side-bar').clientWidth + 'px'

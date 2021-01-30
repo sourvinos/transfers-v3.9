@@ -56,6 +56,7 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(record);
+                    messageHubContext.Clients.All.SendAsync("send", repo.GetCount());
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -79,8 +80,7 @@ namespace Transfers {
                     repo.Update(record);
                     messageHubContext.Clients.All.SendAsync("send", repo.GetCount());
                     return StatusCode(200, new {
-                        // response = ApiMessages.RecordUpdated()
-                        response = repo.GetCount()
+                        response = ApiMessages.RecordUpdated()
                     });
                 } catch (DbUpdateException exception) {
                     LoggerExtensions.LogException(0, logger, ControllerContext, record, exception);
