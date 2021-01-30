@@ -28,7 +28,7 @@ export class TransferOverviewComponent {
 
     //#region variables
 
-    public period = new TransferOverviewViewModel; public lastYearPeriod = new TransferOverviewViewModel
+    public Period = new TransferOverviewViewModel; public lastYearPeriod = new TransferOverviewViewModel
     public MTD = new TransferOverviewViewModel; public lastYearMTD = new TransferOverviewViewModel
     public YTD = new TransferOverviewViewModel; public lastYearYTD = new TransferOverviewViewModel
 
@@ -37,8 +37,6 @@ export class TransferOverviewComponent {
 
     public isDataFound = false
     public isLoaderVisible = false
-
-    // public chartViewModel = new ChartViewModel
 
     public myPeriod = ''
     public xAxis = []
@@ -140,7 +138,10 @@ export class TransferOverviewComponent {
     }
 
     public async onLoadStatisticsForPeriod(): Promise<void> {
-        this.loadStatistics('period', 'getPeriodFrom', 'getPeriodTo').then(() => { this.calculateStatisticPercents('period'); this.colorizePercent('period') })
+        this.loadStatistics('Period', 'getPeriodFrom', 'getPeriodTo').then(() => {
+            this.calculateStatisticPercents('Period')
+            this.colorizePercent('Period')
+        })
     }
 
     //#endregion
@@ -201,16 +202,12 @@ export class TransferOverviewComponent {
     }
 
     private async createChart(period: string): Promise<void> {
-
-        await this.transferChartService.createXAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
+        await this.transferChartService.createXAxis(period).then((response) => {
             this.myPeriod = period
             this.xAxis = response
-            // this.xAxis = response
             this.transferChartService.verticalAxis(period, this.fromDate.value, this.toDate.value).then((response) => {
                 this.yAxisCurrent = response.yAxisCurrent
                 this.yAxisPrevious = response.yAxisPrevious
-                // this.yAxisCurrent = response.yAxisCurrent
-                // this.yAxisPrevious = response.yAxisPrevious
             })
         })
     }
@@ -231,7 +228,10 @@ export class TransferOverviewComponent {
         return moment().get('year').toString()
     }
 
-    private getLastYear(): string {
+    private getLastYear(lastYear?: number): string {
+        if (lastYear) {
+            return (lastYear - 1).toString()
+        }
         return (moment().get('year') - 1).toString()
     }
 
@@ -241,12 +241,12 @@ export class TransferOverviewComponent {
 
     private getPeriodFrom(lastYear?: boolean): string {
         const date = new Date(this.fromDate.value)
-        return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+        return lastYear ? this.getLastYear(this.fromDate.value.year()) + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
     }
 
     private getPeriodTo(lastYear?: boolean): string {
         const date = new Date(this.toDate.value)
-        return lastYear ? this.getLastYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+        return lastYear ? this.getLastYear(this.fromDate.value.year()) + '-' + (date.getMonth() + 1) + '-' + date.getDate() : date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
     }
 
     private getMTDFrom(lastYear?: boolean): string {
@@ -273,7 +273,7 @@ export class TransferOverviewComponent {
     }
 
     private initPeriod(): void {
-        this.period = { persons: 0, adults: 0, kids: 0, free: 0, percent: 0, color: 'blue' }
+        this.Period = { persons: 0, adults: 0, kids: 0, free: 0, percent: 0, color: 'blue' }
     }
 
     private loadStatisticsForPeriod(viewModel: any, fromDate: string, toDate: string): Promise<any> {

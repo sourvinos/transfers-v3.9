@@ -25,12 +25,12 @@
     --color-text-percent-zero: #53c4e8;
     /* Period summary */
     --color-background-summary: #6c787b0d;
-    --color-border-period-summary-selected: #FE9F36;
+    --color-background-selected: #535f5f;
     /* Text */
     --color-text-primary: #EFEFEF;
     /* Charts */
     --color-chart-bar: #fea136b9;
-    --color-chart-bar-lastYear: #ffe95cb9;
+    --color-chart-bar-lastYear: #72A2AC;
     --color-chart-gridLines: #707070;
     --color-chart-labels: #EFEFEF;
     /* Maps */

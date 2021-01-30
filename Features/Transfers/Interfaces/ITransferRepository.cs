@@ -9,6 +9,7 @@ namespace Transfers {
         TransferGroupResultResource<TransferResource> Get(string dateIn);
         TransferOverview GetOverview(string fromDate, string toDate);
         TransferOverviewDetails GetOverviewDetails(string fromDate, string toDate);
+        Task<IEnumerable<TotalPersonsPerYear>> GetTotalPersonsPerYear(string fromDate, string toDate);
         Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerDate(string fromDate, string toDate);
         Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerMonth(string fromDate, string toDate);
         new Task<TransferResource> GetById(int id);

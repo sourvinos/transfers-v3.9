@@ -38,7 +38,7 @@
 }
 
 .period-summary.active {
-    border-left: 2px solid var(--color-border-period-summary-selected);
+    background-color: var(--color-background-selected);
 }
 
 .period-summary:nth-child(2) {
@@ -50,6 +50,11 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 2rem;
+}
+
+.period-summary .header div {
+    align-items: center;
+    display: flex;
 }
 
 .period-summary .header .menu {
@@ -89,9 +94,14 @@
     font-weight: var(--font-weight-header);
 }
 
+.total-persons:last-child {
+    font-size: 22px !important;
+    line-height: 22px !important;
+}
+
 .sub-total-header {
     color: var(--color-text-primary);
-    font-family: var(--font-family-header);
+    font-family: var(--font-family-summary-header);
     font-size: var(--font-size-overview-total-header);
     font-variant-caps: petite-caps;
     font-weight: var(--font-weight-header);
@@ -128,7 +138,21 @@
     width: 100%;
 }
 
-@media (max-height:768px) {
+.option {
+    color: var(--color-select-items);
+    font-family: var(--font-family-menu-list-item);
+    font-size: 19px;
+    font-variant-caps: small-caps;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+
+.mat-menu-item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media (max-height:720px) {
     #statistics {
         display: flex;
         flex-direction: row;
@@ -147,7 +171,7 @@
         width: 100%;
     }
     .period-summary .header .menu {
-        margin-left: 0;
+        margin-left: -1rem !important;
     }
     .period-summary .body {
         align-items: center;
@@ -157,10 +181,15 @@
     .percent {
         margin-left: 0;
     }
-    .total, .adults, .kids, .free {
+    .total {
+        display: flex;
+        flex-direction: column;
+    }
+    .adults, .kids, .free {
+        align-items: baseline;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         padding: 0;
     }
     .total-persons {
@@ -172,18 +201,4 @@
     #details {
         padding: 1rem 0.5rem 0rem 0.5rem;
     }
-}
-
-.option {
-    color: var(--color-select-items);
-    font-family: var(--font-family-menu-list-item);
-    font-size: 19px;
-    font-variant-caps: small-caps;
-    font-weight: 500;
-    padding-left: 1rem;
-}
-
-.mat-menu-item {
-    display: flex;
-    justify-content: flex-start;
 }

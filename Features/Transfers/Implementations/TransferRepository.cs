@@ -117,6 +117,20 @@ namespace Transfers {
 
         }
 
+        public async Task<IEnumerable<TotalPersonsPerYear>> GetTotalPersonsPerYear(string fromDate, string toDate) {
+
+            DateTime _fromDate = Convert.ToDateTime(fromDate);
+            DateTime _toDate = Convert.ToDateTime(toDate);
+
+            var totalPersons = appDbContext.Transfers
+                .Where(x => x.DateIn >= _fromDate && x.DateIn <= _toDate)
+                .GroupBy(x => new { Year = x.DateIn.Year })
+                .Select(x => new TotalPersonsPerYear { DateIn = x.Key.Year.ToString() + "-01-01", Persons = x.Sum(s => s.TotalPersons) });
+
+            return await totalPersons.ToListAsync();
+
+        }
+
         public new async Task<TransferResource> GetById(int id) {
             var transfer = await appDbContext.Transfers
                 .Include(x => x.Customer)

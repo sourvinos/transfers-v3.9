@@ -11,15 +11,16 @@ export class TransferChartService {
     private xAxis = []
     private yAxis = { yAxisCurrent: [], yAxisPrevious: [] }
     private personsPerDate = []
+    private personsPerYear = []
 
     //#endregion
 
     constructor(private transferService: TransferService) { }
 
-    public async createXAxis(period: string, fromDate: string, toDate: string): Promise<string[]> {
+    public async createXAxis(period: string): Promise<string[]> {
         switch (period) {
             case 'period':
-                return this.createXAxisPeriod(fromDate, toDate)
+                return this.createXAxisPeriod()
             case 'mtd':
                 return this.createXAxisMTD()
             case 'ytd':
@@ -30,13 +31,13 @@ export class TransferChartService {
     public async verticalAxis(period: string, fromDate: string, toDate: string): Promise<any> {
         switch (period) {
             case 'period':
-                await this.loadPersonsGroupByDate('personsPerDate', fromDate, toDate, period).then((response) => {
-                    this.personsPerDate = response
-                    this.yAxis.yAxisCurrent = this.createYAxis(this.personsPerDate, this.xAxis)
+                await this.loadPersonsGroupByYear('personsPerYear', fromDate, toDate, period).then((response) => {
+                    this.personsPerYear = response
+                    this.yAxis.yAxisCurrent = this.createYAxis(this.personsPerYear, this.xAxis)
                 })
-                await this.loadPersonsGroupByDate('personsPerDate', fromDate, toDate, period, true).then((response) => {
-                    this.personsPerDate = response
-                    this.yAxis.yAxisPrevious = this.createYAxis(this.personsPerDate, this.xAxis)
+                await this.loadPersonsGroupByYear('personsPerYear', fromDate, toDate, period, true).then((response) => {
+                    this.personsPerYear = response
+                    this.yAxis.yAxisPrevious = this.createYAxis(this.personsPerYear, this.xAxis)
                 })
                 return this.yAxis
             case 'mtd':
@@ -94,6 +95,17 @@ export class TransferChartService {
     private loadPersonsGroupByMonth(viewModel: string, fromDate: string, toDate: string, period: string, lastYear?: boolean): Promise<any> {
         const promise = new Promise((resolve) => {
             this.transferService.getPersonsPerMonth(this.periodSelector(period, fromDate, toDate, lastYear)[0], this.periodSelector(period, fromDate, toDate, lastYear)[1]).toPromise().then((
+                response => {
+                    this[viewModel] = response
+                    resolve(this[viewModel])
+                }))
+        })
+        return promise
+    }
+
+    private loadPersonsGroupByYear(viewModel: string, fromDate: string, toDate: string, period: string, lastYear?: boolean): Promise<any> {
+        const promise = new Promise((resolve) => {
+            this.transferService.getPersonsPerYear(this.periodSelector(period, fromDate, toDate, lastYear)[0], this.periodSelector(period, fromDate, toDate, lastYear)[1]).toPromise().then((
                 response => {
                     this[viewModel] = response
                     resolve(this[viewModel])
@@ -171,22 +183,9 @@ export class TransferChartService {
         return moment().get('year').toString()
     }
 
-    private createXAxisPeriod(fromDate: string, toDate: string): string[] {
+    private createXAxisPeriod(): string[] {
         this.xAxis = []
-        const _fromDate = new Date(fromDate)
-        const _toDate = new Date(toDate)
-        const days = (_toDate.getTime() - _fromDate.getTime()) / (1000 * 3600 * 24) + 1
-        let dayOffset = 0
-        while (dayOffset < days) {
-            const date = new Date()
-            date.setDate(_fromDate.getDate() + dayOffset)
-            date.setMonth(_fromDate.getMonth())
-            const day = '0' + date.getDate()
-            const month = '0' + (date.getMonth() + 1)
-            const year = date.getFullYear()
-            this.xAxis.push(year + '-' + month.substr(month.length - 2, 2) + '-' + day.substr(day.length - 2, 2))
-            dayOffset++
-        }
+        this.xAxis.push('0001-01-01')
         return this.xAxis
     }
 
@@ -199,7 +198,7 @@ export class TransferChartService {
             const year = today.getFullYear()
             this.xAxis.push(year + '-' + month.substr(month.length - 2, 2) + '-' + day.substr(day.length - 2, 2))
         }
-        return this.xAxis   
+        return this.xAxis
     }
 
     private createXAxisYTD(): string[] {

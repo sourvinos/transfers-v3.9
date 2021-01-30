@@ -31,17 +31,15 @@
     <div id="content">
         <div id="statistics">
             <div class="period-summary" id="period">
-                <div class=" header">
-                    <h1>{{ onGetLabel('period') }}</h1>
-                    <span class="percent" [ngClass]="period.color">{{ period.percent | formatNumber:2:true }}</span>
-                    <button class="menu" mat-icon-button [matMenuTriggerFor]="menuPeriod" [disabled]="period.persons==0">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menuPeriod="matMenu">
-                        <button mat-menu-item (click)="onCreateChart('period')">
-                            <img src="/assets/images/navigation/chart.svg">
-                            <span class="option">{{ onGetLabel("chart") }}</span>
+                <div class="header">
+                    <div>
+                        <button class="menu" mat-icon-button [matMenuTriggerFor]="menuPeriod" [disabled]="Period.persons==0">
+                            <mat-icon>more_vert</mat-icon>
                         </button>
+                        <h1>{{ onGetLabel('period') }}</h1>
+                    </div>
+                    <span class="percent" [ngClass]="Period.color">{{ Period.percent | formatNumber:2:true }}</span>
+                    <mat-menu #menuPeriod="matMenu">
                         <button mat-menu-item (click)="onLoadDetails('period')">
                             <img src="/assets/images/navigation/list.svg">
                             <span class="option">{{ onGetLabel("details") }}</span>
@@ -51,29 +49,32 @@
                 <div class="body">
                     <div class="total">
                         <span class="sub-total-header">{{ onGetLabel('total') }}</span>
-                        <span class="total-persons">{{ period.persons | formatNumber }}</span>
+                        <span class="total-persons">{{ Period.persons | formatNumber }}</span>
+                        <span class="total-persons">{{ lastYearPeriod.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
-                        <span class="sub-total">{{ period.adults | formatNumber }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}&nbsp;</span>
+                        <span class="sub-total">{{ Period.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
-                        <span class="sub-total">{{ period.kids | formatNumber }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}&nbsp;</span>
+                        <span class="sub-total">{{ Period.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
-                        <span class="sub-total">{{ period.free | formatNumber }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}&nbsp;</span>
+                        <span class="sub-total">{{ Period.free | formatNumber }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="mtd">
                 <div class="header">
-                    <h1>{{ onGetLabel('mtd') }}</h1>
+                    <div>
+                        <button class="menu" mat-icon-button [matMenuTriggerFor]="menuMTD" [disabled]="MTD.persons==0">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <h1>{{ onGetLabel('mtd') }}</h1>
+                    </div>
                     <span class="percent" [ngClass]="MTD.color">{{ MTD.percent | formatNumber:2:true }}</span>
-                    <button class="menu" mat-icon-button [matMenuTriggerFor]="menuMTD" [disabled]="MTD.persons==0">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
                     <mat-menu #menuMTD="matMenu">
                         <button mat-menu-item (click)="onCreateChart('mtd')">
                             <img src="/assets/images/navigation/chart.svg">
@@ -89,28 +90,31 @@
                     <div class="total">
                         <span class="sub-total-header">{{ onGetLabel('total') }}</span>
                         <span class="total-persons">{{ MTD.persons | formatNumber }}</span>
+                        <span class="total-persons">{{ lastYearMTD.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}&nbsp;</span>
                         <span class="sub-total">{{ MTD.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}&nbsp;</span>
                         <span class="sub-total">{{ MTD.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}&nbsp;</span>
                         <span class="sub-total">{{ MTD.free | formatNumber }}</span>
                     </div>
                 </div>
             </div>
             <div class="period-summary" id="ytd">
                 <div class="header">
-                    <h1>{{ onGetLabel('ytd') }}</h1>
+                    <div>
+                        <button class="menu" mat-icon-button [matMenuTriggerFor]="menuYTD" [disabled]="YTD.persons==0">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <h1>{{ onGetLabel('ytd') }}</h1>
+                    </div>
                     <span class="percent" [ngClass]="YTD.color">{{ YTD.percent | formatNumber:2:true }}</span>
-                    <button class="menu" mat-icon-button [matMenuTriggerFor]="menuYTD" [disabled]="YTD.persons==0">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
                     <mat-menu #menuYTD="matMenu">
                         <button mat-menu-item (click)="onCreateChart('ytd')">
                             <img src="/assets/images/navigation/chart.svg">
@@ -126,17 +130,18 @@
                     <div class="total">
                         <span class="sub-total-header">{{ onGetLabel('total') }}</span>
                         <span class="total-persons">{{ YTD.persons | formatNumber }}</span>
+                        <span class="total-persons">{{ lastYearYTD.persons | formatNumber }}</span>
                     </div>
                     <div class="adults">
-                        <span class="sub-total-header">{{ onGetLabel('adults') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('adults') }}&nbsp;</span>
                         <span class="sub-total">{{ YTD.adults | formatNumber }}</span>
                     </div>
                     <div class="kids">
-                        <span class="sub-total-header">{{ onGetLabel('kids') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('kids') }}&nbsp;</span>
                         <span class="sub-total">{{ YTD.kids | formatNumber }}</span>
                     </div>
                     <div class="free">
-                        <span class="sub-total-header">{{ onGetLabel('free') }}</span>
+                        <span class="sub-total-header">{{ onGetLabel('free') }}&nbsp;</span>
                         <span class="sub-total">{{ YTD.free | formatNumber }}</span>
                     </div>
                 </div>
@@ -147,7 +152,6 @@
         </div>
         <div id="chart">
             <chart-component [period]="myPeriod" [xAxis]="xAxis" [yAxisCurrent]="yAxisCurrent" [yAxisPrevious]="yAxisPrevious"></chart-component>
-            <!-- <chart-component [chartViewModel]="chartViewModel"></chart-component> -->
         </div>
     </div>
 

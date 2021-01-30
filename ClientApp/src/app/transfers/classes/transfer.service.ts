@@ -5,6 +5,7 @@ import { DataService } from 'src/app/shared/services/data.service'
 import { TransferOverviewDetailsViewModel } from './transfer-overview-details-view-model'
 import { TransferOverviewViewModel } from './transfer-overview-view-model'
 import { TransferPersonsPerDate } from './transfer-persons-per-date'
+import { TransferPersonsPerYear } from './transfer-persons-per-year'
 import { TransferViewModel } from './transfer-view-model'
 
 @Injectable({ providedIn: 'root' })
@@ -43,6 +44,10 @@ export class TransferService extends DataService {
 
     getPersonsPerMonth(fromDate: string, toDate: string): Observable<TransferPersonsPerDate> {
         return this.http.get<TransferPersonsPerDate>('/api/transfers/totalPersonsPerMonth/fromDate/' + fromDate + '/toDate/' + toDate)
+    }
+
+    getPersonsPerYear(fromDate: string, toDate: string): Observable<TransferPersonsPerYear> {
+        return this.http.get<TransferPersonsPerYear>('/api/transfers/totalPersonsPerYear/fromDate/' + fromDate + '/toDate/' + toDate)
     }
 
 }

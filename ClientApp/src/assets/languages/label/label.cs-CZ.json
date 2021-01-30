@@ -1033,12 +1033,8 @@
         "feature": "overviewDetails",
         "labels": [
             {
-                "id": "nothingH1",
-                "description": "(CZ) Select a card from the left"
-            },
-            {
-                "id": "nothingH2",
-                "description": "(CZ) for breakdown analysis"
+                "id": "nothing",
+                "description": ""
             },
             {
                 "id": "description",

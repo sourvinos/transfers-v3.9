@@ -30,13 +30,13 @@ export class ChartComponent {
                 this.createChart()
             }
             if (this.period == 'mtd') {
-                console.log('onChanges:', this.xAxis)
                 this.createMTD()
+                this.xAxis = this.formatMTDxAxis()
                 this.createChart()
             }
             if (this.period == 'ytd') {
-                console.log('onChanges:', this.xAxis)
                 this.createYTD()
+                this.xAxis = this.formatYTDxAxis()
                 this.createChart()
             }
         }
@@ -70,7 +70,7 @@ export class ChartComponent {
             },
             options: {
                 animation: {
-                    duration: 0
+                    duration: 1000
                 },
                 events: ['click'],
                 scales: {
@@ -123,7 +123,6 @@ export class ChartComponent {
             const month = '0' + today.getMonth() + 1
             this.newXAxis.push(today.getFullYear() + '-' + month.substr(month.length - 2, 2) + '-' + day.substr(day.length - 2, 2))
         }
-        console.log('new X', this.newXAxis)
     }
 
     private createYTD(): void {
@@ -137,7 +136,7 @@ export class ChartComponent {
 
     private getYear(lastYear?: boolean): string {
         if (this.xAxis.length > 0) {
-            const year = parseInt(this.xAxis[0].substr(this.xAxis[0].length - 4, 4))
+            const year = parseInt(new Date().getFullYear().toString())
             return lastYear ? (year - 1).toString() : year.toString()
         }
     }
@@ -163,6 +162,27 @@ export class ChartComponent {
     private updateXAxisLocale(): string[] {
         this.newXAxis.forEach((element, index) => {
             this.newXAxis[index] = this.updateElementLocale(element.substr(5, 6))
+        })
+        return this.newXAxis
+    }
+
+    private formatPeriodxAxis(): string[] {
+        this.xAxis.forEach((element, index) => {
+            this.newXAxis[index] = (element.substr(5, 5))
+        })
+        return this.newXAxis
+    }
+
+    private formatMTDxAxis(): string[] {
+        this.newXAxis.forEach((element, index) => {
+            this.newXAxis[index] = (element.substr(8, 2))
+        })
+        return this.newXAxis
+    }
+
+    private formatYTDxAxis(): string[] {
+        this.newXAxis.forEach((element, index) => {
+            this.newXAxis[index] = (element.substr(5, 2))
         })
         return this.newXAxis
     }
