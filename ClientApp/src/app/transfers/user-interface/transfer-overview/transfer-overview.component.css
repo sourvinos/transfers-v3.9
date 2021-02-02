@@ -58,7 +58,7 @@
 }
 
 .period-summary .header .menu {
-    margin-left: auto;
+    margin-left: -1rem !important;
 }
 
 .period-summary .body {
@@ -169,9 +169,6 @@
         margin-left: 0;
         padding-bottom: 0;
         width: 100%;
-    }
-    .period-summary .header .menu {
-        margin-left: -1rem !important;
     }
     .period-summary .body {
         align-items: center;
