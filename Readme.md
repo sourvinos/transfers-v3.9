@@ -1,6 +1,9 @@
 ![Logo](ClientApp/src/assets/images/logos/wheel.png)
 
 <br>
+<a href="Lib/BuildingBlocks.md">Building blocks</a>
+<br>
+<br>
 
 <h2 style="color:orange">Who we are</h2>
 We are a privately-owned cruise line based in <a href="https://en.wikipedia.org/wiki/Corfu">Corfu</a>, Greece. We operate from April to October and organize daily boat trips to the <a href="https://en.wikipedia.org/wiki/Corfu#/media/File:Corfu_topographic_map-en.svg">surrounding islands</a> and the nearby coast of the greek mainland. 
@@ -167,7 +170,7 @@ This is work in progress and new features will be added. However, at its current
         <br>
         <br>
     <li id="activefield" style="color:#ffe85c">Active field</li>
-        If a record is marked as active, it will be displayed as a selectable option throughout the application, usually in dropdowns. An inactive record will not be displayed. This is a way to declutter the dropdowns and display only the active items. As an example, a customer that we don't do business with anymore but its record can't be deleted, can be marked as inactive.
+        If a record is marked as active, it will be displayed as a selectable option throughout the application, usually in dropdowns. An inactive record will not be displayed. This is a way to declutter the dropdowns by displaying only the active items. As an example, a customer that we don't do business with anymore but its record can't be deleted can be marked as inactive.
         <br>
         <br>
     <li id="defaultdriver" style="color:#ffe85c">Default driver</li>
@@ -177,6 +180,7 @@ This is work in progress and new features will be added. However, at its current
             <li>Only one default <a href="#drivers">driver</a> is allowed.</li>
             <li>If a default <a href="#drivers">driver</a> marked as <a href="#activefield">active</a> is not found, it's not possible to <a href="#newtransfer">add a new transfer</a>.</li>
         </ul>
+        <br>
     <li id="dates" style="color:#ffe85c">Dates</li>
         Typically, you’d select a date from the date picker. Alternatively, you can be really fast and enter a few numbers: If today is 5/6/2021 and you want to make an entry for tomorrow, type ‘6’ and press enter. The month and year will be magically added! If we are on the last day of the month, say 30/6 and you want to make an entry for the day after tomorrow, enter 2/7 and press enter. The separator you type can be anything from comma, dot or forward slash. The input, if it’s correct, will be DD/MM/YYYY formatted.
         <br>
