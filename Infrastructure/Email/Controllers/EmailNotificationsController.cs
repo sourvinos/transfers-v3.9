@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Transfers {
 
-    public class NotificationsController : Controller {
+    public class EmailNotificationsController : Controller {
 
         private IWebHostEnvironment _hostingEnv;
 
-        public NotificationsController(IWebHostEnvironment env) {
+        public EmailNotificationsController(IWebHostEnvironment env) {
             _hostingEnv = env;
         }
 

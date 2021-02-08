@@ -1,0 +1,31 @@
+#recordCount {
+    cursor: pointer;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#recordCount button {
+    margin-left: 0 !important;
+}
+
+#recordCount button img:nth-child(1) {
+    margin: 8px 9px 7px 0;
+}
+
+#recordCount button span {
+    background-color: var(--color-badge-background);
+    border-radius: 50%;
+    color: var(--color-badge);
+    font-size: 0.6rem;
+    height: 1rem;
+    line-height: 1rem;
+    margin-left: -0.9rem;
+    margin-top: 0px;
+    text-align: center;
+    width: 1rem;
+}
+
+.option {
+    padding-left: 1rem;
+}

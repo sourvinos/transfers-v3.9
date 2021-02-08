@@ -26,17 +26,17 @@ import { AppComponent } from './app.component'
 import { CreditsComponent } from '../credits/user-interface/credits.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
-import { LanguageMenuComponent } from '../shared/components/top-bar-wrapper/top-language-menu/language-menu.component'
+import { LanguageMenuComponent } from '../shared/components/top-bar-wrapper/language-menu/language-menu.component'
+import { RecordCountComponent } from '../shared/components/top-bar-wrapper/record-count/record-count.component'
 import { SideBarComponent } from '../shared/components/side-bar-wrapper/side-bar/side-bar.component'
 import { SideFooterComponent } from './../shared/components/side-bar-wrapper/side-footer/side-footer.component'
 import { SideImageComponent } from '../shared/components/side-bar-wrapper/side-image/side-image.component'
 import { SideLogoComponent } from './../shared/components/side-bar-wrapper/side-logo/side-logo.component'
-import { ThemeTogglerComponent } from '../shared/components/top-bar-wrapper/top-theme-menu/theme-menu.component'
+import { ThemeMenuComponent } from '../shared/components/top-bar-wrapper/theme-menu/theme-menu.component'
 import { TopBarComponent } from '../shared/components/top-bar-wrapper/top-bar/top-bar.component'
-import { TopLogoComponent } from '../shared/components/top-bar-wrapper/top-logo/top-logo.component'
-import { TopMenuComponent } from '../shared/components/top-bar-wrapper/top-menu/top-menu.component'
-import { TopRecordCountComponent } from '../shared/components/top-bar-wrapper/top-record-count/top-record-count.component'
-import { UserMenuComponent } from '../shared/components/top-bar-wrapper/top-user-menu/user-menu.component'
+import { TopLogoComponent } from '../shared/components/top-bar-wrapper/logo/top-logo.component'
+import { TopMenuComponent } from '../shared/components/top-bar-wrapper/menu/top-menu.component'
+import { UserMenuComponent } from '../shared/components/top-bar-wrapper/user-menu/user-menu.component'
 
 // Utils
 import { DomChangeDirective } from '../shared/directives/dom-change.directive'
@@ -50,15 +50,15 @@ import { JwtInterceptor } from '../shared/services/jwt.interceptor'
         EmptyPageComponent,
         HomeComponent,
         LanguageMenuComponent,
+        RecordCountComponent,
         SideBarComponent,
         SideFooterComponent,
         SideImageComponent,
         SideLogoComponent,
-        ThemeTogglerComponent,
+        ThemeMenuComponent,
         TopBarComponent,
         TopLogoComponent,
         TopMenuComponent,
-        TopRecordCountComponent,
         UserMenuComponent
     ],
     imports: [

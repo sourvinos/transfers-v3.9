@@ -1,0 +1,6 @@
+<div id="recordCount" *ngIf="loginStatus">
+    <button mat-flat-button class="transparent inverted" (click)="onResetRecordCount()">
+        <img src="/assets/images/navigation/bell.svg" height="22px">
+        <span>{{ difference }}</span>
+    </button>
+</div>

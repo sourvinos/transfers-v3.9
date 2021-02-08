@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Transfers {
 
-    public class MessageHub : Hub {
+    public class NotificationHub : Hub {
 
-        public Task Send(string message) {
+        public Task Send(string group, string message) {
             return Clients.All.SendAsync("Send", message);
         }
 

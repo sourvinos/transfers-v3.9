@@ -1,24 +1,28 @@
 import { Component } from '@angular/core'
-import { DestinationService } from 'src/app/destinations/classes/destination.service'
 import { AccountService } from 'src/app/shared/services/account.service'
+import { DestinationService } from 'src/app/destinations/classes/destination.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 
 @Component({
-    selector: 'top-record-count',
-    templateUrl: './top-record-count.component.html',
-    styleUrls: ['./top-record-count.component.css']
+    selector: 'record-count',
+    templateUrl: './record-count.component.html',
+    styleUrls: ['./record-count.component.css']
 })
 
-export class TopRecordCountComponent {
+export class RecordCountComponent {
 
-    public recordCount = 0
-    public previousRecordCount = 0
+    //#region variables
+
+    public firstRead: boolean
     public difference = 0
-    public loginStatus: boolean
-    private firstRead: boolean
     public latest: number
+    public loginStatus: boolean
 
-    constructor(private accountService: AccountService, private interactionService: InteractionService, private destinationService: DestinationService) { }
+    //#endregion
+
+    constructor(private accountService: AccountService, private destinationService: DestinationService, private interactionService: InteractionService) { }
+
+    //#region lifecycle hooks
 
     ngOnInit(): void {
         this.firstRead = true
@@ -37,10 +41,20 @@ export class TopRecordCountComponent {
                 })
             } else {
                 this.interactionService.recordCount.subscribe(result => {
-                    this.difference = result - this.latest
+                    this.difference = result - this.latest < 0 ? 0 : result - this.latest
                 })
             }
         }
     }
+
+    //#endregion
+
+    //#region public methods
+
+    public onResetRecordCount(): void {
+        this.firstRead = true
+    }
+
+    //#endregion
 
 }

@@ -52,5 +52,6 @@
     /* Scroll bars */
     --color-scrollbar: #1B4332;
     /* Badge */
-    --color-badge: #FE9F36;
+    --color-badge: #1B4332;
+    --color-badge-background: #FE9F36;
 }

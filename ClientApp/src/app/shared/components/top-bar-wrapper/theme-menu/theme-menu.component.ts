@@ -9,7 +9,7 @@ import { MessageLabelService } from 'src/app/shared/services/messages-label.serv
     styleUrls: ['./theme-menu.component.css']
 })
 
-export class ThemeTogglerComponent {
+export class ThemeMenuComponent {
 
     //#region variables
 

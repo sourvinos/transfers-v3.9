@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Transfers {
 
-    public static class Extensions  {
+    public static class Extensions {
 
         public static void AddCors(IServiceCollection services) {
             services.AddCors(options =>
@@ -68,6 +68,7 @@ namespace Transfers {
             services.AddTransient<IPickupPointRepository, PickupPointRepository>();
             services.AddTransient<IPortRepository, PortRepository>();
             services.AddTransient<IRouteRepository, RouteRepository>();
+            services.AddTransient<INotificationRepository, NotificationRepository>();
             services.AddTransient<ITransferRepository, TransferRepository>();
         }
 

@@ -16,16 +16,17 @@ namespace Transfers {
 
         private readonly IDestinationRepository repo;
         private readonly ILogger<DestinationsController> logger;
-        private readonly IHubContext<MessageHub> messageHubContext;
+        private readonly IHubContext<NotificationHub> notificationHubContext;
 
-        public DestinationsController(IDestinationRepository repo, ILogger<DestinationsController> logger, IHubContext<MessageHub> messageHubContext) {
+        public DestinationsController(IDestinationRepository repo, ILogger<DestinationsController> logger, IHubContext<NotificationHub> notificationHubContext) {
             this.repo = repo;
             this.logger = logger;
-            this.messageHubContext = messageHubContext;
+            this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Destination>> Get() {
+            await notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
             return await repo.Get();
         }
 
@@ -56,7 +57,7 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(record);
-                    messageHubContext.Clients.All.SendAsync("send", repo.GetCount());
+                    notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -78,7 +79,6 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    messageHubContext.Clients.All.SendAsync("send", repo.GetCount());
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -106,6 +106,7 @@ namespace Transfers {
             }
             try {
                 repo.Delete(record);
+                await notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
                 return StatusCode(200, new {
                     response = ApiMessages.RecordDeleted()
                 });
