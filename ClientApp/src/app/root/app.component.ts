@@ -52,11 +52,11 @@ export class AppComponent {
     //#region private methods
 
     private initNofifications(): void {
-        const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
-        connection.on('send', (data) => {
-            this.interactionService.getRecordCount(data)
-        })
-        connection.start().then(() => { console.log("Connected") })
+        // const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
+        // connection.on('send', (data) => {
+        //     this.interactionService.getRecordCount(data)
+        // })
+        // connection.start().then(() => { console.log("Connected") })
     }
 
     private positionSpinner(): void {

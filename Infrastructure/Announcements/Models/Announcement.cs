@@ -1,6 +1,6 @@
 namespace Transfers {
 
-    public class Notification {
+    public class Announcement {
 
         public int Id { get; set; }
         public string UserId { get; set; }

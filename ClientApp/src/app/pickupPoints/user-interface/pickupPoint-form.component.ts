@@ -243,12 +243,6 @@ export class PickupPointFormComponent {
         })
     }
 
-    private initFormAfterDelay(): void {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
-    }
-
     private patchRouteFields(): void {
         setTimeout(() => {
             const route: any[] = this.routes.filter((x: { routeId: number }) => x.routeId === this.routeId)

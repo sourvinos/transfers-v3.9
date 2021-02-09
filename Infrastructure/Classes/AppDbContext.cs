@@ -15,7 +15,7 @@ namespace Transfers {
         public DbSet<Port> Ports { get; set; }
         public DbSet<Route> Routes { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

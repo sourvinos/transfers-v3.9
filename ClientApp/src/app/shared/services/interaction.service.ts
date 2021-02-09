@@ -94,7 +94,7 @@ export class InteractionService {
      *  app.component.ts
      * 
      * Subscriber(s):
-     *  record-count.component.ts
+     *  announcement.component.ts
      * 
      * Description:
      *  The caller(s) send the count so that the subscriber(s) can display it

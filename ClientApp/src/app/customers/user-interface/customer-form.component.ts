@@ -190,12 +190,6 @@ export class CustomerFormComponent {
         })
     }
 
-    private initFormAfterDelay(): void {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
-    }
-
     private populateFields(result: Customer): void {
         this.form.setValue({
             id: result.id,

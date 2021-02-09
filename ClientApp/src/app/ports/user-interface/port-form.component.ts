@@ -182,12 +182,6 @@ export class PortFormComponent {
         })
     }
 
-    private initFormAfterDelay(): void {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
-    }
-
     private populateFields(result: any): void {
         this.form.setValue({
             id: result.id,

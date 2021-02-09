@@ -256,12 +256,6 @@ export class RouteFormComponent {
         })
     }
 
-    private initFormAfterDelay(): void {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
-    }
-
     private patchFields(result: any, fields: any[]): void {
         if (result) {
             Object.entries(result).forEach(([key, value]) => {

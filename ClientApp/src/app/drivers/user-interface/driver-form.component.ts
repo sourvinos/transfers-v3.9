@@ -195,12 +195,6 @@ export class DriverFormComponent {
         })
     }
 
-    private initFormAfterDelay(): void {
-        setTimeout(() => {
-            this.initForm()
-        }, 200)
-    }
-
     private populateFields(result: Driver): void {
         this.form.setValue({
             id: result.id,
