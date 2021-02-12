@@ -15,18 +15,19 @@ namespace Transfers {
     public class DestinationsController : ControllerBase {
 
         private readonly IDestinationRepository repo;
+        private readonly IConnectedUserRepository connectedUserRepo;
         private readonly ILogger<DestinationsController> logger;
         private readonly IHubContext<NotificationHub> notificationHubContext;
 
-        public DestinationsController(IDestinationRepository repo, ILogger<DestinationsController> logger, IHubContext<NotificationHub> notificationHubContext) {
+        public DestinationsController(IDestinationRepository repo, IConnectedUserRepository connectedUserRepo, ILogger<DestinationsController> logger, IHubContext<NotificationHub> notificationHubContext) {
             this.repo = repo;
+            this.connectedUserRepo = connectedUserRepo;
             this.logger = logger;
             this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Destination>> Get() {
-            await notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
             return await repo.Get();
         }
 
@@ -57,7 +58,7 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(record);
-                    notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
+                    notificationHubContext.Clients.All.SendAsync("send", "Record added");
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -75,10 +76,11 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutDestination([FromRoute] int id, [FromBody] Destination record) {
+        public async Task<IActionResult> PutDestinationAsync([FromRoute] int id, [FromBody] Destination record) {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
+                    await notificationHubContext.Clients.All.SendAsync("Send", await GetConnectedUsers()); // Call the 'Send' method in the signalr service
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -106,7 +108,6 @@ namespace Transfers {
             }
             try {
                 repo.Delete(record);
-                await notificationHubContext.Clients.All.SendAsync("send", repo.GetCount());
                 return StatusCode(200, new {
                     response = ApiMessages.RecordDeleted()
                 });
@@ -116,6 +117,10 @@ namespace Transfers {
                     response = ApiMessages.RecordInUse()
                 });
             }
+        }
+
+        private async Task<IEnumerable<ConnectedUser>> GetConnectedUsers() {
+            return await connectedUserRepo.Get();
         }
 
     }

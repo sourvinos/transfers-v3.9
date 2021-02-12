@@ -16,9 +16,6 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
-import { AnnouncementService } from 'src/app/announcements/classes/announcement.service'
-import { Announcement } from 'src/app/announcements/classes/announcement'
-import { InteractionService } from 'src/app/shared/services/interaction.service'
 
 @Component({
     selector: 'destination-form',
@@ -42,7 +39,7 @@ export class DestinationFormComponent {
 
     //#endregion
 
-    constructor(private interactionService: InteractionService, private activatedRoute: ActivatedRoute, private announcementService: AnnouncementService, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
+    constructor(private activatedRoute: ActivatedRoute, private buttonClickService: ButtonClickService, private destinationService: DestinationService, private dialogService: DialogService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title) {
         this.activatedRoute.params.subscribe(p => {
             if (p.id) { this.getRecord(p.id) }
         })
@@ -114,7 +111,6 @@ export class DestinationFormComponent {
     public onSave(): void {
         if (this.form.value.id === 0) {
             this.destinationService.add(this.form.value).subscribe(() => {
-                this.updateUnreadAnnouncements()
                 this.resetForm()
                 this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordCreated(), 'info')
@@ -123,7 +119,6 @@ export class DestinationFormComponent {
             })
         } else {
             this.destinationService.update(this.form.value.id, this.form.value).subscribe(() => {
-                this.updateUnreadAnnouncements()
                 this.resetForm()
                 this.onGoBack()
                 this.showSnackbar(this.messageSnackbarService.recordUpdated(), 'info')
@@ -216,17 +211,6 @@ export class DestinationFormComponent {
     private unsubscribe(): void {
         this.ngUnsubscribe.next()
         this.ngUnsubscribe.unsubscribe()
-    }
-
-    private updateUnreadAnnouncements(): void {
-        let announcement = new Announcement()
-        this.announcementService.getSingle(this.helperService.readItem('userId')).subscribe(result => {
-            announcement = result
-            this.announcementService.update(this.helperService.readItem('userId'), announcement).subscribe(() => {
-                // this.interactionService.getRecordCount(data)
-                // console.log(result)
-            })
-        })
     }
 
     //#endregion

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,11 +16,13 @@ namespace Transfers {
     public class AuthController : ControllerBase {
 
         private readonly AppDbContext db;
+        private readonly IHubContext<NotificationHub> notificationHubContext;
         private readonly TokenSettings settings;
         private readonly UserManager<AppUser> userManager;
 
-        public AuthController(UserManager<AppUser> userManager, IOptions<TokenSettings> settings, AppDbContext db) {
+        public AuthController(AppDbContext db, IHubContext<NotificationHub> notificationHubContext, IOptions<TokenSettings> settings, UserManager<AppUser> userManager) {
             this.db = db;
+            this.notificationHubContext = notificationHubContext;
             this.settings = settings.Value;
             this.userManager = userManager;
         }

@@ -15,6 +15,7 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
+import { SignalRService } from 'src/app/shared/services/signalR.service'
 
 @Component({
     selector: 'login-form',
@@ -44,7 +45,7 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private router: Router, private signalRService: SignalRService, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
     //#region lifecycle hooks
     ngOnInit(): void {
@@ -82,6 +83,7 @@ export class LoginFormComponent {
     public onLogin(): void {
         const form = this.form.value
         this.accountService.login(form.username, form.password).subscribe(() => {
+            this.signalRService.SendData('Hello')
             this.goHome()
             this.startTimer()
         }, error => {

@@ -1,8 +1,9 @@
+import { SignalRService } from '../shared/services/signalR.service'
 import { Component, HostListener } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
 import { InteractionService } from '../shared/services/interaction.service'
-import * as signalR from '@aspnet/signalr'
+import { HelperService } from '../shared/services/helper.service'
 
 @Component({
     selector: 'root',
@@ -18,7 +19,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private interactionService: InteractionService, private router: Router) {
+    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private router: Router, private signalRService: SignalRService) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -40,7 +41,7 @@ export class AppComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.initNofifications()
+        this.signalRService.startConnection()
     }
 
     ngAfterViewInit(): void {
@@ -50,14 +51,6 @@ export class AppComponent {
     //#endregion
 
     //#region private methods
-
-    private initNofifications(): void {
-        // const connection = new signalR.HubConnectionBuilder().withUrl("/destinations").build()
-        // connection.on('send', (data) => {
-        //     this.interactionService.getRecordCount(data)
-        // })
-        // connection.start().then(() => { console.log("Connected") })
-    }
 
     private positionSpinner(): void {
         document.getElementById('spinner').style.left = (document.getElementById('main').clientWidth / 2) - (document.getElementById('spinner').clientWidth) + document.getElementById('side-bar').clientWidth + 'px'
