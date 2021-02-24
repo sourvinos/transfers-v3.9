@@ -4,6 +4,8 @@ import { Router } from '@angular/router'
 import { UserIdleService } from 'angular-user-idle'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { ConnectedUserService } from './connected-user.service'
+import { HelperService } from './helper.service'
 
 @Injectable({ providedIn: 'root' })
 
@@ -16,14 +18,13 @@ export class AccountService {
     private urlForgotPassword = '/api/account/forgotPassword'
     private urlRegister = '/api/account/register'
     private urlResetPassword = '/api/account/resetPassword'
-    private urlSendEmail = '/api/account/sendEmail'
     private urlToken = '/api/auth/auth'
     private userId = new BehaviorSubject<string>(localStorage.getItem('userId'))
     private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'))
 
     //#endregion
 
-    constructor(private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
+    constructor(private connectedUserService: ConnectedUserService, private helperService: HelperService, private httpClient: HttpClient, private router: Router, private userIdleService: UserIdleService) { }
 
     //#region public methods
 
@@ -58,6 +59,7 @@ export class AccountService {
     }
 
     public logout(): void {
+        this.deleteConnectedUser()
         this.setLoginStatus(false)
         this.clearLocalStorage()
         this.resetTimer()
@@ -93,7 +95,6 @@ export class AccountService {
             'editUserCaller',
             'expiration',
             'jwt',
-            'loginStatus',
             'refreshToken',
             'searchTermCustomer',
             'searchTermDestination',
@@ -104,14 +105,21 @@ export class AccountService {
             'searchTermUser',
             'selectedIds',
             'transfers',
-            'userId',
-            'userRole',
+            'loginStatus',
+            'userRole'
         ])
     }
 
     private clearLocalStorageItems(items: string[]): void {
         items.forEach(element => {
             localStorage.removeItem(element)
+        })
+    }
+
+    private deleteConnectedUser(): void {
+        const userId = this.helperService.readItem('userId')
+        this.connectedUserService.delete(userId).subscribe(() => {
+            console.log('Logout from', userId)
         })
     }
 

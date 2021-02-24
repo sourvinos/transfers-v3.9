@@ -91,15 +91,15 @@ export class InteractionService {
 
     /**
      * Caller(s):
-     *  app.component.ts
+     *  login-form.component.ts
      * 
      * Subscriber(s):
-     *  announcement.component.ts
+     *  alert.component.ts
      * 
      * Description:
      *  The caller(s) send the count so that the subscriber(s) can display it
      */
-    public getRecordCount(count: number): void {
+    public updateRecordCount(count: number): void {
         this._recordCount.next(count)
     }
 

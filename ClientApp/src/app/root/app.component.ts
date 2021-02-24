@@ -1,9 +1,9 @@
-import { SignalRService } from '../shared/services/signalR.service'
 import { Component, HostListener } from '@angular/core'
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router'
 import { AccountService } from '../shared/services/account.service'
 import { InteractionService } from '../shared/services/interaction.service'
 import { HelperService } from '../shared/services/helper.service'
+import { HubService } from '../shared/services/hub.service'
 
 @Component({
     selector: 'root',
@@ -19,7 +19,7 @@ export class AppComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private router: Router, private signalRService: SignalRService) {
+    constructor(private accountService: AccountService, private helperService: HelperService, private interactionService: InteractionService, private router: Router, private hubService: HubService) {
         this.router.events.subscribe((routerEvent) => {
             if (routerEvent instanceof NavigationStart) {
                 this.showLoadingIndication = true
@@ -41,7 +41,7 @@ export class AppComponent {
     //#region lifecycle hooks
 
     ngOnInit(): void {
-        this.signalRService.startConnection()
+        this.hubService.startConnection()
     }
 
     ngAfterViewInit(): void {

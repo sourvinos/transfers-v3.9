@@ -14,26 +14,23 @@ namespace Transfers {
 
     public class DestinationsController : ControllerBase {
 
-        private readonly IDestinationRepository repo;
+        private readonly IAlertRepository alertRepo;
         private readonly IConnectedUserRepository connectedUserRepo;
+        private readonly IDestinationRepository repo;
+        private readonly IHubContext<AlertHub> hubContext;
         private readonly ILogger<DestinationsController> logger;
-        private readonly IHubContext<NotificationHub> notificationHubContext;
 
-        public DestinationsController(IDestinationRepository repo, IConnectedUserRepository connectedUserRepo, ILogger<DestinationsController> logger, IHubContext<NotificationHub> notificationHubContext) {
-            this.repo = repo;
+        public DestinationsController(IAlertRepository alertRepo, IConnectedUserRepository connectedUserRepo, IDestinationRepository repo, IHubContext<AlertHub> hubContext, ILogger<DestinationsController> logger) {
+            this.alertRepo = alertRepo;
             this.connectedUserRepo = connectedUserRepo;
+            this.repo = repo;
+            this.hubContext = hubContext;
             this.logger = logger;
-            this.notificationHubContext = notificationHubContext;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Destination>> Get() {
             return await repo.Get();
-        }
-
-        [HttpGet("[action]")]
-        public int GetCount() {
-            return repo.GetCount();
         }
 
         [HttpGet("[action]")]
@@ -58,7 +55,6 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(record);
-                    notificationHubContext.Clients.All.SendAsync("send", "Record added");
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -80,7 +76,8 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    await notificationHubContext.Clients.All.SendAsync("Send", await GetConnectedUsers()); // Call the 'Send' method in the signalr service
+                    await UpdateAlerts();
+                    await SendAlertToConnectedUsers();
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -119,8 +116,21 @@ namespace Transfers {
             }
         }
 
-        private async Task<IEnumerable<ConnectedUser>> GetConnectedUsers() {
-            return await connectedUserRepo.Get();
+        private async Task UpdateAlerts() {
+            IEnumerable<Alert> alerts = await alertRepo.Get();
+            foreach (var alert in alerts) {
+                alert.Unread += 1;
+                alertRepo.Update(alert);
+            }
+        }
+
+        private async Task SendAlertToConnectedUsers() {
+            IEnumerable<JoinAlertConnectedUser> connectedUsers = connectedUserRepo.GetAlertsPerConnectedUser();
+            foreach (var user in connectedUsers) {
+                Console.WriteLine("Connected User", user);
+                // "BroadcastMessage" will be caught by the hub service (Frontend)
+                await hubContext.Clients.Client(user.ConnectionId).SendAsync("BroadcastMessage", user);
+            }
         }
 
     }

@@ -23,7 +23,7 @@ import { UserModule } from '../users/classes/user.module'
 
 // Components
 import { AppComponent } from './app.component'
-import { AnnouncementComponent } from '../announcements/user-interface/announcement.component'
+import { AlertsComponent } from '../shared/components/top-bar-wrapper/alerts/user-interface/alerts.component'
 import { CreditsComponent } from '../credits/user-interface/credits.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'
@@ -45,12 +45,12 @@ import { JwtInterceptor } from '../shared/services/jwt.interceptor'
 @NgModule({
     declarations: [
         AppComponent,
+        AlertsComponent,
         CreditsComponent,
         DomChangeDirective,
         EmptyPageComponent,
         HomeComponent,
         LanguageMenuComponent,
-        AnnouncementComponent,
         SideBarComponent,
         SideFooterComponent,
         SideImageComponent,

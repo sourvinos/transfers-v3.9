@@ -1,5 +1,3 @@
-using System;
-
 namespace Transfers {
 
     public class TransferResource {

@@ -16,15 +16,15 @@ namespace Transfers {
     public class AuthController : ControllerBase {
 
         private readonly AppDbContext db;
-        private readonly IHubContext<NotificationHub> notificationHubContext;
         private readonly TokenSettings settings;
         private readonly UserManager<AppUser> userManager;
+        private readonly IHubContext<AlertHub> hubContext;
 
-        public AuthController(AppDbContext db, IHubContext<NotificationHub> notificationHubContext, IOptions<TokenSettings> settings, UserManager<AppUser> userManager) {
+        public AuthController(AppDbContext db, IOptions<TokenSettings> settings, UserManager<AppUser> userManager, IHubContext<AlertHub> hubContext) {
             this.db = db;
-            this.notificationHubContext = notificationHubContext;
             this.settings = settings.Value;
             this.userManager = userManager;
+            this.hubContext = hubContext;
         }
 
         [HttpPost("[action]")]
