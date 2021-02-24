@@ -128,17 +128,17 @@ namespace Transfers {
 
         }
 
-        public async Task<IEnumerable<TotalPersonsPerDestinationForDayAfter>> GetTotalPersonsPerDestinationForDayAfter(string date) {
+        public IEnumerable<TotalPersonsPerDestinationForTomorrow> TotalPersonsPerDestinationForTomorrow(string date) {
 
             DateTime _date = Convert.ToDateTime(date);
 
             var totalPersons = appDbContext.Transfers
                 .Include(x => x.Destination)
                 .Where(x => x.DateIn == _date)
-                .GroupBy(x => new { x.Destination.Description })
-                .Select(x => new TotalPersonsPerDestinationForDayAfter { Destination = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
+                .GroupBy(x => new { x.DateIn, x.Destination.Description })
+                .Select(x => new TotalPersonsPerDestinationForTomorrow { DateIn = x.Key.DateIn, Destination = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
 
-            return await totalPersons.ToListAsync();
+            return totalPersons.ToList();
 
         }
 

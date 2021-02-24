@@ -129,7 +129,7 @@ namespace Transfers {
             foreach (var user in connectedUsers) {
                 Console.WriteLine("Connected User", user);
                 // "BroadcastMessage" will be caught by the hub service (Frontend)
-                await hubContext.Clients.Client(user.ConnectionId).SendAsync("BroadcastMessage", user);
+                await hubContext.Clients.All.SendAsync("BroadcastMessage", user);
             }
         }
 

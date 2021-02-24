@@ -1,19 +1,20 @@
+import { Announcement } from './../classes/announcement'
 import { Component } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
 
 @Component({
-    selector: 'alerts',
-    templateUrl: './alerts.component.html',
-    styleUrls: ['./alerts.component.css']
+    selector: 'announcement',
+    templateUrl: './announcement.component.html',
+    styleUrls: ['./announcement.component.css']
 })
 
-export class AlertsComponent {
+export class AnnouncementComponent {
 
     //#region variables
 
     public loginStatus: boolean
-    public unreadNotifications = 0
+    public announcements: Announcement[] = []
 
     //#endregion
 
@@ -26,7 +27,8 @@ export class AlertsComponent {
             this.loginStatus = result
         })
         this.interactionService.recordCount.subscribe(response => {
-            this.unreadNotifications = response
+            this.announcements = response
+            console.log('From service', this.announcements)
         })
     }
 

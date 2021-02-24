@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Subject } from 'rxjs'
+import { Announcement } from '../components/announcements/classes/announcement'
 
 @Injectable({ providedIn: 'root' })
 
@@ -11,7 +12,7 @@ export class InteractionService {
     private _checked = new Subject<number>()
     private _refreshList = new Subject<any>()
     private _tableRow = new Subject()
-    private _recordCount = new Subject<number>()
+    private _recordCount = new Subject<Announcement[]>()
 
     public record = this._record.asObservable()
     public checked = this._checked.asObservable()
@@ -99,8 +100,9 @@ export class InteractionService {
      * Description:
      *  The caller(s) send the count so that the subscriber(s) can display it
      */
-    public updateRecordCount(count: number): void {
-        this._recordCount.next(count)
+    public updateRecordCount(announcement: any): void {
+        console.log('Inside', announcement)
+        this._recordCount.next(announcement)
     }
 
     //#endregion

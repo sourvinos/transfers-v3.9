@@ -15,9 +15,8 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
-import { AlertService } from 'src/app/shared/components/top-bar-wrapper/alerts/classes/alert.service'
+import { AnnouncementService } from 'src/app/shared/components/announcements/classes/announcement.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { Alert } from 'src/app/shared/components/top-bar-wrapper/alerts/classes/alert'
 import { ConnectedUserService } from 'src/app/shared/services/connected-user.service'
 import { ConnectedUser } from 'src/app/shared/classes/connected-user'
 
@@ -49,7 +48,7 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private connectedUserService: ConnectedUserService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private notificationService: AlertService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private connectedUserService: ConnectedUserService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private notificationService: AnnouncementService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
     //#region lifecycle hooks
     ngOnInit(): void {
@@ -87,7 +86,7 @@ export class LoginFormComponent {
     public onLogin(): void {
         const form = this.form.value
         this.accountService.login(form.username, form.password).subscribe(() => {
-            this.saveNewUser()
+            // this.saveNewUser()
             this.getAlertsForUser()
             this.goHome()
             this.startTimer()
@@ -123,8 +122,9 @@ export class LoginFormComponent {
     }
 
     private getAlertsForUser(): void {
-        this.notificationService.getForUser().subscribe(result => {
-            this.interactionService.updateRecordCount(Object.assign(new Alert(), result).unread)
+        this.notificationService.getTotalPersonsPerDestinationForTomorrow('2021-02-25').subscribe(result => {
+            console.log(result)
+            this.interactionService.updateRecordCount(result)
         })
     }
 

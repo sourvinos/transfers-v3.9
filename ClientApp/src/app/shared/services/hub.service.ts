@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import { HelperService } from './helper.service'
 import * as signalR from '@aspnet/signalr'
 import { InteractionService } from './interaction.service'
-import { Alert } from '../components/top-bar-wrapper/alerts/classes/alert'
 
 @Injectable({ providedIn: 'root' })
 
@@ -21,7 +20,7 @@ export class HubService {
         // 'BroadcastMessage' will be sent from the controller (Backend)
         this.connection.on('BroadcastMessage', (data) => {
             console.log('From the backend', data)
-            this.interactionService.updateRecordCount(Object.assign(new Alert(), data).unread)
+            this.interactionService.updateRecordCount(data)
         })
         this.connection.on('UserConnected', (connectionId) => {
             console.log('Connected', connectionId)

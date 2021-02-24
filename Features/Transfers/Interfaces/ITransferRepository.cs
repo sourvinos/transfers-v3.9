@@ -11,7 +11,7 @@ namespace Transfers {
         Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerDate(string fromDate, string toDate);
         Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerMonth(string fromDate, string toDate);
         Task<IEnumerable<TotalPersonsPerYear>> GetTotalPersonsPerYear(string fromDate, string toDate);
-        Task<IEnumerable<TotalPersonsPerDestinationForDayAfter>> GetTotalPersonsPerDestinationForDayAfter(string date);
+        IEnumerable<TotalPersonsPerDestinationForTomorrow> TotalPersonsPerDestinationForTomorrow(string date);
         new Task<TransferResource> GetById(int id);
         Task<Transfer> GetByIdToDelete(int id);
         void Update(SaveTransferResource saveTransferResource);

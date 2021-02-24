@@ -1,6 +1,10 @@
 <div id="recordCount" [style.display]="loginStatus?'inherit':'none'">
     <button mat-flat-button class="transparent inverted" (click)="onResetRecordCount()">
         <img src="/assets/images/navigation/bell.svg" height="22px">
-        <span>{{ unreadNotifications }}</span>
+        <ul>
+            <li *ngFor="let item of announcements">
+                {{ item.dateIn | date:'dd/MM/yyyy' }} {{ item.destination }} {{ item.persons }}
+            </li>
+        </ul>
     </button>
 </div>

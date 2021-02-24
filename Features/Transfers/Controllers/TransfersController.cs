@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -14,14 +15,16 @@ namespace Transfers {
 
     public class TransfersController : ControllerBase {
 
-        private readonly IMapper mapper;
         private readonly ITransferRepository repo;
+        private readonly IHubContext<AlertHub> hubContext;
         private readonly ILogger<TransfersController> logger;
+        private readonly IMapper mapper;
 
-        public TransfersController(ITransferRepository repo, IMapper mapper, ILogger<TransfersController> logger) {
+        public TransfersController(ITransferRepository repo, IHubContext<AlertHub> hubContext, ILogger<TransfersController> logger, IMapper mapper) {
             this.repo = repo;
-            this.mapper = mapper;
+            this.hubContext = hubContext;
             this.logger = logger;
+            this.mapper = mapper;
         }
 
         [HttpGet("date/{date}")]
@@ -55,8 +58,8 @@ namespace Transfers {
         }
 
         [HttpGet("[action]/{date}")]
-        public async Task<IEnumerable<TotalPersonsPerDestinationForDayAfter>> TotalPersonsPerDestinationForDayAfter(string date) {
-            return await this.repo.GetTotalPersonsPerDestinationForDayAfter(date);
+        public IEnumerable<TotalPersonsPerDestinationForTomorrow> TotalPersonsPerDestinationForTomorrow(string date) {
+            return this.repo.TotalPersonsPerDestinationForTomorrow(date);
         }
 
         [HttpGet("{id}")]
@@ -76,6 +79,8 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(mapper.Map<SaveTransferResource, Transfer>(record));
+                    var tommorowPersons = repo.TotalPersonsPerDestinationForTomorrow(calculateTomorrowDate());
+                    hubContext.Clients.All.SendAsync("BroadcastMessage", tommorowPersons);
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -97,6 +102,8 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
+                    var tommorowPersons = repo.TotalPersonsPerDestinationForTomorrow(calculateTomorrowDate());
+                    hubContext.Clients.All.SendAsync("BroadcastMessage", tommorowPersons);
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -146,6 +153,11 @@ namespace Transfers {
                     response = ApiMessages.RecordNotSaved()
                 });
             }
+        }
+
+        private string calculateTomorrowDate() {
+            DateTime tommorow = DateTime.Today.AddDays(1);
+            return tommorow.ToString("yyyy/MM/dd");
         }
 
     }
