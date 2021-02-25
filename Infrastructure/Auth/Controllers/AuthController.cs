@@ -18,13 +18,11 @@ namespace Transfers {
         private readonly AppDbContext db;
         private readonly TokenSettings settings;
         private readonly UserManager<AppUser> userManager;
-        private readonly IHubContext<AlertHub> hubContext;
 
-        public AuthController(AppDbContext db, IOptions<TokenSettings> settings, UserManager<AppUser> userManager, IHubContext<AlertHub> hubContext) {
+        public AuthController(AppDbContext db, IOptions<TokenSettings> settings, UserManager<AppUser> userManager) {
             this.db = db;
             this.settings = settings.Value;
             this.userManager = userManager;
-            this.hubContext = hubContext;
         }
 
         [HttpPost("[action]")]

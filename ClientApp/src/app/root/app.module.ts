@@ -23,7 +23,7 @@ import { UserModule } from '../users/classes/user.module'
 
 // Components
 import { AppComponent } from './app.component'
-import { AnnouncementComponent } from '../shared/components/announcements/user-interface/announcement.component'
+import { AnnouncementComponent } from '../shared/components/announcement/user-interface/announcement.component'
 import { CreditsComponent } from '../credits/user-interface/credits.component'
 import { EmptyPageComponent } from '../shared/components/empty-page/empty-page.component'
 import { HomeComponent } from './../home/home.component'

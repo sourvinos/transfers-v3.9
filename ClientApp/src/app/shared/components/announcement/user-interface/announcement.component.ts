@@ -1,7 +1,7 @@
-import { Announcement } from './../classes/announcement'
 import { Component } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
+import { TransferPersonsPerDate } from 'src/app/transfers/classes/transfer-persons-per-date'
 
 @Component({
     selector: 'announcement',
@@ -13,8 +13,9 @@ export class AnnouncementComponent {
 
     //#region variables
 
+    public color = 'alternate'
     public loginStatus: boolean
-    public announcements: Announcement[] = []
+    public transferPersonsPerDate: TransferPersonsPerDate[] = [{ 'dateIn': '', 'persons': 0 }]
 
     //#endregion
 
@@ -27,17 +28,14 @@ export class AnnouncementComponent {
             this.loginStatus = result
         })
         this.interactionService.recordCount.subscribe(response => {
-            this.announcements = response
-            console.log('From service', this.announcements)
+            if (this.transferPersonsPerDate[0].persons != response[0].persons) {
+                this.color = 'alternate'
+                setTimeout(() => {
+                    this.color = 'normal'
+                }, 1000)
+            }
+            this.transferPersonsPerDate = response
         })
-    }
-
-    //#endregion
-
-    //#region public methods
-
-    public onResetRecordCount(): void {
-        // TODO: Set unread notifications to zero
     }
 
     //#endregion

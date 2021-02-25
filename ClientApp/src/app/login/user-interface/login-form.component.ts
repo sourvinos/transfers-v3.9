@@ -15,10 +15,9 @@ import { slideFromLeft, slideFromRight } from 'src/app/shared/animations/animati
 import { MessageSnackbarService } from 'src/app/shared/services/messages-snackbar.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageHintService } from 'src/app/shared/services/messages-hint.service'
-import { AnnouncementService } from 'src/app/shared/components/announcements/classes/announcement.service'
 import { InteractionService } from 'src/app/shared/services/interaction.service'
-import { ConnectedUserService } from 'src/app/shared/services/connected-user.service'
-import { ConnectedUser } from 'src/app/shared/classes/connected-user'
+import { AnnouncementService } from 'src/app/shared/components/announcement/classes/announcement.service'
+import moment from 'moment'
 
 @Component({
     selector: 'login-form',
@@ -48,9 +47,10 @@ export class LoginFormComponent {
 
     //#endregion
 
-    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private connectedUserService: ConnectedUserService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private notificationService: AnnouncementService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
+    constructor(private accountService: AccountService, private buttonClickService: ButtonClickService, private formBuilder: FormBuilder, private helperService: HelperService, private interactionService: InteractionService, private keyboardShortcutsService: KeyboardShortcuts, private messageHintService: MessageHintService, private messageLabelService: MessageLabelService, private messageSnackbarService: MessageSnackbarService, private announcementService: AnnouncementService, private router: Router, private snackbarService: SnackbarService, private titleService: Title, private userIdleService: UserIdleService) { }
 
     //#region lifecycle hooks
+
     ngOnInit(): void {
         this.setWindowTitle()
         this.initForm()
@@ -86,7 +86,6 @@ export class LoginFormComponent {
     public onLogin(): void {
         const form = this.form.value
         this.accountService.login(form.username, form.password).subscribe(() => {
-            // this.saveNewUser()
             this.getAlertsForUser()
             this.goHome()
             this.startTimer()
@@ -113,21 +112,19 @@ export class LoginFormComponent {
         })
     }
 
-    private createNewUser(): ConnectedUser {
-        return new ConnectedUser(0, this.helperService.readItem('userId'), this.helperService.readItem('connectionId'))
-    }
-
     private focus(field: string): void {
         this.helperService.setFocus(field)
     }
 
     private getAlertsForUser(): void {
-        this.notificationService.getTotalPersonsPerDestinationForTomorrow('2021-02-25').subscribe(result => {
-            console.log(result)
+        this.announcementService.getTotalPersonsPerDatePerDestination(this.getTomorrow(), this.getTomorrow()).subscribe(result => {
             this.interactionService.updateRecordCount(result)
         })
     }
 
+    private getTomorrow(): string {
+        return moment().add(1, 'day').format('YYYY-MM-DD')
+    }
     private goHome(): void {
         this.router.navigate([this.url])
     }
@@ -137,13 +134,6 @@ export class LoginFormComponent {
             username: [environment.login.username, Validators.required],
             password: [environment.login.password, Validators.required],
             isHuman: [environment.login.isHuman, Validators.requiredTrue]
-        })
-    }
-
-    private saveNewUser(): void {
-        const connectedUser = this.createNewUser()
-        this.connectedUserService.add(connectedUser).subscribe(() => {
-            console.log('New login from', connectedUser)
         })
     }
 

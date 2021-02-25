@@ -57,7 +57,7 @@ namespace Transfers {
             app.UseHttpsRedirection();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller}/{action=Index}/{id?}");
-                endpoints.MapHub<AlertHub>("/destinations");
+                endpoints.MapHub<AnnouncementHub>("/transfers");
             });
             app.UseSpa(spa => {
                 spa.Options.SourcePath = "ClientApp";

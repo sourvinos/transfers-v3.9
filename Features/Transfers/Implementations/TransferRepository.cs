@@ -84,7 +84,7 @@ namespace Transfers {
 
         }
 
-        public async Task<IEnumerable<TotalPersonsPerDate>> GetTotalPersonsPerDate(string fromDate, string toDate) {
+        public IEnumerable<TotalPersonsPerDate> GetTotalPersonsPerDate(string fromDate, string toDate) {
 
             DateTime _fromDate = Convert.ToDateTime(fromDate);
             DateTime _toDate = Convert.ToDateTime(toDate);
@@ -95,7 +95,7 @@ namespace Transfers {
                 .Select(x => new TotalPersonsPerDate { DateIn = x.Key.ToString(), Persons = x.Sum(s => s.TotalPersons) })
                 .OrderBy(x => x.DateIn);
 
-            return await totalPersons.ToListAsync();
+            return totalPersons.ToList();
 
         }
 
@@ -128,7 +128,7 @@ namespace Transfers {
 
         }
 
-        public IEnumerable<TotalPersonsPerDestinationForTomorrow> TotalPersonsPerDestinationForTomorrow(string date) {
+        public IEnumerable<TotalPersonsPerDatePerDestination> GetTotalPersonsPerDatePerDestination(string date) {
 
             DateTime _date = Convert.ToDateTime(date);
 
@@ -136,7 +136,7 @@ namespace Transfers {
                 .Include(x => x.Destination)
                 .Where(x => x.DateIn == _date)
                 .GroupBy(x => new { x.DateIn, x.Destination.Description })
-                .Select(x => new TotalPersonsPerDestinationForTomorrow { DateIn = x.Key.DateIn, Destination = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
+                .Select(x => new TotalPersonsPerDatePerDestination { DateIn = x.Key.DateIn, Destination = x.Key.Description, Persons = x.Sum(s => s.TotalPersons) });
 
             return totalPersons.ToList();
 

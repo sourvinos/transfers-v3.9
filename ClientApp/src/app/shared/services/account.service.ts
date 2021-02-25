@@ -59,7 +59,6 @@ export class AccountService {
     }
 
     public logout(): void {
-        this.deleteConnectedUser()
         this.setLoginStatus(false)
         this.clearLocalStorage()
         this.resetTimer()
@@ -113,13 +112,6 @@ export class AccountService {
     private clearLocalStorageItems(items: string[]): void {
         items.forEach(element => {
             localStorage.removeItem(element)
-        })
-    }
-
-    private deleteConnectedUser(): void {
-        const userId = this.helperService.readItem('userId')
-        this.connectedUserService.delete(userId).subscribe(() => {
-            console.log('Logout from', userId)
         })
     }
 

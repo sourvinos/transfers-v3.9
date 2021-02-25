@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -14,17 +13,11 @@ namespace Transfers {
 
     public class DestinationsController : ControllerBase {
 
-        private readonly IAlertRepository alertRepo;
-        private readonly IConnectedUserRepository connectedUserRepo;
         private readonly IDestinationRepository repo;
-        private readonly IHubContext<AlertHub> hubContext;
         private readonly ILogger<DestinationsController> logger;
 
-        public DestinationsController(IAlertRepository alertRepo, IConnectedUserRepository connectedUserRepo, IDestinationRepository repo, IHubContext<AlertHub> hubContext, ILogger<DestinationsController> logger) {
-            this.alertRepo = alertRepo;
-            this.connectedUserRepo = connectedUserRepo;
+        public DestinationsController( IDestinationRepository repo,  ILogger<DestinationsController> logger) {
             this.repo = repo;
-            this.hubContext = hubContext;
             this.logger = logger;
         }
 
@@ -72,12 +65,10 @@ namespace Transfers {
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDestinationAsync([FromRoute] int id, [FromBody] Destination record) {
+        public IActionResult PutDestinationAsync([FromRoute] int id, [FromBody] Destination record) {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    await UpdateAlerts();
-                    await SendAlertToConnectedUsers();
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -113,23 +104,6 @@ namespace Transfers {
                 return StatusCode(491, new {
                     response = ApiMessages.RecordInUse()
                 });
-            }
-        }
-
-        private async Task UpdateAlerts() {
-            IEnumerable<Alert> alerts = await alertRepo.Get();
-            foreach (var alert in alerts) {
-                alert.Unread += 1;
-                alertRepo.Update(alert);
-            }
-        }
-
-        private async Task SendAlertToConnectedUsers() {
-            IEnumerable<JoinAlertConnectedUser> connectedUsers = connectedUserRepo.GetAlertsPerConnectedUser();
-            foreach (var user in connectedUsers) {
-                Console.WriteLine("Connected User", user);
-                // "BroadcastMessage" will be caught by the hub service (Frontend)
-                await hubContext.Clients.All.SendAsync("BroadcastMessage", user);
             }
         }
 

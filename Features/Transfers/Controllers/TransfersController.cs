@@ -16,11 +16,11 @@ namespace Transfers {
     public class TransfersController : ControllerBase {
 
         private readonly ITransferRepository repo;
-        private readonly IHubContext<AlertHub> hubContext;
+        private readonly IHubContext<AnnouncementHub> hubContext;
         private readonly ILogger<TransfersController> logger;
         private readonly IMapper mapper;
 
-        public TransfersController(ITransferRepository repo, IHubContext<AlertHub> hubContext, ILogger<TransfersController> logger, IMapper mapper) {
+        public TransfersController(ITransferRepository repo, IHubContext<AnnouncementHub> hubContext, ILogger<TransfersController> logger, IMapper mapper) {
             this.repo = repo;
             this.hubContext = hubContext;
             this.logger = logger;
@@ -43,8 +43,8 @@ namespace Transfers {
         }
 
         [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
-        public async Task<IEnumerable<TotalPersonsPerDate>> TotalPersonsPerDate(string fromDate, string toDate) {
-            return await this.repo.GetTotalPersonsPerDate(fromDate, toDate);
+        public IEnumerable<TotalPersonsPerDate> TotalPersonsPerDate(string fromDate, string toDate) {
+            return this.repo.GetTotalPersonsPerDate(fromDate, toDate);
         }
 
         [HttpGet("[action]/fromDate/{fromDate}/toDate/{toDate}")]
@@ -58,8 +58,8 @@ namespace Transfers {
         }
 
         [HttpGet("[action]/{date}")]
-        public IEnumerable<TotalPersonsPerDestinationForTomorrow> TotalPersonsPerDestinationForTomorrow(string date) {
-            return this.repo.TotalPersonsPerDestinationForTomorrow(date);
+        public IEnumerable<TotalPersonsPerDatePerDestination> GetTotalPersonsPerDatePerDestination(string date) {
+            return this.repo.GetTotalPersonsPerDatePerDestination(date);
         }
 
         [HttpGet("{id}")]
@@ -79,8 +79,7 @@ namespace Transfers {
             if (ModelState.IsValid) {
                 try {
                     repo.Create(mapper.Map<SaveTransferResource, Transfer>(record));
-                    var tommorowPersons = repo.TotalPersonsPerDestinationForTomorrow(calculateTomorrowDate());
-                    hubContext.Clients.All.SendAsync("BroadcastMessage", tommorowPersons);
+                    SendNotificationsToClients();
                     return StatusCode(200, new {
                         response = ApiMessages.RecordCreated()
                     });
@@ -102,8 +101,7 @@ namespace Transfers {
             if (id == record.Id && ModelState.IsValid) {
                 try {
                     repo.Update(record);
-                    var tommorowPersons = repo.TotalPersonsPerDestinationForTomorrow(calculateTomorrowDate());
-                    hubContext.Clients.All.SendAsync("BroadcastMessage", tommorowPersons);
+                    SendNotificationsToClients();
                     return StatusCode(200, new {
                         response = ApiMessages.RecordUpdated()
                     });
@@ -131,6 +129,7 @@ namespace Transfers {
             }
             try {
                 repo.Delete(record);
+                SendNotificationsToClients();
                 return StatusCode(200, new {
                     response = ApiMessages.RecordDeleted()
                 });
@@ -155,9 +154,14 @@ namespace Transfers {
             }
         }
 
-        private string calculateTomorrowDate() {
+        private string GetTomorrow() {
             DateTime tommorow = DateTime.Today.AddDays(1);
             return tommorow.ToString("yyyy/MM/dd");
+        }
+
+        private void SendNotificationsToClients() {
+            var tomorrowPersons = repo.GetTotalPersonsPerDate(GetTomorrow(), GetTomorrow());
+            hubContext.Clients.All.SendAsync("BroadcastMessage", tomorrowPersons);
         }
 
     }
