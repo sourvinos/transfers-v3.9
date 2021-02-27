@@ -1,25 +1,31 @@
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { AccountService } from 'src/app/shared/services/account.service'
 import { MessageMenuService } from 'src/app/shared/services/messages-menu.service'
 import { Observable } from 'rxjs'
 
 @Component({
-    selector: 'top-menu',
-    templateUrl: './top-menu.component.html',
-    styleUrls: ['./top-menu.component.css']
+    selector: 'main-menu',
+    templateUrl: './main-menu.component.html',
+    styleUrls: ['./main-menu.component.css']
 })
 
-export class TopMenuComponent {
+export class MainMenuComponent {
 
     //#region variables
 
-    private feature = 'menu'
+    private feature = 'main-menu'
     public loginStatus: Observable<boolean>
     public userRole: Observable<string>
 
     //#endregion
 
     constructor(private accountService: AccountService, private messageMenuService: MessageMenuService) { }
+
+    @HostListener('mouseenter') onMouseEnter(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.remove('hidden')
+        })
+    }
 
     //#region lifecycle hooks
 
@@ -33,6 +39,12 @@ export class TopMenuComponent {
 
     public onGetLabel(id: string): string {
         return this.messageMenuService.getDescription(this.feature, id)
+    }
+
+    public onHideMenu(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.add('hidden')
+        })
     }
 
     //#endregion

@@ -1,30 +1,13 @@
-<div id="themeMenu">
-    <button mat-flat-button class="transparent inverted" [matMenuTriggerFor]="themeMenu">
-        <img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="22px">
-        <span>{{ onGetLabel(defaultTheme) }}</span>
-        <img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg">
-    </button>
+<div id="theme-menu">
+    <ul>
+        <li><button mat-menu-item><img src="/assets/images/themes/{{ onGetTheme() }}.svg" width="25px">{{ onGetLabel(defaultTheme) }}<img class="dropdown-arrow" src="/assets/images/navigation/dropdown-arrow.svg"></button>
+            <ul class="sub-menu" (click)="onHideMenu()">
+                <button mat-menu-item (click)="onChangeTheme('blue')"><img src="/assets/images/themes/blue.svg">{{ onGetLabel('blue') }}</button>
+                <button mat-menu-item (click)="onChangeTheme('gray')"><img src="/assets/images/themes/gray.svg">{{ onGetLabel('gray') }}</button>
+                <button mat-menu-item (click)="onChangeTheme('green')"><img src="/assets/images/themes/green.svg">{{ onGetLabel('green') }}</button>
+                <button mat-menu-item (click)="onChangeTheme('peach')"><img src="/assets/images/themes/peach.svg">{{ onGetLabel('peach') }}</button>
+                <button mat-menu-item (click)="onChangeTheme('red')"><img src="/assets/images/themes/red.svg">{{ onGetLabel('red') }}</button>
+            </ul>
+        </li>
+    </ul>
 </div>
-
-<mat-menu #themeMenu="matMenu">
-    <button mat-menu-item (click)="onChangeTheme('blue')">
-        <img src="/assets/images/themes/blue.svg">
-        <span class="option">{{ onGetLabel('blue') }}</span>
-    </button>
-    <button mat-menu-item (click)="onChangeTheme('gray')">
-        <img src="/assets/images/themes/gray.svg">
-        <span class="option">{{ onGetLabel('gray') }}</span>
-    </button>
-    <button mat-menu-item (click)="onChangeTheme('green')">
-        <img src="/assets/images/themes/green.svg">
-        <span class="option">{{ onGetLabel('green') }}</span>
-    </button>
-    <button mat-menu-item (click)="onChangeTheme('peach')">
-        <img src="/assets/images/themes/peach.svg">
-        <span class="option">{{ onGetLabel('peach') }}</span>
-    </button>
-    <button mat-menu-item (click)="onChangeTheme('red')">
-        <img src="/assets/images/themes/red.svg">
-        <span class="option">{{ onGetLabel('red') }}</span>
-    </button>
-</mat-menu>

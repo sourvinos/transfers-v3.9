@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { DateAdapter } from '@angular/material/core'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
 import { MessageTableService } from 'src/app/shared/services/messages-table.service'
@@ -17,10 +17,22 @@ export class LanguageMenuComponent {
 
     constructor(private dateAdapter: DateAdapter<any>, private helperService: HelperService, private messageHintService: MessageHintService, private messageMenuService: MessageMenuService, private messageSnackbarService: MessageSnackbarService, private messageTableService: MessageTableService, private messagelabelService: MessageLabelService,) { }
 
+    @HostListener('mouseenter') onMouseEnter(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.remove('hidden')
+        })
+    }
+
     //#region public methods
 
     public onGetLanguage(): string {
         return this.helperService.readItem("language") == '' ? this.onSaveLanguage('el-GR') : this.helperService.readItem("language")
+    }
+
+    public onHideMenu(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.add('hidden')
+        })
     }
 
     public onSaveLanguage(language: string): string {

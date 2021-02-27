@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core'
+import { Component, HostListener, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { HelperService } from 'src/app/shared/services/helper.service'
 import { MessageLabelService } from 'src/app/shared/services/messages-label.service'
@@ -13,12 +13,18 @@ export class ThemeMenuComponent {
 
     //#region variables
 
-    private feature = 'theme'
+    private feature = 'theme-menu'
     public defaultTheme = 'blue'
 
     //#endregion
 
     constructor(@Inject(DOCUMENT) private document: Document, private helperService: HelperService, private messageLabelService: MessageLabelService) { }
+
+    @HostListener('mouseenter') onMouseEnter(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.remove('hidden')
+        })
+    }
 
     //#region lifecycle hooks
 
@@ -30,6 +36,12 @@ export class ThemeMenuComponent {
 
     //#region public methods
 
+    public onChangeTheme(theme: string): void {
+        this.changeTheme(theme)
+        this.attachStylesheetToHead()
+        this.updateLocalStorage()
+    }
+
     public onGetLabel(id: string): string {
         return this.messageLabelService.getDescription(this.feature, id)
     }
@@ -38,10 +50,10 @@ export class ThemeMenuComponent {
         return this.helperService.readItem("theme") == '' ? this.onSaveTheme(this.defaultTheme) : this.helperService.readItem("theme")
     }
 
-    public onChangeTheme(theme: string): void {
-        this.changeTheme(theme)
-        this.attachStylesheetToHead()
-        this.updateLocalStorage()
+    public onHideMenu(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.add('hidden')
+        })
     }
 
     //#endregion

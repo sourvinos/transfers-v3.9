@@ -54,4 +54,7 @@
     /* Badge */
     --color-badge: #ebe5cd;
     --color-badge-background: #FE9F36;
+    /* Main menu */
+    --color-main-menu-background: #906971;
+    --color-main-menu-background-hover: #a08b90;
 }

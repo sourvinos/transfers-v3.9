@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Router } from '@angular/router'
 import { AccountService } from 'src/app/shared/services/account.service'
@@ -16,13 +16,19 @@ export class UserMenuComponent {
     //#region variables
 
     private baseUrl = '/users'
-    private feature = 'userMenu'
+    private feature = 'user-menu'
     public displayName: Observable<string>
     public loginStatus: Observable<boolean>
 
     //#endregion
 
     constructor(private accountService: AccountService, private helperService: HelperService, private messageLabelService: MessageLabelService, private router: Router) { }
+
+    @HostListener('mouseenter') onMouseEnter(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.remove('hidden')
+        })
+    }
 
     //#region lifecycle hooks
 
@@ -34,10 +40,6 @@ export class UserMenuComponent {
 
     //#region public methods
 
-    public onGetLabel(id: string): string {
-        return this.messageLabelService.getDescription(this.feature, id)
-    }
-
     public onEditUser(): void {
         let userId = ''
         this.accountService.currentUserId.subscribe((result: any) => {
@@ -45,6 +47,16 @@ export class UserMenuComponent {
         })
         this.updateStorageWithCallerForm()
         this.router.navigate([this.baseUrl, userId])
+    }
+
+    public onGetLabel(id: string): string {
+        return this.messageLabelService.getDescription(this.feature, id)
+    }
+
+    public onHideMenu(): void {
+        document.querySelectorAll('.sub-menu').forEach((item) => {
+            item.classList.add('hidden')
+        })
     }
 
     public onLogout(): void {

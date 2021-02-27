@@ -935,7 +935,7 @@
         ]
     },
     {
-        "feature": "userMenu",
+        "feature": "user-menu",
         "labels": [
             {
                 "id": "myAccount",
@@ -948,7 +948,7 @@
         ]
     },
     {
-        "feature": "theme",
+        "feature": "theme-menu",
         "labels": [
             {
                 "id": "blue",
